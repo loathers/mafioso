@@ -1,5 +1,5 @@
 const sampleLine1 = '0000\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tItems\tEffects\tMus\tMyst\tMox\tMeat';
-const sampleLine2 = '0003\t1\t1\tBoxingDaycare\tEntertheBoxing\tDaycare\tLeft-Hand Man\tBrutal brogues|sharkfin gumbo|\t0\t0\t0\t0'
+const sampleLine2 = '0003\t1\t1\tBoxing Daycare\tEnter the Boxing Daycare\tLeft-Hand Man\t\tBrutal brogues|sharkfin gumbo|\t\t0\t0\t0\t0'
 const sampleLog = `${sampleLine1}\n${sampleLine2}`;
 
 class LogLine {
