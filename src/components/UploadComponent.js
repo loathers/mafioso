@@ -21,7 +21,6 @@ export default function UploadComponent() {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
-      <span>Gimme that txt</span>
 
       <input 
         onChange={onUpload}

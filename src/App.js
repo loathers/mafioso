@@ -1,13 +1,14 @@
 import React from 'react';
-import './App.css';
 import UploadComponent from 'components/UploadComponent';
+
+import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
-        <UploadComponent />
-      </div>
+      <span>Gimme that txt</span>
+
+      <UploadComponent />
     </div>
   );
 }
