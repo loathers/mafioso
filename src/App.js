@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import ImportComponent from 'components/ImportComponent';
+import UploadComponent from 'components/UploadComponent';
 
 function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <ImportComponent />
+        <UploadComponent />
       </div>
     </div>
   );

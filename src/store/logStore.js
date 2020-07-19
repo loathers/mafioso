@@ -7,7 +7,7 @@ class LogStore {
     return this.srcFile !== undefined;
   }
 
-  import(file) {
+  handleUpload(file) {
     this.srcFile = file;
   }
 

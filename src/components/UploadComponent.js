@@ -1,20 +1,20 @@
 import React from 'react';
 import logStore from 'store/logStore';
 
-function onImport(evt) {
+function onUpload(evt) {
   const uploadedFile = evt.currentTarget.files;
   if (uploadedFile.length <= 0) {
     return new Error('No file uploaded.');
   }
-  console.log('*onImport', uploadedFile[0]);
-  logStore.import(uploadedFile[0]);
+
+  // console.log('*onUpload', uploadedFile[0]);
+  logStore.handleUpload(uploadedFile[0]);
 }
 
-export default function ImportComponent() {
+export default function UploadComponent() {
   const [isOver, setIsOver] = React.useState(false);
 
   function ignoreEvent(evt) {
-    console.log('rolllll');
     evt.preventDefault();
     evt.stopPropagation();
   }
@@ -22,18 +22,15 @@ export default function ImportComponent() {
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
       <span>Gimme that txt</span>
-      { isOver &&
-        <span>Oooh</span>
-      }
 
       <input 
-        onChange={onImport}
-        onDrop={onImport}
+        onChange={onUpload}
+        onDrop={onUpload}
         // onDragOver={setIsOver(true)}
-        onDragEnter={e => ignoreEvent(e) && setIsOver(true)}
-        onDragLeave={e => ignoreEvent(e) && setIsOver(false)} 
+        onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
+        onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
         style={{
-          border: '2px white solid',
+          border: `2px ${isOver ? 'lightgreen' : 'white'} solid`,
           padding: 5
         }}
         type='file' />
