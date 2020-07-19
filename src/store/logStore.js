@@ -3,8 +3,20 @@ class LogStore {
     this.srcFile = undefined;
   }
 
+  get hasFile() {
+    return this.srcFile !== undefined;
+  }
+
   import(file) {
     this.srcFile = file;
+  }
+
+  parse() {
+    if (!this.hasFile) {
+      return;
+    }
+
+    
   }
 }
 
