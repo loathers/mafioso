@@ -1,23 +1,29 @@
 import React from 'react';
 import logStore from 'store/logStore';
 
+/**
+ * @param {SyntheticEvent} evt
+ */
 function onUpload(evt) {
-  const uploadedFile = evt.currentTarget.files;
-  if (uploadedFile.length <= 0) {
+  const uploadedFiles = evt.currentTarget.files;
+  if (uploadedFiles.length <= 0) {
     return new Error('No file uploaded.');
   }
 
-  // console.log('*onUpload', uploadedFile[0]);
-  logStore.handleUpload(uploadedFile[0]);
+  logStore.handleUpload(uploadedFiles[0]);
 }
-
+/**
+ * @param {SyntheticEvent} evt
+ */
+function ignoreEvent(evt) {
+  evt.preventDefault();
+  evt.stopPropagation();
+}
+/**
+ * @returns {React.Component}
+ */
 export default function UploadComponent() {
   const [isOver, setIsOver] = React.useState(false);
-
-  function ignoreEvent(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
-  }
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -32,6 +38,7 @@ export default function UploadComponent() {
           border: `2px ${isOver ? 'lightgreen' : 'white'} solid`,
           padding: 5
         }}
+        accept='.txt'
         type='file' />
     </div>
   )

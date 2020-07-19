@@ -2,6 +2,10 @@ const sampleLine1 = '0000\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tIt
 const sampleLine2 = '0003\t1\t1\tBoxing Daycare\tEnter the Boxing Daycare\tLeft-Hand Man\t\tBrutal brogues|sharkfin gumbo|\t\t0\t0\t0\t0'
 const sampleLog = `${sampleLine1}\n${sampleLine2}`;
 
+
+/** instantiate a single instance of FileReader */
+const fileReader = new FileReader();
+
 class LogLine {
   /** @default */
   constructor(lineStr) {
@@ -51,30 +55,50 @@ class LogLine {
 class LogStore {
   /** @default */
   constructor() {
+    /** @type {File} */
+    this.srcFile = undefined;
     /** @type {String} */
     this.srcLog = sampleLog;
     /** @type {Array<LogLine>} */
-    this.parsedData = undefined;
+    this.logData = undefined;
+
+    // file reader callback
+    fileReader.onload = this.onReadComplete.bind(this);
   }
   /**
    * @type {Boolean}
    */
   get hasSrc() {
+    return this.srcFile !== undefined;
+  }
+  /**
+   * @type {Boolean}
+   */
+  get hasLog() {
     return this.srcLog !== undefined;
   }
 
   handleUpload(file) {
-    this.srcLog = file;
+    console.log('!handleUpload()')
+    this.srcFile = file;
+
+    fileReader.readAsText(file);
+  }
+
+  onReadComplete(readerEvt) {
+    const txtString = readerEvt.target.result;
+    this.srcLog = txtString;
+    this.parse();
   }
 
   parse() {
-    if (!this.hasSrc) {
+    if (!this.hasLog) {
       return;
     }
 
     const logSplit = this.srcLog.split('\n');
     const logDataArray = logSplit.map((lineStr) => new LogLine(lineStr));
-    this.parsedData = logDataArray;
+    this.logData = logDataArray;
   }
 }
 
