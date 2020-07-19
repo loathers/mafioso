@@ -48,7 +48,7 @@ class LogLine {
     };
 
     this.parsedData = newData;
-    console.log('#newData', newData)
+    // console.log('... line data', newData)
   }
 }
 
@@ -90,14 +90,25 @@ class LogStore {
     this.srcLog = txtString;
     this.parse();
   }
-
+  /**
+   * handle cleaning up and setting all the data
+   */
   parse() {
     if (!this.hasLog) {
       return;
     }
 
-    const logSplit = this.srcLog.split('\n');
-    const logDataArray = logSplit.map((lineStr) => new LogLine(lineStr));
+    // do we have enough data
+    const completeLogSplit = this.srcLog.split('\n');
+    if (completeLogSplit.length <= 2) {
+      return new Error('Not enough data on this log.');
+    }
+
+    // remove the ascension # and header data
+    const relevantLogSplit = completeLogSplit.slice(2, completeLogSplit.length);
+
+    // parse and build array data
+    const logDataArray = relevantLogSplit.map((lineStr) => new LogLine(lineStr));
     this.logData = logDataArray;
   }
 }
