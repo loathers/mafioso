@@ -2,6 +2,8 @@ import LogEntry from 'classes/LogEntry';
 
 import ENTRY_TYPE from 'constants/entryType';
 
+import {hasString} from 'utilities/stringUtils';
+
 const DESIRED_ENTRIES = [
   ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
   ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
@@ -14,18 +16,6 @@ const DESIRED_ENTRIES = [
 const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
 const LOG_SPLIT_REGEX = /\r\n\r\n/;
 
-/**
- * (there are many different types of string matching methods
- *  I might want to do a lot of swapping around to test efficiency)
- * 
- * @param {String} searchStr
- * @param {String} matchStr
- * @return {Boolean}
- */
-function hasString(searchStr, matchStr) {
-  // return searchStr.indexOf(matchStr) !== -1;
-  return searchStr.match(new RegExp(matchStr));
-}
 /**
  * core parsing function to do it all
  * 
@@ -73,7 +63,6 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
-  console.log('isEntryAcquireItem(entryString)', isEntryAcquireItem(entryString));
   if (isEntryAcquireItem(entryString)) {
     return ENTRY_TYPE.ACQUIRE_ITEM;
   }
@@ -127,7 +116,7 @@ export function isEntryAcquireItem(entryString) {
   if (hasString(entryString, BUY_REGEX)) {
     return ENTRY_TYPE.ACQUIRE_ITEM;
   }
-  
+
   const ACQUIRE_REGEX = /^(You acquire an item)/;
   return hasString(entryString, ACQUIRE_REGEX);
 }
