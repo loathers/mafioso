@@ -54,7 +54,6 @@ class LogStore {
    * @param {String} srcLog
    */
   cacheLog(srcLog) {
-    console.log('! cacheLog()')
     this.srcLog = srcLog;
     this.parse();
   }
@@ -68,7 +67,7 @@ class LogStore {
 
     const newData = logParserUtils.parseLog(this.srcLog);
     this.logData.replace(newData);
-    console.log('! logData', newData);
+    console.log('! parsed logData', newData);
   }
 }
 

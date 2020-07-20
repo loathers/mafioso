@@ -8,6 +8,7 @@ const DESIRED_ENTRIES = [
   ENTRY_TYPE.USE_SKILL.NONCOMBAT,
   ENTRY_TYPE.ACQUIRE_ITEM,
   ENTRY_TYPE.EQUIP,
+  ENTRY_TYPE.LOCATION_VISIT,
 ];
 
 const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
@@ -72,6 +73,10 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
+  if (isEntryLocationVisit(entryString)) {
+    return ENTRY_TYPE.LOCATION_VISIT;
+  }
+
   if (isEntryEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER_UNKNOWN;
   }
@@ -101,6 +106,20 @@ export function isEntryMafiaMisc(entryString) {
 export function isEntryAscensionInfo(entryString) {
   const ASCENSION_INFO_REGEX = /^(Ascension)/m;
   if (hasString(entryString, ASCENSION_INFO_REGEX)) {
+    return true;
+  }
+
+  return false;
+}
+/**
+ * check if `ENTRY_TYPE.LOCATION_VISIT`
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryLocationVisit(entryString) {
+  const LOCATION_REGEX = /^(Visiting)/;
+  if (hasString(entryString, LOCATION_REGEX)) {
     return true;
   }
 
