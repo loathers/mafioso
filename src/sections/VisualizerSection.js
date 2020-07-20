@@ -4,7 +4,28 @@ import {observer} from 'mobx-react';
 import ENTRY_TYPE from 'constants/entryType';
 
 import AscensionInfoEntryComponent from 'components/AscensionInfoEntryComponent';
+import EntryContainer from 'components/EntryContainer';
 
+/**
+ * @returns {React.Component}
+ */
+function StringEntry(props) {
+  const {
+    logEntry,
+    ...otherProps
+  } = props;
+
+  const {
+    entryString,
+  } = logEntry;
+
+  return (
+    <EntryContainer 
+      {...otherProps}>
+      {entryString}
+    </EntryContainer>
+  )
+}
 /**
  * @returns {React.Component}
  */
@@ -22,6 +43,16 @@ function VisualizerLine(props) {
     )
   }
 
+  if (logEntry.entryType !== ENTRY_TYPE.UNKNOWN) {
+    return (
+      <StringEntry 
+        {...props} 
+        className={visualizerCellClassName}
+      />
+    )
+  }
+
+  // unknown EntryType
   return (
     <div 
       children={'(Unknown Entry type) ' + logEntry.entryString}
