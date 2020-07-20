@@ -7,8 +7,8 @@ const DESIRED_ENTRIES = [
   ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
   ENTRY_TYPE.USE_SKILL.NONCOMBAT,
   ENTRY_TYPE.ACQUIRE_ITEM,
-  ENTRY_TYPE.EQUIP,
-  ENTRY_TYPE.LOCATION_VISIT,
+  // ENTRY_TYPE.EQUIP,
+  // ENTRY_TYPE.LOCATION_VISIT,
 ];
 
 const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
@@ -73,6 +73,11 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
+  console.log('isEntryAcquireItem(entryString)', isEntryAcquireItem(entryString));
+  if (isEntryAcquireItem(entryString)) {
+    return ENTRY_TYPE.ACQUIRE_ITEM;
+  }
+
   if (isEntryLocationVisit(entryString)) {
     return ENTRY_TYPE.LOCATION_VISIT;
   }
@@ -112,6 +117,21 @@ export function isEntryAscensionInfo(entryString) {
   return false;
 }
 /**
+ * check if `ENTRY_TYPE.ACQUIRE_ITEM`
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryAcquireItem(entryString) {
+  const BUY_REGEX = /^(buy)/
+  if (hasString(entryString, BUY_REGEX)) {
+    return ENTRY_TYPE.ACQUIRE_ITEM;
+  }
+  
+  const ACQUIRE_REGEX = /^(You acquire an item)/;
+  return hasString(entryString, ACQUIRE_REGEX);
+}
+/**
  * check if `ENTRY_TYPE.LOCATION_VISIT`
  * 
  * @param {String} entryString
@@ -119,11 +139,7 @@ export function isEntryAscensionInfo(entryString) {
  */
 export function isEntryLocationVisit(entryString) {
   const LOCATION_REGEX = /^(Visiting)/;
-  if (hasString(entryString, LOCATION_REGEX)) {
-    return true;
-  }
-
-  return false;
+  return hasString(entryString, LOCATION_REGEX);
 }
 /**
  * check if `ENTRY_TYPE.ENCOUNTER_UNKNOWN`
