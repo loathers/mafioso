@@ -1,5 +1,10 @@
 import LogLine from 'classes/LogLine';
 
+const sampleHeaderLines = 'Ascension #0175\n0000\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tItems\tEffects\tMus\tMyst\tMox\tMeat';
+const sampleLine1 = '0001\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tItems\tEffects\tMus\tMyst\tMox\tMeat';
+const sampleLine2 = '0002\t1\t1\tBoxing Daycare\tEnter the Boxing Daycare\tLeft-Hand Man\t\tBrutal brogues|sharkfin gumbo|\t\t0\t0\t0\t0'
+const sampleLogString = `${sampleHeaderLines}\n${sampleLine1}\n${sampleLine2}`;
+
 /** instantiate a single instance of FileReader */
 const fileReader = new FileReader();
 
@@ -80,4 +85,6 @@ class LogStore {
 }
 
 /** export singleton */
-export default new LogStore();
+const logStore = new LogStore();
+logStore.cacheLog(sampleLogString); // dev testing
+export default logStore;
