@@ -1,4 +1,4 @@
-import LogTableEntry from 'classes/LogTableEntry';
+// import LogEntry from 'classes/LogEntry';
 
 /** instantiate a single instance of FileReader */
 const fileReader = new FileReader();
@@ -13,7 +13,7 @@ class LogStore {
     this.srcFile = undefined;
     /** @type {String} */
     this.srcLog = undefined;
-    /** @type {Array<LogTableEntry>} */
+    /** @type {Array<LogEntry>} */
     this.logData = undefined;
 
     // file reader callback
@@ -63,10 +63,12 @@ class LogStore {
       return;
     }
 
+    const cleanLogString = this.srcLog.replace(/\n> .+?(?=\n)/, '');
+
     // an entry is separated by two new lines
     //  going to first do a broad grouping
     // todo: windows/unix/osx split
-    const completeLogSplit = this.srcLog.split(/\r\n\r\n/);
+    const completeLogSplit = cleanLogString.split(/\r\n\r\n/);
 
     // do we have enough data
     if (completeLogSplit.length <= 2) {
@@ -74,7 +76,7 @@ class LogStore {
       return;
     }
 
-    console.log('completeLogSplit', completeLogSplit.slice(0, Math.min(1000, completeLogSplit.length)));
+    console.log('completeLogSplit', completeLogSplit.slice(0, Math.min(450, completeLogSplit.length)));
   }
 }
 
