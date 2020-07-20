@@ -1,43 +1,32 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
+import ENTRY_TYPE from 'constants/entryType';
+
 import AscensionInfoEntryComponent from 'components/AscensionInfoEntryComponent';
 
 /**
  * @returns {React.Component}
  */
-function NumberVisCell(props) {
-  return (
-    <div 
-      style={{width: 40}}
-      className='visualizer-cell'>
-      {props.children}
-    </div>
-  )
-}
-/**
- * @returns {React.Component}
- */
-function StringVisCell(props) {
-  return (
-    <div 
-      style={{width: 120}}
-      className='visualizer-cell strinv-vis-cell'>
-      {props.children}
-    </div>
-  )
-}
-/**
- * @returns {React.Component}
- */
 function VisualizerLine(props) {
-  // if (lineData.data === undefined) {
-  //   return <div className='color-kolred'>Missing Line Data</div>;
-  // }
+  const {logEntry} = props;
 
-  console.log('VisualizerLine', props);
+  const visualizerCellClassName = 'visualizer-cell adjacent-mar-t-2';
+
+  if (logEntry.entryType === ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO) {
+    return (
+      <AscensionInfoEntryComponent 
+        {...props} 
+        className={visualizerCellClassName}
+      />
+    )
+  }
+
   return (
-    <AscensionInfoEntryComponent {...props} />
+    <div 
+      children={'(Unknown Entry type) ' + logEntry.entryString}
+      className={'color-kolred ' + visualizerCellClassName}
+    />
   )
 }
 /**
