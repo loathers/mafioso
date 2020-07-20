@@ -7,7 +7,7 @@ export default class LogLine {
     /** @type {String} */
     this.srcLine = lineStr;
     /** @type {Object} */
-    this.parsedData = undefined;
+    this.data = undefined;
 
     // can automatically parse if given a string
     if (lineStr) {
@@ -45,7 +45,7 @@ export default class LogLine {
       meat: lineSplit[12],
     };
 
-    this.parsedData = newData;
+    this.data = newData;
     // console.log('... line data', newData)
   }
 }
