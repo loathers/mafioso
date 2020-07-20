@@ -2,6 +2,14 @@ import LogEntry from 'classes/LogEntry';
 
 import ENTRY_TYPE from 'constants/entryType';
 
+const DESIRED_ENTRIES = [
+  ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+  ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+  ENTRY_TYPE.USE_SKILL.NONCOMBAT,
+  ENTRY_TYPE.ACQUIRE_ITEM,
+  ENTRY_TYPE.EQUIP,
+];
+
 const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
 const LOG_SPLIT_REGEX = /\r\n\r\n/;
 
@@ -46,7 +54,7 @@ export function parseLog(logRaw) {
       entryType: checkEntryType(entryString),
       entryString: entryString,
     })) // format data into LogEntry class
-    .filter((logEntry) => logEntry.entryType === ENTRY_TYPE.ENCOUNTER); // dev: only list encounters
+    .filter((logEntry) => DESIRED_ENTRIES.includes(logEntry.entryType)); // dev: only list desired types
 }
 // -- utility functions to determine the type
 /**
@@ -56,7 +64,11 @@ export function parseLog(logRaw) {
  * @return {EntryType}
  */
 export function checkEntryType(entryString) {
-  if (isEntryMafiaLog(entryString)) {
+  if (isEntryAscensionInfo(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
+  }
+  
+  if (isEntryMafiaMisc(entryString)) {
     return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
@@ -67,10 +79,12 @@ export function checkEntryType(entryString) {
   return ENTRY_TYPE.UNKNOWN;
 }
 /**
+ * check if `ENTRY_TYPE.MAFIA.MISC_LOG`
+ * 
  * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryMafiaLog(entryString) {
+export function isEntryMafiaMisc(entryString) {
   const BORDER_STRING = '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
   if (hasString(entryString, BORDER_STRING)) {
     return true;
@@ -79,6 +93,22 @@ export function isEntryMafiaLog(entryString) {
   return false;
 }
 /**
+ * check if `ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO`
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryAscensionInfo(entryString) {
+  const ASCENSION_INFO_REGEX = /^(Ascension)/m;
+  if (hasString(entryString, ASCENSION_INFO_REGEX)) {
+    return true;
+  }
+
+  return false;
+}
+/**
+ * check if `ENTRY_TYPE.ENCOUNTER_UNKNOWN`
+ * 
  * @param {String} entryString
  * @return {Boolean}
  */
