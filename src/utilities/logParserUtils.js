@@ -2,6 +2,9 @@ import LogEntry from 'classes/LogEntry';
 
 import ENTRY_TYPE from 'constants/entryTypes';
 
+const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
+const LOG_SPLIT_REGEX = /\r\n\r\n/;
+
 /**
  * (there are many different types of string matching methods
  *  I might want to do a lot of swapping around to test efficiency)
@@ -21,12 +24,12 @@ function hasString(searchStr, matchStr) {
  * @return {Array<LogEntry>}
  */
 export function parseLog(logRaw) {
-  const logRawCleaned = logRaw.replace(/\n> .+?(?=\n)/, '');
+  const logRawCleaned = logRaw.replace(LOG_CRUFT_REGEX, '');
 
   // an entry is separated by two new lines
   //  going to first do a broad grouping
   // todo: windows/unix/osx has different regex for new lines :/
-  const logRawSplit = logRawCleaned.split(/\r\n\r\n/);
+  const logRawSplit = logRawCleaned.split(LOG_SPLIT_REGEX);
 
   // do we have enough data
   // todo: meaningful check

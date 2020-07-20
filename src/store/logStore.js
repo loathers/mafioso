@@ -1,4 +1,3 @@
-// import LogEntry from 'classes/LogEntry';
 import * as logParserUtils from 'utilities/logParserUtils';
 
 /** instantiate a single instance of FileReader */
