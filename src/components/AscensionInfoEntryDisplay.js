@@ -1,11 +1,11 @@
 import React from 'react';
 
-import EntryContainer from 'components/EntryContainer';
+import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
 /**
  * @returns {React.Component}
  */
-export default function AscensionInfoEntryComponent(props) {
+export default function AscensionInfoEntryDisplay(props) {
   const {
     logEntry,
     ...otherProps
@@ -16,8 +16,8 @@ export default function AscensionInfoEntryComponent(props) {
   } = logEntry;
 
   return (
-    <EntryContainer {...otherProps}>
+    <EntryDisplayContainer {...otherProps}>
       <div>{entryString}</div>
-    </EntryContainer>
+    </EntryDisplayContainer>
   )
 }

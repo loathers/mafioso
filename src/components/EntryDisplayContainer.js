@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * @returns {React.Component}
  */
-export default function EntryContainer(props) {
+export default function EntryDisplayContainer(props) {
   const {className} = props;
 
   return (

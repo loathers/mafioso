@@ -3,8 +3,8 @@ import {observer} from 'mobx-react';
 
 import ENTRY_TYPE from 'constants/entryType';
 
-import AscensionInfoEntryComponent from 'components/AscensionInfoEntryComponent';
-import EntryContainer from 'components/EntryContainer';
+import AscensionInfoEntryDisplay from 'components/AscensionInfoEntryDisplay';
+import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
 /**
  * @returns {React.Component}
@@ -20,10 +20,10 @@ function StringEntry(props) {
   } = logEntry;
 
   return (
-    <EntryContainer 
+    <EntryDisplayContainer 
       {...otherProps}>
       {entryString}
-    </EntryContainer>
+    </EntryDisplayContainer>
   )
 }
 /**
@@ -36,7 +36,7 @@ function VisualizerLine(props) {
 
   if (logEntry.entryType === ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO) {
     return (
-      <AscensionInfoEntryComponent 
+      <AscensionInfoEntryDisplay 
         {...props} 
         className={visualizerCellClassName}
       />
