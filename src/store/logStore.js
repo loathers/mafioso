@@ -1,11 +1,9 @@
-const sampleLine1 = '0000\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tItems\tEffects\tMus\tMyst\tMox\tMeat';
-const sampleLine2 = '0003\t1\t1\tBoxing Daycare\tEnter the Boxing Daycare\tLeft-Hand Man\t\tBrutal brogues|sharkfin gumbo|\t\t0\t0\t0\t0'
-const sampleLog = `${sampleLine1}\n${sampleLine2}`;
-
-
 /** instantiate a single instance of FileReader */
 const fileReader = new FileReader();
 
+/**
+ * single line in the log
+ */
 class LogLine {
   /** @default */
   constructor(lineStr) {
@@ -14,7 +12,8 @@ class LogLine {
     /** @type {Object} */
     this.parsedData = undefined;
 
-    if (this.hasSrc) {
+    // can automatically parse if given a string
+    if (lineStr) {
       this.parse();
     }
   }
@@ -24,7 +23,9 @@ class LogLine {
   get hasSrc() {
     return this.srcLine !== undefined;
   }
-
+  /**
+   * parse the linedata 
+   */
   parse() {
     if (!this.hasSrc) {
       return;
@@ -51,14 +52,16 @@ class LogLine {
     // console.log('... line data', newData)
   }
 }
-
+/**
+ * store of the log
+ */
 class LogStore {
   /** @default */
   constructor() {
     /** @type {File} */
     this.srcFile = undefined;
     /** @type {String} */
-    this.srcLog = sampleLog;
+    this.srcLog = undefined;
     /** @type {Array<LogLine>} */
     this.logData = undefined;
 
@@ -77,14 +80,18 @@ class LogStore {
   get hasLog() {
     return this.srcLog !== undefined;
   }
-
+  /**
+   * @param {File} file
+   */
   handleUpload(file) {
     console.log('!handleUpload()')
     this.srcFile = file;
 
     fileReader.readAsText(file);
   }
-
+  /**
+   * @param {FileReader.Event} readerEvt
+   */
   onReadComplete(readerEvt) {
     const txtString = readerEvt.target.result;
     this.srcLog = txtString;
@@ -113,4 +120,5 @@ class LogStore {
   }
 }
 
+/** export singleton */
 export default new LogStore();
