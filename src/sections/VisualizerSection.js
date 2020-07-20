@@ -1,5 +1,7 @@
 import React from 'react';
 
+import AscensionInfoEntryComponent from 'components/AscensionInfoEntryComponent';
+
 /**
  * @returns {React.Component}
  */
@@ -27,56 +29,14 @@ function StringVisCell(props) {
 /**
  * @returns {React.Component}
  */
-function VisualizerLine({lineData = {}}) {
-  if (lineData.data === undefined) {
-    return <div className='color-kolred'>Missing Line Data</div>;
-  }
+function VisualizerLine(props) {
+  // if (lineData.data === undefined) {
+  //   return <div className='color-kolred'>Missing Line Data</div>;
+  // }
 
-  const {
-    actionId,
-    day,
-    turn,
-    location,
-    encounter,
-    familiar,
-    special,
-    items,
-    effects,
-    mus,
-    myst,
-    mox,
-    meat,
-  } = lineData.data;
-
+  console.log('VisualizerLine', props);
   return (
-    <div className='fontsize-2 flex-row adjacent-mar-t-2'>
-      {/* actionId */}
-      <NumberVisCell>{actionId}</NumberVisCell>
-      {/* day */}
-      <NumberVisCell>{day}</NumberVisCell>
-      {/* turn */}
-      <NumberVisCell>{turn}</NumberVisCell>
-      {/* location */}
-      <StringVisCell>{location}</StringVisCell>
-      {/* encounter */}
-      <StringVisCell>{encounter}</StringVisCell>
-      {/* familiar */}
-      <StringVisCell>{familiar}</StringVisCell>
-      {/* special */}
-      <StringVisCell>{special}</StringVisCell>
-      {/* items */}
-      <StringVisCell>{items}</StringVisCell>
-      {/* effects */}
-      <StringVisCell>{effects}</StringVisCell>
-      {/* mus */}
-      <NumberVisCell>{mus}</NumberVisCell>
-      {/* myst */}
-      <NumberVisCell>{myst}</NumberVisCell>
-      {/* mox */}
-      <NumberVisCell>{mox}</NumberVisCell>
-      {/* meat */}
-      <NumberVisCell>{meat}</NumberVisCell>
-    </div>
+    <AscensionInfoEntryComponent {...props} />
   )
 }
 /**
@@ -90,9 +50,9 @@ export default function VisualizerSection(props) {
       <div className='fontsize-1 adjacent-mar-t-2'>Visualizer Table</div>
       
       <div className='overflow-auto flex-col adjacent-mar-t-2'>
-        { logData.map((logLine, idx) => (
+        { logData.map((logEntry, idx) => (
           <VisualizerLine 
-            lineData={logLine}
+            logEntry={logEntry}
             key={`VisualizerLine-${idx}-key`}/>
         ))}
       </div>
