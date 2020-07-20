@@ -1,0 +1,51 @@
+// -- Color
+$COLOR_MAP: (
+  "first": #044BD9,
+  "second": #0455BF,
+  "third": #033E8C,
+  "fourth": #F24405,
+  "fifth": #F21905,
+
+  "kolblue": "blue",
+  "kolorange": "orange",
+
+  "white": #FFF,
+  "gray": #6f6c6c,
+  "grayer": #5a5555,
+  "grayest": #2b2626,
+  "black": #191919,
+  "transparent": rgba(0, 0, 0, 0)
+);
+
+// -- Fonts
+$FONT_MAPPING: (
+  "primary": "Roboto",
+  "secondary": "Ibarra Real Nova",
+  "tertiary": "Ubuntu",
+  "logo": "El Messiri"
+);
+
+// -- Breakpoints
+$MEDIA_QUERY_KEY_MAP: (
+  "extra-small": "xs",
+  "small": "s",
+  "medium": "m",
+  "large": "l"
+);
+
+$BREAKPOINT_WIDTH_MAP: (
+  "xs": 320px,
+  "s": 480px,
+  "m": 768px,
+  "l": 1024px
+);
+
+// -- Base Sizing per iteration
+$FONT_BASE_REM: 10px; // equal to 1rem
+$BASE_SIZE_MAP: (
+  "font-size": 3px,
+  "padding": 3px,
+  "margin": 3px,
+  "border-radius": 3px,
+  "box-shadow": 3px
+);

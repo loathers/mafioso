@@ -4,11 +4,11 @@ import 'store/appStore';
 
 import UploadComponent from 'components/UploadComponent';
 
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
+    <div 
+      className='bg-third pad-4'
+      id='slv-main'>
       <span>Gimme that txt</span>
 
       <UploadComponent />

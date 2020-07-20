@@ -11,6 +11,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "sass.compile": "sass src/styles/main.scss src/styles/compiled/main.css",
+    "sass.watch": "sass --watch src/styles/main.scss src/styles/compiled/main.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,5 +32,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "aah-util-css": "^0.5.3",
+    "sass": "^1.26.10"
   }
 }
