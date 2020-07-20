@@ -9,7 +9,10 @@ function App() {
     <div 
       className='bg-third pad-4'
       id='slv-main'>
-      <span>Gimme that txt</span>
+
+      <div className='fontsize-5 fontfamily-tertiary adjacent-mar-t-2'>
+        Shiny Log Visualizer
+      </div>
 
       <UploadComponent />
     </div>

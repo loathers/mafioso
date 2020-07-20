@@ -26,7 +26,7 @@ export default function UploadComponent() {
   const [isOver, setIsOver] = React.useState(false);
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <div className='flex-col adjacent-mar-t-2'>
 
       <input 
         onChange={onUpload}
