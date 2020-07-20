@@ -75,6 +75,7 @@ class LogStore {
     // parse and build array data
     const logDataArray = relevantLogSplit.map((lineStr) => new LogLine(lineStr));
     this.logData = logDataArray;
+    console.log('. finished parsing', logDataArray.length, 'lines');
   }
 }
 
