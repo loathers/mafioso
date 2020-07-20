@@ -1,12 +1,14 @@
 import React from 'react';
+import {observer} from 'mobx-react';
 
-import 'store/appStore';
+// import 'store/appStore';
 import logStore from 'store/logStore';
 
 import UploadComponent from 'components/UploadComponent';
 
 import VisualizerSection from 'sections/VisualizerSection';
 
+export default observer(
 function App() {
   return (
     <div 
@@ -24,6 +26,4 @@ function App() {
       />
     </div>
   );
-}
-
-export default App;
+})

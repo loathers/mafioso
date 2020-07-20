@@ -1,3 +1,6 @@
+import {
+  observable,
+} from 'mobx';
 import * as logParserUtils from 'utilities/logParserUtils';
 
 /** instantiate a single instance of FileReader */
@@ -13,8 +16,8 @@ class LogStore {
     this.srcFile = undefined;
     /** @type {String} */
     this.srcLog = undefined;
-    /** @type {Array<LogEntry>} */
-    this.logData = undefined;
+    /** @type {ObservableArray<LogEntry>} */
+    this.logData = observable([]);
 
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
@@ -63,8 +66,9 @@ class LogStore {
       return;
     }
 
-    this.logData = logParserUtils.parseLog(this.srcLog);
-    console.log('! logData', this.logData);
+    const newData = logParserUtils.parseLog(this.srcLog);
+    this.logData.replace(newData);
+    console.log('! logData', newData);
   }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import {observer} from 'mobx-react';
 
 import AscensionInfoEntryComponent from 'components/AscensionInfoEntryComponent';
 
@@ -42,7 +43,8 @@ function VisualizerLine(props) {
 /**
  * @returns {React.Component}
  */
-export default function VisualizerSection(props) {
+export default observer(
+function VisualizerSection(props) {
   const {logData = []} = props;
 
   return (
@@ -58,4 +60,4 @@ export default function VisualizerSection(props) {
       </div>
     </div>
   )
-}
+})
