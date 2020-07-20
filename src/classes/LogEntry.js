@@ -4,20 +4,24 @@
  */
 export default class LogEntry {
   /** @default */
-  constructor(lineStr) {
+  constructor({entryIdx, entryType, entryString}) {
+    /** @type {Number} */
+    this.entryIdx = entryIdx;
+    /** @type {EntryType} */
+    this.entryType = entryType;
     /** @type {String} */
-    this.srcString = lineStr;
+    this.entryString = entryString;
     /** @type {Object} */
     this.data = undefined;
 
     // can automatically parse if given a string
-    if (lineStr) {
-      this.parse();
+    if (entryString) {
+      // this.parse();
     }
   }
   /** @type {Boolean} */
-  get hasSrc() {
-    return this.srcString !== undefined;
+  get hasEntry() {
+    return this.entryString !== undefined;
   }
   /** @type {Boolean} */
   get hasData() {

@@ -1,3 +1,5 @@
+import LogEntry from 'classes/LogEntry';
+
 import ENTRY_TYPE from 'constants/entryTypes';
 
 /**
@@ -35,52 +37,52 @@ export function parseLog(logRaw) {
 
   //
   return logRawSplit
-    .slice(0, Math.min(550, logRawSplit.length))
-    .map((logEntry) => ({
-      entryType: checkEntryType(logEntry),
-      logEntry: logEntry,
-    }))
-    .filter((logData) => {
-      return logData.entryType !== ENTRY_TYPE.UNKNOWN && logData.entryType !== ENTRY_TYPE.MAFIA_LOG;
-    });
+    .slice(0, Math.min(550, logRawSplit.length)) // dev: limit lines
+    .map((entryString, idx) => new LogEntry({
+      entryIdx: idx,
+      entryType: checkEntryType(entryString),
+      entryString: entryString,
+    })) // format data into LogEntry class
+    .filter((logEntry) => logEntry.entryType === ENTRY_TYPE.ENCOUNTER); // dev: only list encounters
 }
 // -- utility functions to determine the type
 /**
  * handles determining what EntryType a log string is
  * 
- * @param {String} logEntry
+ * @param {String} entryString
  * @return {EntryType}
  */
-export function checkEntryType(logEntry) {
-  if (isEntryMafiaLog(logEntry)) {
+export function checkEntryType(entryString) {
+  if (isEntryMafiaLog(entryString)) {
     return ENTRY_TYPE.MAFIA_LOG;
   }
 
-  if (isEntryEncounter(logEntry)) {
+  if (isEntryEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER;
   }
 
   return ENTRY_TYPE.UNKNOWN;
 }
 /**
- * @param {String} logEntry
+ * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryMafiaLog(logEntry) {
+export function isEntryMafiaLog(entryString) {
   const BORDER_STRING = '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
-  if (hasString(logEntry, BORDER_STRING)) {
+  if (hasString(entryString, BORDER_STRING)) {
     return true;
   }
 
   return false;
 }
 /**
- * @param {String} logEntry
+ * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryEncounter(logEntry) {
+export function isEntryEncounter(entryString) {
+  // look for `[1]` but ignore url hashes with `[]blah[]`
   const ENCOUNTER_REGEX = /(\[(?!\]).*\])/;
-  if (hasString(logEntry, ENCOUNTER_REGEX)) {
+  if (hasString(entryString, ENCOUNTER_REGEX)) {
     return true;
   }
 
