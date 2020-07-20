@@ -1,10 +1,5 @@
 import LogTableEntry from 'classes/LogTableEntry';
 
-const sampleHeaderLines = 'Ascension #0175\n0000\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tItems\tEffects\tMus\tMyst\tMox\tMeat';
-const sampleLine1 = '0001\t1\t1\tCombing (experience) Beach Head\t\tLeft-Hand Man\t\t\t0\t0\t0\t0';
-const sampleLine2 = '0002\t1\t1\tBoxing Daycare\tEnter the Boxing Daycare\tLeft-Hand Man\t\tBrutal brogues|sharkfin gumbo|\t\t0\t0\t0\t0';
-const sampleLogString = `${sampleHeaderLines}\n${sampleLine1}\n${sampleLine2}`;
-
 /** instantiate a single instance of FileReader */
 const fileReader = new FileReader();
 
@@ -68,23 +63,21 @@ class LogStore {
       return;
     }
 
+    // an entry is separated by two new lines
+    //  going to first do a broad grouping
+    // todo: windows/unix/osx split
+    const completeLogSplit = this.srcLog.split(/\r\n\r\n/);
+
     // do we have enough data
-    const completeLogSplit = this.srcLog.split('\n');
     if (completeLogSplit.length <= 2) {
-      return new Error('Not enough data on this log.');
+      console.warn('Not enough data on this log.');
+      return;
     }
 
-    // remove the ascension # and header data
-    const relevantLogSplit = completeLogSplit.slice(2, completeLogSplit.length);
-
-    // parse and build array data
-    const logDataArray = relevantLogSplit.map((lineStr) => new LogTableEntry(lineStr));
-    this.logData = logDataArray;
-    console.log('. finished parsing', logDataArray.length, 'lines');
+    console.log('completeLogSplit', completeLogSplit.slice(0, Math.min(1000, completeLogSplit.length)));
   }
 }
 
 /** export singleton */
 const logStore = new LogStore();
-logStore.cacheLog(sampleLogString); // dev testing
 export default logStore;

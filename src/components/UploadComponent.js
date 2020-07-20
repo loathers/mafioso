@@ -7,7 +7,8 @@ import logStore from 'store/logStore';
 function onUpload(evt) {
   const uploadedFiles = evt.currentTarget.files;
   if (uploadedFiles.length <= 0) {
-    return new Error('No file uploaded.');
+    console.warn('No file uploaded.');
+    return;
   }
 
   logStore.handleUpload(uploadedFiles[0]);
