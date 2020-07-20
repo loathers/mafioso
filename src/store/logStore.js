@@ -19,23 +19,23 @@ class LogStore {
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
   }
-  /**
-   * @type {Boolean}
-   */
+  /** @type {Boolean} */
   get hasSrc() {
     return this.srcFile !== undefined;
   }
-  /**
-   * @type {Boolean}
-   */
+  /** @type {Boolean} */
   get hasLog() {
     return this.srcLog !== undefined;
+  }
+  /** @type {Boolean} */
+  get hasData() {
+    return this.logData !== undefined;
   }
   /**
    * @param {File} file
    */
   handleUpload(file) {
-    console.log('!handleUpload()')
+    console.log('! handleUpload()')
     this.srcFile = file;
 
     fileReader.readAsText(file);
@@ -45,7 +45,14 @@ class LogStore {
    */
   onReadComplete(readerEvt) {
     const txtString = readerEvt.target.result;
-    this.srcLog = txtString;
+    this.cacheLog(txtString);
+  }
+  /**
+   * @param {String} srcLog
+   */
+  cacheLog(srcLog) {
+    console.log('! cacheLog()')
+    this.srcLog = srcLog;
     this.parse();
   }
   /**

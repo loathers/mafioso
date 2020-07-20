@@ -31,7 +31,6 @@ export default function UploadComponent() {
       <input 
         onChange={onUpload}
         onDrop={onUpload}
-        // onDragOver={setIsOver(true)}
         onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
         onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
         style={{

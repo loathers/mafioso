@@ -1,5 +1,7 @@
 import React from 'react';
 
+import 'store/appStore';
+
 import UploadComponent from 'components/UploadComponent';
 
 import './App.css';
