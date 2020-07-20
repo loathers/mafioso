@@ -1,8 +1,11 @@
 import React from 'react';
 
 import 'store/appStore';
+import logStore from 'store/logStore';
 
 import UploadComponent from 'components/UploadComponent';
+
+import VisualizerSection from 'sections/VisualizerSection';
 
 function App() {
   return (
@@ -10,11 +13,15 @@ function App() {
       className='bg-third pad-4'
       id='slv-main'>
 
-      <div className='fontsize-5 fontfamily-tertiary adjacent-mar-t-2'>
+      <div className='fontsize-5 fontfamily-tertiary adjacent-mar-t-4'>
         Shiny Log Visualizer
       </div>
 
       <UploadComponent />
+
+      <VisualizerSection 
+        logData={logStore.logData}
+      />
     </div>
   );
 }

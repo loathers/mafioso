@@ -26,7 +26,7 @@ export default function UploadComponent() {
   const [isOver, setIsOver] = React.useState(false);
 
   return (
-    <div className='flex-col adjacent-mar-t-2'>
+    <div className='flex-col adjacent-mar-t-4'>
 
       <input 
         onChange={onUpload}
