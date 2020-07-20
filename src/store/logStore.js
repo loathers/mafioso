@@ -1,4 +1,5 @@
 // import LogEntry from 'classes/LogEntry';
+import * as logParserUtils from 'utilities/logParserUtils';
 
 /** instantiate a single instance of FileReader */
 const fileReader = new FileReader();
@@ -63,20 +64,8 @@ class LogStore {
       return;
     }
 
-    const cleanLogString = this.srcLog.replace(/\n> .+?(?=\n)/, '');
-
-    // an entry is separated by two new lines
-    //  going to first do a broad grouping
-    // todo: windows/unix/osx split
-    const completeLogSplit = cleanLogString.split(/\r\n\r\n/);
-
-    // do we have enough data
-    if (completeLogSplit.length <= 2) {
-      console.warn('Not enough data on this log.');
-      return;
-    }
-
-    console.log('completeLogSplit', completeLogSplit.slice(0, Math.min(450, completeLogSplit.length)));
+    this.logData = logParserUtils.parseLog(this.srcLog);
+    console.log('! logData', this.logData);
   }
 }
 
