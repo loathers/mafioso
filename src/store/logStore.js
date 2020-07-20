@@ -1,4 +1,4 @@
-import LogLine from 'classes/LogLine';
+import LogTableEntry from 'classes/LogTableEntry';
 
 const sampleHeaderLines = 'Ascension #0175\n0000\tDay\tTurn\tLocation\tEncounter\tFamiliar\tSpecial\tItems\tEffects\tMus\tMyst\tMox\tMeat';
 const sampleLine1 = '0001\t1\t1\tCombing (experience) Beach Head\t\tLeft-Hand Man\t\t\t0\t0\t0\t0';
@@ -18,7 +18,7 @@ class LogStore {
     this.srcFile = undefined;
     /** @type {String} */
     this.srcLog = undefined;
-    /** @type {Array<LogLine>} */
+    /** @type {Array<LogTableEntry>} */
     this.logData = undefined;
 
     // file reader callback
@@ -78,7 +78,7 @@ class LogStore {
     const relevantLogSplit = completeLogSplit.slice(2, completeLogSplit.length);
 
     // parse and build array data
-    const logDataArray = relevantLogSplit.map((lineStr) => new LogLine(lineStr));
+    const logDataArray = relevantLogSplit.map((lineStr) => new LogTableEntry(lineStr));
     this.logData = logDataArray;
     console.log('. finished parsing', logDataArray.length, 'lines');
   }
