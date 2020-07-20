@@ -1,6 +1,6 @@
 import LogEntry from 'classes/LogEntry';
 
-import ENTRY_TYPE from 'constants/entryTypes';
+import ENTRY_TYPE from 'constants/entryType';
 
 const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
 const LOG_SPLIT_REGEX = /\r\n\r\n/;
@@ -57,11 +57,11 @@ export function parseLog(logRaw) {
  */
 export function checkEntryType(entryString) {
   if (isEntryMafiaLog(entryString)) {
-    return ENTRY_TYPE.MAFIA_LOG;
+    return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
   if (isEntryEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER;
+    return ENTRY_TYPE.ENCOUNTER_UNKNOWN;
   }
 
   return ENTRY_TYPE.UNKNOWN;
