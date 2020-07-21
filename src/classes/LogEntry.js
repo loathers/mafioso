@@ -16,6 +16,8 @@ export default class LogEntry {
     this.data = {
       /** @type {Number} */
       actionNum: -1,
+      /** @type {String | null} */
+      locationName: null,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Number} */
