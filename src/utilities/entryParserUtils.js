@@ -28,7 +28,7 @@ export function parseEntry(entryString) {
     isNoncombatEncounter: parseIsNonCombatEncounter(entryString),
     acquiredItems,
     meatChange,
-    hasInitiative: parseCombatIniative(entryString),
+    hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
   }
@@ -41,7 +41,7 @@ export function parseEntry(entryString) {
  */
 export function parseEntrySpecial(entryString) {
   return {
-    isEndedByUseTheForce: parseIsCombatUseTheForce(entryString),
+    isEndedByUseTheForce: isUseTheForce(entryString),
   }
 }
 /**
@@ -54,13 +54,13 @@ export function parseEntrySpecial(entryString) {
  */
 export function createEntryBody(entryString) {
   const replacementList = [
-    REGEX.LINE.ADVENTURE_NAME,
-    REGEX.LINE.ENCOUNTER_NAME,
+    REGEX.LINE.LOCATION,
+    REGEX.LINE.ENCOUNTER,
     REGEX.LINE.COMBAT_FREE_TURN,
     REGEX.LINE.COMBAT_INIT,
     REGEX.LINE.COMBAT_VICTORY,
     REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
-    REGEX.LINE.ACQUIRE_ITEM,
+    REGEX.LINE.ACQUIRED_ITEMS,
     REGEX.LINE.MAFIA_MAXIMIZER_CLI,
     REGEX.LINE.MAFIA_ACTION_URL,
   ];
@@ -79,8 +79,7 @@ export function createEntryBody(entryString) {
  * @return {Number}
  */
 export function parseTurnNum(entryString) {
-  const ACTION_NUM_REGEX = /(?!\[)\d*(?=\])/;
-  const turnNumMatches = getRegexMatch(entryString, ACTION_NUM_REGEX);
+  const turnNumMatches = getRegexMatch(entryString, REGEX.VALUE.TURN_NUM);
   if (turnNumMatches === null) {
     return -1;
   }
@@ -94,14 +93,12 @@ export function parseTurnNum(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  const LOCATION_NAME_REGEX = /(?<=\]\s).*(?=\r?\n)*/;
-  const locationNameMatches = getRegexMatch(entryString, LOCATION_NAME_REGEX);
+  const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];
   }
 
-  const SHOP_LOCATION_NAME_REGEX = /(?<=each from\s).*\r?\n/
-  const shopLocationMatches = getRegexMatch(entryString, SHOP_LOCATION_NAME_REGEX);
+  const shopLocationMatches = getRegexMatch(entryString, REGEX.VALUE.SHOP_LOCATION_NAME);
   if (shopLocationMatches !== null) {
     return shopLocationMatches[0];
   }
@@ -116,8 +113,7 @@ export function parseLocationName(entryString) {
  * @return {String | null}
  */
 export function parseEncounterName(entryString) {
-  const ENCOUNTER_NAME_REGEX = /(?<=Encounter:\s).*/;
-  const encounterNameMatches = getRegexMatch(entryString, ENCOUNTER_NAME_REGEX);
+  const encounterNameMatches = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
   if (encounterNameMatches === null) {
     return null;
   }
@@ -130,13 +126,12 @@ export function parseEncounterName(entryString) {
  * @return {Array<String>}
  */
 export function parseAcquiredItems(entryString) {
-  const ACQUIRED_SINGLE_ITEM_REGEX = /(?<=(You acquire an item:\s+)).*/g;
-  const singleAcquireMatches = getRegexMatch(entryString, ACQUIRED_SINGLE_ITEM_REGEX) || [];
+  const singleAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_AN_ITEM) || [];
 
   // const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*)(?=\s\({1}\d*\){1})/g; // item excluding amount
   // const ACQUIRED_MULTI_ITEM_AMOUNT_REGEX = /(?!\()\d*(?=\))/; // just the amount
-  const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*\(\d*\))/g; // item including amount
-  const multiAcquireMatches = getRegexMatch(entryString, ACQUIRED_MULTIPLE_ITEM_REGEX) || [];
+  // const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*\(\d*\))/g; // item including amount
+  const multiAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_MULTIPLE_ITEMS) || [];
 
   return singleAcquireMatches.concat(multiAcquireMatches);
 }
@@ -155,14 +150,12 @@ export function parseMeatChange(entryString) {
  * @return {Number}
  */
 export function parseMeatSpent(entryString) {
-  const BUY_AMOUNT_REGEX = /(?<=buy\s)\d+/;
-  const buyAmountMatches = getRegexMatch(entryString, BUY_AMOUNT_REGEX);
+  const buyAmountMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT);
   if (buyAmountMatches === null) {
     return 0;
   }
 
-  const BUY_COST_REGEX = /(?<=for\s)\d+(?!each)/;
-  const buyCostMatches = getRegexMatch(entryString, BUY_COST_REGEX);
+  const buyCostMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_COST);
   if (buyCostMatches === null) {
     return 0;
   }
@@ -179,12 +172,11 @@ export function parseMeatSpent(entryString) {
  * @return {String}
  */
 export function parseIsFreeAdv(entryString) {
-  if (parseIsCombatUseTheForce(entryString)) {
+  if (isUseTheForce(entryString)) {
     return true;
   }
 
-  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s+/;
-  return hasString(entryString, COMBAT_NOT_COST_ADV_REGEX);
+  return hasString(entryString, REGEX.LINE.COMBAT_FREE_TURN);
 }
 /**
  * @param {String} entryString
@@ -207,8 +199,7 @@ export function parseIsNonCombatEncounter(entryString) {
  * @return {Boolean}
  */
 export function parseCombatVictory(entryString) {
-  const CHECK_VICTORY_REGEX = /wins the fight/;
-  return hasString(entryString, CHECK_VICTORY_REGEX);
+  return hasString(entryString, REGEX.LINE.COMBAT_VICTORY);
 }
 /**
  * was this a lost combat?
@@ -230,19 +221,17 @@ export function parseCombatLoss(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
-export function parseCombatIniative(entryString) {
+export function hasInitiative(entryString) {
   // only want to check if combat
   if (!parseIsCombatEncounter(entryString)) {
     return false;
   }
 
-  const WIN_INITATIVE_REGEX = /wins initiative/;
-  if (hasString(entryString, WIN_INITATIVE_REGEX)) {
+  if (hasString(entryString, REGEX.LINE.COMBAT_WIN_INIT)) {
     return true;
   }
 
-  const LOSE_INITATIVE_REGEX = /loses initiative/;
-  if (hasString(entryString, LOSE_INITATIVE_REGEX)) {
+  if (hasString(entryString, REGEX.LINE.COMBAT_LOSE_INIT)) {
     return false;
   }
 }
@@ -251,7 +240,6 @@ export function parseCombatIniative(entryString) {
  * @param {String} entryString
  * @return {String}
  */
-export function parseIsCombatUseTheForce(entryString) {
-  const COMBAT_USE_THE_FORCE_REGEX = /.*(USE THE FORCE).*/;
-  return hasString(entryString, COMBAT_USE_THE_FORCE_REGEX);
+export function isUseTheForce(entryString) {
+  return hasString(entryString, REGEX.LINE.COMBAT_SKILL_USE_THE_FORCE);
 }

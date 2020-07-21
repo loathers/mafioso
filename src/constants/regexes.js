@@ -12,22 +12,39 @@
 
 export const REGEX = {
   LINE: {
-    ADVENTURE_NAME: /\[\d*\].*\s*/,
-    ENCOUNTER_NAME: /Encounter:.*\s*/,
+    LOCATION: /\[\d*\].*\s*/,
+    ENCOUNTER: /Encounter:.*\s*/,
 
     COMBAT_FREE_TURN: /.*combat.*did not cost.*\s*/,
     COMBAT_INIT: /Round.*(loses initiative|wins initiative).*\s*/,
+    COMBAT_WIN_INIT: /Round.*(wins initiative).*\s*/,
+    COMBAT_LOSE_INIT: /Round.*(loses initiative).*\s*/,
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
+    COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
-    ACQUIRE_ITEM: /.*acquire.*\s*/g,
+    ACQUIRED_ITEMS: /.*acquire.*\s*/g,
 
     MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
     MAFIA_ACTION_URL: /.*.php.*\s*/g,
   },
+
+  VALUE: {
+    BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/,
+    BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/,
+
+    TURN_NUM: /(?!\[)\d*(?=\])/,
+    LOCATION_NAME: /(?<=\]\s).*(?=\r?\n)*/,
+    SHOP_LOCATION_NAME: /(?<=each from\s).*\r?\n/,
+    ENCOUNTER_NAME: /(?<=Encounter:\s).*/,
+
+    FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/g,
+    FOUND_MULTIPLE_ITEMS: /(?<=(You acquire\s+))(.*\(\d*\))/g,
+  },
+
   SUBSTRING: {
 
-  }
+  },
 };
 
 export default REGEX;

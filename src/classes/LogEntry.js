@@ -28,8 +28,6 @@ export default class LogEntry {
       isCombatEncounter: false, // todo: is a duplication of entryType
       /** @type {Boolean} */
       isNoncombatEncounter: false, // todo: is a duplication of entryType
-      /** @type {String | null} */
-      entryBody: null,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Number} */
