@@ -11,7 +11,9 @@ const DESIRED_ENTRIES = [
   ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
   ENTRY_TYPE.ENCOUNTER.COMBAT,
   ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-  ENTRY_TYPE.ACQUIRE_ITEM,
+  ENTRY_TYPE.CONSUMPTION.EAT,
+  ENTRY_TYPE.CONSUMPTION.DRINK,
+  ENTRY_TYPE.CONSUMPTION.CHEW,
   ENTRY_TYPE.TRANSACTION,
   // ENTRY_TYPE.EQUIP,
   // ENTRY_TYPE.LOCATION_VISIT,
@@ -73,6 +75,18 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
+  if (isEntryEat(entryString)) {
+    return ENTRY_TYPE.CONSUMPTION.EAT;
+  }
+
+  if (isEntryDrink(entryString)) {
+    return ENTRY_TYPE.CONSUMPTION.DRINK;
+  }
+
+  if (isEntryChew(entryString)) {
+    return ENTRY_TYPE.CONSUMPTION.CHEW;
+  }
+
   if (isEntryTransaction(entryString)) {
     return ENTRY_TYPE.TRANSACTION;
   }
@@ -113,6 +127,27 @@ export function isEntryAscensionInfo(entryString) {
  */
 export function isEntryTransaction(entryString) {
   return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryEat(entryString) {
+  return hasString(entryString, REGEX.VALUE.EAT_TARGET);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryDrink(entryString) {
+  return hasString(entryString, REGEX.VALUE.DRINK_TARGET);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryChew(entryString) {
+  return hasString(entryString, REGEX.VALUE.CHEW_TARGET);
 }
 /**
  * todo

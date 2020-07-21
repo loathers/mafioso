@@ -43,6 +43,15 @@ export const REGEX = {
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/g,
     FOUND_MULTIPLE_ITEMS: /(?<=(You acquire\s+))(.*\(\d*\))/g,
+
+    CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/i,
+    CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/i,
+    EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/i,
+    EAT_TARGET: /(?<=^eat\s\d+\s).*/i,
+    DRINK_AMOUNT: /(?<=^drink\s)\d+(?=\s)/i,
+    DRINK_TARGET: /(?<=^drink\s\d+\s).*/i,
+    CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/i,
+    CHEW_TARGET: /(?<=^chew\s\d+\s).*/i,
   },
 
   SUBSTRING: {
