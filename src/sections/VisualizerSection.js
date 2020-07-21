@@ -5,6 +5,7 @@ import ENTRY_TYPE from 'constants/entryType';
 
 import AscensionInfoEntryDisplay from 'components/AscensionInfoEntryDisplay';
 import AcquireItemEntryDisplay from 'components/AcquireItemEntryDisplay';
+import NoncombatEntryDisplay from 'components/NoncombatEntryDisplay';
 import TransactionEntryDisplay from 'components/TransactionEntryDisplay';
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
@@ -32,6 +33,12 @@ function StringEntry(props) {
  */
 function getEntryDisplay(entryType) {
   switch(entryType) {
+    case ENTRY_TYPE.ENCOUNTER.COMBAT:
+      return NoncombatEntryDisplay;
+
+    case ENTRY_TYPE.ENCOUNTER.NONCOMBAT:
+      return NoncombatEntryDisplay;
+
     case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
       return AscensionInfoEntryDisplay;
 
