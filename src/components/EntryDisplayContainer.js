@@ -69,13 +69,18 @@ function EntryHeaderContainer(props) {
  */
 export default function EntryDisplayContainer(props) {
   const {
+    onMouseEnter,
+    onMouseLeave,
     className,
     IconComponent = UncertaintySVG,
     logEntry,
   } = props;
 
   return (
-    <div className={'flex-row aitems-start adjacent-mar-t-2 bg-second pad-4 borradius-2 ' + className}>
+    <div 
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={'flex-row aitems-start adjacent-mar-t-2 bg-second pad-4 borradius-2 ' + className}>
       {/* adventure num column */}
       <EntryAdventureColumn logEntry={logEntry} />
 
