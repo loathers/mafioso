@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ReactComponent as InfoSVG } from 'images/info.svg';
+
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
 /**
@@ -15,7 +17,7 @@ export default function AscensionInfoEntryDisplay(props) {
   } = logEntry;
 
   return (
-    <EntryDisplayContainer {...props}>
+    <EntryDisplayContainer {...props} IconComponent={InfoSVG}>
       <div className='flex-auto adjacent-mar-l-4'>{entryString}</div>
     </EntryDisplayContainer>
   )

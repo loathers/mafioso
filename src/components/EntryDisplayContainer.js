@@ -140,12 +140,10 @@ function EntryBodyContainer(props) {
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
-      <div className=''>
-        <EntryHeaderContainer logEntry={logEntry} />
+      <EntryHeaderContainer logEntry={logEntry} />
 
-        <div className='flex-col adjacent-mar-t-3'>
-          {props.children}
-        </div>
+      <div className='flex-col adjacent-mar-t-3'>
+        {props.children}
       </div>
     </div>
   )
