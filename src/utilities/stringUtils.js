@@ -17,3 +17,12 @@ export function getRegexMatch(searchStr, matchStr) {
 export function hasString(searchStr, matchStr) {
   return new RegExp(matchStr).test(searchStr);
 }
+/**
+ * @param {String} sourceStr
+ * @return {String}
+ */
+export function fixSpecialEntities(sourceStr) {
+  return sourceStr
+    .replace(/&trade;/g, '™')
+    .replace(/&quot;/g, '"');
+}

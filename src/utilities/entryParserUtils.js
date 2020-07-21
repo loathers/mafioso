@@ -80,10 +80,12 @@ export function parseEncounterName(entryString) {
 export function parseEntryBody(entryString) {
   const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
   const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
+  const MAFIA_ACTION_URL_REGEX = /\w*.php.*\w+/;
   
   return entryString
     .replace(ADVENTURE_LINE_REGEX, '')
-    .replace(ENCOUNTER_LINE_REGEX, '');
+    .replace(ENCOUNTER_LINE_REGEX, '')
+    .replace(MAFIA_ACTION_URL_REGEX, '');
 }
 /**
  * builds an array of all the items that were gained

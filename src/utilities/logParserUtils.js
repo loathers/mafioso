@@ -4,7 +4,7 @@ import LogEntry from 'classes/LogEntry';
 
 import ENTRY_TYPE from 'constants/entryType';
 
-import {hasString} from 'utilities/stringUtils';
+import {hasString, fixSpecialEntities} from 'utilities/stringUtils';
 
 const DESIRED_ENTRIES = [
   ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
@@ -48,7 +48,7 @@ export function parseLog(logRaw) {
       entryIdx: idx,
       entryId: `${idx}_${logId}`,
       entryType: checkEntryType(entryString),
-      entryString: entryString,
+      entryString: fixSpecialEntities(entryString),
     })) // format data into LogEntry class
     .filter((logEntry) => DESIRED_ENTRIES.includes(logEntry.entryType)); // dev: only list desired types
 }
