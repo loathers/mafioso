@@ -1,6 +1,10 @@
 // import ENTRY_TYPE from 'constants/entryType';
 
-import {getRegexMatch} from 'utilities/stringUtils';
+import {
+  hasString,
+  getRegexMatch,
+} from 'utilities/stringUtils';
+import * as logParserUtils from 'utilities/logParserUtils';
 
 /**
  * core parsing function to do it all
@@ -9,24 +13,57 @@ import {getRegexMatch} from 'utilities/stringUtils';
  * @return {Array<LogEntry>}
  */
 export function parseEntry(entryString) {
+  const entryBody = createEntryBody(entryString);
   const adventureNum = parseAdventureNum(entryString);
   const isFreeAdv = parseFreeAdventure(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
-  const entryBody = parseEntryBody(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
   const meatChange = parseMeatChange(entryString);
 
   return {
+    entryBody: entryBody.length <= 0 ? null : entryBody,
     adventureNum,
     isFreeAdv,
     locationName,
     encounterName,
-    entryBody: entryBody.length <= 0 ? null : entryBody,
+    isCombatEncounter: parseIsCombatEncounter(entryString),
+    isNoncombatEncounter: parseIsNonCombatEncounter(entryString),
     acquiredItems,
     meatChange,
+    isVictory: parseCombatVictory(entryString),
+    isDeath: parseCombatLoss(entryString),
   }
 }
+/**
+ * scrub the main text of data that will be
+ *  cached in the LogEntry data so there are
+ *  only basic text
+ * 
+ * @param {String} entryString
+ * @return {String}
+ */
+export function createEntryBody(entryString) {
+  const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
+  const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
+  
+  const ACQUIRE_ITEM_REGEX = /\w*.*acquire an item.*\s*/g;
+  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
+  const COMBAT_VICTORY_LINE_REGEX = /(?<=\n).*wins the fight.*\s*/;
+
+  const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
+  const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
+
+  return entryString
+    .replace(ADVENTURE_LINE_REGEX, '')
+    .replace(ENCOUNTER_LINE_REGEX, '')
+    .replace(ACQUIRE_ITEM_REGEX, '')
+    .replace(COMBAT_NOT_COST_ADV_REGEX, '')
+    .replace(COMBAT_VICTORY_LINE_REGEX, '')
+    .replace(MAFIA_MAXIMIZER_CLI_REGEX, '')
+    .replace(MAFIA_ACTION_URL_REGEX, '');
+}
+// -- commonly found parsers
 /**
  * parses the adventure number
  *
@@ -96,30 +133,6 @@ export function parseEncounterName(entryString) {
   return encounterNameMatches[0];
 }
 /**
- * scrub the main text of data that will be
- *  cached in the LogEntry data so there are
- *  only basic text
- * 
- * @param {String} entryString
- * @return {String}
- */
-export function parseEntryBody(entryString) {
-  const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
-  const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
-  const ACQUIRE_ITEM_REGEX = /\w*.*acquire an item.*\s*/g;
-  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
-  const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
-  const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
-
-  return entryString
-    .replace(ADVENTURE_LINE_REGEX, '')
-    .replace(ENCOUNTER_LINE_REGEX, '')
-    .replace(ACQUIRE_ITEM_REGEX, '')
-    .replace(COMBAT_NOT_COST_ADV_REGEX, '')
-    .replace(MAFIA_MAXIMIZER_CLI_REGEX, '')
-    .replace(MAFIA_ACTION_URL_REGEX, '');
-}
-/**
  * builds an array of all the items that were gained
  * 
  * @param {String} entryString
@@ -166,4 +179,43 @@ export function parseMeatSpent(entryString) {
   const buyAmount = Number(buyAmountMatches[0]);
   const buyCost = Number(buyCostMatches[0]);
   return buyAmount * buyCost;
+}
+// -- boolean parsers
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseIsCombatEncounter(entryString) {
+  return logParserUtils.isEntryCombatEncounter(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseIsNonCombatEncounter(entryString) {
+  return logParserUtils.isEntryNonCombatEncounter(entryString);
+}
+/**
+ * was this a won combat?
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseCombatVictory(entryString) {
+  const CHECK_VICTORY_REGEX = /wins the fight/;
+  return hasString(entryString, CHECK_VICTORY_REGEX);
+}
+/**
+ * was this a lost combat?
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseCombatLoss(entryString) {
+  // only want to check for loss if its a combat
+  if (!parseIsCombatEncounter(entryString)) {
+    return false;
+  }
+
+  return !parseCombatVictory(entryString);
 }

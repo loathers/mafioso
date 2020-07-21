@@ -24,6 +24,10 @@ export default class LogEntry {
       locationName: null,
       /** @type {String | null} */
       encounterName: null,
+      /** @type {Boolean} */
+      isCombatEncounter: false, // todo: is a duplication of entryType
+      /** @type {Boolean} */
+      isNoncombatEncounter: false, // todo: is a duplication of entryType
       /** @type {String | null} */
       entryBody: null,
       /** @type {Array<String>} */
@@ -36,6 +40,10 @@ export default class LogEntry {
       mystChange: 0,
       /** @type {Number} */
       moxChange: 0,
+      /** @type {Boolean} */
+      isVictory: false,
+      /** @type {Boolean} */
+      isDeath: false,
     };
 
     // can automatically parse if given a string
@@ -55,6 +63,7 @@ export default class LogEntry {
   get hasData() {
     return this.data !== undefined;
   }
+  // -- data getters
   /** @type {Boolean} */
   get hasEntryHeader() {
     return this.data.locationName || this.data.encounterName;
