@@ -17,13 +17,7 @@ export default function AcquireItemEntryDisplay(props) {
   } = logEntry;
 
   return (
-    <EntryDisplayContainer {...props}>
-      <SteakSVG 
-        className='flex-none adjacent-mar-l-2'
-        style={{
-          width: 25,
-          height: 25,
-        }} />
+    <EntryDisplayContainer {...props} IconComponent={SteakSVG}>
       <div className='flex-auto adjacent-mar-l-2'>{entryString}</div>
     </EntryDisplayContainer>
   )

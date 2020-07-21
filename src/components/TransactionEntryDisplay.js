@@ -9,23 +9,12 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
  */
 export default function TransactionEntryDisplay(props) {
   const {
-    className,
     logEntry
   } = props;
 
   return (
-    <EntryDisplayContainer {...props}
-      className={'flex-row-center ' + className}>
-
-      <BagSVG 
-        className='flex-none adjacent-mar-l-2'
-        style={{
-          width: 25,
-          height: 25,
-        }} />
-
+    <EntryDisplayContainer {...props} IconClass={BagSVG}>
       <div className='flex-auto adjacent-mar-l-2'>{`bought ${logEntry.itemsDisplay} for ${logEntry.meatDisplay} meat.`}</div>
-
     </EntryDisplayContainer>
   )
 }

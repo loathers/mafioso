@@ -6,6 +6,7 @@ import React from 'react';
 export default function EntryDisplayContainer(props) {
   const {
     className,
+    IconComponent,
     logEntry
   } = props;
 
@@ -13,13 +14,24 @@ export default function EntryDisplayContainer(props) {
 
   return (
     <div className={'flex-row aitems-start adjacent-mar-t-2 bg-second pad-2 borradius-2 ' + className}>
+      {/* entry adventure num */}
       <div 
         className='color-gray fontsize-1 aself-start flex-none adjacent-mar-l-2'
         style={{width: 30}}>
         {adventureNum === -1 ? '' : adventureNum}
       </div>
 
-      {props.children}
+      {/* entry icon */}
+      { IconComponent &&
+        <IconComponent 
+          className='flex-none adjacent-mar-l-2'
+          style={{
+            width: 25,
+            height: 25,
+          }} />
+      }
+
+      <div className='flex-auto adjacent-mar-l-2'>{props.children}</div>
     </div>
   )
 }
