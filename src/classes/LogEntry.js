@@ -53,13 +53,12 @@ export default class LogEntry {
       isEndedByUseTheForce: false,
     }
 
+    /** @type {String | null} */
+    this.entryDisplay = entryString;
+
     // can automatically parse if given a string
-    if (entryString) {
-      const parsedData = entryParserUtils.parseEntry(entryString);
-      this.data = {
-        ...this.data,
-        ...parsedData,
-      };
+    if (entryString !== '' && Boolean(entryString)) {
+      this.initialize();
     }
   }
   /** @type {Boolean} */
@@ -86,6 +85,25 @@ export default class LogEntry {
   /** @type {String} */
   get meatDisplay() {
     return this.data.meatChange;
+  }
+  /**
+   * 
+   */
+  initialize() {
+    const parsedData = entryParserUtils.parseEntry(this.entryString);
+    this.data = {
+      ...this.data,
+      ...parsedData,
+    };
+
+    const parsedSpecialData = entryParserUtils.parseEntry(this.entryString);
+    this.specialData = {
+      ...this.specialData,
+      ...parsedSpecialData,
+    };
+
+    const entryBody = entryParserUtils.createEntryBody(this.entryString);
+    this.entryDisplay = entryBody.length <= 0 ? null : entryBody;
   }
   /**
    * @return {Object}

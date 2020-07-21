@@ -96,7 +96,7 @@ function VisualizerSection(props) {
 
           logEntry={logEntry}
           className='visualizer-cell adjacent-mar-t-2'
-          key={`VisualizerLine-${idx}-key`}/>
+          key={`VisualizerLine-${idx}-key`} />
       ))}
 
       <VisualizerTooltip

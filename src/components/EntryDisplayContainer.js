@@ -129,12 +129,14 @@ function EntryHeaderContainer(props) {
  */
 function EntryBodyContainer(props) {
   const {
-    children,
     className,
     logEntry,
   } = props;
 
-  const {data} = logEntry;
+  const {
+    data, 
+    entryDisplay,
+  } = logEntry;
   const {
     acquiredItems,
   } = data;
@@ -144,10 +146,10 @@ function EntryBodyContainer(props) {
       {/* header with location and encounter name */}
       <EntryHeaderContainer logEntry={logEntry} />
 
-      {/* entry specific body */}
-      { children &&
+      {/* entry specific content */}
+      { entryDisplay &&
         <div className='flex-col adjacent-mar-t-3'>
-          {children}
+          {entryDisplay}
         </div>
       }
 
@@ -211,9 +213,7 @@ export default function EntryDisplayContainer(props) {
       {/* entry body */}
       <EntryBodyContainer
         logEntry={logEntry}
-        className='adjacent-mar-l-4 flex-auto'>
-        {props.children}
-      </EntryBodyContainer>
+        className='adjacent-mar-l-4 flex-auto' />
       
     </div>
   )

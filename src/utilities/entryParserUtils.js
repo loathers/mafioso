@@ -13,7 +13,6 @@ import * as logParserUtils from 'utilities/logParserUtils';
  * @return {Array<LogEntry>}
  */
 export function parseEntry(entryString) {
-  const entryBody = createEntryBody(entryString);
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
@@ -21,7 +20,6 @@ export function parseEntry(entryString) {
   const meatChange = parseMeatChange(entryString);
 
   return {
-    entryBody: entryBody.length <= 0 ? null : entryBody,
     turnNum,
     isFreeAdv: parseIsFreeAdv(entryString),
     locationName,
