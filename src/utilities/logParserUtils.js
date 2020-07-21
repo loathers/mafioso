@@ -45,6 +45,7 @@ export function parseLog(logRaw) {
   return logRawSplit
     .slice(0, Math.min(550, logRawSplit.length)) // dev: limit lines
     .map((entryString, idx) => new LogEntry({
+      entryIdx: idx,
       entryId: `${idx}_${logId}`,
       entryType: checkEntryType(entryString),
       entryString: entryString,
@@ -70,7 +71,7 @@ export function checkEntryType(entryString) {
   if (isEntryCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.COMBAT;
   }
-  
+
   if (isEntryNonCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }

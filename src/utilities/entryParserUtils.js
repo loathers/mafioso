@@ -23,6 +23,8 @@ export function parseEntry(entryString) {
 }
 /**
  * parses the adventure number
+ *
+ * todo: use previous adventure num if log does not have it
  * 
  * @param {String} entryString
  * @return {Number}
