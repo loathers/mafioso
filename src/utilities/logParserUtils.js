@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import LogEntry from 'classes/LogEntry';
 
 import ENTRY_TYPE from 'constants/entryType';
+import REGEX from 'constants/regexes';
 
 import {hasString, fixSpecialEntities} from 'utilities/stringUtils';
 
@@ -15,10 +16,6 @@ const DESIRED_ENTRIES = [
   // ENTRY_TYPE.EQUIP,
   // ENTRY_TYPE.LOCATION_VISIT,
 ];
-
-const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
-const LOG_SPLIT_REGEX = /\r?\n\r?\n/;
-
 /**
  * core parsing function to do it all
  * 
@@ -26,12 +23,12 @@ const LOG_SPLIT_REGEX = /\r?\n\r?\n/;
  * @return {Array<LogEntry>}
  */
 export function parseLog(logRaw) {
-  const logRawCleaned = logRaw.replace(LOG_CRUFT_REGEX, '');
+  const logRawCleaned = logRaw.replace(REGEX.MISC.LOG_CRUFT, '');
 
   // an entry is separated by two new lines
   //  going to first do a broad grouping
   // todo: windows/unix/osx has different regex for new lines :/
-  const logRawSplit = logRawCleaned.split(LOG_SPLIT_REGEX);
+  const logRawSplit = logRawCleaned.split(REGEX.MISC.LOG_SPLIT);
 
   // do we have enough data
   // todo: meaningful check
@@ -76,10 +73,6 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
-  // if (isEntryAcquireItem(entryString)) {
-  //   return ENTRY_TYPE.ACQUIRE_ITEM;
-  // }
-
   if (isEntryTransaction(entryString)) {
     return ENTRY_TYPE.TRANSACTION;
   }
@@ -91,55 +84,38 @@ export function checkEntryType(entryString) {
   return ENTRY_TYPE.UNKNOWN;
 }
 /**
- * check if `ENTRY_TYPE.MAFIA.MISC_LOG`
+ * check if this is some random mafia string
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryMafiaMisc(entryString) {
-  const BORDER_STRING = '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=';
-  if (hasString(entryString, BORDER_STRING)) {
+  if (hasString(entryString, REGEX.MISC.LOG_BORDER)) {
     return true;
   }
 
   return false;
 }
 /**
- * check if `ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO`
+ * check if entry is telling us about this ascension
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryAscensionInfo(entryString) {
-  const ASCENSION_INFO_REGEX = /^(Ascension)/m;
-  if (hasString(entryString, ASCENSION_INFO_REGEX)) {
-    return true;
-  }
-
-  return false;
+  return hasString(entryString, REGEX.VALUE.ASCENSION_NUMBER);
 }
 /**
- * check if `ENTRY_TYPE.ACQUIRE_ITEM`
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryAcquireItem(entryString) {
-  const ACQUIRE_REGEX = /^(You acquire)/;
-  return hasString(entryString, ACQUIRE_REGEX);
-}
-/**
- * check if `ENTRY_TYPE.TRANSACTION`
+ * check if this entry is about buying something
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryTransaction(entryString) {
-  const TRANSACTION_REGEX = /^(buy)/
-  return hasString(entryString, TRANSACTION_REGEX);
+  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT);
 }
 /**
- * check if `ENTRY_TYPE.LOCATION_VISIT`
+ * todo
  * 
  * @param {String} entryString
  * @return {Boolean}
@@ -150,33 +126,30 @@ export function isEntryLocationVisit(entryString) {
 }
 // -- actions
 /**
- * actions will be determined by checking for [num]
+ * actions (aka turn) [num]
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryAction(entryString) {
-  // look for `[1]` but ignore url hashes with `[]blah[]`
-  const ACTION_REGEX = /(\[(?!\]).*\])/;
-  return hasString(entryString, ACTION_REGEX);
+  return hasString(entryString, REGEX.VALUE.TURN_NUM);
 }
 /**
- * check if `ENTRY_TYPE.ENCOUNTER.COMBAT`
+ * check is entry is a combat encounter,
+ *  which will have the initiative line
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryCombatEncounter(entryString) {
-  const COMBAT_ENCOUNTER_REGEX = /Round 0:/;
-  return hasString(entryString, COMBAT_ENCOUNTER_REGEX);
+  return hasString(entryString, REGEX.LINE.COMBAT_INIT);
 }
 /**
- * check if `ENTRY_TYPE.ENCOUNTER.NONCOMBAT`
+ * check if entry is a noncombat
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryNonCombatEncounter(entryString) {
-  const NONCOMBAT_ENCOUNTER_REGEX = /(?<=\[\d+\]\s)(.*)(?!Encounter:)/;
-  return hasString(entryString, NONCOMBAT_ENCOUNTER_REGEX);
+  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryMafiaMisc(entryString);
 }

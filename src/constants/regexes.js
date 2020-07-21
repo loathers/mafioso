@@ -10,6 +10,7 @@
 // const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
 // const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
 
+export const LOG_SPLIT_REGEX = /\r?\n\r?\n/; // because return carriage is windows specifc
 export const REGEX = {
   LINE: {
     LOCATION: /\[\d*\].*\s*/,
@@ -23,27 +24,35 @@ export const REGEX = {
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
-    ACQUIRED_ITEMS: /.*acquire.*\s*/g,
+    ACQUIRED_ITEMS: /.*acquire.*\s*/gm,
 
     MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
     MAFIA_ACTION_URL: /.*.php.*\s*/g,
   },
 
   VALUE: {
+    ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
     BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/,
     BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/,
 
-    TURN_NUM: /(?!\[)\d*(?=\])/,
+    TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
     LOCATION_NAME: /(?<=\]\s).*(?=\r?\n)*/,
     SHOP_LOCATION_NAME: /(?<=each from\s).*\r?\n/,
     ENCOUNTER_NAME: /(?<=Encounter:\s).*/,
+    NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/g,
     FOUND_MULTIPLE_ITEMS: /(?<=(You acquire\s+))(.*\(\d*\))/g,
   },
 
   SUBSTRING: {
+    ASCENSION_INFO: /^(Ascension)/m,
+  },
 
+  MISC: {
+    LOG_SPLIT: LOG_SPLIT_REGEX,
+    LOG_CRUFT: /\n> .+?(?=\n)/,
+    LOG_BORDER: /=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=/,
   },
 };
 
