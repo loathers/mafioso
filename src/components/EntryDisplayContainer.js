@@ -9,14 +9,14 @@ export default function EntryDisplayContainer(props) {
     logEntry
   } = props;
 
-  const actionNum = logEntry.data.actionNum;
+  const adventureNum = logEntry.data.adventureNum;
 
   return (
     <div className={'flex-row adjacent-mar-t-2 bg-second pad-2 borradius-2 ' + className}>
       <div 
         className='color-gray fontsize-1 aself-start flex-none adjacent-mar-l-2'
         style={{width: 30}}>
-        {actionNum === -1 ? '' : actionNum}
+        {adventureNum === -1 ? '' : adventureNum}
       </div>
 
       {props.children}
