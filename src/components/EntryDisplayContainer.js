@@ -81,13 +81,23 @@ export default function EntryDisplayContainer(props) {
   } = props;
 
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
-  const selectedClass = isSelected ? '' : '';
+  const selectedClass = isSelected ? 'bg-green' : '';
 
   return (
     <div 
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={combineClassnames('flex-row aitems-start adjacent-mar-t-2 pad-4 borradius-2', focusedClass, selectedClass, className)}>
+      className={combineClassnames('flex-row aitems-start adjacent-mar-t-2 pad-4 borradius-2', focusedClass, className)}>
+
+      {/* status indicator column */}
+      <div 
+        className={combineClassnames('bor-1-lightblue borradius-round height-auto', selectedClass)}
+        style={{
+          width: 10,
+          height: 10,
+        }}>
+      </div>
+
       {/* adventure num column */}
       <EntryAdventureColumn logEntry={logEntry} />
 
