@@ -18,6 +18,8 @@ export default class LogEntry {
     this.data = {
       /** @type {Number} */
       adventureNum: -1,
+      /** @type {Boolean} */
+      isFreeAdv: false,
       /** @type {String | null} */
       locationName: null,
       /** @type {String | null} */

@@ -10,6 +10,7 @@ import {getRegexMatch} from 'utilities/stringUtils';
  */
 export function parseEntry(entryString) {
   const adventureNum = parseAdventureNum(entryString);
+  const isFreeAdv = parseFreeAdventure(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
   const entryBody = parseEntryBody(entryString);
@@ -18,6 +19,7 @@ export function parseEntry(entryString) {
 
   return {
     adventureNum,
+    isFreeAdv,
     locationName,
     encounterName,
     entryBody,
@@ -40,6 +42,21 @@ export function parseAdventureNum(entryString) {
     return -1;
   }
   return Number(adventureNumMatches[0]);
+}
+/**
+ * determine if this is a free adventure
+ * 
+ * @param {String} entryString
+ * @return {String}
+ */
+export function parseFreeAdventure(entryString) {
+  const FREE_ADVENTURE_REGEX = /\w*.*did not cost.*\w+/;
+  const freeAdventureMatches = getRegexMatch(entryString, FREE_ADVENTURE_REGEX);
+  if (freeAdventureMatches === null) {
+    return null;
+  }
+
+  return freeAdventureMatches[0];
 }
 /**
  * parses name of the location,
