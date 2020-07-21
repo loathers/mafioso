@@ -13,11 +13,26 @@ export default class LogEntry {
     /** @type {String} */
     this.entryString = entryString;
     /** @type {Object} */
-    this.data = undefined;
+    this.data = {
+      /** @type {Array<String>} */
+      acquiredItems: [],
+      /** @type {Number} */
+      meatChange: 0,
+      /** @type {Number} */
+      musChange: 0,
+      /** @type {Number} */
+      mystChange: 0,
+      /** @type {Number} */
+      moxChange: 0,
+    };
 
     // can automatically parse if given a string
     if (entryString) {
-      entryParserUtils.parseEntry(entryString);
+      const parsedData = entryParserUtils.parseEntry(entryString);
+      this.data = {
+        ...this.data,
+        ...parsedData,
+      };
     }
   }
   /** @type {Boolean} */
