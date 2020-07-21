@@ -27,7 +27,7 @@ export default function UploadComponent() {
   const [isOver, setIsOver] = React.useState(false);
 
   return (
-    <div className='flex-col adjacent-mar-t-4'>
+    <div className='flex-col adjacent-mar-t-5'>
 
       <input 
         onChange={onUpload}
@@ -35,7 +35,7 @@ export default function UploadComponent() {
         onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
         onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
         style={{
-          border: `2px ${isOver ? 'lightgreen' : 'white'} solid`,
+          border: `3px ${isOver ? 'lightgreen' : 'white'} solid`,
           padding: 5
         }}
         accept='.txt'

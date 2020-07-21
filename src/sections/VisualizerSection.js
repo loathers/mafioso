@@ -24,7 +24,7 @@ function StringEntry(props) {
 
   return (
     <EntryDisplayContainer {...props}>
-      <div className='flex-auto adjacent-mar-l-2'>{entryString}</div>
+      <div className='flex-auto adjacent-mar-l-4'>{entryString}</div>
     </EntryDisplayContainer>
   )
 }
@@ -89,10 +89,10 @@ function VisualizerSection(props) {
   const {logData = []} = props;
 
   return (
-    <div className='flex-col adjacent-mar-t-4'>
-      <div className='fontsize-1 adjacent-mar-t-2'>Visualizer Table</div>
+    <div className='flex-col adjacent-mar-t-5'>
+      <div className='fontsize-4 color-gray adjacent-mar-t-5'>Visualizer Table</div>
       
-      <div className='overflow-auto flex-col adjacent-mar-t-2'>
+      <div className='overflow-auto flex-col adjacent-mar-t-5'>
         { logData.map((logEntry, idx) => (
           <VisualizerLine 
             logEntry={logEntry}

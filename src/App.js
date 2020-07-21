@@ -12,10 +12,10 @@ export default observer(
 function App() {
   return (
     <div 
-      className='bg-third pad-4'
+      className='bg-third fontsize-5 pad-7'
       id='slv-main'>
 
-      <div className='fontsize-5 fontfamily-tertiary adjacent-mar-t-4'>
+      <div className='fontsize-5 fontfamily-tertiary adjacent-mar-t-5'>
         Shiny Log Visualizer
       </div>
 

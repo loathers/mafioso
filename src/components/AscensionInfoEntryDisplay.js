@@ -16,7 +16,7 @@ export default function AscensionInfoEntryDisplay(props) {
 
   return (
     <EntryDisplayContainer {...props}>
-      <div className='flex-auto adjacent-mar-l-2'>{entryString}</div>
+      <div className='flex-auto adjacent-mar-l-4'>{entryString}</div>
     </EntryDisplayContainer>
   )
 }

@@ -18,7 +18,7 @@ export default function AcquireItemEntryDisplay(props) {
 
   return (
     <EntryDisplayContainer {...props} IconComponent={SteakSVG}>
-      <div className='flex-auto adjacent-mar-l-2'>{entryString}</div>
+      <div className='flex-auto adjacent-mar-l-4'>{entryString}</div>
     </EntryDisplayContainer>
   )
 }

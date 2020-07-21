@@ -22,15 +22,15 @@ export default function CombatEntryDisplay(props) {
   return (
     <EntryDisplayContainer {...props} IconComponent={CrossedSwordsSVG}>
       { locationName &&
-        <div className='flex-none adjacent-mar-t-1'>{locationName}</div>
+        <div className='flex-none adjacent-mar-t-2'>{locationName}</div>
       }
 
       { encounterName &&
-        <div className='flex-none adjacent-mar-t-1'>{encounterName}</div>
+        <div className='flex-none adjacent-mar-t-2'>{encounterName}</div>
       }
 
       { entryBody &&
-        <div className='flex-none adjacent-mar-t-1'>{entryBody}</div>
+        <div className='flex-none adjacent-mar-t-2'>{entryBody}</div>
       }
     </EntryDisplayContainer>
   )

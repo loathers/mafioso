@@ -14,7 +14,7 @@ export default function TransactionEntryDisplay(props) {
 
   return (
     <EntryDisplayContainer {...props} IconComponent={BagSVG}>
-      <div className='flex-auto adjacent-mar-l-2'>{`bought ${logEntry.itemsDisplay} for ${logEntry.meatDisplay} meat.`}</div>
+      <div className='flex-auto adjacent-mar-l-4'>{`bought ${logEntry.itemsDisplay} for ${logEntry.meatDisplay} meat.`}</div>
     </EntryDisplayContainer>
   )
 }
