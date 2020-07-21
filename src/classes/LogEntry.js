@@ -43,4 +43,15 @@ export default class LogEntry {
   get hasData() {
     return this.data !== undefined;
   }
+  /**
+   * @return {Object}
+   */
+  export() {
+    return {
+      entryIdx: this.entryIdx,
+      entryType: this.entryType,
+      entryString: this.entryString,
+      ...this.data,
+    }
+  }
 }
