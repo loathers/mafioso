@@ -9,7 +9,7 @@ import {hasString} from 'utilities/stringUtils';
 const DESIRED_ENTRIES = [
   ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
   ENTRY_TYPE.ENCOUNTER.COMBAT,
-  // ENTRY_TYPE.USE_SKILL.NONCOMBAT,
+  ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
   ENTRY_TYPE.ACQUIRE_ITEM,
   ENTRY_TYPE.TRANSACTION,
   // ENTRY_TYPE.EQUIP,
@@ -81,6 +81,9 @@ export function checkEntryType(entryString) {
 
   if (isEntryCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.COMBAT;
+  }
+  if (isEntryNonCombatEncounter(entryString)) {
+    return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
   return ENTRY_TYPE.UNKNOWN;
@@ -164,4 +167,14 @@ export function isEntryAction(entryString) {
 export function isEntryCombatEncounter(entryString) {
   const COMBAT_ENCOUNTER_REGEX = /Round 0:/;
   return hasString(entryString, COMBAT_ENCOUNTER_REGEX);
+}
+/**
+ * check if `ENTRY_TYPE.ENCOUNTER.NONCOMBAT`
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryNonCombatEncounter(entryString) {
+  const NONCOMBAT_ENCOUNTER_REGEX = /(?<=\[\d+\]\s)(.*)(?!Encounter:)/;
+  return hasString(entryString, NONCOMBAT_ENCOUNTER_REGEX);
 }
