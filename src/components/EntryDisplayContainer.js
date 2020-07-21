@@ -2,6 +2,8 @@ import React from 'react';
 
 import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 
+import combineClassnames from 'utilities/combineClassnames';
+
 /**
  * @returns {React.Component}
  */
@@ -69,6 +71,8 @@ function EntryHeaderContainer(props) {
  */
 export default function EntryDisplayContainer(props) {
   const {
+    isFocused,
+    isSelected,
     onMouseEnter,
     onMouseLeave,
     className,
@@ -76,11 +80,14 @@ export default function EntryDisplayContainer(props) {
     logEntry,
   } = props;
 
+  const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
+  const selectedClass = isSelected ? '' : '';
+
   return (
     <div 
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={'flex-row aitems-start adjacent-mar-t-2 bg-second pad-4 borradius-2 ' + className}>
+      className={combineClassnames('flex-row aitems-start adjacent-mar-t-2 pad-4 borradius-2', focusedClass, selectedClass, className)}>
       {/* adventure num column */}
       <EntryAdventureColumn logEntry={logEntry} />
 
