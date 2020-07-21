@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import ENTRY_TYPE from 'constants/entryType';
 
 import AscensionInfoEntryDisplay from 'components/AscensionInfoEntryDisplay';
+import AcquireItemEntryDisplay from 'components/AcquireItemEntryDisplay';
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
 /**
@@ -34,31 +35,37 @@ function VisualizerLine(props) {
 
   const visualizerCellClassName = 'visualizer-cell adjacent-mar-t-2';
 
-  if (logEntry.entryType === ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO) {
-    return (
-      <AscensionInfoEntryDisplay 
-        {...props} 
-        className={visualizerCellClassName}
-      />
-    )
-  }
+  switch(logEntry.entryType) {
+    case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
+      return (
+        <AscensionInfoEntryDisplay 
+          {...props} 
+          className={visualizerCellClassName}
+        />
+      )
+    case ENTRY_TYPE.ACQUIRE_ITEM:
+      return (
+        <AcquireItemEntryDisplay 
+          {...props} 
+          className={visualizerCellClassName}
+        />
+      )
+    case ENTRY_TYPE.UNKNOWN:
+      return (
+        <StringEntry 
+          {...props} 
+          className={visualizerCellClassName}
+        />
+      )
 
-  if (logEntry.entryType !== ENTRY_TYPE.UNKNOWN) {
-    return (
-      <StringEntry 
-        {...props} 
-        className={visualizerCellClassName}
-      />
-    )
+    default:
+      return (
+        <div 
+          children={'(Unknown Entry type) ' + logEntry.entryString}
+          className={'color-kolred ' + visualizerCellClassName}
+        />
+      )
   }
-
-  // unknown EntryType
-  return (
-    <div 
-      children={'(Unknown Entry type) ' + logEntry.entryString}
-      className={'color-kolred ' + visualizerCellClassName}
-    />
-  )
 }
 /**
  * @returns {React.Component}
