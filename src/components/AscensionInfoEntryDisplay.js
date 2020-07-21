@@ -8,7 +8,6 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
 export default function AscensionInfoEntryDisplay(props) {
   const {
     logEntry,
-    ...otherProps
   } = props;
 
   const {
@@ -16,8 +15,8 @@ export default function AscensionInfoEntryDisplay(props) {
   } = logEntry;
 
   return (
-    <EntryDisplayContainer {...otherProps}>
-      <div>{entryString}</div>
+    <EntryDisplayContainer {...props}>
+      <div className='flex-auto adjacent-mar-l-2'>{entryString}</div>
     </EntryDisplayContainer>
   )
 }

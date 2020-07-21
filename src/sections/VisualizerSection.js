@@ -14,7 +14,6 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
 function StringEntry(props) {
   const {
     logEntry,
-    ...otherProps
   } = props;
 
   const {
@@ -22,9 +21,8 @@ function StringEntry(props) {
   } = logEntry;
 
   return (
-    <EntryDisplayContainer 
-      {...otherProps}>
-      {entryString}
+    <EntryDisplayContainer {...props}>
+      <div className='flex-auto adjacent-mar-l-2'>{entryString}</div>
     </EntryDisplayContainer>
   )
 }

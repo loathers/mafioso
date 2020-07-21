@@ -10,16 +10,11 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
 export default function TransactionEntryDisplay(props) {
   const {
     className,
-    logEntry,
-    ...otherProps
+    logEntry
   } = props;
 
-  // const {
-  //   entryString,
-  // } = logEntry;
-
   return (
-    <EntryDisplayContainer {...otherProps}
+    <EntryDisplayContainer {...props}
       className={'flex-row-center ' + className}>
 
       <BagSVG 

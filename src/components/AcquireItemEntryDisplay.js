@@ -9,9 +9,7 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
  */
 export default function AcquireItemEntryDisplay(props) {
   const {
-    className,
     logEntry,
-    ...otherProps
   } = props;
 
   const {
@@ -19,8 +17,7 @@ export default function AcquireItemEntryDisplay(props) {
   } = logEntry;
 
   return (
-    <EntryDisplayContainer {...otherProps}
-      className={'flex-row ' + className}>
+    <EntryDisplayContainer {...props}>
       <SteakSVG 
         className='flex-none adjacent-mar-l-2'
         style={{
