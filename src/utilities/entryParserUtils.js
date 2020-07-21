@@ -48,7 +48,8 @@ export function createEntryBody(entryString) {
   const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
   const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
   
-  const ACQUIRE_ITEM_REGEX = /\w*.*acquire an item.*\s*/g;
+  const FAMILIAR_GAIN_WEIGHT_LINE_REGEX = /.*(gains a pound).*\s*/;
+  const ACQUIRE_ITEM_LINE_REGEX = /\w*.*acquire an item.*\s*/g;
   const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
   const COMBAT_INIT_LINE_REGEX = /Round.*(loses initiative|wins initiative).*\s*/;
   const COMBAT_VICTORY_LINE_REGEX = /(?<=\s).*wins the fight.*\s*/;
@@ -59,7 +60,8 @@ export function createEntryBody(entryString) {
   return entryString
     .replace(ADVENTURE_LINE_REGEX, '')
     .replace(ENCOUNTER_LINE_REGEX, '')
-    .replace(ACQUIRE_ITEM_REGEX, '')
+    .replace(FAMILIAR_GAIN_WEIGHT_LINE_REGEX, '')
+    .replace(ACQUIRE_ITEM_LINE_REGEX, '')
     .replace(COMBAT_NOT_COST_ADV_REGEX, '')
     .replace(COMBAT_INIT_LINE_REGEX, '')
     .replace(COMBAT_VICTORY_LINE_REGEX, '')
