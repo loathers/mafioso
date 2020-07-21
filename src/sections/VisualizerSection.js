@@ -90,31 +90,31 @@ function VisualizerSection(props) {
 
   // focus hook
   const [focusedEntry, setFocusedEntry] = React.useState();
-  const [elementPosition, setFocusPosition] = React.useState({x: 10, y: 210});
-  const [previousEntry, setPreviousEntry] = React.useState();
-  const [previousPosition, setPreviousPosition] = React.useState({x: 10, y: 210});
+  // const [elementPosition, setFocusPosition] = React.useState({x: 10, y: 210});
+  // const [previousEntry, setPreviousEntry] = React.useState();
+  // const [previousPosition, setPreviousPosition] = React.useState({x: 10, y: 210});
 
   const onEnterItem = (evt, newEntry) => {
-    const boundingClientRect = evt.currentTarget.getBoundingClientRect();
-    const yOffset = (newEntry.entryString.length * -0.6);
-    const yRandom = Math.random() * 10 - 5;
+    // const boundingClientRect = evt.currentTarget.getBoundingClientRect();
+    // const yOffset = (newEntry.entryString.length * -0.6);
+    // const yRandom = Math.random() * 10 - 5;
 
-    const xPosition = evt.clientX - 250;
-    setFocusPosition({x: xPosition, y: boundingClientRect.y + yOffset + yRandom});
+    // const xPosition = evt.clientX - 250;
+    // setFocusPosition({x: xPosition, y: boundingClientRect.y + yOffset + yRandom});
     setFocusedEntry(newEntry);
   };
 
   const onLeaveItem = () => {
-    setPreviousPosition(elementPosition);
-    setPreviousEntry(focusedEntry);
+    // setPreviousPosition(elementPosition);
+    // setPreviousEntry(focusedEntry);
     setFocusedEntry(undefined);
   };
 
   const hasSelectedEntry = focusedEntry !== undefined;
-  const positionToUse = hasSelectedEntry ? elementPosition : previousPosition;
-  const detailsStyle = {
-    transform: `translate(${positionToUse.x}px, ${positionToUse.y}px)`,
-  };
+  // const positionToUse = hasSelectedEntry ? elementPosition : previousPosition;
+  // const detailsStyle = {
+  //   transform: `translate(${positionToUse.x}px, ${positionToUse.y}px)`,
+  // };
 
   return (
     <div className='flex-col adjacent-mar-t-5'>      
@@ -122,12 +122,13 @@ function VisualizerSection(props) {
         <VisualizerLine 
           onMouseEnter={(evt) => onEnterItem(evt, logEntry)}
           onMouseLeave={onLeaveItem}
+          isFocused={hasSelectedEntry && logEntry.id === focusedEntry.id}
 
           logEntry={logEntry}
           key={`VisualizerLine-${idx}-key`}/>
       ))}
 
-      <div
+      {/*<div
         className='pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
         style={{
           boxShadow: '0px 2px 1px 1px #1e3654',
@@ -141,7 +142,7 @@ function VisualizerSection(props) {
           ...detailsStyle,
         }}>
         {focusedEntry && focusedEntry.entryString}
-      </div>
+      </div>*/}
     </div>
   )
 })

@@ -7,7 +7,7 @@ export default class LogEntry {
   /** @default */
   constructor({entryId, entryIdx, entryType, entryString}) {
     /** @type {Number} */
-    this.entryId = entryId;
+    this.id = entryId;
     /** @type {Number} */
     this.entryIdx = entryIdx;
     /** @type {EntryType} */
