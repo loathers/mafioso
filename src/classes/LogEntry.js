@@ -47,6 +47,11 @@ export default class LogEntry {
       /** @type {Boolean} */
       isDeath: false,
     };
+    /** @type {Object} */
+    this.specialData = {
+      /** @type {Boolean} */
+      isEndedByUseTheForce: false,
+    }
 
     // can automatically parse if given a string
     if (entryString) {

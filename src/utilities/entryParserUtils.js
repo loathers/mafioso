@@ -15,7 +15,6 @@ import * as logParserUtils from 'utilities/logParserUtils';
 export function parseEntry(entryString) {
   const entryBody = createEntryBody(entryString);
   const turnNum = parseTurnNum(entryString);
-  const isFreeAdv = parseFreeAdventure(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
@@ -24,7 +23,7 @@ export function parseEntry(entryString) {
   return {
     entryBody: entryBody.length <= 0 ? null : entryBody,
     turnNum,
-    isFreeAdv,
+    isFreeAdv: parseIsFreeAdv(entryString),
     locationName,
     encounterName,
     isCombatEncounter: parseIsCombatEncounter(entryString),
@@ -34,6 +33,17 @@ export function parseEntry(entryString) {
     hasInitiative: parseCombatIniative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
+  }
+}
+/**
+ * core parsing function to do it all
+ * 
+ * @param {String} entryString
+ * @return {Array<LogEntry>}
+ */
+export function parseEntrySpecial(entryString) {
+  return {
+    isEndedByUseTheForce: parseIsCombatUseTheForce(entryString),
   }
 }
 /**
@@ -84,21 +94,6 @@ export function parseTurnNum(entryString) {
     return -1;
   }
   return Number(turnNumMatches[0]);
-}
-/**
- * determine if this is a free adventure
- * 
- * @param {String} entryString
- * @return {String}
- */
-export function parseFreeAdventure(entryString) {
-  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s+/;
-  const freeAdventureMatches = getRegexMatch(entryString, COMBAT_NOT_COST_ADV_REGEX);
-  if (freeAdventureMatches === null) {
-    return null;
-  }
-
-  return freeAdventureMatches[0];
 }
 /**
  * parses name of the location,
@@ -187,6 +182,20 @@ export function parseMeatSpent(entryString) {
 }
 // -- boolean parsers
 /**
+ * determine if this is a free adventure
+ * 
+ * @param {String} entryString
+ * @return {String}
+ */
+export function parseIsFreeAdv(entryString) {
+  if (parseIsCombatUseTheForce(entryString)) {
+    return true;
+  }
+
+  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s+/;
+  return hasString(entryString, COMBAT_NOT_COST_ADV_REGEX);
+}
+/**
  * @param {String} entryString
  * @return {Boolean}
  */
@@ -222,7 +231,9 @@ export function parseCombatLoss(entryString) {
     return false;
   }
 
-  return !parseCombatVictory(entryString);
+  // combat is counted as a loss if not a victory
+  //  except in the case that there was a free runaway/banish used
+  return !parseIsFreeAdv(entryString) && !parseCombatVictory(entryString);
 }
 /**
  * @param {String} entryString
@@ -243,4 +254,13 @@ export function parseCombatIniative(entryString) {
   if (hasString(entryString, LOSE_INITATIVE_REGEX)) {
     return false;
   }
+}
+// -- special data parsers
+/**
+ * @param {String} entryString
+ * @return {String}
+ */
+export function parseIsCombatUseTheForce(entryString) {
+  const COMBAT_USE_THE_FORCE_REGEX = /.*(USE THE FORCE).*/;
+  return hasString(entryString, COMBAT_USE_THE_FORCE_REGEX);
 }
