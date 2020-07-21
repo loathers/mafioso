@@ -7,17 +7,6 @@ import REGEX from 'constants/regexes';
 
 import {hasString, fixSpecialEntities} from 'utilities/stringUtils';
 
-const DESIRED_ENTRIES = [
-  ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-  ENTRY_TYPE.ENCOUNTER.COMBAT,
-  ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-  ENTRY_TYPE.CONSUMPTION.EAT,
-  ENTRY_TYPE.CONSUMPTION.DRINK,
-  ENTRY_TYPE.CONSUMPTION.CHEW,
-  ENTRY_TYPE.TRANSACTION,
-  // ENTRY_TYPE.EQUIP,
-  // ENTRY_TYPE.LOCATION_VISIT,
-];
 /**
  * core parsing function to do it all
  * 
@@ -29,7 +18,6 @@ export function parseLog(logRaw) {
 
   // an entry is separated by two new lines
   //  going to first do a broad grouping
-  // todo: windows/unix/osx has different regex for new lines :/
   const logRawSplit = logRawCleaned.split(REGEX.MISC.LOG_SPLIT);
 
   // do we have enough data
@@ -39,17 +27,17 @@ export function parseLog(logRaw) {
     return;
   }
 
+  console.log('! parsing', logRawSplit.length, 'entries');
   //
   const logId = uuidv4();
   return logRawSplit
-    .slice(0, Math.min(550, logRawSplit.length)) // dev: limit lines
+    .slice(0, Math.min(1000, logRawSplit.length)) // todo: lazy load, in the meantime there's a limit
     .map((entryString, idx) => new LogEntry({
       entryIdx: idx,
       entryId: `${idx}_${logId}`,
       entryType: checkEntryType(entryString),
       entryString: fixSpecialEntities(entryString),
-    })) // format data into LogEntry class
-    .filter((logEntry) => DESIRED_ENTRIES.includes(logEntry.entryType)); // dev: only list desired types
+    }));
 }
 // -- utility functions to determine the type
 /**

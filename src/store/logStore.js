@@ -1,6 +1,9 @@
 import {
   observable,
 } from 'mobx';
+
+import ENTRY_TYPE from 'constants/entryType';
+
 import * as logParserUtils from 'utilities/logParserUtils';
 
 /** instantiate a single instance of FileReader */
@@ -18,6 +21,23 @@ class LogStore {
     this.srcLog = undefined;
     /** @type {ObservableArray<LogEntry>} */
     this.logData = observable([]);
+    /** @type {Object} */
+    this.filterOptions = observable({
+      /** @type {Number} */
+      entriesDisplayCount: 1000,
+      /** @type {Array<EntryType>} */
+      entryTypesToShow: [
+        ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+        ENTRY_TYPE.ENCOUNTER.COMBAT,
+        ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+        ENTRY_TYPE.CONSUMPTION.EAT,
+        ENTRY_TYPE.CONSUMPTION.DRINK,
+        ENTRY_TYPE.CONSUMPTION.CHEW,
+        ENTRY_TYPE.TRANSACTION,
+        // ENTRY_TYPE.EQUIP,
+        // ENTRY_TYPE.LOCATION_VISIT,
+      ],
+    });
 
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
@@ -32,7 +52,18 @@ class LogStore {
   }
   /** @type {Boolean} */
   get hasData() {
-    return this.logData !== undefined;
+    return this.logData && this.logData.length > 0;
+  }
+  /** @type {Boolean} */
+  get visibleEntries() {
+    const {
+      entriesDisplayCount,
+      entryTypesToShow,
+    } = this.filterOptions;
+
+    return this.logData
+      .filter((logEntry) => entryTypesToShow.includes(logEntry.entryType))
+      .slice(0, Math.min(entriesDisplayCount, this.logData.length));
   }
   /**
    * @param {File} file
@@ -65,7 +96,6 @@ class LogStore {
 
     const newData = logParserUtils.parseLog(this.srcLog);
     this.logData.replace(newData);
-    console.log('! log finished parsing');
   }
 }
 
