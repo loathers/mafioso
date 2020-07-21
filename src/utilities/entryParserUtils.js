@@ -12,6 +12,7 @@ export function parseEntry(entryString) {
   const adventureNum = parseAdventureNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
+  const entryBody = parseEntryBody(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
   const meatChange = parseMeatChange(entryString);
 
@@ -19,6 +20,7 @@ export function parseEntry(entryString) {
     adventureNum,
     locationName,
     encounterName,
+    entryBody,
     acquiredItems,
     meatChange,
   }
@@ -47,7 +49,7 @@ export function parseAdventureNum(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  const LOCATION_NAME_REGEX = /(?<=\]\s).*(?=\r\n)/;
+  const LOCATION_NAME_REGEX = /(?<=\]\s).*(?=\r\n)*/;
   const locationNameMatches = getRegexMatch(entryString, LOCATION_NAME_REGEX);
   if (locationNameMatches === null) {
     return null;
@@ -68,6 +70,20 @@ export function parseEncounterName(entryString) {
     return null;
   }
   return encounterNameMatches[0];
+}
+/**
+ * scrub the main text of data we will be formatting
+ * 
+ * @param {String} entryString
+ * @return {String}
+ */
+export function parseEntryBody(entryString) {
+  const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
+  const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
+  
+  return entryString
+    .replace(ADVENTURE_LINE_REGEX, '')
+    .replace(ENCOUNTER_LINE_REGEX, '');
 }
 /**
  * builds an array of all the items that were gained

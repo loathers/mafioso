@@ -16,6 +16,7 @@ export default function CombatEntryDisplay(props) {
   const {
     locationName,
     encounterName,
+    entryBody,
   } = data;
 
   return (
@@ -28,7 +29,7 @@ export default function CombatEntryDisplay(props) {
         <div className='flex-none adjacent-mar-t-1'>{encounterName}</div>
       }
 
-      <div className='flex-auto adjacent-mar-t-1'>{logEntry.entryString}</div>
+      <div className='flex-auto adjacent-mar-t-1'>{entryBody}</div>
     </EntryDisplayContainer>
   )
 }
