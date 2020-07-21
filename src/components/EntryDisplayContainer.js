@@ -16,13 +16,14 @@ export default function EntryDisplayContainer(props) {
   const {
     adventureNum,
     isFreeAdv,
+    locationName,
+    encounterName,
   } = data;
 
   return (
     <div className={'flex-row aitems-start adjacent-mar-t-2 bg-second pad-4 borradius-2 ' + className}>
-      <div
-        className='flex-col flex-none adjacent-mar-l-4'>      
-        {/* entry adventure num */}
+      {/* adventure num column */}
+      <div className='flex-col flex-none adjacent-mar-l-4'>      
         <div 
           className='talign-right color-gray fontsize-3 aself-start adjacent-mar-t-2'
           style={{width: 30}}>
@@ -36,7 +37,7 @@ export default function EntryDisplayContainer(props) {
         }
       </div>
 
-      {/* entry icon */}
+      {/* entry icon column */}
       <IconComponent 
         className='flex-none adjacent-mar-l-4'
         style={{
@@ -44,7 +45,22 @@ export default function EntryDisplayContainer(props) {
           height: 25,
         }} />
 
-      <div className='flex-auto adjacent-mar-l-4 whitespace-pre-wrap'>{props.children}</div>
+      {/* entry body */}
+      <div className='flex-auto flex-col adjacent-mar-l-4 whitespace-pre-wrap'>
+        <div className='flex-col adjacent-mar-t-2'>
+          { locationName &&
+            <div className='flex-none adjacent-mar-t-1'>{locationName}</div>
+          }
+
+          { encounterName &&
+            <div className='flex-none adjacent-mar-t-1'>{encounterName}</div>
+          }
+        </div>
+
+        <div className='flex-col adjacent-mar-t-2'>
+          {props.children}
+        </div>
+      </div>
     </div>
   )
 }

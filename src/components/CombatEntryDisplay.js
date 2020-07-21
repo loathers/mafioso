@@ -14,21 +14,11 @@ export default function CombatEntryDisplay(props) {
 
   const {data} = logEntry;
   const {
-    locationName,
-    encounterName,
     entryBody,
   } = data;
 
   return (
     <EntryDisplayContainer {...props} IconComponent={CrossedSwordsSVG}>
-      { locationName &&
-        <div className='flex-none adjacent-mar-t-2'>{locationName}</div>
-      }
-
-      { encounterName &&
-        <div className='flex-none adjacent-mar-t-2'>{encounterName}</div>
-      }
-
       { entryBody &&
         <div className='flex-none adjacent-mar-t-2'>{entryBody}</div>
       }
