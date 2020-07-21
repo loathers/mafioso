@@ -1,35 +1,31 @@
 import ENTRY_TYPE from 'constants/entryType';
 
-import {hasString} from 'utilities/stringUtils';
+import {getRegexMatch} from 'utilities/stringUtils';
 
 /**
  * core parsing function to do it all
  * 
- * @param {String} logRaw
+ * @param {String} entryString
  * @return {Array<LogEntry>}
  */
-export function parseLog(logRaw) {
-  const logRawCleaned = logRaw.replace(LOG_CRUFT_REGEX, '');
+export function parseEntry(entryString) {
+  const acquiredItems = parseAcquiredItems(entryString);
+  console.log('acquiredItems', acquiredItems.toString())
+}
+/**
+ * 
+ * 
+ * @param {String} entryString
+ * @return {Array<String>}
+ */
+export function parseAcquiredItems(entryString) {
+  const ACQUIRED_SINGLE_ITEM_REGEX = /(?<=(You acquire an item:\s+)).*/g;
+  const singleAcquireMatches = getRegexMatch(entryString, ACQUIRED_SINGLE_ITEM_REGEX) || [];
 
-  // an entry is separated by two new lines
-  //  going to first do a broad grouping
-  // todo: windows/unix/osx has different regex for new lines :/
-  const logRawSplit = logRawCleaned.split(LOG_SPLIT_REGEX);
+  // const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*)(?=\s\({1}\d*\){1})/g; // item excluding amount
+  // const ACQUIRED_MULTI_ITEM_AMOUNT_REGEX = /(?!\()\d*(?=\))/; // just the amount
+  const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*\(\d*\))/g; // item including amount
+  const multiAcquireMatches = getRegexMatch(entryString, ACQUIRED_MULTIPLE_ITEM_REGEX) || [];
 
-  // do we have enough data
-  // todo: meaningful check
-  if (logRawSplit.length <= 1) {
-    console.warn('Not enough data on log.');
-    return;
-  }
-
-  //
-  return logRawSplit
-    .slice(0, Math.min(550, logRawSplit.length)) // dev: limit lines
-    .map((entryString, idx) => new LogEntry({
-      entryIdx: idx,
-      entryType: checkEntryType(entryString),
-      entryString: entryString,
-    })) // format data into LogEntry class
-    .filter((logEntry) => DESIRED_ENTRIES.includes(logEntry.entryType)); // dev: only list desired types
+  return singleAcquireMatches.concat(multiAcquireMatches);
 }

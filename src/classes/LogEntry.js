@@ -1,3 +1,4 @@
+import * as entryParserUtils from 'utilities/entryParserUtils';
 
 /**
  * 
@@ -16,7 +17,7 @@ export default class LogEntry {
 
     // can automatically parse if given a string
     if (entryString) {
-      // this.parse();
+      entryParserUtils.parseEntry(entryString);
     }
   }
   /** @type {Boolean} */

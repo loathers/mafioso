@@ -117,7 +117,7 @@ export function isEntryAcquireItem(entryString) {
     return ENTRY_TYPE.ACQUIRE_ITEM;
   }
 
-  const ACQUIRE_REGEX = /^(You acquire an item)/;
+  const ACQUIRE_REGEX = /^(You acquire)/;
   return hasString(entryString, ACQUIRE_REGEX);
 }
 /**

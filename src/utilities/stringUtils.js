@@ -4,9 +4,16 @@
  * 
  * @param {String} searchStr
  * @param {String} matchStr
+ * @return {*}
+ */
+export function getRegexMatch(searchStr, matchStr) {
+  return searchStr.match(new RegExp(matchStr));
+}
+/**
+ * @param {String} searchStr
+ * @param {String} matchStr
  * @return {Boolean}
  */
 export function hasString(searchStr, matchStr) {
-  // return searchStr.indexOf(matchStr) !== -1;
-  return searchStr.match(new RegExp(matchStr));
+  return new RegExp(matchStr).test(searchStr);
 }
