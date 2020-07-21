@@ -5,6 +5,7 @@ import ENTRY_TYPE from 'constants/entryType';
 
 import AscensionInfoEntryDisplay from 'components/AscensionInfoEntryDisplay';
 import AcquireItemEntryDisplay from 'components/AcquireItemEntryDisplay';
+import TransactionEntryDisplay from 'components/TransactionEntryDisplay';
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
 /**
@@ -38,6 +39,9 @@ function getEntryDisplay(entryType) {
 
     case ENTRY_TYPE.ACQUIRE_ITEM:
       return AcquireItemEntryDisplay;
+
+    case ENTRY_TYPE.TRANSACTION:
+      return TransactionEntryDisplay;
 
     case ENTRY_TYPE.UNKNOWN:
       return StringEntry;

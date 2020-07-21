@@ -43,6 +43,14 @@ export default class LogEntry {
   get hasData() {
     return this.data !== undefined;
   }
+  /** @type {String} */
+  get itemsDisplay() {
+    return this.data.acquiredItems.join(', ');
+  }
+  /** @type {String} */
+  get meatDisplay() {
+    return this.data.meatChange;
+  }
   /**
    * @return {Object}
    */
