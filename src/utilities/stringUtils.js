@@ -19,6 +19,18 @@ export function hasString(searchStr, matchStr) {
 }
 /**
  * @param {String} sourceStr
+ * @return {Number}
+ */
+export function countNumLines(sourceStr) {
+  const newLineMatches = sourceStr.match(/\r?\n/g);
+  if (newLineMatches === null) {
+    return 1;
+  }
+
+  return newLineMatches.length + 1;
+}
+/**
+ * @param {String} sourceStr
  * @return {String}
  */
 export function fixSpecialEntities(sourceStr) {

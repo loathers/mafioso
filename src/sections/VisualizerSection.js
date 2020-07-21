@@ -10,6 +10,8 @@ import NoncombatEntryDisplay from 'components/NoncombatEntryDisplay';
 import TransactionEntryDisplay from 'components/TransactionEntryDisplay';
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
+import {countNumLines} from 'utilities/stringUtils';
+
 /**
  * @returns {React.Component}
  */
@@ -25,14 +27,12 @@ function VisualizerTooltip(props) {
 
   return (
     <div
-      className='pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
+      className='pad-4 borradius-2 bg-grayest fontsize-3 color-white whitespace-pre-wrap flex-col'
       style={{
-        boxShadow: '0px 2px 1px 1px #1e3654',
         position: 'fixed',
         top: 0,
-        left: 30,
+        right: 30,
         transition: 'transform 500ms, opacity 300ms',
-        width: 300,
         opacity: hasSelectedEntry ? 1 : 0,
         ...style,
       }}>
@@ -133,9 +133,8 @@ function VisualizerSection(props) {
     }
 
     const boundingClientRect = evt.currentTarget.getBoundingClientRect();
-
     const xPosition = boundingClientRect.x;
-    const yOffset = (newEntry.entryString.length * -0.8);
+    const yOffset = countNumLines(newEntry.entryString) * -15;
     const yPosition = boundingClientRect.y + yOffset;
     setFocusPosition({x: xPosition, y: yPosition});
 
@@ -177,7 +176,7 @@ function VisualizerSection(props) {
 
       <VisualizerTooltip
         selectedEntry={selectedEntry}
-        focusedEntry={focusedEntry}
+        previousEntry={previousEntry}
         className='pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
         style={detailsStyle} />
     </div>
