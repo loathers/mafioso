@@ -8,8 +8,8 @@ import {hasString} from 'utilities/stringUtils';
 
 const DESIRED_ENTRIES = [
   ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-  ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-  ENTRY_TYPE.USE_SKILL.NONCOMBAT,
+  ENTRY_TYPE.ENCOUNTER.COMBAT,
+  // ENTRY_TYPE.USE_SKILL.NONCOMBAT,
   ENTRY_TYPE.ACQUIRE_ITEM,
   ENTRY_TYPE.TRANSACTION,
   // ENTRY_TYPE.EQUIP,
@@ -79,8 +79,8 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.LOCATION_VISIT;
   }
 
-  if (isEntryEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER_UNKNOWN;
+  if (isEntryCombatEncounter(entryString)) {
+    return ENTRY_TYPE.ENCOUNTER.COMBAT;
   }
 
   return ENTRY_TYPE.UNKNOWN;
@@ -143,18 +143,25 @@ export function isEntryLocationVisit(entryString) {
   const LOCATION_REGEX = /^(Visiting)/;
   return hasString(entryString, LOCATION_REGEX);
 }
+// -- actions
 /**
- * check if `ENTRY_TYPE.ENCOUNTER_UNKNOWN`
+ * actions will be determined by checking for [num]
  * 
  * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryEncounter(entryString) {
+export function isEntryAction(entryString) {
   // look for `[1]` but ignore url hashes with `[]blah[]`
-  const ENCOUNTER_REGEX = /(\[(?!\]).*\])/;
-  if (hasString(entryString, ENCOUNTER_REGEX)) {
-    return true;
-  }
-
-  return false;
+  const ACTION_REGEX = /(\[(?!\]).*\])/;
+  return hasString(entryString, ACTION_REGEX);
+}
+/**
+ * check if `ENTRY_TYPE.ENCOUNTER.COMBAT`
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryCombatEncounter(entryString) {
+  const COMBAT_ENCOUNTER_REGEX = /Round 0:/;
+  return hasString(entryString, COMBAT_ENCOUNTER_REGEX);
 }

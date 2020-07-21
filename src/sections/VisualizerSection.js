@@ -60,7 +60,7 @@ function VisualizerLine(props) {
   if (EntryDisplayComponentToUse === null) {
     return (
       <div 
-        children={'(Unknown Entry type) ' + logEntry.entryString}
+        children={'(unknown entry display) ' + logEntry.entryString}
         className={'color-kolred ' + visualizerCellClassName}
       />
     )
