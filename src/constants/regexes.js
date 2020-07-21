@@ -61,6 +61,7 @@ export const REGEX = {
   MISC: {
     LOG_SPLIT: LOG_SPLIT_REGEX,
     LOG_CRUFT: /\n> .+?(?=\n)/,
+    COMBAT_MACRO: /.*executes a macro.*\s*/gm,
     LOG_BORDER: /=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=/,
   },
 };

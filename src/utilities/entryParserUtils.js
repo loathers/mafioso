@@ -63,6 +63,7 @@ export function createEntryBody(entryString) {
     REGEX.LINE.ACQUIRED_ITEMS,
     REGEX.LINE.MAFIA_MAXIMIZER_CLI,
     REGEX.LINE.MAFIA_ACTION_URL,
+    REGEX.MISC.COMBAT_MACRO,
   ];
 
   return replacementList.reduce((currentString, replacementRegex) => {
