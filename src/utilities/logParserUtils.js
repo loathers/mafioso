@@ -47,6 +47,7 @@ export function parseLog(logRaw) {
  * @return {EntryType}
  */
 export function checkEntryType(entryString) {
+  // -- basic entries
   if (isEntryAscensionInfo(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
   }
@@ -81,6 +82,15 @@ export function checkEntryType(entryString) {
 
   if (isEntryLocationVisit(entryString)) {
     return ENTRY_TYPE.LOCATION_VISIT;
+  }
+
+  // -- iotm: diabolic pizza
+  if (isEntryDiabolicPizzaMake(entryString)) {
+    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
+  }
+
+  if (isEntryDiabolicPizzaEat(entryString)) {
+    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
   }
 
   return ENTRY_TYPE.UNKNOWN;
@@ -175,4 +185,19 @@ export function isEntryCombatEncounter(entryString) {
  */
 export function isEntryNonCombatEncounter(entryString) {
   return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryMafiaMisc(entryString);
+}
+// -- iotm
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryDiabolicPizzaMake(entryString) {
+  return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryDiabolicPizzaEat(entryString) {
+  return hasString(entryString, REGEX.DIABOLIC_PIZZA.EAT_LINE);
 }

@@ -27,12 +27,14 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.ENCOUNTER.NONCOMBAT:
       return DigDugSVG;
 
+    case ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE:
     case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
       return InfoSVG;
 
     case ENTRY_TYPE.ACQUIRE_ITEM:
       return SwapBagSVG;
 
+    case ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT:
     case ENTRY_TYPE.CONSUMPTION.EAT:
       return MealSVG;
 

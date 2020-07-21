@@ -24,7 +24,7 @@ class LogStore {
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
-      displayCount: 1000,
+      displayCount: 500,
       /** @type {Array<EntryType>} */
       visibleEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
@@ -34,8 +34,8 @@ class LogStore {
         ENTRY_TYPE.CONSUMPTION.DRINK,
         ENTRY_TYPE.CONSUMPTION.CHEW,
         ENTRY_TYPE.TRANSACTION,
-        // ENTRY_TYPE.EQUIP,
-        // ENTRY_TYPE.LOCATION_VISIT,
+        ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
+        ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
       ],
     });
 
