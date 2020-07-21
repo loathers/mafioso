@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ReactComponent as DeadheadSVG } from 'images/dead-head.svg';
+import { ReactComponent as StarstruckSVG } from 'images/star-struck.svg';
 import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -85,6 +87,9 @@ export default function EntryDisplayContainer(props) {
     logEntry,
   } = props;
 
+  const isDeath = logEntry.data.isDeath;
+  const isVictory = logEntry.data.isVictory;
+
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   const selectedClass = isSelected ? 'bg-green' : '';
 
@@ -111,14 +116,36 @@ export default function EntryDisplayContainer(props) {
           width: 35,
         }} />
 
-      {/* entry icon column */}
-      <IconComponent 
-        className='flex-none adjacent-mar-l-4'
-        style={{
-          width: 25,
-          height: 25,
-          opacity: 0.7,
-        }} />
+      {/* icon column */}
+      <div className='flex-col flex-none adjacent-mar-l-4'>
+        <IconComponent 
+          className='flex-none adjacent-mar-t-3'
+          style={{
+            width: 25,
+            height: 25,
+            opacity: 0.7,
+          }} />
+
+        { isDeath &&
+          <DeadheadSVG 
+            className='flex-none adjacent-mar-t-3'
+            style={{
+              width: 25,
+              height: 25,
+              opacity: 0.8,
+            }} />
+        }
+
+        { isVictory &&
+          <StarstruckSVG 
+            className='flex-none adjacent-mar-t-3'
+            style={{
+              width: 25,
+              height: 25,
+              opacity: 0.8,
+            }} />
+        }
+      </div>
 
       {/* entry body */}
       <div className='flex-auto flex-col adjacent-mar-l-4 whitespace-pre-wrap'>

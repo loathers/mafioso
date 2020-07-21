@@ -8,11 +8,13 @@ KoL is an ugly game full of interesting and intricate interactions. I've been pl
 This is the public repository for the project, in the future there will be a webpage that you can directly use.
 
 ## Usage
-Using this is involves a few steps. You'll need to have been using Kolmafia to create session logs and then script [RunLogSummary](https://kolmafia.us/showthread.php?22963-RunLogSummary). Once you run that it should generate two logs: one "raw" and one "run". Upload or drag and drop the raw txt file.
+Using this is involves a few steps. You'll need to have been using Kolmafia to create session logs and get the script [RunLogSummary](https://kolmafia.us/showthread.php?22963-RunLogSummary). Using the script should generate two txt files: one "raw" and one "run". Upload or drag and drop the raw txt file into the upload area.
 
 Additional features tbd 
 
 ## Contributing
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+SVG icons gotten from [Game-icons.net](https://game-icons.net/).
 
 It's a work in progress and very early along - it's more for posterity so when I'm gone the community can continue.
