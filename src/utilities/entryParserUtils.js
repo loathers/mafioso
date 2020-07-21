@@ -31,6 +31,7 @@ export function parseEntry(entryString) {
     isNoncombatEncounter: parseIsNonCombatEncounter(entryString),
     acquiredItems,
     meatChange,
+    hasInitiative: parseCombatIniative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
   }
@@ -49,7 +50,8 @@ export function createEntryBody(entryString) {
   
   const ACQUIRE_ITEM_REGEX = /\w*.*acquire an item.*\s*/g;
   const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
-  const COMBAT_VICTORY_LINE_REGEX = /(?<=\n).*wins the fight.*\s*/;
+  const COMBAT_INIT_LINE_REGEX = /Round.*(loses initiative|wins initiative).*\s*/;
+  const COMBAT_VICTORY_LINE_REGEX = /(?<=\s).*wins the fight.*\s*/;
 
   const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
   const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
@@ -59,6 +61,7 @@ export function createEntryBody(entryString) {
     .replace(ENCOUNTER_LINE_REGEX, '')
     .replace(ACQUIRE_ITEM_REGEX, '')
     .replace(COMBAT_NOT_COST_ADV_REGEX, '')
+    .replace(COMBAT_INIT_LINE_REGEX, '')
     .replace(COMBAT_VICTORY_LINE_REGEX, '')
     .replace(MAFIA_MAXIMIZER_CLI_REGEX, '')
     .replace(MAFIA_ACTION_URL_REGEX, '');
@@ -212,10 +215,30 @@ export function parseCombatVictory(entryString) {
  * @return {Boolean}
  */
 export function parseCombatLoss(entryString) {
-  // only want to check for loss if its a combat
+  // only want to check if combat
   if (!parseIsCombatEncounter(entryString)) {
     return false;
   }
 
   return !parseCombatVictory(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseCombatIniative(entryString) {
+  // only want to check if combat
+  if (!parseIsCombatEncounter(entryString)) {
+    return false;
+  }
+
+  const WIN_INITATIVE_REGEX = /wins initiative/;
+  if (hasString(entryString, WIN_INITATIVE_REGEX)) {
+    return true;
+  }
+
+  const LOSE_INITATIVE_REGEX = /loses initiative/;
+  if (hasString(entryString, LOSE_INITATIVE_REGEX)) {
+    return false;
+  }
 }
