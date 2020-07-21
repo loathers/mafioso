@@ -20,7 +20,7 @@ export default function TransactionEntryDisplay(props) {
 
   return (
     <EntryDisplayContainer {...otherProps}
-      className={'flex-row ' + className}>
+      className={'flex-row-center ' + className}>
 
       <BagSVG 
         className='flex-none adjacent-mar-l-2'

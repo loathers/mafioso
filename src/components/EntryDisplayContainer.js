@@ -7,7 +7,7 @@ export default function EntryDisplayContainer(props) {
   const {className} = props;
 
   return (
-    <div className={className}>
+    <div className={'adjacent-mar-t-2 bg-second pad-2 borradius-2 ' + className}>
       {props.children}
     </div>
   )
