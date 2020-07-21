@@ -14,6 +14,8 @@ export default class LogEntry {
     this.entryString = entryString;
     /** @type {Object} */
     this.data = {
+      /** @type {Number} */
+      actionNum: -1,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Number} */

@@ -9,13 +9,30 @@ import {getRegexMatch} from 'utilities/stringUtils';
  * @return {Array<LogEntry>}
  */
 export function parseEntry(entryString) {
+  const actionNum = parseActionNum(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
   const meatChange = parseMeatChange(entryString);
 
   return {
+    actionNum: actionNum,
     acquiredItems: acquiredItems,
     meatChange: meatChange,
   }
+}
+/**
+ * parses the amount of meat that was gained/lost
+ * 
+ * @param {String} entryString
+ * @return {Number}
+ */
+export function parseActionNum(entryString) {
+  const ACTION_NUM_REGEX = /\[\d*\]/g;
+  const actionNumMatches = getRegexMatch(entryString, ACTION_NUM_REGEX);
+  if (actionNumMatches === null) {
+    return -1;
+  }
+
+  return Number(actionNumMatches[0]);
 }
 /**
  * builds an array of all the items that were gained
