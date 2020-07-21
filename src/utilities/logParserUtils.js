@@ -9,6 +9,7 @@ const DESIRED_ENTRIES = [
   ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
   ENTRY_TYPE.USE_SKILL.NONCOMBAT,
   ENTRY_TYPE.ACQUIRE_ITEM,
+  ENTRY_TYPE.TRANSACTION,
   // ENTRY_TYPE.EQUIP,
   // ENTRY_TYPE.LOCATION_VISIT,
 ];
@@ -67,6 +68,10 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.ACQUIRE_ITEM;
   }
 
+  if (isEntryTransaction(entryString)) {
+    return ENTRY_TYPE.TRANSACTION;
+  }
+
   if (isEntryLocationVisit(entryString)) {
     return ENTRY_TYPE.LOCATION_VISIT;
   }
@@ -112,13 +117,18 @@ export function isEntryAscensionInfo(entryString) {
  * @return {Boolean}
  */
 export function isEntryAcquireItem(entryString) {
-  const BUY_REGEX = /^(buy)/
-  if (hasString(entryString, BUY_REGEX)) {
-    return ENTRY_TYPE.ACQUIRE_ITEM;
-  }
-
   const ACQUIRE_REGEX = /^(You acquire)/;
   return hasString(entryString, ACQUIRE_REGEX);
+}
+/**
+ * check if `ENTRY_TYPE.TRANSACTION`
+ * 
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryTransaction(entryString) {
+  const TRANSACTION_REGEX = /^(buy)/
+  return hasString(entryString, TRANSACTION_REGEX);
 }
 /**
  * check if `ENTRY_TYPE.LOCATION_VISIT`

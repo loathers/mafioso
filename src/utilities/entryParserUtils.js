@@ -49,7 +49,6 @@ export function parseMeatChange(entryString) {
  * @return {Number}
  */
 export function parseMeatSpent(entryString) {
-  // check for spending
   const BUY_AMOUNT_REGEX = /(?<=buy\s)\d+/;
   const buyAmountMatches = getRegexMatch(entryString, BUY_AMOUNT_REGEX);
   if (buyAmountMatches === null) {
