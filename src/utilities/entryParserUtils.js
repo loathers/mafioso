@@ -1,4 +1,4 @@
-// import ENTRY_TYPE from 'constants/entryType';
+import REGEX from 'constants/regexes';
 
 import {
   hasString,
@@ -53,28 +53,21 @@ export function parseEntrySpecial(entryString) {
  * @return {String}
  */
 export function createEntryBody(entryString) {
-  const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
-  const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
-  
-  const FAMILIAR_GAIN_WEIGHT_LINE_REGEX = /.*(gains a pound).*\s*/;
-  const ACQUIRE_ITEM_LINE_REGEX = /\w*.*acquire an item.*\s*/g;
-  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
-  const COMBAT_INIT_LINE_REGEX = /Round.*(loses initiative|wins initiative).*\s*/;
-  const COMBAT_VICTORY_LINE_REGEX = /(?<=\s).*wins the fight.*\s*/;
+  const replacementList = [
+    REGEX.LINE.ADVENTURE_NAME,
+    REGEX.LINE.ENCOUNTER_NAME,
+    REGEX.LINE.COMBAT_FREE_TURN,
+    REGEX.LINE.COMBAT_INIT,
+    REGEX.LINE.COMBAT_VICTORY,
+    REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
+    REGEX.LINE.ACQUIRE_ITEM,
+    REGEX.LINE.MAFIA_MAXIMIZER_CLI,
+    REGEX.LINE.MAFIA_ACTION_URL,
+  ];
 
-  const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
-  const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
-
-  return entryString
-    .replace(ADVENTURE_LINE_REGEX, '')
-    .replace(ENCOUNTER_LINE_REGEX, '')
-    .replace(FAMILIAR_GAIN_WEIGHT_LINE_REGEX, '')
-    .replace(ACQUIRE_ITEM_LINE_REGEX, '')
-    .replace(COMBAT_NOT_COST_ADV_REGEX, '')
-    .replace(COMBAT_INIT_LINE_REGEX, '')
-    .replace(COMBAT_VICTORY_LINE_REGEX, '')
-    .replace(MAFIA_MAXIMIZER_CLI_REGEX, '')
-    .replace(MAFIA_ACTION_URL_REGEX, '');
+  return replacementList.reduce((currentString, replacementRegex) => {
+    return currentString.replace(replacementRegex, '');
+  }, entryString);
 }
 // -- commonly found parsers
 /**

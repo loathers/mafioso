@@ -87,7 +87,7 @@ export default class LogEntry {
     return this.data.meatChange;
   }
   /**
-   * 
+   * once `entryString` is given we can set all the properties
    */
   initialize() {
     const parsedData = entryParserUtils.parseEntry(this.entryString);

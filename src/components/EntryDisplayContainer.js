@@ -156,7 +156,7 @@ function EntryBodyContainer(props) {
       {/* items acquired */}
       { acquiredItems.length > 0 &&
         <div className='flex-col adjacent-mar-t-3'>
-          {`You acquired: ${acquiredItems.join(', ')}.`}
+          {`Items acquired: ${acquiredItems.join(', ')}.`}
         </div>
       }
     </div>
