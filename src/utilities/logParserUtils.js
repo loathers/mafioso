@@ -67,6 +67,14 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
+  if (isEntryCombatEncounter(entryString)) {
+    return ENTRY_TYPE.ENCOUNTER.COMBAT;
+  }
+  
+  if (isEntryNonCombatEncounter(entryString)) {
+    return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
+  }
+
   if (isEntryAcquireItem(entryString)) {
     return ENTRY_TYPE.ACQUIRE_ITEM;
   }
@@ -77,13 +85,6 @@ export function checkEntryType(entryString) {
 
   if (isEntryLocationVisit(entryString)) {
     return ENTRY_TYPE.LOCATION_VISIT;
-  }
-
-  if (isEntryCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.COMBAT;
-  }
-  if (isEntryNonCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
   return ENTRY_TYPE.UNKNOWN;

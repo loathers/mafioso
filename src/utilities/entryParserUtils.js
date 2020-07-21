@@ -26,12 +26,11 @@ export function parseEntry(entryString) {
  * @return {Number}
  */
 export function parseActionNum(entryString) {
-  const ACTION_NUM_REGEX = /\[\d*\]/g;
+  const ACTION_NUM_REGEX = /(?!\[)\d*(?=\])/;
   const actionNumMatches = getRegexMatch(entryString, ACTION_NUM_REGEX);
   if (actionNumMatches === null) {
     return -1;
   }
-
   return Number(actionNumMatches[0]);
 }
 /**
