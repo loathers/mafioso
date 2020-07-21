@@ -28,6 +28,25 @@ function StringEntry(props) {
   )
 }
 /**
+ * @param {EntryType} entryType
+ * @returns {React.Component}
+ */
+function getEntryDisplay(entryType) {
+  switch(entryType) {
+    case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
+      return AscensionInfoEntryDisplay;
+
+    case ENTRY_TYPE.ACQUIRE_ITEM:
+      return AcquireItemEntryDisplay;
+
+    case ENTRY_TYPE.UNKNOWN:
+      return StringEntry;
+
+    default:
+      return null;
+  }
+}
+/**
  * @returns {React.Component}
  */
 function VisualizerLine(props) {
@@ -35,37 +54,22 @@ function VisualizerLine(props) {
 
   const visualizerCellClassName = 'visualizer-cell adjacent-mar-t-2';
 
-  switch(logEntry.entryType) {
-    case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
-      return (
-        <AscensionInfoEntryDisplay 
-          {...props} 
-          className={visualizerCellClassName}
-        />
-      )
-    case ENTRY_TYPE.ACQUIRE_ITEM:
-      return (
-        <AcquireItemEntryDisplay 
-          {...props} 
-          className={visualizerCellClassName}
-        />
-      )
-    case ENTRY_TYPE.UNKNOWN:
-      return (
-        <StringEntry 
-          {...props} 
-          className={visualizerCellClassName}
-        />
-      )
-
-    default:
-      return (
-        <div 
-          children={'(Unknown Entry type) ' + logEntry.entryString}
-          className={'color-kolred ' + visualizerCellClassName}
-        />
-      )
+  const EntryDisplayComponentToUse = getEntryDisplay(logEntry.entryType);
+  if (EntryDisplayComponentToUse === null) {
+    return (
+      <div 
+        children={'(Unknown Entry type) ' + logEntry.entryString}
+        className={'color-kolred ' + visualizerCellClassName}
+      />
+    )
   }
+
+  return (
+    <EntryDisplayComponentToUse 
+      {...props} 
+      className={visualizerCellClassName}
+    />
+  )
 }
 /**
  * @returns {React.Component}
