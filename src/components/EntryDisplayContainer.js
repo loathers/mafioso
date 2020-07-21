@@ -5,6 +5,37 @@ import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 /**
  * @returns {React.Component}
  */
+function EntryHeaderContainer(props) {
+  const {
+    className,
+    logEntry,
+  } = props;
+
+  if (!logEntry.hasEntryHeader) {
+    return null;
+  }
+
+  const {data} = logEntry;
+  const {
+    locationName,
+    encounterName,
+  } = data;
+
+  return (
+    <div className={'flex-col adjacent-mar-t-3 ' + className}>
+      { locationName &&
+        <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{locationName}</div>
+      }
+
+      { encounterName &&
+        <div className='fontsize-7 flex-none adjacent-mar-t-1'>{encounterName}</div>
+      }
+    </div>
+  )
+}
+/**
+ * @returns {React.Component}
+ */
 export default function EntryDisplayContainer(props) {
   const {
     className,
@@ -16,8 +47,6 @@ export default function EntryDisplayContainer(props) {
   const {
     adventureNum,
     isFreeAdv,
-    locationName,
-    encounterName,
   } = data;
 
   return (
@@ -43,21 +72,14 @@ export default function EntryDisplayContainer(props) {
         style={{
           width: 25,
           height: 25,
+          opacity: 0.7,
         }} />
 
       {/* entry body */}
       <div className='flex-auto flex-col adjacent-mar-l-4 whitespace-pre-wrap'>
-        <div className='flex-col adjacent-mar-t-2'>
-          { locationName &&
-            <div className='flex-none adjacent-mar-t-1'>{locationName}</div>
-          }
+        <EntryHeaderContainer logEntry={logEntry} />
 
-          { encounterName &&
-            <div className='flex-none adjacent-mar-t-1'>{encounterName}</div>
-          }
-        </div>
-
-        <div className='flex-col adjacent-mar-t-2'>
+        <div className='flex-col adjacent-mar-t-3'>
           {props.children}
         </div>
       </div>

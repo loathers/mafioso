@@ -55,6 +55,10 @@ export default class LogEntry {
   get hasData() {
     return this.data !== undefined;
   }
+  /** @type {Boolean} */
+  get hasEntryHeader() {
+    return this.data.locationName || this.data.encounterName;
+  }
   /** @type {String} */
   get locationDisplay() {
     return this.data.locationName || '';
