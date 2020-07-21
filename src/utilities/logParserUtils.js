@@ -17,7 +17,7 @@ const DESIRED_ENTRIES = [
 ];
 
 const LOG_CRUFT_REGEX = /\n> .+?(?=\n)/;
-const LOG_SPLIT_REGEX = /\r\n\r\n/;
+const LOG_SPLIT_REGEX = /\r?\n\r?\n/;
 
 /**
  * core parsing function to do it all

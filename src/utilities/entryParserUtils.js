@@ -66,12 +66,19 @@ export function parseFreeAdventure(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  const LOCATION_NAME_REGEX = /(?<=\]\s).*(?=\r\n)*/;
+  const LOCATION_NAME_REGEX = /(?<=\]\s).*(?=\r?\n)*/;
   const locationNameMatches = getRegexMatch(entryString, LOCATION_NAME_REGEX);
-  if (locationNameMatches === null) {
-    return null;
+  if (locationNameMatches !== null) {
+    return locationNameMatches[0];
   }
-  return locationNameMatches[0];
+
+  const SHOP_LOCATION_NAME_REGEX = /(?<=each from\s).*\r?\n/
+  const shopLocationMatches = getRegexMatch(entryString, SHOP_LOCATION_NAME_REGEX);
+  if (shopLocationMatches !== null) {
+    return shopLocationMatches[0];
+  }
+
+  return null;
 }
 /**
  * parses name of the encounter,
