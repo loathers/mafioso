@@ -89,16 +89,12 @@ function VisualizerSection(props) {
   const {logData = []} = props;
 
   return (
-    <div className='flex-col adjacent-mar-t-5'>
-      <div className='fontsize-4 color-gray adjacent-mar-t-5'>Visualizer Table</div>
-      
-      <div className='overflow-auto flex-col adjacent-mar-t-5'>
-        { logData.map((logEntry, idx) => (
-          <VisualizerLine 
-            logEntry={logEntry}
-            key={`VisualizerLine-${idx}-key`}/>
-        ))}
-      </div>
+    <div className='overflow-auto flex-col adjacent-mar-t-5'>      
+      { logData.map((logEntry, idx) => (
+        <VisualizerLine 
+          logEntry={logEntry}
+          key={`VisualizerLine-${idx}-key`}/>
+      ))}
     </div>
   )
 })

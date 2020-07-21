@@ -54,7 +54,7 @@ export default function EntryDisplayContainer(props) {
       {/* adventure num column */}
       <div className='flex-col flex-none adjacent-mar-l-4'>      
         <div 
-          className='talign-right color-gray fontsize-3 aself-start adjacent-mar-t-2'
+          className='talign-right color-white fontsize-3 aself-start adjacent-mar-t-2'
           style={{width: 30}}>
           {adventureNum === -1 ? '' : adventureNum}
         </div>
