@@ -29,7 +29,7 @@ function EntryAdventureColumn(props) {
       style={style}>      
       <div 
         className='talign-right color-white fontsize-5 f-bold width-full aself-start adjacent-mar-t-2'>
-        {turnNum === -1 ? '' : turnNum}
+        {turnNum === -1 ? '-' : turnNum}
       </div>
 
       { isFreeAdv &&

@@ -7,6 +7,10 @@ import { ReactComponent as DigDugSVG } from 'images/dig-dug.svg';
 import { ReactComponent as InfoSVG } from 'images/info.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
+import { ReactComponent as MartiniSVG } from 'images/martini.svg';
+import { ReactComponent as PotionSVG } from 'images/potion-ball.svg';
+import { ReactComponent as MealSVG } from 'images/meal.svg';
+import { ReactComponent as PillSVG } from 'images/pill.svg';
 import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 
 // import combineClassnames from 'utilities/combineClassnames';
@@ -28,6 +32,18 @@ function getEntryIcon(entryType) {
 
     case ENTRY_TYPE.ACQUIRE_ITEM:
       return SwapBagSVG;
+
+    case ENTRY_TYPE.EAT:
+      return MealSVG;
+
+    case ENTRY_TYPE.DRINK:
+      return MartiniSVG;
+
+    case ENTRY_TYPE.CHEW:
+      return PillSVG;
+
+    case ENTRY_TYPE.POTION:
+      return PotionSVG;
 
     case ENTRY_TYPE.TRANSACTION:
       return SteakSVG;
