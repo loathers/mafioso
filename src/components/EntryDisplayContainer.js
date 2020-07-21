@@ -43,7 +43,7 @@ export default function EntryDisplayContainer(props) {
           width: 25,
           height: 25,
         }} />
-
+      
       <div className='flex-auto adjacent-mar-l-2 whitespace-pre-wrap'>{props.children}</div>
     </div>
   )

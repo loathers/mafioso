@@ -29,7 +29,9 @@ export default function CombatEntryDisplay(props) {
         <div className='flex-none adjacent-mar-t-1'>{encounterName}</div>
       }
 
-      <div className='flex-auto adjacent-mar-t-1'>{entryBody}</div>
+      { entryBody &&
+        <div className='flex-none adjacent-mar-t-1'>{entryBody}</div>
+      }
     </EntryDisplayContainer>
   )
 }

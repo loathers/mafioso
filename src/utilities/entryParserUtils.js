@@ -22,7 +22,7 @@ export function parseEntry(entryString) {
     isFreeAdv,
     locationName,
     encounterName,
-    entryBody,
+    entryBody: entryBody.length <= 0 ? null : entryBody,
     acquiredItems,
     meatChange,
   }
@@ -50,8 +50,8 @@ export function parseAdventureNum(entryString) {
  * @return {String}
  */
 export function parseFreeAdventure(entryString) {
-  const FREE_ADVENTURE_REGEX = /\w*.*did not cost.*\w+/;
-  const freeAdventureMatches = getRegexMatch(entryString, FREE_ADVENTURE_REGEX);
+  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s+/;
+  const freeAdventureMatches = getRegexMatch(entryString, COMBAT_NOT_COST_ADV_REGEX);
   if (freeAdventureMatches === null) {
     return null;
   }
@@ -89,7 +89,9 @@ export function parseEncounterName(entryString) {
   return encounterNameMatches[0];
 }
 /**
- * scrub the main text of data we will be formatting
+ * scrub the main text of data that will be
+ *  cached in the LogEntry data so there are
+ *  only basic text
  * 
  * @param {String} entryString
  * @return {String}
@@ -97,11 +99,17 @@ export function parseEncounterName(entryString) {
 export function parseEntryBody(entryString) {
   const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
   const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
-  const MAFIA_ACTION_URL_REGEX = /\w*.php.*\w+/;
-  
+  const ACQUIRE_ITEM_REGEX = /\w*.*acquire an item.*\s*/g;
+  const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
+  const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
+  const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
+
   return entryString
     .replace(ADVENTURE_LINE_REGEX, '')
     .replace(ENCOUNTER_LINE_REGEX, '')
+    .replace(ACQUIRE_ITEM_REGEX, '')
+    .replace(COMBAT_NOT_COST_ADV_REGEX, '')
+    .replace(MAFIA_MAXIMIZER_CLI_REGEX, '')
     .replace(MAFIA_ACTION_URL_REGEX, '');
 }
 /**

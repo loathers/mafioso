@@ -24,6 +24,8 @@ export default class LogEntry {
       locationName: null,
       /** @type {String | null} */
       encounterName: null,
+      /** @type {String | null} */
+      entryBody: null,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Number} */
