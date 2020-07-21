@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ReactComponent as BagSVG } from 'images/swap-bag.svg';
+import { ReactComponent as SteakSVG } from 'images/steak.svg';
 
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
@@ -13,8 +13,8 @@ export default function TransactionEntryDisplay(props) {
   } = props;
 
   return (
-    <EntryDisplayContainer {...props} IconComponent={BagSVG}>
-      <div className='flex-auto adjacent-mar-l-4'>{`bought ${logEntry.itemsDisplay} for ${logEntry.meatDisplay} meat.`}</div>
+    <EntryDisplayContainer {...props} IconComponent={SteakSVG}>
+      {`Bought ${logEntry.itemsDisplay} for ${logEntry.meatDisplay} meat.`}
     </EntryDisplayContainer>
   )
 }

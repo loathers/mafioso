@@ -32,7 +32,7 @@ function EntryAdventureColumn(props) {
       </div>
 
       { isFreeAdv &&
-        <div className='talign-right color-gray fontsize-2 adjacent-mar-t-2'>
+        <div className='talign-right fontsize-2 adjacent-mar-t-2'>
           free
         </div>
       }
