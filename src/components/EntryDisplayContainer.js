@@ -71,10 +71,13 @@ function EntryHeaderContainer(props) {
  */
 export default function EntryDisplayContainer(props) {
   const {
-    isFocused,
-    isSelected,
+    onClick,
     onMouseEnter,
     onMouseLeave,
+    
+    isFocused,
+    isSelected,
+
     className,
     IconComponent = UncertaintySVG,
     logEntry,
@@ -85,6 +88,7 @@ export default function EntryDisplayContainer(props) {
 
   return (
     <div 
+      onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={combineClassnames('flex-row aitems-start adjacent-mar-t-2 pad-4 borradius-2', focusedClass, className)}>

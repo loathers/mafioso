@@ -88,6 +88,8 @@ export default observer(
 function VisualizerSection(props) {
   const {logData = []} = props;
 
+  const [selectedEntry, setSelectedEntry] = React.useState();
+
   // focus hook
   const [focusedEntry, setFocusedEntry] = React.useState();
   // const [elementPosition, setFocusPosition] = React.useState({x: 10, y: 210});
@@ -110,8 +112,9 @@ function VisualizerSection(props) {
     setFocusedEntry(undefined);
   };
 
-  const hasSelectedEntry = focusedEntry !== undefined;
-  // const positionToUse = hasSelectedEntry ? elementPosition : previousPosition;
+  const hasFocusedEntry = focusedEntry !== undefined;
+  const hasSelectedEntry = selectedEntry !== undefined;
+  // const positionToUse = hasFocusedEntry ? elementPosition : previousPosition;
   // const detailsStyle = {
   //   transform: `translate(${positionToUse.x}px, ${positionToUse.y}px)`,
   // };
@@ -120,9 +123,12 @@ function VisualizerSection(props) {
     <div className='flex-col adjacent-mar-t-5'>      
       { logData.map((logEntry, idx) => (
         <VisualizerLine 
+          onClick={() => setSelectedEntry(logEntry)}
           onMouseEnter={(evt) => onEnterItem(evt, logEntry)}
           onMouseLeave={onLeaveItem}
-          isFocused={hasSelectedEntry && logEntry.id === focusedEntry.id}
+
+          isSelected={hasSelectedEntry && logEntry.id === selectedEntry.id}
+          isFocused={hasFocusedEntry && logEntry.id === focusedEntry.id}
 
           logEntry={logEntry}
           key={`VisualizerLine-${idx}-key`}/>
@@ -138,7 +144,7 @@ function VisualizerSection(props) {
           left: 100,
           transition: 'transform 500ms, opacity 300ms',
           width: 300,
-          opacity: hasSelectedEntry ? 1 : 0,
+          opacity: hasFocusedEntry ? 1 : 0,
           ...detailsStyle,
         }}>
         {focusedEntry && focusedEntry.entryString}
