@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ReactComponent as DeadheadSVG } from 'images/dead-head.svg';
-import { ReactComponent as StarstruckSVG } from 'images/star-struck.svg';
+import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -137,7 +137,7 @@ export default function EntryDisplayContainer(props) {
         }
 
         { isVictory &&
-          <StarstruckSVG 
+          <StarFormationSVG 
             className='flex-none adjacent-mar-t-3'
             style={{
               width: 25,
