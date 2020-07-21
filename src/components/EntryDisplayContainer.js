@@ -18,7 +18,7 @@ function EntryAdventureColumn(props) {
 
   const {data} = logEntry;
   const {
-    adventureNum,
+    turnNum,
     isFreeAdv,
   } = data;
 
@@ -28,7 +28,7 @@ function EntryAdventureColumn(props) {
       style={style}>      
       <div 
         className='talign-right color-white fontsize-5 f-bold width-full aself-start adjacent-mar-t-2'>
-        {adventureNum === -1 ? '' : adventureNum}
+        {turnNum === -1 ? '' : turnNum}
       </div>
 
       { isFreeAdv &&

@@ -17,7 +17,7 @@ export default class LogEntry {
     /** @type {Object} */
     this.data = {
       /** @type {Number} */
-      adventureNum: -1,
+      turnNum: -1,
       /** @type {Boolean} */
       isFreeAdv: false,
       /** @type {String | null} */

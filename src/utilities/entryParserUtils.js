@@ -14,7 +14,7 @@ import * as logParserUtils from 'utilities/logParserUtils';
  */
 export function parseEntry(entryString) {
   const entryBody = createEntryBody(entryString);
-  const adventureNum = parseAdventureNum(entryString);
+  const turnNum = parseTurnNum(entryString);
   const isFreeAdv = parseFreeAdventure(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
@@ -23,7 +23,7 @@ export function parseEntry(entryString) {
 
   return {
     entryBody: entryBody.length <= 0 ? null : entryBody,
-    adventureNum,
+    turnNum,
     isFreeAdv,
     locationName,
     encounterName,
@@ -75,13 +75,13 @@ export function createEntryBody(entryString) {
  * @param {String} entryString
  * @return {Number}
  */
-export function parseAdventureNum(entryString) {
+export function parseTurnNum(entryString) {
   const ACTION_NUM_REGEX = /(?!\[)\d*(?=\])/;
-  const adventureNumMatches = getRegexMatch(entryString, ACTION_NUM_REGEX);
-  if (adventureNumMatches === null) {
+  const turnNumMatches = getRegexMatch(entryString, ACTION_NUM_REGEX);
+  if (turnNumMatches === null) {
     return -1;
   }
-  return Number(adventureNumMatches[0]);
+  return Number(turnNumMatches[0]);
 }
 /**
  * determine if this is a free adventure
