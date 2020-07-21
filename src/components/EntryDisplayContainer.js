@@ -24,7 +24,7 @@ function EntryAdventureColumn(props) {
 
   return (
     <div 
-      className={combineClassnames('flex-col flex-none adjacent-mar-l-4', className)}
+      className={combineClassnames('flex-col', className)}
       style={style}>      
       <div 
         className='talign-right color-white fontsize-5 f-bold width-full aself-start adjacent-mar-t-2'>
@@ -35,6 +35,59 @@ function EntryAdventureColumn(props) {
         <div className='talign-right fontsize-2 adjacent-mar-t-2'>
           free
         </div>
+      }
+    </div>
+  )
+}
+/**
+ * @returns {React.Component}
+ */
+function EntryIconColumn(props) {
+  const {
+    className,
+    IconComponent,
+    logEntry,
+  } = props;
+
+  const {data} = logEntry;
+  const {
+    hasInitiative,
+    isDeath,
+    isVictory,
+  } = data;
+
+  return (
+    <div className={combineClassnames('aitems-center flex-col', className)}>
+      <IconComponent 
+        className='flex-none adjacent-mar-t-3'
+        style={{
+          width: 25,
+          height: 25,
+          opacity: 0.7,
+        }} />
+
+      { hasInitiative &&
+        <div className='talign-center fontsize-1 color-gray flex-none adjacent-mar-t-3'>init</div>
+      }
+
+      { isDeath &&
+        <DeadheadSVG 
+          className='flex-none adjacent-mar-t-3'
+          style={{
+            width: 25,
+            height: 25,
+            opacity: 0.8,
+          }} />
+      }
+
+      { isVictory &&
+        <StarFormationSVG 
+          className='flex-none adjacent-mar-t-3'
+          style={{
+            width: 25,
+            height: 25,
+            opacity: 0.8,
+          }} />
       }
     </div>
   )
@@ -73,6 +126,33 @@ function EntryHeaderContainer(props) {
 /**
  * @returns {React.Component}
  */
+function EntryBodyContainer(props) {
+  const {
+    className,
+    logEntry,
+  } = props;
+
+  // const {data} = logEntry;
+  // const {
+  //   turnNum,
+  //   isFreeAdv,
+  // } = data;
+
+  return (
+    <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
+      <div className=''>
+        <EntryHeaderContainer logEntry={logEntry} />
+
+        <div className='flex-col adjacent-mar-t-3'>
+          {props.children}
+        </div>
+      </div>
+    </div>
+  )
+}
+/**
+ * @returns {React.Component}
+ */
 export default function EntryDisplayContainer(props) {
   const {
     onClick,
@@ -86,9 +166,6 @@ export default function EntryDisplayContainer(props) {
     IconComponent = UncertaintySVG,
     logEntry,
   } = props;
-
-  const isDeath = logEntry.data.isDeath;
-  const isVictory = logEntry.data.isVictory;
 
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   const selectedClass = isSelected ? 'bg-green' : '';
@@ -112,53 +189,24 @@ export default function EntryDisplayContainer(props) {
       {/* adventure num column */}
       <EntryAdventureColumn 
         logEntry={logEntry}
+        className='adjacent-mar-l-4 flex-none'
         style={{
           width: 35,
         }} />
 
       {/* icon column */}
-      <div className='aitems-center flex-col flex-none adjacent-mar-l-4'>
-        <IconComponent 
-          className='flex-none adjacent-mar-t-3'
-          style={{
-            width: 25,
-            height: 25,
-            opacity: 0.7,
-          }} />
-
-        { logEntry.data.hasInitiative &&
-          <div className='talign-center fontsize-1 color-gray flex-none adjacent-mar-t-3'>init</div>
-        }
-
-        { isDeath &&
-          <DeadheadSVG 
-            className='flex-none adjacent-mar-t-3'
-            style={{
-              width: 25,
-              height: 25,
-              opacity: 0.8,
-            }} />
-        }
-
-        { isVictory &&
-          <StarFormationSVG 
-            className='flex-none adjacent-mar-t-3'
-            style={{
-              width: 25,
-              height: 25,
-              opacity: 0.8,
-            }} />
-        }
-      </div>
+      <EntryIconColumn
+        logEntry={logEntry}
+        IconComponent={IconComponent}
+        className='adjacent-mar-l-4 flex-none' />
 
       {/* entry body */}
-      <div className='flex-auto flex-col adjacent-mar-l-4 whitespace-pre-wrap'>
-        <EntryHeaderContainer logEntry={logEntry} />
-
-        <div className='flex-col adjacent-mar-t-3'>
-          {props.children}
-        </div>
-      </div>
+      <EntryBodyContainer
+        logEntry={logEntry}
+        className='adjacent-mar-l-4 flex-auto'>
+        {props.children}
+      </EntryBodyContainer>
+      
     </div>
   )
 }
