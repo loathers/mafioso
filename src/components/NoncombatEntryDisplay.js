@@ -24,6 +24,8 @@ export default function NoncombatEntryDisplay(props) {
           height: 25,
         }} />
 
+      <div className='flex-none adjacent-mar-l-2'>{logEntry.locationDisplay}</div>
+
       <div className='flex-auto adjacent-mar-l-2'>{`noncombat ${logEntry.entryString}`}</div>
 
     </EntryDisplayContainer>

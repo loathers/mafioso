@@ -50,6 +50,10 @@ export default class LogEntry {
     return this.data !== undefined;
   }
   /** @type {String} */
+  get locationDisplay() {
+    return this.data.locationName || '';
+  }
+  /** @type {String} */
   get itemsDisplay() {
     return this.data.acquiredItems.join(', ');
   }
