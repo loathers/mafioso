@@ -10,6 +10,7 @@ import combineClassnames from 'utilities/combineClassnames';
 function EntryAdventureColumn(props) {
   const {
     className,
+    style,
     logEntry,
   } = props;
 
@@ -20,10 +21,11 @@ function EntryAdventureColumn(props) {
   } = data;
 
   return (
-    <div className={'flex-col flex-none adjacent-mar-l-4 ' + className}>      
+    <div 
+      className={combineClassnames('flex-col flex-none adjacent-mar-l-4', className)}
+      style={style}>      
       <div 
-        className='talign-right color-white fontsize-3 aself-start adjacent-mar-t-2'
-        style={{width: 30}}>
+        className='talign-right color-white fontsize-5 f-bold width-full aself-start adjacent-mar-t-2'>
         {adventureNum === -1 ? '' : adventureNum}
       </div>
 
@@ -103,7 +105,11 @@ export default function EntryDisplayContainer(props) {
       </div>
 
       {/* adventure num column */}
-      <EntryAdventureColumn logEntry={logEntry} />
+      <EntryAdventureColumn 
+        logEntry={logEntry}
+        style={{
+          width: 35,
+        }} />
 
       {/* entry icon column */}
       <IconComponent 
