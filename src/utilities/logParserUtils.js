@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import LogEntry from 'classes/LogEntry';
 
 import ENTRY_TYPE from 'constants/entryType';
@@ -39,10 +41,11 @@ export function parseLog(logRaw) {
   }
 
   //
+  const logId = uuidv4();
   return logRawSplit
     .slice(0, Math.min(550, logRawSplit.length)) // dev: limit lines
     .map((entryString, idx) => new LogEntry({
-      entryIdx: idx,
+      entryId: `${idx}_${logId}`,
       entryType: checkEntryType(entryString),
       entryString: entryString,
     })) // format data into LogEntry class

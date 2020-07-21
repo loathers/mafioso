@@ -5,9 +5,9 @@ import * as entryParserUtils from 'utilities/entryParserUtils';
  */
 export default class LogEntry {
   /** @default */
-  constructor({entryIdx, entryType, entryString}) {
+  constructor({entryId, entryType, entryString}) {
     /** @type {Number} */
-    this.entryIdx = entryIdx;
+    this.entryId = entryId;
     /** @type {EntryType} */
     this.entryType = entryType;
     /** @type {String} */
@@ -58,7 +58,7 @@ export default class LogEntry {
    */
   export() {
     return {
-      entryIdx: this.entryIdx,
+      entryId: this.entryId,
       entryType: this.entryType,
       entryString: this.entryString,
       ...this.data,
