@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ReactComponent as SteakSVG } from 'images/steak.svg';
+import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
@@ -12,13 +12,14 @@ export default function AcquireItemEntryDisplay(props) {
     logEntry,
   } = props;
 
+  const {data} = logEntry;
   const {
-    entryString,
-  } = logEntry;
+    entryBody,
+  } = data;
 
   return (
-    <EntryDisplayContainer {...props} IconComponent={SteakSVG}>
-      <div className='flex-auto adjacent-mar-l-4'>{entryString}</div>
+    <EntryDisplayContainer {...props} IconComponent={SwapBagSVG}>
+      {entryBody}
     </EntryDisplayContainer>
   )
 }

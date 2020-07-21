@@ -76,9 +76,9 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
-  if (isEntryAcquireItem(entryString)) {
-    return ENTRY_TYPE.ACQUIRE_ITEM;
-  }
+  // if (isEntryAcquireItem(entryString)) {
+  //   return ENTRY_TYPE.ACQUIRE_ITEM;
+  // }
 
   if (isEntryTransaction(entryString)) {
     return ENTRY_TYPE.TRANSACTION;

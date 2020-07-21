@@ -128,23 +128,34 @@ function EntryHeaderContainer(props) {
  */
 function EntryBodyContainer(props) {
   const {
+    children,
     className,
     logEntry,
   } = props;
 
-  // const {data} = logEntry;
-  // const {
-  //   turnNum,
-  //   isFreeAdv,
-  // } = data;
+  const {data} = logEntry;
+  const {
+    acquiredItems,
+  } = data;
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
+      {/* header with location and encounter name */}
       <EntryHeaderContainer logEntry={logEntry} />
 
-      <div className='flex-col adjacent-mar-t-3'>
-        {props.children}
-      </div>
+      {/* entry specific body */}
+      { children &&
+        <div className='flex-col adjacent-mar-t-3'>
+          {children}
+        </div>
+      }
+
+      {/* items acquired */}
+      { acquiredItems.length > 0 &&
+        <div className='flex-col adjacent-mar-t-3'>
+          {`You acquired: ${acquiredItems.join(', ')}.`}
+        </div>
+      }
     </div>
   )
 }

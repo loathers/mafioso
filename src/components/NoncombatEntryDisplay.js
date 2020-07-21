@@ -19,9 +19,7 @@ export default function NoncombatEntryDisplay(props) {
 
   return (
     <EntryDisplayContainer {...props} IconComponent={DigDugSVG}>
-      { entryBody &&
-        <div className='flex-none adjacent-mar-t-2'>{entryBody}</div>
-      }
+      { entryBody }
     </EntryDisplayContainer>
   )
 }

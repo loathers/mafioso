@@ -19,9 +19,7 @@ export default function CombatEntryDisplay(props) {
 
   return (
     <EntryDisplayContainer {...props} IconComponent={CrossedSwordsSVG}>
-      { entryBody &&
-        <div className='flex-none adjacent-mar-t-2'>{entryBody}</div>
-      }
+      { entryBody }
     </EntryDisplayContainer>
   )
 }
