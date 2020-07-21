@@ -24,9 +24,9 @@ class LogStore {
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
-      entriesDisplayCount: 1000,
+      displayCount: 1000,
       /** @type {Array<EntryType>} */
-      entryTypesToShow: [
+      visibleEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
         ENTRY_TYPE.ENCOUNTER.COMBAT,
         ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
@@ -57,13 +57,13 @@ class LogStore {
   /** @type {Boolean} */
   get visibleEntries() {
     const {
-      entriesDisplayCount,
-      entryTypesToShow,
+      displayCount,
+      visibleEntryTypes,
     } = this.filterOptions;
 
     return this.logData
-      .filter((logEntry) => entryTypesToShow.includes(logEntry.entryType))
-      .slice(0, Math.min(entriesDisplayCount, this.logData.length));
+      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType))
+      .slice(0, Math.min(displayCount, this.logData.length));
   }
   /**
    * @param {File} file

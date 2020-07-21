@@ -39,7 +39,7 @@ function VisualizerTooltip(props) {
  */
 export default observer(
 function VisualizerSection(props) {
-  const {logData = []} = props;
+  const {entriesList = []} = props;
 
   // list state
   const [selectedEntry, setSelectedEntry] = React.useState();
@@ -85,7 +85,7 @@ function VisualizerSection(props) {
 
   return (
     <div className='flex-col adjacent-mar-t-5'>      
-      { logData.map((logEntry, idx) => (
+      { entriesList.map((logEntry, idx) => (
         <EntryDisplayContainer 
           onClick={(evt) => oSelectItem(evt, logEntry)}
           onMouseEnter={(evt) => onMouseEnterItem(evt, logEntry)}
