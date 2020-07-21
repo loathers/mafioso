@@ -2,7 +2,8 @@ import React from 'react';
 
 import { ReactComponent as DeadheadSVG } from 'images/dead-head.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
-import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
+
+import EntryIconComponent from 'components/EntryIconComponent';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -45,7 +46,6 @@ function EntryAdventureColumn(props) {
 function EntryIconColumn(props) {
   const {
     className,
-    IconComponent,
     logEntry,
   } = props;
 
@@ -58,7 +58,8 @@ function EntryIconColumn(props) {
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>
-      <IconComponent 
+      <EntryIconComponent 
+        logEntry={logEntry}
         className='flex-none adjacent-mar-t-3'
         style={{
           width: 25,
@@ -172,7 +173,6 @@ export default function EntryDisplayContainer(props) {
     isSelected,
 
     className,
-    IconComponent = UncertaintySVG,
     logEntry,
   } = props;
 
@@ -206,7 +206,6 @@ export default function EntryDisplayContainer(props) {
       {/* icon column */}
       <EntryIconColumn
         logEntry={logEntry}
-        IconComponent={IconComponent}
         className='adjacent-mar-l-4 flex-none' />
 
       {/* entry body */}
