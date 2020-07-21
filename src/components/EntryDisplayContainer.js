@@ -1,12 +1,14 @@
 import React from 'react';
 
+import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
+
 /**
  * @returns {React.Component}
  */
 export default function EntryDisplayContainer(props) {
   const {
     className,
-    IconComponent,
+    IconComponent = UncertaintySVG,
     logEntry
   } = props;
 
@@ -22,14 +24,12 @@ export default function EntryDisplayContainer(props) {
       </div>
 
       {/* entry icon */}
-      { IconComponent &&
-        <IconComponent 
-          className='flex-none adjacent-mar-l-2'
-          style={{
-            width: 25,
-            height: 25,
-          }} />
-      }
+      <IconComponent 
+        className='flex-none adjacent-mar-l-2'
+        style={{
+          width: 25,
+          height: 25,
+        }} />
 
       <div className='flex-auto adjacent-mar-l-2'>{props.children}</div>
     </div>

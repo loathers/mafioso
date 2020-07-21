@@ -38,9 +38,7 @@ class LogStore {
    * @param {File} file
    */
   handleUpload(file) {
-    console.log('! handleUpload()')
     this.srcFile = file;
-
     fileReader.readAsText(file);
   }
   /**
