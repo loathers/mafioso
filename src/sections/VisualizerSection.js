@@ -13,18 +13,47 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
 /**
  * @returns {React.Component}
  */
+function VisualizerTooltip(props) {
+  const {
+    selectedEntry,
+    previousEntry,
+    style,
+  } = props;
+
+  const hasSelectedEntry = selectedEntry !== undefined;
+  const contentDisplay = (selectedEntry && selectedEntry.entryString) || (previousEntry && previousEntry.entryString);
+
+  return (
+    <div
+      className='pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
+      style={{
+        boxShadow: '0px 2px 1px 1px #1e3654',
+        position: 'fixed',
+        top: 0,
+        left: 30,
+        transition: 'transform 500ms, opacity 300ms',
+        width: 300,
+        opacity: hasSelectedEntry ? 1 : 0,
+        ...style,
+      }}>
+
+      {contentDisplay}
+    </div>
+  )
+}
+/**
+ * @returns {React.Component}
+ */
 function StringEntry(props) {
   const {
     logEntry,
   } = props;
 
-  const {
-    entryString,
-  } = logEntry;
+  const contentDisplay = logEntry.data.entryBody || logEntry.entryString;
 
   return (
     <EntryDisplayContainer {...props}>
-      <div className='flex-auto adjacent-mar-l-4'>{entryString}</div>
+      {contentDisplay}
     </EntryDisplayContainer>
   )
 }
@@ -146,20 +175,11 @@ function VisualizerSection(props) {
           key={`VisualizerLine-${idx}-key`}/>
       ))}
 
-      <div
+      <VisualizerTooltip
+        selectedEntry={selectedEntry}
+        focusedEntry={focusedEntry}
         className='pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
-        style={{
-          boxShadow: '0px 2px 1px 1px #1e3654',
-          position: 'fixed',
-          top: 0,
-          left: 30,
-          transition: 'transform 500ms, opacity 300ms',
-          width: 300,
-          opacity: hasSelectedEntry ? 1 : 0,
-          ...detailsStyle,
-        }}>
-        {(selectedEntry && selectedEntry.entryString) || (previousEntry && previousEntry.entryString)}
-      </div>
+        style={detailsStyle} />
     </div>
   )
 })
