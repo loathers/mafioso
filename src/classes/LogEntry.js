@@ -41,6 +41,8 @@ export default class LogEntry {
       /** @type {Number} */
       moxChange: 0,
       /** @type {Boolean} */
+      hasInitiative: false,
+      /** @type {Boolean} */
       isVictory: false,
       /** @type {Boolean} */
       isDeath: false,

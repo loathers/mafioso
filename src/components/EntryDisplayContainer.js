@@ -98,7 +98,7 @@ export default function EntryDisplayContainer(props) {
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={combineClassnames('flex-row aitems-start adjacent-mar-t-2 pad-4 borradius-2', focusedClass, className)}>
+      className={combineClassnames('flex-row adjacent-mar-t-2 pad-4 borradius-2', focusedClass, className)}>
 
       {/* status indicator column */}
       <div 
@@ -117,7 +117,7 @@ export default function EntryDisplayContainer(props) {
         }} />
 
       {/* icon column */}
-      <div className='flex-col flex-none adjacent-mar-l-4'>
+      <div className='aitems-center flex-col flex-none adjacent-mar-l-4'>
         <IconComponent 
           className='flex-none adjacent-mar-t-3'
           style={{
@@ -125,6 +125,10 @@ export default function EntryDisplayContainer(props) {
             height: 25,
             opacity: 0.7,
           }} />
+
+        { logEntry.data.hasInitiative &&
+          <div className='talign-center fontsize-1 color-gray flex-none adjacent-mar-t-3'>init</div>
+        }
 
         { isDeath &&
           <DeadheadSVG 
