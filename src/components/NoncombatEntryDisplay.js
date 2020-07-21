@@ -9,14 +9,17 @@ import EntryDisplayContainer from 'components/EntryDisplayContainer';
  */
 export default function NoncombatEntryDisplay(props) {
   const {
-    className,
     logEntry
   } = props;
 
-  return (
-    <EntryDisplayContainer {...props}
-      className={'flex-row-center ' + className}>
+  const {data} = logEntry;
+  const {
+    locationName,
+    encounterName,
+  } = data;
 
+  return (
+    <EntryDisplayContainer {...props}>
       <DigDugSVG 
         className='flex-none adjacent-mar-l-2'
         style={{
@@ -24,9 +27,17 @@ export default function NoncombatEntryDisplay(props) {
           height: 25,
         }} />
 
-      <div className='flex-none adjacent-mar-l-2'>{logEntry.locationDisplay}</div>
+      <div className='flex-auto flex-col adjacent-mar-l-2'>
+        { locationName &&
+          <div className='flex-none adjacent-mar-t-1'>{locationName}</div>
+        }
 
-      <div className='flex-auto adjacent-mar-l-2'>{`noncombat ${logEntry.entryString}`}</div>
+        { encounterName &&
+          <div className='flex-none adjacent-mar-t-1'>{encounterName}</div>
+        }
+
+        <div className='flex-auto adjacent-mar-t-1'>{logEntry.entryString}</div>
+      </div>
 
     </EntryDisplayContainer>
   )

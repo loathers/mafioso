@@ -20,6 +20,8 @@ export default class LogEntry {
       adventureNum: -1,
       /** @type {String | null} */
       locationName: null,
+      /** @type {String | null} */
+      encounterName: null,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Number} */
