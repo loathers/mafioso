@@ -65,7 +65,7 @@ class LogStore {
 
     const newData = logParserUtils.parseLog(this.srcLog);
     this.logData.replace(newData);
-    console.log('! parsed logData', newData);
+    console.log('! log finished parsing');
   }
 }
 
