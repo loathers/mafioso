@@ -42,14 +42,18 @@ export const REGEX = {
     MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
     MAFIA_ACTION_URL: /.*.php.*\s*/g,
 
-    LEVEL_GAIN: /^You gain a level.*\s+/mi,
-    SUBSTAT_GAIN: /.*(gain|lose).*\d*(muscle|moxie|mysticality).*point.*\s*/gi,
-
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*\s*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*\s*/gi,
-    MUS_CHANGE: /.*(gain|lose).*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*\s*/gi,
-    MYST_CHANGE: /.*(gain|lose).*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*\s*/gi,
-    MOX_CHANGE: /.*(gain|lose).*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*\s*/gi,
+
+    LEVEL_GAIN: /^You gain a level.*\s+/mi,
+    SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*\s*/gi,
+
+    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*\s*/gi,
+    MUS_GAINS: /.*you gain.*\d*muscle.*point.*\s*/gi,
+    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*\s*/gi,
+    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*\s*/gi,
+    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*\s*/gi,    
+    MOX_GAINS: /.*you gain.*\d*moxie.*point.*\s*/gi,
   },
 
   VALUE: {
@@ -87,12 +91,14 @@ export const REGEX = {
     MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
     MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
 
-    MUS_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
-    MUS_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
-    MYST_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
-    MYST_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
-    MOX_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
-    MOX_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+    MUS_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
+    MUS_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
+
+    MYST_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+    MYST_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+
+    MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+    MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
 
   SUBSTRING: {
