@@ -26,7 +26,7 @@ class LogStore {
       /** @type {Number} */
       pageNum: 1,
       /** @type {Number} */
-      entriesPerPage: 250,
+      entriesPerPage: 'all',
       /** @type {Array<EntryType>} */
       visibleEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
@@ -39,6 +39,8 @@ class LogStore {
         ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
         ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
       ],
+      /* @type {Object} */
+      dataFilters: {},
     });
 
     // file reader callback
@@ -97,14 +99,16 @@ class LogStore {
       pageNum = this.filterOptions.pageNum,
       entriesPerPage = this.filterOptions.entriesPerPage,
       visibleEntryTypes = this.filterOptions.visibleEntryTypes,
+      // dataFilters = this.filterOptions.dataFilters,
     } = options;
 
-    const startIdx = entriesPerPage * pageNum;
-    const endIdx = startIdx + entriesPerPage;
+    const startIdx = entriesPerPage === 'all' ? 0 : entriesPerPage * pageNum;
+    const endIdx = entriesPerPage === 'all' ? this.logData.length : startIdx + entriesPerPage;
 
     return this.logData
       .slice(startIdx, endIdx)
-      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType));
+      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType))
+      .filter((logEntry) => logEntry.data.isLevelUp === true);
   }
 }
 
