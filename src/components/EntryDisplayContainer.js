@@ -1,8 +1,10 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { ReactComponent as DeadheadSVG } from 'images/dead-head.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
+import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
 
@@ -10,29 +12,34 @@ import combineClassnames from 'utilities/combineClassnames';
 /**
  * @returns {React.Component}
  */
-function MeatChangeDisplay(props) {
+function ItemBlockDisplay(props) {
   const {
     className,
-    amount,
+    content,
+    IconComponent,
   } = props;
 
   return (
     <div 
-      className={combineClassnames('bor-1-lightblue fontsize-1 pad-1 flex-col-center', className)}
+      className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
       style={{
-        width: 50,
-        height: 50,
+        minWidth: 70,
+        maxWidth: 120,
+        height: 35,
       }}>
-      <SteakSVG 
-        className='flex-none adjacent-mar-t-2'
+
+      <IconComponent 
+        className='flex-none adjacent-mar-t-2 position-absolute'
         style={{
+          top: 5,
+          left: 5,
           width: 20,
           height: 20,
-          opacity: 0.7,
+          opacity: 0.3,
         }} />
 
-      <div className='talign-center flex-none adjacent-mar-t-2'>
-        {`${amount} meat`}
+      <div className='fontsize-1 color-white zindex-1 talign-center flex-none'>
+        {content}
       </div>
     </div>
   )
@@ -184,20 +191,22 @@ function EntryBodyContainer(props) {
         </div>
       }
 
+      {/* meat and items */}
       <div className='flex-row adjacent-mar-t-3'>
-        {/* meat */}
         { logEntry.hasMeatChanged &&
-          <MeatChangeDisplay 
+          <ItemBlockDisplay 
+            IconComponent={SteakSVG}
             className='adjacent-mar-l-5'
-            amount={meatChange} />
+            content={`${meatChange} meat`} />
         }
 
-        {/* items acquired */}
-        { acquiredItems.length > 0 &&
-          <div className='flex-col adjacent-mar-l-5'>
-            {`Items acquired: ${acquiredItems.join(', ')}.`}
-          </div>
-        }
+        { acquiredItems.map((itemName, idx) => (
+          <ItemBlockDisplay 
+            IconComponent={SwapBagSVG}
+            className='adjacent-mar-l-5'
+            content={`${itemName}`}
+            key={`acquired-item-${uuidv4}-${idx}-key`} />
+        ))}
       </div>
     </div>
   )
