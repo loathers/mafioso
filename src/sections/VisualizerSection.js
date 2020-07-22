@@ -4,7 +4,7 @@ import {observer} from 'mobx-react';
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
 import combineClassnames from 'utilities/combineClassnames';
-import {countNumLines} from 'utilities/stringUtils';
+import {countNumLines} from 'utilities/regexUtils';
 
 /**
  * @returns {React.Component}

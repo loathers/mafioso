@@ -3,7 +3,7 @@ import REGEX from 'constants/regexes';
 import {
   hasString,
   getRegexMatch,
-} from 'utilities/stringUtils';
+} from 'utilities/regexUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 
 /**

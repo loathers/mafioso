@@ -5,7 +5,7 @@ import LogEntry from 'classes/LogEntry';
 import ENTRY_TYPE from 'constants/entryType';
 import REGEX from 'constants/regexes';
 
-import {hasString, fixSpecialEntities} from 'utilities/stringUtils';
+import {hasString, fixSpecialEntities} from 'utilities/regexUtils';
 
 /**
  * core parsing function to do it all
