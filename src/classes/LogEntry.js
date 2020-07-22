@@ -69,6 +69,18 @@ export default class LogEntry {
   }
   // -- display getters
   /** @returns {String} */
+  getLocationDisplay() {
+    if (this.isEntryDiabolicPizza()) {
+      return 'Diabolic Pizza Cube';
+    }
+
+    return this.data.locationName;
+  }
+  /** @returns {String} */
+  getEncounterDisplay() {
+    return this.data.encounterName;
+  }
+  /** @returns {String} */
   getItemsDisplay() {
     return this.data.acquiredItems.join(', ');
   }
@@ -87,7 +99,7 @@ export default class LogEntry {
   }
   /** @returns {Boolean} */
   hasEntryHeader() {
-    return this.data.locationName || this.data.encounterName;
+    return this.getLocationDisplay() !== null || this.getEncounterDisplay() !== null;
   }
   /** @returns {Boolean} */
   hasMeatChanged() {
@@ -99,8 +111,13 @@ export default class LogEntry {
     return `Bought ${this.getItemsDisplay()} for ${this.getMeatDisplay()} meat.`;
   }
   /** @returns {Boolean} */
+  isEntryDiabolicPizza() {
+    return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 
+      || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
+  }
+  /** @returns {Boolean} */
   hasDiabolicPizzaIngredients() {
-    if (this.entryType !== ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE) {
+    if (!this.isEntryDiabolicPizza()) {
       return false;
     }
 

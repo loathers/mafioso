@@ -88,20 +88,17 @@ function EntryHeaderContainer(props) {
     return null;
   }
 
-  const {data} = logEntry;
-  const {
-    locationName,
-    encounterName,
-  } = data;
+  const locationDisplay = logEntry.getLocationDisplay();
+  const encounterDisplay = logEntry.getEncounterDisplay();
 
   return (
     <div className={'flex-col adjacent-mar-t-3 ' + className}>
-      { locationName &&
-        <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{locationName}</div>
+      { locationDisplay &&
+        <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{locationDisplay}</div>
       }
 
-      { encounterName &&
-        <div className='fontsize-7 flex-none adjacent-mar-t-1'>{encounterName}</div>
+      { encounterDisplay &&
+        <div className='fontsize-7 flex-none adjacent-mar-t-1'>{encounterDisplay}</div>
       }
     </div>
   )
@@ -149,7 +146,7 @@ function EntryBodyContainer(props) {
 export default function EntryDisplayContainer(props) {
   const {
     onClick,
-    
+
     isSelected,
 
     className,
