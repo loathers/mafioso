@@ -43,6 +43,9 @@ class LogStore {
       dataFilters: {},
     });
 
+    /** @type {Boolean} */
+    this.isParsing = observable.box(false);
+
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
   }
@@ -62,6 +65,7 @@ class LogStore {
    * @param {File} file
    */
   handleUpload(file) {
+    this.isParsing.set(true);
     this.srcFile = file;
     fileReader.readAsText(file);
   }
@@ -82,13 +86,15 @@ class LogStore {
   /**
    * handle cleaning up and setting all the data
    */
-  parse() {
+  async parse() {
     if (!this.hasLog()) {
       return;
     }
 
     const newData = logParserUtils.parseLog(this.srcLog);
     this.logData.replace(newData);
+
+    this.isParsing.set(false);
   }
   /** 
    * @param {Object} options
