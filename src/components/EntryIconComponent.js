@@ -5,7 +5,8 @@ import ENTRY_TYPE from 'constants/entryType';
 import { ReactComponent as CrossedSwordsSVG } from 'images/crossed-swords.svg';
 import { ReactComponent as DigDugSVG } from 'images/dig-dug.svg';
 import { ReactComponent as InfoSVG } from 'images/info.svg';
-import { ReactComponent as SteakSVG } from 'images/steak.svg';
+import { ReactComponent as ShopSVG } from 'images/shop.svg';
+// import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 import { ReactComponent as MartiniSVG } from 'images/martini.svg';
 import { ReactComponent as PotionSVG } from 'images/potion-ball.svg';
@@ -48,7 +49,7 @@ function getEntryIcon(entryType) {
       return PotionSVG;
 
     case ENTRY_TYPE.TRANSACTION:
-      return SteakSVG;
+      return ShopSVG;
 
     case ENTRY_TYPE.UNKNOWN:
     default:

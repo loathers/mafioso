@@ -31,7 +31,7 @@ function MeatChangeDisplay(props) {
           opacity: 0.7,
         }} />
 
-      <div className='textalign-center flex-none adjacent-mar-t-2'>
+      <div className='talign-center flex-none adjacent-mar-t-2'>
         {`${amount} meat`}
       </div>
     </div>

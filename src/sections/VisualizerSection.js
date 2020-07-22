@@ -50,7 +50,7 @@ function VisualizerSection(props) {
   const [elementPosition, setFocusPosition] = React.useState({x: 10, y: 10});
   const [previousPosition, setPreviousPosition] = React.useState({x: 10, y: 10});
 
-  const oSelectItem = (evt, newEntry) => {
+  const onSelectItem = (evt, newEntry) => {
     if (previousEntry && selectedEntry !== undefined && previousEntry.id === newEntry.id) {
       setSelectedEntry(undefined);
       return;
@@ -63,7 +63,7 @@ function VisualizerSection(props) {
     setFocusPosition({x: xPosition, y: yPosition});
 
     setPreviousPosition(elementPosition);
-    setPreviousEntry(focusedEntry);
+    setPreviousEntry(selectedEntry);
     setSelectedEntry(newEntry);
   };
 
@@ -87,7 +87,7 @@ function VisualizerSection(props) {
     <div className='flex-col adjacent-mar-t-5'>      
       { entriesList.map((logEntry, idx) => (
         <EntryDisplayContainer 
-          onClick={(evt) => oSelectItem(evt, logEntry)}
+          onClick={(evt) => onSelectItem(evt, logEntry)}
           onMouseEnter={(evt) => onMouseEnterItem(evt, logEntry)}
           onMouseLeave={onMouseLeaveItem}
 
