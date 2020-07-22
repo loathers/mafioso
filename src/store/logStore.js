@@ -44,20 +44,16 @@ class LogStore {
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
   }
-  /** @type {Boolean} */
-  get hasSrc() {
-    return this.srcFile !== undefined;
-  }
-  /** @type {Boolean} */
-  get hasLog() {
+  /** @returns {Boolean} */
+  hasLog() {
     return this.srcLog !== undefined;
   }
-  /** @type {Boolean} */
-  get hasData() {
+  /** @returns {Boolean} */
+  hasData() {
     return this.logData && this.logData.length > 0;
   }
   /** @return {Array<LogEntry>} */
-  get currentEntries() {
+  getCurrentEntries() {
     return this.getEntries(this.filterOptions);
   }
   /**
@@ -85,7 +81,7 @@ class LogStore {
    * handle cleaning up and setting all the data
    */
   parse() {
-    if (!this.hasLog) {
+    if (!this.hasLog()) {
       return;
     }
 
