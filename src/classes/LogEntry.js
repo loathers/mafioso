@@ -31,6 +31,8 @@ export default class LogEntry {
       /** @type {Boolean} */
       isNoncombatEncounter: false, // todo: is a duplication of entryType
       /** @type {Array<String>} */
+      combatActions: [],
+      /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Number} */
       meatChange: 0,

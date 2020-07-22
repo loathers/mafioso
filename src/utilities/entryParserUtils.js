@@ -16,7 +16,7 @@ export function parseEntry(entryString) {
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
-  const attacks = parseCombatAttacks(entryString);
+  const combatActions = parseCombatAttacks(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
   const meatChange = parseMeatChange(entryString);
 
@@ -27,7 +27,7 @@ export function parseEntry(entryString) {
     encounterName,
     isCombatEncounter: parseIsCombatEncounter(entryString),
     isNoncombatEncounter: parseIsNonCombatEncounter(entryString),
-    attacks,
+    combatActions,
     acquiredItems,
     meatChange,
     hasInitiative: hasInitiative(entryString),
@@ -134,7 +134,7 @@ export function parseCombatAttacks(entryString) {
   }
 
   const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
-  const attacksList = combatRoundsString.map((attackRoundString) => {
+  const combatActionsList = combatRoundsString.map((attackRoundString) => {
     const combatSkillNames = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_SKILL_NAMES);
     if (combatSkillNames) {
       return combatSkillNames[0]
@@ -149,7 +149,7 @@ export function parseCombatAttacks(entryString) {
     return 'unknown attack';
   });
 
-  return attacksList;
+  return combatActionsList;
 }
 /**
  * builds an array of all the items that were gained

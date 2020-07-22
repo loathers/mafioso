@@ -9,6 +9,42 @@ import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 import EntryIconComponent from 'components/EntryIconComponent';
 
 import combineClassnames from 'utilities/combineClassnames';
+
+/**
+ * @returns {React.Component}
+ */
+function CombatActionDisplay(props) {
+  const {
+    className,
+    content,
+    // IconComponent,
+  } = props;
+
+  return (
+    <div 
+      className={combineClassnames('overflow-hidden borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
+      style={{
+        minWidth: 70,
+        maxWidth: 120,
+        height: 35,
+      }}>
+
+      {/*<IconComponent 
+        className='flex-none adjacent-mar-t-2 position-absolute'
+        style={{
+          top: 5,
+          left: 5,
+          width: 20,
+          height: 20,
+          opacity: 0.3,
+        }} />*/}
+
+      <div className='fontsize-1 color-white zindex-1 talign-center flex-none'>
+        {content}
+      </div>
+    </div>
+  )
+}
 /**
  * @returns {React.Component}
  */
@@ -175,6 +211,7 @@ function EntryBodyContainer(props) {
     entryDisplay,
   } = logEntry;
   const {
+    combatActions,
     acquiredItems,
     meatChange,
   } = data;
@@ -190,6 +227,16 @@ function EntryBodyContainer(props) {
           {entryDisplay}
         </div>
       }
+
+      {/* combat */}
+      <div className='flex-row adjacent-mar-t-3'>
+        { combatActions.map((actionName, idx) => (
+          <CombatActionDisplay 
+            className='adjacent-mar-l-5'
+            content={`${actionName}`}
+            key={`combat-action-${uuidv4}-${idx}-key`} />
+        ))}
+      </div>
 
       {/* meat and items */}
       <div className='flex-row adjacent-mar-t-3'>
