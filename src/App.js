@@ -3,6 +3,7 @@ import {observer} from 'mobx-react';
 
 import logStore from 'store/logStore';
 
+import LoaderComponent from 'components/LoaderComponent';
 import UploadComponent from 'components/UploadComponent';
 
 import VisualizerSection from 'sections/VisualizerSection';
@@ -22,7 +23,7 @@ function App() {
 
       <UploadComponent />
 
-      {/* page thingy */}
+      {/* pagination */}
       <div className='fontsize-4 flex-row adjacent-mar-t-5'>
         <button 
           onClick={() => setCurrentPageNum(currentPageNum - 1)}
@@ -39,15 +40,16 @@ function App() {
         </button>
       </div>
 
+      {/* loader */}
       { logStore.isParsing.get() &&
-        <div>parsing...</div>
+        <LoaderComponent className='adjacent-mar-t-5'/>
       }
 
       <VisualizerSection 
         entriesList={logStore.getEntries({pageNum: currentPageNum})}
       />
 
-      {/* copy paste page thingy */}
+      {/* copy paste pagination */}
       <div className='fontsize-4 flex-row adjacent-mar-t-5'>
         <button 
           onClick={() => setCurrentPageNum(currentPageNum - 1)}
