@@ -105,6 +105,10 @@ export default class LogEntry {
   }
   /** @returns {String} */
   getMeatDisplay() {
+    if (this.data.meatChange > 0) {
+      return `+${this.data.meatChange}`;
+    }
+
     return this.data.meatChange;
   }
   /** @returns {Boolean} */
@@ -150,10 +154,6 @@ export default class LogEntry {
     return this.combatData.combatActions.length > 0;
   }
   // -- special getters
-  /** @returns {String} */
-  transactionDisplay() {
-    return `Bought ${this.getItemsDisplay()} for ${this.getMeatDisplay()} meat.`;
-  }
   /** @returns {Boolean} */
   isEntryDiabolicPizza() {
     return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 

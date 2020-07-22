@@ -39,10 +39,8 @@ export default function ItemChangesDisplay(props) {
   } = props;
 
   const {data} = logEntry;
-
   const {
     acquiredItems,
-    meatChange,
   } = data;
 
   return (
@@ -51,7 +49,7 @@ export default function ItemChangesDisplay(props) {
         <ItemBlockDisplay 
           IconComponent={SteakSVG}
           className='mar-2 pad-2'
-          content={`${meatChange} meat`} />
+          content={`${logEntry.getMeatDisplay()} meat`} />
       }
 
       { acquiredItems.map((itemName, idx) => (
