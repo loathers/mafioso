@@ -7,6 +7,13 @@
   box-sizing: border-box;
 }
 
+div[componentname="visualizer-tooltip"] {
+  position: fixed;
+  top: 0;
+  right: 30px;
+  transition: transform 500ms, opacity 300ms;
+}
+
 div[componentname="item-block"] {
   min-width: 70px;
   max-width: 140px;

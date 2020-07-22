@@ -81,10 +81,7 @@ export default function CombatSequenceDisplay(props) {
         <Fragment>
           <LaurelCrownSVG 
             className='flex-none mar-2'
-            style={{
-              width: 30,
-              height: 30,
-            }} />
+            style={{width: 30, height: 30}} />
           <div className='flex-row-center fontsize-3 mar-2'>Victory!</div>
         </Fragment>
       }
@@ -93,10 +90,7 @@ export default function CombatSequenceDisplay(props) {
         <Fragment>
           <CarrionSVG 
             className='flex-none mar-2'
-            style={{
-              width: 30,
-              height: 30,
-            }} />
+            style={{width: 30, height: 30}} />
           <div className='flex-row-center fontsize-3 mar-2'>Beaten up :(</div>
         </Fragment>
       }

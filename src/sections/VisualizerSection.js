@@ -23,11 +23,8 @@ function VisualizerTooltip(props) {
   return (
     <div
       className={combineClassnames('pad-4 borradius-2 bg-grayest fontsize-3 color-white whitespace-pre-wrap flex-col', className)}
+      componentname='visualizer-tooltip'
       style={{
-        position: 'fixed',
-        top: 0,
-        right: 30,
-        transition: 'transform 500ms, opacity 300ms',
         opacity: hasSelectedEntry ? 1 : 0,
         ...style,
       }}>

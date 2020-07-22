@@ -61,18 +61,14 @@ function EntryIconColumn(props) {
       <EntryIconComponent 
         logEntry={logEntry}
         className='flex-none adjacent-mar-t-3'
-        style={{
-          width: 25,
-          height: 25,
+        style={{width: 25, height: 25,
           opacity: 0.7,
         }} />
 
       { isLevelUp &&
         <StarFormationSVG 
           className='flex-none adjacent-mar-t-3'
-          style={{
-            width: 25,
-            height: 25,
+          style={{width: 25, height: 25,
             opacity: 0.8,
           }} />
       }
@@ -176,19 +172,14 @@ export default function EntryDisplayContainer(props) {
       {/* status indicator column */}
       <div 
         className={combineClassnames('bor-1-lightblue borradius-round height-auto', selectedClass)}
-        style={{
-          width: 10,
-          height: 10,
-        }}>
+        style={{width: 10, height: 10}}>
       </div>
 
       {/* adventure num column */}
       <EntryAdventureColumn 
         logEntry={logEntry}
         className='adjacent-mar-l-4 flex-none'
-        style={{
-          width: 35,
-        }} />
+        style={{width: 35}} />
 
       {/* icon column */}
       <EntryIconColumn
