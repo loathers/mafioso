@@ -31,6 +31,7 @@ export const REGEX = {
     COMBAT_WIN_INIT: /Round.*(wins initiative).*\s*/,
     COMBAT_LOSE_INIT: /Round.*(loses initiative).*\s*/,
     COMBAT_ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!\s*/gmi,
+    COMBAT_ROUND: /^round\s\d:.*\s*/gmi,
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
