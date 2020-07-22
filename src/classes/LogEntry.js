@@ -72,9 +72,9 @@ export default class LogEntry {
   get hasEntryHeader() {
     return this.data.locationName || this.data.encounterName;
   }
-  /** @type {String} */
-  get locationDisplay() {
-    return this.data.locationName || '';
+  /** @type {Boolean} */
+  get hasMeatChanged() {
+    return this.data.meatChange !== 0;
   }
   /** @type {String} */
   get itemsDisplay() {
@@ -102,6 +102,11 @@ export default class LogEntry {
 
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     this.entryDisplay = entryBody.length <= 0 ? null : entryBody;
+  }
+  // -- unique displays
+  /** @type {String} */
+  get transactionDisplay() {
+    return `Bought ${this.itemsDisplay} for ${this.meatDisplay} meat.`;
   }
   /**
    * @return {Object}

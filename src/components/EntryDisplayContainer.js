@@ -2,11 +2,41 @@ import React from 'react';
 
 import { ReactComponent as DeadheadSVG } from 'images/dead-head.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
+import { ReactComponent as SteakSVG } from 'images/steak.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
 
 import combineClassnames from 'utilities/combineClassnames';
+/**
+ * @returns {React.Component}
+ */
+function MeatChangeDisplay(props) {
+  const {
+    className,
+    amount,
+  } = props;
 
+  return (
+    <div 
+      className={combineClassnames('bor-1-lightblue fontsize-1 pad-1 flex-col-center', className)}
+      style={{
+        width: 50,
+        height: 50,
+      }}>
+      <SteakSVG 
+        className='flex-none adjacent-mar-t-2'
+        style={{
+          width: 20,
+          height: 20,
+          opacity: 0.7,
+        }} />
+
+      <div className='textalign-center flex-none adjacent-mar-t-2'>
+        {`${amount} meat`}
+      </div>
+    </div>
+  )
+}
 /**
  * @returns {React.Component}
  */
@@ -139,6 +169,7 @@ function EntryBodyContainer(props) {
   } = logEntry;
   const {
     acquiredItems,
+    meatChange,
   } = data;
 
   return (
@@ -153,12 +184,21 @@ function EntryBodyContainer(props) {
         </div>
       }
 
-      {/* items acquired */}
-      { acquiredItems.length > 0 &&
-        <div className='flex-col adjacent-mar-t-3'>
-          {`Items acquired: ${acquiredItems.join(', ')}.`}
-        </div>
-      }
+      <div className='flex-row adjacent-mar-t-3'>
+        {/* meat */}
+        { logEntry.hasMeatChanged &&
+          <MeatChangeDisplay 
+            className='adjacent-mar-l-5'
+            amount={meatChange} />
+        }
+
+        {/* items acquired */}
+        { acquiredItems.length > 0 &&
+          <div className='flex-col adjacent-mar-l-5'>
+            {`Items acquired: ${acquiredItems.join(', ')}.`}
+          </div>
+        }
+      </div>
     </div>
   )
 }

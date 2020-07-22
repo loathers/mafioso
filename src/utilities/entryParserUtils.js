@@ -163,7 +163,7 @@ export function parseMeatSpent(entryString) {
 
   const buyAmount = Number(buyAmountMatches[0]);
   const buyCost = Number(buyCostMatches[0]);
-  return buyAmount * buyCost;
+  return buyAmount * -buyCost;
 }
 // -- boolean parsers
 /**
