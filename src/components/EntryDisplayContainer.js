@@ -232,29 +232,37 @@ function EntryBodyContainer(props) {
       }
 
       {/* combat */}
-      <div className='flex-row adjacent-mar-t-3'>
+      <div className='flex-row s flexwrap-yes aitems-center adjacent-mar-t-3'>
         { combatActions.map((combatData, idx) => (
-          <CombatActionDisplay 
-            className='adjacent-mar-l-5'
-            content={combatData.actionName}
-            roundNum={combatData.roundNum}
-            key={`combat-action-${uuidv4}-${idx}-key`} />
+          <React.Fragment key={`combat-action-${uuidv4}-${idx}-key`}>
+            <CombatActionDisplay 
+              className='mar-2'
+              content={combatData.actionName}
+              roundNum={combatData.roundNum} 
+            /> 
+
+            {(idx !== combatActions.length - 1) &&
+              <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
+                >
+              </div>
+            }
+          </React.Fragment>
         ))}
       </div>
 
       {/* meat and items */}
-      <div className='flex-row adjacent-mar-t-3'>
+      <div className='flex-row flexwrap-yes adjacent-mar-t-3'>
         { logEntry.hasMeatChanged &&
           <ItemBlockDisplay 
             IconComponent={SteakSVG}
-            className='adjacent-mar-l-5'
+            className='mar-2'
             content={`${meatChange} meat`} />
         }
 
         { acquiredItems.map((itemName, idx) => (
           <ItemBlockDisplay 
             IconComponent={SwapBagSVG}
-            className='adjacent-mar-l-5'
+            className='mar-2'
             content={`${itemName}`}
             key={`acquired-item-${uuidv4}-${idx}-key`} />
         ))}

@@ -103,7 +103,7 @@ function VisualizerSection(props) {
       <VisualizerTooltip
         selectedEntry={selectedEntry}
         previousEntry={previousEntry}
-        className='pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
+        className='zindex-3 pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
         style={detailsStyle} />
     </div>
   )
