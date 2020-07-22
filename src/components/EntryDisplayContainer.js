@@ -1,7 +1,8 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ReactComponent as DeadheadSVG } from 'images/dead-head.svg';
+import { ReactComponent as CarrionSVG } from 'images/carrion.svg';
+import { ReactComponent as LaurelCrownSVG } from 'images/laurel-crown.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
@@ -148,7 +149,7 @@ function EntryIconColumn(props) {
       }
 
       { isDeath &&
-        <DeadheadSVG 
+        <CarrionSVG 
           className='flex-none adjacent-mar-t-3'
           style={{
             width: 25,
@@ -217,7 +218,11 @@ function EntryBodyContainer(props) {
     combatActions,
     acquiredItems,
     meatChange,
+    isVictory,
+    isDeath,
   } = data;
+
+  const hasCombatActions = combatActions.length > 0;
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
@@ -234,20 +239,42 @@ function EntryBodyContainer(props) {
       {/* combat */}
       <div className='flex-row s flexwrap-yes aitems-center adjacent-mar-t-3'>
         { combatActions.map((combatData, idx) => (
-          <React.Fragment key={`combat-action-${uuidv4}-${idx}-key`}>
+          <React.Fragment key={`combat-action-${uuidv4}-${idx}-key`}>    
             <CombatActionDisplay 
               className='mar-2'
               content={combatData.actionName}
               roundNum={combatData.roundNum} 
             /> 
 
-            {(idx !== combatActions.length - 1) &&
-              <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
-                >
-              </div>
-            }
+            <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
+              >
+            </div>
           </React.Fragment>
         ))}
+
+        { hasCombatActions && isVictory &&
+          <React.Fragment>
+            <LaurelCrownSVG 
+              className='flex-none mar-2'
+              style={{
+                width: 30,
+                height: 30,
+              }} />
+            <div className='flex-row-center fontsize-3 mar-2'>Victory!</div>
+          </React.Fragment>
+        }
+
+        { hasCombatActions && isDeath &&
+          <React.Fragment>
+            <CarrionSVG 
+              className='flex-none mar-2'
+              style={{
+                width: 30,
+                height: 30,
+              }} />
+            <div className='flex-row-center fontsize-3 mar-2'>Beaten up :(</div>
+          </React.Fragment>
+        }
       </div>
 
       {/* meat and items */}
