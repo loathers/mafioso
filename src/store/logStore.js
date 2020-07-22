@@ -24,9 +24,9 @@ class LogStore {
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
-      pageNum: 0,
+      pageNum: 1,
       /** @type {Number} */
-      displayPerPage: 100,
+      entriesPerPage: 100,
       /** @type {Array<EntryType>} */
       visibleEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
@@ -56,16 +56,9 @@ class LogStore {
   get hasData() {
     return this.logData && this.logData.length > 0;
   }
-  /** @type {Boolean} */
-  get visibleEntries() {
-    const {
-      displayPerPage,
-      visibleEntryTypes,
-    } = this.filterOptions;
-
-    return this.logData
-      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType))
-      .slice(0, Math.min(displayPerPage, this.logData.length));
+  /** @return {Array<LogEntry>} */
+  get currentEntries() {
+    return this.getEntries(this.filterOptions);
   }
   /**
    * @param {File} file
@@ -98,6 +91,24 @@ class LogStore {
 
     const newData = logParserUtils.parseLog(this.srcLog);
     this.logData.replace(newData);
+  }
+  /** 
+   * @param {Object} options
+   * @return {Array<LogEntry>} 
+   */
+  getEntries(options = {}) {
+    const {
+      pageNum = 0,
+      entriesPerPage = 100,
+      visibleEntryTypes = [],
+    } = options;
+
+    const startIdx = entriesPerPage * pageNum;
+    const endIdx = startIdx + entriesPerPage;
+
+    return this.logData
+      .slice(startIdx, endIdx)
+      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType));
   }
 }
 

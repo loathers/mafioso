@@ -22,7 +22,7 @@ function App() {
       <UploadComponent />
 
       <VisualizerSection 
-        entriesList={logStore.visibleEntries}
+        entriesList={logStore.currentEntries}
       />
     </div>
   );
