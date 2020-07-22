@@ -4,7 +4,7 @@ import {
   hasString,
   getRegexMatch,
 } from 'utilities/regexUtils';
-import * as logParserUtils from 'utilities/logParserUtils';
+import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
 /**
  * core parsing function to do it all
@@ -270,14 +270,14 @@ export function parseIsFreeAdv(entryString) {
  * @return {Boolean}
  */
 export function parseIsCombatEncounter(entryString) {
-  return logParserUtils.isEntryCombatEncounter(entryString);
+  return entryTypeRegexUtils.isEntryCombatEncounter(entryString);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function parseIsNonCombatEncounter(entryString) {
-  return logParserUtils.isEntryNonCombatEncounter(entryString);
+  return entryTypeRegexUtils.isEntryNonCombatEncounter(entryString);
 }
 /**
  * was this a won combat?

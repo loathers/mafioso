@@ -2,10 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import LogEntry from 'classes/LogEntry';
 
-import ENTRY_TYPE from 'constants/entryType';
 import REGEX from 'constants/regexes';
 
-import {hasString, fixSpecialEntities} from 'utilities/regexUtils';
+import {fixSpecialEntities} from 'utilities/regexUtils';
+import {getEntryType} from 'utilities/entryTypeRegexUtils';
 
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
@@ -95,183 +95,10 @@ export function parseLogArray(logArray, startIdx) {
     const parsedLogArray = logArray.map((entryString, idx) => new LogEntry({
       entryIdx: startIdx + idx,
       entryId: `${startIdx + idx}_${logId}`,
-      entryType: checkEntryType(entryString),
+      entryType: getEntryType(entryString),
       entryString: fixSpecialEntities(entryString),
     }));
 
     setTimeout(() => resolve(parsedLogArray), PARSE_DELAY);
   })
-}
-// -- utility functions to determine the type
-/**
- * handles determining what EntryType a log string is
- * 
- * @param {String} entryString
- * @return {EntryType}
- */
-export function checkEntryType(entryString) {
-  // -- basic entries
-  if (isEntryAscensionInfo(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
-  }
-  
-  if (isEntryMafiaMisc(entryString)) {
-    return ENTRY_TYPE.MAFIA.MISC_LOG;
-  }
-
-  if (isEntryCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.COMBAT;
-  }
-
-  if (isEntryNonCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
-  }
-
-  if (isEntryEat(entryString)) {
-    return ENTRY_TYPE.CONSUMPTION.EAT;
-  }
-
-  if (isEntryDrink(entryString)) {
-    return ENTRY_TYPE.CONSUMPTION.DRINK;
-  }
-
-  if (isEntryChew(entryString)) {
-    return ENTRY_TYPE.CONSUMPTION.CHEW;
-  }
-
-  if (isEntryTransaction(entryString)) {
-    return ENTRY_TYPE.TRANSACTION;
-  }
-
-  if (isEntryLocationVisit(entryString)) {
-    return ENTRY_TYPE.LOCATION_VISIT;
-  }
-
-  // -- iotm: diabolic pizza
-  if (isEntryDiabolicPizzaMake(entryString)) {
-    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
-  }
-
-  if (isEntryDiabolicPizzaEat(entryString)) {
-    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
-  }
-
-  if (isEntryBeachComb(entryString)) {
-    return ENTRY_TYPE.IOTM.BEACH_COMB;
-  }
-
-  return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * check if this is some random mafia string
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryMafiaMisc(entryString) {
-  if (hasString(entryString, REGEX.MISC.LOG_BORDER)) {
-    return true;
-  }
-
-  return false;
-}
-/**
- * check if entry is telling us about this ascension
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryAscensionInfo(entryString) {
-  return hasString(entryString, REGEX.VALUE.ASCENSION_NUMBER);
-}
-/**
- * check if this entry is about buying something
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryEat(entryString) {
-  return hasString(entryString, REGEX.VALUE.EAT_TARGET);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDrink(entryString) {
-  return hasString(entryString, REGEX.VALUE.DRINK_TARGET);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryChew(entryString) {
-  return hasString(entryString, REGEX.VALUE.CHEW_TARGET);
-}
-/**
- * todo
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryLocationVisit(entryString) {
-  const LOCATION_REGEX = /^(Visiting)/;
-  return hasString(entryString, LOCATION_REGEX);
-}
-// -- actions
-/**
- * actions (aka turn) [num]
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryAction(entryString) {
-  return hasString(entryString, REGEX.VALUE.TURN_NUM);
-}
-/**
- * check is entry is a combat encounter,
- *  which will have the initiative line
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCombatEncounter(entryString) {
-  return hasString(entryString, REGEX.LINE.COMBAT_INIT);
-}
-/**
- * check if entry is a noncombat
- * 
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryNonCombatEncounter(entryString) {
-  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryMafiaMisc(entryString);
-}
-// -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDiabolicPizzaMake(entryString) {
-  return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDiabolicPizzaEat(entryString) {
-  return hasString(entryString, REGEX.DIABOLIC_PIZZA.EAT_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBeachComb(entryString) {
-  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
 }
