@@ -45,7 +45,7 @@ export const REGEX = {
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*\s*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*\s*/gi,
-    MUS_CHANGE: /.*(gain|lose).*\d*(Beefiness|Fortitude|Muscleboundedness|Strengthliness|Strongness).*\s*/gi,
+    MUS_CHANGE: /.*(gain|lose).*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*\s*/gi,
     MYST_CHANGE: /.*(gain|lose).*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*\s*/gi,
     MOX_CHANGE: /.*(gain|lose).*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*\s*/gi,
   },
@@ -85,8 +85,8 @@ export const REGEX = {
     MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
     MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
     
-    MUS_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundedness|Strengthliness|Strongness))/gi,
-    MUS_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundedness|Strengthliness|Strongness))/gi,
+    MUS_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
+    MUS_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
     MYST_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
     MYST_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
     MOX_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
