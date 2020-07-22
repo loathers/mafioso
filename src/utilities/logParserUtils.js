@@ -4,9 +4,6 @@ import LogEntry from 'classes/LogEntry';
 
 import REGEX from 'constants/regexes';
 
-import {fixSpecialEntities} from 'utilities/regexUtils';
-import {getEntryType} from 'utilities/entryTypeRegexUtils';
-
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
 
@@ -92,11 +89,10 @@ export async function parseRawArray(rawArray, options = {}) {
  */
 export function parseLogArray(logArray, startIdx) {
   return new Promise((resolve) => {
-    const parsedLogArray = logArray.map((entryString, idx) => new LogEntry({
+    const parsedLogArray = logArray.map((rawText, idx) => new LogEntry({
       entryIdx: startIdx + idx,
       entryId: `${startIdx + idx}_${logId}`,
-      entryType: getEntryType(entryString),
-      entryString: fixSpecialEntities(entryString),
+      rawText: rawText,
     }));
 
     setTimeout(() => resolve(parsedLogArray), PARSE_DELAY);

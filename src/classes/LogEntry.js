@@ -1,21 +1,29 @@
 import ENTRY_TYPE from 'constants/entryType';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
+import {getEntryType} from 'utilities/entryTypeRegexUtils';
+import {fixSpecialEntities} from 'utilities/regexUtils';
 
 /**
  * 
  */
 export default class LogEntry {
   /** @default */
-  constructor({entryId, entryIdx, entryType, entryString}) {
+  constructor({entryId, entryIdx, rawText}) {
     /** @type {Number} */
     this.id = entryId;
     /** @type {Number} */
     this.entryIdx = entryIdx;
-    /** @type {EntryType} */
-    this.entryType = entryType;
     /** @type {String} */
-    this.entryString = entryString;
+    this.rawText = rawText;
+
+    /** @type {EntryType} */
+    this.entryType = getEntryType(rawText);
+    /** @type {String} */
+    this.entryString = fixSpecialEntities(rawText);
+    /** @type {String | null} */
+    this.entryDisplay = null;
+
     /** @type {Object} */
     this.data = {
       /** @type {Number} */
@@ -61,11 +69,8 @@ export default class LogEntry {
       diabolicPizzaIngredients: [],
     }
 
-    /** @type {String | null} */
-    this.entryDisplay = entryString;
-
-    // can automatically parse if given a string
-    if (entryString !== '' && Boolean(entryString)) {
+    // start parsing we have the raw text
+    if (rawText !== '' && Boolean(rawText)) {
       this.initialize();
     }
   }
