@@ -1,3 +1,5 @@
+import ENTRY_TYPE from 'constants/entryType';
+
 import * as entryParserUtils from 'utilities/entryParserUtils';
 
 /**
@@ -100,8 +102,21 @@ export default class LogEntry {
       ...parsedSpecialData,
     };
 
+    this.entryDisplay = this.getEntryDisplay();
+  }
+  /**
+   * the text that we display in the entry 
+   * 
+   * @return {String | null}
+   */
+  getEntryDisplay() {
+    // transactions will just be spending meat and gaining items
+    if (this.entryType === ENTRY_TYPE.TRANSACTION) {
+      return null;
+    }
+
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
-    this.entryDisplay = entryBody.length <= 0 ? null : entryBody;
+    return entryBody.length <= 0 ? null : entryBody;
   }
   // -- unique displays
   /** @type {String} */
