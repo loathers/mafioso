@@ -8,7 +8,7 @@ import REGEX from 'constants/regexes';
 import {hasString, fixSpecialEntities} from 'utilities/regexUtils';
 
 const logId = uuidv4();
-const PARSE_DELAY = 15; // ms
+const PARSE_DELAY = 10; // ms
 
 /**
  * update batch size based on number of characters in the log
@@ -30,48 +30,49 @@ function recalculateBatchSize(rawSize) {
 export async function parseLogTxt(logRaw) {
   const logRawCleaned = logRaw.replace(REGEX.MISC.LOG_CRUFT, '');
   const logRawSize = logRawCleaned.length;
+  if (logRawSize > 10000000) {
+    console.warn(`This log of ${logRawSize} characters is too huge!`);
+    return;
+  }
 
-  // an entry is separated by two new lines
-  //  going to first do a broad grouping
+  // start finding entries, which will be separated by two new lines
   const logRawSplit = logRawCleaned.split(REGEX.MISC.LOG_SPLIT);
-
-  // do we have enough data
-  // todo: meaningful check
-  const logSplitLength = logRawSplit.length;
-  if (logSplitLength <= 1) {
+  if (logRawSplit.length <= 1) {
     console.warn('Not enough data on log.');
     return;
   }
 
   let logData = [];
-  console.log('parsing log of', logRawSize, 'characters');
+  console.log('✨ %cParsing your Ascension Log!', 'color: Blue');
+  console.log(`(log has ${logRawSize} characters)`);
 
   // do it in batches
   const PARSE_BATCH_SIZE = recalculateBatchSize(logRawSize);
-  const batchCount = Math.ceil(logSplitLength / PARSE_BATCH_SIZE);
+  const batchCount = Math.ceil(logRawSplit.length / PARSE_BATCH_SIZE);
   for (let i=0; i<batchCount; i++) {
-    const sliceStart = i * PARSE_BATCH_SIZE;
-    const sliceEnd = sliceStart + PARSE_BATCH_SIZE;
-    const logGroup = logRawSplit.slice(sliceStart, sliceEnd);
-    const parsedGroup = await parseLogArray(logGroup);
-
+    const startIdx = i * PARSE_BATCH_SIZE;
+    const endIdx = startIdx + PARSE_BATCH_SIZE;
+    const logGroup = logRawSplit.slice(startIdx, endIdx);
+    const parsedGroup = await parseLogArray(logGroup, startIdx);
     logData = logData.concat(parsedGroup);
-    console.log('... batch', i, 'done with', parsedGroup.length, 'entries');
+    console.log(`... Batch #${i+1} parsed (${parsedGroup.length} entries)`);
   }
 
-  console.log('finished parsing', logData.length, 'entries!');
+  console.log(`✨ %cFinishing! Created ${logData.length} entries.`, 'color: Blue');
   return logData;
 }
 /** 
  * creates an LogEntry class based on txt array
  * @async
+ * @param {Array<String>} logArray
+ * @param {Number} startIdx
  * @returns {Array<LogEntry>}
  */
-export function parseLogArray(logArray) {
+export function parseLogArray(logArray, startIdx) {
   return new Promise((resolve) => {
     const parsedLogArray = logArray.map((entryString, idx) => new LogEntry({
-      entryIdx: idx,
-      entryId: `${idx}_${logId}`,
+      entryIdx: startIdx + idx,
+      entryId: `${startIdx + idx}_${logId}`,
       entryType: checkEntryType(entryString),
       entryString: fixSpecialEntities(entryString),
     }));
