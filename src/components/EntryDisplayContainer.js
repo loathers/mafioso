@@ -149,15 +149,14 @@ function EntryBodyContainer(props) {
 export default function EntryDisplayContainer(props) {
   const {
     onClick,
-    onMouseEnter,
-    onMouseLeave,
     
-    isFocused,
     isSelected,
 
     className,
     logEntry,
   } = props;
+
+  const [isFocused, toggleFocus] = React.useState(false);
 
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   const selectedClass = isSelected ? 'bg-green' : '';
@@ -165,8 +164,8 @@ export default function EntryDisplayContainer(props) {
   return (
     <div 
       onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={() => toggleFocus(true)}
+      onMouseLeave={() => toggleFocus(false)}
       className={combineClassnames('flex-row adjacent-mar-t-2 pad-4 borradius-2', focusedClass, className)}>
 
       {/* status indicator column */}
