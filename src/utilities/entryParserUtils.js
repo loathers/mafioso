@@ -23,11 +23,11 @@ export function parseEntry(entryString) {
 
   return {
     turnNum,
-    isFreeAdv: parseIsFreeAdv(entryString),
+    isFreeAdv: isFreeAdv(entryString),
     locationName,
     encounterName,
-    isCombatEncounter: parseIsCombatEncounter(entryString),
-    isNoncombatEncounter: parseIsNonCombatEncounter(entryString),
+    isCombatEncounter: isCombatEncounter(entryString),
+    isNoncombatEncounter: isNoncombatEncounter(entryString),
     combatActions,
     acquiredItems,
     acquiredEffects,
@@ -35,7 +35,7 @@ export function parseEntry(entryString) {
     hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
-    isLevelUp: parseIsLevelUp(entryString),
+    isLevelUp: isLevelUp(entryString),
   }
 }
 /**
@@ -80,7 +80,7 @@ export function createEntryBody(entryString) {
     return currentString.replace(replacementRegex, '');
   }, entryString);
 }
-// -- commonly found parsers
+// -- common parsers
 /**
  * parses the adventure number
  *
@@ -95,6 +95,33 @@ export function parseTurnNum(entryString) {
     return -1;
   }
   return Number(turnNumMatches[0]);
+}
+/**
+ * determine if this is a free adventure
+ * 
+ * @param {String} entryString
+ * @return {String}
+ */
+export function isFreeAdv(entryString) {
+  if (isUseTheForce(entryString)) {
+    return true;
+  }
+
+  return hasString(entryString, REGEX.LINE.COMBAT_FREE_TURN);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isCombatEncounter(entryString) {
+  return entryTypeRegexUtils.isEntryCombatEncounter(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isNoncombatEncounter(entryString) {
+  return entryTypeRegexUtils.isEntryNonCombatEncounter(entryString);
 }
 /**
  * parses name of the location,
@@ -137,53 +164,6 @@ export function parseEncounterName(entryString) {
     return null;
   }
   return encounterNameMatches[0];
-}
-/**
- * builds an array of attacks/skills/etc used in combat
- *  includes: initiative, combat victory
- * 
- * @param {String} entryString
- * @return {Array<String>}
- */
-export function parseCombatActions(entryString) {
-  if (!parseIsCombatEncounter(entryString)) {
-    return [];
-  }
-
-  const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
-  if (combatRoundsString === null) {
-    return [];
-  }
-
-  const combatActionsList = combatRoundsString.map((attackRoundString) => {
-    const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND);
-    const attackActionName = parseAttackName(attackRoundString);
-    return {
-      actionName: attackActionName,
-      roundNum,
-    };
-  });
-
-  return combatActionsList;
-}
-/**
- * builds an array of all the items that were gained
- * 
- * @param {String} entryString
- * @return {Array<String>}
- */
-export function parseAttackName(entryString) {
-  const combatSkillNames = getRegexMatch(entryString, REGEX.VALUE.COMBAT_SKILL_NAMES);
-  if (combatSkillNames) {
-    return combatSkillNames[0];
-  }
-
-  const combatAttacks = getRegexMatch(entryString, REGEX.VALUE.COMBAT_ATTACKS);
-  if (combatAttacks) {
-    return 'ATTACK';
-  }
-
-  return 'unknown attack';
 }
 /**
  * builds an array of all the items that were gained
@@ -251,33 +231,79 @@ export function parseMeatSpent(entryString) {
   const buyCost = Number(buyCostMatches[0]);
   return buyAmount * -buyCost;
 }
-// -- boolean parsers
 /**
- * determine if this is a free adventure
+ * did we gain a level somewhere
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isLevelUp(entryString) {
+  return hasString(entryString, REGEX.LINE.LEVEL_GAIN);
+}
+// -- combat parsers
+/**
+ * builds an array of attacks/skills/etc used in combat
+ *  includes: initiative, combat victory
  * 
  * @param {String} entryString
- * @return {String}
+ * @return {Array<String>}
  */
-export function parseIsFreeAdv(entryString) {
-  if (isUseTheForce(entryString)) {
+export function parseCombatActions(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return [];
+  }
+
+  const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
+  if (combatRoundsString === null) {
+    return [];
+  }
+
+  const combatActionsList = combatRoundsString.map((attackRoundString) => {
+    const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND);
+    const attackActionName = parseAttackName(attackRoundString);
+    return {
+      actionName: attackActionName,
+      roundNum,
+    };
+  });
+
+  return combatActionsList;
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function hasInitiative(entryString) {
+  // only want to check if combat
+  if (!isCombatEncounter(entryString)) {
+    return false;
+  }
+
+  if (hasString(entryString, REGEX.LINE.COMBAT_WIN_INIT)) {
     return true;
   }
 
-  return hasString(entryString, REGEX.LINE.COMBAT_FREE_TURN);
+  if (hasString(entryString, REGEX.LINE.COMBAT_LOSE_INIT)) {
+    return false;
+  }
 }
 /**
+ * builds an array of all the items that were gained
+ * 
  * @param {String} entryString
- * @return {Boolean}
+ * @return {Array<String>}
  */
-export function parseIsCombatEncounter(entryString) {
-  return entryTypeRegexUtils.isEntryCombatEncounter(entryString);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function parseIsNonCombatEncounter(entryString) {
-  return entryTypeRegexUtils.isEntryNonCombatEncounter(entryString);
+export function parseAttackName(entryString) {
+  const combatSkillNames = getRegexMatch(entryString, REGEX.VALUE.COMBAT_SKILL_NAMES);
+  if (combatSkillNames) {
+    return combatSkillNames[0];
+  }
+
+  const combatAttacks = getRegexMatch(entryString, REGEX.VALUE.COMBAT_ATTACKS);
+  if (combatAttacks) {
+    return 'ATTACK';
+  }
+
+  return 'unknown attack';
 }
 /**
  * was this a won combat?
@@ -296,39 +322,13 @@ export function parseCombatVictory(entryString) {
  */
 export function parseCombatLoss(entryString) {
   // only want to check if combat
-  if (!parseIsCombatEncounter(entryString)) {
+  if (!isCombatEncounter(entryString)) {
     return false;
   }
 
   // combat is counted as a loss if not a victory
   //  except in the case that there was a free runaway/banish used
-  return !parseIsFreeAdv(entryString) && !parseCombatVictory(entryString);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function hasInitiative(entryString) {
-  // only want to check if combat
-  if (!parseIsCombatEncounter(entryString)) {
-    return false;
-  }
-
-  if (hasString(entryString, REGEX.LINE.COMBAT_WIN_INIT)) {
-    return true;
-  }
-
-  if (hasString(entryString, REGEX.LINE.COMBAT_LOSE_INIT)) {
-    return false;
-  }
-}
-/**
- * did we gain a level somewhere
- * @param {String} entryString
- * @return {Boolean}
- */
-export function parseIsLevelUp(entryString) {
-  return hasString(entryString, REGEX.LINE.LEVEL_GAIN);
+  return !isFreeAdv(entryString) && !parseCombatVictory(entryString);
 }
 // -- special data parsers
 /**
