@@ -14,18 +14,19 @@ function VisualizerTooltip(props) {
     className,
     selectedEntry,
     previousEntry,
+    isActive,
     style,
   } = props;
 
-  const hasSelectedEntry = selectedEntry !== undefined;
+  const pointerEventsClass = isActive ? '' : 'pevents-none';
   const contentDisplay = (selectedEntry && selectedEntry.entryString) || (previousEntry && previousEntry.entryString);
 
   return (
     <div
-      className={combineClassnames('pad-4 borradius-2 bg-grayest fontsize-3 color-white whitespace-pre-wrap flex-col', className)}
+      className={combineClassnames('pad-4 borradius-2 bg-grayest fontsize-3 color-white whitespace-pre-wrap flex-col', pointerEventsClass, className)}
       componentname='visualizer-tooltip'
       style={{
-        opacity: hasSelectedEntry ? 1 : 0,
+        opacity: isActive ? 1 : 0,
         ...style,
       }}>
 
@@ -89,6 +90,7 @@ function VisualizerSection(props) {
       ))}
 
       <VisualizerTooltip
+        isActive={hasSelectedEntry}
         selectedEntry={selectedEntry}
         previousEntry={previousEntry}
         style={detailsStyle}
