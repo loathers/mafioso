@@ -8,9 +8,19 @@ import REGEX from 'constants/regexes';
 import {hasString, fixSpecialEntities} from 'utilities/regexUtils';
 
 const logId = uuidv4();
-const PARSE_BATCH_SIZE = 100;
-const PARSE_DELAY = 50;
+const PARSE_DELAY = 15; // ms
 
+/**
+ * update batch size based on number of characters in the log
+ *  this calculation is not very scientific
+ *  
+ * @param {Number} rawSize
+ */
+function recalculateBatchSize(rawSize) {
+  const rawVal = Math.sqrt(rawSize);
+  const newBatchSize = Math.round(1200 - rawVal);
+  return Math.max(100, newBatchSize);
+}
 /**
  * core parsing function to do it all
  * 
@@ -19,6 +29,7 @@ const PARSE_DELAY = 50;
  */
 export async function parseLogTxt(logRaw) {
   const logRawCleaned = logRaw.replace(REGEX.MISC.LOG_CRUFT, '');
+  const logRawSize = logRawCleaned.length;
 
   // an entry is separated by two new lines
   //  going to first do a broad grouping
@@ -26,18 +37,20 @@ export async function parseLogTxt(logRaw) {
 
   // do we have enough data
   // todo: meaningful check
-  if (logRawSplit.length <= 1) {
+  const logSplitLength = logRawSplit.length;
+  if (logSplitLength <= 1) {
     console.warn('Not enough data on log.');
     return;
   }
 
   let logData = [];
-  console.log('parsing', logRawSplit.length, 'entries using id:', logId);
-  
+  console.log('parsing log of', logRawSize, 'characters');
+
   // do it in batches
-  const batchCount = Math.ceil(logRawSplit.length / PARSE_BATCH_SIZE);
+  const PARSE_BATCH_SIZE = recalculateBatchSize(logRawSize);
+  const batchCount = Math.ceil(logSplitLength / PARSE_BATCH_SIZE);
   for (let i=0; i<batchCount; i++) {
-    const sliceStart = i*PARSE_BATCH_SIZE;
+    const sliceStart = i * PARSE_BATCH_SIZE;
     const sliceEnd = sliceStart + PARSE_BATCH_SIZE;
     const logGroup = logRawSplit.slice(sliceStart, sliceEnd);
     const parsedGroup = await parseLogArray(logGroup);
