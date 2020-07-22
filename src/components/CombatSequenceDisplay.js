@@ -39,16 +39,12 @@ export default function CombatSequenceDisplay(props) {
     logEntry,
   } = props;
 
-  const {
-    data, 
-  } = logEntry;
-
-  const {
+  const {combatData: {
     combatActions,
     hasInitiative,
     isVictory,
     isDeath,
-  } = data;
+  }} = logEntry;
 
   return (
     <div className={combineClassnames('flex-row flexwrap-yes aitems-center adjacent-mar-t-3', className)}>

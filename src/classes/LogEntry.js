@@ -39,8 +39,6 @@ export default class LogEntry {
       /** @type {Boolean} */
       isNoncombatEncounter: false, // todo: is a duplication of entryType
       /** @type {Array<String>} */
-      combatActions: [],
-      /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Array<String>} */
       acquiredEffects: [],
@@ -53,14 +51,19 @@ export default class LogEntry {
       /** @type {Number} */
       moxChange: 0,
       /** @type {Boolean} */
+      isLevelUp: false,
+    };
+    /** @type {Object} */
+    this.combatData = {
+      /** @type {Boolean} */
       hasInitiative: false,
+      /** @type {Array<String>} */
+      combatActions: [],
       /** @type {Boolean} */
       isVictory: false,
       /** @type {Boolean} */
       isDeath: false,
-      /** @type {Boolean} */
-      isLevelUp: false,
-    };
+    }
     /** @type {Object} */
     this.specialData = {
       /** @type {Boolean} */
@@ -95,7 +98,6 @@ export default class LogEntry {
   getMeatDisplay() {
     return this.data.meatChange;
   }
-  // -- boolean getters
   /** @returns {Boolean} */
   hasEntry() {
     return this.entryString !== undefined;
@@ -118,7 +120,7 @@ export default class LogEntry {
   }
   /** @returns {Boolean} */
   hasCombatActions() {
-    return this.data.combatActions.length > 0;
+    return this.combatData.combatActions.length > 0;
   }
   /** @returns {Boolean} */
   hasInventoryChanges() {
@@ -146,14 +148,21 @@ export default class LogEntry {
    * once `entryString` is given we can set all the properties
    */
   initialize() {
-    // common adventure data
+    // common data
     const parsedData = entryParserUtils.parseEntry(this.entryString);
     this.data = {
       ...this.data,
       ...parsedData,
     };
 
-    // common special data
+    // combat data
+    const parsedCombatData = entryParserUtils.parseCombatData(this.entryString);
+    this.combatData = {
+      ...this.combatData,
+      ...parsedCombatData,
+    };
+
+    // special data
     const parsedSpecialData = entryParserUtils.parseEntrySpecial(this.entryString);
     this.specialData = {
       ...this.specialData,

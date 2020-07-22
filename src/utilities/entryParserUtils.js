@@ -16,7 +16,6 @@ export function parseEntry(entryString) {
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
-  const combatActions = parseCombatActions(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
   const acquiredEffects = parseAcquiredEffects(entryString);
   const meatChange = parseMeatChange(entryString);
@@ -28,14 +27,24 @@ export function parseEntry(entryString) {
     encounterName,
     isCombatEncounter: isCombatEncounter(entryString),
     isNoncombatEncounter: isNoncombatEncounter(entryString),
-    combatActions,
     acquiredItems,
     acquiredEffects,
     meatChange,
+    isLevelUp: isLevelUp(entryString),
+  }
+}
+/**
+ * core parsing for combat related data
+ * 
+ * @param {String} entryString
+ * @return {Array<LogEntry>}
+ */
+export function parseCombatData(entryString) {
+  return {
+    combatActions: parseCombatActions(entryString),
     hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
-    isLevelUp: isLevelUp(entryString),
   }
 }
 /**
