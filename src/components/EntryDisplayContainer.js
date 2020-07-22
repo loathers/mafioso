@@ -92,7 +92,7 @@ function EntryHeaderContainer(props) {
   const encounterDisplay = logEntry.getEncounterDisplay();
 
   return (
-    <div className={'flex-col adjacent-mar-t-3 ' + className}>
+    <div className={combineClassnames('flex-col adjacent-mar-t-3', className)}>
       { locationDisplay &&
         <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{locationDisplay}</div>
       }
@@ -116,15 +116,20 @@ function EntryBodyContainer(props) {
     entryDisplay,
   } = logEntry;
 
+  const hasCombatActions = logEntry.hasCombatActions();
+  const hasInventoryChanges = logEntry.hasInventoryChanges();
+
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
       {/* header with location and encounter name */}
       <EntryHeaderContainer logEntry={logEntry} />
 
       {/* text content */}
-      <div className='flex-col adjacent-mar-t-3'>
-        {entryDisplay}
-      </div>
+      { entryDisplay &&
+        <div className='flex-col adjacent-mar-t-3'>
+          {entryDisplay}
+        </div>
+      }
 
       {/* -- custom content -- */}
       {/* diabolic pizza */}
@@ -133,10 +138,14 @@ function EntryBodyContainer(props) {
       }     
 
       {/* combat */}
-      <CombatSequenceDisplay logEntry={logEntry} />
+      { hasCombatActions &&
+        <CombatSequenceDisplay logEntry={logEntry} />
+      }
 
       {/* meat and items */}
-      <ItemChangesDisplay logEntry={logEntry} />
+      { hasInventoryChanges &&
+        <ItemChangesDisplay logEntry={logEntry} />
+      }
     </div>
   )
 }

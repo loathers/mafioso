@@ -105,6 +105,18 @@ export default class LogEntry {
   hasMeatChanged() {
     return this.data.meatChange !== 0;
   }
+  /** @returns {Boolean} */
+  hasAcquiredItems() {
+    return this.data.meatChange !== 0;
+  }
+  /** @returns {Boolean} */
+  hasCombatActions() {
+    return this.data.combatActions.length > 0;
+  }
+  /** @returns {Boolean} */
+  hasInventoryChanges() {
+    return this.hasMeatChanged() || this.hasAcquiredItems();
+  }
   // -- special getters
   /** @returns {String} */
   transactionDisplay() {

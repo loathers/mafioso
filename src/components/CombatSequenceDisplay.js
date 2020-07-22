@@ -50,11 +50,9 @@ export default function CombatSequenceDisplay(props) {
     isDeath,
   } = data;
 
-  const hasCombatActions = combatActions.length > 0;
-
   return (
-    <div className={combineClassnames('flex-row s flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
-      { hasCombatActions && hasInitiative &&
+    <div className={combineClassnames('flex-row flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
+      { hasInitiative &&
         <Fragment>
           <div className='flex-row-center fontsize-3 mar-2'>Initiative!</div>
           <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
@@ -77,7 +75,7 @@ export default function CombatSequenceDisplay(props) {
         </Fragment>
       ))}
 
-      { hasCombatActions && isVictory &&
+      { isVictory &&
         <Fragment>
           <LaurelCrownSVG 
             className='flex-none mar-2'
@@ -86,7 +84,7 @@ export default function CombatSequenceDisplay(props) {
         </Fragment>
       }
 
-      { hasCombatActions && isDeath &&
+      { isDeath &&
         <Fragment>
           <CarrionSVG 
             className='flex-none mar-2'
