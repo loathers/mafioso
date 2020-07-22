@@ -33,6 +33,7 @@ export function parseEntry(entryString) {
     hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
+    isLevelUp: parseIsLevelUp(entryString),
   }
 }
 /**
@@ -58,6 +59,7 @@ export function createEntryBody(entryString) {
   const replacementList = [
     REGEX.LINE.LOCATION,
     REGEX.LINE.ENCOUNTER,
+    REGEX.LINE.LEVEL_GAIN,
     REGEX.LINE.COMBAT_FREE_TURN,
     REGEX.LINE.COMBAT_INIT,
     REGEX.LINE.COMBAT_ACTION_ROUND,
@@ -144,7 +146,7 @@ export function parseCombatActions(entryString) {
       roundNum,
     };
   });
-  
+
   return combatActionsList;
 }
 /**
@@ -281,6 +283,14 @@ export function hasInitiative(entryString) {
   if (hasString(entryString, REGEX.LINE.COMBAT_LOSE_INIT)) {
     return false;
   }
+}
+/**
+ * did we gain a level somewhere
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseIsLevelUp(entryString) {
+  return hasString(entryString, REGEX.LINE.LEVEL_GAIN);
 }
 // -- special data parsers
 /**

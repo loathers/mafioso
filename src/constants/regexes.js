@@ -29,6 +29,7 @@ export const REGEX = {
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
+    LEVEL_GAIN: /^You gain a level.*\s+/mi,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
     ACQUIRED_ITEMS: /.*acquire.*\s*/gm,
 

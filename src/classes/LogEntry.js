@@ -48,6 +48,8 @@ export default class LogEntry {
       isVictory: false,
       /** @type {Boolean} */
       isDeath: false,
+      /** @type {Boolean} */
+      isLevelUp: false,
     };
     /** @type {Object} */
     this.specialData = {
