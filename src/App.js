@@ -42,7 +42,7 @@ function App() {
 
       {/* loader */}
       { logStore.isParsing.get() &&
-        <LoaderComponent className='adjacent-mar-t-5'/>
+        <LoaderComponent className='pad-6 adjacent-mar-t-5'/>
       }
 
       <VisualizerSection 

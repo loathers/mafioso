@@ -7,7 +7,9 @@ import REGEX from 'constants/regexes';
 
 import {hasString, fixSpecialEntities} from 'utilities/regexUtils';
 
-const PARSE_BATCH_SIZE = 500;
+const logId = uuidv4();
+const PARSE_BATCH_SIZE = 100;
+const PARSE_DELAY = 50;
 
 /**
  * core parsing function to do it all
@@ -15,7 +17,7 @@ const PARSE_BATCH_SIZE = 500;
  * @param {String} logRaw
  * @return {Array<LogEntry>}
  */
-export function parseLog(logRaw) {
+export async function parseLogTxt(logRaw) {
   const logRawCleaned = logRaw.replace(REGEX.MISC.LOG_CRUFT, '');
 
   // an entry is separated by two new lines
@@ -29,7 +31,6 @@ export function parseLog(logRaw) {
     return;
   }
 
-  const logId = uuidv4();
   let logData = [];
   console.log('parsing', logRawSplit.length, 'entries using id:', logId);
   
@@ -39,13 +40,7 @@ export function parseLog(logRaw) {
     const sliceStart = i*PARSE_BATCH_SIZE;
     const sliceEnd = sliceStart + PARSE_BATCH_SIZE;
     const logGroup = logRawSplit.slice(sliceStart, sliceEnd);
-
-    const parsedGroup = logGroup.map((entryString, idx) => new LogEntry({
-      entryIdx: idx,
-      entryId: `${idx}_${logId}`,
-      entryType: checkEntryType(entryString),
-      entryString: fixSpecialEntities(entryString),
-    }));
+    const parsedGroup = await parseLogArray(logGroup);
 
     logData = logData.concat(parsedGroup);
     console.log('... batch', i, 'done with', parsedGroup.length, 'entries');
@@ -53,15 +48,23 @@ export function parseLog(logRaw) {
 
   console.log('finished parsing', logData.length, 'entries!');
   return logData;
+}
+/** 
+ * creates an LogEntry class based on txt array
+ * @async
+ * @returns {Array<LogEntry>}
+ */
+export function parseLogArray(logArray) {
+  return new Promise((resolve) => {
+    const parsedLogArray = logArray.map((entryString, idx) => new LogEntry({
+      entryIdx: idx,
+      entryId: `${idx}_${logId}`,
+      entryType: checkEntryType(entryString),
+      entryString: fixSpecialEntities(entryString),
+    }));
 
-  // return logRawSplit
-  //   .slice(0, Math.min(10000, logRawSplit.length)) // todo: lazy load, for now limit total entries
-  //   .map((entryString, idx) => new LogEntry({
-  //     entryIdx: idx,
-  //     entryId: `${idx}_${logId}`,
-  //     entryType: checkEntryType(entryString),
-  //     entryString: fixSpecialEntities(entryString),
-  //   }));
+    setTimeout(() => resolve(parsedLogArray), PARSE_DELAY);
+  })
 }
 // -- utility functions to determine the type
 /**

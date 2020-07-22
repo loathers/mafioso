@@ -91,7 +91,7 @@ class LogStore {
       return;
     }
 
-    const newData = logParserUtils.parseLog(this.srcLog);
+    const newData = await logParserUtils.parseLogTxt(this.srcLog);
     this.logData.replace(newData);
 
     this.isParsing.set(false);
