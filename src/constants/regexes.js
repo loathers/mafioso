@@ -35,13 +35,19 @@ export const REGEX = {
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
-    LEVEL_GAIN: /^You gain a level.*\s+/mi,
-    MEAT_GAIN: /.*gain.*meat.*\s*/mi,
+    LEVEL_GAIN: /^You gain a level.*\s+/i,
+    MEAT_GAIN: /.*gain.*meat.*\s*/i,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
-    ACQUIRED_SOMETHING: /.*acquire.*\s*/gm,
+    ACQUIRED_SOMETHING: /.*acquire.*\s*/g,
 
     MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
     MAFIA_ACTION_URL: /.*.php.*\s*/g,
+
+    HP_CHANGE: /.*(gain|lose).*\d*hit point.*\s*/gi,
+    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*\s*/gi,
+    MUS_CHANGE: /.*(gain|lose).*\d*(Beefiness|Fortitude|Muscleboundedness|Strengthliness|Strongness).*\s*/gi,
+    MYST_CHANGE: /.*(gain|lose).*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*\s*/gi,
+    MOX_CHANGE: /.*(gain|lose).*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*\s*/gi,
   },
 
   VALUE: {
@@ -73,6 +79,18 @@ export const REGEX = {
     DRINK_TARGET: /(?<=^drink\s\d+\s).*/i,
     CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/i,
     CHEW_TARGET: /(?<=^chew\s\d+\s).*/i,
+
+    HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
+    HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
+    MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
+    MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
+    
+    MUS_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundedness|Strengthliness|Strongness))/gi,
+    MUS_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundedness|Strengthliness|Strongness))/gi,
+    MYST_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+    MYST_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+    MOX_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+    MOX_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
 
   SUBSTRING: {
