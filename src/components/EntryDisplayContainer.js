@@ -120,7 +120,7 @@ function EntryBodyContainer(props) {
   const hasInventoryChanges = logEntry.hasInventoryChanges();
 
   return (
-    <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
+    <div className={combineClassnames('flex-col userselect-none whitespace-pre-wrap', className)}>
       {/* header with location and encounter name */}
       <EntryHeaderContainer logEntry={logEntry} />
 
