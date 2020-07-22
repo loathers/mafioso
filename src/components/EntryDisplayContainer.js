@@ -1,54 +1,15 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ReactComponent as CarrionSVG } from 'images/carrion.svg';
-import { ReactComponent as LaurelCrownSVG } from 'images/laurel-crown.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
+import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
 
-/**
- * @returns {React.Component}
- */
-function CombatActionDisplay(props) {
-  const {
-    className,
-    roundNum,
-    content,
-    // IconComponent,
-  } = props;
-
-  return (
-    <div 
-      className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
-      style={{
-        minWidth: 70,
-        maxWidth: 120,
-        height: 35,
-      }}>
-
-      <div 
-        className='fontsize-8 color-white flex-none adjacent-mar-t-2 position-absolute'
-        style={{
-          top: 5,
-          left: 5,
-          width: 20,
-          height: 20,
-          opacity: 0.5,
-        }} >
-        {roundNum}
-      </div>
-
-      <div className='fontsize-1 mar-b-1 color-white zindex-1 talign-center flex-none'>
-        {content}
-      </div>
-    </div>
-  )
-}
 /**
  * @returns {React.Component}
  */
@@ -198,78 +159,24 @@ function EntryBodyContainer(props) {
     data, 
     entryDisplay,
   } = logEntry;
+
   const {
-    combatActions,
     acquiredItems,
     meatChange,
-    hasInitiative,
-    isVictory,
-    isDeath,
   } = data;
-
-  const hasCombatActions = combatActions.length > 0;
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
       {/* header with location and encounter name */}
       <EntryHeaderContainer logEntry={logEntry} />
 
-      {/* entry specific content */}
-      { entryDisplay &&
-        <div className='flex-col adjacent-mar-t-3'>
-          {entryDisplay}
-        </div>
-      }
+      {/* text content */}
+      <div className='flex-col adjacent-mar-t-3'>
+        {entryDisplay}
+      </div>
 
       {/* combat */}
-      <div className='flex-row s flexwrap-yes aitems-center adjacent-mar-t-3'>
-        { hasCombatActions && hasInitiative &&
-          <React.Fragment>
-            <div className='flex-row-center fontsize-3 mar-2'>Initiative!</div>
-            <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
-              >
-            </div>
-          </React.Fragment>
-        }
-
-        { combatActions.map((combatData, idx) => (
-          <React.Fragment key={`combat-action-${uuidv4}-${idx}-key`}>    
-            <CombatActionDisplay 
-              className='mar-2 pad-2'
-              content={combatData.actionName}
-              roundNum={combatData.roundNum} 
-            /> 
-
-            <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
-              >
-            </div>
-          </React.Fragment>
-        ))}
-
-        { hasCombatActions && isVictory &&
-          <React.Fragment>
-            <LaurelCrownSVG 
-              className='flex-none mar-2'
-              style={{
-                width: 30,
-                height: 30,
-              }} />
-            <div className='flex-row-center fontsize-3 mar-2'>Victory!</div>
-          </React.Fragment>
-        }
-
-        { hasCombatActions && isDeath &&
-          <React.Fragment>
-            <CarrionSVG 
-              className='flex-none mar-2'
-              style={{
-                width: 30,
-                height: 30,
-              }} />
-            <div className='flex-row-center fontsize-3 mar-2'>Beaten up :(</div>
-          </React.Fragment>
-        }
-      </div>
+      <CombatSequenceDisplay logEntry={logEntry}/>
 
       {/* meat and items */}
       <div className='flex-row flexwrap-yes adjacent-mar-t-3'>
