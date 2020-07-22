@@ -52,7 +52,7 @@ export const REGEX = {
     NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/g,
-    FOUND_MULTIPLE_ITEMS: /(?<=(You acquire\s+))(.*\(\d*\))/g,
+    FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/g,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/i,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/i,
