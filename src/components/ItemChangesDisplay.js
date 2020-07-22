@@ -17,21 +17,13 @@ function ItemBlockDisplay(props) {
   return (
     <div 
       className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
-      style={{
-        minWidth: 70,
-        maxWidth: 140,
-        height: 40,
-      }}>
+      componentname='item-block'>
 
-      <IconComponent 
+      <div
         className='flex-none adjacent-mar-t-2 position-absolute'
-        style={{
-          top: 5,
-          left: 5,
-          width: 20,
-          height: 20,
-          opacity: 0.3,
-        }} />
+        componentname='block-inner-icon'>
+        <IconComponent style={{width: 20, height: 20}} />
+      </div>
 
       <div className='fontsize-3 color-white zindex-1 talign-center flex-none'>
         {content}

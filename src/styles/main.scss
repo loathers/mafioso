@@ -6,3 +6,21 @@
   width: auto;
   box-sizing: border-box;
 }
+
+div[componentname="item-block"] {
+  min-width: 70px;
+  max-width: 140px;
+  height: 40px;
+}
+
+div[componentname="combat-sequence-block"] {
+  min-width: 70px;
+  max-width: 120px;
+  height: 35px;
+}
+
+div[componentname="block-inner-icon"] {
+  top: 5px;
+  left: 5px;
+  opacity: 0.5;
+}

@@ -18,21 +18,11 @@ function CombatActionDisplay(props) {
   return (
     <div 
       className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
-      style={{
-        minWidth: 70,
-        maxWidth: 120,
-        height: 35,
-      }}>
+      componentname='combat-sequence-block'>
 
       <div 
         className='fontsize-8 color-white flex-none adjacent-mar-t-2 position-absolute'
-        style={{
-          top: 5,
-          left: 5,
-          width: 20,
-          height: 20,
-          opacity: 0.5,
-        }} >
+        componentname='block-inner-icon'>
         {roundNum}
       </div>
 
