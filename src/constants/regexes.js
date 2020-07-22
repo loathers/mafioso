@@ -30,13 +30,13 @@ export const REGEX = {
     COMBAT_INIT: /Round.*(loses initiative|wins initiative).*\s*/,
     COMBAT_WIN_INIT: /Round.*(wins initiative).*\s*/,
     COMBAT_LOSE_INIT: /Round.*(loses initiative).*\s*/,
-    COMBAT_ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!/gmi,
+    COMBAT_ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!\s*/gmi,
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
     LEVEL_GAIN: /^You gain a level.*\s+/mi,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
-    ACQUIRED_ITEMS: /.*acquire.*\s*/gm,
+    ACQUIRED_SOMETHING: /.*acquire.*\s*/gm,
 
     MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
     MAFIA_ACTION_URL: /.*.php.*\s*/g,
@@ -59,6 +59,7 @@ export const REGEX = {
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/g,
     FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/g,
+    ACQUIRED_EFFECTS: /(?<=^You acquire an effect:\s).*/m,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/i,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/i,

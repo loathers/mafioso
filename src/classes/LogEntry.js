@@ -34,6 +34,8 @@ export default class LogEntry {
       combatActions: [],
       /** @type {Array<String>} */
       acquiredItems: [],
+      /** @type {Array<String>} */
+      acquiredEffects: [],
       /** @type {Number} */
       meatChange: 0,
       /** @type {Number} */

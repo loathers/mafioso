@@ -18,6 +18,7 @@ export function parseEntry(entryString) {
   const encounterName = parseEncounterName(entryString);
   const combatActions = parseCombatActions(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
+  const acquiredEffects = parseAcquiredEffects(entryString);
   const meatChange = parseMeatChange(entryString);
 
   return {
@@ -29,6 +30,7 @@ export function parseEntry(entryString) {
     isNoncombatEncounter: parseIsNonCombatEncounter(entryString),
     combatActions,
     acquiredItems,
+    acquiredEffects,
     meatChange,
     hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
@@ -65,7 +67,7 @@ export function createEntryBody(entryString) {
     REGEX.LINE.COMBAT_ACTION_ROUND,
     REGEX.LINE.COMBAT_VICTORY,
     REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
-    REGEX.LINE.ACQUIRED_ITEMS,
+    REGEX.LINE.ACQUIRED_SOMETHING,
     REGEX.LINE.MAFIA_MAXIMIZER_CLI,
     REGEX.LINE.MAFIA_ACTION_URL,
     REGEX.MISC.COMBAT_MACRO,
@@ -197,6 +199,15 @@ export function parseAcquiredItems(entryString) {
   const multiAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_MULTIPLE_ITEMS) || [];
 
   return singleAcquireMatches.concat(multiAcquireMatches);
+}
+/**
+ * builds an array of all the effects that were gained
+ * 
+ * @param {String} entryString
+ * @return {Array<String>}
+ */
+export function parseAcquiredEffects(entryString) {
+  return getRegexMatch(entryString, REGEX.VALUE.ACQUIRED_EFFECTS) || [];
 }
 /**
  * parses the amount of meat that was gained/lost
