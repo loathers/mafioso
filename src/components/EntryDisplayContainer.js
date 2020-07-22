@@ -84,7 +84,7 @@ function EntryHeaderContainer(props) {
     logEntry,
   } = props;
 
-  if (!logEntry.hasEntryHeader) {
+  if (!logEntry.hasEntryHeader()) {
     return null;
   }
 
@@ -131,7 +131,7 @@ function EntryBodyContainer(props) {
 
       {/* -- custom content -- */}
       {/* diabolic pizza */}
-      { logEntry.hasDiabolicPizzaIngredients &&
+      { logEntry.hasDiabolicPizzaIngredients() &&
         <MakeDiabolicPizzaDisplay logEntry={logEntry} />
       }     
 

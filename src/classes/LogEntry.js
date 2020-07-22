@@ -67,35 +67,44 @@ export default class LogEntry {
       this.initialize();
     }
   }
-  /** @type {Boolean} */
-  get hasEntry() {
-    return this.entryString !== undefined;
-  }
-  /** @type {Boolean} */
-  get hasData() {
-    return this.data !== undefined;
-  }
-  // -- data getters
-  /** @type {Boolean} */
-  get hasEntryHeader() {
-    return this.data.locationName || this.data.encounterName;
-  }
-  /** @type {Boolean} */
-  get hasMeatChanged() {
-    return this.data.meatChange !== 0;
-  }
-  /** @type {String} */
-  get itemsDisplay() {
+  // -- display getters
+  /** @returns {String} */
+  getItemsDisplay() {
     return this.data.acquiredItems.join(', ');
   }
-  /** @type {String} */
-  get meatDisplay() {
+  /** @returns {String} */
+  getMeatDisplay() {
     return this.data.meatChange;
   }
-  /** @type {Boolean} */
-  get hasDiabolicPizzaIngredients() {
+  // -- boolean getters
+  /** @returns {Boolean} */
+  hasEntry() {
+    return this.entryString !== undefined;
+  }
+  /** @returns {Boolean} */
+  hasData() {
+    return this.data !== undefined;
+  }
+  /** @returns {Boolean} */
+  hasEntryHeader() {
+    return this.data.locationName || this.data.encounterName;
+  }
+  /** @returns {Boolean} */
+  hasMeatChanged() {
+    return this.data.meatChange !== 0;
+  }
+  // -- special getters
+  /** @returns {String} */
+  transactionDisplay() {
+    return `Bought ${this.getItemsDisplay()} for ${this.getMeatDisplay()} meat.`;
+  }
+  /** @returns {Boolean} */
+  hasDiabolicPizzaIngredients() {
+    if (this.entryType !== ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE) {
+      return false;
+    }
+
     return this.specialData.diabolicPizzaIngredients.length > 0;
-    // return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
   }
   /**
    * once `entryString` is given we can set all the properties
@@ -130,11 +139,6 @@ export default class LogEntry {
 
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     return entryBody.length <= 0 ? null : entryBody;
-  }
-  // -- unique displays
-  /** @type {String} */
-  get transactionDisplay() {
-    return `Bought ${this.itemsDisplay} for ${this.meatDisplay} meat.`;
   }
   /**
    * @return {Object}
