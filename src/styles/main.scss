@@ -9,9 +9,11 @@
 
 div[componentname="visualizer-tooltip"] {
   position: fixed;
-  top: 0;
-  right: 30px;
   transition: transform 500ms, opacity 300ms;
+  // transform: translateY(-50%);
+  // top: 50%;
+  top: 30px;
+  right: 30px;
 }
 
 div[componentname="item-block"] {

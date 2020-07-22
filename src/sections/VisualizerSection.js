@@ -45,8 +45,8 @@ function VisualizerSection(props) {
   const [previousEntry, setPreviousEntry] = React.useState();
 
   // tooltip state 
-  const [tooltipPosition, setFocusPosition] = React.useState({x: 10, y: 10});
-  const [previousPosition, setPreviousPosition] = React.useState({x: 10, y: 10});
+  const [tooltipPosition, setFocusPosition] = React.useState({x: 0, y: 0});
+  const [previousPosition, setPreviousPosition] = React.useState({x: 0, y: 0});
 
   const onSelectItem = (evt, newEntry) => {
     if (selectedEntry !== undefined && selectedEntry.id === newEntry.id) {
@@ -56,19 +56,17 @@ function VisualizerSection(props) {
     }
 
     const boundingClientRect = evt.currentTarget.getBoundingClientRect();
-    const xPosition = boundingClientRect.x;
+    // const xPosition = boundingClientRect.x;
     const yOffset = countNumLines(newEntry.entryString) * -15;
     const yPosition = boundingClientRect.y + yOffset;
-    setFocusPosition({x: xPosition, y: yPosition});
+    setFocusPosition({x: 0, y: Math.min(Math.max(yPosition, 0), window.innerHeight)});
 
     setPreviousPosition(tooltipPosition);
     setPreviousEntry(selectedEntry);
     setSelectedEntry(newEntry);
   };
 
-  // const hasFocusedEntry = focusedEntry !== undefined;
   const hasSelectedEntry = selectedEntry !== undefined;
-
   const positionToUse = hasSelectedEntry ? tooltipPosition : previousPosition;
   const detailsStyle = {
     transform: `translate(${positionToUse.x}px, ${positionToUse.y}px)`,
@@ -89,8 +87,8 @@ function VisualizerSection(props) {
       <VisualizerTooltip
         selectedEntry={selectedEntry}
         previousEntry={previousEntry}
-        className='zindex-3'
-        style={detailsStyle} />
+        style={detailsStyle}
+        className='zindex-3' />
     </div>
   )
 })
