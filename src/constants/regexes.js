@@ -35,13 +35,15 @@ export const REGEX = {
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
-    LEVEL_GAIN: /^You gain a level.*\s+/i,
     MEAT_GAIN: /.*gain.*meat.*\s*/i,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
     ACQUIRED_SOMETHING: /.*acquire.*\s*/g,
 
     MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
     MAFIA_ACTION_URL: /.*.php.*\s*/g,
+
+    LEVEL_GAIN: /^You gain a level.*\s+/mi,
+    SUBSTAT_GAIN: /.*(gain|lose).*\d*(muscle|moxie|mysticality).*point.*\s*/gi,
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*\s*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*\s*/gi,
@@ -84,7 +86,7 @@ export const REGEX = {
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
     MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
     MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
-    
+
     MUS_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
     MUS_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
     MYST_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
