@@ -51,7 +51,8 @@ function VisualizerSection(props) {
   const [previousPosition, setPreviousPosition] = React.useState({x: 10, y: 10});
 
   const onSelectItem = (evt, newEntry) => {
-    if (previousEntry && selectedEntry !== undefined && previousEntry.id === newEntry.id) {
+    if (selectedEntry !== undefined && selectedEntry.id === newEntry.id) {
+      setPreviousEntry(selectedEntry);
       setSelectedEntry(undefined);
       return;
     }
