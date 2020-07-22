@@ -128,8 +128,7 @@ function EntryIconColumn(props) {
 
   const {data} = logEntry;
   const {
-    isDeath,
-    isVictory,
+    isLevelUp,
   } = data;
 
   return (
@@ -143,17 +142,7 @@ function EntryIconColumn(props) {
           opacity: 0.7,
         }} />
 
-      { isDeath &&
-        <CarrionSVG 
-          className='flex-none adjacent-mar-t-3'
-          style={{
-            width: 25,
-            height: 25,
-            opacity: 0.8,
-          }} />
-      }
-
-      { isVictory &&
+      { isLevelUp &&
         <StarFormationSVG 
           className='flex-none adjacent-mar-t-3'
           style={{

@@ -3,6 +3,7 @@ import {observer} from 'mobx-react';
 
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 
+import combineClassnames from 'utilities/combineClassnames';
 import {countNumLines} from 'utilities/stringUtils';
 
 /**
@@ -10,6 +11,7 @@ import {countNumLines} from 'utilities/stringUtils';
  */
 function VisualizerTooltip(props) {
   const {
+    className,
     selectedEntry,
     previousEntry,
     style,
@@ -20,7 +22,7 @@ function VisualizerTooltip(props) {
 
   return (
     <div
-      className='pad-4 borradius-2 bg-grayest fontsize-3 color-white whitespace-pre-wrap flex-col'
+      className={combineClassnames('pad-4 borradius-2 bg-grayest fontsize-3 color-white whitespace-pre-wrap flex-col', className)}
       style={{
         position: 'fixed',
         top: 0,
@@ -103,7 +105,7 @@ function VisualizerSection(props) {
       <VisualizerTooltip
         selectedEntry={selectedEntry}
         previousEntry={previousEntry}
-        className='zindex-3 pad-4 borradius-2 bg-grayest color-white whitespace-pre-wrap flex-col'
+        className='zindex-3'
         style={detailsStyle} />
     </div>
   )
