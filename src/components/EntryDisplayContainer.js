@@ -4,6 +4,7 @@ import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
+import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import ItemChangesDisplay from 'components/ItemChangesDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -131,6 +132,12 @@ function EntryBodyContainer(props) {
       <div className='flex-col adjacent-mar-t-3'>
         {entryDisplay}
       </div>
+
+      {/* -- custom content -- */}
+      {/* diabolic pizza */}
+      { logEntry.hasDiabolicPizzaIngredients &&
+        <MakeDiabolicPizzaDisplay logEntry={logEntry} />
+      }     
 
       {/* combat */}
       <CombatSequenceDisplay logEntry={logEntry} />

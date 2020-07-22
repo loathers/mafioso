@@ -74,7 +74,7 @@ export default function CombatSequenceDisplay(props) {
       }
 
       { combatActions.map((combatData, idx) => (
-        <Fragment key={`combat-action-${uuidv4}-${idx}-key`}>    
+        <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>    
           <CombatActionDisplay 
             className='mar-2 pad-2'
             content={combatData.actionName}

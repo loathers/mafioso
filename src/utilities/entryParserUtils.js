@@ -312,6 +312,5 @@ export function parseMakeDiabolicPizza(entryString) {
   }
 
   const ingredientsArray = ingredientsLine[0].split(', ');
-  console.log('ingredientsArray', ingredientsArray);
   return ingredientsArray;
 }

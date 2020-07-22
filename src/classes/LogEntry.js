@@ -92,6 +92,11 @@ export default class LogEntry {
   get meatDisplay() {
     return this.data.meatChange;
   }
+  /** @type {Boolean} */
+  get hasDiabolicPizzaIngredients() {
+    return this.specialData.diabolicPizzaIngredients.length > 0;
+    // return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
+  }
   /**
    * once `entryString` is given we can set all the properties
    */

@@ -67,7 +67,7 @@ export default function ItemChangesDisplay(props) {
           IconComponent={SwapBagSVG}
           className='mar-2 pad-2'
           content={`${itemName}`}
-          key={`acquired-item-${uuidv4}-${idx}-key`} />
+          key={`acquired-item-${uuidv4()}-${idx}-key`} />
       ))}
     </div>
   )
