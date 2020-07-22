@@ -31,7 +31,7 @@ export function parseLog(logRaw) {
   //
   const logId = uuidv4();
   return logRawSplit
-    .slice(0, Math.min(2000, logRawSplit.length)) // todo: lazy load, for now limit total entries
+    .slice(0, Math.min(10000, logRawSplit.length)) // todo: lazy load, for now limit total entries
     .map((entryString, idx) => new LogEntry({
       entryIdx: idx,
       entryId: `${idx}_${logId}`,

@@ -148,6 +148,10 @@ export function parseCombatActions(entryString) {
   }
 
   const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
+  if (combatRoundsString === null) {
+    return [];
+  }
+
   const combatActionsList = combatRoundsString.map((attackRoundString) => {
     const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND);
     const attackActionName = parseAttackName(attackRoundString);
