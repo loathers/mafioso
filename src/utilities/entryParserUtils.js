@@ -7,12 +7,12 @@ import {
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
 /**
- * core parsing function to do it all
+ * core parsing data for common entry data
  * 
  * @param {String} entryString
  * @return {Array<LogEntry>}
  */
-export function parseEntry(entryString) {
+export function parseCommonData(entryString) {
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
@@ -30,11 +30,27 @@ export function parseEntry(entryString) {
     acquiredItems,
     acquiredEffects,
     meatChange,
-    isLevelUp: isLevelUp(entryString),
   }
 }
 /**
- * core parsing for combat related data
+ * parsing for stat related data
+ * 
+ * @param {String} entryString
+ * @return {Array<LogEntry>}
+ */
+export function parseStatData(entryString) {
+  return {
+    isLevelUp: isLevelUp(entryString),
+    isMusUp: isMusUp(entryString),
+    isMystUp: isMystUp(entryString),
+    isMoxUp: isMoxUp(entryString),
+    musExpChanges: parseMusSubstats(entryString),
+    mystExpChanges: parseMystSubstats(entryString),
+    moxExpChanges: parseMoxSubstats(entryString),
+  }
+}
+/**
+ * parsing for combat related data
  * 
  * @param {String} entryString
  * @return {Array<LogEntry>}
@@ -48,7 +64,7 @@ export function parseCombatData(entryString) {
   }
 }
 /**
- * core parsing function to do it all
+ * parsing special data
  * 
  * @param {String} entryString
  * @return {Array<LogEntry>}
@@ -246,6 +262,7 @@ export function parseMeatSpent(entryString) {
   const buyCost = Number(buyCostMatches[0]);
   return buyAmount * -buyCost;
 }
+// -- stat parsers
 /**
  * did we gain a level somewhere
  * @param {String} entryString
@@ -253,6 +270,54 @@ export function parseMeatSpent(entryString) {
  */
 export function isLevelUp(entryString) {
   return hasString(entryString, REGEX.LINE.LEVEL_GAIN);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isMusUp(entryString) {
+  return hasString(entryString, REGEX.LINE.MUS_GAINS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isMystUp(entryString) {
+  return hasString(entryString, REGEX.LINE.MYST_GAINS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isMoxUp(entryString) {
+  return hasString(entryString, REGEX.LINE.MOX_GAINS);
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parseMusSubstats(entryString) {
+  const expGains = getRegexMatch(entryString, REGEX.LINE.MUS_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.LINE.MUS_EXP_LOSSES) || [];
+  return expGains.concat(expLosses).map((changeString) => Number(changeString));
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parseMystSubstats(entryString) {
+  const expGains = getRegexMatch(entryString, REGEX.LINE.MYST_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.LINE.MYST_EXP_LOSSES) || [];
+  return expGains.concat(expLosses).map((changeString) => Number(changeString));
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parseMoxSubstats(entryString) {
+  const expGains = getRegexMatch(entryString, REGEX.LINE.MOX_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.LINE.MOX_EXP_LOSSES) || [];
+  return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 // -- combat parsers
 /**

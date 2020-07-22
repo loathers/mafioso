@@ -44,15 +44,24 @@ export default class LogEntry {
       acquiredEffects: [],
       /** @type {Number} */
       meatChange: 0,
-      /** @type {Number} */
-      musChange: 0,
-      /** @type {Number} */
-      mystChange: 0,
-      /** @type {Number} */
-      moxChange: 0,
+    };
+    /** @type {Object} */
+    this.statData = {
       /** @type {Boolean} */
       isLevelUp: false,
-    };
+      /** @type {Boolean} */
+      isMusUp: false,
+      /** @type {Boolean} */
+      isMystUp: false,
+      /** @type {Boolean} */
+      isMoxUp: false,
+      /** @type {Array} */
+      musExpChanges: [],
+      /** @type {Array} */
+      mystExpChanges: [],
+      /** @type {Array} */
+      moxExpChanges: [],
+    }
     /** @type {Object} */
     this.combatData = {
       /** @type {Boolean} */
@@ -119,12 +128,26 @@ export default class LogEntry {
     return this.data.meatChange !== 0;
   }
   /** @returns {Boolean} */
-  hasCombatActions() {
-    return this.combatData.combatActions.length > 0;
-  }
-  /** @returns {Boolean} */
   hasInventoryChanges() {
     return this.hasMeatChanged() || this.hasAcquiredItems();
+  }
+  // -- stats
+  /** @type {Number} */
+  get musSubstats() {
+    return this.statData.musExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+  }
+  /** @type {Number} */
+  get mystSubstats() {
+    return this.statData.mystExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+  }
+  /** @type {Number} */
+  get moxSubstats() {
+    return this.statData.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+  }
+  // -- combat
+  /** @returns {Boolean} */
+  hasCombatActions() {
+    return this.combatData.combatActions.length > 0;
   }
   // -- special getters
   /** @returns {String} */
@@ -149,10 +172,17 @@ export default class LogEntry {
    */
   initialize() {
     // common data
-    const parsedData = entryParserUtils.parseEntry(this.entryString);
+    const parsedCommonData = entryParserUtils.parseCommonData(this.entryString);
     this.data = {
       ...this.data,
-      ...parsedData,
+      ...parsedCommonData,
+    };
+
+    // stat data
+    const parsedStatData = entryParserUtils.parseStatData(this.entryString);
+    this.statData = {
+      ...this.statData,
+      ...parsedStatData,
     };
 
     // combat data
