@@ -7,6 +7,8 @@ import REGEX from 'constants/regexes';
 
 import {hasString, fixSpecialEntities} from 'utilities/regexUtils';
 
+const PARSE_BATCH_SIZE = 500;
+
 /**
  * core parsing function to do it all
  * 
@@ -27,17 +29,39 @@ export function parseLog(logRaw) {
     return;
   }
 
-  console.log('! parsing', logRawSplit.length, 'entries');
-  //
   const logId = uuidv4();
-  return logRawSplit
-    .slice(0, Math.min(10000, logRawSplit.length)) // todo: lazy load, for now limit total entries
-    .map((entryString, idx) => new LogEntry({
+  let logData = [];
+  console.log('parsing', logRawSplit.length, 'entries using id:', logId);
+  
+  // do it in batches
+  const batchCount = Math.ceil(logRawSplit.length / PARSE_BATCH_SIZE);
+  for (let i=0; i<batchCount; i++) {
+    const sliceStart = i*PARSE_BATCH_SIZE;
+    const sliceEnd = sliceStart + PARSE_BATCH_SIZE;
+    const logGroup = logRawSplit.slice(sliceStart, sliceEnd);
+
+    const parsedGroup = logGroup.map((entryString, idx) => new LogEntry({
       entryIdx: idx,
       entryId: `${idx}_${logId}`,
       entryType: checkEntryType(entryString),
       entryString: fixSpecialEntities(entryString),
     }));
+
+    logData = logData.concat(parsedGroup);
+    console.log('... batch', i, 'done with', parsedGroup.length, 'entries');
+  }
+
+  console.log('finished parsing', logData.length, 'entries!');
+  return logData;
+
+  // return logRawSplit
+  //   .slice(0, Math.min(10000, logRawSplit.length)) // todo: lazy load, for now limit total entries
+  //   .map((entryString, idx) => new LogEntry({
+  //     entryIdx: idx,
+  //     entryId: `${idx}_${logId}`,
+  //     entryType: checkEntryType(entryString),
+  //     entryString: fixSpecialEntities(entryString),
+  //   }));
 }
 // -- utility functions to determine the type
 /**
