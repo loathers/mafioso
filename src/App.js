@@ -10,6 +10,8 @@ import VisualizerSection from 'sections/VisualizerSection';
 
 export default observer(
 function App() {
+  const [currentPage, setCurrentPage] = React.useState(0);
+
   return (
     <div 
       className='bg-third color-white fontfamily-primary fontsize-5 pad-7'
@@ -21,8 +23,24 @@ function App() {
 
       <UploadComponent />
 
+      <div className='fontsize-4 flex-row adjacent-mar-t-5'>
+        <button 
+          onClick={() => setCurrentPage(currentPage - 1)}
+          className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+            Prev
+        </button>
+
+        <div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPage}</div>
+
+        <button 
+          onClick={() => setCurrentPage(currentPage + 1)}
+          className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+            Next
+        </button>
+      </div>
+
       <VisualizerSection 
-        entriesList={logStore.currentEntries}
+        entriesList={logStore.getEntries({pageNum: currentPage})}
       />
     </div>
   );

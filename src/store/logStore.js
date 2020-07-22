@@ -98,9 +98,9 @@ class LogStore {
    */
   getEntries(options = {}) {
     const {
-      pageNum = 0,
-      entriesPerPage = 100,
-      visibleEntryTypes = [],
+      pageNum = this.filterOptions.pageNum,
+      entriesPerPage = this.filterOptions.entriesPerPage,
+      visibleEntryTypes = this.filterOptions.visibleEntryTypes,
     } = options;
 
     const startIdx = entriesPerPage * pageNum;
