@@ -128,7 +128,6 @@ function EntryIconColumn(props) {
 
   const {data} = logEntry;
   const {
-    hasInitiative,
     isDeath,
     isVictory,
   } = data;
@@ -143,10 +142,6 @@ function EntryIconColumn(props) {
           height: 25,
           opacity: 0.7,
         }} />
-
-      { hasInitiative &&
-        <div className='talign-center fontsize-1 color-gray flex-none adjacent-mar-t-3'>init</div>
-      }
 
       { isDeath &&
         <CarrionSVG 
@@ -218,6 +213,7 @@ function EntryBodyContainer(props) {
     combatActions,
     acquiredItems,
     meatChange,
+    hasInitiative,
     isVictory,
     isDeath,
   } = data;
@@ -238,10 +234,19 @@ function EntryBodyContainer(props) {
 
       {/* combat */}
       <div className='flex-row s flexwrap-yes aitems-center adjacent-mar-t-3'>
+        { hasCombatActions && hasInitiative &&
+          <React.Fragment>
+            <div className='flex-row-center fontsize-3 mar-2'>Initiative!</div>
+            <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
+              >
+            </div>
+          </React.Fragment>
+        }
+
         { combatActions.map((combatData, idx) => (
           <React.Fragment key={`combat-action-${uuidv4}-${idx}-key`}>    
             <CombatActionDisplay 
-              className='mar-2'
+              className='mar-2 pad-2'
               content={combatData.actionName}
               roundNum={combatData.roundNum} 
             /> 
@@ -282,14 +287,14 @@ function EntryBodyContainer(props) {
         { logEntry.hasMeatChanged &&
           <ItemBlockDisplay 
             IconComponent={SteakSVG}
-            className='mar-2'
+            className='mar-2 pad-2'
             content={`${meatChange} meat`} />
         }
 
         { acquiredItems.map((itemName, idx) => (
           <ItemBlockDisplay 
             IconComponent={SwapBagSVG}
-            className='mar-2'
+            className='mar-2 pad-2'
             content={`${itemName}`}
             key={`acquired-item-${uuidv4}-${idx}-key`} />
         ))}
