@@ -22,7 +22,7 @@ function CombatActionDisplay(props) {
 
   return (
     <div 
-      className={combineClassnames('overflow-hidden borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
+      className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
       style={{
         minWidth: 70,
         maxWidth: 120,
@@ -39,7 +39,7 @@ function CombatActionDisplay(props) {
           opacity: 0.3,
         }} />*/}
 
-      <div className='fontsize-1 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-3 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
     </div>
