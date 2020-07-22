@@ -136,18 +136,27 @@ export function parseCombatAttacks(entryString) {
 
   const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
   const combatActionsList = combatRoundsString.map((attackRoundString) => {
+    const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND);
     const combatSkillNames = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_SKILL_NAMES);
     if (combatSkillNames) {
-      return combatSkillNames[0]
+      return {
+        actionName: combatSkillNames[0],
+        roundNum,
+      }
     }
 
     const combatAttacks = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ATTACKS);
     if (combatAttacks) {
-      // return combatAttacks[0];
-      return 'ATTACK';
+      return {
+        actionName: 'ATTACK',
+        roundNum,
+      };
     }
 
-    return 'unknown attack';
+    return {
+      actionName: 'unknown attack',
+      roundNum,
+    };
   });
 
   return combatActionsList;

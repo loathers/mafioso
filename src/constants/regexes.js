@@ -41,6 +41,7 @@ export const REGEX = {
     BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/,
     BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/,
 
+    COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/mi,
     COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/i,
     COMBAT_SKILL_NAMES: /(?<=^Round.*casts\s).*(?=!)/gmi,
 

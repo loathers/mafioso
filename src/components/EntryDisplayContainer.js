@@ -16,6 +16,7 @@ import combineClassnames from 'utilities/combineClassnames';
 function CombatActionDisplay(props) {
   const {
     className,
+    roundNum,
     content,
     // IconComponent,
   } = props;
@@ -25,21 +26,23 @@ function CombatActionDisplay(props) {
       className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
       style={{
         minWidth: 70,
-        maxWidth: 120,
-        height: 35,
+        maxWidth: 140,
+        height: 40,
       }}>
 
-      {/*<IconComponent 
-        className='flex-none adjacent-mar-t-2 position-absolute'
+      <div 
+        className='fontsize-8 color-white flex-none adjacent-mar-t-2 position-absolute'
         style={{
           top: 5,
           left: 5,
           width: 20,
           height: 20,
-          opacity: 0.3,
-        }} />*/}
+          opacity: 0.5,
+        }} >
+        {roundNum}
+      </div>
 
-      <div className='fontsize-3 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-3 mar-b-1 mar-l-2 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
     </div>
@@ -230,10 +233,11 @@ function EntryBodyContainer(props) {
 
       {/* combat */}
       <div className='flex-row adjacent-mar-t-3'>
-        { combatActions.map((actionName, idx) => (
+        { combatActions.map((combatData, idx) => (
           <CombatActionDisplay 
             className='adjacent-mar-l-5'
-            content={`${actionName}`}
+            content={combatData.actionName}
+            roundNum={combatData.roundNum}
             key={`combat-action-${uuidv4}-${idx}-key`} />
         ))}
       </div>
