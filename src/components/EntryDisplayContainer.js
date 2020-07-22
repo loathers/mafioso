@@ -42,7 +42,7 @@ function CombatActionDisplay(props) {
         {roundNum}
       </div>
 
-      <div className='fontsize-3 mar-b-1 mar-l-2 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-3 mar-b-1 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
     </div>

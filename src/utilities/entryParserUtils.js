@@ -16,7 +16,7 @@ export function parseEntry(entryString) {
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
-  const combatActions = parseCombatAttacks(entryString);
+  const combatActions = parseCombatActions(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
   const meatChange = parseMeatChange(entryString);
 
@@ -124,12 +124,13 @@ export function parseEncounterName(entryString) {
   return encounterNameMatches[0];
 }
 /**
- * builds an array attacks/skills used in combat
+ * builds an array of attacks/skills/etc used in combat
+ *  includes: initiative, combat victory
  * 
  * @param {String} entryString
  * @return {Array<String>}
  */
-export function parseCombatAttacks(entryString) {
+export function parseCombatActions(entryString) {
   if (!parseIsCombatEncounter(entryString)) {
     return [];
   }
@@ -137,29 +138,33 @@ export function parseCombatAttacks(entryString) {
   const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
   const combatActionsList = combatRoundsString.map((attackRoundString) => {
     const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND);
-    const combatSkillNames = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_SKILL_NAMES);
-    if (combatSkillNames) {
-      return {
-        actionName: combatSkillNames[0],
-        roundNum,
-      }
-    }
-
-    const combatAttacks = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ATTACKS);
-    if (combatAttacks) {
-      return {
-        actionName: 'ATTACK',
-        roundNum,
-      };
-    }
-
+    const attackActionName = parseAttackName(attackRoundString);
     return {
-      actionName: 'unknown attack',
+      actionName: attackActionName,
       roundNum,
     };
   });
-
+  
   return combatActionsList;
+}
+/**
+ * builds an array of all the items that were gained
+ * 
+ * @param {String} entryString
+ * @return {Array<String>}
+ */
+export function parseAttackName(entryString) {
+  const combatSkillNames = getRegexMatch(entryString, REGEX.VALUE.COMBAT_SKILL_NAMES);
+  if (combatSkillNames) {
+    return combatSkillNames[0];
+  }
+
+  const combatAttacks = getRegexMatch(entryString, REGEX.VALUE.COMBAT_ATTACKS);
+  if (combatAttacks) {
+    return 'ATTACK';
+  }
+
+  return 'unknown attack';
 }
 /**
  * builds an array of all the items that were gained
