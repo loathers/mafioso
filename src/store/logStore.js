@@ -26,7 +26,7 @@ class LogStore {
       /** @type {Number} */
       pageNum: 1,
       /** @type {Number} */
-      entriesPerPage: 'all',
+      entriesPerPage: 300,
       /** @type {Array<EntryType>} */
       visibleEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
@@ -107,8 +107,7 @@ class LogStore {
 
     return this.logData
       .slice(startIdx, endIdx)
-      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType))
-      .filter((logEntry) => logEntry.data.isLevelUp === true);
+      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType));
   }
 }
 
