@@ -50,18 +50,22 @@ function VisualizerSection(props) {
 
   const onSelectItem = (evt, newEntry) => {
     if (selectedEntry !== undefined && selectedEntry.id === newEntry.id) {
+      setPreviousPosition(tooltipPosition);
+      setFocusPosition(tooltipPosition);
       setPreviousEntry(selectedEntry);
       setSelectedEntry(undefined);
       return;
     }
-
+    
     const boundingClientRect = evt.currentTarget.getBoundingClientRect();
     // const xPosition = boundingClientRect.x;
     const yOffset = countNumLines(newEntry.entryString) * -15;
     const yPosition = boundingClientRect.y + yOffset;
-    setFocusPosition({x: 0, y: Math.min(Math.max(yPosition, 0), window.innerHeight)});
-
+    const newPosition = {x: 0, y: Math.min(Math.max(yPosition, 0), window.innerHeight)};
+    
     setPreviousPosition(tooltipPosition);
+    setFocusPosition(newPosition);
+
     setPreviousEntry(selectedEntry);
     setSelectedEntry(newEntry);
   };
