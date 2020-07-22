@@ -101,6 +101,10 @@ export function parseTurnNum(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
+  if (isEntryBeachComb(entryString)) {
+    return 'Beach Comb';
+  }
+
   const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];
@@ -121,6 +125,10 @@ export function parseLocationName(entryString) {
  * @return {String | null}
  */
 export function parseEncounterName(entryString) {
+  if (isEntryBeachComb(entryString)) {
+    return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION);
+  }
+
   const encounterNameMatches = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
   if (encounterNameMatches === null) {
     return null;
@@ -314,4 +322,11 @@ export function parseMakeDiabolicPizza(entryString) {
 
   const ingredientsArray = ingredientsLine[0].split(', ');
   return ingredientsArray;
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBeachComb(entryString) {
+  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
 }

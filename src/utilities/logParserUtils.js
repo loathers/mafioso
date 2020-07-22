@@ -93,6 +93,10 @@ export function checkEntryType(entryString) {
     return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
   }
 
+  if (isEntryBeachComb(entryString)) {
+    return ENTRY_TYPE.IOTM.BEACH_COMB;
+  }
+
   return ENTRY_TYPE.UNKNOWN;
 }
 /**
@@ -200,4 +204,11 @@ export function isEntryDiabolicPizzaMake(entryString) {
  */
 export function isEntryDiabolicPizzaEat(entryString) {
   return hasString(entryString, REGEX.DIABOLIC_PIZZA.EAT_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBeachComb(entryString) {
+  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
 }
