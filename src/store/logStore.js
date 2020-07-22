@@ -10,7 +10,7 @@ import * as logParserUtils from 'utilities/logParserUtils';
 const fileReader = new FileReader();
 
 /**
- * store of the log
+ * state and handler of the log data
  */
 class LogStore {
   /** @default */
@@ -18,9 +18,9 @@ class LogStore {
     /** @type {File} */
     this.srcFile = undefined;
     /** @type {String} */
-    this.srcLog = undefined;
+    this.rawText = undefined;
     /** @type {ObservableArray<LogEntry>} */
-    this.logData = observable([]);
+    this.logEntries = observable([]);
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
@@ -49,13 +49,13 @@ class LogStore {
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
   }
-  /** @returns {Boolean} */
-  hasLog() {
-    return this.srcLog !== undefined;
+  /** @type {Boolean} */
+  get hasRawText() {
+    return this.rawText !== undefined;
   }
-  /** @returns {Boolean} */
-  hasData() {
-    return this.logData && this.logData.length > 0;
+  /** @type {Boolean} */
+  get hasParsedEntries() {
+    return this.logEntries.length > 0;
   }
   /** @return {Array<LogEntry>} */
   getCurrentEntries() {
@@ -74,25 +74,19 @@ class LogStore {
    */
   onReadComplete(readerEvt) {
     const txtString = readerEvt.target.result;
-    this.cacheLog(txtString);
-  }
-  /**
-   * @param {String} srcLog
-   */
-  cacheLog(srcLog) {
-    this.srcLog = srcLog;
+    this.rawText = txtString;
     this.parse();
   }
   /**
    * handle cleaning up and setting all the data
    */
   async parse() {
-    if (!this.hasLog()) {
+    if (!this.hasRawText) {
       return;
     }
 
-    const newData = await logParserUtils.parseLogTxt(this.srcLog);
-    this.logData.replace(newData);
+    const newData = await logParserUtils.parseLogTxt(this.rawText);
+    this.logEntries.replace(newData);
 
     this.isParsing.set(false);
   }
@@ -109,9 +103,9 @@ class LogStore {
     } = options;
 
     const startIdx = entriesPerPage === 'all' ? 0 : entriesPerPage * pageNum;
-    const endIdx = entriesPerPage === 'all' ? this.logData.length : startIdx + entriesPerPage;
+    const endIdx = entriesPerPage === 'all' ? this.logEntries.length : startIdx + entriesPerPage;
 
-    return this.logData
+    return this.logEntries
       .slice(startIdx, endIdx)
       .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType));
   }
