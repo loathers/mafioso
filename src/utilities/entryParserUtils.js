@@ -61,12 +61,13 @@ export function createEntryBody(entryString) {
   const replacementList = [
     REGEX.LINE.LOCATION,
     REGEX.LINE.ENCOUNTER,
-    REGEX.LINE.LEVEL_GAIN,
     REGEX.LINE.COMBAT_FREE_TURN,
     REGEX.LINE.COMBAT_INIT,
     REGEX.LINE.COMBAT_ROUND,
     REGEX.LINE.COMBAT_VICTORY,
+    REGEX.LINE.MEAT_GAIN,
     REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
+    REGEX.LINE.LEVEL_GAIN,
     REGEX.LINE.ACQUIRED_SOMETHING,
     REGEX.LINE.MAFIA_MAXIMIZER_CLI,
     REGEX.LINE.MAFIA_ACTION_URL,
@@ -217,7 +218,19 @@ export function parseAcquiredEffects(entryString) {
  */
 export function parseMeatChange(entryString) {
   const meatSpentAmount = parseMeatSpent(entryString);
-  return meatSpentAmount;
+
+  const meatGainsArray = parseMeatGains(entryString);
+  const meatGainedAmount = meatGainsArray.reduce((gainTotal, gainAmount) => (gainTotal + gainAmount), 0);
+
+  return meatSpentAmount + meatGainedAmount;
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parseMeatGains(entryString) {
+  const meatGainMatches = getRegexMatch(entryString, REGEX.VALUE.MEAT_GAIN_AMOUNT) || [];
+  return meatGainMatches.map((amountString) => Number(amountString));
 }
 /**
  * @param {String} entryString

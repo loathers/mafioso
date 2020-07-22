@@ -36,6 +36,7 @@ export const REGEX = {
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
 
     LEVEL_GAIN: /^You gain a level.*\s+/mi,
+    MEAT_GAIN: /.*gain.*meat.*\s*/mi,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
     ACQUIRED_SOMETHING: /.*acquire.*\s*/gm,
 
@@ -45,8 +46,10 @@ export const REGEX = {
 
   VALUE: {
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
+
     BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/,
     BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/,
+    MEAT_GAIN_AMOUNT: /(?<=You gain )\d*(?=\s+meat)/gmi,
 
     COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/mi,
     COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/i,
