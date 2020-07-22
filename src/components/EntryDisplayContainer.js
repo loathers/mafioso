@@ -27,8 +27,8 @@ function CombatActionDisplay(props) {
       className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
       style={{
         minWidth: 70,
-        maxWidth: 140,
-        height: 40,
+        maxWidth: 120,
+        height: 35,
       }}>
 
       <div 
@@ -43,7 +43,7 @@ function CombatActionDisplay(props) {
         {roundNum}
       </div>
 
-      <div className='fontsize-3 mar-b-1 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-1 mar-b-1 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
     </div>
@@ -64,8 +64,8 @@ function ItemBlockDisplay(props) {
       className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
       style={{
         minWidth: 70,
-        maxWidth: 120,
-        height: 35,
+        maxWidth: 140,
+        height: 40,
       }}>
 
       <IconComponent 
@@ -78,7 +78,7 @@ function ItemBlockDisplay(props) {
           opacity: 0.3,
         }} />
 
-      <div className='fontsize-1 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-3 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
     </div>
