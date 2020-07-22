@@ -45,6 +45,7 @@ export function parseEntry(entryString) {
 export function parseEntrySpecial(entryString) {
   return {
     isEndedByUseTheForce: isUseTheForce(entryString),
+    diabolicPizzaIngredients: parseMakeDiabolicPizza(entryString),
   }
 }
 /**
@@ -299,4 +300,18 @@ export function parseIsLevelUp(entryString) {
  */
 export function isUseTheForce(entryString) {
   return hasString(entryString, REGEX.LINE.COMBAT_SKILL_USE_THE_FORCE);
+}
+/**
+ * @param {String} entryString
+ * @return {Array<String>}
+ */
+export function parseMakeDiabolicPizza(entryString) {
+  const ingredientsLine = getRegexMatch(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
+  if (ingredientsLine === null) {
+    return [];
+  }
+
+  const ingredientsArray = ingredientsLine[0].split(', ');
+  console.log('ingredientsArray', ingredientsArray);
+  return ingredientsArray;
 }

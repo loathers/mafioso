@@ -55,6 +55,8 @@ export default class LogEntry {
     this.specialData = {
       /** @type {Boolean} */
       isEndedByUseTheForce: false,
+      /** @type {Array<String>} */
+      diabolicPizzaIngredients: [],
     }
 
     /** @type {String | null} */
@@ -94,13 +96,15 @@ export default class LogEntry {
    * once `entryString` is given we can set all the properties
    */
   initialize() {
+    // common adventure data
     const parsedData = entryParserUtils.parseEntry(this.entryString);
     this.data = {
       ...this.data,
       ...parsedData,
     };
 
-    const parsedSpecialData = entryParserUtils.parseEntry(this.entryString);
+    // common special data
+    const parsedSpecialData = entryParserUtils.parseEntrySpecial(this.entryString);
     this.specialData = {
       ...this.specialData,
       ...parsedSpecialData,
