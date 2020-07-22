@@ -13,8 +13,9 @@
 export const LOG_SPLIT_REGEX = /\r?\n\r?\n/; // because return carriage is windows specifc
 export const REGEX = {
   DIABOLIC_PIZZA: {
-    INGREDIENTS_LINE: /(?<=^pizza\s).*/m,
-    EAT_LINE: /^eat\s\d+\sdiabolic pizza/m,
+    INGREDIENTS_LINE: /^pizza.*\s*/m,
+    INGREDIENTS_ONLY: /(?<=^pizza\s).*/m,
+    EAT_LINE: /^eat\s\d+\sdiabolic pizza\s*/m,
   },
 
   LINE: {

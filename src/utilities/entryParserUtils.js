@@ -50,8 +50,7 @@ export function parseEntrySpecial(entryString) {
 }
 /**
  * scrub the main text of data that will be
- *  cached in the LogEntry data so there are
- *  only basic text
+ *  displayed for things I haven't implemented
  * 
  * @param {String} entryString
  * @return {String}
@@ -70,6 +69,8 @@ export function createEntryBody(entryString) {
     REGEX.LINE.MAFIA_MAXIMIZER_CLI,
     REGEX.LINE.MAFIA_ACTION_URL,
     REGEX.MISC.COMBAT_MACRO,
+    REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
+    REGEX.DIABOLIC_PIZZA.EAT_LINE,
   ];
 
   return replacementList.reduce((currentString, replacementRegex) => {
@@ -306,7 +307,7 @@ export function isUseTheForce(entryString) {
  * @return {Array<String>}
  */
 export function parseMakeDiabolicPizza(entryString) {
-  const ingredientsLine = getRegexMatch(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
+  const ingredientsLine = getRegexMatch(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_ONLY);
   if (ingredientsLine === null) {
     return [];
   }
