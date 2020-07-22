@@ -43,10 +43,9 @@ function VisualizerSection(props) {
   // list state
   const [selectedEntry, setSelectedEntry] = React.useState();
   const [previousEntry, setPreviousEntry] = React.useState();
-  const [focusedEntry, setFocusedEntry] = React.useState();
 
   // tooltip state 
-  const [elementPosition, setFocusPosition] = React.useState({x: 10, y: 10});
+  const [tooltipPosition, setFocusPosition] = React.useState({x: 10, y: 10});
   const [previousPosition, setPreviousPosition] = React.useState({x: 10, y: 10});
 
   const onSelectItem = (evt, newEntry) => {
@@ -62,23 +61,15 @@ function VisualizerSection(props) {
     const yPosition = boundingClientRect.y + yOffset;
     setFocusPosition({x: xPosition, y: yPosition});
 
-    setPreviousPosition(elementPosition);
+    setPreviousPosition(tooltipPosition);
     setPreviousEntry(selectedEntry);
     setSelectedEntry(newEntry);
   };
 
-  const onMouseEnterItem = (evt, newEntry) => {
-    setFocusedEntry(newEntry);
-  };
-
-  const onMouseLeaveItem = () => {
-    setFocusedEntry(undefined);
-  };
-
-  const hasFocusedEntry = focusedEntry !== undefined;
+  // const hasFocusedEntry = focusedEntry !== undefined;
   const hasSelectedEntry = selectedEntry !== undefined;
 
-  const positionToUse = hasSelectedEntry ? elementPosition : previousPosition;
+  const positionToUse = hasSelectedEntry ? tooltipPosition : previousPosition;
   const detailsStyle = {
     transform: `translate(${positionToUse.x}px, ${positionToUse.y}px)`,
   };
@@ -88,11 +79,7 @@ function VisualizerSection(props) {
       { entriesList.map((logEntry, idx) => (
         <EntryDisplayContainer 
           onClick={(evt) => onSelectItem(evt, logEntry)}
-          onMouseEnter={(evt) => onMouseEnterItem(evt, logEntry)}
-          onMouseLeave={onMouseLeaveItem}
-
           isSelected={hasSelectedEntry && logEntry.id === selectedEntry.id}
-          isFocused={hasFocusedEntry && logEntry.id === focusedEntry.id}
 
           logEntry={logEntry}
           className='visualizer-cell adjacent-mar-t-2'
