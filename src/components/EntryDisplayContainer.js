@@ -99,7 +99,7 @@ function EntryHeaderContainer(props) {
       }
 
       { encounterDisplay &&
-        <div className='fontsize-7 flex-none adjacent-mar-t-1'>{encounterDisplay}</div>
+        <div className='f-bold fontsize-7 flex-none adjacent-mar-t-1'>{encounterDisplay}</div>
       }
     </div>
   )
@@ -146,7 +146,7 @@ function EntryBodyContainer(props) {
       }
 
       {/* meat and items */}
-      { logEntry.hasInventoryChanges() &&
+      { logEntry.hasInventoryChanges &&
         <ItemChangesDisplay logEntry={logEntry} />
       }
     </div>

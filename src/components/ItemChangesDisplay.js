@@ -45,7 +45,7 @@ export default function ItemChangesDisplay(props) {
 
   return (
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
-      { logEntry.hasMeatChanges() &&
+      { logEntry.hasMeatChanges &&
         <ItemBlockDisplay 
           IconComponent={SteakSVG}
           className='mar-2'

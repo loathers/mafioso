@@ -132,17 +132,17 @@ export default class LogEntry {
       || this.mystSubstats !== 0 
       || this.moxSubstats !== 0;
   }
-  /** @returns {Boolean} */
-  hasMeatChanges() {
+  /** @type {Boolean} */
+  get hasMeatChanges() {
     return this.data.meatChange !== 0;
   }
-  /** @returns {Boolean} */
-  hasAcquiredItems() {
-    return this.data.meatChange !== 0;
+  /** @type {Boolean} */
+  get hasAcquiredItems() {
+    return this.data.acquiredItems !== 0;
   }
-  /** @returns {Boolean} */
-  hasInventoryChanges() {
-    return this.hasMeatChanges() || this.hasAcquiredItems();
+  /** @type {Boolean} */
+  get hasInventoryChanges() {
+    return this.hasMeatChanges || this.hasAcquiredItems;
   }
   // -- stats
   /** @type {Number} */
