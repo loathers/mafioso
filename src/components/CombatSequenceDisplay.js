@@ -16,12 +16,8 @@ function CombatActionDisplay(props) {
   } = props;
 
   return (
-    <div 
-      className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-1 boxsizing-border flex-col-center position-relative', className)}
-      componentname='combat-sequence-block'>
-
-      <div 
-        className='fontsize-8 color-white flex-none adjacent-mar-t-2 position-absolute'
+    <div className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-2 boxsizing-border flex-col-center position-relative', className)}>
+      <div className='fontsize-4 color-white flex-none adjacent-mar-t-2 position-absolute'
         componentname='block-inner-icon'>
         {roundNum}
       </div>
