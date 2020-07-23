@@ -16,7 +16,7 @@ function StatBlockDisplay(props) {
   return (
     <div 
       className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-3 boxsizing-border flex-col-center position-relative', className)}
-      style={{width: 85, height: 50}}>
+      style={{width: 70, height: 45}}>
 
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'
@@ -24,11 +24,11 @@ function StatBlockDisplay(props) {
         <StarsStackSVG style={{width: 20, height: 20}} />
       </div>
 
-      <div className='flex-col-center fontsize-6 color-white zindex-1 talign-center flex-none'>
+      <div className='flex-col-center fontsize-4 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
 
-      <div className='fontsize-2 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-1 color-white zindex-1 talign-center flex-none'>
         {label}
       </div>
     </div>
@@ -46,17 +46,17 @@ export default function StatChangesDisplay(props) {
       <StatBlockDisplay 
         content={logEntry.musSubstats}
         label='mus exp'
-        className='mar-2' />
+        className={combineClassnames('mar-2', logEntry.statData.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
         content={logEntry.mystSubstats}
         label='myst exp'
-        className='mar-2' />
+        className={combineClassnames('mar-2', logEntry.statData.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
         content={logEntry.moxSubstats}
         label='mox exp'
-        className='mar-2' />
+        className={combineClassnames('mar-2', logEntry.statData.isMusUp ? 'f-bold' : '')} />
     </div>
   )
 }
