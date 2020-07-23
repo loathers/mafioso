@@ -135,11 +135,6 @@ function EntryBodyContainer(props) {
         <MakeDiabolicPizzaDisplay logEntry={logEntry} />
       }     
 
-      {/* combat */}
-      { logEntry.hasCombatActions() &&
-        <CombatSequenceDisplay logEntry={logEntry} />
-      }
-
       {/* stat changes */}
       { logEntry.hasStatChanges &&
         <StatChangesDisplay logEntry={logEntry} />
@@ -198,6 +193,13 @@ export default function EntryDisplayContainer(props) {
       <EntryBodyContainer
         logEntry={logEntry}
         className='adjacent-mar-l-4 flex-auto' />
+
+      {/* combat */}
+      { logEntry.hasCombatActions() &&
+        <CombatSequenceDisplay 
+          logEntry={logEntry}
+          className='bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+      }
       
     </div>
   )

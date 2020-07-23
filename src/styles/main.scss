@@ -10,8 +10,6 @@
 div[componentname="visualizer-tooltip"] {
   position: fixed;
   transition: transform 500ms, opacity 300ms;
-  // transform: translateY(-50%);
-  // top: 50%;
   top: 30px;
   right: 30px;
 }
@@ -23,8 +21,6 @@ div[componentname="item-block"] {
 }
 
 div[componentname="combat-sequence-block"] {
-  min-width: 70px;
-  max-width: 120px;
   height: 35px;
 }
 
@@ -36,4 +32,12 @@ div[componentname="block-inner-icon"] {
 
 .userselect-none {
   user-select: none;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 5px solid #ececec;
 }

@@ -17,7 +17,7 @@ function CombatActionDisplay(props) {
 
   return (
     <div 
-      className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
+      className={combineClassnames('overflow-hidden bor-1-white borradius-2 pad-1 boxsizing-border flex-col-center position-relative', className)}
       componentname='combat-sequence-block'>
 
       <div 
@@ -26,7 +26,7 @@ function CombatActionDisplay(props) {
         {roundNum}
       </div>
 
-      <div className='fontsize-1 mar-b-1 color-white zindex-1 talign-center flex-none'>
+      <div className='fontsize-1 color-white zindex-1 talign-center flex-none'>
         {content}
       </div>
     </div>
@@ -47,45 +47,43 @@ export default function CombatSequenceDisplay(props) {
   }} = logEntry;
 
   return (
-    <div className={combineClassnames('flex-row flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
+    <div 
+      style={{width: 170}}
+      className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
       { hasInitiative &&
         <Fragment>
-          <div className='flex-row-center fontsize-3 mar-2'>Initiative!</div>
-          <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
-            >
-          </div>
+          <div className='flex-row-center fontsize-3 mar-1'>Initiative!</div>
+          <div className='arrow-down flex-row-center mar-1'/>
         </Fragment>
       }
 
       { combatActions.map((combatData, idx) => (
         <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>    
           <CombatActionDisplay 
-            className='mar-2 pad-2'
+            className='mar-1 width-full'
             content={combatData.actionName}
             roundNum={combatData.roundNum} 
           /> 
 
-          <div className='flex-row-center fontsize-5 fweight-bold mar-2'>
-            >
-          </div>
+          <div className='arrow-down flex-row-center mar-1'/>
         </Fragment>
       ))}
 
       { isVictory &&
         <Fragment>
           <LaurelCrownSVG 
-            className='flex-none mar-2'
+            className='flex-none mar-1'
             style={{width: 30, height: 30}} />
-          <div className='flex-row-center fontsize-3 mar-2'>Victory!</div>
+          <div className='flex-row-center fontsize-3 mar-1'>Victory!</div>
         </Fragment>
       }
 
       { isDeath &&
         <Fragment>
           <CarrionSVG 
-            className='flex-none mar-2'
+            className='flex-none mar-1'
             style={{width: 30, height: 30}} />
-          <div className='flex-row-center fontsize-3 mar-2'>Beaten up :(</div>
+          <div className='flex-row-center fontsize-3 mar-1'>Beaten up :(</div>
         </Fragment>
       }
     </div>
