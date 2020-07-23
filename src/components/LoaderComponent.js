@@ -14,7 +14,7 @@ export default function LoaderComponent(props) {
   const {
     className,
     spinnerColor = 'white',
-    spinnerWidth = 10,
+    spinnerWidth = 6,
     size = 50,
     ...otherProps
   } = props;
