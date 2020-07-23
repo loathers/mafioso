@@ -1,15 +1,3 @@
-// const ADVENTURE_LINE_REGEX = /\[\d*\].*\s*/;
-// const ENCOUNTER_LINE_REGEX = /Encounter:.*\s*/;
-
-// const FAMILIAR_GAIN_WEIGHT_LINE_REGEX = /.*(gains a pound).*\s*/;
-// const ACQUIRE_ITEM_LINE_REGEX = /\w*.*acquire an item.*\s*/g;
-// const COMBAT_NOT_COST_ADV_REGEX = /.*did not cost.*\s*/;
-// const COMBAT_INIT_LINE_REGEX = /Round.*(loses initiative|wins initiative).*\s*/;
-// const COMBAT_VICTORY_LINE_REGEX = /(?<=\s).*wins the fight.*\s*/;
-
-// const MAFIA_MAXIMIZER_CLI_REGEX = /.*Maximizer.*\s*/g;
-// const MAFIA_ACTION_URL_REGEX = /.*.php.*\s*/g;
-
 export const LOG_SPLIT_REGEX = /\r?\n\r?\n/; // because return carriage is windows specifc
 export const REGEX = {
   DIABOLIC_PIZZA: {
@@ -38,9 +26,6 @@ export const REGEX = {
     MEAT_GAIN: /.*gain.*meat.*\s*/i,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
     ACQUIRED_SOMETHING: /.*acquire.*\s*/g,
-
-    MAFIA_MAXIMIZER_CLI: /.*Maximizer.*\s*/g,
-    MAFIA_ACTION_URL: /.*.php.*\s*/g,
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*\s*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*\s*/gi,
@@ -108,7 +93,10 @@ export const REGEX = {
   MISC: {
     LOG_SPLIT: LOG_SPLIT_REGEX,
     LOG_CRUFT: /\n> .+?(?=\n)/,
-    COMBAT_MACRO: /.*executes a macro.*\s*/gm,
+    COMBAT_MACRO: /.*executes a macro.*\s*/gmi,
+    MAFIA_MAXIMIZER: /Maximizer:.*\s*/gmi,
+    MAFIA_CHOICE_URL: /.*.php.*\s*/gm,
+
     LOG_BORDER: /=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=/,
   },
 };

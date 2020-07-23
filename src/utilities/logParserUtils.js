@@ -25,7 +25,11 @@ function calculateBatchSize(rawSize) {
  * @return {Array<LogEntry>}
  */
 export async function parseLogTxt(rawText) {
-  const rawCleaned = rawText.replace(REGEX.MISC.LOG_CRUFT, '');
+  const rawCleaned = rawText
+    .replace(REGEX.MISC.LOG_CRUFT, '')
+    .replace(REGEX.MISC.COMBAT_MACRO, '')
+    .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
+    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
   const rawSize = rawCleaned.length;
   if (rawSize > 10000000) {
     console.warn(`This log of ${rawSize} characters is too huge!`);
