@@ -6,6 +6,7 @@ import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import ItemChangesDisplay from 'components/ItemChangesDisplay';
+import StatChangesDisplay from 'components/StatChangesDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -116,9 +117,6 @@ function EntryBodyContainer(props) {
     entryDisplay,
   } = logEntry;
 
-  const hasCombatActions = logEntry.hasCombatActions();
-  const hasInventoryChanges = logEntry.hasInventoryChanges();
-
   return (
     <div className={combineClassnames('flex-col userselect-none whitespace-pre-wrap', className)}>
       {/* header with location and encounter name */}
@@ -138,12 +136,17 @@ function EntryBodyContainer(props) {
       }     
 
       {/* combat */}
-      { hasCombatActions &&
+      { logEntry.hasCombatActions() &&
         <CombatSequenceDisplay logEntry={logEntry} />
       }
 
+      {/* stat changes */}
+      { logEntry.hasStatChanges &&
+        <StatChangesDisplay logEntry={logEntry} />
+      }
+
       {/* meat and items */}
-      { hasInventoryChanges &&
+      { logEntry.hasInventoryChanges() &&
         <ItemChangesDisplay logEntry={logEntry} />
       }
     </div>

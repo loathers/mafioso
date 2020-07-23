@@ -123,8 +123,17 @@ export default class LogEntry {
   hasEntryHeader() {
     return this.getLocationDisplay() !== null || this.getEncounterDisplay() !== null;
   }
+  /** @type {Boolean} */
+  get hasStatChanges() {
+    return this.statData.isMusUp 
+      || this.statData.isMystUp 
+      || this.statData.isMoxUp 
+      || this.musSubstats !== 0 
+      || this.mystSubstats !== 0 
+      || this.moxSubstats !== 0;
+  }
   /** @returns {Boolean} */
-  hasMeatChanged() {
+  hasMeatChanges() {
     return this.data.meatChange !== 0;
   }
   /** @returns {Boolean} */
@@ -133,7 +142,7 @@ export default class LogEntry {
   }
   /** @returns {Boolean} */
   hasInventoryChanges() {
-    return this.hasMeatChanged() || this.hasAcquiredItems();
+    return this.hasMeatChanges() || this.hasAcquiredItems();
   }
   // -- stats
   /** @type {Number} */

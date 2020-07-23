@@ -1,17 +1,15 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
-import { ReactComponent as SteakSVG } from 'images/steak.svg';
-import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
+import { ReactComponent as StarsStackSVG } from 'images/stars-stack.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {React.Component} */
-function ItemBlockDisplay(props) {
+function StatBlockDisplay(props) {
   const {
     className,
     content,
-    IconComponent,
   } = props;
 
   return (
@@ -22,7 +20,7 @@ function ItemBlockDisplay(props) {
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'
         componentname='block-inner-icon'>
-        <IconComponent style={{width: 20, height: 20}} />
+        <StarsStackSVG style={{width: 20, height: 20}} />
       </div>
 
       <div className='fontsize-3 color-white zindex-1 talign-center flex-none'>
@@ -32,33 +30,25 @@ function ItemBlockDisplay(props) {
   )
 }
 /** @returns {React.Component} */
-export default function ItemChangesDisplay(props) {
+export default function StatChangesDisplay(props) {
   const {
     className,
     logEntry,
   } = props;
 
-  const {data} = logEntry;
-  const {
-    acquiredItems,
-  } = data;
-
   return (
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
-      { logEntry.hasMeatChanges() &&
-        <ItemBlockDisplay 
-          IconComponent={SteakSVG}
-          className='mar-2'
-          content={`${logEntry.getMeatDisplay()} meat`} />
-      }
+      <StatBlockDisplay 
+        content={logEntry.musSubstats}
+        className='mar-2' />
 
-      { acquiredItems.map((itemName, idx) => (
-        <ItemBlockDisplay 
-          IconComponent={SwapBagSVG}
-          className='mar-2'
-          content={`${itemName}`}
-          key={`acquired-item-${uuidv4()}-${idx}-key`} />
-      ))}
+      <StatBlockDisplay 
+        content={logEntry.mystSubstats}
+        className='mar-2' />
+        
+      <StatBlockDisplay 
+        content={logEntry.moxSubstats}
+        className='mar-2' />
     </div>
   )
 }
