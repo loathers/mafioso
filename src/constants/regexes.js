@@ -1,44 +1,45 @@
-export const LOG_SPLIT_REGEX = /\r?\n\r?\n/; // because return carriage is windows specifc
+export const NEW_LINE_REGEX = /(\r\n|\n)/g;
+export const LOG_SPLIT_REGEX = /(\r\n|\n)(\r\n|\n)/g; // because return carriage is windows specifc
 export const REGEX = {
   DIABOLIC_PIZZA: {
-    INGREDIENTS_LINE: /^pizza.*\s*/m,
+    INGREDIENTS_LINE: /^pizza.*/m,
     INGREDIENTS_ONLY: /(?<=^pizza\s).*/m,
-    EAT_LINE: /^eat\s\d+\sdiabolic pizza\s*/m,
+    EAT_LINE: /^eat\s\d+\sdiabolic pizza/m,
   },
   BEACH_COMB: {
-    COMBING_LINE: /.*Combing.*\s*/i,
+    COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
   },
 
   LINE: {
-    LOCATION: /\[\d*\].*\s*/,
-    ENCOUNTER: /Encounter:.*\s*/,
+    LOCATION: /\[\d*\].*/,
+    ENCOUNTER: /Encounter:.*/,
 
-    COMBAT_FREE_TURN: /.*combat.*did not cost.*\s*/,
-    COMBAT_INIT: /Round.*(loses initiative|wins initiative).*\s*/,
-    COMBAT_WIN_INIT: /Round.*(wins initiative).*\s*/,
-    COMBAT_LOSE_INIT: /Round.*(loses initiative).*\s*/,
-    COMBAT_ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!\s*/gmi,
-    COMBAT_ROUND: /^round\s\d:.*\s*/gmi,
-    COMBAT_VICTORY: /(?<=\s).*wins the fight.*\s*/,
-    COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/,
+    COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
+    COMBAT_INIT: /Round.*(loses initiative|wins initiative).*/i,
+    COMBAT_WIN_INIT: /Round.*(wins initiative).*/i,
+    COMBAT_LOSE_INIT: /Round.*(loses initiative).*/i,
+    COMBAT_ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!/gmi,
+    COMBAT_ROUND: /^round\s\d:.*/gmi,
+    COMBAT_VICTORY: /(?<=\s).*wins the fight.*/i,
+    COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
 
-    MEAT_GAIN: /.*gain.*meat.*\s*/i,
-    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*\s*/,
-    ACQUIRED_SOMETHING: /.*acquire.*\s*/g,
+    MEAT_GAIN: /.*gain.*meat.*/i,
+    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/i,
+    ACQUIRED_SOMETHING: /.*acquire.*/gi,
 
-    HP_CHANGE: /.*(gain|lose).*\d*hit point.*\s*/gi,
-    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*\s*/gi,
+    HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
+    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
 
     LEVEL_GAIN: /^You gain a level.*\s+/mi,
-    SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*\s*/gi,
+    SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
 
-    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*\s*/gi,
-    MUS_GAINS: /.*you gain.*\d*muscle.*point.*\s*/gi,
-    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*\s*/gi,
-    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*\s*/gi,
-    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*\s*/gi,    
-    MOX_GAINS: /.*you gain.*\d*moxie.*point.*\s*/gi,
+    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*/gi,
+    MUS_GAINS: /.*you gain.*\d*muscle.*point.*/gi,
+    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*/gi,
+    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
+    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
+    MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
   },
 
   VALUE: {
@@ -53,8 +54,8 @@ export const REGEX = {
     COMBAT_SKILL_NAMES: /(?<=^Round.*casts\s).*(?=!)/gmi,
 
     TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
-    LOCATION_NAME: /(?<=\]\s).*(?=\r?\n)*/,
-    SHOP_LOCATION_NAME: /(?<=each from\s).*\r?\n/,
+    LOCATION_NAME: /(?<=\]\s).*/,
+    SHOP_LOCATION_NAME: /(?<=each from\s).*/,
     ENCOUNTER_NAME: /(?<=Encounter:\s).*/,
     NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
 
@@ -92,10 +93,9 @@ export const REGEX = {
 
   MISC: {
     LOG_SPLIT: LOG_SPLIT_REGEX,
-    LOG_CRUFT: /\n> .+?(?=\n)/,
-    COMBAT_MACRO: /.*executes a macro.*\s*/gmi,
-    MAFIA_MAXIMIZER: /Maximizer:.*\s*/gmi,
-    MAFIA_CHOICE_URL: /.*.php.*\s*/gm,
+    COMBAT_MACRO: /.*executes a macro.*/gmi,
+    MAFIA_MAXIMIZER: /Maximizer:.*/gmi,
+    MAFIA_CHOICE_URL: /.*.php.*/gm,
 
     LOG_BORDER: /=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=/,
   },

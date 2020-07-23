@@ -26,7 +26,6 @@ function calculateBatchSize(rawSize) {
  */
 export async function parseLogTxt(rawText) {
   const rawCleaned = rawText
-    .replace(REGEX.MISC.LOG_CRUFT, '')
     .replace(REGEX.MISC.COMBAT_MACRO, '')
     .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
     .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');

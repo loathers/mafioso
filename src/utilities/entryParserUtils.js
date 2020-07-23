@@ -1,5 +1,4 @@
 import REGEX from 'constants/regexes';
-
 import {
   hasString,
   getRegexMatch,
@@ -104,9 +103,13 @@ export function createEntryBody(entryString) {
     REGEX.DIABOLIC_PIZZA.EAT_LINE,
   ];
 
-  return replacementList.reduce((currentString, replacementRegex) => {
+  const scrubbedEntry = replacementList.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
   }, entryString);
+//    REGEX.MISC.LOG_SPLIT,
+
+  // remove the remaining new line entities 
+  return scrubbedEntry.replace(/(?<!.\s)^(\r\n|\n)/gm, '');
 }
 // -- common parsers
 /**
