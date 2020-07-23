@@ -10,12 +10,13 @@ function StatBlockDisplay(props) {
   const {
     className,
     content,
+    label,
   } = props;
 
   return (
     <div 
-      className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
-      componentname='item-block'>
+      className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-3 boxsizing-border flex-col-center position-relative', className)}
+      style={{width: 85, height: 50}}>
 
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'
@@ -23,8 +24,12 @@ function StatBlockDisplay(props) {
         <StarsStackSVG style={{width: 20, height: 20}} />
       </div>
 
-      <div className='fontsize-3 color-white zindex-1 talign-center flex-none'>
+      <div className='flex-col-center fontsize-6 color-white zindex-1 talign-center flex-none'>
         {content}
+      </div>
+
+      <div className='fontsize-2 color-white zindex-1 talign-center flex-none'>
+        {label}
       </div>
     </div>
   )
@@ -40,14 +45,17 @@ export default function StatChangesDisplay(props) {
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
       <StatBlockDisplay 
         content={logEntry.musSubstats}
+        label='mus exp'
         className='mar-2' />
 
       <StatBlockDisplay 
         content={logEntry.mystSubstats}
+        label='myst exp'
         className='mar-2' />
-        
+
       <StatBlockDisplay 
         content={logEntry.moxSubstats}
+        label='mox exp'
         className='mar-2' />
     </div>
   )

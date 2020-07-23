@@ -297,8 +297,8 @@ export function isMoxUp(entryString) {
  * @return {Array<Number>}
  */
 export function parseMusSubstats(entryString) {
-  const expGains = getRegexMatch(entryString, REGEX.LINE.MUS_EXP_GAINS) || [];
-  const expLosses = getRegexMatch(entryString, REGEX.LINE.MUS_EXP_LOSSES) || [];
+  const expGains = getRegexMatch(entryString, REGEX.VALUE.MUS_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.VALUE.MUS_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -306,8 +306,8 @@ export function parseMusSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseMystSubstats(entryString) {
-  const expGains = getRegexMatch(entryString, REGEX.LINE.MYST_EXP_GAINS) || [];
-  const expLosses = getRegexMatch(entryString, REGEX.LINE.MYST_EXP_LOSSES) || [];
+  const expGains = getRegexMatch(entryString, REGEX.VALUE.MYST_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.VALUE.MYST_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -315,8 +315,8 @@ export function parseMystSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseMoxSubstats(entryString) {
-  const expGains = getRegexMatch(entryString, REGEX.LINE.MOX_EXP_GAINS) || [];
-  const expLosses = getRegexMatch(entryString, REGEX.LINE.MOX_EXP_LOSSES) || [];
+  const expGains = getRegexMatch(entryString, REGEX.VALUE.MOX_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.VALUE.MOX_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 // -- combat parsers
