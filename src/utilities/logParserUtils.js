@@ -116,6 +116,7 @@ export function preparseRawLog(rawText) {
 export function cleanRawLog(rawText) {
   return rawText
     .replace(REGEX.MISC.STACK_TRACE, '')
+    .replace(REGEX.MISC.SEND_A_KMAIL, '')
     .replace(REGEX.MISC.EMPTY_CHECKPOINT, '')
     .replace(REGEX.MISC.COMBAT_MACRO, '')
     .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')

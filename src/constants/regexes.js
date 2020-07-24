@@ -109,6 +109,7 @@ export const REGEX = {
 
   MISC: {
     STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+/gmi,
+    SEND_A_KMAIL: /send a kmail/gi,
     COMBAT_MACRO: /.*executes a macro.*/gi,
     MAFIA_MAXIMIZER: /Maximizer:.*/gi,
     MAFIA_CHOICE_URL: /.*.php.*/g,
