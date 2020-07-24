@@ -236,7 +236,7 @@ export default class LogEntry {
    * @param {LogEntry} comparedEntry
    * @return {Boolean}
    */
-  isSameLocation(comparedEntry) {
+  doesShareLocation(comparedEntry) {
     if (this.data.locationName === null || comparedEntry.data.locationName === null) {
       return false;
     }
@@ -247,7 +247,7 @@ export default class LogEntry {
    * @param {LogEntry} comparedEntry
    * @return {Boolean}
    */
-  isSameEncounter(comparedEntry) {
+  doesShareEncounter(comparedEntry) {
     if (this.data.encounterName === null || comparedEntry.data.encounterName === null) {
       return false;
     }
@@ -258,9 +258,9 @@ export default class LogEntry {
    * @param {LogEntry} comparedEntry
    * @return {Boolean}
    */
-  isRelatedEntry(comparedEntry) {
+  canCombineWith(comparedEntry) {
     // shopping at the same place can be condensed
-    if (this.entryType === ENTRY_TYPE.TRANSACTION && this.isSameLocation(comparedEntry)) {
+    if (this.entryType === ENTRY_TYPE.TRANSACTION && this.doesShareLocation(comparedEntry)) {
       return true;
     }
 
@@ -269,6 +269,16 @@ export default class LogEntry {
     }
 
     return false;
-    // return this.isSameLocation(comparedEntry) && this.isSameEncounter(comparedEntry);
+  }
+  /**
+   * @param {LogEntry} comparedEntry
+   * @return {Boolean}
+   */
+  canRelateTo(comparedEntry) {
+    if (this.canCombineWith(comparedEntry)) {
+      return true;
+    }
+
+    return this.doesShareLocation(comparedEntry);
   }
 }

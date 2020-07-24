@@ -131,7 +131,7 @@ class LogStore {
       }
 
       const nextEntry = entriesList.shift();
-      if (currEntry.isRelatedEntry(nextEntry)) {
+      if (currEntry.canCombineWith(nextEntry)) {
         const combinedEntry = new LogEntry({
           entryId: currEntry.id,
           entryIdx: currEntry.entryIdx,
