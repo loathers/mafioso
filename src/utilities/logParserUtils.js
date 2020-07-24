@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import LogEntry from 'classes/LogEntry';
 
-import REGEX from 'constants/regexes';
+import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
@@ -26,37 +26,10 @@ function calculateBatchSize(rawSize) {
 function cleanRawLog(rawText) {
   return rawText
     .replace(REGEX.MISC.STACK_TRACE, '')
+    .replace(REGEX.MISC.EMPTY_CHECKPOINT, '')
     .replace(REGEX.MISC.COMBAT_MACRO, '')
     .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
     .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
-}
-/**
- * clean up and prepare an array of raw entry text
- * 
- * @param {String} rawText
- * @return {Array<String>}
- */
-export function prepareLogData(rawText) {
-  try {
-    const rawCleaned = cleanRawLog(rawText);
-    const rawSize = rawCleaned.length;
-    if (rawSize > 10000000) {
-      throw new Error(`This log of ${rawSize} characters is too huge!`);
-    }
-
-    // start separating entries, which will be separated by two new lines
-    //  there are exceptions that will be handled separately
-    const rawArray = rawCleaned.split(REGEX.MISC.LOG_SPLIT);
-    if (rawArray.length <= 1) {
-      throw new Error('Not enough data on log.');
-    }
-
-    console.log(`(log has ${rawSize} characters)`);
-    return rawArray; // data is ready to be parsed
-
-  } catch (e) {
-    console.error(e);
-  }
 }
 /**
  * core parsing handler - start here
@@ -72,13 +45,11 @@ export async function parseLogTxt(rawText) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
     }
 
-    // start separating entries, which will be separated by two new lines
-    //  there are exceptions that will be handled separately
-    const rawArray = rawCleaned.split(REGEX.MISC.LOG_SPLIT);
+    // separate entry strings into individual arrays
+    const rawArray = rawCleaned.replace(EMPTY_LINES_REGEX, '}{').split('}{');
     if (rawArray.length <= 1) {
       throw new Error('Not enough data on log.');
     }
-
 
     const BATCH_SIZE = calculateBatchSize(rawSize);
     console.log(`(log has ${rawSize} characters)`);

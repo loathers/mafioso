@@ -30,16 +30,9 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 500,
       /** @type {Array<EntryType>} */
-      visibleEntryTypes: [
+      hiddenEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-        ENTRY_TYPE.ENCOUNTER.COMBAT,
-        ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-        ENTRY_TYPE.CONSUMPTION.EAT,
-        ENTRY_TYPE.CONSUMPTION.DRINK,
-        ENTRY_TYPE.CONSUMPTION.CHEW,
-        ENTRY_TYPE.TRANSACTION,
-        ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
-        ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
+        ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
       ],
       /* @type {Object} */
       dataFilters: {},
@@ -107,7 +100,7 @@ class LogStore {
     const {
       pageNum = this.filterOptions.pageNum,
       entriesPerPage = this.filterOptions.entriesPerPage,
-      visibleEntryTypes = this.filterOptions.visibleEntryTypes,
+      hiddenEntryTypes = this.filterOptions.hiddenEntryTypes,
       // dataFilters = this.filterOptions.dataFilters,
     } = options;
 
@@ -116,7 +109,7 @@ class LogStore {
 
     const filteredEntries = this.logEntries
       .slice(startIdx, endIdx)
-      .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType));
+      .filter((logEntry) => !hiddenEntryTypes.includes(logEntry.entryType));
 
     return this.condenseEntries(filteredEntries);
   }

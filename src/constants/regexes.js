@@ -1,5 +1,5 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
-export const LOG_SPLIT_REGEX = /(\r\n|\n)(\r\n|\n)/g; // because return carriage is windows specifc
+export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const REGEX = {
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
@@ -92,11 +92,11 @@ export const REGEX = {
   },
 
   MISC: {
-    LOG_SPLIT: LOG_SPLIT_REGEX,
     STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+/gmi,
-    COMBAT_MACRO: /.*executes a macro.*/gmi,
-    MAFIA_MAXIMIZER: /Maximizer:.*/gmi,
-    MAFIA_CHOICE_URL: /.*.php.*/gm,
+    COMBAT_MACRO: /.*executes a macro.*/gi,
+    MAFIA_MAXIMIZER: /Maximizer:.*/gi,
+    MAFIA_CHOICE_URL: /.*.php.*/g,
+    EMPTY_CHECKPOINT: /Created an empty checkpoint.*/gi,
 
     LOG_BORDER: /=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=/,
   },
