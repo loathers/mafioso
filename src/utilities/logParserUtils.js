@@ -19,16 +19,25 @@ function calculateBatchSize(rawSize) {
   return Math.max(100, newBatchSize);
 }
 /**
+ * remove stuff that the parser will be completely ignoring
+ * @param {String} rawText
+ * @return {String}
+ */
+function cleanRawLog(rawText) {
+  return rawText
+    .replace(REGEX.MISC.STACK_TRACE, '')
+    .replace(REGEX.MISC.COMBAT_MACRO, '')
+    .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
+    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
+}
+/**
  * core parsing handler - start here
  * 
  * @param {String} rawText
  * @return {Array<LogEntry>}
  */
 export async function parseLogTxt(rawText) {
-  const rawCleaned = rawText
-    .replace(REGEX.MISC.COMBAT_MACRO, '')
-    .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
-    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
+  const rawCleaned = cleanRawLog(rawText);
   const rawSize = rawCleaned.length;
   if (rawSize > 10000000) {
     console.warn(`This log of ${rawSize} characters is too huge!`);

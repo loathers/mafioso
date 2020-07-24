@@ -93,6 +93,7 @@ export const REGEX = {
 
   MISC: {
     LOG_SPLIT: LOG_SPLIT_REGEX,
+    STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+/gmi,
     COMBAT_MACRO: /.*executes a macro.*/gmi,
     MAFIA_MAXIMIZER: /Maximizer:.*/gmi,
     MAFIA_CHOICE_URL: /.*.php.*/gm,
