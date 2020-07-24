@@ -2,6 +2,8 @@ import {
   observable,
 } from 'mobx';
 
+import LogEntry from 'classes/LogEntry';
+
 import ENTRY_TYPE from 'constants/entryType';
 
 import * as logParserUtils from 'utilities/logParserUtils';
@@ -87,7 +89,6 @@ class LogStore {
 
     const newData = await logParserUtils.parseLogTxt(this.rawText);
     this.logEntries.replace(newData);
-
     this.isParsing.set(false);
   }
   /** 
@@ -105,9 +106,48 @@ class LogStore {
     const startIdx = entriesPerPage === 'all' ? 0 : entriesPerPage * pageNum;
     const endIdx = entriesPerPage === 'all' ? this.logEntries.length : startIdx + entriesPerPage;
 
-    return this.logEntries
+    const filteredEntries = this.logEntries
       .slice(startIdx, endIdx)
       .filter((logEntry) => visibleEntryTypes.includes(logEntry.entryType));
+
+    return this.condenseEntries(filteredEntries);
+  }
+  /**
+   * the way the system is currently designed, there is no need to make a shallow copy
+   *  but it might be something to consider
+   *
+   * @param {Array<LogEntry>} entriesList 
+   * @returns {Array<LogEntry>}
+   */
+  condenseEntries(entriesList) {
+    // const originalLength = entriesList.length;
+    let condensedData = [];
+
+    while (entriesList.length > 0) {
+      const currEntry = entriesList.shift();
+      if (entriesList.length <= 0) {
+        condensedData.push(currEntry);
+        continue;
+      }
+
+      const nextEntry = entriesList.shift();
+      if (currEntry.isSameLocation(nextEntry)) {
+        const combinedEntry = new LogEntry({
+          entryId: currEntry.id,
+          entryIdx: currEntry.entryIdx,
+          rawText: currEntry.rawText.concat('\n').concat(nextEntry.rawText),
+        });
+
+        entriesList.unshift(combinedEntry);
+        continue;
+      }
+
+      entriesList.unshift(nextEntry);
+      condensedData.push(currEntry);
+    }
+
+    // console.log(`Condensed entries from ${originalLength} entries to ${condensedData.length}`);
+    return condensedData;
   }
 }
 
