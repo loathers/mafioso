@@ -119,7 +119,8 @@ export function cleanRawLog(rawText) {
     .replace(REGEX.MISC.EMPTY_CHECKPOINT, '')
     .replace(REGEX.MISC.COMBAT_MACRO, '')
     .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
-    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
+    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '')
+    .replace(REGEX.MISC.LOG_BORDER, '');
 }
 /**
  * update batch size based on number of characters in the log

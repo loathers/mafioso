@@ -1,4 +1,5 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
+export const PRE_LINE_EMPTY_SPACE = /^\s*/g;
 export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const REGEX = {
   DIABOLIC_PIZZA: {
@@ -95,7 +96,7 @@ export const REGEX = {
     EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/gmis,
     SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/gmis,
     EFFECTS_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/gmis,
-    MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=\s(=-=))/gmis,
+    MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
   },
   SNAPSHOT_CHECK: {
     CONTAIN_MOON: /(> moon)/i,
@@ -113,7 +114,7 @@ export const REGEX = {
     MAFIA_CHOICE_URL: /.*.php.*/g,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*/gi,
 
-    LOG_BORDER: /=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=/,
+    LOG_BORDER: /(=-)+=+/g,
   },
 };
 

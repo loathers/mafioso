@@ -1,4 +1,4 @@
-import REGEX from 'constants/regexes';
+import REGEX, {PRE_LINE_EMPTY_SPACE} from 'constants/regexes';
 import {
   hasString,
   getRegexMatch,
@@ -108,7 +108,9 @@ export function createEntryBody(entryString) {
   }, entryString);
 
   // remove the remaining new line entities 
-  return scrubbedEntry.replace(/(?<!.\s)^(\r\n|\n)/gm, '');
+  return scrubbedEntry
+    .replace(/(?<!.\s)^(\r\n|\n)/gm, '')
+    .replace(PRE_LINE_EMPTY_SPACE, '');
 }
 // -- common parsers
 /**

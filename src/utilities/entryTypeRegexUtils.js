@@ -72,7 +72,7 @@ export function getEntryType(entryString) {
  * @return {Boolean}
  */
 export function isEntryMafiaMisc(entryString) {
-  return hasString(entryString, REGEX.MISC.LOG_BORDER);
+  return hasString(entryString, REGEX.MISC.MAFIA_MAXIMIZER);
 }
 /**
  * check if entry is telling us about this ascension

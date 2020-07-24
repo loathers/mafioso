@@ -33,6 +33,7 @@ class LogStore {
       hiddenEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
         ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
+        ENTRY_TYPE.SNAPSHOT.DAY_INFO,
       ],
       /* @type {Object} */
       dataFilters: {},
