@@ -131,11 +131,11 @@ class LogStore {
       }
 
       const nextEntry = entriesList.shift();
-      if (currEntry.isSameLocation(nextEntry)) {
+      if (currEntry.isRelatedEntry(nextEntry)) {
         const combinedEntry = new LogEntry({
           entryId: currEntry.id,
           entryIdx: currEntry.entryIdx,
-          rawText: currEntry.rawText.concat('\n').concat(nextEntry.rawText),
+          rawText: currEntry.rawText.concat('\n\n').concat(nextEntry.rawText),
         });
 
         entriesList.unshift(combinedEntry);

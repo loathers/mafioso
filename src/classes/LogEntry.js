@@ -254,4 +254,15 @@ export default class LogEntry {
 
     return this.data.encounterName === comparedEntry.data.encounterName;
   }
+  /**
+   * @param {LogEntry} comparedEntry
+   * @return {Boolean}
+   */
+  isRelatedEntry(comparedEntry) {
+    if (this.entryType === ENTRY_TYPE.TRANSACTION && this.isSameLocation(comparedEntry)) {
+      return true;
+    }
+
+    return this.isSameLocation(comparedEntry) && this.isSameEncounter(comparedEntry);
+  }
 }
