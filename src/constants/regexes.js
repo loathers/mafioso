@@ -89,12 +89,21 @@ export const REGEX = {
 
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
+    // todo: these only work in raw
     MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
     STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
     EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/gmis,
     SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/gmis,
     EFFECTS_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/gmis,
     MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=\s(=-=))/gmis,
+  },
+  SNAPSHOT_CHECK: {
+    CONTAIN_MOON: /(> moon)/i,
+    CONTAIN_STATUS: /(> status)/i,
+    CONTAIN_EQUIPMENT: /(> equipment)/i,
+    CONTAIN_SKILLS: /(> skills)/i,
+    CONTAIN_EFFECTS: /(> effects)/i,
+    CONTAIN_MODIFIERS: /(> modifiers)/i,
   },
 
   MISC: {

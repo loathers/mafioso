@@ -22,15 +22,24 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.IOTM.BEACH_COMB;
   }
 
-  // -- basic entries
+  // -- kolmafia
   if (isEntryAscensionInfo(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
+  }
+  
+  if (isEntryDayInfo(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.DAY_INFO;
+  }
+  
+  if (isEntrySkillBreakdown(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN;
   }
   
   if (isEntryMafiaMisc(entryString)) {
     return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
+  // -- common
   if (isEntryCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.COMBAT;
   }
@@ -72,6 +81,24 @@ export function isEntryMafiaMisc(entryString) {
  */
 export function isEntryAscensionInfo(entryString) {
   return hasString(entryString, REGEX.VALUE.ASCENSION_NUMBER);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryDayInfo(entryString) {
+  return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_MOON) 
+    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS)
+    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_EQUIPMENT)
+    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_EFFECTS)
+    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_MODIFIERS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntrySkillBreakdown(entryString) {
+  return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_SKILLS);
 }
 /**
  * check if this entry is about buying something

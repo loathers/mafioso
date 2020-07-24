@@ -23,10 +23,10 @@ export async function parseLogTxt(rawText) {
 
     const preparsedLog = preparseRawLog(rawCleaned);
 
-    // separate entry strings into individual arrays
     const rawArray = preparsedLog
       .replace(EMPTY_LINES_REGEX, '}{')
       .split('}{');
+
     if (rawArray.length <= 1) {
       throw new Error('Not enough data on log.');
     }
