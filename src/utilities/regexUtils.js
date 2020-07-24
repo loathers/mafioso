@@ -35,6 +35,7 @@ export function countNumLines(sourceStr) {
  */
 export function fixSpecialEntities(sourceStr) {
   return sourceStr
+    .replace(/&oacute;/g, 'ó')
     .replace(/&trade;/g, '™')
     .replace(/&quot;/g, '"');
 }
