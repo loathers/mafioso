@@ -64,6 +64,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.EQUIP;
   }
 
+  if (isEntrySpellCast(entryString)) {
+    return ENTRY_TYPE.SPELL_CAST;
+  }
+
   if (isEntryTransaction(entryString)) {
     return ENTRY_TYPE.TRANSACTION;
   }
@@ -139,6 +143,13 @@ export function isEntryChew(entryString) {
  */
 export function isEntryEquip(entryString) {
   return hasString(entryString, REGEX.VALUE.EQUIP_TARGETS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntrySpellCast(entryString) {
+  return hasString(entryString, REGEX.VALUE.SPELL_CAST_NAMES);
 }
 // -- actions
 /**

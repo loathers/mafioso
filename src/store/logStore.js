@@ -34,6 +34,7 @@ class LogStore {
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
         ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
         ENTRY_TYPE.SNAPSHOT.DAY_INFO,
+        ENTRY_TYPE.EQUIP,
       ],
       /* @type {Object} */
       dataFilters: {},

@@ -7,6 +7,7 @@ import { ReactComponent as DigDugSVG } from 'images/dig-dug.svg';
 import { ReactComponent as InfoSVG } from 'images/info.svg';
 import { ReactComponent as ShopSVG } from 'images/shop.svg';
 // import { ReactComponent as SteakSVG } from 'images/steak.svg';
+import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 import { ReactComponent as MartiniSVG } from 'images/martini.svg';
 import { ReactComponent as PotionSVG } from 'images/potion-ball.svg';
@@ -50,6 +51,9 @@ function getEntryIcon(entryType) {
 
     case ENTRY_TYPE.POTION:
       return PotionSVG;
+
+    case ENTRY_TYPE.SPELL_CAST:
+      return SpellbookSVG;
 
     case ENTRY_TYPE.TRANSACTION:
       return ShopSVG;

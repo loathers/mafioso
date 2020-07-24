@@ -75,6 +75,9 @@ export const REGEX = {
 
     EQUIP_TARGETS: /(?<=equip\s.*?\s).*/g,
 
+    SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
+    SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,
+
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
     MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
