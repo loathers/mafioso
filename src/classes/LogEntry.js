@@ -86,30 +86,39 @@ export default class LogEntry {
       this.initialize();
     }
   }
-  // -- display getters
-  /** @returns {String} */
-  getLocationDisplay() {
-    if (this.isEntryDiabolicPizza()) {
-      return 'Diabolic Pizza Cube';
-    }
+  /**
+   * once `entryString` is given we can set all the properties
+   */
+  initialize() {
+    // common data
+    const parsedCommonData = entryParserUtils.parseCommonData(this.entryString);
+    this.data = {
+      ...this.data,
+      ...parsedCommonData,
+    };
 
-    return this.data.locationName;
-  }
-  /** @returns {String} */
-  getEncounterDisplay() {
-    return this.data.encounterName;
-  }
-  /** @returns {String} */
-  getItemsDisplay() {
-    return this.data.acquiredItems.join(', ');
-  }
-  /** @returns {String} */
-  getMeatDisplay() {
-    if (this.data.meatChange > 0) {
-      return `+${this.data.meatChange}`;
-    }
+    // stat data
+    const parsedStatData = entryParserUtils.parseStatData(this.entryString);
+    this.statData = {
+      ...this.statData,
+      ...parsedStatData,
+    };
 
-    return this.data.meatChange;
+    // combat data
+    const parsedCombatData = entryParserUtils.parseCombatData(this.entryString);
+    this.combatData = {
+      ...this.combatData,
+      ...parsedCombatData,
+    };
+
+    // special data
+    const parsedSpecialData = entryParserUtils.parseEntrySpecial(this.entryString);
+    this.specialData = {
+      ...this.specialData,
+      ...parsedSpecialData,
+    };
+
+    this.entryDisplay = this.getEntryDisplay();
   }
   /** @returns {Boolean} */
   hasEntry() {
@@ -121,7 +130,7 @@ export default class LogEntry {
   }
   /** @returns {Boolean} */
   hasEntryHeader() {
-    return this.getLocationDisplay() !== null || this.getEncounterDisplay() !== null;
+    return this.locationDisplay !== null || this.getEncounterDisplay() !== null;
   }
   /** @type {Boolean} */
   get hasStatChanges() {
@@ -157,6 +166,10 @@ export default class LogEntry {
   get moxSubstats() {
     return this.statData.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }
+  /** @returns {String} */
+  get locationDisplay() {
+    return this.data.locationName;
+  }
   // -- combat
   /** @returns {Boolean} */
   hasCombatActions() {
@@ -177,39 +190,18 @@ export default class LogEntry {
     return this.specialData.diabolicPizzaIngredients.length > 0;
   }
   /**
-   * once `entryString` is given we can set all the properties
+   * @return {Object}
    */
-  initialize() {
-    // common data
-    const parsedCommonData = entryParserUtils.parseCommonData(this.entryString);
-    this.data = {
+  export() {
+    return {
+      entryId: this.entryId,
+      entryIdx: this.entryIdx,
+      entryType: this.entryType,
+      entryString: this.entryString,
       ...this.data,
-      ...parsedCommonData,
-    };
-
-    // stat data
-    const parsedStatData = entryParserUtils.parseStatData(this.entryString);
-    this.statData = {
-      ...this.statData,
-      ...parsedStatData,
-    };
-
-    // combat data
-    const parsedCombatData = entryParserUtils.parseCombatData(this.entryString);
-    this.combatData = {
-      ...this.combatData,
-      ...parsedCombatData,
-    };
-
-    // special data
-    const parsedSpecialData = entryParserUtils.parseEntrySpecial(this.entryString);
-    this.specialData = {
-      ...this.specialData,
-      ...parsedSpecialData,
-    };
-
-    this.entryDisplay = this.getEntryDisplay();
+    }
   }
+  // -- utility
   /**
    * the text that we display in the entry 
    * 
@@ -224,16 +216,31 @@ export default class LogEntry {
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     return entryBody.length <= 0 ? null : entryBody;
   }
-  /**
-   * @return {Object}
-   */
-  export() {
-    return {
-      entryId: this.entryId,
-      entryIdx: this.entryIdx,
-      entryType: this.entryType,
-      entryString: this.entryString,
-      ...this.data,
+  /** @returns {String} */
+  getEncounterDisplay() {
+    return this.data.encounterName;
+  }
+  /** @returns {String} */
+  getItemsDisplay() {
+    return this.data.acquiredItems.join(', ');
+  }
+  /** @returns {String} */
+  getMeatDisplay() {
+    if (this.data.meatChange > 0) {
+      return `+${this.data.meatChange}`;
     }
+
+    return this.data.meatChange;
+  }
+  /**
+   * @param {LogEntry} comparedEntry
+   * @return {Boolean}
+   */
+  isSameLocation(comparedEntry) {
+    if (this.data.locationName === null || comparedEntry.data.locationName === null) {
+      return false;
+    }
+
+    return this.data.locationName === comparedEntry.data.locationName;
   }
 }

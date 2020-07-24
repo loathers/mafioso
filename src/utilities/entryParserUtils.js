@@ -106,7 +106,6 @@ export function createEntryBody(entryString) {
   const scrubbedEntry = replacementList.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
   }, entryString);
-//    REGEX.MISC.LOG_SPLIT,
 
   // remove the remaining new line entities 
   return scrubbedEntry.replace(/(?<!.\s)^(\r\n|\n)/gm, '');
@@ -164,6 +163,10 @@ export function isNoncombatEncounter(entryString) {
 export function parseLocationName(entryString) {
   if (isEntryBeachComb(entryString)) {
     return 'Beach Comb';
+  }
+
+  if (isEntryDiabolicPizza(entryString)) {
+    return 'Diabolic Pizza';
   }
 
   const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
@@ -420,6 +423,21 @@ export function isUseTheForce(entryString) {
 }
 /**
  * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBeachComb(entryString) {
+  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryDiabolicPizza(entryString) {
+  // console.log(hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE));
+  return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE) || hasString(entryString, REGEX.DIABOLIC_PIZZA.EAT_LINE);
+}
+/**
+ * @param {String} entryString
  * @return {Array<String>}
  */
 export function parseMakeDiabolicPizza(entryString) {
@@ -430,11 +448,4 @@ export function parseMakeDiabolicPizza(entryString) {
 
   const ingredientsArray = ingredientsLine[0].split(', ');
   return ingredientsArray;
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBeachComb(entryString) {
-  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
 }
