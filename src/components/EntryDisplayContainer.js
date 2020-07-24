@@ -89,7 +89,7 @@ function EntryHeaderContainer(props) {
     return null;
   }
 
-  const locationDisplay = logEntry.getLocationDisplay();
+  const locationDisplay = logEntry.locationDisplay;
   const encounterDisplay = logEntry.getEncounterDisplay();
 
   return (
@@ -132,7 +132,7 @@ function EntryBodyContainer(props) {
       {/* -- custom content -- */}
       {/* diabolic pizza */}
       { logEntry.hasDiabolicPizzaIngredients() &&
-        <MakeDiabolicPizzaDisplay logEntry={logEntry} />
+        <MakeDiabolicPizzaDisplay className='adjacent-mar-t-3' logEntry={logEntry} />
       }     
 
       {/* stat changes */}

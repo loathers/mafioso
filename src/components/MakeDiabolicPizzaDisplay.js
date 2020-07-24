@@ -45,15 +45,17 @@ function IngredientBlockDisplay(props) {
 }
 /** @returns {React.Component} */
 export default function MakeDiabolicPizzaDisplay(props) {
-  const {logEntry} = props;
-  const {specialData} = logEntry;
   const {
-    diabolicPizzaIngredients,
-  } = specialData;
+    className,
+    logEntry,
+  } = props;
+  
+  const {specialData} = logEntry;
+  const {diabolicPizzaIngredients} = specialData;
 
   return (
     <div 
-      className='flex-row flexwrap-yes'
+      className={combineClassnames('flex-row flexwrap-yes', className)}
       style={{width: 200}}>
 
       {diabolicPizzaIngredients.map((ingredientName) => 
