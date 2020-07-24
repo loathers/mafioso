@@ -251,19 +251,18 @@ export function parseMeatGains(entryString) {
  * @return {Number}
  */
 export function parseMeatSpent(entryString) {
-  const buyAmountMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT);
-  if (buyAmountMatches === null) {
-    return 0;
+  const buyAmountMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) || [];
+  const buyCostMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_COST) || [];
+  if (buyAmountMatches.length !== buyCostMatches.length) {
+    console.warn('There may be some data missing from parsing how much meat was spent.');
   }
 
-  const buyCostMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_COST);
-  if (buyCostMatches === null) {
-    return 0;
-  }
+  const spentTotal = buyAmountMatches.reduce((meatTotal, buyAmountString, idx) => {
+    const buyCostString = buyCostMatches[idx] || 0;
+    return meatTotal + Number(buyAmountString) * -Number(buyCostString);
+  }, 0)
 
-  const buyAmount = Number(buyAmountMatches[0]);
-  const buyCost = Number(buyCostMatches[0]);
-  return buyAmount * -buyCost;
+  return spentTotal;
 }
 // -- stat parsers
 /**

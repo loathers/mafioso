@@ -45,12 +45,12 @@ export const REGEX = {
   VALUE: {
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
 
-    BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/,
-    BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/,
-    MEAT_GAIN_AMOUNT: /(?<=You gain )\d*(?=\s+meat)/gmi,
+    BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
+    BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
+    MEAT_GAIN_AMOUNT: /(?<=You gain )\d*(?=\s+meat)/gi,
 
-    COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/mi,
-    COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/i,
+    COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/gmi,
+    COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/gi,
     COMBAT_SKILL_NAMES: /(?<=^Round.*casts\s).*(?=!)/gmi,
 
     TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
@@ -59,18 +59,18 @@ export const REGEX = {
     ENCOUNTER_NAME: /(?<=Encounter:\s).*/,
     NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
 
-    FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/g,
-    FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/g,
-    ACQUIRED_EFFECTS: /(?<=^You acquire an effect:\s).*/m,
+    FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/gi,
+    FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
+    ACQUIRED_EFFECTS: /(?<=^You acquire an effect:\s).*/gmi,
 
-    CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/i,
-    CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/i,
-    EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/i,
-    EAT_TARGET: /(?<=^eat\s\d+\s).*/i,
-    DRINK_AMOUNT: /(?<=^drink\s)\d+(?=\s)/i,
-    DRINK_TARGET: /(?<=^drink\s\d+\s).*/i,
-    CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/i,
-    CHEW_TARGET: /(?<=^chew\s\d+\s).*/i,
+    CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
+    CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
+    EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/gi,
+    EAT_TARGET: /(?<=^eat\s\d+\s).*/gi,
+    DRINK_AMOUNT: /(?<=^drink\s)\d+(?=\s)/gi,
+    DRINK_TARGET: /(?<=^drink\s\d+\s).*/gi,
+    CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/gi,
+    CHEW_TARGET: /(?<=^chew\s\d+\s).*/gi,
 
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
