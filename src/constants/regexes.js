@@ -89,12 +89,12 @@ export const REGEX = {
 
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
-    MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/mis,
-    STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/mis,
-    EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/mis,
-    SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/mis,
-    EFFECT_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/mis,
-    MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=\s(=-=))/mis,
+    MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
+    STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
+    EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/gmis,
+    SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/gmis,
+    EFFECTS_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/gmis,
+    MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=\s(=-=))/gmis,
   },
 
   MISC: {

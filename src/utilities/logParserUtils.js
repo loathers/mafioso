@@ -8,30 +8,6 @@ const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
 
 /**
- * update batch size based on number of characters in the log
- *  this calculation is not very scientific
- *  
- * @param {Number} rawSize
- */
-function calculateBatchSize(rawSize) {
-  const rawVal = Math.sqrt(rawSize);
-  const newBatchSize = Math.round(1200 - rawVal);
-  return Math.max(100, newBatchSize);
-}
-/**
- * remove stuff that the parser will be completely ignoring
- * @param {String} rawText
- * @return {String}
- */
-function cleanRawLog(rawText) {
-  return rawText
-    .replace(REGEX.MISC.STACK_TRACE, '')
-    .replace(REGEX.MISC.EMPTY_CHECKPOINT, '')
-    .replace(REGEX.MISC.COMBAT_MACRO, '')
-    .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
-    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
-}
-/**
  * core parsing handler - start here
  * 
  * @param {String} rawText
@@ -45,11 +21,10 @@ export async function parseLogTxt(rawText) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
     }
 
-    const moonString = rawCleaned.match(REGEX.GROUP.MOON_SNAPSHOT)[0].replace(EMPTY_LINES_REGEX, '\n');
+    const preparsedLog = preparseRawLog(rawCleaned);
 
     // separate entry strings into individual arrays
-    const rawArray = rawCleaned
-      .replace(REGEX.GROUP.MOON_SNAPSHOT, moonString)
+    const rawArray = preparsedLog
       .replace(EMPTY_LINES_REGEX, '}{')
       .split('}{');
     if (rawArray.length <= 1) {
@@ -112,4 +87,48 @@ export function parseLogArray(logArray, startIdx) {
 
     setTimeout(() => resolve(parsedLogArray), PARSE_DELAY);
   })
+}
+/**
+ * do some stuff before splitting up the entries
+ * @param {String} rawText
+ * @return {String}
+ */
+export function preparseRawLog(rawText) {
+  const regexToPreparse = [
+    REGEX.GROUP.MOON_SNAPSHOT,
+    REGEX.GROUP.STATUS_SNAPSHOT,
+    REGEX.GROUP.EQUIPMENT_SNAPSHOT,
+    REGEX.GROUP.SKILLS_SNAPSHOT,
+    REGEX.GROUP.EFFECTS_SNAPSHOT,
+    REGEX.GROUP.MODIFIERS_SNAPSHOT,
+  ];
+
+  return regexToPreparse.reduce((preparsedLog, preparseRegex) => {
+    const preparsedString = preparsedLog.match(preparseRegex)[0].replace(EMPTY_LINES_REGEX, '\n');
+    return preparsedLog.replace(preparseRegex, preparsedString);
+  }, rawText);
+}
+/**
+ * remove stuff that the parser will be completely ignoring
+ * @param {String} rawText
+ * @return {String}
+ */
+export function cleanRawLog(rawText) {
+  return rawText
+    .replace(REGEX.MISC.STACK_TRACE, '')
+    .replace(REGEX.MISC.EMPTY_CHECKPOINT, '')
+    .replace(REGEX.MISC.COMBAT_MACRO, '')
+    .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
+    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
+}
+/**
+ * update batch size based on number of characters in the log
+ *  this calculation is not very scientific
+ *  
+ * @param {Number} rawSize
+ */
+function calculateBatchSize(rawSize) {
+  const rawVal = Math.sqrt(rawSize);
+  const newBatchSize = Math.round(1200 - rawVal);
+  return Math.max(100, newBatchSize);
 }
