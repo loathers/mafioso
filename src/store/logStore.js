@@ -83,13 +83,21 @@ class LogStore {
    * handle cleaning up and setting all the data
    */
   async parse() {
-    if (!this.hasRawText) {
-      return;
-    }
+    try {
+      if (!this.hasRawText) {
+        throw new Error('No log to parse???');
+      }
 
-    const newData = await logParserUtils.parseLogTxt(this.rawText);
-    this.logEntries.replace(newData);
-    this.isParsing.set(false);
+      console.log('✨ %cParsing your Ascension Log!', 'color: Blue');
+      const newData = await logParserUtils.parseLogTxt(this.rawText);
+      this.logEntries.replace(newData);
+
+      this.isParsing.set(false);
+      console.log(`✨ %cFinished! Created ${this.logEntries.length} entries.`, 'color: Blue');
+
+    } catch (e) {
+      console.error(e);
+    }
   }
   /** 
    * @param {Object} options

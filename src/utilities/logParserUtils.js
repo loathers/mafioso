@@ -31,41 +31,67 @@ function cleanRawLog(rawText) {
     .replace(REGEX.MISC.MAFIA_MAXIMIZER, '');
 }
 /**
+ * clean up and prepare an array of raw entry text
+ * 
+ * @param {String} rawText
+ * @return {Array<String>}
+ */
+export function prepareLogData(rawText) {
+  try {
+    const rawCleaned = cleanRawLog(rawText);
+    const rawSize = rawCleaned.length;
+    if (rawSize > 10000000) {
+      throw new Error(`This log of ${rawSize} characters is too huge!`);
+    }
+
+    // start separating entries, which will be separated by two new lines
+    //  there are exceptions that will be handled separately
+    const rawArray = rawCleaned.split(REGEX.MISC.LOG_SPLIT);
+    if (rawArray.length <= 1) {
+      throw new Error('Not enough data on log.');
+    }
+
+    console.log(`(log has ${rawSize} characters)`);
+    return rawArray; // data is ready to be parsed
+
+  } catch (e) {
+    console.error(e);
+  }
+}
+/**
  * core parsing handler - start here
  * 
  * @param {String} rawText
  * @return {Array<LogEntry>}
  */
 export async function parseLogTxt(rawText) {
-  const rawCleaned = cleanRawLog(rawText);
-  const rawSize = rawCleaned.length;
-  if (rawSize > 10000000) {
-    console.warn(`This log of ${rawSize} characters is too huge!`);
-    return;
+  try {
+    const rawCleaned = cleanRawLog(rawText);
+    const rawSize = rawCleaned.length;
+    if (rawSize > 10000000) {
+      throw new Error(`This log of ${rawSize} characters is too huge!`);
+    }
+
+    // start separating entries, which will be separated by two new lines
+    //  there are exceptions that will be handled separately
+    const rawArray = rawCleaned.split(REGEX.MISC.LOG_SPLIT);
+    if (rawArray.length <= 1) {
+      throw new Error('Not enough data on log.');
+    }
+
+
+    const BATCH_SIZE = calculateBatchSize(rawSize);
+    console.log(`(log has ${rawSize} characters)`);
+
+    const logEntries = await parseRawArray(rawArray, {batchSize: BATCH_SIZE});
+    return logEntries;
+
+  } catch (e) {
+    return e;
   }
-
-  // start separating entries, which will be separated by two new lines
-  //  there are exceptions that will be handled separately
-  const rawArray = rawCleaned.split(REGEX.MISC.LOG_SPLIT);
-  if (rawArray.length <= 1) {
-    console.warn('Not enough data on log.');
-    return;
-  }
-
-  console.log('✨ %cParsing your Ascension Log!', 'color: Blue');
-
-  // calculate size of batches for performance
-  const BATCH_SIZE = calculateBatchSize(rawSize);
-  console.log(`(log has ${rawSize} characters)`);
-
-  const logEntries = await parseRawArray(rawArray, {batchSize: BATCH_SIZE});
-  console.log(`✨ %cFinishing! Created ${logEntries.length} entries.`, 'color: Blue');
-  return logEntries;
 }
 /** 
  * parses an array of raw strings
- * 
- * @async
  * @param {Array<String>} rawArray
  * @param {Object} [options]
  * @returns {Array<LogEntry>}
@@ -77,6 +103,7 @@ export async function parseRawArray(rawArray, options = {}) {
 
   let logEntries = [];
 
+  // calculate size of batches for performance
   const batchCount = Math.ceil(rawArray.length / batchSize);
   for (let i = 0; i < batchCount; i++) {
     const startIdx = i * batchSize;
