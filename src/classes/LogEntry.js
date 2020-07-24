@@ -264,10 +264,6 @@ export default class LogEntry {
       return true;
     }
 
-    if (this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE && comparedEntry.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT) {
-      return true;
-    }
-
     return false;
   }
   /**
