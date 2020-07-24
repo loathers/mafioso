@@ -32,6 +32,7 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
     case ENTRY_TYPE.SNAPSHOT.DAY_INFO:
     case ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN:
+    case ENTRY_TYPE.EQUIP:
       return InfoSVG;
 
     case ENTRY_TYPE.ACQUIRE_ITEM:

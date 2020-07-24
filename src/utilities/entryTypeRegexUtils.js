@@ -60,6 +60,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.CONSUMPTION.CHEW;
   }
 
+  if (isEntryEquip(entryString)) {
+    return ENTRY_TYPE.EQUIP;
+  }
+
   if (isEntryTransaction(entryString)) {
     return ENTRY_TYPE.TRANSACTION;
   }
@@ -128,6 +132,13 @@ export function isEntryDrink(entryString) {
  */
 export function isEntryChew(entryString) {
   return hasString(entryString, REGEX.VALUE.CHEW_TARGET);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryEquip(entryString) {
+  return hasString(entryString, REGEX.VALUE.EQUIP_TARGETS);
 }
 // -- actions
 /**

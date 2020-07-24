@@ -73,6 +73,8 @@ export const REGEX = {
     CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/gi,
     CHEW_TARGET: /(?<=^chew\s\d+\s).*/gi,
 
+    EQUIP_TARGETS: /(?<=equip\s.*?\s).*/g,
+
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
     MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
