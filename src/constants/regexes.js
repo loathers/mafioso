@@ -87,8 +87,14 @@ export const REGEX = {
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
 
-  SUBSTRING: {
-    ASCENSION_INFO: /^(Ascension)/m,
+  GROUP: {
+    ASCENSION_SNAPSHOT: /^(Ascension)/m,
+    MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/mis,
+    STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/mis,
+    EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/mis,
+    SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/mis,
+    EFFECT_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/mis,
+    MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=\s(=-=))/mis,
   },
 
   MISC: {

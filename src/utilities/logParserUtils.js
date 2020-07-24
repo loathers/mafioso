@@ -45,8 +45,13 @@ export async function parseLogTxt(rawText) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
     }
 
+    const moonString = rawCleaned.match(REGEX.GROUP.MOON_SNAPSHOT)[0].replace(EMPTY_LINES_REGEX, '\n');
+
     // separate entry strings into individual arrays
-    const rawArray = rawCleaned.replace(EMPTY_LINES_REGEX, '}{').split('}{');
+    const rawArray = rawCleaned
+      .replace(REGEX.GROUP.MOON_SNAPSHOT, moonString)
+      .replace(EMPTY_LINES_REGEX, '}{')
+      .split('}{');
     if (rawArray.length <= 1) {
       throw new Error('Not enough data on log.');
     }

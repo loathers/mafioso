@@ -3,11 +3,16 @@
  *  I might want to do a lot of swapping around to test efficiency)
  * 
  * @param {String} searchStr
- * @param {String} matchStr
- * @return {*}
+ * @param {String | Regex} matchRegex
+ * @param {String} [regexFlags]
+ * @return {Array<String>}
  */
-export function getRegexMatch(searchStr, matchStr) {
-  return searchStr.match(new RegExp(matchStr));
+export function getRegexMatch(searchStr, matchRegex, regexFlags) {
+  if (matchRegex instanceof RegExp) {
+    return searchStr.match(matchRegex);
+  }
+
+  return searchStr.match(new RegExp(matchRegex, regexFlags));
 }
 /**
  * @param {String} searchStr
