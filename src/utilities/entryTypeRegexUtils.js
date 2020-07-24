@@ -9,6 +9,19 @@ import {hasString} from 'utilities/regexUtils';
  * @return {EntryType}
  */
 export function getEntryType(entryString) {
+  // -- iotm
+  if (isEntryDiabolicPizzaMake(entryString)) {
+    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
+  }
+
+  if (isEntryDiabolicPizzaEat(entryString)) {
+    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
+  }
+
+  if (isEntryBeachComb(entryString)) {
+    return ENTRY_TYPE.IOTM.BEACH_COMB;
+  }
+
   // -- basic entries
   if (isEntryAscensionInfo(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
@@ -40,19 +53,6 @@ export function getEntryType(entryString) {
 
   if (isEntryTransaction(entryString)) {
     return ENTRY_TYPE.TRANSACTION;
-  }
-
-  // -- iotm: diabolic pizza
-  if (isEntryDiabolicPizzaMake(entryString)) {
-    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
-  }
-
-  if (isEntryDiabolicPizzaEat(entryString)) {
-    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
-  }
-
-  if (isEntryBeachComb(entryString)) {
-    return ENTRY_TYPE.IOTM.BEACH_COMB;
   }
 
   return ENTRY_TYPE.UNKNOWN;

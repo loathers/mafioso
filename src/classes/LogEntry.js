@@ -259,10 +259,16 @@ export default class LogEntry {
    * @return {Boolean}
    */
   isRelatedEntry(comparedEntry) {
+    // shopping at the same place can be condensed
     if (this.entryType === ENTRY_TYPE.TRANSACTION && this.isSameLocation(comparedEntry)) {
       return true;
     }
 
-    return this.isSameLocation(comparedEntry) && this.isSameEncounter(comparedEntry);
+    if (this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE && comparedEntry.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT) {
+      return true;
+    }
+
+    return false;
+    // return this.isSameLocation(comparedEntry) && this.isSameEncounter(comparedEntry);
   }
 }
