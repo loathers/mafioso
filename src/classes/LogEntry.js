@@ -130,7 +130,7 @@ export default class LogEntry {
   }
   /** @returns {Boolean} */
   hasEntryHeader() {
-    return this.locationDisplay !== null || this.getEncounterDisplay() !== null;
+    return this.locationDisplay !== null || this.encounterDisplay !== null;
   }
   /** @type {Boolean} */
   get hasStatChanges() {
@@ -166,9 +166,13 @@ export default class LogEntry {
   get moxSubstats() {
     return this.statData.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }
-  /** @returns {String} */
+  /** @type {String} */
   get locationDisplay() {
     return this.data.locationName;
+  }
+  /** @type {String} */
+  get encounterDisplay() {
+    return this.data.encounterName;
   }
   // -- combat
   /** @returns {Boolean} */
@@ -217,10 +221,6 @@ export default class LogEntry {
     return entryBody.length <= 0 ? null : entryBody;
   }
   /** @returns {String} */
-  getEncounterDisplay() {
-    return this.data.encounterName;
-  }
-  /** @returns {String} */
   getItemsDisplay() {
     return this.data.acquiredItems.join(', ');
   }
@@ -242,5 +242,16 @@ export default class LogEntry {
     }
 
     return this.data.locationName === comparedEntry.data.locationName;
+  }
+  /**
+   * @param {LogEntry} comparedEntry
+   * @return {Boolean}
+   */
+  isSameEncounter(comparedEntry) {
+    if (this.data.encounterName === null || comparedEntry.data.encounterName === null) {
+      return false;
+    }
+
+    return this.data.encounterName === comparedEntry.data.encounterName;
   }
 }

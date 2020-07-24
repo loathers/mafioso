@@ -90,7 +90,7 @@ function EntryHeaderContainer(props) {
   }
 
   const locationDisplay = logEntry.locationDisplay;
-  const encounterDisplay = logEntry.getEncounterDisplay();
+  const encounterDisplay = logEntry.encounterDisplay;
 
   return (
     <div className={combineClassnames('flex-col adjacent-mar-t-3', className)}>
