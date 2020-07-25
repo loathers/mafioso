@@ -263,7 +263,7 @@ export default class LogEntry {
    * @param {LogEntry} comparedEntry
    * @return {Boolean}
    */
-  doesShareEntryName(comparedEntry) {
+  doesShareEntryType(comparedEntry) {
     if (this.entryType === null || comparedEntry.entryType === null) {
       return false;
     }
@@ -308,7 +308,7 @@ export default class LogEntry {
     }
 
     // Bastille Batallion
-    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION && this.doesShareEntryName(comparedEntry)) {
+    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 
@@ -316,6 +316,11 @@ export default class LogEntry {
     if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE 
       && this.hasText(REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
       && comparedEntry.hasText(REGEX.JANUARYS_GARBAGE_TOTE.EQUIP_RESULT)) {
+      return true;
+    }
+
+    // all equip texts can be combined into one
+    if (this.entryType === ENTRY_TYPE.EQUIP && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 
