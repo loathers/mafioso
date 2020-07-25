@@ -124,8 +124,12 @@ export const REGEX = {
     CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/gi,
     CHEW_TARGET: /(?<=^chew\s\d+\s).*/gi,
 
-    EQUIP_TARGETS: /(?<=equip\s.*?\s).*/g,
-    UNEQUIP_TARGETS: /(?<=unequip\s.*?\s).*/g,
+    EQUIP_TARGETS: /(?<=equip .*?\s).*/g,
+    UNEQUIP_TARGETS: /(?<=unequip .*?\s).*/g,
+
+    HAGNK_PULL_TARGETS: /(?<=^pull: ).*/gi,
+    CLOSET_PUT_TARGETS: /(?<=^add to closet: ).*/gi,
+    CLOSET_TAKE_TARGETS: /(?<=^take from closet: ).*/gi,
 
     SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
     SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,

@@ -96,6 +96,18 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.UNEQUIP;
   }
 
+  if (isEntryHagnkPull(entryString)) {
+    return ENTRY_TYPE.HAGNK_PULL;
+  }
+
+  if (isEntryClosetPut(entryString)) {
+    return ENTRY_TYPE.CLOSET_PUT;
+  }
+
+  if (isEntryClosetTake(entryString)) {
+    return ENTRY_TYPE.CLOSET_TAKE;
+  }
+
   if (isEntrySpellCast(entryString)) {
     return ENTRY_TYPE.SPELL_CAST;
   }
@@ -225,6 +237,27 @@ export function isEntryEquip(entryString) {
  */
 export function isEntryUnequip(entryString) {
   return hasString(entryString, REGEX.VALUE.UNEQUIP_TARGETS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryHagnkPull(entryString) {
+  return hasString(entryString, REGEX.VALUE.HAGNK_PULL_TARGETS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryClosetPut(entryString) {
+  return hasString(entryString, REGEX.VALUE.CLOSET_PUT_TARGETS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryClosetTake(entryString) {
+  return hasString(entryString, REGEX.VALUE.CLOSET_TAKE_TARGETS);
 }
 /**
  * @param {String} entryString

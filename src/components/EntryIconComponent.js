@@ -50,6 +50,9 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.UNEQUIP:
       return BattleGearSVG;
 
+    case ENTRY_TYPE.HAGNK_PULL:
+    case ENTRY_TYPE.CLOSET_PUT:
+    case ENTRY_TYPE.CLOSET_TAKE:
     case ENTRY_TYPE.ACQUIRE_ITEM:
       return SwapBagSVG;
 
