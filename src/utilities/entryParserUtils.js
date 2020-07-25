@@ -5,7 +5,6 @@ import {
 } from 'utilities/regexUtils';
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
-
 // rounds we will remove from the display text,
 //  most likely because we already parsed the data
 const DISPLAY_SCRUB_LIST = [

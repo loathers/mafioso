@@ -26,7 +26,7 @@ export function getEntryType(entryString) {
   if (isEntryBastilleBatallion(entryString)) {
     return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
   }
-  
+
   if (isEntryJanuarysGarbageTote(entryString)) {
     return ENTRY_TYPE.IOTM.GARBAGE_TOTE;
   }
@@ -81,6 +81,14 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.TRANSACTION;
   }
 
+  if (isEntryTalking(entryString)) {
+    return ENTRY_TYPE.TALKING;
+  }
+
+  if (isEntryVisiting(entryString)) {
+    return ENTRY_TYPE.VISITING;
+  }
+
   return ENTRY_TYPE.UNKNOWN;
 }
 /**
@@ -125,6 +133,20 @@ export function isEntrySkillBreakdown(entryString) {
 export function isEntryTransaction(entryString) {
   return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) 
     || isEntryAutosell(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryTalking(entryString) {
+  return hasString(entryString, REGEX.LINE.TALKING);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryVisiting(entryString) {
+  return hasString(entryString, REGEX.LINE.VISITING);
 }
 /**
  * @param {String} entryString
