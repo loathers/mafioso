@@ -15,6 +15,10 @@ export const REGEX = {
     COMBING_ACTION: /Combing.*/i,
   },
 
+  BOXING_DAYCARE: {
+    GROUPING: /visiting the boxing daycare.*?enter the boxing daycare/gis,
+  },
+
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
@@ -29,6 +33,7 @@ export const REGEX = {
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,
+    GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
 
   // -- common
@@ -143,6 +148,7 @@ export const REGEX = {
     MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
 
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}\w(?!\[)/gmi,
+    VOTING_BOOTH: /visiting the voting booth.*?daily loathing ballot/gis,
   },
 
   // -- cruft
