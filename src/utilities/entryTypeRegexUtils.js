@@ -84,6 +84,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.EQUIP;
   }
 
+  if (isEntryUnequip(entryString)) {
+    return ENTRY_TYPE.UNEQUIP;
+  }
+
   if (isEntrySpellCast(entryString)) {
     return ENTRY_TYPE.SPELL_CAST;
   }
@@ -193,6 +197,13 @@ export function isEntryChew(entryString) {
  */
 export function isEntryEquip(entryString) {
   return hasString(entryString, REGEX.VALUE.EQUIP_TARGETS);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryUnequip(entryString) {
+  return hasString(entryString, REGEX.VALUE.UNEQUIP);
 }
 /**
  * @param {String} entryString

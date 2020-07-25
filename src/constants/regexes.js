@@ -75,6 +75,8 @@ export const REGEX = {
     MCD_CHANGE: /^mcd.*/gim,
     UNAFFECT: /^uneffect.*/gim,
     TELESCOPE: /^telescope.*/gim,
+    EQUIP: /^equip.*/gim,
+    UNEQUIP: /^unequip.*/gim,
 
     TALKING: /^talking to.*/gim,
     VISITING: /^visiting.*/gim,

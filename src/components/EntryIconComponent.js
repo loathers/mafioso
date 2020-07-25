@@ -45,6 +45,7 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE:
     case ENTRY_TYPE.IOTM.GARBAGE_TOTE:
     case ENTRY_TYPE.EQUIP:
+    case ENTRY_TYPE.UNEQUIP:
       return BattleGearSVG;
 
     case ENTRY_TYPE.ACQUIRE_ITEM:

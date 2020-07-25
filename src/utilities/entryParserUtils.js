@@ -27,11 +27,12 @@ const DISPLAY_SCRUB_LIST = [
   REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
   REGEX.LINE.ACQUIRED_SOMETHING,
   REGEX.LINE.VISITING,
+  REGEX.LINE.EQUIP,
+  REGEX.LINE.UNEQUIP,
   REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
   REGEX.DIABOLIC_PIZZA.EAT_LINE,
   BACK_NEW_LINE_REGEX,
   PRE_LINE_EMPTY_SPACE,
-  EMPTY_LINES_REGEX,
 ];
 
 /**
@@ -113,7 +114,7 @@ export function parseEntrySpecial(entryString) {
 export function createEntryBody(entryString) {
   return DISPLAY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
-  }, entryString);
+  }, entryString).replace(EMPTY_LINES_REGEX, '\n');
 }
 // -- common parsers
 /**
