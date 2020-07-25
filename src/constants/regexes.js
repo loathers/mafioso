@@ -172,14 +172,14 @@ export const REGEX = {
   },
 
   MISC: {
-    LOG_BORDER: /(=-)+=+/g,
-    STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+/gmi,
-    CLI_PRINT: /^>.*/gmi,
-    SEND_A_KMAIL: /send a kmail.*/gi,
-    COMBAT_MACRO: /.*executes a macro.*/gi,
-    MAFIA_MAXIMIZER: /Maximizer:.*/gi,
+    LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
+    STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+(\r\n|\n)/gmi,
+    CLI_PRINT: /^>.*(\r\n|\n)/gmi,
+    SEND_A_KMAIL: /send a kmail.*(\r\n|\n)/gi,
+    COMBAT_MACRO: /.*executes a macro.*(\r\n|\n)/gi,
+    MAFIA_MAXIMIZER: /Maximizer:.*(\r\n|\n)/gi,
     MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
-    EMPTY_CHECKPOINT: /Created an empty checkpoint.*/gi,
+    EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n)/gi,
   },
 };
 
