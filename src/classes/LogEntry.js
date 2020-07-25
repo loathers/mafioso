@@ -220,6 +220,10 @@ export default class LogEntry {
    * @return {String | null}
    */
   getEntryDisplay() {
+    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
+      return null;
+    }
+
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     return entryBody.length <= 0 ? null : entryBody;
   }
@@ -237,6 +241,17 @@ export default class LogEntry {
     }
 
     return meatDisplay;
+  }
+  /**
+   * @param {LogEntry} comparedEntry
+   * @return {Boolean}
+   */
+  doesShareEntryName(comparedEntry) {
+    if (this.entryType === null || comparedEntry.entryType === null) {
+      return false;
+    }
+
+    return this.entryType === comparedEntry.entryType;
   }
   /**
    * @param {LogEntry} comparedEntry
@@ -270,7 +285,13 @@ export default class LogEntry {
       return true;
     }
 
+    // combine kolmafia commonly purchasing and using 
     if (this.hasText('chewing gum on a string') && comparedEntry.hasText('chewing gum on a string')) {
+      return true;
+    }
+
+    // Bastille Batallion
+    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION && this.doesShareEntryName(comparedEntry)) {
       return true;
     }
 

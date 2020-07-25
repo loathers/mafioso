@@ -22,6 +22,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.IOTM.BEACH_COMB;
   }
 
+  if (isEntryBastilleBatallion(entryString)) {
+    return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
+  }
+
   // -- kolmafia
   if (isEntryAscensionInfo(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
@@ -206,4 +210,11 @@ export function isEntryDiabolicPizzaEat(entryString) {
  */
 export function isEntryBeachComb(entryString) {
   return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBastilleBatallion(entryString) {
+  return hasString(entryString, 'Bastille Battalion');
 }

@@ -35,11 +35,11 @@ export const REGEX = {
 
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
 
-    MEAT_GAIN: /.*gain.*meat.*/i,
-    MEAT_SPENT: /.*spent.*meat.*/i,
+    MEAT_GAIN: /.*gain.*meat.*/gi,
+    MEAT_SPENT: /.*spent.*meat.*/gi,
     AUTOSELL: /^autosell:.*/gmi,
     TRANSACTION: /.*buy.*for.*from.*/gmi,
-    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/i,
+    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
     ACQUIRED_SOMETHING: /.*acquire.*/gi,
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
@@ -137,7 +137,7 @@ export const REGEX = {
     SEND_A_KMAIL: /send a kmail.*/gi,
     COMBAT_MACRO: /.*executes a macro.*/gi,
     MAFIA_MAXIMIZER: /Maximizer:.*/gi,
-    MAFIA_CHOICE_URL: /.*.php.*/g,
+    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*/gi,
 
     LOG_BORDER: /(=-)+=+/g,
