@@ -7,6 +7,19 @@ import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
 
+const PRESCRUB_REGEX_LIST = [
+  REGEX.GROUP.MOON_SNAPSHOT,
+  REGEX.GROUP.STATUS_SNAPSHOT,
+  REGEX.GROUP.EQUIPMENT_SNAPSHOT,
+  REGEX.GROUP.SKILLS_SNAPSHOT,
+  REGEX.GROUP.EFFECTS_SNAPSHOT,
+  REGEX.GROUP.MODIFIERS_SNAPSHOT,
+];
+
+const PREGROUP_REGEX_LIST = [
+  REGEX.GROUP.SAME_AFTER_BATTLE,
+];
+
 /**
  * core parsing handler - start here
  * 
@@ -94,16 +107,7 @@ export function parseLogArray(logArray, startIdx) {
  * @return {String}
  */
 export function prescrubRawLog(rawText) {
-  const regexToPrescrub = [
-    REGEX.GROUP.MOON_SNAPSHOT,
-    REGEX.GROUP.STATUS_SNAPSHOT,
-    REGEX.GROUP.EQUIPMENT_SNAPSHOT,
-    REGEX.GROUP.SKILLS_SNAPSHOT,
-    REGEX.GROUP.EFFECTS_SNAPSHOT,
-    REGEX.GROUP.MODIFIERS_SNAPSHOT,
-  ];
-
-  return regexToPrescrub.reduce((accumulatedText, preparseRegex) => {
+  return PRESCRUB_REGEX_LIST.reduce((accumulatedText, preparseRegex) => {
     const prescrubMatches = accumulatedText.match(preparseRegex) || [];
     while (prescrubMatches.length > 0) {
       const nextText = prescrubMatches.shift();
@@ -120,11 +124,7 @@ export function prescrubRawLog(rawText) {
  * @return {String}
  */
 export function pregroupRawLog(rawText) {
-  const regexToPregroup = [
-    REGEX.GROUP.SAME_AFTER_BATTLE,
-  ];
-
-  return regexToPregroup.reduce((accumulatedText, preparseRegex) => {
+  return PREGROUP_REGEX_LIST.reduce((accumulatedText, preparseRegex) => {
     const pregroupMatches = accumulatedText.match(preparseRegex) || [];
     while (pregroupMatches.length > 0) {
       const nextText = pregroupMatches.shift();
