@@ -10,6 +10,7 @@ const PARSE_DELAY = 10; // ms
 // strings we are going to remove from the ahead of time
 const LOG_SCRUB_LIST = [
   REGEX.MISC.STACK_TRACE,
+  REGEX.MISC.CLI_PRINT,
   REGEX.MISC.SEND_A_KMAIL,
   REGEX.MISC.EMPTY_CHECKPOINT,
   REGEX.MISC.COMBAT_MACRO,
@@ -19,6 +20,7 @@ const LOG_SCRUB_LIST = [
   REGEX.LINE.MCD_CHANGE,
   REGEX.LINE.UNAFFECT,
   REGEX.LINE.TELESCOPE,
+  REGEX.LINE.SWIMMING_POOL,
 ];
 // strings we are going to group together
 const PREGROUP_REGEX_LIST = [

@@ -26,6 +26,7 @@ const DISPLAY_SCRUB_LIST = [
   REGEX.LINE.MEAT_SPENT,
   REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
   REGEX.LINE.ACQUIRED_SOMETHING,
+  REGEX.LINE.VISITING,
   REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
   REGEX.DIABOLIC_PIZZA.EAT_LINE,
   BACK_NEW_LINE_REGEX,
@@ -197,11 +198,6 @@ export function parseEncounterName(entryString) {
   const encounterNameMatches = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
   if (encounterNameMatches !== null) {
     return encounterNameMatches[0];
-  }
-
-  const visitEncounterMatches = getRegexMatch(entryString, REGEX.VALUE.VISIT_ENCOUNTER_NAME);
-  if (visitEncounterMatches !== null) {
-    return visitEncounterMatches[0];
   }
 
   return null;
