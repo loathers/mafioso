@@ -202,6 +202,10 @@ export default class LogEntry {
       return 'Diabolic Pizza';
     }
 
+    if (this.entryType === ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY) {
+      return 'Your Campsite Away From Your Campsite';
+    }
+
     if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE) {
       return 'January\'s Garbage Tote';
     }
@@ -216,6 +220,12 @@ export default class LogEntry {
   get encounterDisplay() {
     if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
       return `♫ ${this.findText(REGEX.SONGBOOM_BOOMBOX.RESULT)} ♫`;
+    }
+
+    if (this.entryType === ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY) {
+      if (this.hasText(REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE)) {
+        return 'Gaze at the Stars'
+      }
     }
 
     return this.data.encounterName;
