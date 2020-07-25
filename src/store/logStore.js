@@ -4,7 +4,7 @@ import {
 
 import LogEntry from 'classes/LogEntry';
 
-import ENTRY_TYPE from 'constants/entryType';
+import {DEFAULT_HIDDEN_ENTRIES} from 'constants/DEFAULTS';
 
 import * as logParserUtils from 'utilities/logParserUtils';
 
@@ -30,18 +30,7 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
-      hiddenEntryTypes: [
-        ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-        ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
-        ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-        // ENTRY_TYPE.CLAN_VISIT,
-        ENTRY_TYPE.SPELL_CAST,
-        ENTRY_TYPE.EQUIP,
-        ENTRY_TYPE.UNEQUIP,
-        ENTRY_TYPE.CLOSET_PUT,
-        ENTRY_TYPE.CLOSET_TAKE,
-        ENTRY_TYPE.PVP,
-      ],
+      hiddenEntryTypes: DEFAULT_HIDDEN_ENTRIES,
       /* @type {Object} */
       dataFilters: {},
     });
