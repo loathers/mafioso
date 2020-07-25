@@ -63,6 +63,8 @@ export const REGEX = {
     MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
 
     MCD_CHANGE: /^mcd.*/gim,
+    UNAFFECT: /^uneffect.*/gim,
+    TELESCOPE: /^telescope.*/gim,
   },
 
   VALUE: {

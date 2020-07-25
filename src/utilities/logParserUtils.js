@@ -16,8 +16,10 @@ const LOG_SCRUB_LIST = [
   REGEX.MISC.MAFIA_CHOICE_URL,
   REGEX.MISC.MAFIA_MAXIMIZER,
   REGEX.MISC.LOG_BORDER,
+  REGEX.LINE.MCD_CHANGE,
+  REGEX.LINE.UNAFFECT,
+  REGEX.LINE.TELESCOPE,
 ];
-
 // strings we are going to group together
 const PREGROUP_REGEX_LIST = [
   REGEX.GROUP.MOON_SNAPSHOT,
@@ -144,6 +146,6 @@ export function cleanRawLog(rawText) {
  */
 function calculateBatchSize(rawSize) {
   const rawVal = Math.sqrt(rawSize);
-  const newBatchSize = Math.round(1200 - rawVal);
+  const newBatchSize = Math.round(1000 - rawVal);
   return Math.max(100, newBatchSize);
 }

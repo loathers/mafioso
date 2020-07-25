@@ -28,7 +28,7 @@ class LogStore {
       /** @type {Number} */
       pageNum: 1,
       /** @type {Number} */
-      entriesPerPage: 500,
+      entriesPerPage: 300,
       /** @type {Array<EntryType>} */
       hiddenEntryTypes: [
         ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
