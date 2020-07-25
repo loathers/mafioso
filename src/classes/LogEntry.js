@@ -3,7 +3,11 @@ import REGEX from 'constants/regexes';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
 import {getEntryType} from 'utilities/entryTypeRegexUtils';
-import {fixSpecialEntities, hasString} from 'utilities/regexUtils';
+import {
+  fixSpecialEntities, 
+  getRegexMatch,
+  hasString,
+} from 'utilities/regexUtils';
 
 /**
  * 
@@ -129,6 +133,16 @@ export default class LogEntry {
   hasText(txt) {
     return hasString(this.rawText, txt);
   }
+  /** 
+   * gets the (first) matched text from `rawText`
+   * @param {String | Regex} txt
+   * @return {String}
+   */
+  findText(txt) {
+    const matchedText = getRegexMatch(this.rawText, txt) || [];
+    console.log('matchedText', matchedText);
+    return matchedText[0] || '';
+  }
   /** @returns {Boolean} */
   hasEntry() {
     return this.entryString !== undefined;
@@ -193,10 +207,18 @@ export default class LogEntry {
       return 'January\'s Garbage Tote';
     }
 
+    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
+      return 'SongBoom™ BoomBox';
+    }
+
     return this.data.locationName;
   }
   /** @type {String} */
   get encounterDisplay() {
+    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
+      return `♫ ${this.findText(REGEX.SONGBOOM_BOOMBOX.RESULT)} ♫`;
+    }
+
     return this.data.encounterName;
   }
   // -- combat
@@ -238,6 +260,10 @@ export default class LogEntry {
    */
   getEntryDisplay() {
     if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
+      return null;
+    }
+
+    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
       return null;
     }
 

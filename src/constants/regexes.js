@@ -5,8 +5,8 @@ export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- iotm
   SONGBOOM_BOOMBOX: {
-    GROUPING: /^use.*?songboom.*?setting soundtrack.*?/gmis,
-    RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*?/gmis,
+    GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
+    RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*/gmis,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
