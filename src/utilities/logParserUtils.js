@@ -7,6 +7,18 @@ import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
 
+// strings we are going to remove from the ahead of time
+const LOG_SCRUB_LIST = [
+  REGEX.MISC.STACK_TRACE,
+  REGEX.MISC.SEND_A_KMAIL,
+  REGEX.MISC.EMPTY_CHECKPOINT,
+  REGEX.MISC.COMBAT_MACRO,
+  REGEX.MISC.MAFIA_CHOICE_URL,
+  REGEX.MISC.MAFIA_MAXIMIZER,
+  REGEX.MISC.LOG_BORDER,
+];
+
+// strings we are going to group together
 const PREGROUP_REGEX_LIST = [
   REGEX.GROUP.MOON_SNAPSHOT,
   REGEX.GROUP.STATUS_SNAPSHOT,
@@ -120,14 +132,9 @@ export function pregroupRawLog(rawText) {
  * @return {String}
  */
 export function cleanRawLog(rawText) {
-  return rawText
-    .replace(REGEX.MISC.STACK_TRACE, '')
-    .replace(REGEX.MISC.SEND_A_KMAIL, '')
-    .replace(REGEX.MISC.EMPTY_CHECKPOINT, '')
-    .replace(REGEX.MISC.COMBAT_MACRO, '')
-    .replace(REGEX.MISC.MAFIA_CHOICE_URL, '')
-    .replace(REGEX.MISC.MAFIA_MAXIMIZER, '')
-    .replace(REGEX.MISC.LOG_BORDER, '');
+  return LOG_SCRUB_LIST.reduce((currentText, replacementRegex) => {
+    return currentText.replace(replacementRegex, '');
+  }, rawText);    
 }
 /**
  * update batch size based on number of characters in the log

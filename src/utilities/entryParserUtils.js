@@ -1,12 +1,14 @@
-import REGEX, {PRE_LINE_EMPTY_SPACE} from 'constants/regexes';
+import REGEX, {BACK_NEW_LINE_REGEX, PRE_LINE_EMPTY_SPACE} from 'constants/regexes';
 import {
   hasString,
   getRegexMatch,
 } from 'utilities/regexUtils';
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
-const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
-const ENTRY_SCRUB_LIST = [
+
+// rounds we will remove from the display text,
+//  most likely because we already parsed the data
+const DISPLAY_SCRUB_LIST = [
   REGEX.LINE.LOCATION,
   REGEX.LINE.ENCOUNTER,
   REGEX.LINE.LEVEL_GAIN,
@@ -29,7 +31,7 @@ const ENTRY_SCRUB_LIST = [
   REGEX.DIABOLIC_PIZZA.EAT_LINE,
   BACK_NEW_LINE_REGEX,
   PRE_LINE_EMPTY_SPACE,
-]
+];
 
 /**
  * core parsing data for common entry data
@@ -108,7 +110,7 @@ export function parseEntrySpecial(entryString) {
  * @return {String}
  */
 export function createEntryBody(entryString) {
-  return ENTRY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
+  return DISPLAY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
   }, entryString);
 }

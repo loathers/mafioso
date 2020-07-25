@@ -1,6 +1,7 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
 export const PRE_LINE_EMPTY_SPACE = /^\s*/g;
 export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
+export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- iotm
   DIABOLIC_PIZZA: {
@@ -60,6 +61,8 @@ export const REGEX = {
     MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
     MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
     MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
+
+    MCD_CHANGE: /^mcd.*/gim,
   },
 
   VALUE: {
@@ -139,14 +142,13 @@ export const REGEX = {
   },
 
   MISC: {
+    LOG_BORDER: /(=-)+=+/g,
     STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+/gmi,
     SEND_A_KMAIL: /send a kmail.*/gi,
     COMBAT_MACRO: /.*executes a macro.*/gi,
     MAFIA_MAXIMIZER: /Maximizer:.*/gi,
     MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*/gi,
-
-    LOG_BORDER: /(=-)+=+/g,
   },
 };
 

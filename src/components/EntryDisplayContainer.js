@@ -172,7 +172,7 @@ export default function EntryDisplayContainer(props) {
 
       {/* status indicator column */}
       <div 
-        className={combineClassnames('bor-1-lightblue borradius-round height-auto', selectedClass)}
+        className={combineClassnames('bor-1-lightblue borradius-round height-auto flex-none', selectedClass)}
         style={{width: 10, height: 10}}>
       </div>
 
