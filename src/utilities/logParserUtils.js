@@ -21,7 +21,7 @@ export async function parseLogTxt(rawText) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
     }
 
-    const preparsedLog = preparseRawLog(rawCleaned);
+    const preparsedLog = pregroupRawLog(prescrubRawLog(rawCleaned));
 
     const rawArray = preparsedLog
       .replace(EMPTY_LINES_REGEX, '}{')
@@ -38,7 +38,7 @@ export async function parseLogTxt(rawText) {
     return logEntries;
 
   } catch (e) {
-    return e;
+    console.error(e);
   }
 }
 /** 
@@ -93,8 +93,8 @@ export function parseLogArray(logArray, startIdx) {
  * @param {String} rawText
  * @return {String}
  */
-export function preparseRawLog(rawText) {
-  const regexToPreparse = [
+export function prescrubRawLog(rawText) {
+  const regexToPrescrub = [
     REGEX.GROUP.MOON_SNAPSHOT,
     REGEX.GROUP.STATUS_SNAPSHOT,
     REGEX.GROUP.EQUIPMENT_SNAPSHOT,
@@ -103,9 +103,36 @@ export function preparseRawLog(rawText) {
     REGEX.GROUP.MODIFIERS_SNAPSHOT,
   ];
 
-  return regexToPreparse.reduce((preparsedLog, preparseRegex) => {
-    const preparsedString = preparsedLog.match(preparseRegex)[0].replace(EMPTY_LINES_REGEX, '\n');
-    return preparsedLog.replace(preparseRegex, preparsedString);
+  return regexToPrescrub.reduce((accumulatedText, preparseRegex) => {
+    const prescrubMatches = accumulatedText.match(preparseRegex) || [];
+    while (prescrubMatches.length > 0) {
+      const nextText = prescrubMatches.shift();
+      const groupedText = nextText.replace(EMPTY_LINES_REGEX, '\n');
+      accumulatedText = accumulatedText.replace(nextText, groupedText);
+    }
+
+    return accumulatedText;
+  }, rawText);
+}
+/**
+ * group some text as an entry before splitting
+ * @param {String} rawText
+ * @return {String}
+ */
+export function pregroupRawLog(rawText) {
+  const regexToPregroup = [
+    REGEX.GROUP.SAME_AFTER_BATTLE,
+  ];
+
+  return regexToPregroup.reduce((accumulatedText, preparseRegex) => {
+    const pregroupMatches = accumulatedText.match(preparseRegex) || [];
+    while (pregroupMatches.length > 0) {
+      const nextText = pregroupMatches.shift();
+      const groupedText = nextText.replace(EMPTY_LINES_REGEX, '\n');
+      accumulatedText = accumulatedText.replace(nextText, groupedText);
+    }
+
+    return accumulatedText;
   }, rawText);
 }
 /**

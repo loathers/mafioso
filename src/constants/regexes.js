@@ -2,16 +2,24 @@ export const NEW_LINE_REGEX = /(\r\n|\n)/g;
 export const PRE_LINE_EMPTY_SPACE = /^\s*/g;
 export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const REGEX = {
+  // -- iotm
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
     INGREDIENTS_ONLY: /(?<=^pizza\s).*/m,
     EAT_LINE: /^eat\s\d+\sdiabolic pizza/m,
   },
+
   BEACH_COMB: {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
   },
 
+  IUNION_CROWN: {
+    GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
+    STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
+  },
+
+  // -- common
   LINE: {
     LOCATION: /\[\d*\].*/,
     ENCOUNTER: /Encounter:.*/,
@@ -24,6 +32,8 @@ export const REGEX = {
     COMBAT_ROUND: /^round\s\d:.*/gmi,
     COMBAT_VICTORY: /(?<=\s).*wins the fight.*/i,
     COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
+
+    AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
 
     MEAT_GAIN: /.*gain.*meat.*/i,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/i,
@@ -93,16 +103,20 @@ export const REGEX = {
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
 
+  // note: these only work in raw
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
-    // todo: these only work in raw
     MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
     STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
     EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/gmis,
     SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/gmis,
     EFFECTS_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/gmis,
     MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
+
+    SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}\w(?!\[)/gmi,
   },
+
+  // -- cruft
   SNAPSHOT_CHECK: {
     CONTAIN_MOON: /(> moon)/i,
     CONTAIN_STATUS: /(> status)/i,
@@ -114,7 +128,7 @@ export const REGEX = {
 
   MISC: {
     STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+/gmi,
-    SEND_A_KMAIL: /send a kmail/gi,
+    SEND_A_KMAIL: /send a kmail.*/gi,
     COMBAT_MACRO: /.*executes a macro.*/gi,
     MAFIA_MAXIMIZER: /Maximizer:.*/gi,
     MAFIA_CHOICE_URL: /.*.php.*/g,
