@@ -73,6 +73,8 @@ export const ENTRY_TYPE = {
   SPELL_CAST: 'ENTRY_TYPE.SPELL_CAST',
 
   FAMILIAR: 'ENTRY_TYPE.FAMILIAR',
+
+  PVP: 'ENTRY_TYPE.PVP',
 }
 
 export default ENTRY_TYPE;

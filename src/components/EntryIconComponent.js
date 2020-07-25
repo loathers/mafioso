@@ -25,6 +25,7 @@ import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
  */
 function getEntryIcon(entryType) {
   switch(entryType) {
+    case ENTRY_TYPE.PVP:
     case ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT:
     case ENTRY_TYPE.ENCOUNTER.COMBAT:
       return CrossedSwordsSVG;

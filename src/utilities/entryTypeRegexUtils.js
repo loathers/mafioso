@@ -127,6 +127,10 @@ export function getEntryType(entryString) {
   if (isEntryVisiting(entryString)) {
     return ENTRY_TYPE.VISITING;
   }
+  
+  if (isEntryPVP(entryString)) {
+    return ENTRY_TYPE.PVP;
+  }
 
   return ENTRY_TYPE.UNKNOWN;
 }
@@ -165,29 +169,6 @@ export function isEntrySkillBreakdown(entryString) {
   return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_SKILLS);
 }
 /**
- * check if this entry is about buying something
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) 
-    || isEntryAutosell(entryString);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryTalking(entryString) {
-  return hasString(entryString, REGEX.LINE.TALKING);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryVisiting(entryString) {
-  return hasString(entryString, REGEX.LINE.VISITING);
-}
-/**
  * @param {String} entryString
  * @return {Boolean}
  */
@@ -214,6 +195,36 @@ export function isEntryDrink(entryString) {
  */
 export function isEntryChew(entryString) {
   return hasString(entryString, REGEX.VALUE.CHEW_TARGET);
+}
+/**
+ * check if this entry is about buying something
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryTransaction(entryString) {
+  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) 
+    || isEntryAutosell(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryTalking(entryString) {
+  return hasString(entryString, REGEX.LINE.TALKING);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryVisiting(entryString) {
+  return hasString(entryString, REGEX.LINE.VISITING);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryPVP(entryString) {
+  return hasString(entryString, REGEX.GROUP.PVP_ATTACK);
 }
 /**
  * @param {String} entryString

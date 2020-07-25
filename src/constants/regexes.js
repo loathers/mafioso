@@ -159,6 +159,7 @@ export const REGEX = {
     MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
 
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}\w(?!\[)/gmi,
+    PVP_ATTACK: /(^attack).*?pvp fight/gmis,
   },
 
   // -- cruft
