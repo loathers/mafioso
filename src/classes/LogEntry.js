@@ -1,4 +1,5 @@
 import ENTRY_TYPE from 'constants/entryType';
+import REGEX from 'constants/regexes';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
 import {getEntryType} from 'utilities/entryTypeRegexUtils';
@@ -176,6 +177,22 @@ export default class LogEntry {
   }
   /** @type {String} */
   get locationDisplay() {
+    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
+      return 'Bastille Battalion';
+    }
+
+    if (this.entryType === ENTRY_TYPE.IOTM.BEACH_COMB) {
+      return 'Beach Comb';
+    }
+
+    if (this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT) {
+      return 'Diabolic Pizza';
+    }
+
+    if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE) {
+      return 'January\'s Garbage Tote';
+    }
+
     return this.data.locationName;
   }
   /** @type {String} */
@@ -292,6 +309,13 @@ export default class LogEntry {
 
     // Bastille Batallion
     if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION && this.doesShareEntryName(comparedEntry)) {
+      return true;
+    }
+
+    // Garbage Tote
+    if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE 
+      && this.hasText(REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
+      && comparedEntry.hasText(REGEX.JANUARYS_GARBAGE_TOTE.EQUIP_RESULT)) {
       return true;
     }
 

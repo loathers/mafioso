@@ -163,18 +163,6 @@ export function isNoncombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  if (entryTypeRegexUtils.isEntryBastilleBatallion(entryString)) {
-    return 'Bastille Battalion';
-  }
-
-  if (isEntryBeachComb(entryString)) {
-    return 'Beach Comb';
-  }
-
-  if (isEntryDiabolicPizza(entryString)) {
-    return 'Diabolic Pizza';
-  }
-
   const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];

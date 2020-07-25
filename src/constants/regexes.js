@@ -22,6 +22,7 @@ export const REGEX = {
   JANUARYS_GARBAGE_TOTE: {
     USE_FOLDABLE: /^use \d January's garbage tote/mi,
     USE_RESULT: /(?<=use \d January's garbage tote).*?acquire.*?:.*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gis,
+    EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
 
   // -- common
