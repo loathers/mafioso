@@ -35,7 +35,6 @@ export async function parseLogTxt(rawText) {
     }
 
     const preparsedLog = pregroupRawLog(prescrubRawLog(rawCleaned));
-
     const rawArray = preparsedLog
       .replace(EMPTY_LINES_REGEX, '}{')
       .split('}{');

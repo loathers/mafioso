@@ -36,6 +36,7 @@ export const REGEX = {
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
 
     MEAT_GAIN: /.*gain.*meat.*/i,
+    AUTOSELL: /^autosell:.*/gmi,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/i,
     ACQUIRED_SOMETHING: /.*acquire.*/gi,
 
@@ -58,7 +59,10 @@ export const REGEX = {
 
     BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
     BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
-    MEAT_GAIN_AMOUNT: /(?<=You gain )\d*(?=\s+meat)/gi,
+    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*\,*)*(?=\s+meat)/gi,
+
+    SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
+    SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
 
     COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/gmi,
     COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/gi,

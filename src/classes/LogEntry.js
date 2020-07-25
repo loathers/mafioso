@@ -212,11 +212,6 @@ export default class LogEntry {
    * @return {String | null}
    */
   getEntryDisplay() {
-    // transactions will just be spending meat and gaining items
-    if (this.entryType === ENTRY_TYPE.TRANSACTION) {
-      return null;
-    }
-
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     return entryBody.length <= 0 ? null : entryBody;
   }

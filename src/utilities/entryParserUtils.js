@@ -5,6 +5,27 @@ import {
 } from 'utilities/regexUtils';
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
+const ENTRY_SCRUB_LIST = [
+  REGEX.LINE.LOCATION,
+  REGEX.LINE.ENCOUNTER,
+  REGEX.LINE.LEVEL_GAIN,
+  REGEX.LINE.SUBSTAT_GAINS,
+  REGEX.LINE.HP_CHANGE,
+  REGEX.LINE.MP_CHANGE,
+  REGEX.LINE.MUS_EXP_CHANGE,
+  REGEX.LINE.MYST_EXP_CHANGE,
+  REGEX.LINE.MOX_EXP_CHANGE,
+  REGEX.LINE.COMBAT_FREE_TURN,
+  REGEX.LINE.COMBAT_INIT,
+  REGEX.LINE.COMBAT_ROUND,
+  REGEX.LINE.COMBAT_VICTORY,
+  REGEX.LINE.MEAT_GAIN,
+  REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
+  REGEX.LINE.ACQUIRED_SOMETHING,
+  REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
+  REGEX.DIABOLIC_PIZZA.EAT_LINE,
+]
+
 /**
  * core parsing data for common entry data
  * 
@@ -82,28 +103,7 @@ export function parseEntrySpecial(entryString) {
  * @return {String}
  */
 export function createEntryBody(entryString) {
-  const replacementList = [
-    REGEX.LINE.LOCATION,
-    REGEX.LINE.ENCOUNTER,
-    REGEX.LINE.LEVEL_GAIN,
-    REGEX.LINE.SUBSTAT_GAINS,
-    REGEX.LINE.HP_CHANGE,
-    REGEX.LINE.MP_CHANGE,
-    REGEX.LINE.MUS_EXP_CHANGE,
-    REGEX.LINE.MYST_EXP_CHANGE,
-    REGEX.LINE.MOX_EXP_CHANGE,
-    REGEX.LINE.COMBAT_FREE_TURN,
-    REGEX.LINE.COMBAT_INIT,
-    REGEX.LINE.COMBAT_ROUND,
-    REGEX.LINE.COMBAT_VICTORY,
-    REGEX.LINE.MEAT_GAIN,
-    REGEX.LINE.FAMILIAR_WEIGHT_GAIN,
-    REGEX.LINE.ACQUIRED_SOMETHING,
-    REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
-    REGEX.DIABOLIC_PIZZA.EAT_LINE,
-  ];
-
-  const scrubbedEntry = replacementList.reduce((currentString, replacementRegex) => {
+  const scrubbedEntry = ENTRY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
   }, entryString);
 
@@ -246,7 +246,7 @@ export function parseMeatChange(entryString) {
  */
 export function parseMeatGains(entryString) {
   const meatGainMatches = getRegexMatch(entryString, REGEX.VALUE.MEAT_GAIN_AMOUNT) || [];
-  return meatGainMatches.map((amountString) => Number(amountString));
+  return meatGainMatches.map((amountString) => Number(amountString.replace(',', '')));
 }
 /**
  * @param {String} entryString

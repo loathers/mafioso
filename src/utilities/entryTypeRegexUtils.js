@@ -114,7 +114,15 @@ export function isEntrySkillBreakdown(entryString) {
  * @return {Boolean}
  */
 export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT);
+  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) 
+    || isEntryAutosell(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryAutosell(entryString) {
+  return hasString(entryString, REGEX.LINE.AUTOSELL);
 }
 /**
  * @param {String} entryString
