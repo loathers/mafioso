@@ -7,16 +7,13 @@ import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
 
-const PRESCRUB_REGEX_LIST = [
+const PREGROUP_REGEX_LIST = [
   REGEX.GROUP.MOON_SNAPSHOT,
   REGEX.GROUP.STATUS_SNAPSHOT,
   REGEX.GROUP.EQUIPMENT_SNAPSHOT,
   REGEX.GROUP.SKILLS_SNAPSHOT,
   REGEX.GROUP.EFFECTS_SNAPSHOT,
   REGEX.GROUP.MODIFIERS_SNAPSHOT,
-];
-
-const PREGROUP_REGEX_LIST = [
   REGEX.GROUP.SAME_AFTER_BATTLE,
 ];
 
@@ -34,7 +31,7 @@ export async function parseLogTxt(rawText) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
     }
 
-    const preparsedLog = pregroupRawLog(prescrubRawLog(rawCleaned));
+    const preparsedLog = pregroupRawLog(rawCleaned);
     const rawArray = preparsedLog
       .replace(EMPTY_LINES_REGEX, '}{')
       .split('}{');
@@ -101,24 +98,7 @@ export function parseLogArray(logArray, startIdx) {
   })
 }
 /**
- * do some stuff before splitting up the entries
- * @param {String} rawText
- * @return {String}
- */
-export function prescrubRawLog(rawText) {
-  return PRESCRUB_REGEX_LIST.reduce((accumulatedText, preparseRegex) => {
-    const prescrubMatches = accumulatedText.match(preparseRegex) || [];
-    while (prescrubMatches.length > 0) {
-      const nextText = prescrubMatches.shift();
-      const groupedText = nextText.replace(EMPTY_LINES_REGEX, '\n');
-      accumulatedText = accumulatedText.replace(nextText, groupedText);
-    }
-
-    return accumulatedText;
-  }, rawText);
-}
-/**
- * group some text as an entry before splitting
+ * group some entries ahead of time
  * @param {String} rawText
  * @return {String}
  */
