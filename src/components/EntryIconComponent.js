@@ -35,7 +35,8 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.VISITING:
     case ENTRY_TYPE.ENCOUNTER.NONCOMBAT:
       return DigDugSVG;
-    
+
+    case ENTRY_TYPE.IOTM.VOTING_BOOTH:
     case ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON:
     case ENTRY_TYPE.CLAN_VISIT:
     case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:

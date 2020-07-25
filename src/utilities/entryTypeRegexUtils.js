@@ -34,6 +34,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.CLAN_VISIT;
   }
 
+  if (isEntryVotingBooth(entryString)) {
+    return ENTRY_TYPE.IOTM.VOTING_BOOTH;
+  }
+
   if (isEntryGodLobsterCombat(entryString)) {
     return ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT;
   }
@@ -220,7 +224,7 @@ export function isEntryEquip(entryString) {
  * @return {Boolean}
  */
 export function isEntryUnequip(entryString) {
-  return hasString(entryString, REGEX.VALUE.UNEQUIP);
+  return hasString(entryString, REGEX.VALUE.UNEQUIP_TARGETS);
 }
 /**
  * @param {String} entryString
@@ -299,6 +303,14 @@ export function isEntryJanuarysGarbageTote(entryString) {
  */
 export function isEntryClanVIP(entryString) {
   return hasString(entryString, REGEX.LINE.CLAN_VISIT);
+}
+/**
+ * will be counting rumpus room also
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryVotingBooth(entryString) {
+  return hasString(entryString, REGEX.VOTING_BOOTH.GROUPING);
 }
 /**
  * @param {String} entryString

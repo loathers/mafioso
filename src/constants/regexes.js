@@ -36,6 +36,10 @@ export const REGEX = {
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
 
+  VOTING_BOOTH: {
+    GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
+  },
+
   // -- common
   LINE: {
     LOCATION: /\[\d*\].*/,
@@ -121,6 +125,7 @@ export const REGEX = {
     CHEW_TARGET: /(?<=^chew\s\d+\s).*/gi,
 
     EQUIP_TARGETS: /(?<=equip\s.*?\s).*/g,
+    UNEQUIP_TARGETS: /(?<=unequip\s.*?\s).*/g,
 
     SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
     SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,
@@ -151,7 +156,6 @@ export const REGEX = {
     MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
 
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}\w(?!\[)/gmi,
-    VOTING_BOOTH: /visiting the voting booth.*?daily loathing ballot/gis,
   },
 
   // -- cruft
