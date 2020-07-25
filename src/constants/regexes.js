@@ -91,10 +91,10 @@ export const REGEX = {
   VALUE: {
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
 
+    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
+    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?=\s+meat)/gi,
     BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
     BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
-    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
-
     SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
 

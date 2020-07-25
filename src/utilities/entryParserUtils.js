@@ -246,7 +246,10 @@ export function parseMeatChange(entryString) {
   const meatGainsArray = parseMeatGains(entryString);
   const meatGainedAmount = meatGainsArray.reduce((gainTotal, gainAmount) => (gainTotal + gainAmount), 0);
 
-  return meatSpentAmount + meatGainedAmount;
+  const meatLossArray = parseMeatLoss(entryString);
+  const meatLossAmount = meatLossArray.reduce((lossTotal, lossAmount) => (lossTotal + lossAmount), 0);
+
+  return meatSpentAmount + meatGainedAmount + meatLossAmount;
 }
 /**
  * @param {String} entryString
@@ -255,6 +258,14 @@ export function parseMeatChange(entryString) {
 export function parseMeatGains(entryString) {
   const meatGainMatches = getRegexMatch(entryString, REGEX.VALUE.MEAT_GAIN_AMOUNT) || [];
   return meatGainMatches.map((amountString) => Number(amountString.replace(',', '')));
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parseMeatLoss(entryString) {
+  const meatLossMatches = getRegexMatch(entryString, REGEX.VALUE.MEAT_LOSS_AMOUNT) || [];
+  return meatLossMatches.map((amountString) => Number(amountString.replace(',', '') * -1));
 }
 /**
  * @param {String} entryString
