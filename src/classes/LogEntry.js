@@ -221,11 +221,14 @@ export default class LogEntry {
   }
   /** @returns {String} */
   getMeatDisplay() {
-    if (this.data.meatChange > 0) {
-      return `+${this.data.meatChange}`;
+    const meatChange = this.data.meatChange;
+    const meatDisplay = meatChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    
+    if (meatChange > 0) {
+      return `+${meatDisplay}`;
     }
 
-    return this.data.meatChange;
+    return meatDisplay;
   }
   /**
    * @param {LogEntry} comparedEntry
