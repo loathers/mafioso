@@ -14,17 +14,19 @@ function App() {
 
   return (
     <div 
-      className='bg-third color-white fontfamily-primary fontsize-5 pad-7'
+      className='bg-third color-white fontfamily-primary fontsize-5 pad-7 flex-col'
       id='slv-main'>
 
-      <div className='fontsize-9 fontfamily-tertiary adjacent-mar-t-5'>
+      <div className='fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
         Shiny Log Visualizer
       </div>
 
-      <UploadComponent />
+      <UploadComponent
+        showExpanded={true}
+        className='adjacent-mar-t-5' />
 
       {/* pagination */}
-      <div className='fontsize-4 flex-row adjacent-mar-t-5'>
+      <div className='fontsize-4 flex-row adjacent-mar-t-5 flex-none'>
         <button 
           onClick={() => setCurrentPageNum(currentPageNum - 1)}
           className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
@@ -42,7 +44,7 @@ function App() {
 
       {/* loader */}
       { logStore.isParsing.get() &&
-        <LoaderComponent className='mar-h-5 adjacent-mar-t-5'/>
+        <LoaderComponent className='mar-h-5 adjacent-mar-t-5 flex-none'/>
       }
 
       <VisualizerSection 
@@ -50,7 +52,7 @@ function App() {
       />
 
       {/* copy paste pagination */}
-      <div className='fontsize-4 flex-row adjacent-mar-t-5'>
+      <div className='fontsize-4 flex-row adjacent-mar-t-5 flex-none'>
         <button 
           onClick={() => setCurrentPageNum(currentPageNum - 1)}
           className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
