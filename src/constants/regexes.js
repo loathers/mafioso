@@ -19,7 +19,7 @@ export const REGEX = {
     COMBING_ACTION: /Combing.*/i,
   },
   BOXING_DAYCARE: {
-    GROUPING: /visiting the boxing daycare.*?enter the boxing daycare/gis,
+    GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
