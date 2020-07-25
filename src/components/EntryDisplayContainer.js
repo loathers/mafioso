@@ -52,10 +52,8 @@ function EntryIconColumn(props) {
     logEntry,
   } = props;
 
-  const {data} = logEntry;
-  const {
-    isLevelUp,
-  } = data;
+  const {statData} = logEntry;
+  const {isLevelUp} = statData;
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>

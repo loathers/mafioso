@@ -45,7 +45,7 @@ export const REGEX = {
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
 
-    LEVEL_GAIN: /^You gain a level.*\s+/mi,
+    LEVEL_GAIN: /^You gain .* level.*\s+/gmi,
     SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
 
     MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*/gi,
