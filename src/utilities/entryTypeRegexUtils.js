@@ -31,7 +31,7 @@ export function getEntryType(entryString) {
   }
 
   if (isEntryClanVIP(entryString)) {
-    return ENTRY_TYPE.IOTM.CLAN_VIP;
+    return ENTRY_TYPE.CLAN_VISIT;
   }
 
   // -- kolmafia

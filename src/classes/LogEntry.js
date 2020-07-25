@@ -333,6 +333,11 @@ export default class LogEntry {
       return true;
     }
 
+    // (deluxe) mr klaw - incomplete
+    if (this.hasText(/mr. klaw/i) && comparedEntry.hasText(/mr. klaw/i)) {
+      return true;
+    }
+
     return false;
   }
   /**
