@@ -26,6 +26,11 @@ export const REGEX = {
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
 
+  GOD_LOBSTER: {
+    COMBAT: /Encounter: the god lobster/i,
+    BOON_RESULT: /Encounter: Granted a Boon/i,
+  },
+
   // -- common
   LINE: {
     LOCATION: /\[\d*\].*/,

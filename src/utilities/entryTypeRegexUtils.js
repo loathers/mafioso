@@ -34,6 +34,14 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.CLAN_VISIT;
   }
 
+  if (isEntryGodLobsterCombat(entryString)) {
+    return ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT;
+  }
+
+  if (isEntryGodLobsterBoon(entryString)) {
+    return ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON;
+  }
+
   // -- kolmafia
   if (isEntryAscensionInfo(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
@@ -263,4 +271,18 @@ export function isEntryJanuarysGarbageTote(entryString) {
  */
 export function isEntryClanVIP(entryString) {
   return hasString(entryString, REGEX.LINE.CLAN_VISIT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryGodLobsterCombat(entryString) {
+  return hasString(entryString, REGEX.GOD_LOBSTER.COMBAT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryGodLobsterBoon(entryString) {
+  return hasString(entryString, REGEX.GOD_LOBSTER.BOON);
 }
