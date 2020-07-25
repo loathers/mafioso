@@ -140,7 +140,6 @@ export default class LogEntry {
    */
   findText(txt) {
     const matchedText = getRegexMatch(this.rawText, txt) || [];
-    console.log('matchedText', matchedText);
     return matchedText[0] || '';
   }
   /** @returns {Boolean} */

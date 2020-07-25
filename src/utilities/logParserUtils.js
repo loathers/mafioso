@@ -2,13 +2,17 @@ import { v4 as uuidv4 } from 'uuid';
 
 import LogEntry from 'classes/LogEntry';
 
-import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
+import REGEX, {
+  EMPTY_LINES_REGEX, 
+  PRE_LINE_EMPTY_SPACE,
+  POST_LINE_EMPTY_SPACE,
+} from 'constants/regexes';
 
 const logId = uuidv4();
 const PARSE_DELAY = 10; // ms
 
 // strings we are going to remove from the ahead of time
-const LOG_SCRUB_LIST = [
+const PREREMOVE_REGEX_LIST = [
   REGEX.MISC.STACK_TRACE,
   REGEX.MISC.CLI_PRINT,
   REGEX.MISC.SEND_A_KMAIL,
@@ -21,6 +25,8 @@ const LOG_SCRUB_LIST = [
   REGEX.LINE.UNAFFECT,
   REGEX.LINE.TELESCOPE,
   REGEX.LINE.SWIMMING_POOL,
+  PRE_LINE_EMPTY_SPACE,
+  POST_LINE_EMPTY_SPACE,
 ];
 // strings we are going to group together
 const PREGROUP_REGEX_LIST = [
@@ -139,7 +145,7 @@ export function pregroupRawLog(rawText) {
  * @return {String}
  */
 export function cleanRawLog(rawText) {
-  return LOG_SCRUB_LIST.reduce((currentText, replacementRegex) => {
+  return PREREMOVE_REGEX_LIST.reduce((currentText, replacementRegex) => {
     return currentText.replace(replacementRegex, '');
   }, rawText);    
 }

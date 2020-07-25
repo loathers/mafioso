@@ -1,5 +1,6 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
 export const PRE_LINE_EMPTY_SPACE = /^\s*/g;
+export const POST_LINE_EMPTY_SPACE = /(\r\n|\n)*(?!.)/gs;
 export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
