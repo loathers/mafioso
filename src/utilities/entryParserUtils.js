@@ -175,6 +175,11 @@ export function parseLocationName(entryString) {
     return shopLocationMatches[0];
   }
 
+  const visitLocationMatches = getRegexMatch(entryString, REGEX.VALUE.VISIT_LOCATION_NAME);
+  if (visitLocationMatches !== null) {
+    return visitLocationMatches[0];
+  }
+
   return null;
 }
 /**
@@ -190,10 +195,16 @@ export function parseEncounterName(entryString) {
   }
 
   const encounterNameMatches = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
-  if (encounterNameMatches === null) {
-    return null;
+  if (encounterNameMatches !== null) {
+    return encounterNameMatches[0];
   }
-  return encounterNameMatches[0];
+
+  const visitEncounterMatches = getRegexMatch(entryString, REGEX.VALUE.VISIT_ENCOUNTER_NAME);
+  if (visitEncounterMatches !== null) {
+    return visitEncounterMatches[0];
+  }
+
+  return null;
 }
 /**
  * builds an array of all the items that were gained

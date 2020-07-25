@@ -90,6 +90,8 @@ export const REGEX = {
     SHOP_LOCATION_NAME: /(?<=each from\s).*/,
     ENCOUNTER_NAME: /(?<=Encounter:\s).*/,
     NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
+    VISIT_LOCATION_NAME: /(?<=^visiting( the| ).*in ).*/im,
+    VISIT_ENCOUNTER_NAME: /(?<=^visiting( the| )).*(?= in)/im,
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/gi,
     FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
