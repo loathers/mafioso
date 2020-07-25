@@ -397,6 +397,11 @@ export function hasInitiative(entryString) {
  * @return {Array<String>}
  */
 export function parseAttackName(entryString) {
+  const songboomSingAlong = getRegexMatch(entryString, REGEX.SONGBOOM_BOOMBOX.SING_ALONG);
+  if (songboomSingAlong) {
+    return `♫ ${songboomSingAlong[0]} ♫`;
+  }
+
   const combatSkillNames = getRegexMatch(entryString, REGEX.VALUE.COMBAT_SKILL_NAMES);
   if (combatSkillNames) {
     return combatSkillNames[0];

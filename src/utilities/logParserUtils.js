@@ -63,7 +63,7 @@ export async function parseLogTxt(rawText) {
       .split('}{');
 
     if (rawArray.length <= 1) {
-      throw new Error('Not enough data on log.');
+      // throw new Error('Not enough data on log.');
     }
 
     const BATCH_SIZE = calculateBatchSize(rawSize);

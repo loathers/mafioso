@@ -8,6 +8,7 @@ export const REGEX = {
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
     RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*/gmis,
+    SING_ALONG: /(?<=^round\s\d:.*)(SING ALONG)/gmi,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
