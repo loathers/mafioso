@@ -14,6 +14,9 @@ export const REGEX = {
     INGREDIENTS_ONLY: /(?<=^pizza\s).*/m,
     EAT_LINE: /^eat\s\d+\sdiabolic pizza/m,
   },
+  DISTANCE_WOODS_GETAWAY: {
+    GAZING_LINE: /(^gazing).*/gi,
+  },
   BEACH_COMB: {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
