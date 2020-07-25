@@ -16,6 +16,7 @@ export const REGEX = {
   },
   DISTANCE_WOODS_GETAWAY: {
     GAZING_LINE: /(^gazing).*/gi,
+    EMPTY_GAZING_LINE: /(^gazing at the stars)(?!(\r\n|\n).)/gmi,
   },
   BEACH_COMB: {
     COMBING_LINE: /.*Combing.*/i,
