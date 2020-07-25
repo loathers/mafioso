@@ -36,7 +36,9 @@ export const REGEX = {
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
 
     MEAT_GAIN: /.*gain.*meat.*/i,
+    MEAT_SPENT: /.*spent.*meat.*/i,
     AUTOSELL: /^autosell:.*/gmi,
+    TRANSACTION: /.*buy.*for.*from.*/gmi,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/i,
     ACQUIRED_SOMETHING: /.*acquire.*/gi,
 
