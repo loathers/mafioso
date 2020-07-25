@@ -2,6 +2,7 @@ import React from 'react';
 
 import ENTRY_TYPE from 'constants/entryType';
 
+import { ReactComponent as BattleGearSVG } from 'images/battle-gear.svg';
 import { ReactComponent as CrossedSwordsSVG } from 'images/crossed-swords.svg';
 import { ReactComponent as DigDugSVG } from 'images/dig-dug.svg';
 import { ReactComponent as InfoSVG } from 'images/info.svg';
@@ -33,8 +34,11 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
     case ENTRY_TYPE.SNAPSHOT.DAY_INFO:
     case ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN:
-    case ENTRY_TYPE.EQUIP:
       return InfoSVG;
+
+    case ENTRY_TYPE.IOTM.GARBAGE_TOTE:
+    case ENTRY_TYPE.EQUIP:
+      return BattleGearSVG;
 
     case ENTRY_TYPE.ACQUIRE_ITEM:
       return SwapBagSVG;
