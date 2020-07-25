@@ -2,7 +2,7 @@ import ENTRY_TYPE from 'constants/entryType';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
 import {getEntryType} from 'utilities/entryTypeRegexUtils';
-import {fixSpecialEntities} from 'utilities/regexUtils';
+import {fixSpecialEntities, hasString} from 'utilities/regexUtils';
 
 /**
  * 
@@ -119,6 +119,14 @@ export default class LogEntry {
     };
 
     this.entryDisplay = this.getEntryDisplay();
+  }
+  /** 
+   * checks if the `rawText` contains given string
+   * @param {String | Regex} txt
+   * @return {Boolean}
+   */
+  hasText(txt) {
+    return hasString(this.rawText, txt);
   }
   /** @returns {Boolean} */
   hasEntry() {
@@ -259,6 +267,10 @@ export default class LogEntry {
   canCombineWith(comparedEntry) {
     // shopping at the same place can be condensed
     if (this.entryType === ENTRY_TYPE.TRANSACTION && this.doesShareLocation(comparedEntry)) {
+      return true;
+    }
+
+    if (this.hasText('chewing gum on a string') && comparedEntry.hasText('chewing gum on a string')) {
       return true;
     }
 
