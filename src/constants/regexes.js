@@ -68,6 +68,7 @@ export const REGEX = {
 
     TALKING: /^talking to.*/gim,
     VISITING: /^visiting.*/gim,
+    CLAN_VISIT: /^visiting.*in.*clan.*/gim,
   },
 
   VALUE: {

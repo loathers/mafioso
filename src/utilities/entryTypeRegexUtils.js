@@ -10,7 +10,6 @@ import {hasString} from 'utilities/regexUtils';
  */
 export function getEntryType(entryString) {
   // -- iotm
-
   if (isEntryDiabolicPizzaMake(entryString)) {
     return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
   }
@@ -29,6 +28,10 @@ export function getEntryType(entryString) {
 
   if (isEntryJanuarysGarbageTote(entryString)) {
     return ENTRY_TYPE.IOTM.GARBAGE_TOTE;
+  }
+
+  if (isEntryClanVIP(entryString)) {
+    return ENTRY_TYPE.IOTM.CLAN_VIP;
   }
 
   // -- kolmafia
@@ -252,4 +255,12 @@ export function isEntryBastilleBatallion(entryString) {
 export function isEntryJanuarysGarbageTote(entryString) {
   return hasString(entryString, REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
     || hasString(entryString, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT);
+}
+/**
+ * will be counting rumpus room also
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryClanVIP(entryString) {
+  return hasString(entryString, REGEX.LINE.CLAN_VISIT);
 }
