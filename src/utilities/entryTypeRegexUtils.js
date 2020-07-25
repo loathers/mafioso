@@ -10,6 +10,7 @@ import {hasString} from 'utilities/regexUtils';
  */
 export function getEntryType(entryString) {
   // -- iotm
+
   if (isEntryDiabolicPizzaMake(entryString)) {
     return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
   }
@@ -24,6 +25,10 @@ export function getEntryType(entryString) {
 
   if (isEntryBastilleBatallion(entryString)) {
     return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
+  }
+  
+  if (isEntryJanuarysGarbageTote(entryString)) {
+    return ENTRY_TYPE.IOTM.GARBAGE_TOTE;
   }
 
   // -- kolmafia
@@ -217,4 +222,12 @@ export function isEntryBeachComb(entryString) {
  */
 export function isEntryBastilleBatallion(entryString) {
   return hasString(entryString, 'Bastille Battalion');
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryJanuarysGarbageTote(entryString) {
+  return hasString(entryString, REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
+    || hasString(entryString, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT);
 }

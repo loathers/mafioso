@@ -19,6 +19,11 @@ export const REGEX = {
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
   },
 
+  JANUARYS_GARBAGE_TOTE: {
+    USE_FOLDABLE: /^use \d January's garbage tote/mi,
+    USE_RESULT: /(?<=use \d January's garbage tote).*?acquire.*?:.*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gis,
+  },
+
   // -- common
   LINE: {
     LOCATION: /\[\d*\].*/,
