@@ -319,8 +319,17 @@ export default class LogEntry {
       return true;
     }
 
+    // Boxing Daycare
+    if (this.hasText(/visiting the boxing daycare/i) && comparedEntry.locationDisplay === 'Boxing Daycare') {
+      return true;
+    }
+
     // all equip texts can be combined into one
     if (this.entryType === ENTRY_TYPE.EQUIP && this.doesShareEntryType(comparedEntry)) {
+      return true;
+    }
+
+    if (this.entryType === ENTRY_TYPE.TALKING && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 

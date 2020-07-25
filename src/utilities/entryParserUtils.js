@@ -1,4 +1,4 @@
-import REGEX, {BACK_NEW_LINE_REGEX, PRE_LINE_EMPTY_SPACE} from 'constants/regexes';
+import REGEX, {BACK_NEW_LINE_REGEX, EMPTY_LINES_REGEX, PRE_LINE_EMPTY_SPACE} from 'constants/regexes';
 import {
   hasString,
   getRegexMatch,
@@ -30,6 +30,7 @@ const DISPLAY_SCRUB_LIST = [
   REGEX.DIABOLIC_PIZZA.EAT_LINE,
   BACK_NEW_LINE_REGEX,
   PRE_LINE_EMPTY_SPACE,
+  EMPTY_LINES_REGEX,
 ];
 
 /**
