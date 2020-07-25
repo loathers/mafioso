@@ -5,6 +5,7 @@ import {
 } from 'utilities/regexUtils';
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
+const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 const ENTRY_SCRUB_LIST = [
   REGEX.LINE.LOCATION,
   REGEX.LINE.ENCOUNTER,
@@ -24,6 +25,8 @@ const ENTRY_SCRUB_LIST = [
   REGEX.LINE.ACQUIRED_SOMETHING,
   REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
   REGEX.DIABOLIC_PIZZA.EAT_LINE,
+  BACK_NEW_LINE_REGEX,
+  PRE_LINE_EMPTY_SPACE,
 ]
 
 /**
@@ -103,14 +106,9 @@ export function parseEntrySpecial(entryString) {
  * @return {String}
  */
 export function createEntryBody(entryString) {
-  const scrubbedEntry = ENTRY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
+  return ENTRY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
   }, entryString);
-
-  // remove the remaining new line entities 
-  return scrubbedEntry
-    .replace(/(?<!.\s)^(\r\n|\n)/gm, '')
-    .replace(PRE_LINE_EMPTY_SPACE, '');
 }
 // -- common parsers
 /**
