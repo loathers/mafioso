@@ -10,6 +10,10 @@ import {hasString} from 'utilities/regexUtils';
  */
 export function getEntryType(entryString) {
   // -- iotm
+  if (isEntryBoombox(entryString)) {
+    return ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX;
+  }
+
   if (isEntryDiabolicPizzaMake(entryString)) {
     return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
   }
@@ -293,6 +297,13 @@ export function isEntryNonCombatEncounter(entryString) {
   return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBoombox(entryString) {
+  return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.GROUPING);
+}
 /**
  * @param {String} entryString
  * @return {Boolean}

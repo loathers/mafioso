@@ -4,38 +4,36 @@ export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- iotm
+  SONGBOOM_BOOMBOX: {
+    GROUPING: /^use.*?songboom.*?setting soundtrack.*?/gmis,
+    RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*?/gmis,
+  },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
     INGREDIENTS_ONLY: /(?<=^pizza\s).*/m,
     EAT_LINE: /^eat\s\d+\sdiabolic pizza/m,
   },
-
   BEACH_COMB: {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
   },
-
   BOXING_DAYCARE: {
     GROUPING: /visiting the boxing daycare.*?enter the boxing daycare/gis,
   },
-
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
   },
-
   JANUARYS_GARBAGE_TOTE: {
     USE_FOLDABLE: /^use \d January's garbage tote/mi,
     USE_RESULT: /(?<=use \d January's garbage tote).*?acquire.*?:.*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gis,
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
-
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
-
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
   },

@@ -38,6 +38,8 @@ class LogStore {
         ENTRY_TYPE.SPELL_CAST,
         ENTRY_TYPE.EQUIP,
         ENTRY_TYPE.UNEQUIP,
+        ENTRY_TYPE.CLOSET_PUT,
+        ENTRY_TYPE.CLOSET_TAKE,
       ],
       /* @type {Object} */
       dataFilters: {},
