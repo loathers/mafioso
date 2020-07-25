@@ -36,6 +36,8 @@ class LogStore {
         ENTRY_TYPE.SNAPSHOT.DAY_INFO,
         // ENTRY_TYPE.CLAN_VISIT,
         ENTRY_TYPE.SPELL_CAST,
+        ENTRY_TYPE.EQUIP,
+        ENTRY_TYPE.UNEQUIP,
       ],
       /* @type {Object} */
       dataFilters: {},

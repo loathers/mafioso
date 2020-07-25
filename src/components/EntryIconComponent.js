@@ -3,6 +3,7 @@ import React from 'react';
 import ENTRY_TYPE from 'constants/entryType';
 
 import { ReactComponent as BattleGearSVG } from 'images/battle-gear.svg';
+import { ReactComponent as CatSVG } from 'images/cat.svg';
 import { ReactComponent as CrossedSwordsSVG } from 'images/crossed-swords.svg';
 import { ReactComponent as DigDugSVG } from 'images/dig-dug.svg';
 import { ReactComponent as InfoSVG } from 'images/info.svg';
@@ -63,6 +64,9 @@ function getEntryIcon(entryType) {
 
     case ENTRY_TYPE.POTION:
       return PotionSVG;
+
+    case ENTRY_TYPE.FAMILIAR:
+      return CatSVG;
 
     case ENTRY_TYPE.SPELL_CAST:
       return SpellbookSVG;

@@ -80,6 +80,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.CONSUMPTION.CHEW;
   }
 
+  if (isEntryFamiliar(entryString)) {
+    return ENTRY_TYPE.FAMILIAR;
+  }
+
   if (isEntryEquip(entryString)) {
     return ENTRY_TYPE.EQUIP;
   }
@@ -190,6 +194,19 @@ export function isEntryDrink(entryString) {
  */
 export function isEntryChew(entryString) {
   return hasString(entryString, REGEX.VALUE.CHEW_TARGET);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryFamiliar(entryString) {
+  if (hasString(entryString, REGEX.LINE.FAMILIAR_WEIGHT_GAIN)) {
+    if (!isEntryCombatEncounter(entryString)) {
+      return true;
+    }
+  }
+
+  return hasString(entryString, REGEX.LINE.FAMILIAR);
 }
 /**
  * @param {String} entryString

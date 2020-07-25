@@ -56,7 +56,6 @@ export const REGEX = {
     MEAT_SPENT: /.*spent.*meat.*/gi,
     AUTOSELL: /^autosell:.*/gmi,
     TRANSACTION: /.*buy.*for.*from.*/gmi,
-    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
     ACQUIRED_SOMETHING: /.*acquire.*/gi,
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
@@ -77,6 +76,8 @@ export const REGEX = {
     TELESCOPE: /^telescope.*/gim,
     EQUIP: /^equip.*/gim,
     UNEQUIP: /^unequip.*/gim,
+    FAMILIAR: /^familiar.*/gim,
+    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
 
     TALKING: /^talking to.*/gim,
     VISITING: /^visiting.*/gim,
