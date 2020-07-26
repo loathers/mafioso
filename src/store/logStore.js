@@ -77,6 +77,11 @@ class LogStore {
    * @param {File} file
    */
   handleUpload(file) {
+    if (file.type !== 'text/plain') {
+      console.error('That is not a text file mate.');
+      return;
+    }
+
     this.isParsing.set(true);
 
     this.allEntries.clear();
