@@ -26,8 +26,6 @@ export default class LogEntry {
     this.entryType = getEntryType(rawText);
     /** @type {String} */
     this.entryString = fixSpecialEntities(rawText);
-    /** @type {String | null} */
-    this.entryDisplay = null;
 
     /** @type {Object} */
     this.data = {
@@ -122,8 +120,6 @@ export default class LogEntry {
       ...this.specialData,
       ...parsedSpecialData,
     };
-
-    this.entryDisplay = this.getEntryDisplay();
   }
   /** 
    * checks if the `rawText` contains given string
@@ -153,6 +149,10 @@ export default class LogEntry {
   /** @returns {Boolean} */
   hasEntryHeader() {
     return this.locationDisplay !== null || this.encounterDisplay !== null;
+  }
+  /** @type {Boolean} */
+  get hasContentDisplay() {
+    return this.contentDisplay !== null;
   }
   /** @type {Boolean} */
   get hasStatChanges() {
@@ -187,6 +187,10 @@ export default class LogEntry {
   /** @type {Number} */
   get moxSubstats() {
     return this.statData.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+  }
+  /** @type {String} */
+  get contentDisplay() {
+    return this.getContentDisplay();
   }
   /** @type {String} */
   get locationDisplay() {
@@ -267,7 +271,7 @@ export default class LogEntry {
    * 
    * @return {String | null}
    */
-  getEntryDisplay() {
+  getContentDisplay() {
     if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
       return null;
     }
