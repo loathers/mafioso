@@ -40,7 +40,7 @@ export default class LogEntry {
       /** @type {Boolean} */
       isCombatEncounter: false, // todo: is a duplication of entryType
       /** @type {Boolean} */
-      isNoncombatEncounter: false, // todo: is a duplication of entryType
+      isNonCombatEncounter: false, // todo: is a duplication of entryType
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Array<String>} */
@@ -250,7 +250,7 @@ export default class LogEntry {
   export() {
     return {
       entryId: this.id,
-      entryIdx: this.entryIdx,
+      // entryIdx: this.entryIdx,
       entryType: this.entryType,
       ...this.data,
       ...this.statData,

@@ -26,7 +26,7 @@ export function parseCommonData(entryString) {
     locationName,
     encounterName,
     isCombatEncounter: isCombatEncounter(entryString),
-    isNoncombatEncounter: isNoncombatEncounter(entryString),
+    isNonCombatEncounter: isNonCombatEncounter(entryString),
     acquiredItems,
     acquiredEffects,
     meatChange,
@@ -127,7 +127,7 @@ export function isCombatEncounter(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
-export function isNoncombatEncounter(entryString) {
+export function isNonCombatEncounter(entryString) {
   return entryTypeRegexUtils.isEntryNonCombatEncounter(entryString);
 }
 /**

@@ -309,7 +309,7 @@ export function isEntryCombatEncounter(entryString) {
  * @return {Boolean}
  */
 export function isEntryNonCombatEncounter(entryString) {
-  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryMafiaMisc(entryString);
+  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryCombatEncounter(entryString) && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
 /**
