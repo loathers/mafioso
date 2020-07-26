@@ -27,7 +27,8 @@ function EntryAdventureColumn(props) {
   } = data;
 
   return (
-    <div 
+    <div
+      onClick={props.onClick} 
       className={combineClassnames('flex-col', className)}
       style={style}>      
       <div 
@@ -121,7 +122,7 @@ function EntryBodyContainer(props) {
   }
 
   return (
-    <div className={combineClassnames('flex-col userselect-none whitespace-pre-wrap', className)}>
+    <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
       {/* header with location and encounter name */}
       <EntryHeaderContainer logEntry={logEntry} />
 
@@ -172,10 +173,9 @@ export default function EntryDisplayContainer(props) {
 
   return (
     <div 
-      onClick={onClick}
       onMouseEnter={() => toggleFocus(true)}
       onMouseLeave={() => toggleFocus(false)}
-      className={combineClassnames('flex-row adjacent-mar-t-2 pad-2 borradius-2', focusedClass, className)}>
+      className={combineClassnames('flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
 
       {/* status indicator column */}
       <div 
@@ -185,6 +185,7 @@ export default function EntryDisplayContainer(props) {
 
       {/* adventure num column */}
       <EntryAdventureColumn 
+        onClick={onClick}
         logEntry={logEntry}
         className='adjacent-mar-l-4 flex-none'
         style={{width: 35}} />
@@ -204,8 +205,20 @@ export default function EntryDisplayContainer(props) {
       { logEntry.hasCombatActions() && !isShowRaw &&
         <CombatSequenceDisplay 
           logEntry={logEntry}
-          className='bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+          className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
       }
+
+      {/* raw text toggle button */}
+      <div 
+        onClick={onClick}
+        style={{
+          textDecoration: 'underline',
+          top: 5,
+          right: 5,
+        }}
+        className='cursor-pointer userselect-none color-grayer fontsize-1 position-absolute'>
+        toggle raw
+      </div>
       
     </div>
   )
