@@ -8,8 +8,7 @@ import combineClassnames from 'utilities/combineClassnames';
  */
 function onUpload(evt) {
   ignoreEvent(evt);
-  console.log('onUpload', evt.currentTarget)
-  const uploadedFiles = evt.dataTransfer.files;
+  const uploadedFiles = (evt.dataTransfer && evt.dataTransfer.files) || (evt.currentTarget && evt.currentTarget.files);
   if (uploadedFiles.length <= 0) {
     console.warn('No file uploaded.');
     return;

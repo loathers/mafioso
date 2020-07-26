@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 
+import Batcher from 'classes/Batcher';
 import LogEntry from 'classes/LogEntry';
 
 import {PREREMOVE_REGEX_LIST, PREGROUP_REGEX_LIST} from 'constants/DEFAULTS';
 import {EMPTY_LINES_REGEX} from 'constants/regexes';
 
 const logId = uuidv4();
-const PARSE_DELAY = 10; // ms
 
 /**
  * core parsing handler - start here
@@ -34,39 +34,14 @@ export async function parseLogTxt(rawText) {
     const BATCH_SIZE = calculateBatchSize(rawSize);
     console.log(`(log has ${rawSize} characters)`);
 
-    const logEntries = await parseRawArray(rawArray, {batchSize: BATCH_SIZE});
+    const entryBatcher = new Batcher(rawArray, {batchSize: BATCH_SIZE, batchDelay: 10});
+    const logEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
+
     return logEntries;
 
   } catch (e) {
     console.error(e);
   }
-}
-/** 
- * parses an array of raw strings
- * @param {Array<String>} rawArray
- * @param {Object} [options]
- * @returns {Array<LogEntry>}
- */
-export async function parseRawArray(rawArray, options = {}) {
-  const {
-    batchSize = 100,
-  } = options;
-
-  let logEntries = [];
-
-  // calculate size of batches for performance
-  const batchCount = Math.ceil(rawArray.length / batchSize);
-  for (let i = 0; i < batchCount; i++) {
-    const startIdx = i * batchSize;
-    const endIdx = startIdx + batchSize;
-    const logGroup = rawArray.slice(startIdx, endIdx);
-    const parsedGroup = await parseLogArray(logGroup, startIdx);
-
-    logEntries = logEntries.concat(parsedGroup);
-    console.log(`... Batch #${i+1} parsed (${parsedGroup.length} entries)`);
-  }
-
-  return logEntries;
 }
 /** 
  * creates a list of LogEntry class, 
@@ -78,15 +53,11 @@ export async function parseRawArray(rawArray, options = {}) {
  * @returns {Array<LogEntry>}
  */
 export function parseLogArray(logArray, startIdx) {
-  return new Promise((resolve) => {
-    const parsedLogArray = logArray.map((rawText, idx) => new LogEntry({
-      entryIdx: startIdx + idx,
-      entryId: `${startIdx + idx}_${logId}`,
-      rawText: rawText,
-    }));
-
-    setTimeout(() => resolve(parsedLogArray), PARSE_DELAY);
-  })
+  return logArray.map((rawText, idx) => new LogEntry({
+    entryIdx: startIdx + idx,
+    entryId: `${startIdx + idx}_${logId}`,
+    rawText: rawText,
+  }));
 }
 /**
  * group some entries ahead of time
