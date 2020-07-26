@@ -7,7 +7,9 @@ import combineClassnames from 'utilities/combineClassnames';
  * @param {SyntheticEvent} evt
  */
 function onUpload(evt) {
-  const uploadedFiles = evt.currentTarget.files;
+  ignoreEvent(evt);
+  console.log('onUpload', evt.currentTarget)
+  const uploadedFiles = evt.dataTransfer.files;
   if (uploadedFiles.length <= 0) {
     console.warn('No file uploaded.');
     return;
@@ -37,17 +39,32 @@ export default function UploadComponent(props) {
   const expandedClassName = showExpanded ? 'flex-auto' : '';
 
   return (
-    <div className={combineClassnames('flex-col boxsizing-border', expandedClassName, className)}>
-      <input 
-        className={combineClassnames('pad-4 flex-auto', hoverClassName)}
-        onChange={onUpload}
-        onDrop={onUpload}
-        onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
-        onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
+    <form 
+      onDrop={(evt) => { onUpload(evt); }}
+      onDragOver={e => { ignoreEvent(e); }}
+      onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
+      onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
+      className={combineClassnames('flex-col boxsizing-border', expandedClassName, className)}>
+      <label 
+        className={combineClassnames('pad-4 flex-auto cursor-pointer', hoverClassName)}
+        htmlFor='log-uploader'>
+        Upload or drop in your session logs!
+      </label>
+
+      <input
         style={{
+          width: 0.1,
+          height: 0.1,
+          opacity: 0,
+          overflow: 'hidden',
+          position: 'absolute',
+          zindex: -1,
         }}
+
+        onChange={onUpload}
         accept='.txt'
-        type='file' />
-    </div>
+        type='file'
+        id='log-uploader' />
+    </form>
   )
 }
