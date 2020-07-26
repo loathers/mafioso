@@ -249,11 +249,13 @@ export default class LogEntry {
    */
   export() {
     return {
-      entryId: this.entryId,
+      entryId: this.id,
       entryIdx: this.entryIdx,
       entryType: this.entryType,
-      entryString: this.entryString,
       ...this.data,
+      ...this.statData,
+      // ...this.combatData,
+      ...this.specialData,
     }
   }
   // -- utility

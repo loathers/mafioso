@@ -110,16 +110,7 @@ function EntryBodyContainer(props) {
   const {
     className,
     logEntry,
-    isShowRaw,
   } = props;
-
-  if (isShowRaw) {
-    return (
-      <div style={{backgroundColor: '#392644'}} className={combineClassnames('borradius-1 pad-3 flex-col whitespace-pre-wrap', className)}>
-        {logEntry.rawText}
-      </div>
-    )
-  }
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
@@ -185,7 +176,6 @@ export default function EntryDisplayContainer(props) {
 
       {/* adventure num column */}
       <EntryAdventureColumn 
-        onClick={onClick}
         logEntry={logEntry}
         className='adjacent-mar-l-4 flex-none'
         style={{width: 35}} />
@@ -196,10 +186,11 @@ export default function EntryDisplayContainer(props) {
         className='adjacent-mar-l-4 flex-none' />
 
       {/* entry body */}
-      <EntryBodyContainer
-        isShowRaw={isShowRaw}
-        logEntry={logEntry}
-        className='adjacent-mar-l-4 flex-auto' />
+      { !isShowRaw &&
+        <EntryBodyContainer
+          logEntry={logEntry}
+          className='adjacent-mar-l-4 flex-auto' />
+      }
 
       {/* combat */}
       { logEntry.hasCombatActions() && !isShowRaw &&
@@ -208,15 +199,26 @@ export default function EntryDisplayContainer(props) {
           className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
       }
 
+      {/* debug stuff */}
+      { isShowRaw &&
+        <div style={{backgroundColor: '#392644'}} className='borradius-1 pad-3 pad-r-8 flex-row flex-auto adjacent-mar-l-4'>
+          <div style={{width: '50%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
+            {logEntry.rawText}
+          </div>
+
+          <div style={{width: '50%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
+            {JSON.stringify(logEntry.export(), null, 4)}
+          </div>
+        </div>
+      }
+
       {/* raw text toggle button */}
       <div 
         onClick={onClick}
         style={{
           textDecoration: 'underline',
-          top: 5,
-          right: 5,
         }}
-        className='cursor-pointer userselect-none color-grayer fontsize-1 position-absolute'>
+        className='cursor-pointer userselect-none color-grayer fontsize-1 flex-none adjacent-mar-l-4'>
         toggle raw
       </div>
       
