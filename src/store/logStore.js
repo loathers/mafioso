@@ -24,6 +24,8 @@ class LogStore {
     this.rawText = undefined;
     /** @type {ObservableArray<LogEntry>} */
     this.allEntries = observable([]);
+    /** @type {ObservableArray<LogEntry>} */
+    this.currentEntries = observable([]);
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
@@ -52,6 +54,10 @@ class LogStore {
     return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
   }
   /** @type {Boolean} */
+  get hasFile() {
+    return this.srcFile !== undefined;
+  }
+  /** @type {Boolean} */
   get hasRawText() {
     return this.rawText !== undefined;
   }
@@ -59,19 +65,23 @@ class LogStore {
   get hasParsedEntries() {
     return this.allEntries.length > 0 && this.logBatcher !== undefined;
   }
+  /** @type {Boolean} */
+  get hasCurrentEntries() {
+    return this.currentEntries.length > 0;
+  }
   /** @type {Number} */
   get entriesCount() {
     return this.allEntries.length;
-  }
-  /** @return {Array<LogEntry>} */
-  getCurrentEntries() {
-    return this.getEntries(this.filterOptions);
   }
   /**
    * @param {File} file
    */
   handleUpload(file) {
     this.isParsing.set(true);
+
+    this.allEntries.clear();
+    // this.currentEntries.clear();
+
     this.srcFile = file;
     fileReader.readAsText(file);
   }
@@ -91,23 +101,30 @@ class LogStore {
       throw new Error('No log to parse???');
     }
 
-    console.log('✨ %cParsing your Ascension Log!', 'color: Blue');
+    console.log('✨ %cParsing your Session Log!', 'color: blue; font-size: 14px');
     this.isParsing.set(true);
 
     const newData = await logParserUtils.parseLogTxt(this.rawText);
     this.allEntries.replace(newData);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
-    this.logBatcher = new Batcher(newData, {batchSize: Math.max(100, estimatedBatchSize)});
+    this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
 
-    console.log(`✨ %cFinished! Created ${this.allEntries.length} entries.`, 'color: Blue');
+    console.log(`✔️ %cFinished! Created ${this.allEntries.length} entries.`, 'color: blue');
     this.isParsing.set(false);
+
+    // we just parsed so we gotta refresh `currentEntries`
+    this.fetchEntries();
   }
   /** 
    * @param {Object} options
    * @return {Array<LogEntry>} 
    */
-  async getEntries(options = {}) {
+  async fetchEntries(options = {}) {
+    if (!this.isReady) {
+      return [];
+    }
+
     const {
       pageNum = this.filterOptions.pageNum,
       entriesPerPage = this.filterOptions.entriesPerPage,
@@ -115,6 +132,7 @@ class LogStore {
       // dataFilters = this.filterOptions.dataFilters,
     } = options;
 
+    console.log('⏳ %cFetching entries...', 'color: blue')
     this.isFetching.set(true);
 
     const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount-1);
@@ -130,7 +148,11 @@ class LogStore {
     });
     
     const condensedEntries = this.condenseEntries(filteredEntries);
+    this.currentEntries.replace(condensedEntries);
+
+    console.log('⌛ %c...done.', 'color: blue')
     this.isFetching.set(false);
+
     return condensedEntries;
   }
   /**
