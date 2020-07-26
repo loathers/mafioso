@@ -152,6 +152,14 @@ export default class LogEntry {
   }
   /** @type {Boolean} */
   get hasContentDisplay() {
+    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
+      return false;
+    }
+
+    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
+      return false;
+    }
+
     return this.contentDisplay !== null;
   }
   /** @type {Boolean} */
@@ -272,14 +280,6 @@ export default class LogEntry {
    * @return {String | null}
    */
   getContentDisplay() {
-    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
-      return null;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
-      return null;
-    }
-
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     return entryBody.length <= 0 ? null : entryBody;
   }
