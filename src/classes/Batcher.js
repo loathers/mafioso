@@ -28,6 +28,7 @@ export default class Batcher {
     } = config;
 
     let batchResult = [];
+    console.log(`%c☌ Batcher running with [delay=${batchDelay}ms]`, 'color: #6464ff');
 
     const numBatches = this.calculateBatchCount(batchSize);
     for (let i = 0; i < numBatches; i++) {
@@ -39,7 +40,7 @@ export default class Batcher {
       await new Promise((resolve) => setTimeout(resolve, batchDelay)); // delay between batches
 
       batchResult = batchResult.concat(groupResult);
-      console.log(`%c... Batch #${i+1} parsed (resulting in ${groupResult.length} items)`, 'color: #6464ff');
+      console.log(`%c☌ batch #${i+1} complete (${groupResult.length} items)`, 'color: #6464ff');
     }
 
     return batchResult;
@@ -49,6 +50,6 @@ export default class Batcher {
    * @returns {Number}
    */
   calculateBatchCount(batchSize = 100) {
-    return Math.max(Math.ceil(this.batchLength / batchSize), 100);
+    return Math.ceil(this.batchLength / Math.max(batchSize, 100));
   }
 }
