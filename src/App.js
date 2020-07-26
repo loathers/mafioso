@@ -1,6 +1,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
+import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import LoaderComponent from 'components/LoaderComponent';
@@ -43,7 +44,7 @@ function App() {
       </div>
 
       {/* loader */}
-      { logStore.isParsing.get() &&
+      { appStore.isLoading &&
         <LoaderComponent className='mar-h-5 adjacent-mar-t-5 flex-none'/>
       }
 
