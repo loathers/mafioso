@@ -56,7 +56,7 @@ function VisualizerSection(props) {
   const hasSelectedEntry = selectedEntry !== undefined;
 
   return (
-    <div className='flex-col adjacent-mar-t-5'>      
+    <div className='width-full flex-col adjacent-mar-t-5'>      
       { entriesList.map((logEntry, idx) => (
         <EntryDisplayContainer 
           onClick={(evt) => onSelectItem(evt, logEntry)}

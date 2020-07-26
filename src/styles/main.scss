@@ -1,9 +1,18 @@
 @import 'definitions.scss';
 @import '../../node_modules/aah-util-css/sass_src/all-util-styles.scss';
 
-#slv-main {
+body {
+  background-color: #033E8C;
   min-height: 100vh;
-  width: auto;
+}
+
+#root {
+  width: 100%;
+}
+
+#slv-main {
+  width: 100%;
+  max-width: 1280px;
   box-sizing: border-box;
 }
 

@@ -202,11 +202,11 @@ export default function EntryDisplayContainer(props) {
       {/* debug stuff */}
       { isShowRaw &&
         <div style={{backgroundColor: '#392644'}} className='borradius-1 pad-3 pad-r-8 flex-row flex-auto adjacent-mar-l-4'>
-          <div style={{width: '50%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
+          <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
             {logEntry.rawText}
           </div>
 
-          <div style={{width: '50%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
+          <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
             {JSON.stringify(logEntry.export(), null, 4)}
           </div>
         </div>

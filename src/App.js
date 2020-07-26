@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div 
-      className='bg-third color-white fontfamily-primary fontsize-5 pad-7 flex-col'
+      className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
       id='slv-main'>
 
       <div className='fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
