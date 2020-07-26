@@ -9,7 +9,7 @@ export default class Batcher {
     /** @type {Object} */
     this.defaultConfig = {
       batchSize: 100,
-      batchDelay: 20, // ms
+      batchDelay: 50, // ms
       ...defaultConfig,
     };
   }
@@ -28,9 +28,9 @@ export default class Batcher {
     } = config;
 
     let batchResult = [];
-    console.log(`%c☌ Batcher running with [delay=${batchDelay}ms]`, 'color: #6464ff');
-
     const numBatches = this.calculateBatchCount(batchSize);
+    console.log(`%c☌ Batcher running [batchCount=${numBatches}] with [delay=${batchDelay}ms]`, 'color: #6464ff');
+
     for (let i = 0; i < numBatches; i++) {
       const startIdx = i * batchSize;
       const endIdx = startIdx + batchSize;
@@ -49,7 +49,7 @@ export default class Batcher {
    * @param {Number} batchSize
    * @returns {Number}
    */
-  calculateBatchCount(batchSize = 100) {
-    return Math.ceil(this.batchLength / Math.max(batchSize, 100));
+  calculateBatchCount(batchSize = this.defaultConfig.batchSize) {
+    return Math.ceil(this.batchLength / Math.min(batchSize, 100));
   }
 }

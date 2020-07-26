@@ -16,7 +16,7 @@ const logId = uuidv4();
  */
 export async function parseLogTxt(rawText) {
   try {
-    const rawCleaned = cleanRawLog(rawText);
+    const rawCleaned = await cleanRawLog_debounced(rawText);
     const rawSize = rawCleaned.length;
     if (rawSize > 10000000) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
@@ -75,6 +75,22 @@ export function pregroupRawLog(rawText) {
 
     return accumulatedText;
   }, rawText);
+}
+/**
+ * remove stuff that the parser will be completely ignoring
+ * @param {String} rawText
+ * @return {String}
+ */
+export async function cleanRawLog_debounced(rawText) {
+  let cleanedText = rawText.slice();
+
+  const cleaningBatcher = new Batcher(PREREMOVE_REGEX_LIST, {batchSize: 1});
+  await cleaningBatcher.run((removalRegexGroup) => {
+    cleanedText = cleanedText.replace(removalRegexGroup[0], '');
+    return cleanedText; // this return is superficial, just for Batcher's logging
+  });
+
+  return cleanedText;
 }
 /**
  * remove stuff that the parser will be completely ignoring
