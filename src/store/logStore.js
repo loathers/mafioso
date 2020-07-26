@@ -23,7 +23,7 @@ class LogStore {
     /** @type {String} */
     this.rawText = undefined;
     /** @type {ObservableArray<LogEntry>} */
-    this.logEntries = observable([]);
+    this.allEntries = observable([]);
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
@@ -41,9 +41,15 @@ class LogStore {
 
     /** @type {Boolean} */
     this.isParsing = observable.box(false);
+    /** @type {Boolean} */
+    this.isFetching = observable.box(false);
 
     // file reader callback
     fileReader.onload = this.onReadComplete.bind(this);
+  }
+  /** @type {Boolean} */
+  get isReady() {
+    return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
   }
   /** @type {Boolean} */
   get hasRawText() {
@@ -51,11 +57,11 @@ class LogStore {
   }
   /** @type {Boolean} */
   get hasParsedEntries() {
-    return this.logEntries.length > 0 && this.logBatcher !== undefined;
+    return this.allEntries.length > 0 && this.logBatcher !== undefined;
   }
   /** @type {Number} */
   get entriesCount() {
-    return this.logEntries.length;
+    return this.allEntries.length;
   }
   /** @return {Array<LogEntry>} */
   getCurrentEntries() {
@@ -89,12 +95,12 @@ class LogStore {
     this.isParsing.set(true);
 
     const newData = await logParserUtils.parseLogTxt(this.rawText);
-    this.logEntries.replace(newData);
+    this.allEntries.replace(newData);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
     this.logBatcher = new Batcher(newData, {batchSize: Math.max(100, estimatedBatchSize)});
 
-    console.log(`✨ %cFinished! Created ${this.logEntries.length} entries.`, 'color: Blue');
+    console.log(`✨ %cFinished! Created ${this.allEntries.length} entries.`, 'color: Blue');
     this.isParsing.set(false);
   }
   /** 
@@ -109,9 +115,11 @@ class LogStore {
       // dataFilters = this.filterOptions.dataFilters,
     } = options;
 
+    this.isFetching.set(true);
+
     const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount-1);
     const endIdx = entriesPerPage === 'all' ? this.entriesCount-1 : Math.min(startIdx + entriesPerPage, this.entriesCount-1);
-    // console.log('I want', startIdx, 'to', endIdx);
+    // console.log('I want entries from', startIdx, 'to', endIdx);
 
     // batch find entries that are in range and not hidden
     const filteredEntries = await this.logBatcher.run((entriesGroup) => {
@@ -121,7 +129,9 @@ class LogStore {
       });
     });
     
-    return this.condenseEntries(filteredEntries);
+    const condensedEntries = this.condenseEntries(filteredEntries);
+    this.isFetching.set(false);
+    return condensedEntries;
   }
   /**
    * currently the parameter passed isn't a shallow copy

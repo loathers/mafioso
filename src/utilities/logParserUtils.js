@@ -35,9 +35,9 @@ export async function parseLogTxt(rawText) {
     console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
 
     const entryBatcher = new Batcher(rawArray, {batchSize: BATCH_SIZE, batchDelay: 10});
-    const logEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
+    const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
 
-    return logEntries;
+    return allEntries;
 
   } catch (e) {
     console.error(e);
