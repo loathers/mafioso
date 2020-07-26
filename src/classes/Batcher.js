@@ -9,7 +9,7 @@ export default class Batcher {
     /** @type {Object} */
     this.defaultConfig = defaultConfig || {
       batchSize: 100,
-      batchDelay: 15, // ms
+      batchDelay: 10, // ms
     };
   }
   /**
@@ -34,7 +34,7 @@ export default class Batcher {
       await new Promise((resolve) => setTimeout(resolve(), batchDelay)); // delay between batches
 
       batchResult = batchResult.concat(groupResult);
-      console.log(`... Batch #${i+1} parsed (${groupResult.length} entries)`);
+      console.log(`%c... Batch #${i+1} parsed (${groupResult.length} entries)`, 'color: #6464ff');
     }
 
     return batchResult;

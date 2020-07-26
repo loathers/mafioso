@@ -2,6 +2,7 @@ import {
   observable,
 } from 'mobx';
 
+import Batcher from 'classes/Batcher';
 import LogEntry from 'classes/LogEntry';
 
 import {DEFAULT_HIDDEN_ENTRIES} from 'constants/DEFAULTS';
@@ -26,7 +27,7 @@ class LogStore {
     /** @type {Object} */
     this.filterOptions = observable({
       /** @type {Number} */
-      pageNum: 1,
+      pageNum: 0,
       /** @type {Number} */
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
@@ -34,6 +35,9 @@ class LogStore {
       /* @type {Object} */
       dataFilters: {},
     });
+
+    /** @type {Batcher} */
+    this.logBatcher = undefined;
 
     /** @type {Boolean} */
     this.isParsing = observable.box(false);
@@ -47,7 +51,11 @@ class LogStore {
   }
   /** @type {Boolean} */
   get hasParsedEntries() {
-    return this.logEntries.length > 0;
+    return this.logEntries.length > 0 && this.logBatcher !== undefined;
+  }
+  /** @type {Number} */
+  get entriesCount() {
+    return this.logEntries.length;
   }
   /** @return {Array<LogEntry>} */
   getCurrentEntries() {
@@ -78,17 +86,22 @@ class LogStore {
     }
 
     console.log('✨ %cParsing your Ascension Log!', 'color: Blue');
+    this.isParsing.set(true);
+
     const newData = await logParserUtils.parseLogTxt(this.rawText);
     this.logEntries.replace(newData);
 
-    this.isParsing.set(false);
+    const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
+    this.logBatcher = new Batcher(newData, {batchSize: Math.max(100, estimatedBatchSize)});
+
     console.log(`✨ %cFinished! Created ${this.logEntries.length} entries.`, 'color: Blue');
+    this.isParsing.set(false);
   }
   /** 
    * @param {Object} options
    * @return {Array<LogEntry>} 
    */
-  getEntries(options = {}) {
+  async getEntries(options = {}) {
     const {
       pageNum = this.filterOptions.pageNum,
       entriesPerPage = this.filterOptions.entriesPerPage,
@@ -96,24 +109,29 @@ class LogStore {
       // dataFilters = this.filterOptions.dataFilters,
     } = options;
 
-    const startIdx = entriesPerPage === 'all' ? 0 : entriesPerPage * pageNum;
-    const endIdx = entriesPerPage === 'all' ? this.logEntries.length : startIdx + entriesPerPage;
+    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount-1);
+    const endIdx = entriesPerPage === 'all' ? this.entriesCount-1 : Math.min(startIdx + entriesPerPage, this.entriesCount-1);
+    // console.log('I want', startIdx, 'to', endIdx);
 
-    const filteredEntries = this.logEntries
-      .slice(startIdx, endIdx)
-      .filter((logEntry) => !hiddenEntryTypes.includes(logEntry.entryType));
-
+    // batch find entries that are in range and not hidden
+    const filteredEntries = await this.logBatcher.run((entriesGroup) => {
+      return entriesGroup.filter((logEntry) => {
+        const withinSearchRange = logEntry.entryIdx >= startIdx && logEntry.entryIdx < endIdx;
+        return withinSearchRange && !hiddenEntryTypes.includes(logEntry.entryType);
+      });
+    });
+    
     return this.condenseEntries(filteredEntries);
   }
   /**
-   * the way the system is currently designed, there is no need to make a shallow copy
+   * currently the parameter passed isn't a shallow copy
    *  but it might be something to consider
    *
    * @param {Array<LogEntry>} entriesList 
    * @returns {Array<LogEntry>}
    */
   condenseEntries(entriesList) {
-    // const originalLength = entriesList.length;
+    const originalLength = entriesList.length;
     let condensedData = [];
 
     while (entriesList.length > 0) {
@@ -139,7 +157,7 @@ class LogStore {
       condensedData.push(currEntry);
     }
 
-    // console.log(`Condensed entries from ${originalLength} entries to ${condensedData.length}`);
+    console.log(`%cCondensed entries from ${originalLength} to ${condensedData.length}`, 'color: #6464ff');
     return condensedData;
   }
 }
