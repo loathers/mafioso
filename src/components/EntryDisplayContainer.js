@@ -114,7 +114,7 @@ function EntryBodyContainer(props) {
 
   if (isShowRaw) {
     return (
-      <div className={combineClassnames('flex-col userselect-none whitespace-pre-wrap', className)}>
+      <div style={{backgroundColor: '#392644'}} className={combineClassnames('borradius-1 pad-3 flex-col whitespace-pre-wrap', className)}>
         {logEntry.rawText}
       </div>
     )
