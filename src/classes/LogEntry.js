@@ -19,11 +19,11 @@ export default class LogEntry {
     this.id = entryId;
     /** @type {Number} */
     this.entryIdx = entryIdx;
-    /** @type {String} */
-    this.rawText = rawText;
-
     /** @type {EntryType} */
     this.entryType = getEntryType(rawText);
+
+    /** @type {String} */
+    this.rawText = rawText;
     /** @type {String} */
     this.entryString = fixSpecialEntities(rawText);
 
@@ -121,33 +121,16 @@ export default class LogEntry {
       ...parsedSpecialData,
     };
   }
-  /** 
-   * checks if the `rawText` contains given string
-   * @param {String | Regex} txt
-   * @return {Boolean}
-   */
-  hasText(txt) {
-    return hasString(this.rawText, txt);
-  }
-  /** 
-   * gets the (first) matched text from `rawText`
-   * @param {String | Regex} txt
-   * @return {String}
-   */
-  findText(txt) {
-    const matchedText = getRegexMatch(this.rawText, txt) || [];
-    return matchedText[0] || '';
-  }
-  /** @returns {Boolean} */
-  hasEntry() {
+  /** @type {Boolean} */
+  get hasEntry() {
     return this.entryString !== undefined;
   }
-  /** @returns {Boolean} */
-  hasData() {
+  /** @type {Boolean} */
+  get hasCommonData() {
     return this.data !== undefined;
   }
-  /** @returns {Boolean} */
-  hasEntryHeader() {
+  /** @type {Boolean} */
+  get hasEntryHeader() {
     return this.locationDisplay !== null || this.encounterDisplay !== null;
   }
   /** @type {Boolean} */
@@ -198,7 +181,7 @@ export default class LogEntry {
   }
   /** @type {String} */
   get contentDisplay() {
-    return this.getContentDisplay();
+    return this.createContentDisplay();
   }
   /** @type {String} */
   get locationDisplay() {
@@ -274,21 +257,38 @@ export default class LogEntry {
     }
   }
   // -- utility
+  /** 
+   * checks if the `rawText` contains given string
+   * @param {String | Regex} txt
+   * @return {Boolean}
+   */
+  hasText(txt) {
+    return hasString(this.rawText, txt);
+  }
+  /** 
+   * gets the (first) matched text from `rawText`
+   * @param {String | Regex} txt
+   * @return {String}
+   */
+  findText(txt) {
+    const matchedText = getRegexMatch(this.rawText, txt) || [];
+    return matchedText[0] || '';
+  } 
   /**
    * the text that we display in the entry 
    * 
    * @return {String | null}
    */
-  getContentDisplay() {
+  createContentDisplay() {
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     return entryBody.length <= 0 ? null : entryBody;
   }
   /** @returns {String} */
-  getItemsDisplay() {
+  createItemsDisplay() {
     return this.data.acquiredItems.join(', ');
   }
   /** @returns {String} */
-  getMeatDisplay() {
+  createMeatDisplay() {
     const meatChange = this.data.meatChange;
     const meatDisplay = meatChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     
@@ -298,6 +298,7 @@ export default class LogEntry {
 
     return meatDisplay;
   }
+  // -- comparators
   /**
    * @param {LogEntry} comparedEntry
    * @return {Boolean}

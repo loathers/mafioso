@@ -26,7 +26,7 @@ export default function ItemChangesDisplay(props) {
         <ItemDisplay 
           IconComponent={SteakSVG}
           className='mar-2'
-          content={`${logEntry.getMeatDisplay()} meat`} />
+          content={`${logEntry.createMeatDisplay()} meat`} />
       }
 
       { acquiredItems.map((itemName, idx) => (
