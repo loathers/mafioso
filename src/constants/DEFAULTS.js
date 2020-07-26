@@ -21,6 +21,7 @@ export const DEFAULT_HIDDEN_ENTRIES = [
 ];
 // strings we are going to remove from the ahead of time
 export const PREREMOVE_REGEX_LIST = [
+  REGEX.PIRATEREALM.ENTRY_GROUPING,
   REGEX.MISC.STACK_TRACE,
   REGEX.MISC.CLI_PRINT,
   REGEX.MISC.SEND_A_KMAIL,

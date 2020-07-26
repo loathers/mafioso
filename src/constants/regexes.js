@@ -5,10 +5,12 @@ export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- iotm
-  SONGBOOM_BOOMBOX: {
-    GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
-    RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*/gmis,
-    SING_ALONG: /(?<=^round\s\d:.*)(SING ALONG)/gmi,
+  BEACH_COMB: {
+    COMBING_LINE: /.*Combing.*/i,
+    COMBING_ACTION: /Combing.*/i,
+  },
+  BOXING_DAYCARE: {
+    GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
@@ -19,12 +21,10 @@ export const REGEX = {
     GAZING_LINE: /(^gazing).*/gi,
     EMPTY_GAZING_LINE: /(^gazing at the stars)(?!(\r\n|\n).)/gmi,
   },
-  BEACH_COMB: {
-    COMBING_LINE: /.*Combing.*/i,
-    COMBING_ACTION: /Combing.*/i,
-  },
-  BOXING_DAYCARE: {
-    GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
+  GOD_LOBSTER: {
+    COMBAT: /Encounter: the god lobster/i,
+    BOON: /Encounter: Granted a Boon/i,
+    GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
@@ -35,10 +35,13 @@ export const REGEX = {
     USE_RESULT: /(?<=use \d January's garbage tote).*?acquire.*?:.*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gis,
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
-  GOD_LOBSTER: {
-    COMBAT: /Encounter: the god lobster/i,
-    BOON: /Encounter: Granted a Boon/i,
-    GROUPING: /the God Lobster.*?Granted a Boon/gis,
+  PIRATEREALM: {
+    ENTRY_GROUPING: /^\[.*?piraterealm.*?(\r\n|\n){2,}/gmis,
+  },
+  SONGBOOM_BOOMBOX: {
+    GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
+    RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*/gmis,
+    SING_ALONG: /(?<=^round\s\d:.*)(SING ALONG)/gmi,
   },
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,

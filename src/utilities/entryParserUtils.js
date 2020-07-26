@@ -240,7 +240,7 @@ export function parseMeatSpent(entryString) {
   const buyAmountMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) || [];
   const buyCostMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_COST) || [];
   if (buyAmountMatches.length !== buyCostMatches.length) {
-    console.warn('There may be some data missing from parsing how much meat was spent.');
+    console.warn('There may be some data missing from parsing how much meat was spent.', entryString);
   }
 
   const spentTotal = buyAmountMatches.reduce((meatTotal, buyAmountString, idx) => {
