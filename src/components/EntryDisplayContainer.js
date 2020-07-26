@@ -83,7 +83,7 @@ function EntryHeaderContainer(props) {
     logEntry,
   } = props;
 
-  if (!logEntry.hasEntryHeader()) {
+  if (!logEntry.hasEntryHeader) {
     return null;
   }
 
@@ -109,11 +109,16 @@ function EntryBodyContainer(props) {
   const {
     className,
     logEntry,
+    isShowRaw,
   } = props;
 
-  const {
-    entryDisplay,
-  } = logEntry;
+  if (isShowRaw) {
+    return (
+      <div className={combineClassnames('flex-col userselect-none whitespace-pre-wrap', className)}>
+        {logEntry.rawText}
+      </div>
+    )
+  }
 
   return (
     <div className={combineClassnames('flex-col userselect-none whitespace-pre-wrap', className)}>
@@ -121,9 +126,9 @@ function EntryBodyContainer(props) {
       <EntryHeaderContainer logEntry={logEntry} />
 
       {/* text content */}
-      { entryDisplay &&
+      { logEntry.hasContentDisplay &&
         <div className='flex-col adjacent-mar-t-3'>
-          {entryDisplay}
+          {logEntry.contentDisplay}
         </div>
       }
 
@@ -151,12 +156,14 @@ function EntryBodyContainer(props) {
 export default function EntryDisplayContainer(props) {
   const {
     onClick,
-
     isSelected,
 
     className,
     logEntry,
   } = props;
+
+  // const [isShowRaw, toggleShowRaw] = React.useState(false);
+  const isShowRaw = isSelected;
 
   const [isFocused, toggleFocus] = React.useState(false);
 
@@ -189,11 +196,12 @@ export default function EntryDisplayContainer(props) {
 
       {/* entry body */}
       <EntryBodyContainer
+        isShowRaw={isShowRaw}
         logEntry={logEntry}
         className='adjacent-mar-l-4 flex-auto' />
 
       {/* combat */}
-      { logEntry.hasCombatActions() &&
+      { logEntry.hasCombatActions() && !isShowRaw &&
         <CombatSequenceDisplay 
           logEntry={logEntry}
           className='bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />

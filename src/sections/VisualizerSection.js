@@ -43,6 +43,38 @@ function VisualizerSection(props) {
 
   // list state
   const [selectedEntry, setSelectedEntry] = React.useState();
+
+  const onSelectItem = (evt, newEntry) => {
+    if (selectedEntry !== undefined && selectedEntry.id === newEntry.id) {
+      setSelectedEntry(undefined);
+      return;
+    }
+
+    setSelectedEntry(newEntry);
+  };
+
+  const hasSelectedEntry = selectedEntry !== undefined;
+
+  return (
+    <div className='flex-col adjacent-mar-t-5'>      
+      { entriesList.map((logEntry, idx) => (
+        <EntryDisplayContainer 
+          onClick={(evt) => onSelectItem(evt, logEntry)}
+          isSelected={hasSelectedEntry && logEntry.id === selectedEntry.id}
+
+          logEntry={logEntry}
+          className='visualizer-cell adjacent-mar-t-2'
+          key={`entry-display-${logEntry.id}-key`} />
+      ))}
+    </div>
+  )
+})
+
+export function VisualizerSection_Legacy(props) {
+  const {entriesList = []} = props;
+
+  // list state
+  const [selectedEntry, setSelectedEntry] = React.useState();
   const [previousEntry, setPreviousEntry] = React.useState();
 
   // tooltip state 
@@ -97,4 +129,4 @@ function VisualizerSection(props) {
         className='zindex-3' />
     </div>
   )
-})
+}
