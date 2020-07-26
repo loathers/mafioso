@@ -49,8 +49,8 @@ export const REGEX = {
 
   // -- common
   LINE: {
-    LOCATION: /\[\d*\].*/,
-    ENCOUNTER: /Encounter:.*/,
+    LOCATION: /\[\d*\].*/g,
+    ENCOUNTER: /Encounter:.*/g,
 
     COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
     COMBAT_INIT: /Round.*(loses initiative|wins initiative).*/i,
@@ -186,7 +186,7 @@ export const REGEX = {
     CLI_PRINT: /^>.*(\r\n|\n)/gmi,
     SEND_A_KMAIL: /send a kmail.*(\r\n|\n)/gi,
     COMBAT_MACRO: /.*executes a macro.*(\r\n|\n)/gi,
-    MAFIA_MAXIMIZER: /Maximizer:.*(\r\n|\n)/gi,
+    MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n)/gmi,
     MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n)/gi,
   },
