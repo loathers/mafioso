@@ -23,7 +23,7 @@ function App() {
       </div>
 
       <UploadComponent
-        showExpanded={true}
+        showExpanded={!logStore.hasFile}
         className='adjacent-mar-t-5' />
 
       {/* pagination */}
@@ -49,7 +49,7 @@ function App() {
       }
 
       <VisualizerSection 
-        entriesList={logStore.getEntries({pageNum: currentPageNum})}
+        entriesList={logStore.currentEntries}
       />
 
       {/* copy paste pagination */}
