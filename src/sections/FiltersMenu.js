@@ -25,8 +25,8 @@ export default function FiltersMenu(props) {
   }
 
   const onClickApply = () => {
-    const filterEntries = filterList.filter((item) => !item.checked).map((item) => item.entryType);
-    onApply(filterEntries);
+    // const checkedItems = filterList.filter((item) => !item.checked);
+    onApply(filterList);
   }
 
   return (

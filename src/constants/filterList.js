@@ -61,12 +61,14 @@ export const ENTRY_TYPE_FILTERS = [
 export const ATTRIBUTE_FILTERS = [
   {
     label: 'Level Up',
-    attributeName: ENTRY_TYPE.ENCOUNTER.COMBAT,
+    attributeName: 'isLevelUp',
+    attributeValue: true,
     isHidden: false,
   },
   {
     label: 'NonCombat',
-    attributeName: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+    attributeName: 'isNonCombatEncounter',
+    attributeValue: true,
     isHidden: false,
   },
 ];

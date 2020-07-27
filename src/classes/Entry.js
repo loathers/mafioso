@@ -96,7 +96,6 @@ export default class Entry {
       ...this.attributes,
       ...parsedAttributes,
     };
-
   }
   /** @type {Boolean} */
   get hasEntry() {

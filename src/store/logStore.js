@@ -297,7 +297,25 @@ class LogStore {
     const filteredEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
         const withinSearchRange = entry.entryIdx >= startIdx && entry.entryIdx < endIdx;
-        return withinSearchRange && !entryTypesToFilter.includes(entry.entryType);
+        if (!withinSearchRange) {
+          return false;
+        }
+
+        const isVisibleEntry = !entryTypesToFilter.includes(entry.entryType);
+        if (!isVisibleEntry) {
+          return false;
+        }
+
+        const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
+          const entryAttributeValue = entry.attributes[attributeName];
+          return entryAttributeValue !== attributeValue;
+        });
+
+        if (!hasAllFilteredAttributes) {
+          return false;
+        }
+
+        return true;
       });
     }, {batchDelay: FILTER_DELAY});
 

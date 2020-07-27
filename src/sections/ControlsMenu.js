@@ -35,8 +35,20 @@ function ControlsMenu(props) {
 
   const attributeFiltersList = ATTRIBUTE_FILTERS.map((filterOption) => ({
     ...filterOption,
-    checked: !logStore.filteredAttributes.includes(filterOption.attributeName)
+    checked: logStore.filteredAttributes.includes(filterOption.attributeName)
   }));
+
+  const onApplyEntries = (list) => {
+    const uncheckedItems = list.filter((item) => !item.checked);
+    const uncheckedTypes = uncheckedItems.map((item) => item.entryType);
+    logStore.applyFilters({filteredTypes: uncheckedTypes});
+  }
+
+  const onApplyAttributes = (list) => {
+    const checkedItems = list.filter((item) => item.checked);
+    const filteredAttributes = checkedItems.map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));
+    logStore.applyFilters({filteredAttributes: filteredAttributes});
+  }
 
   return (
     <div 
@@ -81,13 +93,13 @@ function ControlsMenu(props) {
       {/* filters */}
       <FiltersMenu 
         label='Filter Entries'
-        onApply={(filterEntries) => logStore.applyFilters({filteredTypes: filterEntries})}
+        onApply={onApplyEntries}
         defaultList={entryFiltersList}
         className='adjacent-mar-t-5'/>
 
       <FiltersMenu 
         label='Filter Attributes'
-        onApply={(filteredAttributes) => logStore.applyFilters({filteredAttributes: filteredAttributes})}
+        onApply={onApplyAttributes}
         defaultList={attributeFiltersList}
         className='adjacent-mar-t-5'/>
     </div>
