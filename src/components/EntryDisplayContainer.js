@@ -147,15 +147,11 @@ function EntryBodyContainer(props) {
  */
 export default function EntryDisplayContainer(props) {
   const {
-    onClick,
-    isSelected,
-
     className,
     logEntry,
   } = props;
 
-  // const [isShowRaw, toggleShowRaw] = React.useState(false);
-  const isShowRaw = isSelected;
+  const [isSelected, toggleSelected] = React.useState(false);
 
   const [isFocused, toggleFocus] = React.useState(false);
 
@@ -186,21 +182,21 @@ export default function EntryDisplayContainer(props) {
         className='adjacent-mar-l-4 flex-none' />
 
       {/* entry body */}
-      { !isShowRaw &&
+      { !isSelected &&
         <EntryBodyContainer
           logEntry={logEntry}
           className='adjacent-mar-l-4 flex-auto' />
       }
 
       {/* combat */}
-      { logEntry.hasCombatActions() && !isShowRaw &&
+      { logEntry.hasCombatActions() && !isSelected &&
         <CombatSequenceDisplay 
           logEntry={logEntry}
           className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
       }
 
       {/* debug stuff */}
-      { isShowRaw &&
+      { isSelected &&
         <div style={{backgroundColor: '#392644'}} className='borradius-1 pad-3 pad-r-8 flex-row flex-auto adjacent-mar-l-4'>
           <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
             {logEntry.rawText}
@@ -214,7 +210,7 @@ export default function EntryDisplayContainer(props) {
 
       {/* raw text toggle button */}
       <div 
-        onClick={onClick}
+        onClick={() => toggleSelected(!isSelected)}
         style={{
           textDecoration: 'underline',
         }}
