@@ -6,6 +6,8 @@ import logStore from 'store/logStore';
 
 import UploadComponent from 'components/UploadComponent';
 
+import FiltersMenu from 'sections/FiltersMenu';
+
 import combineClassnames from 'utilities/combineClassnames';
 
 /**
@@ -33,9 +35,14 @@ function ControlsMenu(props) {
         Shiny Log Visualizer
       </h1>
 
+      <UploadComponent
+        content={'Upload new logs'}
+        className='width-full adjacent-mar-t-5' />
+      
+      {/** info */}
       <div className='flex-col fontfamily-primary adjacent-mar-t-5 flex-none'>
         { logStore.hasCharacterName &&
-          <h2 className='fontsize-4 adjacent-mar-t-1'>
+          <h2 className='color-gray fontsize-4 adjacent-mar-t-1'>
             {`${logStore.characterName}`}
           </h2>
         }
@@ -47,10 +54,6 @@ function ControlsMenu(props) {
         }
       </div>
 
-      <UploadComponent
-        content={'Upload new logs'}
-        className='width-full adjacent-mar-t-5' />
-      
       {/* pagination */}
       { logStore.hasCurrentEntries &&
         <div
@@ -64,7 +67,7 @@ function ControlsMenu(props) {
       }
 
       {/* filters */}
-      <FilterMenu 
+      <FiltersMenu 
         className='adjacent-mar-t-5'/>
     </div>
   );
@@ -136,21 +139,6 @@ function SimplePaginator(props) {
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
           Last
       </button>
-    </div>
-  )
-}
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-function FilterMenu(props) {
-  const {
-    className,
-  } = props;
-
-  return (
-    <div className={combineClassnames('flex-col flex-none', className)}>
-      <div className='fontsize-1'>Filters</div>
     </div>
   )
 }
