@@ -10,9 +10,6 @@ import {hasString} from 'utilities/regexUtils';
  */
 export function getEntryType(entryString) {
   // -- iotm
-  if (isEntryBoombox(entryString)) {
-    return ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX;
-  }
 
   if (isEntryBoxingDaycare(entryString)) {
     return ENTRY_TYPE.IOTM.BOXING_DAYCARE;
@@ -44,6 +41,14 @@ export function getEntryType(entryString) {
 
   if (isEntryClanVIP(entryString)) {
     return ENTRY_TYPE.CLAN_VISIT;
+  }
+
+  if (isEntryPirateRealm(entryString)) {
+    return ENTRY_TYPE.IOTM.PIRATEREALM;
+  }
+
+  if (isEntryBoombox(entryString)) {
+    return ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX;
   }
 
   if (isEntryVotingBooth(entryString)) {
@@ -327,13 +332,6 @@ export function isEntryBoxingDaycare(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryBoombox(entryString) {
-  return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.GROUPING);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
 export function isEntryDiabolicPizzaMake(entryString) {
   return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
 }
@@ -380,6 +378,20 @@ export function isEntryJanuarysGarbageTote(entryString) {
  */
 export function isEntryClanVIP(entryString) {
   return hasString(entryString, REGEX.LINE.CLAN_VISIT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBoombox(entryString) {
+  return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.GROUPING);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryPirateRealm(entryString) {
+  return hasString(entryString, REGEX.PIRATEREALM.LOCATION);
 }
 /**
  * will be counting rumpus room also

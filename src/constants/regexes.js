@@ -38,7 +38,8 @@ export const REGEX = {
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
   PIRATEREALM: {
-    ENTRY_GROUPING: /^\[.*?piraterealm.*?(\r\n|\n){2,}/gmis,
+    // ENTRY_GROUPING: /^\[.*?piraterealm.*?(\r\n|\n){2,}/gmis,
+    LOCATION: /(?<=^\[.*\] ).*piraterealm.*/gmi,
   },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
