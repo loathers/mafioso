@@ -23,7 +23,7 @@ function App() {
       </div>
 
       <UploadComponent
-        showExpanded={!logStore.hasFile}
+        showExpanded={!logStore.hasFiles}
         className='adjacent-mar-t-5' />
 
       {/* pagination */}

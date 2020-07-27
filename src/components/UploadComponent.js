@@ -14,7 +14,7 @@ function onUpload(evt) {
     return;
   }
 
-  logStore.handleUpload(uploadedFiles[0]);
+  logStore.handleUpload(uploadedFiles);
 }
 /**
  * @param {SyntheticEvent} evt

@@ -9,19 +9,16 @@ import {DEFAULT_HIDDEN_ENTRIES} from 'constants/DEFAULTS';
 
 import * as logParserUtils from 'utilities/logParserUtils';
 
-/** instantiate a single instance of FileReader */
-const fileReader = new FileReader();
-
 /**
  * state and handler of the log data
  */
 class LogStore {
   /** @default */
   constructor() {
-    /** @type {File} */
-    this.srcFile = undefined;
-    /** @type {String} */
-    this.rawText = undefined;
+    /** @type {Array<File>} */
+    this.srcFiles = [];
+    /** @type {Array<String>} */
+    this.srcRawTexts = [];
     /** @type {ObservableArray<LogEntry>} */
     this.allEntries = observable([]);
     /** @type {ObservableArray<LogEntry>} */
@@ -45,21 +42,18 @@ class LogStore {
     this.isParsing = observable.box(false);
     /** @type {Boolean} */
     this.isFetching = observable.box(false);
-
-    // file reader callback
-    fileReader.onload = this.onReadComplete.bind(this);
   }
   /** @type {Boolean} */
   get isReady() {
     return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
   }
   /** @type {Boolean} */
-  get hasFile() {
-    return this.srcFile !== undefined;
+  get hasFiles() {
+    return this.srcFiles.length > 0;
   }
   /** @type {Boolean} */
   get hasRawText() {
-    return this.rawText !== undefined;
+    return this.srcRawTexts.length > 0;
   }
   /** @type {Boolean} */
   get hasParsedEntries() {
@@ -74,9 +68,42 @@ class LogStore {
     return this.allEntries.length;
   }
   /**
+   * @param {FileList} files
+   */
+  async handleUpload(files) {
+    this.isParsing.set(true);
+
+    this.srcFiles = [];
+    this.srcRawTexts = [];
+    this.allEntries.clear();
+
+    for (let i=0; i<files.length; i++) {
+      const file = files[i];
+      await new Promise((resolve) => {
+        if (file.type !== 'text/plain') {
+          console.error('Uploaded a non-text file.');
+          resolve();
+          return;
+        }
+
+        const fileReader = new FileReader();
+        fileReader.onload = (readerEvt) => {
+          const readResult = readerEvt.target.result;
+          this.srcFiles.push(file);
+          this.srcRawTexts.push(readResult);
+          resolve(readResult);
+        }
+        
+        fileReader.readAsText(file);
+      });
+    }
+
+    this.parse();
+  }
+  /**
    * @param {File} file
    */
-  handleUpload(file) {
+  handleUpload_legacy(file) {
     if (file.type !== 'text/plain') {
       console.error('That is not a text file mate.');
       return;
@@ -87,13 +114,12 @@ class LogStore {
     this.allEntries.clear();
     // this.currentEntries.clear();
 
-    this.srcFile = file;
-    fileReader.readAsText(file);
+    this.srcFiles = file;
   }
   /**
    * @param {FileReader.Event} readerEvt
    */
-  onReadComplete(readerEvt) {
+  onReadComplete_legacy(readerEvt) {
     const txtString = readerEvt.target.result;
     this.rawText = txtString;
     this.parse();
@@ -109,7 +135,8 @@ class LogStore {
     console.log('✨ %cParsing your Session Log!', 'color: blue; font-size: 14px');
     this.isParsing.set(true);
 
-    const newData = await logParserUtils.parseLogTxt(this.rawText);
+    // const newData = await logParserUtils.parseLogTxt(this.rawText);
+    const newData = await logParserUtils.parseLogTxt(this.srcRawTexts.join('\n\n'));
     this.allEntries.replace(newData);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
