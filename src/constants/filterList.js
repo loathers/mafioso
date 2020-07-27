@@ -9,67 +9,79 @@ export const ENTRY_TYPE_FILTERS = [
     label: 'Combat',
     entryType: ENTRY_TYPE.ENCOUNTER.COMBAT,
     isHidden: false,
-    isChecked: true,
+    checked: true,
   },
   {
     label: 'Eat',
     entryType: ENTRY_TYPE.CONSUMPTION.EAT,
     isHidden: false,
-    isChecked: true,
+    checked: true,
   },
   {
     label: 'Drink',
     entryType: ENTRY_TYPE.CONSUMPTION.DRINK,
     isHidden: false,
-    isChecked: true,
+    checked: true,
   },
   {
     label: 'Chew',
     entryType: ENTRY_TYPE.CONSUMPTION.CHEW,
     isHidden: false,
-    isChecked: true,
+    checked: true,
   },
   {
     label: 'Equip',
     entryType: ENTRY_TYPE.EQUIP,
     isHidden: false,
-    isChecked: true,
+    checked: false,
   },
   {
     label: 'Unequip',
     entryType: ENTRY_TYPE.UNEQUIP,
     isHidden: false,
-    isChecked: true,
+    checked: false,
   },
   {
     label: 'Closet Put',
     entryType: ENTRY_TYPE.CLOSET_PUT,
     isHidden: true,
-    isChecked: true,
+    checked: false,
   },
   {
     label: 'Closet Take',
     entryType: ENTRY_TYPE.CLOSET_TAKE,
     isHidden: true,
-    isChecked: true,
+    checked: false,
+  },
+  {
+    label: 'Clan Visit',
+    entryType: ENTRY_TYPE.CLAN_VISIT,
+    isHidden: true,
+    checked: false,
+  },
+  {
+    label: 'Shopping',
+    entryType: ENTRY_TYPE.TRANSACTION,
+    isHidden: false,
+    checked: false,
   },
   {
     label: 'Ascension Info',
     entryType: ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
     isHidden: true,
-    isChecked: true,
+    checked: false,
   },
   {
     label: 'Skill Breakdown',
     entryType: ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
     isHidden: true,
-    isChecked: true,
+    checked: false,
   },
   {
     label: 'Day Info',
     entryType: ENTRY_TYPE.SNAPSHOT.DAY_INFO,
     isHidden: true,
-    isChecked: true,
+    checked: false,
   },
 ];
 /**
@@ -77,7 +89,7 @@ export const ENTRY_TYPE_FILTERS = [
  * @type {Array}
  */
 export const DEFAULT_ENTRY_FILTER = ENTRY_TYPE_FILTERS
-  .filter((filterData) => !filterData.isChecked)
+  .filter((filterData) => !filterData.checked)
   .map((filterData) => filterData.entryType);
 /**
  * [ATTRIBUTE_FILTERS description]
@@ -89,14 +101,14 @@ export const ATTRIBUTE_FILTERS = [
     attributeName: 'isLevelUp',
     attributeValue: true,
     isHidden: false,
-    isChecked: false,
+    checked: false,
   },
   {
     label: 'NonCombat',
     attributeName: 'isNonCombatEncounter',
     attributeValue: true,
     isHidden: false,
-    isChecked: false,
+    checked: false,
   },
 ];
 /**
@@ -104,5 +116,5 @@ export const ATTRIBUTE_FILTERS = [
  * @type {Array}
  */
 export const DEFAULT_ATTRIBUTE_FILTERS = ATTRIBUTE_FILTERS
-  .filter((filterData) => filterData.isChecked)
+  .filter((filterData) => filterData.checked)
   .map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));
