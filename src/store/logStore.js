@@ -101,43 +101,59 @@ class LogStore {
     this.isParsing.set(true);
     console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
 
-    this.srcFiles = [];
+    this.srcFiles = files;
     this.srcRawTexts = [];
     this.allEntries.clear();
 
-    for (let i=0; i<files.length; i++) {
-      const file = files[i];
-      await new Promise((resolve) => {
-        if (file.type !== 'text/plain') {
-          console.error('Uploaded a non-text file.');
-          resolve();
-          return;
-        }
+    // sort files by kolmafia's date format
+    const sortedFiles = Array.from(files).sort((fileA, fileB) => {
+      const sessionDateA = Number(fileA.name.match(/(?<=_)\d*/)[0]);
+      const sessionDateB = Number(fileB.name.match(/(?<=_)\d*/)[0]);
+      return sessionDateA < sessionDateB ? -1 : 1;
+    });
 
-        const fileReader = new FileReader();
-        fileReader.onload = (readerEvt) => {
-          const readResult = readerEvt.target.result;
-          console.log(`%c☌ ...file "${file.name}" successfully read.`, 'color: #6464ff');
-          this.srcFiles.push(file);
-          this.srcRawTexts.push(readResult);
-          resolve(readResult);
-        }
-        
-        fileReader.readAsText(file);
-      });
-    }
+    // get the text from all the files
+    this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));
 
     // if there is only one file, we can parse immediately
-    if (this.srcFiles.length === 1) {
+    if (this.srcRawTexts.length === 1) {
       this.rawText = this.srcRawTexts[0];
       this.parse();
+      return;
     }
 
     // if there are multiple files uploaded, try to find the ascension log
-    if (this.srcFiles.length > 1) {
+    if (this.srcRawTexts.length > 1) {
       this.rawText = this.createAscensionLog();
       this.parse();
+      return;
     }
+
+    console.error('It looks like none of those files were valid, mate.');
+    this.isParsing.set(false);
+  }
+  /**
+   * @async
+   * @param {File} file
+   * @returns {String}
+   */
+  readFile(file) {
+    return new Promise((resolve) => {
+      if (file.type !== 'text/plain') {
+        console.error('Uploaded a non-text file.');
+        resolve();
+        return;
+      }
+
+      const fileReader = new FileReader();
+      fileReader.onload = (readerEvt) => {
+        const readResult = readerEvt.target.result;
+        console.log(`%c☌ ...file "${file.name}" read.`, 'color: #6464ff');
+        resolve(readResult);
+      }
+      
+      fileReader.readAsText(file);
+    });
   }
   /**
    * finds an ascension session from all the files available
@@ -150,7 +166,7 @@ class LogStore {
     
     if (ascensionMatch !== null) {
       const ascensionNum = ascensionMatch[0].match(REGEX.VALUE.ASCENSION_NUMBER);
-      console.log(`✨ %cWe found Ascension #${ascensionNum} in the files you uploaded.`, 'color: blue; font-size: 14px')
+      console.log(`✨ %cWe found Ascension #${ascensionNum}!`, 'color: blue; font-size: 14px')
       // this.rawText = ascensionMatch[0];
       return ascensionMatch[0];
     
@@ -168,7 +184,7 @@ class LogStore {
       throw new Error('No log to parse???');
     }
 
-    console.log('✨ %cParsing your Session Log!', 'color: blue; font-size: 14px');
+    console.log('✨ %cParsing your Session Log:', 'color: blue; font-size: 14px');
     this.isParsing.set(true);
 
     const newData = await logParserUtils.parseLogTxt(this.rawText);
