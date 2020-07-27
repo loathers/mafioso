@@ -6,10 +6,10 @@ import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
 import {
-  DEFAULT_HIDDEN_ENTRIES,
+  DEFAULT_FILTER_ENTRIES,
+  ALWAYS_HIDDEN_ENTRIES,
   FILTER_DELAY,
 } from 'constants/DEFAULTS';
-import ENTRY_TYPE from 'constants/entryType';
 import REGEX from 'constants/regexes';
 
 import * as logParserUtils from 'utilities/logParserUtils';
@@ -43,11 +43,11 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
-      filteredTypes: [ENTRY_TYPE.UNKNOWN],
+      filteredTypes: DEFAULT_FILTER_ENTRIES,
       /* @type {Object} */
       dataFilters: {},
       /** @type {Array<EntryType>} */
-      alwaysHiddenTypes: DEFAULT_HIDDEN_ENTRIES,
+      alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES,
     });
 
     /** @type {Batcher} */

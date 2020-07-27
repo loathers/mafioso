@@ -15,9 +15,9 @@ export default function FiltersMenu(props) {
     className,
   } = props;
 
-  const initialFilterList = AVAILABLE_FILTERS.map((filterData) => ({
-    ...filterData,
-    checked: !logStore.filteredTypes.includes(filterData.entryType)
+  const initialFilterList = AVAILABLE_FILTERS.map((filterOption) => ({
+    ...filterOption,
+    checked: !logStore.filteredTypes.includes(filterOption.entryType)
   }));
 
   const [filterList, updateList] = React.useState(initialFilterList);
@@ -38,11 +38,10 @@ export default function FiltersMenu(props) {
       <div className='flex-none fontsize-1 adjacent-mar-t-3'>Visible Entries</div>  
 
       <div className='flex-col adjacent-mar-t-3'>
-        { filterList.map((filterData, idx) => (
+        { filterList.map((filterOption, idx) => (
           <FilterCheckbox 
             onChange={() => toggledChecked(idx)}
-            checked={filterData.checked}
-            filterData={filterData}
+            optionData={filterOption}
             className='adjacent-mar-t-2'
             key={`filter-checkbox-${idx}-key`}
           />
@@ -61,13 +60,20 @@ export default function FiltersMenu(props) {
 function FilterCheckbox(props) {
   const {
     className,
-    filterData,
+    optionData,
     onChange,
-    checked = false,
   } = props;
 
+  const {
+    label,
+    checked,
+    isHidden,
+  } = optionData;
+
+  const hiddenClassName = isHidden ? 'display-none' : '';
+
   return (
-    <div className={combineClassnames('fontsize-4 flex-none', className)}>
+    <div className={combineClassnames('fontsize-4 flex-none', hiddenClassName, className)}>
       <label className='flex-row'>
         <input
           checked={checked}
@@ -77,7 +83,7 @@ function FilterCheckbox(props) {
 
         <div 
           className='adjacent-mar-l-2'>
-          {filterData.label}
+          {label}
         </div>
       </label>
     </div>
