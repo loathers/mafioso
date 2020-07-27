@@ -1,6 +1,6 @@
 import ENTRY_TYPE from 'constants/entryType';
 
-export const AVAILABLE_FILTERS = [
+export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Combat',
     entryType: ENTRY_TYPE.ENCOUNTER.COMBAT,
@@ -63,4 +63,12 @@ export const AVAILABLE_FILTERS = [
   },
 ];
 
-export default AVAILABLE_FILTERS;
+export const PROPERTY_FILTERS = [
+  {
+    label: 'Level Ups',
+    entryType: ENTRY_TYPE.ENCOUNTER.COMBAT,
+    isHidden: false,
+  },
+];
+
+export default ENTRY_TYPE_FILTERS;

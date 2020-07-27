@@ -1,6 +1,8 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
+import {ENTRY_TYPE_FILTERS, PROPERTY_FILTERS} from 'constants/filterList';
+
 // import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
@@ -25,6 +27,11 @@ function ControlsMenu(props) {
   if (showFull) {
     return <FullPageMenu />
   }
+
+  const entryFiltersList = ENTRY_TYPE_FILTERS.map((filterOption) => ({
+    ...filterOption,
+    checked: !logStore.filteredTypes.includes(filterOption.entryType)
+  }));
 
   return (
     <div 
@@ -68,6 +75,8 @@ function ControlsMenu(props) {
 
       {/* filters */}
       <FiltersMenu 
+        onApply={(filterEntries) => logStore.applyFilters(filterEntries)}
+        defaultList={entryFiltersList}
         className='adjacent-mar-t-5'/>
     </div>
   );

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import AVAILABLE_FILTERS from 'constants/filterList';
-
 import logStore from 'store/logStore';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -13,14 +11,11 @@ import combineClassnames from 'utilities/combineClassnames';
 export default function FiltersMenu(props) {
   const {
     className,
+    defaultList,
+    onApply,
   } = props;
 
-  const initialFilterList = AVAILABLE_FILTERS.map((filterOption) => ({
-    ...filterOption,
-    checked: !logStore.filteredTypes.includes(filterOption.entryType)
-  }));
-
-  const [filterList, updateList] = React.useState(initialFilterList);
+  const [filterList, updateList] = React.useState(defaultList);
 
   const toggledChecked = (changedIdx) => {
     const newList = filterList.slice();
@@ -30,7 +25,7 @@ export default function FiltersMenu(props) {
 
   const onClickApply = () => {
     const filterEntries = filterList.filter((item) => !item.checked).map((item) => item.entryType);
-    logStore.applyFilters(filterEntries);
+    onApply(filterEntries);
   }
 
   return (
