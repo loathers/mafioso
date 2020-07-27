@@ -370,6 +370,10 @@ export default class LogEntry {
       return true;
     }
 
+    if (this.entryType === ENTRY_TYPE.HAGNK_PULL && this.doesShareEntryType(comparedEntry)) {
+      return true;
+    }
+
     // (deluxe) mr klaw - incomplete
     if (this.hasText(/mr. klaw/i) && comparedEntry.hasText(/mr. klaw/i)) {
       return true;

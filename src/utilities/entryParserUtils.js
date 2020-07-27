@@ -182,13 +182,10 @@ export function parseEncounterName(entryString) {
  */
 export function parseAcquiredItems(entryString) {
   const singleAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_AN_ITEM) || [];
-
-  // const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*)(?=\s\({1}\d*\){1})/g; // item excluding amount
-  // const ACQUIRED_MULTI_ITEM_AMOUNT_REGEX = /(?!\()\d*(?=\))/; // just the amount
-  // const ACQUIRED_MULTIPLE_ITEM_REGEX = /(?<=(You acquire\s+))(.*\(\d*\))/g; // item including amount
   const multiAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_MULTIPLE_ITEMS) || [];
+  const hagnkPullMatches = getRegexMatch(entryString, REGEX.VALUE.HAGNK_PULL_TARGETS) || [];
 
-  return singleAcquireMatches.concat(multiAcquireMatches);
+  return singleAcquireMatches.concat(multiAcquireMatches).concat(hagnkPullMatches);
 }
 /**
  * builds an array of all the effects that were gained

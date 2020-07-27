@@ -134,7 +134,9 @@ export const REGEX = {
     EQUIP_TARGETS: /(?<=equip .*?\s).*/g,
     UNEQUIP_TARGETS: /(?<=unequip .*?\s).*/g,
 
-    HAGNK_PULL_TARGETS: /(?<=^pull: ).*/gi,
+    HAGNK_PULL_AMOUNTS: /(?<=^pull: )\d*/gmi,
+    HAGNK_PULL_TARGETS: /(?<=^pull: \d* ).*/gmi,
+
     CLOSET_PUT_TARGETS: /(?<=^add to closet: ).*/gi,
     CLOSET_TAKE_TARGETS: /(?<=^take from closet: ).*/gi,
 
