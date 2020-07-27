@@ -57,6 +57,7 @@ export const REGEX = {
   LINE: {
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
+    USELESS_VISIT: /^visit.*(\r\n|\n){2,}/gim,
 
     COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
     COMBAT_INIT: /Round.*(loses initiative|wins initiative).*/i,
