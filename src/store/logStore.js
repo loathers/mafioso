@@ -42,7 +42,7 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
-      filteredTypes: [],
+      filteredTypes: ['ENTRY_TYPE.ENCOUNTER.NONCOMBAT'],
       /* @type {Object} */
       dataFilters: {},
       /** @type {Array<EntryType>} */
@@ -93,6 +93,10 @@ class LogStore {
   /** @type {Number} */
   get currentPageNum() {
     return this.displayOptions.pageNum;
+  }
+  /** @type {Array<EntryType>} */
+  get filteredTypes() {
+    return this.displayOptions.filteredTypes;
   }
   /** @type {Number} */
   get isOnFirstPage() {

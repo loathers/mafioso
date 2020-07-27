@@ -49,19 +49,17 @@ export default function FiltersMenu(props) {
     className,
   } = props;
 
-  const [filtersList, updateList] = React.useState([]);
+  const initialFilterList = AVAILABLE_FILTERS.map((filterData) => ({
+    ...filterData,
+    checked: logStore.filteredTypes.includes(filterData.entryType)
+  }));
 
-  const removeFilter = (filterData) => {
-    const filterIdx = filtersList.findIndex((filter) => filter.entryType === filterData.entryType);
-    if (filterIdx > -1) {
-      filtersList.splice(filtersList[filterIdx], 1);
-      updateList(filtersList);
-    }
-  }
+  const [filterList, updateList] = React.useState(initialFilterList);
 
-  const addFilter = (filterData) => {
-    filtersList.push(filterData);
-    updateList(filtersList);
+  const toggledChecked = (changedIdx) => {
+    const newList = filterList.slice();
+    newList[changedIdx].checked = !filterList[changedIdx].checked;
+    updateList(newList);
   }
 
   return (
@@ -69,17 +67,12 @@ export default function FiltersMenu(props) {
       <div className='flex-none fontsize-1 adjacent-mar-t-3'>Filters</div>  
 
       <div className='flex-col adjacent-mar-t-3'>
-        { AVAILABLE_FILTERS.map((filterData, idx) => (
+        { filterList.map((filterData, idx) => (
           <FilterCheckbox 
-            onChange={(evt) => {
-              if (evt.target.checked) {
-                addFilter(filterData);
-              } else {
-                removeFilter(filterData);
-              }
-            }}
+            onChange={() => toggledChecked(idx)}
+            checked={filterData.checked}
+            filterData={filterData}
             className='adjacent-mar-t-2'
-            label={filterData.label}
             key={`filter-checkbox-${idx}-key`}
           />
         ))}
@@ -96,21 +89,23 @@ export default function FiltersMenu(props) {
 function FilterCheckbox(props) {
   const {
     className,
-    label,
+    filterData,
     onChange,
+    checked = false,
   } = props;
 
   return (
     <div className={combineClassnames('fontsize-4 flex-none', className)}>
       <label className='flex-row'>
         <input
+          checked={checked}
           onChange={onChange}
           className='adjacent-mar-l-2' 
           type='checkbox' />
 
         <div 
           className='adjacent-mar-l-2'>
-          {label}
+          {filterData.label}
         </div>
       </label>
     </div>
