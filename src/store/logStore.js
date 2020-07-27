@@ -126,22 +126,17 @@ class LogStore {
     // get the text from all the files
     this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));
 
-    // if there is only one file, we can parse immediately
-    if (this.srcRawTexts.length === 1) {
-      this.rawText = this.srcRawTexts[0];
-      this.parse();
+    // no legal texts found 
+    if (this.srcRawTexts.length <= 0) {
+      console.error('It looks like none of those files were valid, mate.');
+      this.isParsing.set(false);
       return;
     }
 
-    // if there are multiple files uploaded, try to find the ascension log
-    if (this.srcRawTexts.length > 1) {
-      this.rawText = this.createAscensionLog();
-      this.parse();
-      return;
-    }
-
-    console.error('It looks like none of those files were valid, mate.');
-    this.isParsing.set(false);
+    // try to find out if there is a full ascension log,
+    //  otherwise just use the first text we have
+    this.rawText = this.createAscensionLog() || this.srcRawTexts[0];
+    this.parse();
   }
   /**
    * @async
@@ -173,17 +168,15 @@ class LogStore {
    */
   createAscensionLog() {
     const allText = this.srcRawTexts.join('\n\n');
-    const ascensionMatch = allText.match(REGEX.GROUP.COMPLETE_ASCENSION);
+    const ascensionMatch = logParserUtils.findAscensionLog(allText);
     if (ascensionMatch !== null) {
       const ascensionNum = ascensionMatch[0].match(REGEX.VALUE.ASCENSION_NUMBER);
       console.log(`✨ %cWe found Ascension #${ascensionNum}!`, 'color: blue; font-size: 14px')
-      // this.rawText = ascensionMatch[0];
-      return ascensionMatch[0];
+      return ascensionMatch;
     
     } else {
-      console.error('Sorry, no Ascension specific log was found. Parsing only the first file.');
-      // this.rawText = this.srcRawTexts[0];
-      return this.srcRawTexts[0];
+      console.warn('Sorry, no Ascension specific log was found. Parsing only the first file.');
+      return null;
     }
   }
   /**

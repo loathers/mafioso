@@ -4,7 +4,7 @@ import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
 import {PREREMOVE_REGEX_LIST, PREGROUP_REGEX_LIST} from 'constants/DEFAULTS';
-import {EMPTY_LINES_REGEX} from 'constants/regexes';
+import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 
 const logId = uuidv4();
 
@@ -41,6 +41,21 @@ export async function parseLogTxt(rawText) {
 
   } catch (e) {
     console.error(e);
+  }
+}
+/**
+ * finds the specific ascension session from given string
+ *
+ * @string {String} rawText
+ * @returns {String | null} 
+ */
+export function findAscensionLog(rawText) {
+  const ascensionMatch = rawText.match(REGEX.GROUP.COMPLETE_ASCENSION);
+  if (ascensionMatch !== null) {
+    return ascensionMatch[0];
+  
+  } else {
+    return null;
   }
 }
 /** 
