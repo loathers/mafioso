@@ -33,20 +33,20 @@ class LogStore {
     /** @type {Number} */
     this.ascensionNum = undefined;
 
-    /** @type {Number} */
-    this.currentPageNum = 0;
     /** @type {ObservableArray<Entry>} */
     this.currentEntries = observable([]);
     /** @type {Object} */
-    this.filterOptions = observable({
+    this.displayOptions = observable({
       /** @type {Number} */
       pageNum: 0,
       /** @type {Number} */
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
-      hiddenEntryTypes: DEFAULT_HIDDEN_ENTRIES,
+      filteredTypes: [],
       /* @type {Object} */
       dataFilters: {},
+      /** @type {Array<EntryType>} */
+      alwaysHiddenTypes: DEFAULT_HIDDEN_ENTRIES,
     });
 
     /** @type {Batcher} */
@@ -88,6 +88,11 @@ class LogStore {
   /** @type {Boolean} */
   get hasCharacterName() {
     return this.characterName !== undefined;
+  }
+  // -- display options
+  /** @type {Number} */
+  get currentPageNum() {
+    return this.displayOptions.pageNum;
   }
   /** @type {Number} */
   get isOnFirstPage() {
@@ -210,7 +215,7 @@ class LogStore {
     this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
 
     console.log(`✔️ %cFinished! Created ${this.allEntries.length} entries.`, 'color: blue');
-    this.currentPageNum = 0;
+    this.displayOptions.pageNum = 0;
     this.isParsing.set(false);
 
     // we just parsed so we gotta refresh `currentEntries`
@@ -264,11 +269,13 @@ class LogStore {
     }
 
     const {
-      pageNum = this.filterOptions.pageNum,
-      entriesPerPage = this.filterOptions.entriesPerPage,
-      hiddenEntryTypes = this.filterOptions.hiddenEntryTypes,
-      // dataFilters = this.filterOptions.dataFilters,
+      pageNum = this.displayOptions.pageNum,
+      entriesPerPage = this.displayOptions.entriesPerPage,
+      filteredTypes = this.displayOptions.filteredTypes,
+      // dataFilters = this.displayOptions.dataFilters,
     } = options;
+
+    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes)
 
     console.log('⏳ %cFetching entries...', 'color: blue')
     this.isFetching.set(true);
@@ -281,7 +288,7 @@ class LogStore {
     const filteredEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
         const withinSearchRange = entry.entryIdx >= startIdx && entry.entryIdx < endIdx;
-        return withinSearchRange && !hiddenEntryTypes.includes(entry.entryType);
+        return withinSearchRange && !entryTypesToFilter.includes(entry.entryType);
       });
     }, {batchDelay: FILTER_DELAY});
 
@@ -296,7 +303,7 @@ class LogStore {
     this.currentEntries.replace(condensedEntries);
 
     console.log('⌛ %c...done.', 'color: blue')
-    this.currentPageNum = pageNum;
+    this.displayOptions.pageNum = pageNum;
     this.isFetching.set(false);
 
     return condensedEntries;
@@ -311,8 +318,8 @@ class LogStore {
     }
 
     const {
-      pageNum = this.filterOptions.pageNum,
-      entriesPerPage = this.filterOptions.entriesPerPage,
+      pageNum = this.displayOptions.pageNum,
+      entriesPerPage = this.displayOptions.entriesPerPage,
     } = options;
 
     if (pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage)) {
@@ -325,7 +332,7 @@ class LogStore {
    * @param {Number} entriesPerPage
    * @returns {Number}
    */
-  calculatePageLast(entriesPerPage = this.filterOptions.entriesPerPage) {
+  calculatePageLast(entriesPerPage = this.displayOptions.entriesPerPage) {
     const lastPage = Math.ceil(this.allEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
