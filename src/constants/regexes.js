@@ -50,6 +50,9 @@ export const REGEX = {
   },
 
   // -- common
+  FILE: {
+    MAFIA_SESSION_DATE: /(?<=_)\d*/,
+  },
   LINE: {
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
@@ -164,6 +167,8 @@ export const REGEX = {
 
   // note: these only work in raw
   GROUP: {
+    COMPLETE_ASCENSION: /welcome to valhalla.*?freeing king ralph.*?(?=(\s|))/is,
+
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
     MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
     STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
@@ -188,7 +193,7 @@ export const REGEX = {
 
   MISC: {
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
-    STACK_TRACE: /^(stack trace).*(\s*.*at.*\s*)+(\r\n|\n)/gmi,
+    STACK_TRACE: /^(stack trace).*?at.*\).*?(?=(\s|))/gmis,
     CLI_PRINT: /^>.*(\r\n|\n)/gmi,
     SEND_A_KMAIL: /send a kmail.*(\r\n|\n)/gi,
     COMBAT_MACRO: /.*executes a macro.*(\r\n|\n)/gi,

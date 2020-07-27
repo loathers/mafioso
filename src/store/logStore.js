@@ -259,8 +259,8 @@ class LogStore {
     console.log('⏳ %cFetching entries...', 'color: blue')
     this.isFetching.set(true);
 
-    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount-1);
-    const endIdx = entriesPerPage === 'all' ? this.entriesCount-1 : Math.min(startIdx + entriesPerPage, this.entriesCount-1);
+    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount);
+    const endIdx = entriesPerPage === 'all' ? this.entriesCount : Math.min(startIdx + entriesPerPage, this.entriesCount);
     // console.log('I want entries from', startIdx, 'to', endIdx);
 
     // batch find entries that are in range and not hidden
