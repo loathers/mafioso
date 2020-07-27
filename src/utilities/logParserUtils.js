@@ -3,7 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
-import {PREREMOVE_REGEX_LIST, PREGROUP_REGEX_LIST} from 'constants/DEFAULTS';
+import {
+  PREREMOVE_REGEX_LIST, 
+  PREGROUP_REGEX_LIST,
+  FULL_PARSE_DELAY,
+  CLEAN_RAW_DELAY,
+} from 'constants/DEFAULTS';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 
 const logId = uuidv4();
@@ -16,7 +21,7 @@ const logId = uuidv4();
  */
 export async function parseLogTxt(rawText) {
   try {
-    const rawCleaned = await cleanRawLog_debounced(rawText);
+    const rawCleaned = await cleanRawLog(rawText);
     const rawSize = rawCleaned.length;
     if (rawSize > 10000000) {
       throw new Error(`This log of ${rawSize} characters is too huge!`);
@@ -34,7 +39,7 @@ export async function parseLogTxt(rawText) {
     const BATCH_SIZE = calculateBatchSize(rawSize);
     console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
 
-    const entryBatcher = new Batcher(rawArray, {batchSize: BATCH_SIZE});
+    const entryBatcher = new Batcher(rawArray, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
     const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
 
     return allEntries;
@@ -96,10 +101,10 @@ export function pregroupRawLog(rawText) {
  * @param {String} rawText
  * @return {String}
  */
-export async function cleanRawLog_debounced(rawText) {
+export async function cleanRawLog(rawText) {
   let cleanedText = rawText.slice();
 
-  const cleaningBatcher = new Batcher(PREREMOVE_REGEX_LIST, {batchSize: 1});
+  const cleaningBatcher = new Batcher(PREREMOVE_REGEX_LIST, {batchSize: 1, batchDelay: CLEAN_RAW_DELAY});
   await cleaningBatcher.run((removalRegexGroup) => {
     cleanedText = cleanedText.replace(removalRegexGroup[0], '');
     return cleanedText; // this return is superficial, just for Batcher's logging
@@ -112,7 +117,7 @@ export async function cleanRawLog_debounced(rawText) {
  * @param {String} rawText
  * @return {String}
  */
-export function cleanRawLog(rawText) {
+export function cleanRawLog_legacy(rawText) {
   return PREREMOVE_REGEX_LIST.reduce((currentText, replacementRegex) => {
     return currentText.replace(replacementRegex, '');
   }, rawText);    

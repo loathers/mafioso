@@ -5,7 +5,10 @@ import {
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
-import {DEFAULT_HIDDEN_ENTRIES} from 'constants/DEFAULTS';
+import {
+  DEFAULT_HIDDEN_ENTRIES,
+  FILTER_DELAY,
+} from 'constants/DEFAULTS';
 import REGEX from 'constants/regexes';
 
 import * as logParserUtils from 'utilities/logParserUtils';
@@ -280,7 +283,7 @@ class LogStore {
         const withinSearchRange = entry.entryIdx >= startIdx && entry.entryIdx < endIdx;
         return withinSearchRange && !hiddenEntryTypes.includes(entry.entryType);
       });
-    }, {batchDelay: 10});
+    }, {batchDelay: FILTER_DELAY});
 
     // if fetch result would result in nothing, keep current
     if (filteredEntries.length <= 0) {

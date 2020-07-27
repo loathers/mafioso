@@ -5,6 +5,12 @@ import REGEX, {
   POST_LINE_EMPTY_SPACE,
 } from 'constants/regexes';
 
+export const CLEAN_RAW_DELAY = 50;
+export const FULL_PARSE_DELAY = 50;
+
+export const DISPLAY_SCRUB_DELAY = 5;
+export const FILTER_DELAY = 3;
+
 // -- log level
 // entryTypes to filter out
 export const DEFAULT_HIDDEN_ENTRIES = [
