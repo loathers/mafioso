@@ -109,8 +109,8 @@ class LogStore {
 
     // sort files by kolmafia's date format
     const sortedFiles = Array.from(files).sort((fileA, fileB) => {
-      const sessionDateA = Number(fileA.name.match(/(?<=_)\d*/)[0]);
-      const sessionDateB = Number(fileB.name.match(/(?<=_)\d*/)[0]);
+      const sessionDateA = Number(fileA.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
+      const sessionDateB = Number(fileB.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
       return sessionDateA < sessionDateB ? -1 : 1;
     });
 
@@ -164,8 +164,7 @@ class LogStore {
    */
   createAscensionLog() {
     const allText = this.srcRawTexts.join('\n\n');
-    const ascensionMatch = allText.match(/welcome to valhalla.*?freeing king ralph/is);
-    
+    const ascensionMatch = allText.match(REGEX.GROUP.COMPLETE_ASCENSION);
     if (ascensionMatch !== null) {
       const ascensionNum = ascensionMatch[0].match(REGEX.VALUE.ASCENSION_NUMBER);
       console.log(`✨ %cWe found Ascension #${ascensionNum}!`, 'color: blue; font-size: 14px')
