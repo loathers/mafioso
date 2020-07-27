@@ -24,6 +24,7 @@ class LogStore {
     this.rawText = undefined;
     /** @type {ObservableArray<Entry>} */
     this.allEntries = observable([]);
+
     /** @type {Number} */
     this.currentPageNum = 0;
     /** @type {ObservableArray<Entry>} */
@@ -49,12 +50,12 @@ class LogStore {
     this.isFetching = observable.box(false);
   }
   /** @type {Boolean} */
-  get isReady() {
-    return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
-  }
-  /** @type {Boolean} */
   get hasFiles() {
     return this.srcFiles.length > 0;
+  }
+  /** @type {Boolean} */
+  get isReady() {
+    return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
   }
   /** @type {Boolean} */
   get hasRawText() {
