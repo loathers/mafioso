@@ -99,6 +99,7 @@ class LogStore {
    */
   async handleUpload(files) {
     this.isParsing.set(true);
+    console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
 
     this.srcFiles = [];
     this.srcRawTexts = [];
@@ -116,6 +117,7 @@ class LogStore {
         const fileReader = new FileReader();
         fileReader.onload = (readerEvt) => {
           const readResult = readerEvt.target.result;
+          console.log(`%c☌ ...file "${file.name}" successfully read.`, 'color: #6464ff');
           this.srcFiles.push(file);
           this.srcRawTexts.push(readResult);
           resolve(readResult);
