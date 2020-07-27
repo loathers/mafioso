@@ -16,6 +16,7 @@ export default observer(
 function ControlsMenu(props) {
   const {
     className,
+    style,
     showFull,
   } = props;
 
@@ -25,16 +26,12 @@ function ControlsMenu(props) {
 
   return (
     <div 
-      style={{
-        width: 150,
-        top: 30,
-        left: 30,
-      }} 
+      style={style} 
       className={combineClassnames('position-fixed flex-col', className)}>
 
-      <div className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
+      <h1 className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
         Shiny Log Visualizer
-      </div>
+      </h1>
 
       <UploadComponent
         content={'Upload new logs'}
@@ -42,10 +39,14 @@ function ControlsMenu(props) {
       
       {/* pagination */}
       { logStore.hasCurrentEntries &&
-        <SimplePaginator
-          onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
-          currentPageNum={logStore.currentPageNum}
-          className='adjacent-mar-t-5' />
+        <div
+          className='flex-col flex-none adjacent-mar-t-5'>
+          <div className='fontsize-1 bg-second pad-4 flex-row-center adjacent-mar-t-3'>{`Page ${logStore.currentPageNum}/${logStore.calculatePageLast()}`}</div>
+          <SimplePaginator
+            onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
+            currentPageNum={logStore.currentPageNum}
+            className='adjacent-mar-t-3' />
+        </div>
       }
 
       {/* filters */}
@@ -68,9 +69,9 @@ function FullPageMenu(props) {
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col flex-none', className)}>
 
-      <div className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
+      <h1 className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
         Shiny Log Visualizer
-      </div>
+      </h1>
 
       <UploadComponent
         content={'Upload or drop in your session logs! I\'ll attempt to find a full ascension if you upload multiple logs.'}
@@ -91,7 +92,7 @@ function SimplePaginator(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('fontsize-4 flex-row flex-none', className)}>
+    <div className={combineClassnames('fontsize-4 flex-row-center flex-none', className)}>
       <button 
         onClick={() => onChangePage(0)}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
@@ -101,15 +102,15 @@ function SimplePaginator(props) {
       <button 
         onClick={() => onChangePage(currentPageNum - 1)}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
-          Prev
+          {"<"}
       </button>
 
-      <div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>
+      {/*<div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>*/}
 
       <button 
         onClick={() => onChangePage(currentPageNum + 1)}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
-          Next
+          {">"}
       </button>
 
       <button 
@@ -130,8 +131,8 @@ function FilterMenu(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('fontsize-4 flex-col flex-none', className)}>
-      
+    <div className={combineClassnames('flex-col flex-none', className)}>
+      <div className='fontsize-1'>Filters</div>
     </div>
   )
 }

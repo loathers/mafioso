@@ -313,7 +313,8 @@ class LogStore {
    * @returns {Number}
    */
   calculatePageLast(entriesPerPage = this.filterOptions.entriesPerPage) {
-    return Math.ceil(this.allEntries.length / entriesPerPage) - 1;
+    const lastPage = Math.ceil(this.allEntries.length / entriesPerPage) - 1;
+    return Math.max(lastPage, 0);
   }
 }
 

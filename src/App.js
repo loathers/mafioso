@@ -9,12 +9,16 @@ import LoaderComponent from 'components/LoaderComponent';
 import ControlsMenu from 'sections/ControlsMenu';
 import VisualizerSection from 'sections/VisualizerSection';
 
+// todo: css or constant
+const MENU_WIDTH = 200;
+const MENU_LEFT = 30;
+
 export default observer(
 function App() {
 
   return (
     <div 
-      className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
+      className='color-white fontfamily-primary fontsize-5 pad-7 flex-row jcontent-center'
       id='slv-main'>
 
       {/* loader */}
@@ -23,13 +27,19 @@ function App() {
       }
 
       <ControlsMenu
+        style={{
+          width: MENU_WIDTH,
+          left: MENU_LEFT,
+        }}
         showFull={appStore.isShowingFullUpload} />
 
-      <div style={{marginLeft: 180, maxWidth: '100%'}} className='flex-col-center flex-auto'>
-        <VisualizerSection 
-          entriesList={logStore.currentEntries}
-        />
-      </div>
+      { logStore.hasCurrentEntries &&
+        <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
+          <VisualizerSection 
+            entriesList={logStore.currentEntries}
+          />
+        </div>
+      }
     </div>
   );
 })
