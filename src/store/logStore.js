@@ -306,11 +306,24 @@ class LogStore {
     const condensedEntries = this.condenseEntries(filteredEntries);
     this.currentEntries.replace(condensedEntries);
 
-    console.log('⌛ %c...done.', 'color: blue')
-    this.displayOptions.pageNum = pageNum;
+    // now update options with the ones used to fetch
+    this.displayOptions = {
+      ...this.displayOptions,
+      pageNum: pageNum,
+      entriesPerPage: entriesPerPage,
+      filteredTypes: filteredTypes,
+    };
+
+    console.log('⌛ %c...done.', 'color: blue');
     this.isFetching.set(false);
 
     return condensedEntries;
+  }
+  /**
+   * @param {Array<EntryType>} entriesList
+   */
+  applyFilters(entriesList) {
+    this.fetchEntries({filteredTypes: entriesList});
   }
   /**
    * @param {Object} options

@@ -51,7 +51,7 @@ export default function FiltersMenu(props) {
 
   const initialFilterList = AVAILABLE_FILTERS.map((filterData) => ({
     ...filterData,
-    checked: logStore.filteredTypes.includes(filterData.entryType)
+    checked: !logStore.filteredTypes.includes(filterData.entryType)
   }));
 
   const [filterList, updateList] = React.useState(initialFilterList);
@@ -60,6 +60,11 @@ export default function FiltersMenu(props) {
     const newList = filterList.slice();
     newList[changedIdx].checked = !filterList[changedIdx].checked;
     updateList(newList);
+  }
+
+  const onClickApply = () => {
+    const filterEntries = filterList.filter((item) => !item.checked).map((item) => item.entryType);
+    logStore.applyFilters(filterEntries);
   }
 
   return (
@@ -79,6 +84,7 @@ export default function FiltersMenu(props) {
       </div>
 
       <button
+        onClick={onClickApply}
         disabled={!logStore.isReady} 
         className='fontsize-3 borradius-1 bg-second pad-3 adjacent-mar-t-3'>
         Apply
