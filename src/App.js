@@ -78,7 +78,7 @@ function App() {
         }
       </div>
 
-      <div style={{marginLeft: 180}} className='flex-col-center flex-auto'>
+      <div style={{marginLeft: 180, maxWidth: '100%'}} className='flex-col-center flex-auto'>
         <VisualizerSection 
           entriesList={logStore.currentEntries}
         />

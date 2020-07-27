@@ -162,7 +162,7 @@ export default function EntryDisplayContainer(props) {
     <div 
       onMouseEnter={() => toggleFocus(true)}
       onMouseLeave={() => toggleFocus(false)}
-      className={combineClassnames('flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
+      className={combineClassnames('overflow-hidden flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
 
       {/* status indicator column */}
       <div 
