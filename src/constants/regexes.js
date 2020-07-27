@@ -183,6 +183,7 @@ export const REGEX = {
 
   // -- cruft
   SNAPSHOT_CHECK: {
+    CHARACTER_NAME: /(?<=^name: ).*/mi,
     CONTAIN_MOON: /(> moon)/i,
     CONTAIN_STATUS: /(> status)/i,
     CONTAIN_EQUIPMENT: /(> equipment)/i,

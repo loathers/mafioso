@@ -160,6 +160,9 @@ class LogStore {
       this.rawText = allText;
     }
 
+    // find the character name
+    this.characterName = this.rawText.match(REGEX.SNAPSHOT_CHECK.CHARACTER_NAME) || undefined;
+
     this.parse();
   }
   /**
