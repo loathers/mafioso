@@ -95,12 +95,14 @@ function SimplePaginator(props) {
     <div className={combineClassnames('fontsize-4 flex-row-center flex-none', className)}>
       <button 
         onClick={() => onChangePage(0)}
+        disabled={logStore.isOnFirstPage}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
           First
       </button>
 
       <button 
         onClick={() => onChangePage(currentPageNum - 1)}
+        disabled={logStore.isOnFirstPage}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
           {"<"}
       </button>
@@ -109,12 +111,14 @@ function SimplePaginator(props) {
 
       <button 
         onClick={() => onChangePage(currentPageNum + 1)}
+        disabled={logStore.isOnLastPage}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
           {">"}
       </button>
 
       <button 
         onClick={() => onChangePage(logStore.calculatePageLast())}
+        disabled={logStore.isOnLastPage}
         className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
           Last
       </button>

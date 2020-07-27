@@ -73,6 +73,14 @@ class LogStore {
   get entriesCount() {
     return this.allEntries.length;
   }
+  /** @type {Number} */
+  get isOnFirstPage() {
+    return this.currentPageNum === 0;
+  }
+  /** @type {Number} */
+  get isOnLastPage() {
+    return this.currentPageNum === this.calculatePageLast();
+  }
   /**
    * @param {File} file
    */
