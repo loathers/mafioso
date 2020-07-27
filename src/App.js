@@ -45,6 +45,8 @@ function App() {
     width: '90%',
   }
 
+  const uploadContent = logStore.hasFiles ? 'Upload new logs' : 'Upload or drop in your session logs!';
+
   return (
     <div 
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
@@ -64,6 +66,7 @@ function App() {
         </div>
 
         <UploadComponent
+          content={uploadContent}
           showExpanded={!logStore.hasFiles}
           className='adjacent-mar-t-5' />
         

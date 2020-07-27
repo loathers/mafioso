@@ -30,6 +30,7 @@ export default function UploadComponent(props) {
   const {
     className,
     showExpanded,
+    content,
   } = props;
 
   const [isOver, setIsOver] = React.useState(false);
@@ -49,7 +50,7 @@ export default function UploadComponent(props) {
       <label 
         className={combineClassnames('pad-4 flex-auto cursor-pointer', hoverClassName)}
         htmlFor='log-uploader'>
-        Upload or drop in your session logs!
+        {content}
       </label>
 
       <input
