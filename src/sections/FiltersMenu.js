@@ -66,7 +66,8 @@ export default function FiltersMenu(props) {
 
   return (
     <div className={combineClassnames('flex-col flex-none', className)}>
-      <div className='fontsize-1 adjacent-mar-t-3'>Filters</div>
+      <div className='flex-none fontsize-1 adjacent-mar-t-3'>Filters</div>  
+
       <div className='flex-col adjacent-mar-t-3'>
         { AVAILABLE_FILTERS.map((filterData, idx) => (
           <FilterCheckbox 
@@ -83,6 +84,12 @@ export default function FiltersMenu(props) {
           />
         ))}
       </div>
+
+      <button
+        disabled={!logStore.isReady} 
+        className='fontsize-3 borradius-1 bg-second pad-3 adjacent-mar-t-3'>
+        Apply
+      </button>
     </div>
   )
 }
@@ -94,7 +101,7 @@ function FilterCheckbox(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('fontsize-3 flex-none', className)}>
+    <div className={combineClassnames('fontsize-4 flex-none', className)}>
       <label className='flex-row'>
         <input
           onChange={onChange}
