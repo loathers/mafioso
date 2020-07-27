@@ -15,6 +15,14 @@ const MENU_LEFT = 30;
 
 export default observer(
 function App() {
+  // scroll to the top when loading is complete
+  //  such as when navigating pages
+  // note: might need to remove smooth behavior if entry size variation becomes a concern
+  React.useEffect(() => {
+    if (!appStore.isLoading) {
+      window.scrollTo({ top: 0, behavior: 'smooth'});
+    }
+  });
 
   return (
     <div 
