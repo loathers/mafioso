@@ -29,15 +29,13 @@ function ignoreEvent(evt) {
 export default function UploadComponent(props) {
   const {
     className,
-    showExpanded,
+    style,
     content,
   } = props;
 
   const [isOver, setIsOver] = React.useState(false);
 
   const hoverClassName = isOver ? 'bor-3-green' : 'bor-3-white';
-  const expandedClassName = showExpanded ? 'width-full flex-auto' : 'width-full';
-  const expandedStyle = showExpanded ? {height: '70vh', width: '100%'} : {};
 
   return (
     <form 
@@ -45,8 +43,8 @@ export default function UploadComponent(props) {
       onDragOver={e => { ignoreEvent(e); }}
       onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
       onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
-      style={expandedStyle}
-      className={combineClassnames('flex-col boxsizing-border', expandedClassName, className)}>
+      style={style}
+      className={combineClassnames('flex-col boxsizing-border', className)}>
       <label 
         className={combineClassnames('pad-4 flex-auto cursor-pointer', hoverClassName)}
         htmlFor='log-uploader'>

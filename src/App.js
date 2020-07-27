@@ -22,7 +22,8 @@ function App() {
         <LoaderComponent />
       }
 
-      <ControlsMenu />
+      <ControlsMenu
+        showFull={appStore.isShowingFullUpload} />
 
       <div style={{marginLeft: 180, maxWidth: '100%'}} className='flex-col-center flex-auto'>
         <VisualizerSection 
