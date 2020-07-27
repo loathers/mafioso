@@ -87,6 +87,8 @@ export const REGEX = {
     TELESCOPE: /^telescope.*/gim,
     EQUIP: /^equip.*/gim,
     UNEQUIP: /^unequip.*/gim,
+    HAGNK_PULL: /^pull: .*/gim,
+
     FAMILIAR: /^familiar.*/gim,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
 

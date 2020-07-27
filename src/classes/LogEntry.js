@@ -209,6 +209,10 @@ export default class LogEntry {
       return 'SongBoom™ BoomBox';
     }
 
+    if (this.entryType === ENTRY_TYPE.HAGNK_PULL) {
+      return 'Hagnk\'s Ancestral Mini-Storage';
+    }
+
     return this.data.locationName;
   }
   /** @type {String} */
@@ -221,6 +225,10 @@ export default class LogEntry {
       if (this.hasText(REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE)) {
         return 'Gaze at the Stars'
       }
+    }
+
+    if (this.entryType === ENTRY_TYPE.HAGNK_PULL) {
+      return 'Pull from Hagnk\'s';
     }
 
     return this.data.encounterName;
