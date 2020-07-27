@@ -7,11 +7,6 @@ export const ENTRY_TYPE_FILTERS = [
     isHidden: false,
   },
   {
-    label: 'NonCombat',
-    entryType: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-    isHidden: false,
-  },
-  {
     label: 'Eat',
     entryType: ENTRY_TYPE.CONSUMPTION.EAT,
     isHidden: false,
@@ -63,10 +58,15 @@ export const ENTRY_TYPE_FILTERS = [
   },
 ];
 
-export const PROPERTY_FILTERS = [
+export const ATTRIBUTE_FILTERS = [
   {
-    label: 'Level Ups',
-    entryType: ENTRY_TYPE.ENCOUNTER.COMBAT,
+    label: 'Level Up',
+    attributeName: ENTRY_TYPE.ENCOUNTER.COMBAT,
+    isHidden: false,
+  },
+  {
+    label: 'NonCombats',
+    attributeName: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
     isHidden: false,
   },
 ];

@@ -10,9 +10,10 @@ import combineClassnames from 'utilities/combineClassnames';
  */
 export default function FiltersMenu(props) {
   const {
-    className,
+    label,
     defaultList,
     onApply,
+    className,
   } = props;
 
   const [filterList, updateList] = React.useState(defaultList);
@@ -30,7 +31,7 @@ export default function FiltersMenu(props) {
 
   return (
     <div className={combineClassnames('flex-col flex-none', className)}>
-      <div className='flex-none fontsize-1 adjacent-mar-t-3'>Visible Entries</div>  
+      <div className='flex-none fontsize-1 adjacent-mar-t-3'>{label}</div>  
 
       <div className='flex-col adjacent-mar-t-3'>
         { filterList.map((filterOption, idx) => (

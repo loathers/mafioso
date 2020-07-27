@@ -44,8 +44,8 @@ class LogStore {
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
       filteredTypes: DEFAULT_FILTER_ENTRIES,
-      /* @type {Object} */
-      dataFilters: {},
+      /** @type {Array<EntryAttribute>} */
+      filteredAttributes: [],
       /** @type {Array<EntryType>} */
       alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES,
     });
@@ -98,6 +98,10 @@ class LogStore {
   /** @type {Array<EntryType>} */
   get filteredTypes() {
     return this.displayOptions.filteredTypes;
+  }
+  /** @type {Array<EntryAttribute>} */
+  get filteredAttributes() {
+    return this.displayOptions.filteredAttributes;
   }
   /** @type {Number} */
   get isOnFirstPage() {
@@ -277,7 +281,7 @@ class LogStore {
       pageNum = this.displayOptions.pageNum,
       entriesPerPage = this.displayOptions.entriesPerPage,
       filteredTypes = this.displayOptions.filteredTypes,
-      // dataFilters = this.displayOptions.dataFilters,
+      filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
 
     const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes)
@@ -313,6 +317,7 @@ class LogStore {
       pageNum: pageNum,
       entriesPerPage: entriesPerPage,
       filteredTypes: filteredTypes,
+      filteredAttributes: filteredAttributes,
     };
 
     console.log('⌛ %c...done.', 'color: blue');
@@ -321,10 +326,10 @@ class LogStore {
     return condensedEntries;
   }
   /**
-   * @param {Array<EntryType>} entriesList
+   * @param {Object} options
    */
-  applyFilters(entriesList) {
-    this.fetchEntries({filteredTypes: entriesList});
+  applyFilters(options = {}) {
+    this.fetchEntries(options);
   }
   /**
    * @param {Object} options
