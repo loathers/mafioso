@@ -14,12 +14,10 @@ function App() {
   const [currentPageNum, setCurrentPageNum] = React.useState(0);
 
   const onChangePage = (requestPageNum) => {
-    if (requestPageNum < 0 || !logStore.isReady) {
-      return;
+    if (logStore.canFetch({pageNum: requestPageNum})) {
+      logStore.fetchEntries({pageNum: requestPageNum})
+      setCurrentPageNum(requestPageNum);
     }
-
-    logStore.fetchEntries({pageNum: requestPageNum})
-    setCurrentPageNum(requestPageNum);
   }
 
   return (

@@ -285,6 +285,33 @@ class LogStore {
 
     return condensedEntries;
   }
+  /**
+   * @param {Object} options
+   * @returns {Boolean}
+   */
+  canFetch(options = {}) {
+    if (!this.isReady) {
+      return false;
+    }
+
+    const {
+      pageNum = this.filterOptions.pageNum,
+      entriesPerPage = this.filterOptions.entriesPerPage,
+    } = options;
+
+    if (pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage)) {
+      return false;
+    }
+
+    return true;
+  }
+  /**
+   * @param {Number} entriesPerPage
+   * @returns {Number}
+   */
+  calculatePageLast(entriesPerPage = this.filterOptions.entriesPerPage) {
+    return Math.ceil(this.allEntries.length / entriesPerPage) - 1;
+  }
 }
 
 /** export singleton */
