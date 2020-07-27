@@ -10,7 +10,9 @@ export const REGEX = {
     COMBING_ACTION: /Combing.*/i,
   },
   BOXING_DAYCARE: {
-    GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
+    // GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
+    VISIT: /visiting the boxing daycare.*/gi,
+    NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,

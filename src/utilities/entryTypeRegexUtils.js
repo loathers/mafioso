@@ -14,6 +14,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX;
   }
 
+  if (isEntryBoxingDaycare(entryString)) {
+    return ENTRY_TYPE.IOTM.BOXING_DAYCARE;
+  }
+
   if (isEntryDiabolicPizzaMake(entryString)) {
     return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
   }
@@ -312,6 +316,13 @@ export function isEntryNonCombatEncounter(entryString) {
   return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryCombatEncounter(entryString) && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryBoxingDaycare(entryString) {
+  return hasString(entryString, REGEX.BOXING_DAYCARE.NONCOMBAT);
+}
 /**
  * @param {String} entryString
  * @return {Boolean}

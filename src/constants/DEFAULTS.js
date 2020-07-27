@@ -22,6 +22,7 @@ export const DEFAULT_HIDDEN_ENTRIES = [
 // strings we are going to remove from the ahead of time
 export const PREREMOVE_REGEX_LIST = [
   REGEX.PIRATEREALM.ENTRY_GROUPING,
+  REGEX.BOXING_DAYCARE.VISIT,
   REGEX.MISC.STACK_TRACE,
   REGEX.MISC.CLI_PRINT,
   REGEX.MISC.SEND_A_KMAIL,
@@ -49,7 +50,6 @@ export const PREGROUP_REGEX_LIST = [
   REGEX.GROUP.SAME_AFTER_BATTLE,
   REGEX.VOTING_BOOTH.GROUPING,
   REGEX.GOD_LOBSTER.GROUPING,
-  REGEX.BOXING_DAYCARE.GROUPING,
 ];
 // -- individual entry level
 // text we will remove from the display text,
