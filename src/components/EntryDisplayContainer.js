@@ -17,10 +17,10 @@ function EntryAdventureColumn(props) {
   const {
     className,
     style,
-    logEntry,
+    entry,
   } = props;
 
-  const {data} = logEntry;
+  const {data} = entry;
   const {
     turnNum,
     isFreeAdv,
@@ -50,16 +50,16 @@ function EntryAdventureColumn(props) {
 function EntryIconColumn(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
-  const {statData} = logEntry;
+  const {statData} = entry;
   const {isLevelUp} = statData;
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>
       <EntryIconComponent 
-        logEntry={logEntry}
+        entry={entry}
         className='flex-none adjacent-mar-t-3'
         style={{width: 25, height: 25,
           opacity: 0.7,
@@ -81,15 +81,15 @@ function EntryIconColumn(props) {
 function EntryHeaderContainer(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
-  if (!logEntry.hasEntryHeader) {
+  if (!entry.hasEntryHeader) {
     return null;
   }
 
-  const locationDisplay = logEntry.locationDisplay;
-  const encounterDisplay = logEntry.encounterDisplay;
+  const locationDisplay = entry.locationDisplay;
+  const encounterDisplay = entry.encounterDisplay;
 
   return (
     <div className={combineClassnames('flex-col adjacent-mar-t-3', className)}>
@@ -109,35 +109,35 @@ function EntryHeaderContainer(props) {
 function EntryBodyContainer(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
       {/* header with location and encounter name */}
-      <EntryHeaderContainer logEntry={logEntry} />
+      <EntryHeaderContainer entry={entry} />
 
       {/* text content */}
-      { logEntry.hasContentDisplay &&
+      { entry.hasContentDisplay &&
         <div className='flex-col adjacent-mar-t-3'>
-          {logEntry.contentDisplay}
+          {entry.contentDisplay}
         </div>
       }
 
       {/* -- custom content -- */}
       {/* diabolic pizza */}
-      { logEntry.hasDiabolicPizzaIngredients() &&
-        <MakeDiabolicPizzaDisplay className='adjacent-mar-t-3' logEntry={logEntry} />
+      { entry.hasDiabolicPizzaIngredients() &&
+        <MakeDiabolicPizzaDisplay className='adjacent-mar-t-3' entry={entry} />
       }     
 
       {/* stat changes */}
-      { logEntry.hasStatChanges &&
-        <StatChangesDisplay logEntry={logEntry} />
+      { entry.hasStatChanges &&
+        <StatChangesDisplay entry={entry} />
       }
 
       {/* meat and items */}
-      { logEntry.hasInventoryChanges &&
-        <ItemChangesDisplay logEntry={logEntry} />
+      { entry.hasInventoryChanges &&
+        <ItemChangesDisplay entry={entry} />
       }
     </div>
   )
@@ -148,7 +148,7 @@ function EntryBodyContainer(props) {
 export default function EntryDisplayContainer(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
   const [isSelected, toggleSelected] = React.useState(false);
@@ -172,26 +172,26 @@ export default function EntryDisplayContainer(props) {
 
       {/* adventure num column */}
       <EntryAdventureColumn 
-        logEntry={logEntry}
+        entry={entry}
         className='adjacent-mar-l-4 flex-none'
         style={{width: 35}} />
 
       {/* icon column */}
       <EntryIconColumn
-        logEntry={logEntry}
+        entry={entry}
         className='adjacent-mar-l-4 flex-none' />
 
       {/* entry body */}
       { !isSelected &&
         <EntryBodyContainer
-          logEntry={logEntry}
+          entry={entry}
           className='adjacent-mar-l-4 flex-auto' />
       }
 
       {/* combat */}
-      { logEntry.hasCombatActions() && !isSelected &&
+      { entry.hasCombatActions() && !isSelected &&
         <CombatSequenceDisplay 
-          logEntry={logEntry}
+          entry={entry}
           className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
       }
 
@@ -199,11 +199,11 @@ export default function EntryDisplayContainer(props) {
       { isSelected &&
         <div style={{backgroundColor: '#392644'}} className='borradius-1 pad-3 pad-r-8 flex-row flex-auto adjacent-mar-l-4'>
           <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
-            {logEntry.rawText}
+            {entry.rawText}
           </div>
 
           <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
-            {JSON.stringify(logEntry.export(), null, 4)}
+            {JSON.stringify(entry.export(), null, 4)}
           </div>
         </div>
       }

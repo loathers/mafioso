@@ -92,11 +92,11 @@ function getEntryIcon(entryType) {
  */
 export default function EntryIconComponent(props) {
   const {
-    logEntry,
+    entry,
     ...otherProps
   } = props;
 
-  const EntryIconComponent = getEntryIcon(logEntry.entryType);
+  const EntryIconComponent = getEntryIcon(entry.entryType);
 
   return (
     <EntryIconComponent {...otherProps} />

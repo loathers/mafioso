@@ -43,11 +43,11 @@ function VisualizerSection(props) {
 
   return (
     <div className='width-full flex-col adjacent-mar-t-5'>      
-      { entriesList.map((logEntry, idx) => (
+      { entriesList.map((entry, idx) => (
         <EntryDisplayContainer 
-          logEntry={logEntry}
+          entry={entry}
           className='visualizer-cell adjacent-mar-t-2'
-          key={`entry-display-${logEntry.id}-key`} />
+          key={`entry-display-${entry.id}-key`} />
       ))}
     </div>
   )
@@ -94,14 +94,14 @@ export function VisualizerSection_Legacy(props) {
 
   return (
     <div className='flex-col adjacent-mar-t-5'>      
-      { entriesList.map((logEntry, idx) => (
+      { entriesList.map((entry, idx) => (
         <EntryDisplayContainer 
-          onClick={(evt) => onSelectItem(evt, logEntry)}
-          isSelected={hasSelectedEntry && logEntry.id === selectedEntry.id}
+          onClick={(evt) => onSelectItem(evt, entry)}
+          isSelected={hasSelectedEntry && entry.id === selectedEntry.id}
 
-          logEntry={logEntry}
+          entry={entry}
           className='visualizer-cell adjacent-mar-t-2'
-          key={`entry-display-${logEntry.id}-key`} />
+          key={`entry-display-${entry.id}-key`} />
       ))}
 
       <VisualizerTooltip

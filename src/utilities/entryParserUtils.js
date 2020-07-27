@@ -10,7 +10,7 @@ import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
  * core parsing data for common entry data
  * 
  * @param {String} entryString
- * @return {Array<LogEntry>}
+ * @return {Array<Entry>}
  */
 export function parseCommonData(entryString) {
   const turnNum = parseTurnNum(entryString);
@@ -36,7 +36,7 @@ export function parseCommonData(entryString) {
  * parsing for stat related data
  * 
  * @param {String} entryString
- * @return {Array<LogEntry>}
+ * @return {Array<Entry>}
  */
 export function parseStatData(entryString) {
   return {
@@ -53,7 +53,7 @@ export function parseStatData(entryString) {
  * parsing for combat related data
  * 
  * @param {String} entryString
- * @return {Array<LogEntry>}
+ * @return {Array<Entry>}
  */
 export function parseCombatData(entryString) {
   return {
@@ -67,7 +67,7 @@ export function parseCombatData(entryString) {
  * parsing special data
  * 
  * @param {String} entryString
- * @return {Array<LogEntry>}
+ * @return {Array<Entry>}
  */
 export function parseEntrySpecial(entryString) {
   return {

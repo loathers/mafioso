@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import Batcher from 'classes/Batcher';
-import LogEntry from 'classes/LogEntry';
+import Entry from 'classes/Entry';
 
 import {PREREMOVE_REGEX_LIST, PREGROUP_REGEX_LIST} from 'constants/DEFAULTS';
 import {EMPTY_LINES_REGEX} from 'constants/regexes';
@@ -12,7 +12,7 @@ const logId = uuidv4();
  * core parsing handler - start here
  * 
  * @param {String} rawText
- * @return {Array<LogEntry>}
+ * @return {Array<Entry>}
  */
 export async function parseLogTxt(rawText) {
   try {
@@ -44,16 +44,16 @@ export async function parseLogTxt(rawText) {
   }
 }
 /** 
- * creates a list of LogEntry class, 
+ * creates a list of Entry class, 
  *  which will have parsed an entry's data 
  * 
  * @async
  * @param {Array<String>} logArray
  * @param {Number} startIdx
- * @returns {Array<LogEntry>}
+ * @returns {Array<Entry>}
  */
 export function parseLogArray(logArray, startIdx) {
-  return logArray.map((rawText, idx) => new LogEntry({
+  return logArray.map((rawText, idx) => new Entry({
     entryIdx: startIdx + idx,
     entryId: `${startIdx + idx}_${logId}`,
     rawText: rawText,

@@ -38,25 +38,25 @@ function StatBlockDisplay(props) {
 export default function StatChangesDisplay(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
   return (
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
       <StatBlockDisplay 
-        content={logEntry.musSubstats}
+        content={entry.musSubstats}
         label='mus exp'
-        className={combineClassnames('mar-2', logEntry.statData.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-2', entry.statData.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
-        content={logEntry.mystSubstats}
+        content={entry.mystSubstats}
         label='myst exp'
-        className={combineClassnames('mar-2', logEntry.statData.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-2', entry.statData.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
-        content={logEntry.moxSubstats}
+        content={entry.moxSubstats}
         label='mox exp'
-        className={combineClassnames('mar-2', logEntry.statData.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-2', entry.statData.isMusUp ? 'f-bold' : '')} />
     </div>
   )
 }

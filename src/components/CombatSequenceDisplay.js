@@ -32,7 +32,7 @@ function CombatActionDisplay(props) {
 export default function CombatSequenceDisplay(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
   const {combatData: {
@@ -40,7 +40,7 @@ export default function CombatSequenceDisplay(props) {
     hasInitiative,
     isVictory,
     isDeath,
-  }} = logEntry;
+  }} = entry;
 
   return (
     <div 

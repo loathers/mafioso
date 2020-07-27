@@ -12,21 +12,21 @@ import combineClassnames from 'utilities/combineClassnames';
 export default function ItemChangesDisplay(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
 
-  const {data} = logEntry;
+  const {data} = entry;
   const {
     acquiredItems,
   } = data;
 
   return (
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
-      { logEntry.hasMeatChanges &&
+      { entry.hasMeatChanges &&
         <ItemDisplay 
           IconComponent={SteakSVG}
           className='mar-2'
-          content={`${logEntry.createMeatDisplay()} meat`} />
+          content={`${entry.createMeatDisplay()} meat`} />
       }
 
       { acquiredItems.map((itemName, idx) => (

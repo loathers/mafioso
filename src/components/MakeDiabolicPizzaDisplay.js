@@ -47,10 +47,10 @@ function IngredientBlockDisplay(props) {
 export default function MakeDiabolicPizzaDisplay(props) {
   const {
     className,
-    logEntry,
+    entry,
   } = props;
   
-  const {specialData} = logEntry;
+  const {specialData} = entry;
   const {diabolicPizzaIngredients} = specialData;
 
   return (

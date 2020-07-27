@@ -3,7 +3,7 @@ import {
 } from 'mobx';
 
 import Batcher from 'classes/Batcher';
-import LogEntry from 'classes/LogEntry';
+import Entry from 'classes/Entry';
 
 import {DEFAULT_HIDDEN_ENTRIES} from 'constants/DEFAULTS';
 import REGEX from 'constants/regexes';
@@ -22,11 +22,11 @@ class LogStore {
     this.srcRawTexts = [];
     /** @type {String} */
     this.rawText = undefined;
-    /** @type {ObservableArray<LogEntry>} */
+    /** @type {ObservableArray<Entry>} */
     this.allEntries = observable([]);
     /** @type {Number} */
     this.currentPageNum = 0;
-    /** @type {ObservableArray<LogEntry>} */
+    /** @type {ObservableArray<Entry>} */
     this.currentEntries = observable([]);
     /** @type {Object} */
     this.filterOptions = observable({
@@ -206,8 +206,8 @@ class LogStore {
    * currently the parameter passed isn't a shallow copy
    *  but it might be something to consider
    *
-   * @param {Array<LogEntry>} entriesList 
-   * @returns {Array<LogEntry>}
+   * @param {Array<Entry>} entriesList 
+   * @returns {Array<Entry>}
    */
   condenseEntries(entriesList) {
     const originalLength = entriesList.length;
@@ -222,7 +222,7 @@ class LogStore {
 
       const nextEntry = entriesList.shift();
       if (currEntry.canCombineWith(nextEntry)) {
-        const combinedEntry = new LogEntry({
+        const combinedEntry = new Entry({
           entryId: currEntry.id,
           entryIdx: currEntry.entryIdx,
           rawText: currEntry.rawText.concat('\n\n').concat(nextEntry.rawText),
@@ -242,7 +242,7 @@ class LogStore {
   // -- update current logs and fetch functions
   /** 
    * @param {Object} options
-   * @return {Array<LogEntry>} 
+   * @return {Array<Entry>} 
    */
   async fetchEntries(options = {}) {
     if (!this.canFetch(options)) {
@@ -265,9 +265,9 @@ class LogStore {
 
     // batch find entries that are in range and not hidden
     const filteredEntries = await this.logBatcher.run((entriesGroup) => {
-      return entriesGroup.filter((logEntry) => {
-        const withinSearchRange = logEntry.entryIdx >= startIdx && logEntry.entryIdx < endIdx;
-        return withinSearchRange && !hiddenEntryTypes.includes(logEntry.entryType);
+      return entriesGroup.filter((entry) => {
+        const withinSearchRange = entry.entryIdx >= startIdx && entry.entryIdx < endIdx;
+        return withinSearchRange && !hiddenEntryTypes.includes(entry.entryType);
       });
     }, {batchDelay: 10});
 

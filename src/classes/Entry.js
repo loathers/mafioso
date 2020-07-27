@@ -10,9 +10,10 @@ import {
 } from 'utilities/regexUtils';
 
 /**
- * 
+ * @typedef {String} RawText - text extracted from the log
+ * @typedef {String} EntryString - text after it has some formatting and clean up 
  */
-export default class LogEntry {
+export default class Entry {
   /** @default */
   constructor({entryId, entryIdx, rawText}) {
     /** @type {Number} */
@@ -22,9 +23,9 @@ export default class LogEntry {
     /** @type {EntryType} */
     this.entryType = getEntryType(rawText);
 
-    /** @type {String} */
+    /** @type {RawText} */
     this.rawText = rawText;
-    /** @type {String} */
+    /** @type {EntryString} */
     this.entryString = fixSpecialEntities(rawText);
 
     /** @type {Object} */
@@ -310,7 +311,7 @@ export default class LogEntry {
   }
   // -- comparators
   /**
-   * @param {LogEntry} comparedEntry
+   * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   doesShareEntryType(comparedEntry) {
@@ -321,7 +322,7 @@ export default class LogEntry {
     return this.entryType === comparedEntry.entryType;
   }
   /**
-   * @param {LogEntry} comparedEntry
+   * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   doesShareLocation(comparedEntry) {
@@ -332,7 +333,7 @@ export default class LogEntry {
     return this.data.locationName === comparedEntry.data.locationName;
   }
   /**
-   * @param {LogEntry} comparedEntry
+   * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   doesShareEncounter(comparedEntry) {
@@ -343,7 +344,7 @@ export default class LogEntry {
     return this.data.encounterName === comparedEntry.data.encounterName;
   }
   /**
-   * @param {LogEntry} comparedEntry
+   * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   canCombineWith(comparedEntry) {
@@ -390,7 +391,7 @@ export default class LogEntry {
     return false;
   }
   /**
-   * @param {LogEntry} comparedEntry
+   * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   canRelateTo(comparedEntry) {
