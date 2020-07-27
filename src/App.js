@@ -9,6 +9,31 @@ import UploadComponent from 'components/UploadComponent';
 
 import VisualizerSection from 'sections/VisualizerSection';
 
+function SimplePaginator(props) {
+  const {
+    onChangePage,
+    currentPageNum,
+  } = props;
+
+  return (
+    <div className='fontsize-4 flex-row adjacent-mar-t-5 flex-none'>
+      <button 
+        onClick={() => onChangePage(currentPageNum - 1)}
+        className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+          Prev
+      </button>
+
+      <div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>
+
+      <button 
+        onClick={() => onChangePage(currentPageNum + 1)}
+        className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+          Next
+      </button>
+    </div>
+  )
+}
+
 export default observer(
 function App() {
   const [currentPageNum, setCurrentPageNum] = React.useState(0);
@@ -34,21 +59,9 @@ function App() {
         className='adjacent-mar-t-5' />
 
       {/* pagination */}
-      <div className='fontsize-4 flex-row adjacent-mar-t-5 flex-none'>
-        <button 
-          onClick={() => onChangePage(currentPageNum - 1)}
-          className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
-            Prev
-        </button>
-
-        <div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>
-
-        <button 
-          onClick={() => onChangePage(currentPageNum + 1)}
-          className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
-            Next
-        </button>
-      </div>
+      <SimplePaginator
+        onChangePage={onChangePage}
+        currentPageNum={currentPageNum} />
 
       {/* loader */}
       { appStore.isLoading &&
@@ -59,22 +72,11 @@ function App() {
         entriesList={logStore.currentEntries}
       />
 
-      {/* copy paste pagination */}
-      <div className='fontsize-4 flex-row adjacent-mar-t-5 flex-none'>
-        <button 
-          onClick={() => setCurrentPageNum(currentPageNum - 1)}
-          className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
-            Prev
-        </button>
+      {/* bottom pagination */}
+      <SimplePaginator
+        onChangePage={onChangePage}
+        currentPageNum={currentPageNum} />
 
-        <div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>
-
-        <button 
-          onClick={() => setCurrentPageNum(currentPageNum + 1)}
-          className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
-            Next
-        </button>
-      </div>
     </div>
   );
 })
