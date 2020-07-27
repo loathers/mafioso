@@ -9,6 +9,7 @@ import {
   DEFAULT_HIDDEN_ENTRIES,
   FILTER_DELAY,
 } from 'constants/DEFAULTS';
+import ENTRY_TYPE from 'constants/entryType';
 import REGEX from 'constants/regexes';
 
 import * as logParserUtils from 'utilities/logParserUtils';
@@ -42,7 +43,7 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 300,
       /** @type {Array<EntryType>} */
-      filteredTypes: ['ENTRY_TYPE.ENCOUNTER.NONCOMBAT'],
+      filteredTypes: [ENTRY_TYPE.UNKNOWN],
       /* @type {Object} */
       dataFilters: {},
       /** @type {Array<EntryType>} */
