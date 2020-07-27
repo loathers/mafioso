@@ -135,7 +135,18 @@ class LogStore {
 
     // try to find out if there is a full ascension log,
     //  otherwise just use the first text we have
-    this.rawText = this.createAscensionLog() || this.srcRawTexts[0];
+    const allText = this.srcRawTexts.join('\n\n');
+    const fullAscensionText = logParserUtils.findAscensionLog(allText);
+    if (fullAscensionText !== null) {
+      const ascensionNum = fullAscensionText.match(REGEX.VALUE.ASCENSION_NUMBER);
+      console.log(`✨ %cWe found Ascension #${ascensionNum}!`, 'color: blue; font-size: 14px');
+      this.rawText = fullAscensionText;
+    
+    } else {
+      console.warn('No Ascension specific log was found.');
+      this.rawText = allText;
+    }
+
     this.parse();
   }
   /**
@@ -160,24 +171,6 @@ class LogStore {
       
       fileReader.readAsText(file);
     });
-  }
-  /**
-   * finds an ascension session from all the files available
-   * 
-   * @returns {String}
-   */
-  createAscensionLog() {
-    const allText = this.srcRawTexts.join('\n\n');
-    const ascensionMatch = logParserUtils.findAscensionLog(allText);
-    if (ascensionMatch !== null) {
-      const ascensionNum = ascensionMatch[0].match(REGEX.VALUE.ASCENSION_NUMBER);
-      console.log(`✨ %cWe found Ascension #${ascensionNum}!`, 'color: blue; font-size: 14px')
-      return ascensionMatch;
-    
-    } else {
-      console.warn('Sorry, no Ascension specific log was found. Parsing only the first file.');
-      return null;
-    }
   }
   /**
    * handle cleaning up and setting all the data
