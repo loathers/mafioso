@@ -35,7 +35,7 @@ export default function CombatSequenceDisplay(props) {
     entry,
   } = props;
 
-  const {combatData: {
+  const {attributes: {
     combatActions,
     hasInitiative,
     isVictory,
@@ -53,12 +53,12 @@ export default function CombatSequenceDisplay(props) {
         </Fragment>
       }
 
-      { combatActions.map((combatData, idx) => (
+      { combatActions.map((attributes, idx) => (
         <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>    
           <CombatActionDisplay 
             className='mar-1 width-full'
-            content={combatData.actionName}
-            roundNum={combatData.roundNum} 
+            content={attributes.actionName}
+            roundNum={attributes.roundNum} 
           /> 
 
           <div className='arrow-down flex-row-center mar-1'/>

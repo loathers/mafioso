@@ -7,12 +7,26 @@ import {
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
 /**
- * core parsing data for common entry data
+ * core parsing for attributes of an entry
  * 
  * @param {String} entryString
  * @return {Array<Entry>}
  */
-export function parseCommonData(entryString) {
+export function parseAttributes(entryString) {
+  return {
+    ...parseCommonAttributes(entryString),
+    ...parseStatAttributes(entryString),
+    ...parseCombatAttributes(entryString),
+    ...parseSpecialAttributes(entryString),
+  }
+}
+/**
+ * parse some of the common entry attributes
+ * 
+ * @param {String} entryString
+ * @return {Array<Entry>}
+ */
+export function parseCommonAttributes(entryString) {
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
@@ -38,7 +52,7 @@ export function parseCommonData(entryString) {
  * @param {String} entryString
  * @return {Array<Entry>}
  */
-export function parseStatData(entryString) {
+export function parseStatAttributes(entryString) {
   return {
     isLevelUp: isLevelUp(entryString),
     isMusUp: isMusUp(entryString),
@@ -55,7 +69,7 @@ export function parseStatData(entryString) {
  * @param {String} entryString
  * @return {Array<Entry>}
  */
-export function parseCombatData(entryString) {
+export function parseCombatAttributes(entryString) {
   return {
     combatActions: parseCombatActions(entryString),
     hasInitiative: hasInitiative(entryString),
@@ -69,7 +83,7 @@ export function parseCombatData(entryString) {
  * @param {String} entryString
  * @return {Array<Entry>}
  */
-export function parseEntrySpecial(entryString) {
+export function parseSpecialAttributes(entryString) {
   return {
     isEndedByUseTheForce: isUseTheForce(entryString),
     diabolicPizzaIngredients: parseMakeDiabolicPizza(entryString),

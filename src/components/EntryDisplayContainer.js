@@ -20,11 +20,11 @@ function EntryAdventureColumn(props) {
     entry,
   } = props;
 
-  const {data} = entry;
+  const {attributes} = entry;
   const {
     turnNum,
     isFreeAdv,
-  } = data;
+  } = attributes;
 
   return (
     <div
@@ -53,8 +53,8 @@ function EntryIconColumn(props) {
     entry,
   } = props;
 
-  const {statData} = entry;
-  const {isLevelUp} = statData;
+  const {attributes} = entry;
+  const {isLevelUp} = attributes;
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>

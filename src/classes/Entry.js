@@ -29,7 +29,7 @@ export default class Entry {
     this.entryString = fixSpecialEntities(rawText);
 
     /** @type {Object} */
-    this.data = {
+    this.attributes = {
       /** @type {Number} */
       turnNum: -1,
       /** @type {Boolean} */
@@ -48,9 +48,8 @@ export default class Entry {
       acquiredEffects: [],
       /** @type {Number} */
       meatChange: 0,
-    };
-    /** @type {Object} */
-    this.statData = {
+
+      //-- stat
       /** @type {Boolean} */
       isLevelUp: false,
       /** @type {Boolean} */
@@ -65,9 +64,8 @@ export default class Entry {
       mystExpChanges: [],
       /** @type {Array} */
       moxExpChanges: [],
-    }
-    /** @type {Object} */
-    this.combatData = {
+
+      // -- combat
       /** @type {Boolean} */
       hasInitiative: false,
       /** @type {Array<String>} */
@@ -76,9 +74,8 @@ export default class Entry {
       isVictory: false,
       /** @type {Boolean} */
       isDeath: false,
-    }
-    /** @type {Object} */
-    this.specialData = {
+      
+      // -- special, typically iotm
       /** @type {Boolean} */
       isEndedByUseTheForce: false,
       /** @type {Array<String>} */
@@ -94,41 +91,16 @@ export default class Entry {
    * once `entryString` is given we can set all the properties
    */
   initialize() {
-    // common data
-    const parsedCommonData = entryParserUtils.parseCommonData(this.entryString);
-    this.data = {
-      ...this.data,
-      ...parsedCommonData,
+    const parsedAttributes = entryParserUtils.parseAttributes(this.entryString);
+    this.attributes = {
+      ...this.attributes,
+      ...parsedAttributes,
     };
 
-    // stat data
-    const parsedStatData = entryParserUtils.parseStatData(this.entryString);
-    this.statData = {
-      ...this.statData,
-      ...parsedStatData,
-    };
-
-    // combat data
-    const parsedCombatData = entryParserUtils.parseCombatData(this.entryString);
-    this.combatData = {
-      ...this.combatData,
-      ...parsedCombatData,
-    };
-
-    // special data
-    const parsedSpecialData = entryParserUtils.parseEntrySpecial(this.entryString);
-    this.specialData = {
-      ...this.specialData,
-      ...parsedSpecialData,
-    };
   }
   /** @type {Boolean} */
   get hasEntry() {
     return this.entryString !== undefined;
-  }
-  /** @type {Boolean} */
-  get hasCommonData() {
-    return this.data !== undefined;
   }
   /** @type {Boolean} */
   get hasEntryHeader() {
@@ -148,20 +120,20 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasStatChanges() {
-    return this.statData.isMusUp 
-      || this.statData.isMystUp 
-      || this.statData.isMoxUp 
+    return this.attributes.isMusUp 
+      || this.attributes.isMystUp 
+      || this.attributes.isMoxUp 
       || this.musSubstats !== 0 
       || this.mystSubstats !== 0 
       || this.moxSubstats !== 0;
   }
   /** @type {Boolean} */
   get hasMeatChanges() {
-    return this.data.meatChange !== 0;
+    return this.attributes.meatChange !== 0;
   }
   /** @type {Boolean} */
   get hasAcquiredItems() {
-    return this.data.acquiredItems !== 0;
+    return this.attributes.acquiredItems !== 0;
   }
   /** @type {Boolean} */
   get hasInventoryChanges() {
@@ -170,15 +142,15 @@ export default class Entry {
   // -- stats
   /** @type {Number} */
   get musSubstats() {
-    return this.statData.musExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+    return this.attributes.musExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }
   /** @type {Number} */
   get mystSubstats() {
-    return this.statData.mystExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+    return this.attributes.mystExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }
   /** @type {Number} */
   get moxSubstats() {
-    return this.statData.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+    return this.attributes.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }
   /** @type {String} */
   get contentDisplay() {
@@ -214,7 +186,7 @@ export default class Entry {
       return 'Hagnk\'s Ancestral Mini-Storage';
     }
 
-    return this.data.locationName;
+    return this.attributes.locationName;
   }
   /** @type {String} */
   get encounterDisplay() {
@@ -232,12 +204,12 @@ export default class Entry {
       return 'Pull from Hagnk\'s';
     }
 
-    return this.data.encounterName;
+    return this.attributes.encounterName;
   }
   // -- combat
   /** @returns {Boolean} */
   hasCombatActions() {
-    return this.combatData.combatActions.length > 0;
+    return this.attributes.combatActions.length > 0;
   }
   // -- special getters
   /** @returns {Boolean} */
@@ -251,7 +223,7 @@ export default class Entry {
       return false;
     }
 
-    return this.specialData.diabolicPizzaIngredients.length > 0;
+    return this.attributes.diabolicPizzaIngredients.length > 0;
   }
   /**
    * @return {Object}
@@ -261,10 +233,7 @@ export default class Entry {
       entryId: this.id,
       // entryIdx: this.entryIdx,
       entryType: this.entryType,
-      ...this.data,
-      ...this.statData,
-      // ...this.combatData,
-      ...this.specialData,
+      ...this.attributes,
     }
   }
   // -- utility
@@ -296,11 +265,11 @@ export default class Entry {
   }
   /** @returns {String} */
   createItemsDisplay() {
-    return this.data.acquiredItems.join(', ');
+    return this.attributes.acquiredItems.join(', ');
   }
   /** @returns {String} */
   createMeatDisplay() {
-    const meatChange = this.data.meatChange;
+    const meatChange = this.attributes.meatChange;
     const meatDisplay = meatChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     
     if (meatChange > 0) {
@@ -326,22 +295,22 @@ export default class Entry {
    * @return {Boolean}
    */
   doesShareLocation(comparedEntry) {
-    if (this.data.locationName === null || comparedEntry.data.locationName === null) {
+    if (this.attributes.locationName === null || comparedEntry.attributes.locationName === null) {
       return false;
     }
 
-    return this.data.locationName === comparedEntry.data.locationName;
+    return this.attributes.locationName === comparedEntry.attributes.locationName;
   }
   /**
    * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   doesShareEncounter(comparedEntry) {
-    if (this.data.encounterName === null || comparedEntry.data.encounterName === null) {
+    if (this.attributes.encounterName === null || comparedEntry.attributes.encounterName === null) {
       return false;
     }
 
-    return this.data.encounterName === comparedEntry.data.encounterName;
+    return this.attributes.encounterName === comparedEntry.attributes.encounterName;
   }
   /**
    * @param {Entry} comparedEntry

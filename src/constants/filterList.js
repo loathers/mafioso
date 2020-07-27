@@ -65,7 +65,7 @@ export const ATTRIBUTE_FILTERS = [
     isHidden: false,
   },
   {
-    label: 'NonCombats',
+    label: 'NonCombat',
     attributeName: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
     isHidden: false,
   },

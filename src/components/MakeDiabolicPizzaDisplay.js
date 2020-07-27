@@ -50,8 +50,8 @@ export default function MakeDiabolicPizzaDisplay(props) {
     entry,
   } = props;
   
-  const {specialData} = entry;
-  const {diabolicPizzaIngredients} = specialData;
+  const {attributes} = entry;
+  const {diabolicPizzaIngredients} = attributes;
 
   return (
     <div 

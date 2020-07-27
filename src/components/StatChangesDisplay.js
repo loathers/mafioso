@@ -46,17 +46,17 @@ export default function StatChangesDisplay(props) {
       <StatBlockDisplay 
         content={entry.musSubstats}
         label='mus exp'
-        className={combineClassnames('mar-2', entry.statData.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-2', entry.attributes.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
         content={entry.mystSubstats}
         label='myst exp'
-        className={combineClassnames('mar-2', entry.statData.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-2', entry.attributes.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
         content={entry.moxSubstats}
         label='mox exp'
-        className={combineClassnames('mar-2', entry.statData.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-2', entry.attributes.isMusUp ? 'f-bold' : '')} />
     </div>
   )
 }

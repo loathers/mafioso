@@ -15,10 +15,10 @@ export default function ItemChangesDisplay(props) {
     entry,
   } = props;
 
-  const {data} = entry;
+  const {attributes} = entry;
   const {
     acquiredItems,
-  } = data;
+  } = attributes;
 
   return (
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
