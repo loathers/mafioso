@@ -24,6 +24,8 @@ class LogStore {
     this.rawText = undefined;
     /** @type {ObservableArray<LogEntry>} */
     this.allEntries = observable([]);
+    /** @type {Number} */
+    this.currentPageNum = 0;
     /** @type {ObservableArray<LogEntry>} */
     this.currentEntries = observable([]);
     /** @type {Object} */
@@ -195,6 +197,7 @@ class LogStore {
     this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
 
     console.log(`✔️ %cFinished! Created ${this.allEntries.length} entries.`, 'color: blue');
+    this.currentPageNum = 0;
     this.isParsing.set(false);
 
     // we just parsed so we gotta refresh `currentEntries`
@@ -243,7 +246,7 @@ class LogStore {
    * @return {Array<LogEntry>} 
    */
   async fetchEntries(options = {}) {
-    if (!this.isReady) {
+    if (!this.canFetch(options)) {
       return [];
     }
 
@@ -280,7 +283,7 @@ class LogStore {
     this.currentEntries.replace(condensedEntries);
 
     console.log('⌛ %c...done.', 'color: blue')
-    this.filterOptions.pageNum = pageNum;
+    this.currentPageNum = pageNum;
     this.isFetching.set(false);
 
     return condensedEntries;

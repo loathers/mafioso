@@ -36,15 +36,6 @@ function SimplePaginator(props) {
 
 export default observer(
 function App() {
-  const [currentPageNum, setCurrentPageNum] = React.useState(0);
-
-  const onChangePage = (requestPageNum) => {
-    if (logStore.canFetch({pageNum: requestPageNum})) {
-      logStore.fetchEntries({pageNum: requestPageNum})
-      setCurrentPageNum(requestPageNum);
-    }
-  }
-
   return (
     <div 
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
@@ -66,8 +57,8 @@ function App() {
       {/* pagination */}
       { logStore.hasCurrentEntries &&
         <SimplePaginator
-          onChangePage={onChangePage}
-          currentPageNum={currentPageNum} />
+          onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
+          currentPageNum={logStore.currentPageNum} />
       }
 
       <VisualizerSection 
@@ -77,8 +68,8 @@ function App() {
       {/* bottom pagination */}
       { logStore.hasCurrentEntries &&
         <SimplePaginator
-          onChangePage={onChangePage}
-          currentPageNum={currentPageNum} />
+          onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
+          currentPageNum={logStore.currentPageNum} />
       }
 
     </div>
