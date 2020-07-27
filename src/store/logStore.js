@@ -6,6 +6,7 @@ import Batcher from 'classes/Batcher';
 import LogEntry from 'classes/LogEntry';
 
 import {DEFAULT_HIDDEN_ENTRIES} from 'constants/DEFAULTS';
+import REGEX from 'constants/regexes';
 
 import * as logParserUtils from 'utilities/logParserUtils';
 
@@ -19,6 +20,8 @@ class LogStore {
     this.srcFiles = [];
     /** @type {Array<String>} */
     this.srcRawTexts = [];
+    /** @type {String} */
+    this.rawText = undefined;
     /** @type {ObservableArray<LogEntry>} */
     this.allEntries = observable([]);
     /** @type {ObservableArray<LogEntry>} */
@@ -53,7 +56,7 @@ class LogStore {
   }
   /** @type {Boolean} */
   get hasRawText() {
-    return this.srcRawTexts.length > 0;
+    return this.rawText !== undefined;
   }
   /** @type {Boolean} */
   get hasParsedEntries() {
@@ -66,6 +69,30 @@ class LogStore {
   /** @type {Number} */
   get entriesCount() {
     return this.allEntries.length;
+  }
+  /**
+   * @param {File} file
+   */
+  handleUpload_legacy(file) {
+    if (file.type !== 'text/plain') {
+      console.error('That is not a text file mate.');
+      return;
+    }
+
+    this.isParsing.set(true);
+
+    this.allEntries.clear();
+    // this.currentEntries.clear();
+
+    this.srcFiles = file;
+  }
+  /**
+   * @param {FileReader.Event} readerEvt
+   */
+  onReadComplete_legacy(readerEvt) {
+    const txtString = readerEvt.target.result;
+    this.rawText = txtString;
+    this.parse();
   }
   /**
    * @param {FileList} files
@@ -98,31 +125,38 @@ class LogStore {
       });
     }
 
-    this.parse();
-  }
-  /**
-   * @param {File} file
-   */
-  handleUpload_legacy(file) {
-    if (file.type !== 'text/plain') {
-      console.error('That is not a text file mate.');
-      return;
+    // if there is only one file, we can parse immediately
+    if (this.srcFiles.length === 1) {
+      this.rawText = this.srcRawTexts[0];
+      this.parse();
     }
 
-    this.isParsing.set(true);
-
-    this.allEntries.clear();
-    // this.currentEntries.clear();
-
-    this.srcFiles = file;
+    // if there are multiple files uploaded, try to find the ascension log
+    if (this.srcFiles.length > 1) {
+      this.rawText = this.createAscensionLog();
+      this.parse();
+    }
   }
   /**
-   * @param {FileReader.Event} readerEvt
+   * finds an ascension session from all the files available
+   * 
+   * @returns {String}
    */
-  onReadComplete_legacy(readerEvt) {
-    const txtString = readerEvt.target.result;
-    this.rawText = txtString;
-    this.parse();
+  createAscensionLog() {
+    const allText = this.srcRawTexts.join('\n\n');
+    const ascensionMatch = allText.match(/welcome to valhalla.*?freeing king ralph/is);
+    
+    if (ascensionMatch !== null) {
+      const ascensionNum = ascensionMatch[0].match(REGEX.VALUE.ASCENSION_NUMBER);
+      console.log(`✨ %cWe found Ascension #${ascensionNum} in the files you uploaded.`, 'color: blue; font-size: 14px')
+      // this.rawText = ascensionMatch[0];
+      return ascensionMatch[0];
+    
+    } else {
+      console.error('Sorry, no Ascension specific log was found. Parsing only the first file.');
+      // this.rawText = this.srcRawTexts[0];
+      return this.srcRawTexts[0];
+    }
   }
   /**
    * handle cleaning up and setting all the data
@@ -135,8 +169,8 @@ class LogStore {
     console.log('✨ %cParsing your Session Log!', 'color: blue; font-size: 14px');
     this.isParsing.set(true);
 
-    // const newData = await logParserUtils.parseLogTxt(this.rawText);
-    const newData = await logParserUtils.parseLogTxt(this.srcRawTexts.join('\n\n'));
+    const newData = await logParserUtils.parseLogTxt(this.rawText);
+    // const newData = await logParserUtils.parseLogTxt(this.srcRawTexts.join('\n\n'));
     this.allEntries.replace(newData);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));

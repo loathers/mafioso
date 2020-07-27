@@ -61,7 +61,7 @@ export default function UploadComponent(props) {
           position: 'absolute',
           zindex: -1,
         }}
-
+        multiple
         onChange={onUpload}
         accept='.txt'
         type='file'
