@@ -36,7 +36,7 @@ export default function UploadComponent(props) {
 
   const hoverClassName = isOver ? 'bor-3-green' : 'bor-3-white';
   const expandedClassName = showExpanded ? 'width-full flex-auto' : 'width-full';
-  const expandedStyle = showExpanded ? {height: '70vh'} : {};
+  const expandedStyle = showExpanded ? {height: '70vh', width: '100%'} : {};
 
   return (
     <form 

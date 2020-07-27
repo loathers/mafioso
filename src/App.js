@@ -36,6 +36,15 @@ function SimplePaginator(props) {
 
 export default observer(
 function App() {
+
+  const leftMenuStyle = logStore.hasFiles ? {
+    width: 150,
+    top: 30,
+    left: 30,
+  } : {
+    width: '90%',
+  }
+
   return (
     <div 
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
@@ -46,32 +55,31 @@ function App() {
         <LoaderComponent />
       }
 
-      <div className='fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
-        Shiny Log Visualizer
+      <div style={{
+        position: 'fixed',
+        ...leftMenuStyle,
+      }} className='flex-col'>
+        <div className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
+          Shiny Log Visualizer
+        </div>
+
+        <UploadComponent
+          showExpanded={!logStore.hasFiles}
+          className='adjacent-mar-t-5' />
+        
+        {/* pagination */}
+        { logStore.hasCurrentEntries &&
+          <SimplePaginator
+            onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
+            currentPageNum={logStore.currentPageNum} />
+        }
       </div>
 
-      <UploadComponent
-        showExpanded={!logStore.hasFiles}
-        className='adjacent-mar-t-5' />
-
-      {/* pagination */}
-      { logStore.hasCurrentEntries &&
-        <SimplePaginator
-          onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
-          currentPageNum={logStore.currentPageNum} />
-      }
-
-      <VisualizerSection 
-        entriesList={logStore.currentEntries}
-      />
-
-      {/* bottom pagination */}
-      { logStore.hasCurrentEntries &&
-        <SimplePaginator
-          onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
-          currentPageNum={logStore.currentPageNum} />
-      }
-
+      <div style={{marginLeft: 180}} className='flex-col-center flex-auto'>
+        <VisualizerSection 
+          entriesList={logStore.currentEntries}
+        />
+      </div>
     </div>
   );
 })
