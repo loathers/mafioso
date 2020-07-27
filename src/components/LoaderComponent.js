@@ -15,20 +15,33 @@ export default function LoaderComponent(props) {
     className,
     spinnerColor = 'white',
     spinnerWidth = 6,
-    size = 50,
-    ...otherProps
+    size = 50
   } = props;
 
   return (
-    <div
-      {...otherProps}
-      className={combineClassnames('spinner', className)}
+    <div 
+      className={combineClassnames('zindex-8', className)}
       style={{
-        width: size,
-        height: size,
-        borderColor: spinnerColor,
-        borderWidth: spinnerWidth
-      }}
-    />
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+      }}>
+      <div
+        className='zindex-9 spinner'
+        style={{
+          position: 'fixed',
+          top: '30%',
+          left: '50%',
+          marginLeft: (size/2)*-1,
+          width: size,
+          height: size,
+          borderColor: spinnerColor,
+          borderWidth: spinnerWidth,
+        }}
+      />
+    </div>
   )
 }

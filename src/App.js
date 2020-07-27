@@ -50,6 +50,11 @@ function App() {
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
       id='slv-main'>
 
+      {/* loader */}
+      { appStore.isLoading &&
+        <LoaderComponent />
+      }
+
       <div className='fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
         Shiny Log Visualizer
       </div>
@@ -62,11 +67,6 @@ function App() {
       <SimplePaginator
         onChangePage={onChangePage}
         currentPageNum={currentPageNum} />
-
-      {/* loader */}
-      { appStore.isLoading &&
-        <LoaderComponent className='mar-h-5 adjacent-mar-t-5 flex-none'/>
-      }
 
       <VisualizerSection 
         entriesList={logStore.currentEntries}
