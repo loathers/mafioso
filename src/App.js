@@ -13,6 +13,15 @@ export default observer(
 function App() {
   const [currentPageNum, setCurrentPageNum] = React.useState(0);
 
+  const onChangePage = (requestPageNum) => {
+    if (requestPageNum < 0 || !logStore.isReady) {
+      return;
+    }
+
+    logStore.fetchEntries({pageNum: requestPageNum})
+    setCurrentPageNum(requestPageNum);
+  }
+
   return (
     <div 
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
@@ -29,7 +38,7 @@ function App() {
       {/* pagination */}
       <div className='fontsize-4 flex-row adjacent-mar-t-5 flex-none'>
         <button 
-          onClick={() => setCurrentPageNum(currentPageNum - 1)}
+          onClick={() => onChangePage(currentPageNum - 1)}
           className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
             Prev
         </button>
@@ -37,7 +46,7 @@ function App() {
         <div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>
 
         <button 
-          onClick={() => setCurrentPageNum(currentPageNum + 1)}
+          onClick={() => onChangePage(currentPageNum + 1)}
           className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
             Next
         </button>

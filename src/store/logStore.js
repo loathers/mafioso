@@ -200,45 +200,6 @@ class LogStore {
     // we just parsed so we gotta refresh `currentEntries`
     this.fetchEntries();
   }
-  /** 
-   * @param {Object} options
-   * @return {Array<LogEntry>} 
-   */
-  async fetchEntries(options = {}) {
-    if (!this.isReady) {
-      return [];
-    }
-
-    const {
-      pageNum = this.filterOptions.pageNum,
-      entriesPerPage = this.filterOptions.entriesPerPage,
-      hiddenEntryTypes = this.filterOptions.hiddenEntryTypes,
-      // dataFilters = this.filterOptions.dataFilters,
-    } = options;
-
-    console.log('⏳ %cFetching entries...', 'color: blue')
-    this.isFetching.set(true);
-
-    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount-1);
-    const endIdx = entriesPerPage === 'all' ? this.entriesCount-1 : Math.min(startIdx + entriesPerPage, this.entriesCount-1);
-    // console.log('I want entries from', startIdx, 'to', endIdx);
-
-    // batch find entries that are in range and not hidden
-    const filteredEntries = await this.logBatcher.run((entriesGroup) => {
-      return entriesGroup.filter((logEntry) => {
-        const withinSearchRange = logEntry.entryIdx >= startIdx && logEntry.entryIdx < endIdx;
-        return withinSearchRange && !hiddenEntryTypes.includes(logEntry.entryType);
-      });
-    });
-    
-    const condensedEntries = this.condenseEntries(filteredEntries);
-    this.currentEntries.replace(condensedEntries);
-
-    console.log('⌛ %c...done.', 'color: blue')
-    this.isFetching.set(false);
-
-    return condensedEntries;
-  }
   /**
    * currently the parameter passed isn't a shallow copy
    *  but it might be something to consider
@@ -275,6 +236,54 @@ class LogStore {
 
     console.log(`%cCondensed entries from ${originalLength} to ${condensedData.length}`, 'color: #6464ff');
     return condensedData;
+  }
+  // -- update current logs and fetch functions
+  /** 
+   * @param {Object} options
+   * @return {Array<LogEntry>} 
+   */
+  async fetchEntries(options = {}) {
+    if (!this.isReady) {
+      return [];
+    }
+
+    const {
+      pageNum = this.filterOptions.pageNum,
+      entriesPerPage = this.filterOptions.entriesPerPage,
+      hiddenEntryTypes = this.filterOptions.hiddenEntryTypes,
+      // dataFilters = this.filterOptions.dataFilters,
+    } = options;
+
+    console.log('⏳ %cFetching entries...', 'color: blue')
+    this.isFetching.set(true);
+
+    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount-1);
+    const endIdx = entriesPerPage === 'all' ? this.entriesCount-1 : Math.min(startIdx + entriesPerPage, this.entriesCount-1);
+    // console.log('I want entries from', startIdx, 'to', endIdx);
+
+    // batch find entries that are in range and not hidden
+    const filteredEntries = await this.logBatcher.run((entriesGroup) => {
+      return entriesGroup.filter((logEntry) => {
+        const withinSearchRange = logEntry.entryIdx >= startIdx && logEntry.entryIdx < endIdx;
+        return withinSearchRange && !hiddenEntryTypes.includes(logEntry.entryType);
+      });
+    }, {batchDelay: 10});
+
+    // if fetch result would result in nothing, keep current
+    if (filteredEntries.length <= 0) {
+      console.warn(`No entries on page ${pageNum}`);
+      this.isFetching.set(false);
+      return this.currentEntries;
+    }
+    
+    const condensedEntries = this.condenseEntries(filteredEntries);
+    this.currentEntries.replace(condensedEntries);
+
+    console.log('⌛ %c...done.', 'color: blue')
+    this.filterOptions.pageNum = pageNum;
+    this.isFetching.set(false);
+
+    return condensedEntries;
   }
 }
 
