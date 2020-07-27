@@ -64,18 +64,22 @@ function App() {
         className='adjacent-mar-t-5' />
 
       {/* pagination */}
-      <SimplePaginator
-        onChangePage={onChangePage}
-        currentPageNum={currentPageNum} />
+      { logStore.hasCurrentEntries &&
+        <SimplePaginator
+          onChangePage={onChangePage}
+          currentPageNum={currentPageNum} />
+      }
 
       <VisualizerSection 
         entriesList={logStore.currentEntries}
       />
 
       {/* bottom pagination */}
-      <SimplePaginator
-        onChangePage={onChangePage}
-        currentPageNum={currentPageNum} />
+      { logStore.hasCurrentEntries &&
+        <SimplePaginator
+          onChangePage={onChangePage}
+          currentPageNum={currentPageNum} />
+      }
 
     </div>
   );
