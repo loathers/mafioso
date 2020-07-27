@@ -33,6 +33,18 @@ function ControlsMenu(props) {
         Shiny Log Visualizer
       </h1>
 
+      { logStore.hasCharacterName &&
+        <h2 className='aself-start fontsize-7 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
+          {`Ascension #${logStore.characterName}`}
+        </h2>
+      }
+
+      { logStore.hasAscensionNum &&
+        <h2 className='aself-start fontsize-7 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
+          {`Ascension #${logStore.ascensionNum}`}
+        </h2>
+      }
+
       <UploadComponent
         content={'Upload new logs'}
         className='width-full adjacent-mar-t-5' />
