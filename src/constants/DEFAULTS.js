@@ -12,15 +12,6 @@ export const DISPLAY_SCRUB_DELAY = 5;
 export const FILTER_DELAY = 3;
 
 // -- log level
-// entryTypes that can be filtered by default
-//  needs to match filterList.js
-export const DEFAULT_FILTER_ENTRIES = [
-  ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-  ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
-  ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-  ENTRY_TYPE.EQUIP,
-  ENTRY_TYPE.UNEQUIP,
-];
 // some data that is always filtered out
 export const ALWAYS_HIDDEN_ENTRIES = [
   ENTRY_TYPE.UNKNOWN,
