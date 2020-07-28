@@ -294,37 +294,39 @@ class LogStore {
       return;
     }
 
-    const {
-      pageNum = this.displayOptions.pageNum,
-      entriesPerPage = this.displayOptions.entriesPerPage,
-      // entryTypesVisible = this.displayOptions.entryTypesVisible,
-      // filteredAttributes = this.displayOptions.filteredAttributes,
-    } = options;
+    this.isFetching.set(true);
 
-    // const shouldFilter = this.visibleEntries.length <= 0;
-    // if (shouldFilter) {
-      const visibleEntries = await this.fetchByFilter(options);
-      this.visibleEntries.replace(visibleEntries);
-    // }
-
-    const isChangingPageNum = pageNum !== this.currentPageNum;
-    const isChangingPageSize = entriesPerPage !== this.displayOptions.entriesPerPage;
-    const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage);
-    const shouldResetPageData = isFilteredBeyondRange || (isChangingPageSize || isChangingPageNum);
-
-    const pagedEntries = await this.fetchByPage({
-      ...options,
-      pageNum: shouldResetPageData ? 0 : pageNum,
-    });
-
-    this.currentEntries.replace(pagedEntries);
-
-    // now update options with the ones used to fetch
-    this.displayOptions = {
+    const fullOptions = {
       ...this.displayOptions,
       ...options,
     };
 
+    const {
+      pageNum,
+      entriesPerPage,
+    } = fullOptions;
+
+    const visibleEntries = await this.fetchByFilter(fullOptions);
+    this.visibleEntries.replace(visibleEntries);
+
+    const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage);
+    if (isFilteredBeyondRange) {
+      fullOptions.pageNum = 0;
+    }
+
+    // can only continue to fetch by page if filter created entries
+    if (this.visibleEntries.length > 0) {
+      const pagedEntries = await this.fetchByPage(fullOptions);
+      this.currentEntries.replace(pagedEntries);
+    } else {
+      this.currentEntries.replace(visibleEntries);
+    }
+
+    // now update options with the ones used to fetch
+    this.displayOptions = fullOptions;
+
+    // done
+    this.isFetching.set(false);
     return this.currentEntries;
   }
   /** 
@@ -409,7 +411,6 @@ class LogStore {
     } = options;
 
     console.log('⏳ %cFetching by filter...', 'color: blue');
-    this.isFetching.set(true);
 
     // batch find entries that are in range and not hidden
     const visibleEntries = await this.logBatcher.run((entriesGroup) => {
@@ -440,13 +441,10 @@ class LogStore {
     // filtering resulted in nothing
     if (visibleEntries.length <= 0) {
       console.warn(`No results for filter.`);
-      this.isFetching.set(false);
       return [];
     }
   
     console.log('⌛ %c...done fetch by filter.', 'color: blue');
-    this.isFetching.set(false);
-
     const condensedEntries = this.condenseEntries(visibleEntries)
     return condensedEntries;
   }
@@ -469,7 +467,6 @@ class LogStore {
     // console.log('I want entries from', startIdx, 'to', endIdx);
 
     console.log(`⏳ %cGetting page ${pageNum}...`, 'color: blue');
-    this.isFetching.set(true);
 
     const pagedEntries = this.visibleEntries.slice(startIdx, endIdx);
 
@@ -477,8 +474,6 @@ class LogStore {
     await new Promise((resolve) => setTimeout(resolve, 1));
 
     console.log('⌛ %c...done fetch by page.', 'color: blue');
-    this.isFetching.set(false);
-
     return pagedEntries;
   }
   /**
@@ -486,7 +481,7 @@ class LogStore {
    * @returns {Boolean}
    */
   canFetch(options = {}) {
-    if (!this.isReady) {
+    if (!this.hasParsedEntries) {
       return false;
     }
 

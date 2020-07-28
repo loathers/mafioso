@@ -105,16 +105,16 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.FAMILIAR;
   }
 
+  if (isEntryHagnkPull(entryString)) {
+    return ENTRY_TYPE.HAGNK_PULL;
+  }
+
   if (isEntryEquip(entryString)) {
     return ENTRY_TYPE.EQUIP;
   }
 
   if (isEntryUnequip(entryString)) {
     return ENTRY_TYPE.UNEQUIP;
-  }
-
-  if (isEntryHagnkPull(entryString)) {
-    return ENTRY_TYPE.HAGNK_PULL;
   }
 
   if (isEntryClosetPut(entryString)) {
