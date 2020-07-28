@@ -18,20 +18,13 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Eat',
-    entryType: ENTRY_TYPE.CONSUMPTION.EAT,
-    isHidden: false,
-    checked: true,
-  },
-  {
-    label: 'Drink',
-    entryType: ENTRY_TYPE.CONSUMPTION.DRINK,
-    isHidden: false,
-    checked: true,
-  },
-  {
-    label: 'Chew',
-    entryType: ENTRY_TYPE.CONSUMPTION.CHEW,
+    label: 'Consumption',
+    entryGroup: [
+      ENTRY_TYPE.CONSUMPTION.EAT, 
+      ENTRY_TYPE.CONSUMPTION.DRINK, 
+      ENTRY_TYPE.CONSUMPTION.CHEW,
+      
+    ],
     isHidden: false,
     checked: true,
   },

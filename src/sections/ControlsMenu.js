@@ -28,14 +28,19 @@ function ControlsMenu(props) {
     return <FullPageMenu />
   }
 
-  const entryFiltersList = ENTRY_TYPE_FILTERS.map((filterOption) => ({
-    ...filterOption,
-    checked: !logStore.filteredTypes.includes(filterOption.entryType)
-  }));
+  const {filteredTypes} = logStore;
+  const entryFiltersList = ENTRY_TYPE_FILTERS.map((filterOption) => {
+    const hasExistingEntryType = !filteredTypes.includes(filterOption.entryType);
+    const hasExistingEntryGroup = !filterOption.entryGroup ? false : filterOption.entryGroup.some((inGroupType) => filteredTypes.includes(inGroupType));
+    return {
+      ...filterOption,
+      checked: hasExistingEntryType || hasExistingEntryGroup,
+    }
+  });
 
   const attributeFiltersList = ATTRIBUTE_FILTERS.map((filterOption) => ({
     ...filterOption,
-    checked: logStore.filteredAttributes.includes(filterOption.attributeName)
+    checked: logStore.filteredAttributes.includes(filterOption.attributeName),
   }));
 
   const onApplyChangePage = (nextPageNum) => {
@@ -43,8 +48,17 @@ function ControlsMenu(props) {
   };
 
   const onApplyEntries = (list) => {
+    let uncheckedTypes = [];
+    
     const uncheckedItems = list.filter((item) => !item.checked);
-    const uncheckedTypes = uncheckedItems.map((item) => item.entryType);
+    uncheckedItems.forEach((item) => {
+      if (item.entryType) {
+        uncheckedTypes.push(item.entryType);
+      } else if (item.entryGroup) {
+        uncheckedTypes = uncheckedTypes.concat(item.entryGroup);
+      }
+    });
+
     logStore.fetchEntries({filteredTypes: uncheckedTypes});
   }
 
