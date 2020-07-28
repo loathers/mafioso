@@ -35,7 +35,7 @@ export default function UploadComponent(props) {
 
   const [isOver, setIsOver] = React.useState(false);
 
-  const hoverClassName = isOver ? 'bor-3-green' : 'bor-3-white';
+  const hoverClassName = isOver ? 'bor-2-green' : 'bor-1-white';
 
   return (
     <form 

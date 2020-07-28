@@ -12,6 +12,12 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
+    label: 'Encounters',
+    entryType: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+    isHidden: false,
+    checked: true,
+  },
+  {
     label: 'Eat',
     entryType: ENTRY_TYPE.CONSUMPTION.EAT,
     isHidden: false,
@@ -40,6 +46,12 @@ export const ENTRY_TYPE_FILTERS = [
     entryType: ENTRY_TYPE.UNEQUIP,
     isHidden: false,
     checked: false,
+  },
+  {
+    label: 'Pulls',
+    entryType: ENTRY_TYPE.HAGNK_PULL,
+    isHidden: false,
+    checked: true,
   },
   {
     label: 'Closet Put',
@@ -118,6 +130,13 @@ export const ATTRIBUTE_FILTERS = [
   {
     label: 'Level Up',
     attributeName: 'isLevelUp',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Used the Force',
+    attributeName: 'isEndedByUseTheForce',
     attributeValue: true,
     isHidden: false,
     checked: false,

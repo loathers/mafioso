@@ -83,7 +83,7 @@ function ControlsMenu(props) {
       </div>
 
       {/* pagination */}
-      { logStore.hasCurrentEntries &&
+      { logStore.filteredEntries &&
         <div
           className='flex-col flex-none adjacent-mar-t-5'>
           <div className='fontsize-3 bg-second pad-4 flex-row-center adjacent-mar-t-3'>{`Page ${logStore.currentPageNum + 1}/${logStore.calculatePageLast() + 1}`}</div>
@@ -96,7 +96,7 @@ function ControlsMenu(props) {
 
       {/* filters */}
       <FiltersMenu 
-        label='Shown Entries'
+        label='Visible Entries'
         onApply={onApplyEntries}
         defaultList={entryFiltersList}
         className='adjacent-mar-t-5'/>
