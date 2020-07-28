@@ -26,22 +26,33 @@ class LogStore {
     this.srcRawTexts = [];
     /** @type {String} */
     this.rawText = undefined;
-    /** @type {ObservableArray<Entry>} */
-    this.allEntries = observable([]);
 
     /** @type {String} */
     this.characterName = undefined;
     /** @type {Number} */
     this.ascensionNum = undefined;
 
-    /** @type {ObservableArray<Entry>} */
+    /** 
+     * literally all the entries
+     * @type {ObservableArray<Entry>}
+     */
+    this.allEntries = observable([]);
+    /** 
+     * entries that pass the current filters
+     * @type {ObservableArray<Entry>}
+     */
+    this.filteredEntries = observable([]);
+    /** 
+     * entries that are currently visible by page
+     * @type {ObservableArray<Entry>}
+     */
     this.currentEntries = observable([]);
     /** @type {Object} */
     this.displayOptions = observable({
       /** @type {Number} */
       pageNum: 0,
       /** @type {Number} */
-      entriesPerPage: 300,
+      entriesPerPage: 100,
       /** @type {Array<EntryType>} */
       filteredTypes: DEFAULT_ENTRY_FILTER,
       /** @type {Array<EntryAttribute>} */
@@ -268,11 +279,28 @@ class LogStore {
     return condensedData;
   }
   // -- update current logs and fetch functions
-  /** 
+   /** 
    * @param {Object} options
    * @return {Array<Entry>} 
    */
   async fetchEntries(options = {}) {
+    if (!this.canFetch(options)) {
+      return [];
+    }
+
+    const filteredEntries = await this.fetchByFilter(options);
+    this.filteredEntries.replace(filteredEntries);
+
+    const pagedEntries = await this.fetchByPage(options);
+    this.currentEntries.replace(pagedEntries);
+
+    return;
+  }
+  /** 
+   * @param {Object} options
+   * @return {Array<Entry>} 
+   */
+  async fetchEntries_legacy(options = {}) {
     if (!this.canFetch(options)) {
       return [];
     }
@@ -284,23 +312,14 @@ class LogStore {
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
 
-    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes)
+    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes);
 
     console.log('⏳ %cFetching entries...', 'color: blue')
     this.isFetching.set(true);
 
-    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount);
-    const endIdx = entriesPerPage === 'all' ? this.entriesCount : Math.min(startIdx + entriesPerPage, this.entriesCount);
-    // console.log('I want entries from', startIdx, 'to', endIdx);
-
     // batch find entries that are in range and not hidden
     const filteredEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
-        const withinSearchRange = entry.entryIdx >= startIdx && entry.entryIdx < endIdx;
-        if (!withinSearchRange) {
-          return false;
-        }
-
         const isVisibleEntry = !entryTypesToFilter.includes(entry.entryType);
         if (!isVisibleEntry) {
           return false;
@@ -319,11 +338,12 @@ class LogStore {
       });
     }, {batchDelay: FILTER_DELAY});
 
-    // if fetch result would result in nothing, keep current
+    // filtering resulted in nothing
     if (filteredEntries.length <= 0) {
-      console.warn(`No entries on page ${pageNum}`);
+      console.warn(`No results for filter on page ${pageNum}`);
       this.isFetching.set(false);
-      return this.currentEntries;
+      this.currentEntries.replace(filteredEntries);
+      return [];
     }
     
     const condensedEntries = this.condenseEntries(filteredEntries);
@@ -342,6 +362,91 @@ class LogStore {
     this.isFetching.set(false);
 
     return condensedEntries;
+  }
+  /** 
+   * @param {Object} options
+   * @return {Array<Entry>} 
+   */
+  async fetchByFilter(options = {}) {
+    if (!this.canFetch(options)) {
+      console.warn('can not fetch now');
+      return [];
+    }
+
+    const {
+      filteredTypes = this.displayOptions.filteredTypes,
+      filteredAttributes = this.displayOptions.filteredAttributes,
+    } = options;
+
+    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes);
+
+    console.log('⏳ %cFetching by filter...', 'color: blue');
+    this.isFetching.set(true);
+
+    // batch find entries that are in range and not hidden
+    const filteredEntries = await this.logBatcher.run((entriesGroup) => {
+      return entriesGroup.filter((entry) => {
+        const isVisibleEntry = !entryTypesToFilter.includes(entry.entryType);
+        if (!isVisibleEntry) {
+          return false;
+        }
+
+        const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
+          const entryAttributeValue = entry.attributes[attributeName];
+          return entryAttributeValue !== attributeValue;
+        });
+
+        if (!hasAllFilteredAttributes) {
+          return false;
+        }
+
+        return true;
+      });
+    }, {batchDelay: FILTER_DELAY});
+
+    // filtering resulted in nothing
+    if (filteredEntries.length <= 0) {
+      console.warn(`No results for filter.`);
+      this.isFetching.set(false);
+      return [];
+    }
+  
+    // now update options with the ones used to fetch
+    this.displayOptions = {
+      ...this.displayOptions,
+      filteredTypes: filteredTypes,
+      filteredAttributes: filteredAttributes,
+    };
+
+    console.log('⌛ %c...done fetch by filter.', 'color: blue');
+    this.isFetching.set(false);
+
+    const condensedEntries = this.condenseEntries(filteredEntries)
+    return condensedEntries;
+  }
+  /**
+   * @param {Object} options
+   * @return {Array<Entry>} 
+   */
+  async fetchByPage(options = {}) {
+    const {
+      pageNum = this.displayOptions.pageNum,
+      entriesPerPage = this.displayOptions.entriesPerPage,
+    } = options;
+
+    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount);
+    const endIdx = entriesPerPage === 'all' ? this.entriesCount : Math.min(startIdx + entriesPerPage, this.entriesCount);
+    // console.log('I want entries from', startIdx, 'to', endIdx);
+
+    console.log(`⏳ %cGetting page ${pageNum}...`, 'color: blue');
+    this.isFetching.set(true);
+
+    const pagedEntries = this.filteredEntries.slice(startIdx, endIdx);
+
+    console.log('⌛ %c...done fetch by page.', 'color: blue');
+    this.isFetching.set(false);
+
+    return pagedEntries;
   }
   /**
    * @param {Object} options
