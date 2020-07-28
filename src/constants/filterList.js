@@ -60,6 +60,18 @@ export const ENTRY_TYPE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Visits',
+    entryType: ENTRY_TYPE.VISITING,
+    isHidden: true,
+    checked: false,
+  },
+  {
+    label: 'Talks',
+    entryType: ENTRY_TYPE.TALKING,
+    isHidden: true,
+    checked: false,
+  },
+  {
     label: 'Shopping',
     entryType: ENTRY_TYPE.TRANSACTION,
     isHidden: false,
@@ -97,6 +109,13 @@ export const DEFAULT_ENTRY_FILTER = ENTRY_TYPE_FILTERS
  */
 export const ATTRIBUTE_FILTERS = [
   {
+    label: 'NonCombat',
+    attributeName: 'isNonCombatEncounter',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Level Up',
     attributeName: 'isLevelUp',
     attributeValue: true,
@@ -104,8 +123,22 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'NonCombat',
-    attributeName: 'isNonCombatEncounter',
+    label: 'Free Adventure',
+    attributeName: 'isFreeAdv',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Victories',
+    attributeName: 'isVictory',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Beaten Up',
+    attributeName: 'isDeath',
     attributeValue: true,
     isHidden: false,
     checked: false,

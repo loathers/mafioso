@@ -96,7 +96,7 @@ function ControlsMenu(props) {
 
       {/* filters */}
       <FiltersMenu 
-        label='Filter Entries'
+        label='Shown Entries'
         onApply={onApplyEntries}
         defaultList={entryFiltersList}
         className='adjacent-mar-t-5'/>
