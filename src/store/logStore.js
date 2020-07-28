@@ -90,8 +90,16 @@ class LogStore {
     return this.currentEntries.length > 0;
   }
   /** @type {Number} */
-  get entriesCount() {
+  get allEntriesCount() {
     return this.allEntries.length;
+  }
+  /** @type {Number} */
+  get visibleCount() {
+    return this.visibleEntries.length;
+  }
+  /** @type {Number} */
+  get currentCount() {
+    return this.currentEntries.length;
   }
   /** @type {Boolean} */
   get hasAscensionNum() {
@@ -462,8 +470,8 @@ class LogStore {
       entriesPerPage = this.displayOptions.entriesPerPage,
     } = options;
 
-    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.entriesCount);
-    const endIdx = entriesPerPage === 'all' ? this.entriesCount : Math.min(startIdx + entriesPerPage, this.entriesCount);
+    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
+    const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
     // console.log('I want entries from', startIdx, 'to', endIdx);
 
     console.log(`⏳ %cGetting page ${pageNum}...`, 'color: blue');
