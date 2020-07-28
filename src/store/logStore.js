@@ -305,7 +305,6 @@ class LogStore {
     const isChangingFilterTypes = filteredTypes !== this.filteredTypes;
     const isChangingFilterAttributes = filteredAttributes !== this.filteredAttributes;
     const shouldFilter = this.filteredEntries.length <= 0 || isChangingFilterAttributes || isChangingFilterTypes;
-
     if (shouldFilter) {
       const filteredEntries = await this.fetchByFilter(options);
       this.filteredEntries.replace(filteredEntries);
@@ -322,6 +321,13 @@ class LogStore {
     });
 
     this.currentEntries.replace(pagedEntries);
+
+    // now update options with the ones used to fetch
+    this.displayOptions = {
+      ...this.displayOptions,
+      ...options,
+    };
+
     return this.currentEntries;
   }
   /** 
@@ -438,12 +444,7 @@ class LogStore {
       return [];
     }
   
-    // now update options with the ones used to fetch
-    this.displayOptions = {
-      ...this.displayOptions,
-      filteredTypes: filteredTypes,
-      filteredAttributes: filteredAttributes,
-    };
+    console.log('displayOptions', this.displayOptions)
 
     console.log('⌛ %c...done fetch by filter.', 'color: blue');
     this.isFetching.set(false);
@@ -473,13 +474,6 @@ class LogStore {
     this.isFetching.set(true);
 
     const pagedEntries = this.filteredEntries.slice(startIdx, endIdx);
-
-    // now update options with the ones used to fetch
-    this.displayOptions = {
-      ...this.displayOptions,
-      pageNum: pageNum,
-      entriesPerPage: entriesPerPage,
-    };
 
     // delay for a millisec so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, 1));
