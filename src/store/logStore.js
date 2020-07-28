@@ -313,7 +313,8 @@ class LogStore {
 
     const isChangingPageNum = pageNum !== this.currentPageNum;
     const isChangingPageSize = entriesPerPage !== this.displayOptions.entriesPerPage;
-    const shouldResetPageData = shouldFilter && (isChangingPageSize || isChangingPageNum);
+    const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage);
+    const shouldResetPageData = isFilteredBeyondRange || (shouldFilter && (isChangingPageSize || isChangingPageNum));
 
     const pagedEntries = await this.fetchByPage({
       ...options,
@@ -396,7 +397,6 @@ class LogStore {
    */
   async fetchByFilter(options = {}) {
     if (!this.canFetch(options)) {
-      console.log('no fetchByFilter')
       return;
     }
 
@@ -457,7 +457,6 @@ class LogStore {
    */
   async fetchByPage(options = {}) {
     if (!this.canFetch(options)) {
-      console.log('no fetchByPage')
       return;
     }
 
@@ -482,6 +481,9 @@ class LogStore {
       entriesPerPage: entriesPerPage,
     };
 
+    // delay for a millisec so the loader can show up
+    await new Promise((resolve) => setTimeout(resolve, 1));
+
     console.log('⌛ %c...done fetch by page.', 'color: blue');
     this.isFetching.set(false);
 
@@ -493,15 +495,6 @@ class LogStore {
    */
   canFetch(options = {}) {
     if (!this.isReady) {
-      return false;
-    }
-
-    const {
-      pageNum = this.displayOptions.pageNum,
-      entriesPerPage = this.displayOptions.entriesPerPage,
-    } = options;
-
-    if (pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage)) {
       return false;
     }
 
