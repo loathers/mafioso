@@ -165,6 +165,8 @@ class LogStore {
     this.srcRawTexts = [];
     this.allEntries.clear();
     this.visibleEntries.clear();
+    this.characterName = undefined;
+    this.ascensionNum = undefined;
 
     // sort files by kolmafia's date format
     const sortedFiles = Array.from(files).sort((fileA, fileB) => {
