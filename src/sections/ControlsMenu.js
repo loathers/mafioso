@@ -28,13 +28,18 @@ function ControlsMenu(props) {
     return <FullPageMenu />
   }
 
-  const {filteredTypes} = logStore;
+  const {entryTypesVisible} = logStore;
   const entryFiltersList = ENTRY_TYPE_FILTERS.map((filterOption) => {
-    const hasExistingEntryType = !filteredTypes.includes(filterOption.entryType);
-    const hasExistingEntryGroup = !filterOption.entryGroup ? false : filterOption.entryGroup.some((inGroupType) => filteredTypes.includes(inGroupType));
+    const hasExistingEntryType = entryTypesVisible.includes(filterOption.entryType);
+
+    let hasAllEntryGroup = false;
+    if (filterOption.entryGroup) {
+      hasAllEntryGroup = !filterOption.entryGroup.some((innerType) => !entryTypesVisible.includes(innerType));
+    }
+
     return {
       ...filterOption,
-      checked: hasExistingEntryType || hasExistingEntryGroup,
+      checked: hasExistingEntryType || hasAllEntryGroup,
     }
   });
 
@@ -48,18 +53,25 @@ function ControlsMenu(props) {
   };
 
   const onApplyEntries = (list) => {
-    let uncheckedTypes = [];
-    
-    const uncheckedItems = list.filter((item) => !item.checked);
-    uncheckedItems.forEach((item) => {
-      if (item.entryType) {
-        uncheckedTypes.push(item.entryType);
-      } else if (item.entryGroup) {
-        uncheckedTypes = uncheckedTypes.concat(item.entryGroup);
+    let checkedTypes = [];
+
+    const checkedItems = list.filter((item) => item.checked);
+    checkedItems.forEach((item) => {
+      const {entryType, entryGroup} = item;
+      if (entryType && !checkedTypes.includes(entryType)) {
+        checkedTypes.push(entryType);
+      }
+
+      if (entryGroup) {
+        entryGroup.forEach((innerType) => {
+          if (!checkedTypes.includes(innerType)) {
+            checkedTypes.push(innerType);
+          }
+        })
       }
     });
 
-    logStore.fetchEntries({filteredTypes: uncheckedTypes});
+    logStore.fetchEntries({entryTypesVisible: checkedTypes});
   }
 
   const onApplyAttributes = (list) => {

@@ -9,7 +9,7 @@ import {
   ALWAYS_HIDDEN_ENTRIES,
   FILTER_DELAY,
 } from 'constants/DEFAULTS';
-import {DEFAULT_ENTRY_FILTER, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
+import {DEFAULT_ENTRIES_VISIBLE, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
 import REGEX from 'constants/regexes';
 
 import * as logParserUtils from 'utilities/logParserUtils';
@@ -41,7 +41,7 @@ class LogStore {
      * entries that pass the current filters
      * @type {ObservableArray<Entry>}
      */
-    this.filteredEntries = observable([]);
+    this.visibleEntries = observable([]);
     /** 
      * entries that are currently visible by page
      * @type {ObservableArray<Entry>}
@@ -54,7 +54,7 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 100,
       /** @type {Array<EntryType>} */
-      filteredTypes: DEFAULT_ENTRY_FILTER,
+      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE,
       /** @type {Array<EntryAttribute>} */
       filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
       /** @type {Array<EntryType>} */
@@ -107,8 +107,8 @@ class LogStore {
     return this.displayOptions.pageNum;
   }
   /** @type {Array<EntryType>} */
-  get filteredTypes() {
-    return this.displayOptions.filteredTypes;
+  get entryTypesVisible() {
+    return this.displayOptions.entryTypesVisible;
   }
   /** @type {Array<EntryAttribute>} */
   get filteredAttributes() {
@@ -156,7 +156,7 @@ class LogStore {
     this.srcFiles = files;
     this.srcRawTexts = [];
     this.allEntries.clear();
-    this.filteredEntries.clear();
+    this.visibleEntries.clear();
 
     // sort files by kolmafia's date format
     const sortedFiles = Array.from(files).sort((fileA, fileB) => {
@@ -231,7 +231,7 @@ class LogStore {
     const newData = await logParserUtils.parseLogTxt(this.rawText);
     // const newData = await logParserUtils.parseLogTxt(this.srcRawTexts.join('\n\n'));
     this.allEntries.replace(newData);
-    this.filteredEntries.replace([]);
+    this.visibleEntries.replace([]);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
     this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
@@ -243,7 +243,7 @@ class LogStore {
     // we just parsed so we gotta refresh `currentEntries`
     this.fetchEntries({
       pageNum: 0,
-      filteredTypes: DEFAULT_ENTRY_FILTER,
+      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE,
       filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
     });
   }
@@ -291,29 +291,26 @@ class LogStore {
    */
   async fetchEntries(options = {}) {
     if (!this.canFetch(options)) {
-      console.log('no fetch with these options', options);
       return;
     }
 
     const {
       pageNum = this.displayOptions.pageNum,
       entriesPerPage = this.displayOptions.entriesPerPage,
-      filteredTypes = this.displayOptions.filteredTypes,
-      filteredAttributes = this.displayOptions.filteredAttributes,
+      // entryTypesVisible = this.displayOptions.entryTypesVisible,
+      // filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
 
-    const isChangingFilterTypes = filteredTypes !== this.filteredTypes;
-    const isChangingFilterAttributes = filteredAttributes !== this.filteredAttributes;
-    const shouldFilter = this.filteredEntries.length <= 0 || isChangingFilterAttributes || isChangingFilterTypes;
-    if (shouldFilter) {
-      const filteredEntries = await this.fetchByFilter(options);
-      this.filteredEntries.replace(filteredEntries);
-    }
+    // const shouldFilter = this.visibleEntries.length <= 0;
+    // if (shouldFilter) {
+      const visibleEntries = await this.fetchByFilter(options);
+      this.visibleEntries.replace(visibleEntries);
+    // }
 
     const isChangingPageNum = pageNum !== this.currentPageNum;
     const isChangingPageSize = entriesPerPage !== this.displayOptions.entriesPerPage;
     const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage);
-    const shouldResetPageData = isFilteredBeyondRange || (shouldFilter && (isChangingPageSize || isChangingPageNum));
+    const shouldResetPageData = isFilteredBeyondRange || (isChangingPageSize || isChangingPageNum);
 
     const pagedEntries = await this.fetchByPage({
       ...options,
@@ -342,17 +339,17 @@ class LogStore {
     const {
       pageNum = this.displayOptions.pageNum,
       entriesPerPage = this.displayOptions.entriesPerPage,
-      filteredTypes = this.displayOptions.filteredTypes,
+      entryTypesVisible = this.displayOptions.entryTypesVisible,
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
 
-    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes);
+    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(entryTypesVisible);
 
     console.log('⏳ %cFetching entries...', 'color: blue')
     this.isFetching.set(true);
 
     // batch find entries that are in range and not hidden
-    const filteredEntries = await this.logBatcher.run((entriesGroup) => {
+    const visibleEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
         const isVisibleEntry = !entryTypesToFilter.includes(entry.entryType);
         if (!isVisibleEntry) {
@@ -373,14 +370,14 @@ class LogStore {
     }, {batchDelay: FILTER_DELAY});
 
     // filtering resulted in nothing
-    if (filteredEntries.length <= 0) {
+    if (visibleEntries.length <= 0) {
       console.warn(`No results for filter on page ${pageNum}`);
       this.isFetching.set(false);
-      this.currentEntries.replace(filteredEntries);
+      this.currentEntries.replace(visibleEntries);
       return [];
     }
     
-    const condensedEntries = this.condenseEntries(filteredEntries);
+    const condensedEntries = this.condenseEntries(visibleEntries);
     this.currentEntries.replace(condensedEntries);
 
     // now update options with the ones used to fetch
@@ -388,7 +385,7 @@ class LogStore {
       ...this.displayOptions,
       pageNum: pageNum,
       entriesPerPage: entriesPerPage,
-      filteredTypes: filteredTypes,
+      entryTypesVisible: entryTypesVisible,
       filteredAttributes: filteredAttributes,
     };
 
@@ -407,19 +404,22 @@ class LogStore {
     }
 
     const {
-      filteredTypes = this.displayOptions.filteredTypes,
+      entryTypesVisible = this.displayOptions.entryTypesVisible,
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
-
-    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(filteredTypes);
 
     console.log('⏳ %cFetching by filter...', 'color: blue');
     this.isFetching.set(true);
 
     // batch find entries that are in range and not hidden
-    const filteredEntries = await this.logBatcher.run((entriesGroup) => {
+    const visibleEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
-        const isVisibleEntry = !entryTypesToFilter.includes(entry.entryType);
+        const isHiddenEntry = this.displayOptions.alwaysHiddenTypes.includes(entry.entryType);
+        if (isHiddenEntry) {
+          return false;
+        }
+
+        const isVisibleEntry = entryTypesVisible.includes(entry.entryType);
         if (!isVisibleEntry) {
           return false;
         }
@@ -438,18 +438,16 @@ class LogStore {
     }, {batchDelay: FILTER_DELAY});
 
     // filtering resulted in nothing
-    if (filteredEntries.length <= 0) {
+    if (visibleEntries.length <= 0) {
       console.warn(`No results for filter.`);
       this.isFetching.set(false);
       return [];
     }
   
-    console.log('displayOptions', this.displayOptions)
-
     console.log('⌛ %c...done fetch by filter.', 'color: blue');
     this.isFetching.set(false);
 
-    const condensedEntries = this.condenseEntries(filteredEntries)
+    const condensedEntries = this.condenseEntries(visibleEntries)
     return condensedEntries;
   }
   /**
@@ -473,7 +471,7 @@ class LogStore {
     console.log(`⏳ %cGetting page ${pageNum}...`, 'color: blue');
     this.isFetching.set(true);
 
-    const pagedEntries = this.filteredEntries.slice(startIdx, endIdx);
+    const pagedEntries = this.visibleEntries.slice(startIdx, endIdx);
 
     // delay for a millisec so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, 1));
@@ -499,7 +497,7 @@ class LogStore {
    * @returns {Number}
    */
   calculatePageLast(entriesPerPage = this.displayOptions.entriesPerPage) {
-    const lastPage = Math.ceil(this.filteredEntries.length / entriesPerPage) - 1;
+    const lastPage = Math.ceil(this.visibleEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
 }

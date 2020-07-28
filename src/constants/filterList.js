@@ -12,8 +12,38 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Encounters',
-    entryType: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+    label: 'IOTM',
+    entryGroup: [
+      ENTRY_TYPE.IOTM.BASTILLE_BATALLION,
+      ENTRY_TYPE.IOTM.BEACH_COMB,
+      ENTRY_TYPE.IOTM.BOXING_DAYCARE,
+      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
+      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
+      ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY,
+      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
+      ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT,
+      ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON,
+      ENTRY_TYPE.IOTM.PIRATEREALM,
+      ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX,
+      ENTRY_TYPE.IOTM.VOTING_BOOTH,
+    ],
+    isHidden: false,
+    checked: true,
+  },
+  {
+    label: 'Generic NonCombat',
+    entryGroup: [
+      ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+    ],
+    isHidden: false,
+    checked: true,
+  },
+  {
+    label: 'Using Stuff',
+    entryGroup: [
+      ENTRY_TYPE.GENERIC_USE,
+      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
+    ],
     isHidden: false,
     checked: true,
   },
@@ -23,20 +53,19 @@ export const ENTRY_TYPE_FILTERS = [
       ENTRY_TYPE.CONSUMPTION.EAT, 
       ENTRY_TYPE.CONSUMPTION.DRINK, 
       ENTRY_TYPE.CONSUMPTION.CHEW,
-      
+      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
+      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
     ],
     isHidden: false,
     checked: true,
   },
   {
-    label: 'Equip',
+    label: 'Equipment',
+    entryGroup: [
+      ENTRY_TYPE.EQUIP,
+      ENTRY_TYPE.UNEQUIP,
+    ],
     entryType: ENTRY_TYPE.EQUIP,
-    isHidden: false,
-    checked: false,
-  },
-  {
-    label: 'Unequip',
-    entryType: ENTRY_TYPE.UNEQUIP,
     isHidden: false,
     checked: false,
   },
@@ -47,14 +76,11 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Closet Put',
-    entryType: ENTRY_TYPE.CLOSET_PUT,
-    isHidden: true,
-    checked: false,
-  },
-  {
-    label: 'Closet Take',
-    entryType: ENTRY_TYPE.CLOSET_TAKE,
+    label: 'Closet',
+    entryGroup: [
+      ENTRY_TYPE.CLOSET_PUT,
+      ENTRY_TYPE.CLOSET_TAKE,
+    ],
     isHidden: true,
     checked: false,
   },
@@ -66,13 +92,10 @@ export const ENTRY_TYPE_FILTERS = [
   },
   {
     label: 'Visits',
-    entryType: ENTRY_TYPE.VISITING,
-    isHidden: true,
-    checked: false,
-  },
-  {
-    label: 'Talks',
-    entryType: ENTRY_TYPE.TALKING,
+    entryGroup: [
+      ENTRY_TYPE.VISITING,
+      ENTRY_TYPE.TALKING,
+    ],
     isHidden: true,
     checked: false,
   },
@@ -105,9 +128,23 @@ export const ENTRY_TYPE_FILTERS = [
  * entryTypes that are filtered by default
  * @type {Array}
  */
-export const DEFAULT_ENTRY_FILTER = ENTRY_TYPE_FILTERS
-  .filter((filterData) => !filterData.checked)
-  .map((filterData) => filterData.entryType);
+export let DEFAULT_ENTRIES_VISIBLE = [];
+ENTRY_TYPE_FILTERS.forEach((filterData) => {
+  if (filterData.checked) {
+    const {entryType, entryGroup} = filterData;
+    if (entryType && !DEFAULT_ENTRIES_VISIBLE.includes(entryType)) {
+      DEFAULT_ENTRIES_VISIBLE.push(entryType);
+    }
+
+    if (entryGroup) {
+      entryGroup.forEach((innerType) => {
+        if (!DEFAULT_ENTRIES_VISIBLE.includes(innerType)) {
+          DEFAULT_ENTRIES_VISIBLE.push(innerType);
+        }
+      })
+    }
+  }
+});
 /**
  * [ATTRIBUTE_FILTERS description]
  * @type {Array}

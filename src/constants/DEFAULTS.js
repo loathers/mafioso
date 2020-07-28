@@ -14,6 +14,7 @@ export const FILTER_DELAY = 3;
 // -- log level
 // some data that is always filtered out
 export const ALWAYS_HIDDEN_ENTRIES = [
+  ENTRY_TYPE.IOTM.GARBAGE_TOTE,
   ENTRY_TYPE.UNKNOWN,
   ENTRY_TYPE.SPELL_CAST,
   ENTRY_TYPE.CLOSET_PUT,
