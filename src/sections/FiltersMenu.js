@@ -29,12 +29,12 @@ export default function FiltersMenu(props) {
   }
 
   const onClickSelectAll = () => {
-    const newList = filterList.map((item) => ({...item, checked: true}));
+    const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? true : item.checked}));
     updateList(newList);
   }
 
   const onClickSelectNone = () => {
-    const newList = filterList.map((item) => ({...item, checked: false}));
+    const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? false : item.checked}));
     updateList(newList);
   }
 
