@@ -25,13 +25,22 @@ export default function FiltersMenu(props) {
   }
 
   const onClickApply = () => {
-    // const checkedItems = filterList.filter((item) => !item.checked);
     onApply(filterList);
+  }
+
+  const onClickSelectAll = () => {
+    const newList = filterList.map((item) => ({...item, checked: true}));
+    updateList(newList);
+  }
+
+  const onClickSelectNone = () => {
+    const newList = filterList.map((item) => ({...item, checked: false}));
+    updateList(newList);
   }
 
   return (
     <div className={combineClassnames('flex-col flex-none', className)}>
-      <div className='flex-none fontsize-1 adjacent-mar-t-3'>{label}</div>  
+      <div className='flex-none fontsize-3 adjacent-mar-t-3'>{label}</div>  
 
       <div className='flex-col adjacent-mar-t-3'>
         { filterList.map((filterOption, idx) => (
@@ -42,6 +51,20 @@ export default function FiltersMenu(props) {
             key={`filter-checkbox-${idx}-key`}
           />
         ))}
+      </div>
+
+      <div className='flex-row fontsize-1 flex-none adjacent-mar-t-3'>
+        <button 
+          onClick={onClickSelectAll} 
+          className='pad-h-1 cursor-pointer flex-none adjacent-mar-l-2'>
+          All
+        </button>  
+        <div className='flex-none adjacent-mar-l-2'>/</div>  
+        <button 
+          onClick={onClickSelectNone} 
+          className='pad-h-1 cursor-pointer flex-none adjacent-mar-l-2'>
+          None
+        </button>  
       </div>
 
       <button
