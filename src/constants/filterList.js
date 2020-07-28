@@ -12,6 +12,12 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
+    label: 'NonCombat',
+    entryType: ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
+    isHidden: false,
+    checked: true,
+  },
+  {
     label: 'IOTM',
     entryGroup: [
       ENTRY_TYPE.IOTM.BASTILLE_BATALLION,
@@ -31,24 +37,7 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Generic NonCombat',
-    entryGroup: [
-      ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-    ],
-    isHidden: false,
-    checked: true,
-  },
-  {
-    label: 'Using Stuff',
-    entryGroup: [
-      ENTRY_TYPE.GENERIC_USE,
-      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
-    ],
-    isHidden: false,
-    checked: false,
-  },
-  {
-    label: 'Consumption',
+    label: 'Diet',
     entryGroup: [
       ENTRY_TYPE.CONSUMPTION.EAT, 
       ENTRY_TYPE.CONSUMPTION.DRINK, 
@@ -60,12 +49,11 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Equipment',
+    label: 'Using Stuff',
     entryGroup: [
-      ENTRY_TYPE.EQUIP,
-      ENTRY_TYPE.UNEQUIP,
+      ENTRY_TYPE.GENERIC_USE,
+      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
     ],
-    entryType: ENTRY_TYPE.EQUIP,
     isHidden: false,
     checked: false,
   },
@@ -82,6 +70,16 @@ export const ENTRY_TYPE_FILTERS = [
       ENTRY_TYPE.CLOSET_TAKE,
     ],
     isHidden: true,
+    checked: false,
+  },
+  {
+    label: 'Equipment',
+    entryGroup: [
+      ENTRY_TYPE.EQUIP,
+      ENTRY_TYPE.UNEQUIP,
+    ],
+    entryType: ENTRY_TYPE.EQUIP,
+    isHidden: false,
     checked: false,
   },
   {
