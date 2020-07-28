@@ -45,7 +45,7 @@ export const ENTRY_TYPE_FILTERS = [
       ENTRY_TYPE.IOTM.GARBAGE_TOTE,
     ],
     isHidden: false,
-    checked: true,
+    checked: false,
   },
   {
     label: 'Consumption',

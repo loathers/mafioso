@@ -236,8 +236,8 @@ class LogStore {
     console.log('✨ %cParsing your Session Log:', 'color: blue; font-size: 14px');
     this.isParsing.set(true);
 
-    const newData = await logParserUtils.parseLogTxt(this.rawText);
-    // const newData = await logParserUtils.parseLogTxt(this.srcRawTexts.join('\n\n'));
+    const parsedData = await logParserUtils.parseLogTxt(this.rawText);
+    const newData = this.condenseEntries(parsedData);
     this.allEntries.replace(newData);
     this.visibleEntries.replace([]);
 
@@ -448,13 +448,14 @@ class LogStore {
 
     // filtering resulted in nothing
     if (visibleEntries.length <= 0) {
-      console.warn(`No results for filter.`);
+      console.log(`⌛ %cNo results for filter.`, 'color: blue');
       return [];
     }
   
     console.log('⌛ %c...done fetch by filter.', 'color: blue');
-    const condensedEntries = this.condenseEntries(visibleEntries)
-    return condensedEntries;
+    return visibleEntries;
+    // const condensedEntries = this.condenseEntries(visibleEntries);
+    // return condensedEntries;
   }
   /**
    * @param {Object} options
@@ -490,6 +491,10 @@ class LogStore {
    */
   canFetch(options = {}) {
     if (!this.hasParsedEntries) {
+      return false;
+    }
+
+    if (this.logBatcher === undefined) {
       return false;
     }
 
