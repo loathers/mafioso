@@ -40,13 +40,22 @@ function App() {
         }}
         showFull={appStore.isShowingFullUpload} />
 
-      { logStore.hasCurrentEntries &&
-        <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
-          <VisualizerSection 
-            entriesList={logStore.currentEntries}
-          />
-        </div>
-      }
+        { logStore.isReady &&
+          <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
+            { logStore.hasCurrentEntries &&
+              <VisualizerSection 
+                entriesList={logStore.currentEntries}
+              />
+            }
+
+            { !logStore.hasCurrentEntries &&
+              <div className='fontsize-6 color-white'>
+                Huh, nothing here.
+              </div>
+            }
+          </div>
+        }
+
     </div>
   );
 })
