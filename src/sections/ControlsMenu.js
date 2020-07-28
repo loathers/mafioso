@@ -38,16 +38,20 @@ function ControlsMenu(props) {
     checked: logStore.filteredAttributes.includes(filterOption.attributeName)
   }));
 
+  const onApplyChangePage = (nextPageNum) => {
+    logStore.fetchEntries({pageNum: nextPageNum});
+  };
+
   const onApplyEntries = (list) => {
     const uncheckedItems = list.filter((item) => !item.checked);
     const uncheckedTypes = uncheckedItems.map((item) => item.entryType);
-    logStore.applyFilters({filteredTypes: uncheckedTypes});
+    logStore.fetchEntries({filteredTypes: uncheckedTypes});
   }
 
   const onApplyAttributes = (list) => {
     const checkedItems = list.filter((item) => item.checked);
     const filteredAttributes = checkedItems.map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));
-    logStore.applyFilters({filteredAttributes: filteredAttributes});
+    logStore.fetchEntries({filteredAttributes: filteredAttributes});
   }
 
   return (
@@ -84,7 +88,7 @@ function ControlsMenu(props) {
           className='flex-col flex-none adjacent-mar-t-5'>
           <div className='fontsize-3 bg-second pad-4 flex-row-center adjacent-mar-t-3'>{`Page ${logStore.currentPageNum}/${logStore.calculatePageLast()}`}</div>
           <SimplePaginator
-            onChangePage={(nextPageNum) => logStore.fetchEntries({pageNum: nextPageNum})}
+            onChangePage={onApplyChangePage}
             currentPageNum={logStore.currentPageNum}
             className='adjacent-mar-t-3' />
         </div>

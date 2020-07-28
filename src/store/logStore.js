@@ -156,6 +156,7 @@ class LogStore {
     this.srcFiles = files;
     this.srcRawTexts = [];
     this.allEntries.clear();
+    this.filteredEntries.clear();
 
     // sort files by kolmafia's date format
     const sortedFiles = Array.from(files).sort((fileA, fileB) => {
@@ -230,6 +231,7 @@ class LogStore {
     const newData = await logParserUtils.parseLogTxt(this.rawText);
     // const newData = await logParserUtils.parseLogTxt(this.srcRawTexts.join('\n\n'));
     this.allEntries.replace(newData);
+    this.filteredEntries.replace([]);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
     this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
@@ -239,7 +241,11 @@ class LogStore {
     this.isParsing.set(false);
 
     // we just parsed so we gotta refresh `currentEntries`
-    this.fetchEntries();
+    this.fetchEntries({
+      pageNum: 0,
+      filteredTypes: DEFAULT_ENTRY_FILTER,
+      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
+    });
   }
   /**
    * currently the parameter passed isn't a shallow copy
@@ -285,16 +291,37 @@ class LogStore {
    */
   async fetchEntries(options = {}) {
     if (!this.canFetch(options)) {
-      return [];
+      console.log('no fetch with these options', options);
+      return;
     }
 
-    const filteredEntries = await this.fetchByFilter(options);
-    this.filteredEntries.replace(filteredEntries);
+    const {
+      pageNum = this.displayOptions.pageNum,
+      entriesPerPage = this.displayOptions.entriesPerPage,
+      filteredTypes = this.displayOptions.filteredTypes,
+      filteredAttributes = this.displayOptions.filteredAttributes,
+    } = options;
 
-    const pagedEntries = await this.fetchByPage(options);
+    const isChangingFilterTypes = filteredTypes !== this.filteredTypes;
+    const isChangingFilterAttributes = filteredAttributes !== this.filteredAttributes;
+    const shouldFilter = this.filteredEntries.length <= 0 || isChangingFilterAttributes || isChangingFilterTypes;
+
+    if (shouldFilter) {
+      const filteredEntries = await this.fetchByFilter(options);
+      this.filteredEntries.replace(filteredEntries);
+    }
+
+    const isChangingPageNum = pageNum !== this.currentPageNum;
+    const isChangingPageSize = entriesPerPage !== this.displayOptions.entriesPerPage;
+    const shouldResetPageData = shouldFilter && (isChangingPageSize || isChangingPageNum);
+
+    const pagedEntries = await this.fetchByPage({
+      ...options,
+      pageNum: shouldResetPageData ? 0 : pageNum,
+    });
+
     this.currentEntries.replace(pagedEntries);
-
-    return;
+    return this.currentEntries;
   }
   /** 
    * @param {Object} options
@@ -369,8 +396,8 @@ class LogStore {
    */
   async fetchByFilter(options = {}) {
     if (!this.canFetch(options)) {
-      console.warn('can not fetch now');
-      return [];
+      console.log('no fetchByFilter')
+      return;
     }
 
     const {
@@ -429,6 +456,11 @@ class LogStore {
    * @return {Array<Entry>} 
    */
   async fetchByPage(options = {}) {
+    if (!this.canFetch(options)) {
+      console.log('no fetchByPage')
+      return;
+    }
+
     const {
       pageNum = this.displayOptions.pageNum,
       entriesPerPage = this.displayOptions.entriesPerPage,
@@ -443,16 +475,17 @@ class LogStore {
 
     const pagedEntries = this.filteredEntries.slice(startIdx, endIdx);
 
+    // now update options with the ones used to fetch
+    this.displayOptions = {
+      ...this.displayOptions,
+      pageNum: pageNum,
+      entriesPerPage: entriesPerPage,
+    };
+
     console.log('⌛ %c...done fetch by page.', 'color: blue');
     this.isFetching.set(false);
 
     return pagedEntries;
-  }
-  /**
-   * @param {Object} options
-   */
-  applyFilters(options = {}) {
-    this.fetchEntries(options);
   }
   /**
    * @param {Object} options
@@ -479,7 +512,7 @@ class LogStore {
    * @returns {Number}
    */
   calculatePageLast(entriesPerPage = this.displayOptions.entriesPerPage) {
-    const lastPage = Math.ceil(this.allEntries.length / entriesPerPage) - 1;
+    const lastPage = Math.ceil(this.filteredEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
 }
