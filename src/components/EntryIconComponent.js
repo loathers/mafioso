@@ -50,14 +50,13 @@ function getEntryIcon(entryType) {
       return InfoSVG;
 
     case ENTRY_TYPE.IOTM.GARBAGE_TOTE:
-    case ENTRY_TYPE.EQUIP:
-    case ENTRY_TYPE.UNEQUIP:
+    case ENTRY_TYPE.ITEMS.EQUIP:
+    case ENTRY_TYPE.ITEMS.UNEQUIP:
       return BattleGearSVG;
 
-    case ENTRY_TYPE.HAGNK_PULL:
-    case ENTRY_TYPE.CLOSET_PUT:
-    case ENTRY_TYPE.CLOSET_TAKE:
-    case ENTRY_TYPE.ACQUIRE_ITEM:
+    case ENTRY_TYPE.ITEMS.HAGNK_PULL:
+    case ENTRY_TYPE.ITEMS.CLOSET_PUT:
+    case ENTRY_TYPE.ITEMS.CLOSET_TAKE:
       return SwapBagSVG;
 
     case ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE:
@@ -77,7 +76,7 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.FAMILIAR:
       return CatSVG;
 
-    case ENTRY_TYPE.SPELL_CAST:
+    case ENTRY_TYPE.EFFECTS.SPELL_CAST:
       return SpellbookSVG;
 
     case ENTRY_TYPE.TRANSACTION:

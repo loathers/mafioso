@@ -61,22 +61,22 @@ export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Buffs/Effects',
     entryGroup: [
-      ENTRY_TYPE.SPELL_CAST,
+      ENTRY_TYPE.EFFECTS.SPELL_CAST,
     ],
     isHidden: false,
     checked: true,
   },
   {
     label: 'Pulls',
-    entryType: ENTRY_TYPE.HAGNK_PULL,
+    entryType: ENTRY_TYPE.ITEMS.HAGNK_PULL,
     isHidden: false,
     checked: true,
   },
   {
     label: 'Closet',
     entryGroup: [
-      ENTRY_TYPE.CLOSET_PUT,
-      ENTRY_TYPE.CLOSET_TAKE,
+      ENTRY_TYPE.ITEMS.CLOSET_PUT,
+      ENTRY_TYPE.ITEMS.CLOSET_TAKE,
     ],
     isHidden: true,
     checked: false,
@@ -84,10 +84,10 @@ export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Equipment',
     entryGroup: [
-      ENTRY_TYPE.EQUIP,
-      ENTRY_TYPE.UNEQUIP,
+      ENTRY_TYPE.ITEMS.EQUIP,
+      ENTRY_TYPE.ITEMS.UNEQUIP,
     ],
-    entryType: ENTRY_TYPE.EQUIP,
+    entryType: ENTRY_TYPE.ITEMS.EQUIP,
     isHidden: false,
     checked: false,
   },
@@ -134,7 +134,7 @@ export const ENTRY_TYPE_FILTERS = [
     label: 'Uncategorized',
     entryType: ENTRY_TYPE.UNKNOWN,
     isHidden: false,
-    checked: true,
+    checked: false,
   },
 ];
 /**

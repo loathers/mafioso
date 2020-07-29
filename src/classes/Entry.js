@@ -185,7 +185,7 @@ export default class Entry {
       return 'SongBoom™ BoomBox';
     }
 
-    if (this.entryType === ENTRY_TYPE.HAGNK_PULL) {
+    if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {
       return 'Hagnk\'s Ancestral Mini-Storage';
     }
 
@@ -203,7 +203,7 @@ export default class Entry {
       }
     }
 
-    if (this.entryType === ENTRY_TYPE.HAGNK_PULL) {
+    if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {
       return 'Pull from Hagnk\'s';
     }
 
@@ -343,7 +343,7 @@ export default class Entry {
     }
 
     // all equip texts can be combined into one
-    if (this.entryType === ENTRY_TYPE.EQUIP && this.doesShareEntryType(comparedEntry)) {
+    if (this.entryType === ENTRY_TYPE.ITEMS.EQUIP && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 
@@ -351,7 +351,7 @@ export default class Entry {
       return true;
     }
 
-    if (this.entryType === ENTRY_TYPE.HAGNK_PULL && this.doesShareEntryType(comparedEntry)) {
+    if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 

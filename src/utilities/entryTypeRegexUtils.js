@@ -109,27 +109,27 @@ export function getEntryType(entryString) {
   }
 
   if (isEntryHagnkPull(entryString)) {
-    return ENTRY_TYPE.HAGNK_PULL;
+    return ENTRY_TYPE.ITEMS.HAGNK_PULL;
   }
 
   if (isEntryEquip(entryString)) {
-    return ENTRY_TYPE.EQUIP;
+    return ENTRY_TYPE.ITEMS.EQUIP;
   }
 
   if (isEntryUnequip(entryString)) {
-    return ENTRY_TYPE.UNEQUIP;
+    return ENTRY_TYPE.ITEMS.UNEQUIP;
   }
 
   if (isEntryClosetPut(entryString)) {
-    return ENTRY_TYPE.CLOSET_PUT;
+    return ENTRY_TYPE.ITEMS.CLOSET_PUT;
   }
 
   if (isEntryClosetTake(entryString)) {
-    return ENTRY_TYPE.CLOSET_TAKE;
+    return ENTRY_TYPE.ITEMS.CLOSET_TAKE;
   }
 
   if (isEntrySpellCast(entryString)) {
-    return ENTRY_TYPE.SPELL_CAST;
+    return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
 
   if (isEntryTransaction(entryString)) {
