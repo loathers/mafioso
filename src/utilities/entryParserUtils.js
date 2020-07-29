@@ -171,6 +171,10 @@ export function parseLocationName(entryString) {
     return visitLocationMatches[0];
   }
 
+  if (entryTypeRegexUtils.isEntrySpellCast(entryString)) {
+    return `✧ ${getRegexMatch(entryString, REGEX.EFFECTS.CAST_NAME)[0]} ✧`;
+  }
+
   return null;
 }
 /**
@@ -189,7 +193,6 @@ export function parseEncounterName(entryString) {
   if (encounterNameMatches !== null) {
     return encounterNameMatches[0];
   }
-
   return null;
 }
 /**

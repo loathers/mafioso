@@ -191,8 +191,11 @@ export const REGEX = {
     EFFECT_NAME: /(?<=acquire an effect: ).*?(?=( \(|$))/mi,
     EFFECT_DURATION: /(?<=acquire an effect: .*\()\d+(?=\))/mi,
 
-    CAST_LINE: /^cast .*/gim,
     UNAFFECT_LINE: /^uneffect.*/gim,
+
+    CAST_LINE: /^cast .*/gim,
+    CAST_NAME: /(?<=^cast \d ).*/mi,
+    CAST_AMOUNT: /(?<=^cast )\d+(?=.*)/mi,
   },
   // -- 
   // note: these only work in raw
