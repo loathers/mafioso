@@ -172,7 +172,11 @@ export function parseLocationName(entryString) {
   }
 
   if (entryTypeRegexUtils.isEntrySpellCast(entryString)) {
-    return `✧ ${getRegexMatch(entryString, REGEX.EFFECTS.CAST_NAME)[0]} ✧`;
+    const spellCastName = getRegexMatch(entryString, REGEX.EFFECTS.CAST_NAME) || [];
+    if (spellCastName[0] === null) {
+      console.warning(`Unable to find spell cast name for ${entryString}`);
+    }
+    return `✧ ${spellCastName[0]} ✧`;
   }
 
   return null;
@@ -209,7 +213,7 @@ export function parseAcquiredItems(entryString) {
     }
 
     return new ListItem({
-      name: itemName[0],
+      name: itemName[0].replace(/an item: /im, ''),
       amount: itemAmount[0] || 1,
     });
   })
