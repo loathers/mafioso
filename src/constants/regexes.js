@@ -74,6 +74,7 @@ export const REGEX = {
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
     USELESS_VISIT: /^visit.*(\r\n|\n){2,}/gim,
+    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
 
     COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
     COMBAT_INIT: /Round.*(loses initiative|wins initiative).*/i,
@@ -90,7 +91,6 @@ export const REGEX = {
     MEAT_SPENT: /.*spent.*meat.*/gi,
     AUTOSELL: /^autosell:.*/gmi,
     TRANSACTION: /.*buy.*for.*from.*/gmi,
-    ACQUIRED_SOMETHING: /.*acquire.*/gi,
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
@@ -191,6 +191,7 @@ export const REGEX = {
     EFFECT_NAME: /(?<=acquire an effect: ).*?(?=( \(|$))/mi,
     EFFECT_DURATION: /(?<=acquire an effect: .*\()\d+(?=\))/mi,
 
+    CAST_LINE: /^cast .*/gim,
     UNAFFECT_LINE: /^uneffect.*/gim,
   },
   // -- 
