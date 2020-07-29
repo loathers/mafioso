@@ -141,7 +141,7 @@ function EntryBodyContainer(props) {
           className='adjacent-mar-t-3' />
       }
 
-      <div className='flex-col flex-none'>
+      <div className='flex-col flex-none adjacent-mar-t-3'>
         {/* gained effects */}
         { entry.hasAcquiredEffects &&
           <ListDisplay 

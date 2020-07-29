@@ -170,47 +170,57 @@ class LogStore {
    * @param {FileList} files
    */
   async handleUpload(files) {
-    console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
-    this.isParsing.set(true);
+    try {
+      if (files.length > 10) {
+        throw new Error('Uploading way too many files.');
+      }
 
-    this.reset();
-    this.srcFiles = files;
+      console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
+      this.isParsing.set(true);
 
-    // sort files by kolmafia's date format
-    const sortedFiles = Array.from(files).sort((fileA, fileB) => {
-      const sessionDateA = Number(fileA.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
-      const sessionDateB = Number(fileB.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
-      return sessionDateA < sessionDateB ? -1 : 1;
-    });
+      this.reset();
+      this.srcFiles = files;
 
-    // get the text from all the files
-    this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));
+      // sort files by kolmafia's date format
+      const sortedFiles = Array.from(files).sort((fileA, fileB) => {
+        const sessionDateA = Number(fileA.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
+        const sessionDateB = Number(fileB.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
+        return sessionDateA < sessionDateB ? -1 : 1;
+      });
 
-    // no legal texts found 
-    if (this.srcRawTexts.length <= 0) {
-      console.error('It looks like none of those files were valid, mate.');
+      // get the text from all the files
+      this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));
+
+      // no legal texts found 
+      if (this.srcRawTexts.length <= 0) {
+        console.error('It looks like none of those files were valid, mate.');
+        this.isParsing.set(false);
+        return;
+      }
+
+      // try to find out if there is a full ascension log,
+      //  otherwise just use the first text we have
+      const allText = this.srcRawTexts.join('\n\n');
+      const fullAscensionText = logParserUtils.findAscensionLog(allText);
+      if (fullAscensionText !== null) {
+        this.ascensionNum = fullAscensionText.match(REGEX.VALUE.ASCENSION_NUMBER) || '?';
+        console.log(`✨ %cWe found Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
+        this.rawText = fullAscensionText;
+      
+      } else {
+        console.warn('No Ascension specific log was found.');
+        this.rawText = allText;
+      }
+
+      // find the character name
+      this.characterName = this.rawText.match(REGEX.SNAPSHOT_CHECK.CHARACTER_NAME) || undefined;
+
+      this.parse();
+      
+    } catch (e) {
+      console.error(e);
       this.isParsing.set(false);
-      return;
     }
-
-    // try to find out if there is a full ascension log,
-    //  otherwise just use the first text we have
-    const allText = this.srcRawTexts.join('\n\n');
-    const fullAscensionText = logParserUtils.findAscensionLog(allText);
-    if (fullAscensionText !== null) {
-      this.ascensionNum = fullAscensionText.match(REGEX.VALUE.ASCENSION_NUMBER) || '?';
-      console.log(`✨ %cWe found Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
-      this.rawText = fullAscensionText;
-    
-    } else {
-      console.warn('No Ascension specific log was found.');
-      this.rawText = allText;
-    }
-
-    // find the character name
-    this.characterName = this.rawText.match(REGEX.SNAPSHOT_CHECK.CHARACTER_NAME) || undefined;
-
-    this.parse();
   }
   /**
    * @async
@@ -218,10 +228,9 @@ class LogStore {
    * @returns {String}
    */
   readFile(file) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       if (file.type !== 'text/plain') {
-        console.error('Uploaded a non-text file.');
-        resolve();
+        reject('Uploaded a non-text file.');
         return;
       }
 
