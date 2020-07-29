@@ -132,7 +132,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasAcquiredItems() {
-    return this.attributes.acquiredItems !== 0;
+    return this.attributes.acquiredItems.length !== 0;
   }
   /** @type {Boolean} */
   get hasAcquiredEffects() {

@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
+import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
+import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
-import ItemChangesDisplay from 'components/ItemChangesDisplay';
+// import ItemChangesDisplay from 'components/ItemChangesDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
 import ListDisplay from 'components/ListDisplay';
 
@@ -138,15 +140,23 @@ function EntryBodyContainer(props) {
           className='adjacent-mar-t-3' />
       }
 
-      {/* gained effects */}
-      { entry.hasAcquiredEffects &&
-        <ListDisplay list={entry.attributes.acquiredEffects} />
-      }
+      <div className='flex-col flex-none adjacent-mar-t-3'>
+        {/* gained effects */}
+        { entry.hasAcquiredEffects &&
+          <ListDisplay 
+            IconComponent={SpellbookSVG}
+            list={entry.attributes.acquiredEffects}
+            className='flex-none' />
+        }
 
-      {/* meat and items */}
-      { entry.hasInventoryChanges &&
-        <ItemChangesDisplay entry={entry} />
-      }
+        {/* meat and items */}
+        { entry.hasAcquiredItems &&
+          <ListDisplay 
+            IconComponent={SwapBagSVG}
+            list={entry.attributes.acquiredItems}
+            className='flex-none' />
+        }
+      </div>
     </div>
   )
 }

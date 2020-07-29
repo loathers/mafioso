@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
+import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -9,15 +9,19 @@ import combineClassnames from 'utilities/combineClassnames';
 export default function ListDisplay(props) {
   const {
     className,
+    style,
     list,
-    IconComponent = SpellbookSVG,
+    IconComponent = UncertaintySVG,
   } = props;
 
   return (
-    <div className={combineClassnames('mar-2 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
+    <div 
+      style={style}
+      className={combineClassnames('mar-2 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
+      
       <IconComponent 
         componentname='block-inner-icon'
-        style={{width: 25, height: 25, opacity: 0.7}}
+        style={{width: 20, height: 20, opacity: 0.7}}
         className='flex-none adjacent-mar-l-2' />
 
       <div className='flex-col flex-auto jcontent-center adjacent-mar-l-2'>
