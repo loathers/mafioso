@@ -135,6 +135,10 @@ export default class Entry {
     return this.attributes.acquiredItems !== 0;
   }
   /** @type {Boolean} */
+  get hasAcquiredEffects() {
+    return this.attributes.acquiredEffects !== 0;
+  }
+  /** @type {Boolean} */
   get hasInventoryChanges() {
     return this.hasMeatChanges || this.hasAcquiredItems;
   }

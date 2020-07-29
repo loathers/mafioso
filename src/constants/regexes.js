@@ -129,7 +129,7 @@ export const REGEX = {
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/gi,
     FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
-    ACQUIRED_EFFECTS: /(?<=^You acquire an effect:\s).*/gmi,
+    ACQUIRED_EFFECTS: /(?<=acquire an effect: ).*/gmi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
