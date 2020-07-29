@@ -17,13 +17,20 @@ export default function EffectsDisplay(props) {
   }} = entry;
 
   return (
-    <div className={combineClassnames('mar-2 overflow-hidden bg-second-darker borradius-2 flex-col flexwrap-yes position-relative', className)}>
-      { acquiredEffects.map((effectName, idx) => (
-        <PairedDisplay 
-          leftContent={effectName}
-          className='adjacent-mar-t-2'
-          key={`acquired-effect-${uuidv4()}-${idx}-key`} />
-      ))}
+    <div className={combineClassnames('mar-2 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
+      <SpellbookSVG 
+        componentname='block-inner-icon'
+        style={{width: 25, height: 25, opacity: 0.7}}
+        className='flex-none adjacent-mar-l-2' />
+
+      <div className='flex-col flex-auto jcontent-center adjacent-mar-l-2'>
+        { acquiredEffects.map((effectName, idx) => (
+          <PairedDisplay 
+            leftContent={effectName}
+            className='adjacent-mar-t-2'
+            key={`acquired-effect-${uuidv4()}-${idx}-key`} />
+        ))}
+      </div>
     </div>
   )
 }
@@ -36,12 +43,7 @@ export function PairedDisplay(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('mar-2 flex-row aitems-center flexwrap-yes', className)}>
-      <SpellbookSVG 
-        componentname='block-inner-icon'
-        style={{width: 20, height: 20, opacity: 0.7}}
-        className='flex-none adjacent-mar-l-2' />
-
+    <div className={combineClassnames('mar-2 flex-row flexwrap-yes', className)}>
       { leftContent &&
         <div className='fontsize-3 flex-none adjacent-mar-l-2'>
           {leftContent}
