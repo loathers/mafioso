@@ -161,10 +161,10 @@ export const REGEX = {
     SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
 
-    ACQUIRED_ITEM_LINE: /(?!.*effect:.*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
-    ACQUIRED_ITEM_NAME: /(?!.*effect:.*)(?<=You acquire (\d+ |an item:|)).*?(?=( \(|$))/mi,
-    ACQUIRED_N_ITEM: /(?!.*effect:.*)(?<=(You acquire ))\d+(?= \w*)/mi,
-    ACQUIRED_ITEM_N: /(?!.*effect:.*)(?<=(You acquire.*\())\d+(?=\))/mi,
+    ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
+    ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item:|)).*?(?=( \(|$))/mi,
+    ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
+    ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
@@ -187,9 +187,9 @@ export const REGEX = {
   },
   // -- effects
   EFFECTS: {
-    ACQUIRED_EFFECT_LINE: /.*acquire an effect:.*/gmi,
-    EFFECT_NAME: /(?<=acquire an effect: ).*?(?=( \(|$))/mi,
-    EFFECT_DURATION: /(?<=acquire an effect: .*\()\d+(?=\))/mi,
+    ACQUIRED_EFFECT_LINE: /.*acquire an (effect|intrinsic):.*/gmi,
+    EFFECT_NAME: /(?<=acquire an (effect|intrinsic): ).*?(?=( \(|$))/mi,
+    EFFECT_DURATION: /(?<=acquire an (effect|intrinsic): .*\()\d+(?=\))/mi,
 
     UNAFFECT_LINE: /^uneffect.*/gim,
 
