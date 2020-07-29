@@ -1,7 +1,5 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
-import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
@@ -9,7 +7,7 @@ import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import ItemChangesDisplay from 'components/ItemChangesDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
-import ItemDisplay from 'components/ItemDisplay';
+import EffectsDisplay from 'components/EffectsDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -135,20 +133,14 @@ function EntryBodyContainer(props) {
 
       {/* stat changes */}
       { entry.hasStatChanges &&
-        <StatChangesDisplay entry={entry} />
+        <StatChangesDisplay 
+          entry={entry}
+          className='adjacent-mar-t-3' />
       }
 
       {/* gained effects */}
       { entry.hasAcquiredEffects &&
-        <div className=''>
-          { entry.attributes.acquiredEffects.map((effectName, idx) => (
-            <ItemDisplay 
-              IconComponent={SpellbookSVG}
-              className='mar-2'
-              content={`${effectName}`}
-              key={`acquired-effect-${uuidv4()}-${idx}-key`} />
-          ))}
-        </div>
+        <EffectsDisplay entry={entry} />
       }
 
       {/* meat and items */}
