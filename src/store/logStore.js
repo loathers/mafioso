@@ -130,6 +130,18 @@ class LogStore {
   get isOnLastPage() {
     return this.currentPageNum === this.calculatePageLast();
   }
+  // -- uploading
+  /**
+   * clear stored data
+   */
+  reset() {
+    this.srcFiles = [];
+    this.srcRawTexts = [];
+    this.allEntries.clear();
+    this.visibleEntries.clear();
+    this.characterName = undefined;
+    this.ascensionNum = undefined;
+  }
   /**
    * @param {File} file
    */
@@ -158,15 +170,11 @@ class LogStore {
    * @param {FileList} files
    */
   async handleUpload(files) {
-    this.isParsing.set(true);
     console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
+    this.isParsing.set(true);
 
+    this.reset();
     this.srcFiles = files;
-    this.srcRawTexts = [];
-    this.allEntries.clear();
-    this.visibleEntries.clear();
-    this.characterName = undefined;
-    this.ascensionNum = undefined;
 
     // sort files by kolmafia's date format
     const sortedFiles = Array.from(files).sort((fileA, fileB) => {
