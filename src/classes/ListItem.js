@@ -8,7 +8,7 @@ export default class ListItem {
     /** @type {Object} */
     this.attributes = {
       /** @type {String} */
-      name: name,
+      name: name || 'UNKNOWN',
       /** @type {Number} */
       amount: amount || 0,
     }

@@ -202,10 +202,10 @@ export function parseEncounterName(entryString) {
 export function parseAcquiredItems(entryString) {
   const acquiredItemLines = getRegexMatch(entryString, REGEX.ITEMS.ACQUIRED_ITEM_LINE) || [];
   return acquiredItemLines.map((acquiredItemString) => {
-    const itemName = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_NAME);
-    const itemAmount = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_N_ITEM) || getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_N) || [];
-    if (!itemName) {
-      console.warn(`Could not find the item name for "${acquiredItemString}"`);
+    const itemName = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_NAME) || [];
+    const itemAmount = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_N) || [];
+    if (!itemName[0]) {
+      console.warn(`Unable to parse item name in: ${acquiredItemString}`);
     }
 
     return new ListItem({
@@ -223,13 +223,13 @@ export function parsePulledItems(entryString) {
   return pulledItemLines.map((acquiredItemString) => {
     const itemName = getRegexMatch(acquiredItemString, REGEX.ITEMS.HAGNK_PULL_NAME);
     const itemAmount = getRegexMatch(acquiredItemString, REGEX.ITEMS.HAGNK_PULL_AMOUNTS);
-    if (!itemName) {
-      console.warn(`Could not find the item name for "${acquiredItemString}"`);
+    if (!itemName[0]) {
+      console.warn(`Unable to parse item name in: ${acquiredItemString}`);
     }
 
     return new ListItem({
-      name: itemName,
-      amount: itemAmount || 1,
+      name: itemName[0],
+      amount: itemAmount[0] || 1,
     });
   })
 }
@@ -242,10 +242,10 @@ export function parsePulledItems(entryString) {
 export function parseAcquiredEffects(entryString) {
   const acquiredEffectLines = getRegexMatch(entryString, REGEX.EFFECTS.ACQUIRED_EFFECT_LINE) || [];
   return acquiredEffectLines.map((acquiredEffectString) => {
-    const name = getRegexMatch(acquiredEffectString, REGEX.EFFECTS.EFFECT_NAME);
+    const name = getRegexMatch(acquiredEffectString, REGEX.EFFECTS.EFFECT_NAME) || [];
     const duration = getRegexMatch(acquiredEffectString, REGEX.EFFECTS.EFFECT_DURATION) || [];
-    if (!name) {
-      console.warn(`Could not find the item name for "${acquiredEffectString}"`);
+    if (!name[0]) {
+      console.warn(`Unable to parse effect name in: ${acquiredEffectString}`);
     }
 
     return new ListItem({

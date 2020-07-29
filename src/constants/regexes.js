@@ -161,8 +161,8 @@ export const REGEX = {
     SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
 
-    ACQUIRED_ITEM_LINE: /(?!.*effect:.*)You acquire (\d+|an item:) .*/gmi,
-    ACQUIRED_ITEM_NAME: /(?!.*effect:.*)(?<=You acquire (\d+|an item:) ).*?(?=( \(|$))/mi,
+    ACQUIRED_ITEM_LINE: /(?!.*effect:.*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
+    ACQUIRED_ITEM_NAME: /(?!.*effect:.*)(?<=You acquire (\d+ |an item:|)).*?(?=( \(|$))/mi,
     ACQUIRED_N_ITEM: /(?!.*effect:.*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*effect:.*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
