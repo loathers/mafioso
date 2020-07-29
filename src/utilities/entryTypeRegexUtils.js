@@ -10,9 +10,12 @@ import {hasString} from 'utilities/regexUtils';
  */
 export function getEntryType(entryString) {
   // -- iotm
-
   if (isEntryBoxingDaycare(entryString)) {
     return ENTRY_TYPE.IOTM.BOXING_DAYCARE;
+  }
+
+  if (isEntryDeckOfEveryCard(entryString)) {
+    return ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD;
   }
 
   if (isEntryDiabolicPizzaMake(entryString)) {
@@ -332,6 +335,13 @@ export function isEntryBoxingDaycare(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
+export function isEntryDeckOfEveryCard(entryString) {
+  return hasString(entryString, REGEX.DECK_OF_EVERY_CARD.TEXT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
 export function isEntryDiabolicPizzaMake(entryString) {
   return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
 }
@@ -361,7 +371,7 @@ export function isEntryBeachComb(entryString) {
  * @return {Boolean}
  */
 export function isEntryBastilleBatallion(entryString) {
-  return hasString(entryString, 'Bastille Battalion');
+  return hasString(entryString, REGEX.BASTILLE_BATALLION.TEXT);
 }
 /**
  * @param {String} entryString

@@ -39,6 +39,7 @@ function getEntryIcon(entryType) {
       return DigDugSVG;
 
     case ENTRY_TYPE.IOTM.BOXING_DAYCARE:
+    case ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD:
     case ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON:
     case ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX:
     case ENTRY_TYPE.IOTM.VOTING_BOOTH:

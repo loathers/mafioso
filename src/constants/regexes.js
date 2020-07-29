@@ -5,6 +5,9 @@ export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- iotm
+  BASTILLE_BATALLION: {
+    TEXT: /Bastille Battalion/im,
+  },
   BEACH_COMB: {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
@@ -13,6 +16,9 @@ export const REGEX = {
     // GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
     VISIT: /visiting the boxing daycare.*/gi,
     NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
+  },
+  DECK_OF_EVERY_CARD: {
+    TEXT: /Deck of Every Card/im,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,

@@ -43,7 +43,7 @@ export function PairedDisplay(props) {
         className='flex-none adjacent-mar-l-2' />
 
       { leftContent &&
-        <div className='f-bold fontsize-3 flex-none adjacent-mar-l-2'>
+        <div className='fontsize-3 flex-none adjacent-mar-l-2'>
           {leftContent}
         </div>
       }
