@@ -59,6 +59,14 @@ export const ENTRY_TYPE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Buffs/Effects',
+    entryGroup: [
+      ENTRY_TYPE.SPELL_CAST,
+    ],
+    isHidden: false,
+    checked: true,
+  },
+  {
     label: 'Pulls',
     entryType: ENTRY_TYPE.HAGNK_PULL,
     isHidden: false,
@@ -121,6 +129,12 @@ export const ENTRY_TYPE_FILTERS = [
     entryType: ENTRY_TYPE.SNAPSHOT.DAY_INFO,
     isHidden: true,
     checked: false,
+  },
+  {
+    label: 'Uncategorized',
+    entryType: ENTRY_TYPE.UNKNOWN,
+    isHidden: false,
+    checked: true,
   },
 ];
 /**

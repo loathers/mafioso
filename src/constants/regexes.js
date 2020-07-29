@@ -106,7 +106,6 @@ export const REGEX = {
     MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
 
     MCD_CHANGE: /^mcd.*/gim,
-    UNAFFECT: /^uneffect.*/gim,
     TELESCOPE: /^telescope.*/gim,
     EQUIP: /^equip.*/gim,
     UNEQUIP: /^unequip.*/gim,
@@ -136,8 +135,6 @@ export const REGEX = {
     VISIT_LOCATION_NAME: /(?<=^visiting ).*(?=( in))*/im,
     VISIT_ENCOUNTER_NAME: /(?<=^visiting( the| )).*?(?=( in|(\r\n|\n)))/im,
 
-    ACQUIRED_EFFECTS: /(?<=acquire an effect: ).*/gmi,
-
     SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
     SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,
 
@@ -155,7 +152,7 @@ export const REGEX = {
     MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
-
+  // -- items
   ITEMS: {
     MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
     MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?=\s+meat)/gi,
@@ -165,9 +162,9 @@ export const REGEX = {
     SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
 
     ACQUIRED_ITEM_LINE: /(?!.*effect:.*)You acquire (\d+|an item:) .*/gmi,
-    ACQUIRED_ITEM_NAME: /(?!.*effect:.*)(?<=You acquire (\d+|an item:) ).*?(?=( \(|$))/gmi,
-    ACQUIRED_N_ITEM: /(?!.*effect:.*)(?<=(You acquire ))\d+(?= \w*)/gmi,
-    ACQUIRED_ITEM_N: /(?!.*effect:.*)(?<=(You acquire.*\())\d+(?=\))/gmi,
+    ACQUIRED_ITEM_NAME: /(?!.*effect:.*)(?<=You acquire (\d+|an item:) ).*?(?=( \(|$))/mi,
+    ACQUIRED_N_ITEM: /(?!.*effect:.*)(?<=(You acquire ))\d+(?= \w*)/mi,
+    ACQUIRED_ITEM_N: /(?!.*effect:.*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
@@ -188,7 +185,15 @@ export const REGEX = {
     CLOSET_PUT_TARGETS: /(?<=^add to closet: ).*/gi,
     CLOSET_TAKE_TARGETS: /(?<=^take from closet: ).*/gi,
   },
+  // -- effects
+  EFFECTS: {
+    ACQUIRED_EFFECT_LINE: /.*acquire an effect:.*/gmi,
+    EFFECT_NAME: /(?<=acquire an effect: ).*?(?=( \(|$))/mi,
+    EFFECT_DURATION: /(?<=acquire an effect: .*\()\d+(?=\))/mi,
 
+    UNAFFECT_LINE: /^uneffect.*/gim,
+  },
+  // -- 
   // note: these only work in raw
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
@@ -202,8 +207,7 @@ export const REGEX = {
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}\w(?!\[)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
   },
-
-  // -- cruft
+  // -- kolmafia snapshot
   SNAPSHOT_CHECK: {
     CHARACTER_NAME: /(?<=^name: ).*/mi,
     CONTAIN_MOON: /(> moon)/i,
@@ -213,7 +217,7 @@ export const REGEX = {
     CONTAIN_EFFECTS: /(> effects)/i,
     CONTAIN_MODIFIERS: /(> modifiers)/i,
   },
-
+  // -- misc
   MISC: {
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
     STACK_TRACE: /^(stack trace).*?at.*\).*?(?=(\s|))/gmis,
