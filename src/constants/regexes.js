@@ -4,6 +4,16 @@ export const POST_LINE_EMPTY_SPACE = /(\r\n|\n)*(?!.)/gs;
 export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
+  // -- important
+  ASCENSION: {
+    REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n)/is,
+    THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n)/is,
+
+    // VALHALLA: /welcome to valhalla/is,
+    // KING_FREED: /freeing king ralph.*?(?=(\s|))/is,
+    // THWAITGOLD: /You acquire an item: Thwaitgold.*/is,
+    // ASCEND_PHP: /ascend.php.*/is,
+  },
   // -- iotm
   BASTILLE_BATALLION: {
     TEXT: /Bastille Battalion/im,
@@ -175,8 +185,6 @@ export const REGEX = {
 
   // note: these only work in raw
   GROUP: {
-    COMPLETE_ASCENSION: /welcome to valhalla.*?freeing king ralph.*?(?=(\s|))/is,
-
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
     MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
     STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,

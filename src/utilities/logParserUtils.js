@@ -23,8 +23,8 @@ export async function parseLogTxt(rawText) {
   try {
     const rawCleaned = await cleanRawLog(rawText);
     const rawSize = rawCleaned.length;
-    if (rawSize > 10000000) {
-      throw new Error(`This log of ${rawSize} characters is too huge!`);
+    if (rawSize > 10000000 || rawSize < 10) {
+      throw new Error(`Unable to parse this log of size ${rawSize}.`);
     }
 
     const preparsedLog = pregroupRawLog(rawCleaned);
@@ -45,7 +45,7 @@ export async function parseLogTxt(rawText) {
     return allEntries;
 
   } catch (e) {
-    console.error(e);
+    throw e;
   }
 }
 /**
@@ -55,13 +55,17 @@ export async function parseLogTxt(rawText) {
  * @returns {String | null} 
  */
 export function findAscensionLog(rawText) {
-  const ascensionMatch = rawText.match(REGEX.GROUP.COMPLETE_ASCENSION);
-  if (ascensionMatch !== null) {
-    return ascensionMatch[0];
-  
-  } else {
-    return null;
+  const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
+  if (fromValhallaToFreeKing) {
+    return fromValhallaToFreeKing[0];
   }
+
+  const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
+  if (fromValhallaToThwaitgold) {
+    return fromValhallaToThwaitgold[0];
+  }
+
+  return null;
 }
 /** 
  * creates a list of Entry class, 

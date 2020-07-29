@@ -198,7 +198,7 @@ class LogStore {
     const allText = this.srcRawTexts.join('\n\n');
     const fullAscensionText = logParserUtils.findAscensionLog(allText);
     if (fullAscensionText !== null) {
-      this.ascensionNum = fullAscensionText.match(REGEX.VALUE.ASCENSION_NUMBER);
+      this.ascensionNum = fullAscensionText.match(REGEX.VALUE.ASCENSION_NUMBER) || '?';
       console.log(`✨ %cWe found Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
       this.rawText = fullAscensionText;
     
@@ -239,31 +239,37 @@ class LogStore {
    * handle cleaning up and setting all the data
    */
   async parse() {
-    if (!this.hasRawText) {
-      throw new Error('No log to parse???');
+    try {
+      if (!this.hasRawText) {
+        throw new Error('No log to parse???');
+      }
+
+      console.log('✨ %cParsing your Session Log:', 'color: blue; font-size: 14px');
+      this.isParsing.set(true);
+
+      const parsedData = await logParserUtils.parseLogTxt(this.rawText);
+      const newData = this.condenseEntries(parsedData);
+      this.allEntries.replace(newData);
+      this.visibleEntries.replace([]);
+
+      const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
+      this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
+
+      console.log(`✔️ %cFinished! Created ${this.allEntries.length} entries.`, 'color: blue');
+      this.displayOptions.pageNum = 0;
+      this.isParsing.set(false);
+
+      // we just parsed so we gotta refresh `currentEntries`
+      this.fetchEntries({
+        pageNum: 0,
+        entryTypesVisible: DEFAULT_ENTRIES_VISIBLE,
+        filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
+      });
+
+    } catch (e) {
+      console.error(e);
+      throw e;
     }
-
-    console.log('✨ %cParsing your Session Log:', 'color: blue; font-size: 14px');
-    this.isParsing.set(true);
-
-    const parsedData = await logParserUtils.parseLogTxt(this.rawText);
-    const newData = this.condenseEntries(parsedData);
-    this.allEntries.replace(newData);
-    this.visibleEntries.replace([]);
-
-    const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
-    this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
-
-    console.log(`✔️ %cFinished! Created ${this.allEntries.length} entries.`, 'color: blue');
-    this.displayOptions.pageNum = 0;
-    this.isParsing.set(false);
-
-    // we just parsed so we gotta refresh `currentEntries`
-    this.fetchEntries({
-      pageNum: 0,
-      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE,
-      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
-    });
   }
   /**
    * currently the parameter passed isn't a shallow copy
