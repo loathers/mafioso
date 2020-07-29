@@ -7,7 +7,7 @@ import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import ItemChangesDisplay from 'components/ItemChangesDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
-import EffectsDisplay from 'components/EffectsDisplay';
+import ListDisplay from 'components/ListDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -140,7 +140,7 @@ function EntryBodyContainer(props) {
 
       {/* gained effects */}
       { entry.hasAcquiredEffects &&
-        <EffectsDisplay entry={entry} />
+        <ListDisplay list={entry.attributes.acquiredEffects} />
       }
 
       {/* meat and items */}

@@ -6,27 +6,24 @@ import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {React.Component} */
-export default function EffectsDisplay(props) {
+export default function ListDisplay(props) {
   const {
     className,
-    entry,
+    list,
+    IconComponent = SpellbookSVG,
   } = props;
-
-  const {attributes: {
-    acquiredEffects,
-  }} = entry;
 
   return (
     <div className={combineClassnames('mar-2 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
-      <SpellbookSVG 
+      <IconComponent 
         componentname='block-inner-icon'
         style={{width: 25, height: 25, opacity: 0.7}}
         className='flex-none adjacent-mar-l-2' />
 
       <div className='flex-col flex-auto jcontent-center adjacent-mar-l-2'>
-        { acquiredEffects.map((effectName, idx) => (
+        { list.map((item, idx) => (
           <PairedDisplay 
-            leftContent={effectName}
+            leftContent={item}
             className='adjacent-mar-t-2'
             key={`acquired-effect-${uuidv4()}-${idx}-key`} />
         ))}
