@@ -196,21 +196,21 @@ export function isEntryAutosell(entryString) {
  * @return {Boolean}
  */
 export function isEntryEat(entryString) {
-  return hasString(entryString, REGEX.VALUE.EAT_TARGET);
+  return hasString(entryString, REGEX.ITEMS.EAT_TARGET);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryDrink(entryString) {
-  return hasString(entryString, REGEX.VALUE.DRINK_TARGET);
+  return hasString(entryString, REGEX.ITEMS.DRINK_TARGET);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryChew(entryString) {
-  return hasString(entryString, REGEX.VALUE.CHEW_TARGET);
+  return hasString(entryString, REGEX.ITEMS.CHEW_TARGET);
 }
 /**
  * check if this entry is about buying something
@@ -218,7 +218,7 @@ export function isEntryChew(entryString) {
  * @return {Boolean}
  */
 export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) 
+  return hasString(entryString, REGEX.ITEMS.BUY_ITEM_AMOUNT) 
     || isEntryAutosell(entryString);
 }
 /**
@@ -260,35 +260,35 @@ export function isEntryFamiliar(entryString) {
  * @return {Boolean}
  */
 export function isEntryEquip(entryString) {
-  return hasString(entryString, REGEX.VALUE.EQUIP_TARGETS);
+  return hasString(entryString, REGEX.ITEMS.EQUIP_TARGETS);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryUnequip(entryString) {
-  return hasString(entryString, REGEX.VALUE.UNEQUIP_TARGETS);
+  return hasString(entryString, REGEX.ITEMS.UNEQUIP_TARGETS);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryHagnkPull(entryString) {
-  return hasString(entryString, REGEX.VALUE.HAGNK_PULL_TARGETS);
+  return hasString(entryString, REGEX.ITEMS.HAGNK_PULL_TARGETS);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryClosetPut(entryString) {
-  return hasString(entryString, REGEX.VALUE.CLOSET_PUT_TARGETS);
+  return hasString(entryString, REGEX.ITEMS.CLOSET_PUT_TARGETS);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryClosetTake(entryString) {
-  return hasString(entryString, REGEX.VALUE.CLOSET_TAKE_TARGETS);
+  return hasString(entryString, REGEX.ITEMS.CLOSET_TAKE_TARGETS);
 }
 /**
  * @param {String} entryString

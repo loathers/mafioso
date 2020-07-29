@@ -124,13 +124,6 @@ export const REGEX = {
   VALUE: {
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
 
-    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
-    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?=\s+meat)/gi,
-    BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
-    BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
-    SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
-    SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
-
     COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/gmi,
     COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/gi,
     COMBAT_SKILL_NAMES: /(?<=^Round.*casts\s).*(?=!)/gmi,
@@ -143,12 +136,38 @@ export const REGEX = {
     VISIT_LOCATION_NAME: /(?<=^visiting ).*(?=( in))*/im,
     VISIT_ENCOUNTER_NAME: /(?<=^visiting( the| )).*?(?=( in|(\r\n|\n)))/im,
 
+    ACQUIRED_EFFECTS: /(?<=acquire an effect: ).*/gmi,
+
+    SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
+    SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,
+
+    HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
+    HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
+    MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
+    MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
+
+    MUS_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
+    MUS_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
+
+    MYST_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+    MYST_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+
+    MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+    MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+  },
+
+  ITEMS: {
+    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
+    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?=\s+meat)/gi,
+    BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
+    BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
+    SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
+    SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
+
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/gi,
     ACQUIRED_ITEMS_WITH_AMOUNT: /(?<=^you acquire )(?!an item).*/gmi,
     ACQUIRED_ITEMS_TARGET: /(?<=^you acquire \d+ )(?!an item).*/gmi,
     ACQUIRED_ITEMS_AMOUNT: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
-
-    ACQUIRED_EFFECTS: /(?<=acquire an effect: ).*/gmi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
@@ -167,23 +186,6 @@ export const REGEX = {
 
     CLOSET_PUT_TARGETS: /(?<=^add to closet: ).*/gi,
     CLOSET_TAKE_TARGETS: /(?<=^take from closet: ).*/gi,
-
-    SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
-    SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,
-
-    HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
-    HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
-    MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
-    MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
-
-    MUS_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
-    MUS_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
-
-    MYST_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
-    MYST_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
-
-    MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
-    MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
 
   // note: these only work in raw

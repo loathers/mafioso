@@ -1,5 +1,8 @@
+import ListItem from 'classes/ListItem';
+
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
+
 import {
   hasString,
   getRegexMatch,
@@ -195,9 +198,9 @@ export function parseEncounterName(entryString) {
  * @return {Array<String>}
  */
 export function parseAcquiredItems(entryString) {
-  const singleAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_AN_ITEM) || [];
-  const multiAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.ACQUIRED_ITEMS_WITH_AMOUNT) || [];
-  const hagnkPullMatches = getRegexMatch(entryString, REGEX.VALUE.HAGNK_PULL_TARGETS) || [];
+  const singleAcquireMatches = getRegexMatch(entryString, REGEX.ITEMS.FOUND_AN_ITEM) || [];
+  const multiAcquireMatches = getRegexMatch(entryString, REGEX.ITEMS.ACQUIRED_ITEMS_WITH_AMOUNT) || [];
+  const hagnkPullMatches = getRegexMatch(entryString, REGEX.ITEMS.HAGNK_PULL_TARGETS) || [];
 
   return singleAcquireMatches.concat(multiAcquireMatches).concat(hagnkPullMatches);
 }
@@ -232,7 +235,7 @@ export function parseMeatChange(entryString) {
  * @return {Array<Number>}
  */
 export function parseMeatGains(entryString) {
-  const meatGainMatches = getRegexMatch(entryString, REGEX.VALUE.MEAT_GAIN_AMOUNT) || [];
+  const meatGainMatches = getRegexMatch(entryString, REGEX.ITEMS.MEAT_GAIN_AMOUNT) || [];
   return meatGainMatches.map((amountString) => Number(amountString.replace(',', '')));
 }
 /**
@@ -240,7 +243,7 @@ export function parseMeatGains(entryString) {
  * @return {Array<Number>}
  */
 export function parseMeatLoss(entryString) {
-  const meatLossMatches = getRegexMatch(entryString, REGEX.VALUE.MEAT_LOSS_AMOUNT) || [];
+  const meatLossMatches = getRegexMatch(entryString, REGEX.ITEMS.MEAT_LOSS_AMOUNT) || [];
   return meatLossMatches.map((amountString) => Number(amountString.replace(',', '') * -1));
 }
 /**
@@ -248,8 +251,8 @@ export function parseMeatLoss(entryString) {
  * @return {Number}
  */
 export function parseMeatSpent(entryString) {
-  const buyAmountMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_AMOUNT) || [];
-  const buyCostMatches = getRegexMatch(entryString, REGEX.VALUE.BUY_ITEM_COST) || [];
+  const buyAmountMatches = getRegexMatch(entryString, REGEX.ITEMS.BUY_ITEM_AMOUNT) || [];
+  const buyCostMatches = getRegexMatch(entryString, REGEX.ITEMS.BUY_ITEM_COST) || [];
   if (buyAmountMatches.length !== buyCostMatches.length) {
     console.warn('There may be some data missing from parsing how much meat was spent.', entryString);
   }
