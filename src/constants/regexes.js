@@ -164,10 +164,10 @@ export const REGEX = {
     SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
 
-    FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/gi,
-    ACQUIRED_ITEMS_WITH_AMOUNT: /(?<=^you acquire )(?!an item).*/gmi,
-    ACQUIRED_ITEMS_TARGET: /(?<=^you acquire \d+ )(?!an item).*/gmi,
-    ACQUIRED_ITEMS_AMOUNT: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
+    ACQUIRED_ITEM_LINE: /(?!.*effect:.*)You acquire (\d+|an item:) .*/gmi,
+    ACQUIRED_ITEM_NAME: /(?!.*effect:.*)(?<=You acquire (\d+|an item:) ).*?(?=( \(|$))/gmi,
+    ACQUIRED_N_ITEM: /(?!.*effect:.*)(?<=(You acquire ))\d+(?= \w*)/gmi,
+    ACQUIRED_ITEM_N: /(?!.*effect:.*)(?<=(You acquire.*\())\d+(?=\))/gmi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,

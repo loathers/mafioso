@@ -192,17 +192,24 @@ export function parseEncounterName(entryString) {
   return null;
 }
 /**
- * builds an array of all the items that were gained
- * 
  * @param {String} entryString
  * @return {Array<String>}
  */
 export function parseAcquiredItems(entryString) {
-  const singleAcquireMatches = getRegexMatch(entryString, REGEX.ITEMS.FOUND_AN_ITEM) || [];
-  const multiAcquireMatches = getRegexMatch(entryString, REGEX.ITEMS.ACQUIRED_ITEMS_WITH_AMOUNT) || [];
-  const hagnkPullMatches = getRegexMatch(entryString, REGEX.ITEMS.HAGNK_PULL_TARGETS) || [];
+  const acquiredItemLines = getRegexMatch(entryString, REGEX.ITEMS.ACQUIRED_ITEM_LINE) || [];
+  return acquiredItemLines.map((acquiredItemString) => {
+    const itemName = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_NAME);
+    const itemAmount = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_N_ITEM) || getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_N);
+    if (!itemName) {
+      console.warn(`Could not find the item name in "${acquiredItemString}"`);
+      return null;
+    }
 
-  return singleAcquireMatches.concat(multiAcquireMatches).concat(hagnkPullMatches);
+    return new ListItem({
+      name: itemName,
+      amount: itemAmount || 1,
+    });
+  })
 }
 /**
  * builds an array of all the effects that were gained
