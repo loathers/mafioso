@@ -144,7 +144,10 @@ export const REGEX = {
     VISIT_ENCOUNTER_NAME: /(?<=^visiting( the| )).*?(?=( in|(\r\n|\n)))/im,
 
     FOUND_AN_ITEM: /(?<=(You acquire an item:\s+)).*/gi,
-    FOUND_MULTIPLE_ITEMS: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
+    ACQUIRED_ITEMS_WITH_AMOUNT: /(?<=^you acquire )(?!an item).*/gmi,
+    ACQUIRED_ITEMS_TARGET: /(?<=^you acquire \d+ )(?!an item).*/gmi,
+    ACQUIRED_ITEMS_AMOUNT: /(?!.*effect:.*)(?<=(You acquire\s+))(.*\(\d*\))/gi,
+
     ACQUIRED_EFFECTS: /(?<=acquire an effect: ).*/gmi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,

@@ -196,7 +196,7 @@ export function parseEncounterName(entryString) {
  */
 export function parseAcquiredItems(entryString) {
   const singleAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_AN_ITEM) || [];
-  const multiAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.FOUND_MULTIPLE_ITEMS) || [];
+  const multiAcquireMatches = getRegexMatch(entryString, REGEX.VALUE.ACQUIRED_ITEMS_WITH_AMOUNT) || [];
   const hagnkPullMatches = getRegexMatch(entryString, REGEX.VALUE.HAGNK_PULL_TARGETS) || [];
 
   return singleAcquireMatches.concat(multiAcquireMatches).concat(hagnkPullMatches);
