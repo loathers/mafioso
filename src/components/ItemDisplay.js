@@ -14,8 +14,7 @@ export default function ItemDisplay(props) {
 
   return (
     <div 
-      className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-2 pad-h-4 boxsizing-border flex-col-center position-relative', className)}
-      componentname='item-block'>
+      className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-6 pad-h-8 boxsizing-border flex-col-center position-relative', className)}>
 
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'

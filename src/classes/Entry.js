@@ -210,8 +210,8 @@ export default class Entry {
     return this.attributes.encounterName;
   }
   // -- combat
-  /** @returns {Boolean} */
-  hasCombatActions() {
+  /** @type {Boolean} */
+  get hasCombatActions() {
     return this.attributes.combatActions.length > 0;
   }
   // -- special getters

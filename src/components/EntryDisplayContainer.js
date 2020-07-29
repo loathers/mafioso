@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
+import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
+import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
 import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
-// import ItemChangesDisplay from 'components/ItemChangesDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
+import SingleDisplay from 'components/SingleDisplay';
 import ListDisplay from 'components/ListDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -140,7 +141,7 @@ function EntryBodyContainer(props) {
           className='adjacent-mar-t-3' />
       }
 
-      <div className='flex-col flex-none adjacent-mar-t-3'>
+      <div className='flex-col flex-none'>
         {/* gained effects */}
         { entry.hasAcquiredEffects &&
           <ListDisplay 
@@ -149,12 +150,22 @@ function EntryBodyContainer(props) {
             className='flex-none' />
         }
 
-        {/* meat and items */}
+        {/* items */}
         { entry.hasAcquiredItems &&
           <ListDisplay 
             IconComponent={SwapBagSVG}
             list={entry.attributes.acquiredItems}
             className='flex-none' />
+        }
+
+        {/* meat */}
+        { entry.hasMeatChanges &&
+          <div className='flex-row'>
+            <SingleDisplay 
+              IconComponent={SteakSVG}
+              className='mar-2'
+              content={`${entry.createMeatDisplay()} meat`} />
+          </div>
         }
       </div>
     </div>
@@ -207,7 +218,7 @@ export default function EntryDisplayContainer(props) {
       }
 
       {/* combat */}
-      { entry.hasCombatActions() && !isSelected &&
+      { entry.hasCombatActions && !isSelected &&
         <CombatSequenceDisplay 
           entry={entry}
           className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
