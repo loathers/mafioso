@@ -4,7 +4,7 @@ export default class ListItem {
    */
   constructor({name, amount}) {
     /** @type {Number} */
-    this.listIdx = -1;
+    // this.listIdx = -1;
     /** @type {Object} */
     this.attributes = {
       /** @type {String} */

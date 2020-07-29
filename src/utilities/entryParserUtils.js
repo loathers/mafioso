@@ -34,6 +34,7 @@ export function parseCommonAttributes(entryString) {
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
   const acquiredItems = parseAcquiredItems(entryString);
+  const pulledItems = parsePulledItems(entryString);
   const acquiredEffects = parseAcquiredEffects(entryString);
   const meatChange = parseMeatChange(entryString);
 
@@ -44,7 +45,7 @@ export function parseCommonAttributes(entryString) {
     encounterName,
     isCombatEncounter: isCombatEncounter(entryString),
     isNonCombatEncounter: isNonCombatEncounter(entryString),
-    acquiredItems,
+    acquiredItems: pulledItems.concat(acquiredItems),
     acquiredEffects,
     meatChange,
   }
@@ -201,8 +202,26 @@ export function parseAcquiredItems(entryString) {
     const itemName = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_NAME);
     const itemAmount = getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_N_ITEM) || getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_N);
     if (!itemName) {
-      console.warn(`Could not find the item name in "${acquiredItemString}"`);
-      return null;
+      console.warn(`Could not find the item name for "${acquiredItemString}"`);
+    }
+
+    return new ListItem({
+      name: itemName,
+      amount: itemAmount || 1,
+    });
+  })
+}
+/**
+ * @param {String} entryString
+ * @return {Array<String>}
+ */
+export function parsePulledItems(entryString) {
+  const pulledItemLines = getRegexMatch(entryString, REGEX.ITEMS.HAGNK_PULL_LINE) || [];
+  return pulledItemLines.map((acquiredItemString) => {
+    const itemName = getRegexMatch(acquiredItemString, REGEX.ITEMS.HAGNK_PULL_NAME);
+    const itemAmount = getRegexMatch(acquiredItemString, REGEX.ITEMS.HAGNK_PULL_AMOUNTS);
+    if (!itemName) {
+      console.warn(`Could not find the item name for "${acquiredItemString}"`);
     }
 
     return new ListItem({

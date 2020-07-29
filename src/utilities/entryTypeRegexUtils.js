@@ -274,7 +274,7 @@ export function isEntryUnequip(entryString) {
  * @return {Boolean}
  */
 export function isEntryHagnkPull(entryString) {
-  return hasString(entryString, REGEX.ITEMS.HAGNK_PULL_TARGETS);
+  return hasString(entryString, REGEX.ITEMS.HAGNK_PULL_LINE);
 }
 /**
  * @param {String} entryString
