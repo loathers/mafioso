@@ -19,6 +19,10 @@ export default class ListItem {
   }
   /** @type {Number} */
   get displayAmount() {
-    return this.attributes.amount;
+    if (this.attributes.amount <= 1) {
+      return null;
+    }
+
+    return `(${this.attributes.amount})`;
   }
 }

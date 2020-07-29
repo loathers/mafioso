@@ -25,9 +25,10 @@ export default function ListDisplay(props) {
         className='flex-none adjacent-mar-l-2' />
 
       <div className='flex-col flex-auto jcontent-center adjacent-mar-l-2'>
-        { list.map((item, idx) => (
+        { list.map((listItem, idx) => (
           <PairedDisplay 
-            leftContent={item}
+            leftContent={listItem.displayName}
+            rightContent={listItem.displayAmount}
             className='adjacent-mar-t-2'
             key={`acquired-effect-${uuidv4()}-${idx}-key`} />
         ))}
