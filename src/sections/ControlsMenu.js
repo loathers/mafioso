@@ -6,6 +6,7 @@ import {ENTRY_TYPE_FILTERS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 // import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
+import Button from 'components/Button';
 import UploadComponent from 'components/UploadComponent';
 
 import FiltersMenu from 'sections/FiltersMenu';
@@ -93,12 +94,12 @@ function ControlsMenu(props) {
         content={'Upload new logs'}
         className='width-full adjacent-mar-t-5' />
 
-      <button 
+      <Button 
         onClick={() => logStore.downloadFullLog()}
         disabled={!logStore.hasAscensionLog}
-        className='pad-4 bor-1-white adjacent-mar-t-5'>
-          Download
-      </button>
+        className='pad-3 fontsize-4 adjacent-mar-t-5'>
+          Download Ascension Log
+      </Button>
       
       {/** info */}
       <div className='flex-col fontfamily-primary adjacent-mar-t-5 flex-none'>
@@ -180,35 +181,35 @@ function SimplePaginator(props) {
 
   return (
     <div className={combineClassnames('fontsize-4 flex-row-center flex-none', className)}>
-      <button 
+      <Button 
         onClick={() => onChangePage(0)}
         disabled={logStore.isOnFirstPage}
-        className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+        className='pad-4 textalign-center adjacent-mar-l-4'>
           First
-      </button>
+      </Button>
 
-      <button 
+      <Button 
         onClick={() => onChangePage(currentPageNum - 1)}
         disabled={logStore.isOnFirstPage}
-        className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+        className='pad-4 textalign-center adjacent-mar-l-4'>
           {"<"}
-      </button>
+      </Button>
 
       {/*<div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>*/}
 
-      <button 
+      <Button 
         onClick={() => onChangePage(currentPageNum + 1)}
         disabled={logStore.isOnLastPage}
-        className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+        className='pad-4 textalign-center adjacent-mar-l-4'>
           {">"}
-      </button>
+      </Button>
 
-      <button 
+      <Button 
         onClick={() => onChangePage(logStore.calculatePageLast())}
         disabled={logStore.isOnLastPage}
-        className='borradius-1 bg-second pad-4 textalign-center adjacent-mar-l-4'>
+        className='pad-4 textalign-center adjacent-mar-l-4'>
           Last
-      </button>
+      </Button>
     </div>
   )
 }

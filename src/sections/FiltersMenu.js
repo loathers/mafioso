@@ -2,6 +2,8 @@ import React from 'react';
 
 import logStore from 'store/logStore';
 
+import Button from 'components/Button';
+
 import combineClassnames from 'utilities/combineClassnames';
 
 /**
@@ -56,23 +58,23 @@ export default function FiltersMenu(props) {
       <div className='flex-row fontsize-1 flex-none adjacent-mar-t-3'>
         <button 
           onClick={onClickSelectAll} 
-          className='pad-h-1 cursor-pointer flex-none adjacent-mar-l-2'>
+          className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
           All
         </button>  
         <div className='flex-none adjacent-mar-l-2'>/</div>  
         <button 
           onClick={onClickSelectNone} 
-          className='pad-h-1 cursor-pointer flex-none adjacent-mar-l-2'>
+          className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
           None
         </button>  
       </div>
 
-      <button
+      <Button
         onClick={onClickApply}
         disabled={!logStore.isReady} 
-        className='fontsize-3 borradius-1 bg-second pad-3 adjacent-mar-t-3'>
+        className='fontsize-3 pad-3 adjacent-mar-t-3'>
         Apply
-      </button>
+      </Button>
     </div>
   )
 }
