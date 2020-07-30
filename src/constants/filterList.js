@@ -50,13 +50,16 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Using Stuff',
+    label: 'Crafting',
     entryGroup: [
-      ENTRY_TYPE.GENERIC_USE,
-      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
+      ENTRY_TYPE.ITEMS.COMBINE,
+      ENTRY_TYPE.ITEMS.COOK,
+      ENTRY_TYPE.ITEMS.CRAFT,
+      ENTRY_TYPE.ITEMS.CREATE,
+      ENTRY_TYPE.ITEMS.MIX,
     ],
     isHidden: false,
-    checked: false,
+    checked: true,
   },
   {
     label: 'Buffs/Effects',

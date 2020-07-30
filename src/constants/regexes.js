@@ -168,12 +168,18 @@ export const REGEX = {
   },
   // -- items
   ITEMS: {
-
     ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
     // ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
     ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire ).*?(?=( \(|$))/mi,
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
+
+    MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix) \d+.*/gmi,
+    COMBINE_LINE: /^(combine) \d+.*/gmi,
+    COOK_LINE: /^(cook) \d+.*/gmi,
+    CRAFT_LINE: /^(craft) \d+.*/gmi,
+    CREATE_LINE: /^(create) \d+.*/gmi,
+    MIX_LINE: /^(mix) \d+.*/gmi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,

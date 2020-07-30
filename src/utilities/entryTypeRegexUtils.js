@@ -84,14 +84,6 @@ export function getEntryType(entryString) {
   }
 
   // -- common
-  if (isEntryCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.COMBAT;
-  }
-
-  if (isEntryNonCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
-  }
-
   if (isEntryEat(entryString)) {
     return ENTRY_TYPE.CONSUMPTION.EAT;
   }
@@ -113,11 +105,31 @@ export function getEntryType(entryString) {
   }
 
   if (isEntryEquip(entryString)) {
-    return ENTRY_TYPE.EQUIP;
+    return ENTRY_TYPE.ITEMS.EQUIP;
   }
 
   if (isEntryUnequip(entryString)) {
-    return ENTRY_TYPE.UNEQUIP;
+    return ENTRY_TYPE.ITEMS.UNEQUIP;
+  }
+
+  if (isEntryCombine(entryString)) {
+    return ENTRY_TYPE.ITEMS.COMBINE;
+  }
+
+  if (isEntryCook(entryString)) {
+    return ENTRY_TYPE.ITEMS.COOK;
+  }
+
+  if (isEntryCraft(entryString)) {
+    return ENTRY_TYPE.ITEMS.CRAFT;
+  }
+
+  if (isEntryCreate(entryString)) {
+    return ENTRY_TYPE.ITEMS.CREATE;
+  }
+
+  if (isEntryMix(entryString)) {
+    return ENTRY_TYPE.ITEMS.MIX;
   }
 
   if (isEntryClosetPut(entryString)) {
@@ -146,6 +158,14 @@ export function getEntryType(entryString) {
   
   if (isEntryPVP(entryString)) {
     return ENTRY_TYPE.PVP;
+  }
+
+  if (isEntryCombatEncounter(entryString)) {
+    return ENTRY_TYPE.ENCOUNTER.COMBAT;
+  }
+
+  if (isEntryNonCombatEncounter(entryString)) {
+    return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
   return ENTRY_TYPE.UNKNOWN;
@@ -273,6 +293,41 @@ export function isEntryUnequip(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
+export function isEntryCombine(entryString) {
+  return hasString(entryString, REGEX.ITEMS.COMBINE_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryCook(entryString) {
+  return hasString(entryString, REGEX.ITEMS.COOK_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryCraft(entryString) {
+  return hasString(entryString, REGEX.ITEMS.CRAFT_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryCreate(entryString) {
+  return hasString(entryString, REGEX.ITEMS.CREATE_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryMix(entryString) {
+  return hasString(entryString, REGEX.ITEMS.MIX_LINE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
 export function isEntryHagnkPull(entryString) {
   return hasString(entryString, REGEX.ITEMS.HAGNK_PULL_LINE);
 }
@@ -321,7 +376,9 @@ export function isEntryCombatEncounter(entryString) {
  * @return {Boolean}
  */
 export function isEntryNonCombatEncounter(entryString) {
-  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isEntryCombatEncounter(entryString) && !isEntryMafiaMisc(entryString);
+  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) 
+    && !isEntryCombatEncounter(entryString) 
+    && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
 /**
