@@ -37,7 +37,7 @@ export const REGEX = {
   },
   DISTANCE_WOODS_GETAWAY: {
     GAZING_LINE: /(^gazing).*/gi,
-    EMPTY_GAZING_LINE: /(^gazing at the stars)(?!(\r\n|\n).)/gmi,
+    USELESS_GAZING_LINE: /gazing at the stars(\r\n|\n)(?!.)/gmi,
   },
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,
@@ -73,7 +73,7 @@ export const REGEX = {
   LINE: {
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
-    USELESS_VISIT: /^visit.*(\r\n|\n){2,}/gim,
+    USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
     ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
 
     COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
@@ -194,9 +194,10 @@ export const REGEX = {
 
     UNAFFECT_LINE: /^uneffect.*/gim,
 
-    CAST_LINE: /^cast .*/gim,
-    CAST_NAME: /(?<=^cast \d ).*/mi,
-    CAST_AMOUNT: /(?<=^cast )\d+(?=.*)/mi,
+    CAST_LINE: /cast .*/gim,
+    CAST_NAME: /(?<=cast \d ).*/mi,
+    CAST_AMOUNT: /(?<=cast )\d+(?=.*)/mi,
+    USELESS_CAST_LINE: /cast.*(\r\n|\n)(?!.)/gim,
   },
   // -- 
   // note: these only work in raw
