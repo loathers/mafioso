@@ -89,12 +89,6 @@ export const REGEX = {
 
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
 
-    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
-    MEAT_GAIN: /.*gain.*meat.*/gi,
-    MEAT_SPENT: /.*spent.*meat.*/gi,
-    AUTOSELL: /^autosell:.*/gmi,
-    TRANSACTION: /.*buy.*for.*from.*/gmi,
-
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
 
@@ -155,14 +149,25 @@ export const REGEX = {
     MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
   },
-  // -- items
-  ITEMS: {
+  // -- meat and trades
+  TRANSACTIONS: {
+    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
+    MEAT_CHANGED_LINE: /.*(gain|lose|spent).*meat.*/gmi,
+    SHOPPING: /.*buy.*for.*from.*/gmi,
+    MEAT_SPENT: /.*spent.*meat.*/gi,
+
     MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
     MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?=\s+meat)/gi,
+    
     BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
     BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
+    
+    AUTOSELL: /^autosell:.*/gmi,
     SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
+  },
+  // -- items
+  ITEMS: {
 
     ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
     // ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,

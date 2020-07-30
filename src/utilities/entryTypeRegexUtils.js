@@ -113,11 +113,11 @@ export function getEntryType(entryString) {
   }
 
   if (isEntryEquip(entryString)) {
-    return ENTRY_TYPE.ITEMS.EQUIP;
+    return ENTRY_TYPE.EQUIP;
   }
 
   if (isEntryUnequip(entryString)) {
-    return ENTRY_TYPE.ITEMS.UNEQUIP;
+    return ENTRY_TYPE.UNEQUIP;
   }
 
   if (isEntryClosetPut(entryString)) {
@@ -129,7 +129,7 @@ export function getEntryType(entryString) {
   }
 
   if (isEntrySpellCast(entryString)) {
-    return ENTRY_TYPE.EFFECTS.SPELL_CAST;
+    return ENTRY_TYPE.SPELL_CAST;
   }
 
   if (isEntryTransaction(entryString)) {
@@ -218,7 +218,7 @@ export function isEntryChew(entryString) {
  * @return {Boolean}
  */
 export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.ITEMS.BUY_ITEM_AMOUNT) 
+  return hasString(entryString, REGEX.TRANSACTIONS.BUY_ITEM_AMOUNT) 
     || isEntryAutosell(entryString);
 }
 /**

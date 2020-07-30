@@ -280,7 +280,7 @@ export function parseMeatChange(entryString) {
  * @return {Array<Number>}
  */
 export function parseMeatGains(entryString) {
-  const meatGainMatches = getRegexMatch(entryString, REGEX.ITEMS.MEAT_GAIN_AMOUNT) || [];
+  const meatGainMatches = getRegexMatch(entryString, REGEX.TRANSACTIONS.MEAT_GAIN_AMOUNT) || [];
   return meatGainMatches.map((amountString) => Number(amountString.replace(',', '')));
 }
 /**
@@ -288,7 +288,7 @@ export function parseMeatGains(entryString) {
  * @return {Array<Number>}
  */
 export function parseMeatLoss(entryString) {
-  const meatLossMatches = getRegexMatch(entryString, REGEX.ITEMS.MEAT_LOSS_AMOUNT) || [];
+  const meatLossMatches = getRegexMatch(entryString, REGEX.TRANSACTIONS.MEAT_LOSS_AMOUNT) || [];
   return meatLossMatches.map((amountString) => Number(amountString.replace(',', '') * -1));
 }
 /**
@@ -296,8 +296,8 @@ export function parseMeatLoss(entryString) {
  * @return {Number}
  */
 export function parseMeatSpent(entryString) {
-  const buyAmountMatches = getRegexMatch(entryString, REGEX.ITEMS.BUY_ITEM_AMOUNT) || [];
-  const buyCostMatches = getRegexMatch(entryString, REGEX.ITEMS.BUY_ITEM_COST) || [];
+  const buyAmountMatches = getRegexMatch(entryString, REGEX.TRANSACTIONS.BUY_ITEM_AMOUNT) || [];
+  const buyCostMatches = getRegexMatch(entryString, REGEX.TRANSACTIONS.BUY_ITEM_COST) || [];
   if (buyAmountMatches.length !== buyCostMatches.length) {
     console.warn('There may be some data missing from parsing how much meat was spent.', entryString);
   }
