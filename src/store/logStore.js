@@ -341,9 +341,8 @@ class LogStore {
       return;
     }
 
-    const allText = this.srcRawTexts.join('\n\n');
     const fileName = `${this.characterName}_ascension_${this.ascensionNum}`;
-    download(allText, fileName, 'text/plain');
+    download(this.rawText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions
    /** 
