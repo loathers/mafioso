@@ -55,11 +55,11 @@ class LogStore {
       /** @type {Number} */
       entriesPerPage: 100,
       /** @type {Array<EntryType>} */
-      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE,
+      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE.slice(),
       /** @type {Array<EntryAttribute>} */
-      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
+      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS.slice(),
       /** @type {Array<EntryType>} */
-      alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES,
+      alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES.slice(),
     });
 
     /** @type {Batcher} */
@@ -146,6 +146,13 @@ class LogStore {
     this.visibleEntries.clear();
     this.characterName = undefined;
     this.ascensionNum = undefined;
+    this.displayOptions = observable({
+      pageNum: 0,
+      entriesPerPage: 100,
+      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE.slice(),
+      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS.slice(),
+      alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES.slice(),
+    });
   }
   /**
    * @param {File} file
