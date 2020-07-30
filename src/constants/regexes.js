@@ -73,7 +73,7 @@ export const REGEX = {
     MAFIA_SESSION_DATE: /(?<=_)\d*/,
   },
   LINE: {
-    USELESS_USE: /use.*(\r\n|\n)(?!.)/gi,
+    USELESS_USE: /^use.*(\r\n|\n)(?!.)/gi,
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
     USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
@@ -174,12 +174,12 @@ export const REGEX = {
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
-    MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix) \d+.*/gmi,
-    COMBINE_LINE: /^(combine) \d+.*/gmi,
-    COOK_LINE: /^(cook) \d+.*/gmi,
-    CRAFT_LINE: /^(craft) \d+.*/gmi,
-    CREATE_LINE: /^(create) \d+.*/gmi,
-    MIX_LINE: /^(mix) \d+.*/gmi,
+    MAKE_SOMETHING_LINE: /(create|combine|craft|cook|mix).*\d+.*/gmi,
+    COMBINE_LINE: /combine.*\d+.*/gmi,
+    COOK_LINE: /cook.*\d+.*/gmi,
+    CRAFT_LINE: /craft.*\d+.*/gmi,
+    CREATE_LINE: /create.*\d+.*/gmi,
+    MIX_LINE: /mix.*\d+.*/gmi,
 
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
@@ -241,12 +241,12 @@ export const REGEX = {
   MISC: {
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
     STACK_TRACE: /^(stack trace).*?at.*\).*?(?=(\s|))/gmis,
-    CLI_PRINT: /^>.*(\r\n|\n)/gmi,
-    SEND_A_KMAIL: /send a kmail.*(\r\n|\n)/gi,
-    COMBAT_MACRO: /.*executes a macro.*(\r\n|\n)/gi,
-    MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n)/gmi,
-    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
-    EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n)/gi,
+    CLI_PRINT: /^> .*/gmi,
+    SEND_A_KMAIL: /send a kmail.*/gi,
+    COMBAT_MACRO: /.*executes a macro.*/gi,
+    MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*/gmi,
+    MAFIA_CHOICE_URL: /.*.php.*/g,
+    EMPTY_CHECKPOINT: /Created an empty checkpoint.*/gi,
   },
 };
 

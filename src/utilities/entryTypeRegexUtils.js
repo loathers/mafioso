@@ -209,7 +209,7 @@ export function isEntrySkillBreakdown(entryString) {
  * @return {Boolean}
  */
 export function isEntryAutosell(entryString) {
-  return hasString(entryString, REGEX.LINE.AUTOSELL);
+  return hasString(entryString, REGEX.TRANSACTIONS.AUTOSELL);
 }
 /**
  * @param {String} entryString
@@ -238,7 +238,7 @@ export function isEntryChew(entryString) {
  * @return {Boolean}
  */
 export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.TRANSACTIONS.BUY_ITEM_AMOUNT) 
+  return hasString(entryString, REGEX.TRANSACTIONS.SHOPPING) 
     || isEntryAutosell(entryString);
 }
 /**
