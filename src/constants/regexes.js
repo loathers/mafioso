@@ -29,6 +29,8 @@ export const REGEX = {
   },
   DECK_OF_EVERY_CARD: {
     TEXT: /Deck of Every Card/im,
+    USELESS_USE: /.*deck of every card.*(\r\n|\n)(?!.)/gim,
+    USELESS_PLAY: /play.*/gim,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
@@ -71,10 +73,10 @@ export const REGEX = {
     MAFIA_SESSION_DATE: /(?<=_)\d*/,
   },
   LINE: {
+    USELESS_USE: /use.*(\r\n|\n)(?!.)/gi,
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
     USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
-    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
 
     COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
     COMBAT_INIT: /Round.*(loses initiative|wins initiative).*/i,
@@ -87,6 +89,7 @@ export const REGEX = {
 
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
 
+    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
     MEAT_GAIN: /.*gain.*meat.*/gi,
     MEAT_SPENT: /.*spent.*meat.*/gi,
     AUTOSELL: /^autosell:.*/gmi,
