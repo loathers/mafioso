@@ -2,6 +2,7 @@ import React from 'react';
 
 import ENTRY_TYPE from 'constants/entryType';
 
+import { ReactComponent as AnvilImpactSVG } from 'images/anvil-impact.svg';
 import { ReactComponent as BattleGearSVG } from 'images/battle-gear.svg';
 import { ReactComponent as CatSVG } from 'images/cat.svg';
 import { ReactComponent as CrossedSwordsSVG } from 'images/crossed-swords.svg';
@@ -58,6 +59,13 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.ITEMS.CLOSET_PUT:
     case ENTRY_TYPE.ITEMS.CLOSET_TAKE:
       return SwapBagSVG;
+
+    case ENTRY_TYPE.ITEMS.COMBINE:
+    case ENTRY_TYPE.ITEMS.COOK:
+    case ENTRY_TYPE.ITEMS.CRAFT:
+    case ENTRY_TYPE.ITEMS.CREATE:
+    case ENTRY_TYPE.ITEMS.MIX:
+      return AnvilImpactSVG;
 
     case ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE:
     case ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT:
