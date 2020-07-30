@@ -39,7 +39,7 @@ export const REGEX = {
   },
   DISTANCE_WOODS_GETAWAY: {
     GAZING_LINE: /(^gazing).*/gi,
-    USELESS_GAZING_LINE: /gazing at the stars(\r\n|\n)(?!.)/gmi,
+    USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
   },
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,

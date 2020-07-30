@@ -355,6 +355,10 @@ export default class Entry {
       return true;
     }
 
+    if (this.entryType === ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY && this.doesShareEntryType(comparedEntry)) {
+      return true;
+    }
+
     // (deluxe) mr klaw - incomplete
     if (this.hasText(/mr. klaw/i) && comparedEntry.hasText(/mr. klaw/i)) {
       return true;
