@@ -29,13 +29,15 @@ function ignoreEvent(evt) {
 export default function UploadComponent(props) {
   const {
     className,
+    disabled,
     style,
     content,
   } = props;
 
   const [isOver, setIsOver] = React.useState(false);
 
-  const hoverClassName = isOver ? 'bor-2-green' : 'bor-1-white';
+  const borderClassName = disabled ? 'bor-1-grayer' : (isOver ? 'bor-2-green' : 'bor-1-white');
+  const colorClassName = disabled ? 'color-grayer' : 'color-white';
 
   return (
     <form 
@@ -46,12 +48,13 @@ export default function UploadComponent(props) {
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
       <label 
-        className={combineClassnames('pad-4 flex-auto cursor-pointer', hoverClassName)}
+        className={combineClassnames('pad-4 flex-auto cursor-pointer', borderClassName, colorClassName)}
         htmlFor='log-uploader'>
         {content}
       </label>
 
       <input
+        disabled={disabled}
         style={{
           width: 0.1,
           height: 0.1,
