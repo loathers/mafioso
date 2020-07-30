@@ -13,6 +13,7 @@ import {DEFAULT_ENTRIES_VISIBLE, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filt
 import REGEX from 'constants/regexes';
 
 import * as logParserUtils from 'utilities/logParserUtils';
+import download from 'utilities/download';
 
 /**
  * state and handler of the log data
@@ -100,6 +101,10 @@ class LogStore {
   /** @type {Number} */
   get currentCount() {
     return this.currentEntries.length;
+  }
+  /** @type {Boolean} */
+  get hasAscensionLog() {
+    return this.hasAscensionNum;
   }
   /** @type {Boolean} */
   get hasAscensionNum() {
@@ -316,6 +321,22 @@ class LogStore {
 
     console.log(`%cCondensed entries from ${originalLength} to ${condensedData.length}`, 'color: #6464ff');
     return condensedData;
+  }
+  /**
+   * 
+   */
+  downloadFullLog() {
+    if (!this.isReady) {
+      return;
+    }
+
+    if (!this.hasAscensionLog) {
+      return;
+    }
+
+    const allText = this.srcRawTexts.join('\n\n');
+    const fileName = `${this.characterName}_ascension_${this.ascensionNum}`;
+    download(allText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions
    /** 

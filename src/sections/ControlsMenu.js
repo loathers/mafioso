@@ -92,6 +92,13 @@ function ControlsMenu(props) {
       <UploadComponent
         content={'Upload new logs'}
         className='width-full adjacent-mar-t-5' />
+
+      <button 
+        onClick={() => logStore.downloadFullLog()}
+        disabled={!logStore.hasAscensionLog}
+        className='pad-4 bor-1-white adjacent-mar-t-5'>
+          Download
+      </button>
       
       {/** info */}
       <div className='flex-col fontfamily-primary adjacent-mar-t-5 flex-none'>
