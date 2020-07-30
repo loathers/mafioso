@@ -97,24 +97,26 @@ function ControlsMenu(props) {
       <Button 
         onClick={() => logStore.downloadFullLog()}
         disabled={!logStore.hasAscensionLog}
-        className='pad-3 fontsize-4 adjacent-mar-t-5'>
-          Download Ascension Log
-      </Button>
-      
-      {/** info */}
-      <div className='flex-col fontfamily-primary adjacent-mar-t-5 flex-none'>
-        { logStore.hasCharacterName &&
-          <h2 className='color-gray fontsize-4 adjacent-mar-t-1'>
-            {`${logStore.characterName}`}
-          </h2>
-        }
+        className='flex-col pad-3 adjacent-mar-t-5'>
+          <div className='fontsize-7 adjacent-mar-t-4'>Download Log</div>
 
-        { logStore.hasAscensionNum &&
-          <h2 className='fontsize-7 adjacent-mar-t-1'>
-            {`Ascension #${logStore.ascensionNum}`}
-          </h2>
-        }
-      </div>
+          { (logStore.hasAscensionNum || logStore.hasCharacterName) &&
+            <div className='adjacent-mar-t-4'>
+              {/** info */}
+              { logStore.hasAscensionNum &&
+                <h2 className='fontsize-4 adjacent-mar-t-1'>
+                  {`Ascension #${logStore.ascensionNum}`}
+                </h2>
+              }
+
+              { logStore.hasCharacterName &&
+                <h2 className='color-gray fontsize-3 adjacent-mar-t-1'>
+                  {`${logStore.characterName}`}
+                </h2>
+              }
+            </div>
+          }
+      </Button>
 
       {/* pagination */}
       { logStore.hasParsedEntries &&
