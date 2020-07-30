@@ -452,7 +452,6 @@ class LogStore {
       filteredAttributes: filteredAttributes,
     };
 
-    console.log('⌛ %c...done.', 'color: blue');
     this.isFetching.set(false);
 
     return condensedEntries;
@@ -505,10 +504,7 @@ class LogStore {
       return [];
     }
   
-    console.log('⌛ %c...done fetch by filter.', 'color: blue');
     return visibleEntries;
-    // const condensedEntries = this.condenseEntries(visibleEntries);
-    // return condensedEntries;
   }
   /**
    * @param {Object} options
@@ -534,8 +530,6 @@ class LogStore {
 
     // delay for a millisec so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, 1));
-
-    console.log('⌛ %c...done fetch by page.', 'color: blue');
     return pagedEntries;
   }
   /**

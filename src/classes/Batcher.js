@@ -40,7 +40,7 @@ export default class Batcher {
       await new Promise((resolve) => setTimeout(resolve, batchDelay)); // delay between batches
 
       batchResult = batchResult.concat(groupResult);
-      console.log(`%c☌ batch #${i+1} complete (${groupResult.length} items)`, 'color: #6464ff');
+      // console.log(`%c☌ batch #${i+1} complete (${groupResult.length} items)`, 'color: #6464ff');
     }
 
     return batchResult;
