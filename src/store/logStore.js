@@ -383,7 +383,6 @@ class LogStore {
         const dateMatch = entry.rawText.match(REGEX.SNAPSHOT_CHECK.KOL_DATE)[0];
         if (!dateList.includes(dateMatch)) {
           dateList.push(dateMatch);
-          entry.entryType = ENTRY_TYPE.SNAPSHOT.NEW_DAY;
         }
       }
 

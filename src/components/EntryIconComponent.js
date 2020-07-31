@@ -27,7 +27,7 @@ import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
  */
 function getEntryIcon(entryType) {
   switch(entryType) {
-    case ENTRY_TYPE.SNAPSHOT.NEW_DAY:
+    // case ENTRY_TYPE.SNAPSHOT.NEW_DAY:
     case ENTRY_TYPE.SNAPSHOT.DAY_INFO:
     case ENTRY_TYPE.SNAPSHOT.VALHALLA:
       return CondorEmblemSVG;
