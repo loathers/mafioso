@@ -73,7 +73,7 @@ export function parseAscensionAttributes(rawText) {
   return {
     characterName: rawText.match(REGEX.SNAPSHOT_CHECK.CHARACTER_NAME)[0] || undefined,
     ascensionNum: rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER)[0] || undefined,
-    difficulty: rawText.match(REGEX.ASCENSION.DIFFICULTY_NAME)[0] || undefined,
+    difficultyName: rawText.match(REGEX.ASCENSION.DIFFICULTY_NAME)[0] || undefined,
     pathName: rawText.match(REGEX.ASCENSION.PATH_NAME)[0] || undefined,
   }
 }

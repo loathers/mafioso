@@ -29,7 +29,7 @@ export default class Batcher {
 
     let batchResult = [];
     const numBatches = this.calculateBatchCount(batchSize);
-    console.log(`%c☌ Batcher running [batchCount=${numBatches}] with [delay=${batchDelay}ms]`, 'color: #6464ff');
+    // console.log(`%c☌ Batcher running [batchCount=${numBatches}] with [delay=${batchDelay}ms]`, 'color: #6464ff');
 
     for (let i = 0; i < numBatches; i++) {
       const startIdx = i * batchSize;

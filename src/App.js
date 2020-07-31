@@ -45,7 +45,7 @@ function App() {
           <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
             { logStore.isAscensionLog &&
               <HeaderDisplay
-                topContent={logStore.ascensionDifficulty}
+                topContent={logStore.difficultyName}
                 bottomContent={logStore.pathName}
                 className='adjacent-mar-t-5'
               />

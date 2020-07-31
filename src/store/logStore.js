@@ -38,7 +38,7 @@ class LogStore {
       /** @type {Number} */
       ascensionNum: undefined,
       /** @type {AscensionDifficulty} */
-      ascensionDifficulty: undefined,
+      difficultyName: undefined,
       /** @type {String} */
       pathName: undefined,
     }
@@ -123,8 +123,8 @@ class LogStore {
     return this.ascensionAttributes.ascensionNum;
   }
   /** @type {String} */
-  get difficulty() {
-    return this.ascensionAttributes.difficulty;
+  get difficultyName() {
+    return this.ascensionAttributes.difficultyName;
   }
   /** @type {String} */
   get pathName() {
@@ -173,7 +173,7 @@ class LogStore {
     this.ascensionAttributes = {
       characterName: undefined,
       ascensionNum: undefined,
-      ascensionDifficulty: undefined,
+      difficultyName: undefined,
       pathName: undefined,
     };
 
@@ -260,13 +260,13 @@ class LogStore {
       const fullAscensionText = logParserUtils.findAscensionLog(allText);
       if (fullAscensionText !== null) {
         this.isAscensionLog = true;
-        this.setAscensionAttributes();
-        console.log(`✨ %cFound Ascension #${this.ascensionAttributes.ascensionNum}!`, 'color: blue; font-size: 14px');
         this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
+        this.setAscensionAttributes();
+        console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
       
       } else {
-        console.warn('No Ascension specific log was found.');
         this.rawText = await logParserUtils.cleanRawLog(allText);
+        console.warn('No Ascension specific log was found.');
       }
 
       // raw data gotten, now parse it to create individual entries
@@ -308,7 +308,7 @@ class LogStore {
         throw new Error('No log to parse???');
       }
 
-      console.log('✨ %cParsing your Session Log:', 'color: blue; font-size: 14px');
+      console.log('%cParsing your Session Log...', 'color: blue');
       this.isParsing.set(true);
 
       const parsedData = await logParserUtils.parseLogTxt(this.rawText);
@@ -583,9 +583,7 @@ class LogStore {
 
     const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
     const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
-    // console.log('I want entries from', startIdx, 'to', endIdx);
-
-    console.log(`⏳ %cGetting page ${pageNum}...`, 'color: blue');
+    // console.log(`⏳ %cGetting page ${pageNum}... from ${startIdx} to ${endIdx}`, 'color: blue');
 
     const pagedEntries = this.visibleEntries.slice(startIdx, endIdx);
 
