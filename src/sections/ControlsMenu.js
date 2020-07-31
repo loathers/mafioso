@@ -76,7 +76,7 @@ function ControlsMenu(props) {
     logStore.fetchEntries({entryTypesVisible: checkedTypes});
   }
 
-  const onApplyAttributes = (list) => {
+  const onChangeAttributes = (list) => {
     const checkedItems = list.filter((item) => item.checked);
     const filteredAttributes = checkedItems.map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));
     logStore.fetchEntries({filteredAttributes: filteredAttributes});
@@ -134,15 +134,21 @@ function ControlsMenu(props) {
       {/* filters */}
       <FiltersMenu 
         label='Visible Entries'
-        onApply={onApplyEntries}
         defaultList={entryFiltersList}
         inputType='checkbox'
         className='adjacent-mar-t-5'/>
 
+      <Button
+        onClick={onApplyEntries}
+        disabled={!logStore.isReady} 
+        className='fontsize-3 pad-3 adjacent-mar-t-3'>
+        Apply
+      </Button>
+
       <FiltersMenu 
         label='Filter Attributes'
-        onApply={onApplyAttributes}
         defaultList={attributeFiltersList}
+        onChange={onChangeAttributes}
         inputType='radio'
         className='adjacent-mar-t-5'/>
     </div>

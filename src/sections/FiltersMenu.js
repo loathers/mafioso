@@ -1,8 +1,6 @@
 import React from 'react';
 
-import logStore from 'store/logStore';
-
-import Button from 'components/Button';
+// import Button from 'components/Button';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -15,20 +13,27 @@ export default function FiltersMenu(props) {
     label,
     inputType = 'checkbox',
     defaultList,
-    onApply,
     className,
+    onChange = () => {},
   } = props;
 
   const [filterList, updateList] = React.useState(defaultList);
 
   const toggledChecked = (changedIdx) => {
-    const newList = filterList.slice();
-    newList[changedIdx].checked = !filterList[changedIdx].checked;
-    updateList(newList);
-  }
+    const newList = filterList.slice().map((item, idx) => {
+      if (inputType === 'radio') {
+        item.checked = false;  
+      }
 
-  const onClickApply = () => {
-    onApply(filterList);
+      if (idx === changedIdx) {
+        item.checked = !item.checked;
+      }
+
+      return item;
+    });
+
+    updateList(newList);
+    onChange(newList);
   }
 
   const onClickSelectAll = () => {
@@ -70,13 +75,6 @@ export default function FiltersMenu(props) {
           None
         </button>  
       </div>
-
-      <Button
-        onClick={onClickApply}
-        disabled={!logStore.isReady} 
-        className='fontsize-3 pad-3 adjacent-mar-t-3'>
-        Apply
-      </Button>
     </div>
   )
 }
