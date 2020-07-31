@@ -1,11 +1,29 @@
 import React, {Fragment} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import { ReactComponent as BanishSVG } from 'images/island.svg';
 import { ReactComponent as CarrionSVG } from 'images/carrion.svg';
 import { ReactComponent as LaurelCrownSVG } from 'images/laurel-crown.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
 
+/** @returns {React.Component} */
+function CombatResultDisplay(props) {
+  const {
+    className,
+    content,
+    IconComponent,
+  } = props;
+
+  return (
+    <div className={combineClassnames('flex-col flex-none mar-1', className)}>
+      <IconComponent 
+        className='adjacent-mar-t-1'
+        style={{width: 30, height: 30}} />
+      <div className='flex-row-center fontsize-3 adjacent-mar-t-1'>{content}</div>
+    </div>
+  )
+}
 /** @returns {React.Component} */
 function CombatActionDisplay(props) {
   const {
@@ -66,21 +84,21 @@ export default function CombatSequenceDisplay(props) {
       ))}
 
       { isVictory &&
-        <Fragment>
-          <LaurelCrownSVG 
-            className='flex-none mar-1'
-            style={{width: 30, height: 30}} />
-          <div className='flex-row-center fontsize-3 mar-1'>Victory!</div>
-        </Fragment>
+        <CombatResultDisplay 
+          content='Victory!'
+          IconComponent={LaurelCrownSVG} />
       }
 
       { isDeath &&
-        <Fragment>
-          <CarrionSVG 
-            className='flex-none mar-1'
-            style={{width: 30, height: 30}} />
-          <div className='flex-row-center fontsize-3 mar-1'>Beaten up :(</div>
-        </Fragment>
+        <CombatResultDisplay 
+          content='Beaten up :('
+          IconComponent={CarrionSVG} />
+      }
+
+      { entry.isBanished &&
+        <CombatResultDisplay 
+          content='Banished!'
+          IconComponent={BanishSVG} />
       }
     </div>
   )

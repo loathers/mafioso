@@ -181,6 +181,13 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Banished',
+    attributeName: 'isBanished',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Victories',
     attributeName: 'isVictory',
     attributeValue: true,
