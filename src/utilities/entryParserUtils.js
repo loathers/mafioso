@@ -2,7 +2,7 @@ import ListItem from 'classes/ListItem';
 
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
-import {BANISHERS} from 'constants/TRACKERS';
+import {BANISHERS, DISINTIGRATERS} from 'constants/TRACKERS';
 
 import {
   hasString,
@@ -84,6 +84,7 @@ export function parseCombatAttributes(entryString) {
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
     banisher: parseBanishers(entryString),
+    disintigrater: parseDisintigraters(entryString),
   }
 }
 /**
@@ -518,6 +519,20 @@ export function parseBanishers(entryString) {
   return BANISHERS.find((banishEntity) => {
     const banishMatch = entryString.match(banishEntity.text, 'i');
     return banishMatch && banishMatch[0];
+  });
+}
+/**
+ * @param {String} entryString
+ * @return {Entity | null}
+ */
+export function parseDisintigraters(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return null;
+  }
+
+  return DISINTIGRATERS.find((entity) => {
+    const match = entryString.match(entity.text, 'i');
+    return match && match[0];
   });
 }
 // -- special data parsers

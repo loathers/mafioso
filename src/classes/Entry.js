@@ -80,6 +80,8 @@ export default class Entry {
       // -- special, includes iotm
       /** @type {Entity | null} */
       banisher: null,
+      /** @type {Entity | null} */
+      disintigrater: null,
       /** @type {Boolean} */
       isEndedByUseTheForce: false,
       /** @type {Array<String>} */
@@ -225,6 +227,10 @@ export default class Entry {
   /** @type {Boolean} */
   get isBanished() {
     return this.attributes.banisher !== null;
+  }
+  /** @type {Boolean} */
+  get isDisintigrated() {
+    return this.attributes.disintigrater !== null;
   }
   // -- iotm getters
   /** @type {Boolean} */
