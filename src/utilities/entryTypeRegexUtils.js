@@ -145,7 +145,7 @@ export function getEntryType(entryString) {
   }
 
   if (isEntrySpellCast(entryString)) {
-    return ENTRY_TYPE.SPELL_CAST;
+    return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
 
   if (isEntryTransaction(entryString)) {

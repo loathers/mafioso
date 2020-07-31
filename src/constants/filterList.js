@@ -39,6 +39,21 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
+    label: 'Pulls',
+    entryType: ENTRY_TYPE.ITEMS.HAGNK_PULL,
+    isHidden: false,
+    checked: true,
+  },
+  {
+    label: 'Buffs/Effects',
+    entryType: ENTRY_TYPE.EFFECTS.SPELL_CAST,
+    // entryGroup: [
+    //   ENTRY_TYPE.EFFECTS.SPELL_CAST,
+    // ],
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Crafting',
     entryGroup: [
       ENTRY_TYPE.ITEMS.COMBINE,
@@ -48,21 +63,7 @@ export const ENTRY_TYPE_FILTERS = [
       ENTRY_TYPE.ITEMS.MIX,
     ],
     isHidden: false,
-    checked: true,
-  },
-  {
-    label: 'Buffs/Effects',
-    entryGroup: [
-      ENTRY_TYPE.EFFECTS.SPELL_CAST,
-    ],
-    isHidden: false,
-    checked: true,
-  },
-  {
-    label: 'Pulls',
-    entryType: ENTRY_TYPE.ITEMS.HAGNK_PULL,
-    isHidden: false,
-    checked: true,
+    checked: false,
   },
   {
     label: 'Closet',
