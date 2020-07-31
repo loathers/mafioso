@@ -59,7 +59,7 @@ function App() {
             }
 
             { !logStore.hasCurrentEntries &&
-              <div className='fontsize-6 color-white'>
+              <div className='fontsize-6 color-white adjacent-mar-t-5'>
                 Huh, nothing here.
               </div>
             }

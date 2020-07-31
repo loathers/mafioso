@@ -137,3 +137,18 @@ function calculateBatchSize(rawSize) {
   const newBatchSize = Math.round(1000 - rawVal);
   return Math.max(100, newBatchSize);
 }
+/**
+ * @param {String} rawText
+ * @returns {Array<KolDate>}
+ */
+export function findAllDates(rawText) {
+  return rawText
+    .match(REGEX.SNAPSHOT_CHECK.KOL_DATE)
+    .reduce((dateArray, dateText) => {
+      if (!dateArray.includes(dateText)) {
+        dateArray = dateArray.push(dateText);
+      }
+
+      return dateArray;
+    }, []);
+}

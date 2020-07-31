@@ -77,9 +77,6 @@ export const REGEX = {
   },
 
   // -- common
-  FILE: {
-    MAFIA_SESSION_DATE: /(?<=_)\d*/,
-  },
   LINE: {
     USELESS_USE: /^use.*(\r\n|\n)(?!.)/gi,
     LOCATION: /\[\d*\].*/g,
@@ -242,6 +239,9 @@ export const REGEX = {
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
   },
   // -- kolmafia snapshot
+  FILE: {
+    MAFIA_SESSION_DATE: /(?<=_)\d*/,
+  },
   SNAPSHOT_CHECK: {
     CHARACTER_NAME: /(?<=^name: ).*/mi,
     CONTAIN_MOON: /(> moon)/i,
@@ -250,6 +250,8 @@ export const REGEX = {
     CONTAIN_SKILLS: /(> skills)/i,
     CONTAIN_EFFECTS: /(> effects)/i,
     CONTAIN_MODIFIERS: /(> modifiers)/i,
+
+    KOL_DATE: /(?<=- )(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
   },
   // -- misc
   MISC: {

@@ -9,6 +9,31 @@ import {hasString} from 'utilities/regexUtils';
  * @return {EntryType}
  */
 export function getEntryType(entryString) {
+  // -- kolmafia
+  if (isEntryValhalla(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.VALHALLA;
+  }
+
+  if (isEntryAscensionInfo(entryString)) {
+    // return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
+  }
+  
+  if (isEntryDayInfo(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.DAY_INFO;
+  }
+  
+  if (isEntryCharacterInfo(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO;
+  }
+  
+  if (isEntrySkillBreakdown(entryString)) {
+    return ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN;
+  }
+  
+  if (isEntryMafiaMisc(entryString)) {
+    return ENTRY_TYPE.MAFIA.MISC_LOG;
+  }
+
   // -- iotm
   if (isEntryBoxingDaycare(entryString)) {
     return ENTRY_TYPE.IOTM.BOXING_DAYCARE;
@@ -64,27 +89,6 @@ export function getEntryType(entryString) {
 
   if (isEntryGodLobsterBoon(entryString)) {
     return ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON;
-  }
-
-  // -- kolmafia
-  if (isEntryValhalla(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.VALHALLA;
-  }
-
-  if (isEntryAscensionInfo(entryString)) {
-    // return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
-  }
-  
-  if (isEntryDayInfo(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.DAY_INFO;
-  }
-  
-  if (isEntrySkillBreakdown(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN;
-  }
-  
-  if (isEntryMafiaMisc(entryString)) {
-    return ENTRY_TYPE.MAFIA.MISC_LOG;
   }
 
   // -- common
@@ -198,12 +202,19 @@ export function isEntryAscensionInfo(entryString) {
   return hasString(entryString, REGEX.ASCENSION.VALHALLA_GROUP);
 }
 /**
+ * this is going to be the gateway to the daycount
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryDayInfo(entryString) {
-  return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_MOON) 
-    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS)
+  return hasString(entryString, REGEX.SNAPSHOT_CHECK.KOL_DATE);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryCharacterInfo(entryString) {
+  return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS)
     || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_EQUIPMENT)
     || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_EFFECTS)
     || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_MODIFIERS);

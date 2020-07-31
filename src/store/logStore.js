@@ -9,6 +9,7 @@ import {
   ALWAYS_HIDDEN_ENTRIES,
   FILTER_DELAY,
 } from 'constants/DEFAULTS';
+import ENTRY_TYPE from 'constants/entryType';
 import {DEFAULT_ENTRIES_VISIBLE, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
 import REGEX from 'constants/regexes';
 
@@ -278,7 +279,8 @@ class LogStore {
 
       const parsedData = await logParserUtils.parseLogTxt(this.rawText);
       const newData = this.condenseEntries(parsedData);
-      this.allEntries.replace(newData);
+      const additionalData = this.createConjectureData(newData);
+      this.allEntries.replace(additionalData);
       this.visibleEntries.replace([]);
 
       const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
@@ -336,6 +338,28 @@ class LogStore {
 
     console.log(`%cCondensed entries from ${originalLength} to ${condensedData.length}`, 'color: #6464ff');
     return condensedData;
+  }
+  /**
+   * there are some things we're going to guess about an entry
+   *  - day
+   *  - possible turn num
+   *  
+   * @param {Array<Entry>} allEntries
+   */
+  createConjectureData(allEntries) {
+    const dateList = [];
+
+    return allEntries.map((entry, idx) => {
+      if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO) {
+        const dateMatch = entry.rawText.match(REGEX.SNAPSHOT_CHECK.KOL_DATE)[0];
+        if (!dateList.includes(dateMatch)) {
+          dateList.push(dateMatch);
+        }
+      }
+
+      entry.attributes.dayNum = dateList.length;
+      return entry;
+    });
   }
   /**
    * 

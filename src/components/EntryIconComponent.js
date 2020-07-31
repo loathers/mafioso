@@ -28,8 +28,6 @@ import { ReactComponent as UncertaintySVG } from 'images/uncertainty.svg';
 function getEntryIcon(entryType) {
   switch(entryType) {
     case ENTRY_TYPE.SNAPSHOT.DAY_INFO:
-    case ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN:
-    case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
     case ENTRY_TYPE.SNAPSHOT.VALHALLA:
       return CondorEmblemSVG;
 
@@ -45,7 +43,10 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.VISITING:
     case ENTRY_TYPE.ENCOUNTER.NONCOMBAT:
       return DigDugSVG;
-
+      
+    case ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO:
+    case ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN:
+    case ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO:
     case ENTRY_TYPE.IOTM.BOXING_DAYCARE:
     case ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD:
     case ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON:

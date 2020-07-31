@@ -114,8 +114,8 @@ export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Day Info',
     entryType: ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-    isHidden: true,
-    checked: false,
+    isHidden: false,
+    checked: true,
   },
   {
     label: 'Uncategorized',

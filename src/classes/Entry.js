@@ -31,6 +31,8 @@ export default class Entry {
     /** @type {Object} */
     this.attributes = {
       /** @type {Number} */
+      dayNum: -1,
+      /** @type {Number} */
       turnNum: -1,
       /** @type {Boolean} */
       isFreeAdv: false,
