@@ -181,6 +181,13 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Iunion Crown',
+    attributeName: 'hasIunionCrown',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Free Adventure',
     attributeName: 'isFreeAdv',
     attributeValue: true,

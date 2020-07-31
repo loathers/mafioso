@@ -283,6 +283,10 @@ export default class Entry {
   get hasPocketProfessor() {
     return this.hasText(REGEX.POCKET_PROFESSOR.SKILL_USE_LINE);
   }
+  /** @type {Boolean} */
+  get hasIunionCrown() {
+    return this.hasText(REGEX.IUNION_CROWN.GAINED_EFFECT);
+  }
   /** @returns {Boolean} */
   isEntryDiabolicPizza() {
     return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 
