@@ -43,7 +43,9 @@ export default function FiltersMenu(props) {
   }
 
   const onClickSelectNone = () => {
-    toggledChecked(-1);
+    const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? false : item.checked}));
+    updateList(newList);
+    onChange(newList);
   }
 
   return (
