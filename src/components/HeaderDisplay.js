@@ -3,7 +3,7 @@ import React from 'react';
 import combineClassnames from 'utilities/combineClassnames';
 
 /**  @returns {React.Component} */
-export default function AscensionTitleDisplay(props) {
+export default function HeaderDisplay(props) {
   const {
     className,
     difficultyName,

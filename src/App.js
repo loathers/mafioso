@@ -4,7 +4,7 @@ import {observer} from 'mobx-react';
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
-import AscensionTitleDisplay from 'components/AscensionTitleDisplay';
+import HeaderDisplay from 'components/HeaderDisplay';
 import LoaderComponent from 'components/LoaderComponent';
 
 import ControlsMenu from 'sections/ControlsMenu';
@@ -44,7 +44,7 @@ function App() {
         { logStore.isReady &&
           <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
             { logStore.hasAscensionLog &&
-              <AscensionTitleDisplay
+              <HeaderDisplay
                 pathName={logStore.pathName}
                 difficultyName={logStore.ascensionDifficulty}
                 className='adjacent-mar-t-5'
