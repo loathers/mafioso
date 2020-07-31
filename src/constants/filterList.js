@@ -10,7 +10,6 @@ export const ENTRY_TYPE_FILTERS = [
     entryGroup: [
       ENTRY_TYPE.SNAPSHOT.VALHALLA,
       ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-      ENTRY_TYPE.SNAPSHOT.NEW_DAY,
     ],
     isHidden: false,
     checked: true,
