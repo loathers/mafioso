@@ -109,10 +109,6 @@ export const REGEX = {
   VALUE: {
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
 
-    COMBAT_ROUND_LINE: /(?<=Round\s)\d+(?=:)/gmi,
-    COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/gi,
-    COMBAT_SKILL_NAMES: /(?<=^Round.*casts\s).*(?=!)/gmi,
-
     TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
     LOCATION_NAME: /(?<=\]\s).*/,
     SHOP_LOCATION_NAME: /(?<=each from\s).*/,
@@ -141,13 +137,22 @@ export const REGEX = {
   // -- combat
   COMBAT: {
     FREE_COMBAT: /.*combat.*did not cost.*/i,
+    SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
+
     INITIATIVE_LINE: /Round.*(loses initiative|wins initiative).*/i,
     WIN_INIT: /Round.*(wins initiative).*/i,
     LOSE_INIT: /Round.*(loses initiative).*/i,
+    VICTORY_LINE: /(?<=\s).*wins the fight.*/i,
+
     ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!/gmi,
     COMBAT_ROUND_LINE: /^round\s\d:.*/gmi,
-    VICTORY_LINE: /(?<=\s).*wins the fight.*/i,
-    SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
+    COMBAT_ROUND_NUM: /(?<=Round\s)\d+(?=:)/gmi,
+
+    ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
+    SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,
+
+    USE_COMBAT_ITEM_LINE: /^round \d+:.*uses.*/gmi,
+    USE_COMBAT_ITEM_NAME: /(?<=^round \d+:.*uses the ).*(?=!)/gmi,
 
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
   },

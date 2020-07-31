@@ -379,14 +379,10 @@ export function parseCombatActions(entryString) {
     return [];
   }
 
-  const combatRoundsString = getRegexMatch(entryString, REGEX.COMBAT.ACTION_ROUND);
-  if (combatRoundsString === null) {
-    return [];
-  }
-
-  const combatActionsList = combatRoundsString.map((attackRoundString) => {
-    const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND_LINE);
-    const attackActionName = parseAttackName(attackRoundString);
+  const combatRoundsString = getRegexMatch(entryString, REGEX.COMBAT.ACTION_ROUND) || [];
+  const combatActionsList = combatRoundsString.map((roundString) => {
+    const roundNum = getRegexMatch(roundString, REGEX.COMBAT.COMBAT_ROUND_NUM);
+    const attackActionName = parseAttackName(roundString);
     return {
       actionName: attackActionName,
       roundNum,
@@ -425,14 +421,19 @@ export function parseAttackName(entryString) {
     return `♫ ${songboomSingAlong[0]} ♫`;
   }
 
-  const combatSkillNames = getRegexMatch(entryString, REGEX.VALUE.COMBAT_SKILL_NAMES);
+  const combatSkillNames = getRegexMatch(entryString, REGEX.COMBAT.SKILL_NAME);
   if (combatSkillNames) {
     return combatSkillNames[0];
   }
 
-  const combatAttacks = getRegexMatch(entryString, REGEX.VALUE.COMBAT_ATTACKS);
+  const combatAttacks = getRegexMatch(entryString, REGEX.COMBAT.ATTACK);
   if (combatAttacks) {
     return 'ATTACK';
+  }
+
+  const useItemName = getRegexMatch(entryString, REGEX.COMBAT.USE_COMBAT_ITEM_NAME);
+  if (useItemName) {
+    return useItemName[0].toUpperCase();
   }
 
   return 'unknown attack';
