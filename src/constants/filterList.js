@@ -46,6 +46,14 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
+    label: 'Special Uses',
+    entryGroup: [
+      ENTRY_TYPE.IOTM.PILLKEEPER,
+    ],
+    isHidden: false,
+    checked: true,
+  },
+  {
     label: 'Buffs/Effects',
     entryType: ENTRY_TYPE.EFFECTS.SPELL_CAST,
     // entryGroup: [

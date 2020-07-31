@@ -182,6 +182,14 @@ export function isNonCombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
+  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
+    return 'Valhalla';
+  }
+
+  if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
+    return 'Eight Days a Week Pill Keeper';
+  }
+
   const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];
@@ -195,10 +203,6 @@ export function parseLocationName(entryString) {
   const visitLocationMatches = getRegexMatch(entryString, REGEX.VALUE.VISIT_LOCATION_NAME);
   if (visitLocationMatches !== null) {
     return visitLocationMatches[0];
-  }
-
-  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
-    return 'Valhalla';
   }
 
   if (entryTypeRegexUtils.isEntrySpellCast(entryString)) {
@@ -221,6 +225,10 @@ export function parseLocationName(entryString) {
 export function parseEncounterName(entryString) {
   if (isEntryBeachComb(entryString)) {
     return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION);
+  }
+
+  if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
+    return getRegexMatch(entryString, REGEX.PILL_KEEPER.CHOICE_RESULT);
   }
 
   if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {

@@ -81,6 +81,7 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.CONSUMPTION.DRINK:
       return MartiniSVG;
 
+    case ENTRY_TYPE.IOTM.PILLKEEPER:
     case ENTRY_TYPE.CONSUMPTION.CHEW:
       return PillSVG;
 

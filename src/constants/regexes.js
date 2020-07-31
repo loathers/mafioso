@@ -66,6 +66,7 @@ export const REGEX = {
   PILL_KEEPER: {
     // USE: /main.php?eowkeeper=1/gi,
     CHOICE_LINE: /Took choice 1395.*/gi,
+    CHOICE_RESULT: /(?<=choice 1395\/\d+: ).*/gi,
     EXPLODINALL: /(?<=choice 1395\/\d+: ).*Explodinall/gi,
     EXTENDICILLIN: /(?<=choice 1395\/\d+: ).*Extendicillin/gi,
     SNEAKISOL: /(?<=choice 1395\/\d+: ).*Sneakisol/gi,

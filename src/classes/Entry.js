@@ -125,6 +125,10 @@ export default class Entry {
       return false;
     }
 
+    if (this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER) {
+      return false;
+    }
+
     if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
       return false;
     }
