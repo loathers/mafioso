@@ -34,7 +34,11 @@ export async function parseLogTxt(rawText) {
     const preparsedLog = pregroupRawLog(rawText);
 
     // split up each entry by wherever there are two new lines
-    const rawEntries = preparsedLog.split(EMPTY_LINES_REGEX);
+    //  for some reason it doesn't properly split with two new lines
+    //  so we're using this weird hack
+    const rawEntries = preparsedLog
+      .replace(EMPTY_LINES_REGEX, '}{')
+      .split('}{');
 
     // create the Entry class for each entry text, which will then further parse their data
     const BATCH_SIZE = calculateBatchSize(rawSize);
