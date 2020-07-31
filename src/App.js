@@ -43,9 +43,9 @@ function App() {
 
         { logStore.isReady &&
           <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
-            { logStore.ascensionDifficulty &&
+            { logStore.hasAscensionLog &&
               <AscensionTitleDisplay
-                pathName='Community Service'
+                pathName={logStore.pathName}
                 difficultyName={logStore.ascensionDifficulty}
                 className='adjacent-mar-t-5'
               />
