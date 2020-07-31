@@ -78,10 +78,16 @@ export default class Entry {
       isDeath: false,
       
       // -- special, includes iotm
+      /** @type {Array<Entity> | undefined | null} */
+      attractors: null,
       /** @type {Entity | undefined | null} */
       banisher: null,
+      /** @type {Array<Entity> | undefined | null} */
+      copiers: null,
       /** @type {Entity | undefined | null} */
       disintigrater: null,
+      /** @type {Array<Entity> | undefined | null} */
+      replacers: null,
       /** @type {Boolean} */
       isEndedByUseTheForce: false,
       /** @type {Array<String>} */

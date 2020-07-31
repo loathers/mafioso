@@ -26,12 +26,12 @@ export const BATTER_UP = {
 }
 export const LATTE_BANISH = {
   text: 'THROW LATTE ON OPPONENT',
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
+  entityType: ENTITY_TYPE.EQUIPMENT,
 }
-
+//
 export const COSPLAY_SABER_DISINTIGRATE = {
   text: 'You will drop your things and walk away',
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
+  entityType: ENTITY_TYPE.EQUIPMENT,
 }
 export const MICRONOVA = {
   text: 'micronova',
@@ -41,8 +41,30 @@ export const PILLKEEPER_DISINTIGRATE = {
   text: 'Explodinall',
   entityType: ENTITY_TYPE.OTHER,
 }
-
+//
 export const COSPLAY_SABER_DUPLICATE = {
   text: 'You will go find two friends and meet me here',
+  entityType: ENTITY_TYPE.EQUIPMENT,
+}
+export const POCKET_PROFESSOR_DUPLICATE = {
+  text: 'LECTURE ON RELATIVITY',
+  entityType: ENTITY_TYPE.FAMILIAR,
+}
+//
+export const GALLAPAGOSIAN_MATING_CALL = {
+  text: 'GALLAPAGOSIAN MATING CALL',
   entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
+export const LATTE_ATTRACT = {
+  text: 'OFFER LATTE TO OPPONENT',
+  entityType: ENTITY_TYPE.EQUIPMENT,
+}
+export const TRANSCENDENT_OLFACTION = {
+  text: 'TRANSCENDENT OLFACTION',
+  entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
+//
+export const POWERFUL_GLOVE_REPLACE = {
+  text: 'CHEAT CODE: Replace Enemy',
+  entityType: ENTITY_TYPE.EQUIPMENT,
 }

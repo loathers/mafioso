@@ -21,3 +21,26 @@ export const DISINTIGRATERS = [
   ENTITIES.MICRONOVA,
   ENTITIES.PILLKEEPER_DISINTIGRATE,
 ];
+/**
+ * aka sniff
+ * @typedef {Entity} Attractors
+ */
+export const ATTRACTORS = [
+  ENTITIES.GALLAPAGOSIAN_MATING_CALL,
+  ENTITIES.LATTE_ATTRACT,
+  ENTITIES.TRANSCENDENT_OLFACTION,
+];
+/**
+ * @typedef {Entity} Copiers
+ */
+export const COPIERS = [
+  ENTITIES.COSPLAY_SABER_DUPLICATE,
+  ENTITIES.POCKET_PROFESSOR_DUPLICATE,
+];
+/**
+ * aka macro
+ * @typedef {Entity} Replacers
+ */
+export const REPLACERS = [
+  ENTITIES.POWERFUL_GLOVE_REPLACE,
+];
