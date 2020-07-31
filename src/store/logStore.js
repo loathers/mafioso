@@ -29,14 +29,19 @@ class LogStore {
     /** @type {String} */
     this.rawText = undefined;
 
-    /** @type {String} */
-    this.characterName = undefined;
-    /** @type {Number} */
-    this.ascensionNum = undefined;
-    /** @type {AscensionDifficulty} */
-    this.ascensionDifficulty = undefined;
-    /** @type {String} */
-    this.pathName = undefined;
+    /** @type {Boolean} */
+    this.isAscensionLog = false,
+    /** @type {AscensionAttributes} */
+    this.ascensionAttributes = {
+      /** @type {String} */
+      characterName: undefined,
+      /** @type {Number} */
+      ascensionNum: undefined,
+      /** @type {AscensionDifficulty} */
+      ascensionDifficulty: undefined,
+      /** @type {String} */
+      pathName: undefined,
+    }
 
     /** 
      * literally all the entries
@@ -83,6 +88,7 @@ class LogStore {
   get isReady() {
     return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
   }
+  // -- log data
   /** @type {Boolean} */
   get hasRawText() {
     return this.rawText !== undefined;
@@ -107,9 +113,22 @@ class LogStore {
   get currentCount() {
     return this.currentEntries.length;
   }
-  /** @type {Boolean} */
-  get hasAscensionLog() {
-    return this.hasAscensionNum;
+  // -- ascension attributes
+  /** @type {String} */
+  get characterName() {
+    return this.ascensionAttributes.characterName;
+  }
+  /** @type {Number} */
+  get ascensionNum() {
+    return this.ascensionAttributes.ascensionNum;
+  }
+  /** @type {String} */
+  get difficulty() {
+    return this.ascensionAttributes.difficulty;
+  }
+  /** @type {String} */
+  get pathName() {
+    return this.ascensionAttributes.pathName;
   }
   /** @type {Boolean} */
   get hasAscensionNum() {
@@ -149,10 +168,15 @@ class LogStore {
     this.srcRawTexts = [];
     this.allEntries.clear();
     this.visibleEntries.clear();
-    this.characterName = undefined;
-    this.ascensionNum = undefined;
-    this.ascensionDifficulty = undefined;
-    this.pathName = undefined;
+
+    this.isAscensionLog = false;
+    this.ascensionAttributes = {
+      characterName: undefined,
+      ascensionNum: undefined,
+      ascensionDifficulty: undefined,
+      pathName: undefined,
+    };
+
     this.displayOptions = observable({
       pageNum: 0,
       entriesPerPage: 100,
@@ -160,6 +184,21 @@ class LogStore {
       filteredAttributes: this.displayOptions.filteredAttributes.slice(),
       alwaysHiddenTypes: this.displayOptions.alwaysHiddenTypes.slice(),
     });
+  }
+  /**
+   * find attributes that are specifically related to a full ascension log
+   * @returns {AscensionAttributes}
+   */
+  setAscensionAttributes() {
+    if (!this.isAscensionLog) {
+      console.warn('We are parsing for Ascension but it is not determined to be an ascension log');
+    }
+
+    if (this.hasRawText) {
+      this.ascensionAttributes = logParserUtils.parseAscensionAttributes(this.rawText); 
+    }
+
+    return this.ascensionAttributes;
   }
   /**
    * @param {File} file
@@ -200,7 +239,7 @@ class LogStore {
       this.reset();
       this.srcFiles = files;
 
-      // sort files by kolmafia's date format
+      // sort files by kolmafia's date
       const sortedFiles = Array.from(files).sort((fileA, fileB) => {
         const sessionDateA = Number(fileA.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
         const sessionDateB = Number(fileB.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
@@ -209,8 +248,6 @@ class LogStore {
 
       // get the text from all the files
       this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));
-
-      // no legal texts found 
       if (this.srcRawTexts.length <= 0) {
         console.error('It looks like none of those files were valid, mate.');
         this.isParsing.set(false);
@@ -222,10 +259,9 @@ class LogStore {
       const allText = this.srcRawTexts.join('\n\n');
       const fullAscensionText = logParserUtils.findAscensionLog(allText);
       if (fullAscensionText !== null) {
-        this.ascensionDifficulty = fullAscensionText.match(REGEX.ASCENSION.DIFFICULTY_NAME)[0];
-        this.pathName = fullAscensionText.match(REGEX.ASCENSION.PATH_NAME)[0];
-        this.ascensionNum = fullAscensionText.match(REGEX.ASCENSION.ASCENSION_NUMBER)[0];
-        console.log(`✨ %cWe found Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
+        this.isAscensionLog = true;
+        this.setAscensionAttributes();
+        console.log(`✨ %cFound Ascension #${this.ascensionAttributes.ascensionNum}!`, 'color: blue; font-size: 14px');
         this.rawText = fullAscensionText;
       
       } else {
@@ -233,9 +269,7 @@ class LogStore {
         this.rawText = allText;
       }
 
-      // find the character name
-      this.characterName = this.rawText.match(REGEX.SNAPSHOT_CHECK.CHARACTER_NAME) || undefined;
-
+      // raw data gotten, now parse it to create individual entries
       this.parse();
       
     } catch (e) {
@@ -365,7 +399,7 @@ class LogStore {
       return;
     }
 
-    if (!this.hasAscensionLog) {
+    if (!this.isAscensionLog) {
       return;
     }
 

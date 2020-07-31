@@ -13,6 +13,9 @@ import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 
 const logId = uuidv4();
 
+const MAX_CHAR_COUNT = 6000000;
+const MIN_CHAR_COUNT = 5;
+
 /**
  * core parsing handler - start here
  * 
@@ -23,7 +26,7 @@ export async function parseLogTxt(rawText) {
   try {
     const rawCleaned = await cleanRawLog(rawText);
     const rawSize = rawCleaned.length;
-    if (rawSize > 10000000 || rawSize < 10) {
+    if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
       throw new Error(`Unable to parse this log of size ${rawSize}.`);
     }
 
@@ -66,6 +69,18 @@ export function findAscensionLog(rawText) {
   }
 
   return null;
+}
+/** 
+ * @param {String} rawText
+ * @returns {AscensionAttributes}
+ */
+export function parseAscensionAttributes(rawText) {
+  return {
+    characterName: rawText.match(REGEX.SNAPSHOT_CHECK.CHARACTER_NAME)[0] || undefined,
+    ascensionNum: rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER)[0] || undefined,
+    difficulty: rawText.match(REGEX.ASCENSION.DIFFICULTY_NAME)[0] || undefined,
+    pathName: rawText.match(REGEX.ASCENSION.PATH_NAME)[0] || undefined,
+  }
 }
 /** 
  * creates a list of Entry class, 

@@ -43,7 +43,7 @@ function App() {
 
         { logStore.isReady &&
           <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
-            { logStore.hasAscensionLog &&
+            { logStore.isAscensionLog &&
               <HeaderDisplay
                 topContent={logStore.ascensionDifficulty}
                 bottomContent={logStore.pathName}
