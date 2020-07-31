@@ -101,6 +101,10 @@ export default function CombatSequenceDisplay(props) {
           IconComponent={BanishSVG} />
       }
 
+      { entry.isCopied &&
+        <div className='fontsize-1 mar-1'>Copied</div>
+      }
+
       { entry.isDisintigrated &&
         <div className='fontsize-1 mar-1'>Disintigrated</div>
       }

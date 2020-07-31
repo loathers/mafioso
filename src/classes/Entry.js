@@ -231,12 +231,24 @@ export default class Entry {
     return this.attributes.combatActions.length > 0;
   }
   /** @type {Boolean} */
+  get isAttracted() {
+    return Boolean(this.attributes.attractors) && this.attributes.copiers.attractors > 0;
+  }
+  /** @type {Boolean} */
   get isBanished() {
     return Boolean(this.attributes.banisher);
   }
   /** @type {Boolean} */
+  get isCopied() {
+    return Boolean(this.attributes.copiers) && this.attributes.copiers.length > 0;
+  }
+  /** @type {Boolean} */
   get isDisintigrated() {
     return Boolean(this.attributes.disintigrater);
+  }
+  /** @type {Boolean} */
+  get isReplaced() {
+    return Boolean(this.attributes.replacers) && this.attributes.copiers.replacers > 0;
   }
   // -- iotm getters
   /** @type {Boolean} */

@@ -2,7 +2,7 @@ import ListItem from 'classes/ListItem';
 
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
-import {BANISHERS, DISINTIGRATERS} from 'constants/TRACKERS';
+import * as TRACKERS from 'constants/TRACKERS';
 
 import {
   hasString,
@@ -83,8 +83,11 @@ export function parseCombatAttributes(entryString) {
     hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
+    attractors: parseAttractors(entryString),
     banisher: parseBanishers(entryString),
+    copiers: parseCopiers(entryString),
     disintigrater: parseDisintigraters(entryString),
+    replacers: parseReplacers(entryString),
   }
 }
 /**
@@ -510,6 +513,20 @@ export function parseCombatLoss(entryString) {
 }
 /**
  * @param {String} entryString
+ * @return {Array<Entity> | undefined | null}
+ */
+export function parseAttractors(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return null;
+  }
+
+  return TRACKERS.ATTRACTORS.filter((entity) => {  
+    const match = getRegexMatch(entryString, entity.text, 'i');
+    return Boolean(match);
+  });
+}
+/**
+ * @param {String} entryString
  * @return {Entity | undefined | null}
  */
 export function parseBanishers(entryString) {
@@ -517,9 +534,23 @@ export function parseBanishers(entryString) {
     return null;
   }
 
-  return BANISHERS.find((entity) => {
+  return TRACKERS.BANISHERS.find((entity) => {
     const match = getRegexMatch(entryString, entity.text, 'i');
     return match && match[0];
+  });
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Entity> | undefined | null}
+ */
+export function parseCopiers(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return null;
+  }
+
+  return TRACKERS.COPIERS.filter((entity) => {  
+    const match = getRegexMatch(entryString, entity.text, 'i');
+    return Boolean(match);
   });
 }
 /**
@@ -531,9 +562,23 @@ export function parseDisintigraters(entryString) {
     return null;
   }
 
-  return DISINTIGRATERS.find((entity) => {
+  return TRACKERS.DISINTIGRATERS.find((entity) => {
     const match = getRegexMatch(entryString, entity.text, 'i');
     return match && match[0];
+  });
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Entity> | undefined | null}
+ */
+export function parseReplacers(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return null;
+  }
+
+  return TRACKERS.REPLACERS.filter((entity) => {  
+    const match = getRegexMatch(entryString, entity.text, 'i');
+    return Boolean(match);
   });
 }
 // -- special data parsers
