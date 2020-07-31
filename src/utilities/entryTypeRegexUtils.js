@@ -368,7 +368,7 @@ export function isEntryAction(entryString) {
  */
 export function isEntryCombatEncounter(entryString) {
   // can be confident if it has the initiative line 
-  return hasString(entryString, REGEX.LINE.COMBAT_INIT);
+  return hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE);
 }
 /**
  * check if entry is a noncombat

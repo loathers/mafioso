@@ -132,7 +132,7 @@ export function isFreeAdv(entryString) {
     return true;
   }
 
-  return hasString(entryString, REGEX.LINE.COMBAT_FREE_TURN);
+  return hasString(entryString, REGEX.COMBAT.FREE_COMBAT);
 }
 /**
  * @param {String} entryString
@@ -379,13 +379,13 @@ export function parseCombatActions(entryString) {
     return [];
   }
 
-  const combatRoundsString = getRegexMatch(entryString, REGEX.LINE.COMBAT_ACTION_ROUND);
+  const combatRoundsString = getRegexMatch(entryString, REGEX.COMBAT.ACTION_ROUND);
   if (combatRoundsString === null) {
     return [];
   }
 
   const combatActionsList = combatRoundsString.map((attackRoundString) => {
-    const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND);
+    const roundNum = getRegexMatch(attackRoundString, REGEX.VALUE.COMBAT_ROUND_LINE);
     const attackActionName = parseAttackName(attackRoundString);
     return {
       actionName: attackActionName,
@@ -405,11 +405,11 @@ export function hasInitiative(entryString) {
     return false;
   }
 
-  if (hasString(entryString, REGEX.LINE.COMBAT_WIN_INIT)) {
+  if (hasString(entryString, REGEX.COMBAT.WIN_INIT)) {
     return true;
   }
 
-  if (hasString(entryString, REGEX.LINE.COMBAT_LOSE_INIT)) {
+  if (hasString(entryString, REGEX.COMBAT.LOSE_INIT)) {
     return false;
   }
 }
@@ -444,7 +444,7 @@ export function parseAttackName(entryString) {
  * @return {Boolean}
  */
 export function parseCombatVictory(entryString) {
-  return hasString(entryString, REGEX.LINE.COMBAT_VICTORY);
+  return hasString(entryString, REGEX.COMBAT.VICTORY_LINE);
 }
 /**
  * was this a lost combat?
@@ -468,7 +468,7 @@ export function parseCombatLoss(entryString) {
  * @return {String}
  */
 export function isUseTheForce(entryString) {
-  return hasString(entryString, REGEX.LINE.COMBAT_SKILL_USE_THE_FORCE);
+  return hasString(entryString, REGEX.COMBAT.SKILL_USE_THE_FORCE);
 }
 /**
  * @param {String} entryString

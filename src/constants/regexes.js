@@ -78,17 +78,6 @@ export const REGEX = {
     ENCOUNTER: /Encounter:.*/g,
     USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
 
-    COMBAT_FREE_TURN: /.*combat.*did not cost.*/i,
-    COMBAT_INIT: /Round.*(loses initiative|wins initiative).*/i,
-    COMBAT_WIN_INIT: /Round.*(wins initiative).*/i,
-    COMBAT_LOSE_INIT: /Round.*(loses initiative).*/i,
-    COMBAT_ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!/gmi,
-    COMBAT_ROUND: /^round\s\d:.*/gmi,
-    COMBAT_VICTORY: /(?<=\s).*wins the fight.*/i,
-    COMBAT_SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
-
-    AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
-
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
     MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
 
@@ -120,7 +109,7 @@ export const REGEX = {
   VALUE: {
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
 
-    COMBAT_ROUND: /(?<=Round\s)\d+(?=:)/gmi,
+    COMBAT_ROUND_LINE: /(?<=Round\s)\d+(?=:)/gmi,
     COMBAT_ATTACKS: /(?<=^Round.*\s)attacks(?=!)/gi,
     COMBAT_SKILL_NAMES: /(?<=^Round.*casts\s).*(?=!)/gmi,
 
@@ -148,6 +137,19 @@ export const REGEX = {
 
     MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+  },
+  // -- combat
+  COMBAT: {
+    FREE_COMBAT: /.*combat.*did not cost.*/i,
+    INITIATIVE_LINE: /Round.*(loses initiative|wins initiative).*/i,
+    WIN_INIT: /Round.*(wins initiative).*/i,
+    LOSE_INIT: /Round.*(loses initiative).*/i,
+    ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!/gmi,
+    COMBAT_ROUND_LINE: /^round\s\d:.*/gmi,
+    VICTORY_LINE: /(?<=\s).*wins the fight.*/i,
+    SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
+
+    AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
   },
   // -- meat and trades
   TRANSACTIONS: {
@@ -245,8 +247,9 @@ export const REGEX = {
     SEND_A_KMAIL: /send a kmail.*(\r\n|\n)/gi,
     COMBAT_MACRO: /.*executes a macro.*(\r\n|\n)/gi,
     MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n)/gmi,
-    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n)/gi,
+    // sometimes
+    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
   },
 };
 
