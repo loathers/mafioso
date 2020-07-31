@@ -16,11 +16,11 @@ function CombatResultDisplay(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('flex-col flex-none mar-1', className)}>
+    <div className={combineClassnames('flex-col-center flex-none mar-1', className)}>
       <IconComponent 
         className='adjacent-mar-t-1'
         style={{width: 30, height: 30}} />
-      <div className='flex-row-center fontsize-3 adjacent-mar-t-1'>{content}</div>
+      <div className='talign-center fontsize-3 adjacent-mar-t-1'>{content}</div>
     </div>
   )
 }
@@ -99,6 +99,10 @@ export default function CombatSequenceDisplay(props) {
         <CombatResultDisplay 
           content='Banished!'
           IconComponent={BanishSVG} />
+      }
+
+      { entry.isDisintigrated &&
+        <div className='fontsize-1 mar-1'>Disintigrated</div>
       }
     </div>
   )

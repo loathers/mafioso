@@ -78,9 +78,9 @@ export default class Entry {
       isDeath: false,
       
       // -- special, includes iotm
-      /** @type {Entity | null} */
+      /** @type {Entity | undefined | null} */
       banisher: null,
-      /** @type {Entity | null} */
+      /** @type {Entity | undefined | null} */
       disintigrater: null,
       /** @type {Boolean} */
       isEndedByUseTheForce: false,
@@ -226,11 +226,11 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isBanished() {
-    return this.attributes.banisher !== null;
+    return Boolean(this.attributes.banisher);
   }
   /** @type {Boolean} */
   get isDisintigrated() {
-    return this.attributes.disintigrater !== null;
+    return Boolean(this.attributes.disintigrater);
   }
   // -- iotm getters
   /** @type {Boolean} */

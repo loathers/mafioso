@@ -489,7 +489,8 @@ export function parseAttackName(entryString) {
  * @return {Boolean}
  */
 export function parseCombatVictory(entryString) {
-  return hasString(entryString, REGEX.COMBAT.VICTORY_LINE);
+  return hasString(entryString, REGEX.COMBAT.VICTORY_LINE) 
+    || Boolean(parseDisintigraters(entryString));
 }
 /**
  * was this a lost combat?
@@ -509,21 +510,21 @@ export function parseCombatLoss(entryString) {
 }
 /**
  * @param {String} entryString
- * @return {Entity | null}
+ * @return {Entity | undefined | null}
  */
 export function parseBanishers(entryString) {
   if (!isCombatEncounter(entryString)) {
     return null;
   }
 
-  return BANISHERS.find((banishEntity) => {
-    const banishMatch = entryString.match(banishEntity.text, 'i');
-    return banishMatch && banishMatch[0];
+  return BANISHERS.find((entity) => {
+    const match = getRegexMatch(entryString, entity.text, 'i');
+    return match && match[0];
   });
 }
 /**
  * @param {String} entryString
- * @return {Entity | null}
+ * @return {Entity | undefined | null}
  */
 export function parseDisintigraters(entryString) {
   if (!isCombatEncounter(entryString)) {
@@ -531,7 +532,7 @@ export function parseDisintigraters(entryString) {
   }
 
   return DISINTIGRATERS.find((entity) => {
-    const match = entryString.match(entity.text, 'i');
+    const match = getRegexMatch(entryString, entity.text, 'i');
     return match && match[0];
   });
 }

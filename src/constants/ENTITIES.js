@@ -24,6 +24,10 @@ export const BATTER_UP = {
   text: 'Batter Up',
   entityType: ENTITY_TYPE.COMBAT_SKILL,
 }
+export const LATTE_BANISH = {
+  text: 'THROW LATTE ON OPPONENT',
+  entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
 
 export const COSPLAY_SABER_DISINTIGRATE = {
   text: 'You will drop your things and walk away',

@@ -30,7 +30,7 @@ class LogStore {
     this.rawText = undefined;
 
     /** @type {Boolean} */
-    this.isAscensionLog = false,
+    this.isAscensionLog = false;
     /** @type {AscensionAttributes} */
     this.ascensionAttributes = {
       /** @type {String} */
