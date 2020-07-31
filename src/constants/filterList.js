@@ -153,13 +153,6 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'NonCombat',
-    attributeName: 'isNonCombatEncounter',
-    attributeValue: true,
-    isHidden: false,
-    checked: false,
-  },
-  {
     label: 'Level Up',
     attributeName: 'isLevelUp',
     attributeValue: true,
@@ -183,6 +176,13 @@ export const ATTRIBUTE_FILTERS = [
   {
     label: 'Banished',
     attributeName: 'isBanished',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Disintigrated',
+    attributeName: 'isDisintigrated',
     attributeValue: true,
     isHidden: false,
     checked: false,
