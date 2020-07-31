@@ -6,6 +6,12 @@ import ENTRY_TYPE from 'constants/entryType';
  */
 export const ENTRY_TYPE_FILTERS = [
   {
+    label: 'Ascension Info',
+    entryType: ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+    isHidden: false,
+    checked: true,
+  },
+  {
     label: 'Combat',
     entryType: ENTRY_TYPE.ENCOUNTER.COMBAT,
     isHidden: false,
@@ -113,12 +119,6 @@ export const ENTRY_TYPE_FILTERS = [
     label: 'Shopping',
     entryType: ENTRY_TYPE.TRANSACTION,
     isHidden: false,
-    checked: false,
-  },
-  {
-    label: 'Ascension Info',
-    entryType: ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-    isHidden: true,
     checked: false,
   },
   {

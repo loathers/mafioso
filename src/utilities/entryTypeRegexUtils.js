@@ -184,7 +184,7 @@ export function isEntryMafiaMisc(entryString) {
  * @return {Boolean}
  */
 export function isEntryAscensionInfo(entryString) {
-  return hasString(entryString, REGEX.VALUE.ASCENSION_NUMBER);
+  return hasString(entryString, REGEX.ASCENSION.VALHALLA_GROUP);
 }
 /**
  * @param {String} entryString
