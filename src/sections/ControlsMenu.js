@@ -45,11 +45,6 @@ function ControlsMenu(props) {
     }
   });
 
-  const attributeFiltersList = ATTRIBUTE_FILTERS.map((filterOption) => ({
-    ...filterOption,
-    checked: logStore.filteredAttributes.includes(filterOption.attributeName),
-  }));
-
   const onApplyChangePage = (nextPageNum) => {
     logStore.fetchEntries({pageNum: nextPageNum});
   };
@@ -75,6 +70,12 @@ function ControlsMenu(props) {
 
     logStore.fetchEntries({entryTypesVisible: checkedTypes});
   }
+
+  // attribute filters
+  const attributeFiltersList = ATTRIBUTE_FILTERS.map((filterOption) => ({
+    ...filterOption,
+    checked: logStore.filteredAttributes.includes(filterOption.attributeName),
+  }));
 
   const onChangeAttributes = (list) => {
     const checkedItems = list.filter((item) => item.checked);
@@ -141,7 +142,7 @@ function ControlsMenu(props) {
       <Button
         onClick={onApplyEntries}
         disabled={!logStore.isReady} 
-        className='fontsize-3 pad-3 adjacent-mar-t-3'>
+        className='fontsize-3 pad-3 adjacent-mar-t-5'>
         Apply
       </Button>
 

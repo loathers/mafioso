@@ -42,8 +42,7 @@ export default function FiltersMenu(props) {
   }
 
   const onClickSelectNone = () => {
-    const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? false : item.checked}));
-    updateList(newList);
+    toggledChecked(-1);
   }
 
   return (
@@ -63,12 +62,16 @@ export default function FiltersMenu(props) {
       </div>
 
       <div className='flex-row fontsize-1 flex-none adjacent-mar-t-3'>
-        <button 
-          onClick={onClickSelectAll} 
-          className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
-          All
-        </button>  
-        <div className='flex-none adjacent-mar-l-2'>/</div>  
+        { inputType !== 'radio' &&
+          <React.Fragment>
+          <button 
+            onClick={onClickSelectAll} 
+            className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
+            All
+          </button>  
+          <div className='flex-none adjacent-mar-l-2'>/</div>  
+          </React.Fragment>
+        }
         <button 
           onClick={onClickSelectNone} 
           className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
