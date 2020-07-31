@@ -7,4 +7,6 @@ export const BANISHERS = [
   ENTITIES.REFLEX_HAMMER,
   ENTITIES.USE_THE_FORCE,
   ENTITIES.BATTER_UP,
-]
+];
+
+export default BANISHERS;

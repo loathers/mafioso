@@ -77,7 +77,9 @@ export default class Entry {
       /** @type {Boolean} */
       isDeath: false,
       
-      // -- special, typically iotm
+      // -- special, includes iotm
+      /** @type {Entity | null} */
+      banisher: null,
       /** @type {Boolean} */
       isEndedByUseTheForce: false,
       /** @type {Array<String>} */
@@ -220,7 +222,11 @@ export default class Entry {
   get hasCombatActions() {
     return this.attributes.combatActions.length > 0;
   }
-  // -- special getters
+  /** @type {Boolean} */
+  get isBanished() {
+    return this.attributes.banisher !== null;
+  }
+  // -- iotm getters
   /** @type {Boolean} */
   get isIOTM() {
     return IOTM_ENTRIES.includes(this.entryType) 
@@ -239,6 +245,7 @@ export default class Entry {
 
     return this.attributes.diabolicPizzaIngredients.length > 0;
   }
+  // -- utility
   /**
    * @return {Object}
    */
@@ -250,7 +257,6 @@ export default class Entry {
       ...this.attributes,
     }
   }
-  // -- utility
   /** 
    * checks if the `rawText` contains given string
    * @param {String | Regex} txt

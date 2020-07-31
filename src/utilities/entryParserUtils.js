@@ -2,6 +2,7 @@ import ListItem from 'classes/ListItem';
 
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
+import BANISHERS from 'constants/BANISHERS';
 
 import {
   hasString,
@@ -82,6 +83,7 @@ export function parseCombatAttributes(entryString) {
     hasInitiative: hasInitiative(entryString),
     isVictory: parseCombatVictory(entryString),
     isDeath: parseCombatLoss(entryString),
+    banisher: parseBanishers(entryString),
   }
 }
 /**
@@ -503,6 +505,20 @@ export function parseCombatLoss(entryString) {
   // combat is counted as a loss if not a victory
   //  except in the case that there was a free runaway/banish used
   return !isFreeAdv(entryString) && !parseCombatVictory(entryString);
+}
+/**
+ * @param {String} entryString
+ * @return {Entity | null}
+ */
+export function parseBanishers(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return null;
+  }
+
+  return BANISHERS.find((banishEntity) => {
+    const banishMatch = entryString.match(banishEntity.text, 'i');
+    return banishMatch && banishMatch[0];
+  });
 }
 // -- special data parsers
 /**
