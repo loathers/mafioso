@@ -42,3 +42,9 @@ div[componentname="block-inner-icon"] {
   border-right: 7px solid transparent;
   border-top: 5px solid #ececec;
 }
+
+.hover\:bg-second-lighter:enabled {
+  &:hover {
+    background-color: #455a6d;
+  }
+}
