@@ -279,6 +279,10 @@ export default class Entry {
   get isPillKeeper() {
     return this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER;
   }
+  /** @type {Boolean} */
+  get hasPocketProfessor() {
+    return this.hasText(REGEX.POCKET_PROFESSOR.SKILL_USE_LINE);
+  }
   /** @returns {Boolean} */
   isEntryDiabolicPizza() {
     return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 

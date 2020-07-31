@@ -167,15 +167,15 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Level Up',
-    attributeName: 'isLevelUp',
+    label: 'Used the Force',
+    attributeName: 'isEndedByUseTheForce',
     attributeValue: true,
     isHidden: false,
     checked: false,
   },
   {
-    label: 'Used the Force',
-    attributeName: 'isEndedByUseTheForce',
+    label: 'Pocket Professor',
+    attributeName: 'hasPocketProfessor',
     attributeValue: true,
     isHidden: false,
     checked: false,
@@ -218,6 +218,13 @@ export const ATTRIBUTE_FILTERS = [
   {
     label: 'Replaced',
     attributeName: 'isReplaced',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Level Up',
+    attributeName: 'isLevelUp',
     attributeValue: true,
     isHidden: false,
     checked: false,

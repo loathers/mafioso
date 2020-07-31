@@ -86,6 +86,9 @@ export const REGEX = {
     // ENTRY_GROUPING: /^\[.*?piraterealm.*?(\r\n|\n){2,}/gmis,
     LOCATION: /(?<=^\[.*\] ).*piraterealm.*/gmi,
   },
+  POCKET_PROFESSOR: {
+    SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
+  },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
     RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*/gmis,
