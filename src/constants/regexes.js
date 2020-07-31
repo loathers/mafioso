@@ -6,11 +6,11 @@ export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- important
   ASCENSION: {
-    REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n)/is,
-    THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n)/is,
+    REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n|$)/is,
+    THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n|$)/is,
 
     VALHALLA_TEXT: /welcome to valhalla/im,
-    VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n).*?/gmis,
+    VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n|$).*?/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy ).*(?= for \d+)/gmi,
 
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
@@ -38,7 +38,7 @@ export const REGEX = {
   DECK_OF_EVERY_CARD: {
     TEXT: /Deck of Every Card/im,
     USELESS_USE: /.*deck of every card.*(\r\n|\n)(?!.)/gim,
-    USELESS_PLAY: /play.*/gim,
+    USELESS_PLAY: /^play.*/gim,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
