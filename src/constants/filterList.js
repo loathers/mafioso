@@ -161,6 +161,13 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Grabbing Pills',
+    attributeName: 'isPillKeeper',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Level Up',
     attributeName: 'isLevelUp',
     attributeValue: true,

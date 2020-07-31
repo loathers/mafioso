@@ -275,6 +275,10 @@ export default class Entry {
     return IOTM_ENTRIES.includes(this.entryType) 
       || this.attributes.isEndedByUseTheForce;
   }
+  /** @type {Boolean} */
+  get isPillKeeper() {
+    return this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER;
+  }
   /** @returns {Boolean} */
   isEntryDiabolicPizza() {
     return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 

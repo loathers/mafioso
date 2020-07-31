@@ -64,7 +64,6 @@ export const REGEX = {
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
   PILL_KEEPER: {
-    // USE: /main.php?eowkeeper=1/gi,
     CHOICE_LINE: /Took choice 1395.*/gi,
     CHOICE_RESULT: /(?<=choice 1395\/\d+: ).*/gi,
     EXPLODINALL: /(?<=choice 1395\/\d+: ).*Explodinall/gi,
@@ -75,7 +74,9 @@ export const REGEX = {
     FIDOXENE: /(?<=choice 1395\/\d+: ).*Fidoxene/gi,
     SURPRISE: /(?<=choice 1395\/\d+: ).*Surprise/gi,
     TELECYBIN: /(?<=choice 1395\/\d+: ).*Telecybin/gi,
-    NEVERMIND: /(?<=choice 1395\/\d+: ).*nevermind/gi,
+
+    USELESS_USE: /main.php\?eowkeeper=1.*/gi,
+    NEVERMIND_LINE: /.*choice 1395\/9.*(\r\n|\n).*choice=1395.*option=9/gi,
   },
   PIRATEREALM: {
     // ENTRY_GROUPING: /^\[.*?piraterealm.*?(\r\n|\n){2,}/gmis,
