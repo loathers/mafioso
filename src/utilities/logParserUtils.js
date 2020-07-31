@@ -34,13 +34,11 @@ export async function parseLogTxt(rawText) {
     const preparsedLog = pregroupRawLog(rawText);
 
     // split up each entry by wherever there are two new lines
-    const rawArray = preparsedLog
-      .replace(EMPTY_LINES_REGEX, '}{')
-      .split('}{');
+    const rawEntries = preparsedLog.split(EMPTY_LINES_REGEX);
 
     // create the Entry class for each entry text, which will then further parse their data
     const BATCH_SIZE = calculateBatchSize(rawSize);
-    const entryBatcher = new Batcher(rawArray, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
+    const entryBatcher = new Batcher(rawEntries, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
     const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
     return allEntries;
 
