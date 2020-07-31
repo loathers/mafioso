@@ -88,6 +88,7 @@ export function parseCombatAttributes(entryString) {
     copiers: parseCopiers(entryString),
     disintigrater: parseDisintigraters(entryString),
     replacers: parseReplacers(entryString),
+    replacedEnemies: parseReplacedResults(entryString),
   }
 }
 /**
@@ -596,8 +597,13 @@ export function parseReplacedResults(entryString) {
     return null;
   }
 
-  const replacedMatch = getRegexMatch(entryString, REGEX.COMBAT.REPLACED_NAME);
-  return replacedMatch;
+  const originalEncounter = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME) || [];
+  const replacedMatches = getRegexMatch(entryString, REGEX.COMBAT.REPLACED_NAME) || [];
+  if (replacedMatches.length > 0) {
+    return originalEncounter.concat(replacedMatches);
+  }
+
+  return null;
 }
 // -- special data parsers
 /**
