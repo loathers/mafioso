@@ -1,4 +1,4 @@
-import ENTRY_TYPE from 'constants/entryType';
+import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/entryType';
 import REGEX from 'constants/regexes';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
@@ -215,6 +215,11 @@ export default class Entry {
     return this.attributes.combatActions.length > 0;
   }
   // -- special getters
+  /** @type {Boolean} */
+  get isIOTM() {
+    return IOTM_ENTRIES.includes(this.entryType) 
+      || this.attributes.isEndedByUseTheForce;
+  }
   /** @returns {Boolean} */
   isEntryDiabolicPizza() {
     return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 

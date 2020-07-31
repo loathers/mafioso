@@ -485,7 +485,7 @@ class LogStore {
         }
 
         const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
-          const entryAttributeValue = entry.attributes[attributeName];
+          const entryAttributeValue = entry.attributes[attributeName] || entry[attributeName];
           return entryAttributeValue !== attributeValue;
         });
 

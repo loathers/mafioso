@@ -24,26 +24,6 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'IOTM',
-    entryGroup: [
-      ENTRY_TYPE.IOTM.BASTILLE_BATALLION,
-      ENTRY_TYPE.IOTM.BEACH_COMB,
-      ENTRY_TYPE.IOTM.BOXING_DAYCARE,
-      ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD,
-      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
-      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
-      ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY,
-      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
-      ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT,
-      ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON,
-      ENTRY_TYPE.IOTM.PIRATEREALM,
-      ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX,
-      ENTRY_TYPE.IOTM.VOTING_BOOTH,
-    ],
-    isHidden: false,
-    checked: true,
-  },
-  {
     label: 'Diet',
     entryGroup: [
       ENTRY_TYPE.CONSUMPTION.EAT, 
@@ -166,6 +146,13 @@ ENTRY_TYPE_FILTERS.forEach((filterData) => {
  * @type {Array}
  */
 export const ATTRIBUTE_FILTERS = [
+  {
+    label: 'IOTM',
+    attributeName: 'isIOTM',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
   {
     label: 'NonCombat',
     attributeName: 'isNonCombatEncounter',
