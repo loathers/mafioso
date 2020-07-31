@@ -153,6 +153,7 @@ export const REGEX = {
 
     ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
     SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,
+    REPLACED_NAME: /(?<=becomes a ).*(?=!)/gi,
 
     USE_COMBAT_ITEM_LINE: /^round \d+:.*uses.*/gmi,
     USE_COMBAT_ITEM_NAME: /(?<=^round \d+:.*uses the ).*(?=!)/gmi,

@@ -76,7 +76,9 @@ export default class Entry {
       isVictory: false,
       /** @type {Boolean} */
       isDeath: false,
-      
+      /** @type {Array<String>} */
+      replacedEnemies: [],
+
       // -- special, includes iotm
       /** @type {Array<Entity> | undefined | null} */
       attractors: null,

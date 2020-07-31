@@ -226,6 +226,12 @@ export function parseEncounterName(entryString) {
     return 'Welcome to Valhalla!';
   }
 
+  // if monster was replaced, use the enemy that this eventually becomes
+  const replacedResults = parseReplacedResults(entryString);
+  if (replacedResults) {
+    return replacedResults.pop();
+  }
+
   const encounterNameMatches = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
   if (encounterNameMatches !== null) {
     return encounterNameMatches[0];
@@ -580,6 +586,18 @@ export function parseReplacers(entryString) {
     const match = getRegexMatch(entryString, entity.text, 'i');
     return Boolean(match);
   });
+}
+/**
+ * @param {String} entryString
+ * @return {Array<String> | undefined | null}
+ */
+export function parseReplacedResults(entryString) {
+  if (!isCombatEncounter(entryString)) {
+    return null;
+  }
+
+  const replacedMatch = getRegexMatch(entryString, REGEX.COMBAT.REPLACED_NAME);
+  return replacedMatch;
 }
 // -- special data parsers
 /**
