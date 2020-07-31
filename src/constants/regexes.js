@@ -147,9 +147,10 @@ export const REGEX = {
     LOSE_INIT: /Round.*(loses initiative).*/i,
     VICTORY_LINE: /(?<=\s).*wins the fight.*/i,
 
-    ACTION_ROUND: /^(?!.*(executes a macro|\slose\s|\sgain\s|initiative|\swins\s))round.*!/gmi,
+    ACTION_ROUND: /^(?!.*(executes a macro| lose | gain |initiative| wins |becomes).*)round.*!/gmi,
     COMBAT_ROUND_LINE: /^round\s\d:.*/gmi,
     COMBAT_ROUND_NUM: /(?<=Round\s)\d+(?=:)/gmi,
+    REPLACED_LINE: /^round.*becomes.*/gmi,
 
     ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
     SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,
