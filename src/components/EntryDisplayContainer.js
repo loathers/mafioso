@@ -5,6 +5,7 @@ import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
+import HeaderDisplay from 'components/HeaderDisplay';
 import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
@@ -186,6 +187,14 @@ export default function EntryDisplayContainer(props) {
 
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   const selectedClass = isSelected ? 'bg-green' : '';
+
+  if (entry.entryType === 'ENTRY_TYPE.SNAPSHOT.NEW_DAY') {
+    return (
+      <HeaderDisplay 
+        topContent={`Day ${entry.attributes.dayNum}`} 
+        className={combineClassnames('adjacent-mar-t-2 pad-3', className)} />
+    ) 
+  }
 
   return (
     <div 

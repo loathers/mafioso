@@ -113,8 +113,11 @@ export const ENTRY_TYPE_FILTERS = [
   },
   {
     label: 'Day Info',
-    entryType: ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-    isHidden: false,
+    entryGroup: [
+      ENTRY_TYPE.SNAPSHOT.DAY_INFO,
+      ENTRY_TYPE.SNAPSHOT.NEW_DAY,
+    ],
+    isHidden: true,
     checked: true,
   },
   {

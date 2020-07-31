@@ -6,14 +6,14 @@ import combineClassnames from 'utilities/combineClassnames';
 export default function HeaderDisplay(props) {
   const {
     className,
-    difficultyName,
-    pathName,
+    topContent,
+    bottomContent,
   } = props;
 
   return (
     <div className={combineClassnames('fontfamily-secondary flex-col-center', className)}>
-      <div style={{fontSize: 17}} className='f-italic flex-none'>{difficultyName}</div>
-      <div style={{fontSize: 25}} className='f-bold f-italic flex-none'>{pathName}</div>
+      <div style={{fontSize: 17}} className='f-italic flex-none'>{topContent}</div>
+      <div style={{fontSize: 25}} className='f-bold f-italic flex-none'>{bottomContent}</div>
     </div>
   )
 }
