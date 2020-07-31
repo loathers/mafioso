@@ -402,7 +402,7 @@ class LogStore {
       return;
     }
 
-    const fileName = `${this.characterName}_ascension_${this.ascensionNum}`;
+    const fileName = `${this.characterName}#${this.ascensionNum}_${this.createPathAcronym()}`;
     download(this.rawText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions
@@ -612,6 +612,25 @@ class LogStore {
   calculatePageLast(entriesPerPage = this.displayOptions.entriesPerPage) {
     const lastPage = Math.ceil(this.visibleEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
+  }
+  /**
+   * @returns {String}
+   */
+  createPathAcronym() {
+    const {
+      difficultyName,
+      pathName,
+    } = this.ascensionAttributes;
+
+    const difficultyMap = {
+      hardcore: 'HC',
+      softcore: 'SC',
+      casual: 'CAS',
+    };
+
+    const difficultyAcronym = difficultyMap[difficultyName.toLowerCase()];
+    const pathAcronym = pathName.split(' ').map((pathText) => pathText.charAt(0)).join('');
+    return (`${difficultyAcronym}_${pathAcronym}`).toUpperCase();
   }
 }
 

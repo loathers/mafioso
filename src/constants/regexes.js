@@ -280,7 +280,7 @@ export const REGEX = {
     MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n)/gmi,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n)/gi,
     // sometimes
-    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n)/g,
+    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n|$)/g,
   },
 };
 
