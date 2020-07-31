@@ -1,0 +1,22 @@
+import * as ENTITIES from 'constants/ENTITIES';
+
+/**
+ * @typedef {Entity} Banisher
+ */
+export const BANISHERS = [
+  ENTITIES.LOUDER_THAN_BOMB,
+  ENTITIES.HAROLDS_BELL,
+  ENTITIES.TRYPTOPHAN_DART,
+  ENTITIES.REFLEX_HAMMER,
+  ENTITIES.COSPLAY_SABER_BANISH,
+  ENTITIES.BATTER_UP,
+];
+/**
+ * aka yellow ray
+ * @typedef {Entity} Disintigraters
+ */
+export const DISINTIGRATERS = [
+  ENTITIES.COSPLAY_SABER_DISINTIGRATE,
+  ENTITIES.MICRONOVA,
+  ENTITIES.PILLKEEPER_DISINTIGRATE,
+];

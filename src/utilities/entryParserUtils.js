@@ -2,7 +2,7 @@ import ListItem from 'classes/ListItem';
 
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
-import BANISHERS from 'constants/BANISHERS';
+import {BANISHERS} from 'constants/TRACKERS';
 
 import {
   hasString,
