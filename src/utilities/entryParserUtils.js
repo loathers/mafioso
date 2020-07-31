@@ -174,6 +174,10 @@ export function parseLocationName(entryString) {
     return visitLocationMatches[0];
   }
 
+  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_GROUP)) {
+    return 'Valhalla';
+  }
+
   if (entryTypeRegexUtils.isEntrySpellCast(entryString)) {
     const spellCastName = getRegexMatch(entryString, REGEX.EFFECTS.CAST_NAME) || [];
     if (spellCastName[0] === null) {

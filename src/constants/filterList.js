@@ -7,7 +7,10 @@ import ENTRY_TYPE from 'constants/entryType';
 export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Ascension Info',
-    entryType: ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+    entryGroup: [
+      ENTRY_TYPE.SNAPSHOT.VALHALLA,
+      ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+    ],
     isHidden: false,
     checked: true,
   },

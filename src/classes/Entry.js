@@ -115,6 +115,10 @@ export default class Entry {
       return false;
     }
 
+    if (this.entryType === ENTRY_TYPE.SNAPSHOT.VALHALLA) {
+      return false;
+    }
+
     return this.contentDisplay !== null;
   }
   /** @type {Boolean} */
