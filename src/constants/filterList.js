@@ -188,6 +188,20 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Latte Lovin\'',
+    attributeName: 'hasLatteLoversMug',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Latte Ingredient Unlock',
+    attributeName: 'hasLatteIngredientUnlock',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Free Adventure',
     attributeName: 'isFreeAdv',
     attributeValue: true,

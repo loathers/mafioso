@@ -276,16 +276,28 @@ export default class Entry {
       || this.attributes.isEndedByUseTheForce;
   }
   /** @type {Boolean} */
+  get hasIunionCrown() {
+    return this.hasText(REGEX.IUNION_CROWN.GAINED_EFFECT);
+  }
+  /** @type {Boolean} */
+  get hasLatteLoversMug() {
+    return this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE)
+      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME)
+      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.THROW_LATTE_LINE)
+      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.OFFER_LATTE_LINE)
+      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.GULP_LATTE_LINE);
+  }
+  /** @type {Boolean} */
+  get hasLatteIngredientUnlock() {
+    return this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME);
+  }
+  /** @type {Boolean} */
   get isPillKeeper() {
     return this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER;
   }
   /** @type {Boolean} */
   get hasPocketProfessor() {
     return this.hasText(REGEX.POCKET_PROFESSOR.SKILL_USE_LINE);
-  }
-  /** @type {Boolean} */
-  get hasIunionCrown() {
-    return this.hasText(REGEX.IUNION_CROWN.GAINED_EFFECT);
   }
   /** @returns {Boolean} */
   isEntryDiabolicPizza() {
