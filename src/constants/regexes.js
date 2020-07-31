@@ -49,6 +49,10 @@ export const REGEX = {
     GAZING_LINE: /(^gazing).*/gi,
     USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
   },
+  FOURTH_OF_JULY_COSPLAY_SABER: {
+    USE_THE_FORCE_TEXT: /.*(USE THE FORCE).*/i,
+    USE_THE_FORCE_CHOICE_LINE: /Took choice 1387.*/gi,
+  },
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,
@@ -155,7 +159,6 @@ export const REGEX = {
   // -- combat
   COMBAT: {
     FREE_COMBAT: /.*combat.*did not cost.*/i,
-    SKILL_USE_THE_FORCE: /.*(USE THE FORCE).*/i,
 
     INITIATIVE_LINE: /Round.*(loses initiative|wins initiative).*/i,
     WIN_INIT: /Round.*(wins initiative).*/i,

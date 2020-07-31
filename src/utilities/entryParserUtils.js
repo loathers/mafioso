@@ -619,7 +619,7 @@ export function parseReplacedResults(entryString) {
  * @return {String}
  */
 export function isUseTheForce(entryString) {
-  return hasString(entryString, REGEX.COMBAT.SKILL_USE_THE_FORCE);
+  return hasString(entryString, REGEX.FOURTH_OF_JULY_COSPLAY_SABER.USE_THE_FORCE_TEXT);
 }
 /**
  * @param {String} entryString
