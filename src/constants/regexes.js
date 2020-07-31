@@ -10,6 +10,7 @@ export const REGEX = {
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n)/is,
 
     VALHALLA_GROUP: /welcome to valhalla.*beginning new ascension/gmis,
+    ASTRAL_SHOPPING_NAME: /(?<=buy ).*(?= for \d+)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
     // KING_FREED: /freeing king ralph.*?(?=(\s|))/is,

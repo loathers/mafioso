@@ -33,8 +33,11 @@ export function parseCommonAttributes(entryString) {
   const turnNum = parseTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
+
   const acquiredItems = parseAcquiredItems(entryString);
   const pulledItems = parsePulledItems(entryString);
+  const astralItems = parseAstralShopping(entryString);
+
   const acquiredEffects = parseAcquiredEffects(entryString);
   const meatChange = parseMeatChange(entryString);
 
@@ -45,7 +48,7 @@ export function parseCommonAttributes(entryString) {
     encounterName,
     isCombatEncounter: isCombatEncounter(entryString),
     isNonCombatEncounter: isNonCombatEncounter(entryString),
-    acquiredItems: pulledItems.concat(acquiredItems),
+    acquiredItems: astralItems.concat(pulledItems.concat(acquiredItems)),
     acquiredEffects,
     meatChange,
   }
@@ -215,6 +218,19 @@ export function parseAcquiredItems(entryString) {
     return new ListItem({
       name: itemName[0].replace(/an item: /im, ''),
       amount: itemAmount[0] || 1,
+    });
+  })
+}
+/**
+ * @param {String} entryString
+ * @return {Array<String>}
+ */
+export function parseAstralShopping(entryString) {
+  const acquiredItemLines = getRegexMatch(entryString, REGEX.ASCENSION.ASTRAL_SHOPPING_NAME) || [];
+  return acquiredItemLines.map((astralItemName) => {
+    return new ListItem({
+      name: astralItemName,
+      amount: 1,
     });
   })
 }
