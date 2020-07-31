@@ -10,6 +10,7 @@ export const ENTRY_TYPE_FILTERS = [
     entryGroup: [
       ENTRY_TYPE.SNAPSHOT.VALHALLA,
       ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+      ENTRY_TYPE.SNAPSHOT.NEW_DAY,
     ],
     isHidden: false,
     checked: true,
@@ -110,15 +111,6 @@ export const ENTRY_TYPE_FILTERS = [
     entryType: ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
     isHidden: true,
     checked: false,
-  },
-  {
-    label: 'Day Info',
-    entryGroup: [
-      ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-      ENTRY_TYPE.SNAPSHOT.NEW_DAY,
-    ],
-    isHidden: true,
-    checked: true,
   },
   {
     label: 'Uncategorized',

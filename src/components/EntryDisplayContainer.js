@@ -5,6 +5,8 @@ import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 
+import ENTRY_TYPE from 'constants/entryType';
+
 import HeaderDisplay from 'components/HeaderDisplay';
 import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
@@ -188,7 +190,7 @@ export default function EntryDisplayContainer(props) {
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   const selectedClass = isSelected ? 'bg-green' : '';
 
-  if (entry.entryType === 'ENTRY_TYPE.SNAPSHOT.NEW_DAY') {
+  if (entry.entryType === ENTRY_TYPE.SNAPSHOT.NEW_DAY) {
     return (
       <HeaderDisplay 
         topContent={`Day ${entry.attributes.dayNum}`} 
