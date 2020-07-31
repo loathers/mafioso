@@ -13,6 +13,7 @@ import combineClassnames from 'utilities/combineClassnames';
 export default function FiltersMenu(props) {
   const {
     label,
+    inputType = 'checkbox',
     defaultList,
     onApply,
     className,
@@ -46,9 +47,10 @@ export default function FiltersMenu(props) {
 
       <div className='flex-col adjacent-mar-t-3'>
         { filterList.map((filterOption, idx) => (
-          <FilterCheckbox 
+          <FilterInput 
             onChange={() => toggledChecked(idx)}
             optionData={filterOption}
+            type={inputType}
             className='adjacent-mar-t-2'
             key={`filter-checkbox-${idx}-key`}
           />
@@ -78,11 +80,12 @@ export default function FiltersMenu(props) {
     </div>
   )
 }
-function FilterCheckbox(props) {
+function FilterInput(props) {
   const {
     className,
     optionData,
     onChange,
+    type,
   } = props;
 
   const {
@@ -100,7 +103,7 @@ function FilterCheckbox(props) {
           checked={checked}
           onChange={onChange}
           className='adjacent-mar-l-2' 
-          type='checkbox' />
+          type={type} />
 
         <div 
           className='adjacent-mar-l-2'>

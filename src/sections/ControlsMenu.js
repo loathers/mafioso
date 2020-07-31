@@ -136,12 +136,14 @@ function ControlsMenu(props) {
         label='Visible Entries'
         onApply={onApplyEntries}
         defaultList={entryFiltersList}
+        inputType='checkbox'
         className='adjacent-mar-t-5'/>
 
       <FiltersMenu 
         label='Filter Attributes'
         onApply={onApplyAttributes}
         defaultList={attributeFiltersList}
+        inputType='radio'
         className='adjacent-mar-t-5'/>
     </div>
   );
