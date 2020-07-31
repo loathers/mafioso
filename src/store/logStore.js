@@ -32,6 +32,8 @@ class LogStore {
     this.characterName = undefined;
     /** @type {Number} */
     this.ascensionNum = undefined;
+    /** @type {AscensionDifficulty} */
+    this.ascensionDifficulty = undefined;
 
     /** 
      * literally all the entries
@@ -146,6 +148,7 @@ class LogStore {
     this.visibleEntries.clear();
     this.characterName = undefined;
     this.ascensionNum = undefined;
+    this.ascensionDifficulty = undefined;
     this.displayOptions = observable({
       pageNum: 0,
       entriesPerPage: 100,
@@ -215,7 +218,8 @@ class LogStore {
       const allText = this.srcRawTexts.join('\n\n');
       const fullAscensionText = logParserUtils.findAscensionLog(allText);
       if (fullAscensionText !== null) {
-        this.ascensionNum = fullAscensionText.match(REGEX.VALUE.ASCENSION_NUMBER) || '?';
+        this.ascensionDifficulty = fullAscensionText.match(REGEX.ASCENSION.DIFFICULTY_NAME)[0];
+        this.ascensionNum = fullAscensionText.match(REGEX.ASCENSION.ASCENSION_NUMBER)[0];
         console.log(`✨ %cWe found Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
         this.rawText = fullAscensionText;
       

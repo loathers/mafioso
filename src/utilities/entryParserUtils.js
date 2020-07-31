@@ -108,6 +108,14 @@ export function createEntryBody(entryString) {
     return currentString.replace(replacementRegex, '');
   }, entryString).replace(EMPTY_LINES_REGEX, '\n');
 }
+/**
+ * @param {String} entryString
+ * @return {AscensionDifficulty | null}
+ */
+export function parseAscensionDifficulty(ascensionString) {
+  const difficultyMatch = getRegexMatch(ascensionString, REGEX.ASCENSION.DIFFICULTY_NAME) || [];
+  return difficultyMatch[0];
+}
 // -- common parsers
 /**
  * parses the adventure number

@@ -9,8 +9,12 @@ export const REGEX = {
     REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n)/is,
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n)/is,
 
-    VALHALLA_GROUP: /welcome to valhalla.*beginning new ascension/gmis,
+    VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n).*?/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy ).*(?= for \d+)/gmi,
+
+    ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
+    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)).*/gmi,
+    DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|softcore|casual)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
     // KING_FREED: /freeing king ralph.*?(?=(\s|))/is,
@@ -110,8 +114,6 @@ export const REGEX = {
   },
 
   VALUE: {
-    ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
-
     TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
     LOCATION_NAME: /(?<=\]\s).*/,
     SHOP_LOCATION_NAME: /(?<=each from\s).*/,
@@ -227,7 +229,6 @@ export const REGEX = {
   // note: these only work in raw
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
-
 
     MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
     STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
