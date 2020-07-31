@@ -9,6 +9,8 @@ export const REGEX = {
     REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n)/is,
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n)/is,
 
+    VALHALLA_GROUP: /welcome to valhalla.*beginning new ascension/gmis,
+
     // VALHALLA: /welcome to valhalla/is,
     // KING_FREED: /freeing king ralph.*?(?=(\s|))/is,
     // THWAITGOLD: /You acquire an item: Thwaitgold.*/is,
@@ -224,6 +226,8 @@ export const REGEX = {
   // note: these only work in raw
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
+
+
     MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
     STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
     EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/gmis,
