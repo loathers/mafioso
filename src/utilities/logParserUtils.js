@@ -24,27 +24,24 @@ const MIN_CHAR_COUNT = 5;
  */
 export async function parseLogTxt(rawText) {
   try {
-    const rawCleaned = await cleanRawLog(rawText);
-    const rawSize = rawCleaned.length;
+    const rawSize = rawText.length;
     if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
       throw new Error(`Unable to parse this log of size ${rawSize}.`);
     }
+    console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
 
-    const preparsedLog = pregroupRawLog(rawCleaned);
+    // combine some text ahead of time
+    const preparsedLog = pregroupRawLog(rawText);
+
+    // split up each entry by wherever there are two new lines
     const rawArray = preparsedLog
       .replace(EMPTY_LINES_REGEX, '}{')
       .split('}{');
 
-    if (rawArray.length <= 1) {
-      // throw new Error('Not enough data on log.');
-    }
-
+    // create the Entry class for each entry text, which will then further parse their data
     const BATCH_SIZE = calculateBatchSize(rawSize);
-    console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
-
     const entryBatcher = new Batcher(rawArray, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
     const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
-
     return allEntries;
 
   } catch (e) {

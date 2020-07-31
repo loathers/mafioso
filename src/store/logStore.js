@@ -262,11 +262,11 @@ class LogStore {
         this.isAscensionLog = true;
         this.setAscensionAttributes();
         console.log(`✨ %cFound Ascension #${this.ascensionAttributes.ascensionNum}!`, 'color: blue; font-size: 14px');
-        this.rawText = fullAscensionText;
+        this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
       
       } else {
         console.warn('No Ascension specific log was found.');
-        this.rawText = allText;
+        this.rawText = await logParserUtils.cleanRawLog(allText);
       }
 
       // raw data gotten, now parse it to create individual entries
