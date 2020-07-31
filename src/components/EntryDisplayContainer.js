@@ -95,18 +95,25 @@ function EntryHeaderContainer(props) {
     return null;
   }
 
-  const locationDisplay = entry.locationDisplay;
-  const encounterDisplay = entry.encounterDisplay;
-
   return (
     <div className={combineClassnames('flex-col adjacent-mar-t-3', className)}>
-      { locationDisplay &&
-        <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{locationDisplay}</div>
+      { entry.locationDisplay &&
+        <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{entry.locationDisplay}</div>
       }
 
-      { encounterDisplay &&
-        <div className='f-bold fontsize-7 flex-none adjacent-mar-t-1'>{encounterDisplay}</div>
+      { entry.encounterDisplay &&
+        <div className='flex-row flex-none adjacent-mar-t-1'>
+          <div className='f-bold fontsize-7 flex-none adjacent-mar-l-5'>{entry.encounterDisplay}</div>
+          { entry.hasReplacedEnemies &&
+            <div
+              style={{textDecoration: 'line-through'}} 
+              className=' fontsize-7 flex-none adjacent-mar-l-5'>
+              {entry.replacedEnemiesDisplay}
+            </div>
+          }
+        </div>
       }
+
     </div>
   )
 }

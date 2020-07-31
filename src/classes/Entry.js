@@ -227,6 +227,15 @@ export default class Entry {
 
     return this.attributes.encounterName;
   }
+  /** @type {String} */
+  get replacedEnemiesDisplay() {
+    if (!this.hasReplacedEnemies) {
+      return null;
+    }
+
+    const replacedEnemies = this.attributes.replacedEnemies;
+    return replacedEnemies.slice(0, replacedEnemies.length - 1).join('/');
+  }
   // -- combat
   /** @type {Boolean} */
   get hasCombatActions() {
@@ -251,6 +260,10 @@ export default class Entry {
   /** @type {Boolean} */
   get isReplaced() {
     return Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0;
+  }
+  /** @type {Boolean} */
+  get hasReplacedEnemies() {
+    return Boolean(this.attributes.replacedEnemies) && this.attributes.replacedEnemies.length > 0;
   }
   // -- iotm getters
   /** @type {Boolean} */
