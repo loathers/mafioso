@@ -7,6 +7,7 @@ import {ENTRY_TYPE_FILTERS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 import logStore from 'store/logStore';
 
 import Button from 'components/Button';
+import LogoComponent from 'components/LogoComponent';
 import UploadComponent from 'components/UploadComponent';
 
 import FiltersMenu from 'sections/FiltersMenu';
@@ -86,9 +87,8 @@ function ControlsMenu(props) {
       style={style} 
       className={combineClassnames('position-fixed flex-col', className)}>
 
-      <h1 className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
-        Shiny Log Visualizer
-      </h1>
+      <LogoComponent 
+        className='adjacent-mar-t-5'/>
 
       <UploadComponent
         content={'Upload new logs'}
@@ -160,9 +160,8 @@ function FullPageMenu(props) {
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col flex-none', className)}>
 
-      <h1 className='aself-start fontsize-9 fontfamily-tertiary adjacent-mar-t-5 flex-none'>
-        Shiny Log Visualizer
-      </h1>
+      <LogoComponent 
+        className='adjacent-mar-t-5'/>
 
       <UploadComponent
         content={'Upload or drop in your session logs! I\'ll attempt to find a full ascension if you upload multiple logs.'}
