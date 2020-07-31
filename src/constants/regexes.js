@@ -67,6 +67,16 @@ export const REGEX = {
     USE_RESULT: /(?<=use \d January's garbage tote).*?acquire.*?:.*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gis,
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
+  LATTE_LOVERS_MEMBERS_MUG: {
+    FILLED_MUG_LINE: /filled your mug .*/gi,
+    UNLOCKED_INGREDIENT_NAME: /(?<=unlocked ).*(?= for latte)/gi,
+
+    THROW_LATTE_LINE: /.*Throw Latte on Opponent.*/gi,
+    OFFER_LATTE_LINE: /.*Offer Latte to Opponent.*/gi,
+    GULP_LATTE_LINE: /.*gulp latte.*/gi,
+
+    USELESS_USE: /main.php\?latte=1.*(\r\n|\n)(?!.)/gi,
+  },
   PILL_KEEPER: {
     CHOICE_LINE: /Took choice 1395.*/gi,
     CHOICE_RESULT: /(?<=choice 1395\/\d+: ).*/gi,
