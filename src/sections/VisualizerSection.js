@@ -51,16 +51,14 @@ function VisualizerSection(props) {
         const shouldShowDayDisplay = previousDay !== undefined ? previousDay < currentDay : false;
 
         return (
-          <Fragment>
+          <Fragment key={`entry-display-${entry.id}-${idx}-key`}>
             { shouldShowDayDisplay &&
               <HeaderDisplay 
-                key={`day-num-display-${entry.id}-key`}
                 topContent={`Day ${currentDay}`} 
                 className='adjacent-mar-t-2 pad-3' />
             }
 
             <EntryDisplayContainer 
-              key={`entry-display-${entry.id}-key`}
               entry={entry}
               className='visualizer-cell adjacent-mar-t-2' />
           </Fragment>
