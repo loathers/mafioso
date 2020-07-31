@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
+import AscensionTitleDisplay from 'components/AscensionTitleDisplay';
 import LoaderComponent from 'components/LoaderComponent';
 
 import ControlsMenu from 'sections/ControlsMenu';
@@ -42,9 +43,18 @@ function App() {
 
         { logStore.isReady &&
           <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
+            { logStore.ascensionDifficulty &&
+              <AscensionTitleDisplay
+                pathName='Community Service'
+                difficultyName={logStore.ascensionDifficulty}
+                className='adjacent-mar-t-5'
+              />
+            }
+
             { logStore.hasCurrentEntries &&
               <VisualizerSection 
                 entriesList={logStore.currentEntries}
+                className='adjacent-mar-t-5'
               />
             }
 
