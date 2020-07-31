@@ -174,6 +174,13 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Sniffed',
+    attributeName: 'isAttracted',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Banished',
     attributeName: 'isBanished',
     attributeValue: true,
@@ -181,8 +188,22 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Copied',
+    attributeName: 'isCopied',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Disintigrated',
     attributeName: 'isDisintigrated',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Replaced',
+    attributeName: 'isReplaced',
     attributeValue: true,
     isHidden: false,
     checked: false,

@@ -232,7 +232,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isAttracted() {
-    return Boolean(this.attributes.attractors) && this.attributes.copiers.attractors > 0;
+    return Boolean(this.attributes.attractors) && this.attributes.attractors.length > 0;
   }
   /** @type {Boolean} */
   get isBanished() {
@@ -248,7 +248,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isReplaced() {
-    return Boolean(this.attributes.replacers) && this.attributes.copiers.replacers > 0;
+    return Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0;
   }
   // -- iotm getters
   /** @type {Boolean} */
