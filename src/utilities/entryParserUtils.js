@@ -608,7 +608,10 @@ export function parseReplacedResults(entryString) {
   const originalEncounter = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME) || [];
   const replacedMatches = getRegexMatch(entryString, REGEX.COMBAT.REPLACED_NAME) || [];
   if (replacedMatches.length > 0) {
-    return originalEncounter.concat(replacedMatches);
+    // hard to regex "becomes a" and "becomes the" when I need to include The in the name,
+    //  so this is the workaround
+    const removeA = replacedMatches.map((match) => match.replace('a ', '')); 
+    return originalEncounter.concat(removeA);
   }
 
   return null;

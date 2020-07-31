@@ -181,11 +181,12 @@ export const REGEX = {
     ACTION_ROUND: /^(?!.*(executes a macro| lose | gain |initiative| wins |becomes).*)round.*!/gmi,
     COMBAT_ROUND_LINE: /^round\s\d:.*/gmi,
     COMBAT_ROUND_NUM: /(?<=Round\s)\d+(?=:)/gmi,
-    REPLACED_LINE: /^round.*becomes.*/gmi,
 
     ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
     SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,
-    REPLACED_NAME: /(?<=becomes a ).*(?=!)/gi,
+    
+    REPLACED_LINE: /^round.*becomes.*/gmi,
+    REPLACED_NAME: /(?<=becomes ).*(?=!)/gi,
 
     USE_COMBAT_ITEM_LINE: /^round \d+:.*uses.*/gmi,
     USE_COMBAT_ITEM_NAME: /(?<=^round \d+:.*uses the ).*(?=!)/gmi,

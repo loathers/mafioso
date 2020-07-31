@@ -160,7 +160,7 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Grabbing Pills',
+    label: 'Keepin\' Pills',
     attributeName: 'isPillKeeper',
     attributeValue: true,
     isHidden: false,
@@ -198,7 +198,7 @@ export const ATTRIBUTE_FILTERS = [
     label: 'Latte Ingredient Unlock',
     attributeName: 'hasLatteIngredientUnlock',
     attributeValue: true,
-    isHidden: false,
+    isHidden: true,
     checked: false,
   },
   {
