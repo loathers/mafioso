@@ -72,7 +72,7 @@ export function getEntryType(entryString) {
   }
 
   if (isEntryAscensionInfo(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
+    // return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
   }
   
   if (isEntryDayInfo(entryString)) {
@@ -183,12 +183,11 @@ export function isEntryMafiaMisc(entryString) {
   return hasString(entryString, REGEX.MISC.MAFIA_MAXIMIZER);
 }
 /**
- * check if entry is telling us about this ascension
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryValhalla(entryString) {
-  return hasString(entryString, REGEX.ASCENSION.VALHALLA_GROUP);
+  return hasString(entryString, REGEX.ASCENSION.VALHALLA_TEXT);
 }
 /**
  * check if entry is telling us about this ascension

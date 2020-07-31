@@ -110,11 +110,19 @@ export function createEntryBody(entryString) {
 }
 /**
  * @param {String} entryString
- * @return {AscensionDifficulty | null}
+ * @return {AscensionDifficulty | undefined}
  */
 export function parseAscensionDifficulty(ascensionString) {
   const difficultyMatch = getRegexMatch(ascensionString, REGEX.ASCENSION.DIFFICULTY_NAME) || [];
   return difficultyMatch[0];
+}
+/**
+ * @param {String} entryString
+ * @return {AscensionDifficulty | undefined}
+ */
+export function parseAscensionPath(ascensionString) {
+  const pathMatch = getRegexMatch(ascensionString, REGEX.ASCENSION.PATH_NAME) || [];
+  return pathMatch[0];
 }
 // -- common parsers
 /**
@@ -182,7 +190,7 @@ export function parseLocationName(entryString) {
     return visitLocationMatches[0];
   }
 
-  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_GROUP)) {
+  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
     return 'Valhalla';
   }
 
@@ -208,10 +216,15 @@ export function parseEncounterName(entryString) {
     return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION);
   }
 
+  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
+    return 'Welcome to Valhalla!';
+  }
+
   const encounterNameMatches = getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
   if (encounterNameMatches !== null) {
     return encounterNameMatches[0];
   }
+
   return null;
 }
 /**

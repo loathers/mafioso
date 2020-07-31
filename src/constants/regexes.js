@@ -9,11 +9,12 @@ export const REGEX = {
     REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n)/is,
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n)/is,
 
+    VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n).*?/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy ).*(?= for \d+)/gmi,
 
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
-    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)).*/gmi,
+    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|softcore|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
     DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|softcore|casual)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
