@@ -39,6 +39,7 @@ export default function FiltersMenu(props) {
   const onClickSelectAll = () => {
     const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? true : item.checked}));
     updateList(newList);
+    onChange(newList);
   }
 
   const onClickSelectNone = () => {

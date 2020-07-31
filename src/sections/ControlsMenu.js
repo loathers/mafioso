@@ -26,12 +26,9 @@ function ControlsMenu(props) {
     showFull,
   } = props;
 
-  if (showFull) {
-    return <FullPageMenu />
-  }
-
+  // visible entries
   const {entryTypesVisible} = logStore;
-  const entryFiltersList = ENTRY_TYPE_FILTERS.map((filterOption) => {
+  const defaultVisibleEntriesList = ENTRY_TYPE_FILTERS.map((filterOption) => {
     const hasExistingEntryType = entryTypesVisible.includes(filterOption.entryType);
 
     let hasAllEntryGroup = false;
@@ -45,9 +42,17 @@ function ControlsMenu(props) {
     }
   });
 
+  const [visibleEntriesList, updateVisibleList] = React.useState(defaultVisibleEntriesList);
+
+  // just for changing page
   const onApplyChangePage = (nextPageNum) => {
     logStore.fetchEntries({pageNum: nextPageNum});
   };
+
+
+  const onChangeVisibleEntries = (list) => {
+    updateVisibleList(list);
+  }
 
   const onApplyEntries = (list) => {
     let checkedTypes = [];
@@ -81,6 +86,10 @@ function ControlsMenu(props) {
     const checkedItems = list.filter((item) => item.checked);
     const filteredAttributes = checkedItems.map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));
     logStore.fetchEntries({filteredAttributes: filteredAttributes});
+  }
+
+  if (showFull) {
+    return <FullPageMenu />
   }
 
   return (
@@ -135,12 +144,13 @@ function ControlsMenu(props) {
       {/* filters */}
       <FiltersMenu 
         label='Visible Entries'
-        defaultList={entryFiltersList}
+        defaultList={visibleEntriesList}
+        onChange={onChangeVisibleEntries}
         inputType='checkbox'
         className='adjacent-mar-t-5'/>
 
       <Button
-        onClick={onApplyEntries}
+        onClick={() => onApplyEntries(visibleEntriesList)}
         disabled={!logStore.isReady} 
         className='fontsize-3 pad-3 adjacent-mar-t-5'>
         Apply
