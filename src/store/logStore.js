@@ -156,9 +156,9 @@ class LogStore {
     this.displayOptions = observable({
       pageNum: 0,
       entriesPerPage: 100,
-      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE.slice(),
-      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS.slice(),
-      alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES.slice(),
+      entryTypesVisible: this.displayOptions.entryTypesVisible.slice(),
+      filteredAttributes: this.displayOptions.filteredAttributes.slice(),
+      alwaysHiddenTypes: this.displayOptions.alwaysHiddenTypes.slice(),
     });
   }
   /**
@@ -290,12 +290,7 @@ class LogStore {
       this.displayOptions.pageNum = 0;
       this.isParsing.set(false);
 
-      // we just parsed so we gotta refresh `currentEntries`
-      this.fetchEntries({
-        pageNum: 0,
-        entryTypesVisible: DEFAULT_ENTRIES_VISIBLE,
-        filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS,
-      });
+      this.fetchEntries();
 
     } catch (e) {
       console.error(e);
