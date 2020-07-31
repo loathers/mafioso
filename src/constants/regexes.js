@@ -256,7 +256,7 @@ export const REGEX = {
   // -- misc
   MISC: {
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
-    STACK_TRACE: /^(stack trace).*?at.*\).*?(?=(\s|))/gmis,
+    STACK_TRACE: /^stack trace:(\r\n|\n){1,}(\s\sat.*(\r\n|\n|$))*/gmi,
     CLI_PRINT: /^> .*(\r\n|\n)/gmi,
     SEND_A_KMAIL: /send a kmail.*(\r\n|\n)/gi,
     COMBAT_MACRO: /.*executes a macro.*(\r\n|\n)/gi,
