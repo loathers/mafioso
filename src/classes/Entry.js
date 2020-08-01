@@ -122,8 +122,8 @@ export default class Entry {
     };
   }
   /** @type {Boolean} */
-  get hasEntry() {
-    return this.entryString !== undefined;
+  get hasEntryData() {
+    return this.entryData.type !== ENTRY_TYPE.UNKNOWN;
   }
   /** @type {Boolean} */
   get hasEntryHeader() {
@@ -221,10 +221,19 @@ export default class Entry {
   }
   /** @type {String} */
   get contentDisplay() {
-    return this.createContentDisplay();
+    if (this.hasEntryData) {
+      return this.parseEntryDisplayer(this.entryData.content_alt);
+    }
+
+    const entryBody = entryParserUtils.createEntryBody(this.entryString);
+    return entryBody.length <= 0 ? null : entryBody;
   }
   /** @type {String} */
   get locationDisplay() {
+    if (this.hasEntryData) {
+      return this.parseEntryDisplayer(this.entryData.locationName_alt);
+    }
+
     if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
       return 'Bastille Battalion';
     }
@@ -257,6 +266,10 @@ export default class Entry {
   }
   /** @type {String} */
   get encounterDisplay() {
+    if (this.hasEntryData) {
+      return this.parseEntryDisplayer(this.entryData.encounterName_alt);
+    }
+
     if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
       return `♫ ${this.findText(REGEX.SONGBOOM_BOOMBOX.RESULT)} ♫`;
     }
@@ -392,13 +405,36 @@ export default class Entry {
     return matchedText[0] || '';
   } 
   /**
-   * the text that we display in the entry 
    * 
-   * @return {String | null}
+   * @param {EntryDisplayer} displayer
+   * @return {String|null}
    */
-  createContentDisplay() {
-    const entryBody = entryParserUtils.createEntryBody(this.entryString);
-    return entryBody.length <= 0 ? null : entryBody;
+  parseEntryDisplayer(displayer) {
+    // null means intentionally blank
+    if (displayer === null) {
+      return null;
+    }
+
+    // search for result of regex
+    if (displayer instanceof RegExp) {
+      return this.findText(displayer);
+    }
+
+    // example: ["I like big {1} and I can not {2}", "butts", "lie"]
+    //  results in "I like big butts and I can not lie"
+    if (Array.isArray(displayer)) {
+      return displayer.reduce((result, innerDisplayer, idx) => {
+        if (idx === 0) {
+          return innerDisplayer;
+        }
+
+        const innerResult = this.parseEntryDisplayer(innerDisplayer);
+        return result.replace(`{${idx}}`, innerResult);
+      });
+    }
+
+    // just string (or undefined)
+    return displayer;
   }
   /** @returns {String} */
   createItemsDisplay() {
