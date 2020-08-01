@@ -235,15 +235,19 @@ export function parseLocationName(entryString) {
  */
 export function parseEncounterName(entryString) {
   if (isEntryBeachComb(entryString)) {
-    return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION);
+    return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION)[0];
   }
 
   if (entryTypeRegexUtils.isEntryCatBurglarHeist(entryString)) {
     return 'A Heist!';
   }
 
+  if (entryTypeRegexUtils.isEntryJanuarysGarbageTote(entryString)) {
+    return getRegexMatch(entryString, REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME)[0];
+  }
+
   if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
-    return getRegexMatch(entryString, REGEX.PILL_KEEPER.CHOICE_RESULT);
+    return getRegexMatch(entryString, REGEX.PILL_KEEPER.CHOICE_RESULT)[0];
   }
 
   if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {

@@ -1,3 +1,4 @@
+import {BLANK_BODY_CONTENT_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/entryType';
 import REGEX from 'constants/regexes';
@@ -128,27 +129,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasContentDisplay() {
-    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION) {
-      return false;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.CAT_BURGLAR) {
-      return false;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER) {
-      return false;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
-      return false;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH) {
-      return false;
-    }
-
-    if (this.entryType === ENTRY_TYPE.SNAPSHOT.VALHALLA) {
+    if (BLANK_BODY_CONTENT_LIST.includes(this.entryType)) {
       return false;
     }
 
