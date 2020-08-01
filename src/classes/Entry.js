@@ -195,6 +195,10 @@ export default class Entry {
     return advChanged;
   }
   /** @type {Number} */
+  get hasAdventureGains() {
+    return this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0) > 0;
+  }
+  /** @type {Number} */
   get musSubstats() {
     return this.attributes.musExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }

@@ -266,17 +266,24 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Adventure Gains',
+    attributeName: 'hasAdventureGains',
+    attributeValue: true,
+    isHidden: true,
+    checked: false,
+  },
+  {
     label: 'Victories',
     attributeName: 'isVictory',
     attributeValue: true,
-    isHidden: false,
+    isHidden: true,
     checked: false,
   },
   {
     label: 'Beaten Up',
     attributeName: 'isDeath',
     attributeValue: true,
-    isHidden: false,
+    isHidden: true,
     checked: false,
   },
 ];
