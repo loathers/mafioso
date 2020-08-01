@@ -19,8 +19,11 @@ import * as entryTypeRegexUtils from 'utilities/ENTRY_TYPERegexUtils';
 export function getEntryData(entryString) {
   const foundEntryType = ENTRY_MAP_KEYS.find((entryTypeKey) => {
     const entryTypeData = ENTRY_DATA_MAP[entryTypeKey];
-    if (entryTypeData) {
-      return hasString(entryString, entryTypeData.regex);
+    const {matcher} = entryTypeData;
+    if (matcher instanceof RegExp) {
+      return hasString(entryString, matcher);
+    } else if (Array.isArray(matcher)) {
+      return matcher.some((matchRegex) => hasString(entryString, matchRegex))
     } else {
       return undefined;
     }

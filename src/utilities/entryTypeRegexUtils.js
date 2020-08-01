@@ -12,8 +12,11 @@ import {hasString} from 'utilities/regexUtils';
 export function getEntryType(entryString) {
   const foundEntryType = ENTRY_MAP_KEYS.find((entryTypeKey) => {
     const entryTypeData = ENTRY_DATA_MAP[entryTypeKey];
-    if (entryTypeData) {
-      return hasString(entryString, entryTypeData.regex);
+    const {matcher} = entryTypeData;
+    if (matcher instanceof RegExp) {
+      return hasString(entryString, matcher);
+    } else if (Array.isArray(matcher)) {
+      return matcher.some((matchRegex) => hasString(entryString, matchRegex))
     } else {
       return undefined;
     }
