@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ReactComponent as AdventureSVG } from 'images/sands-of-time.svg';
 import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
 import { ReactComponent as ManaSVG } from 'images/potion-ball.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
@@ -147,10 +148,10 @@ function EntryBodyContainer(props) {
       { entry.hasStatChanges &&
         <StatChangesDisplay 
           entry={entry}
-          className='adjacent-mar-t-3' />
+          className='' />
       }
 
-      <div className='flex-col flex-none adjacent-mar-t-3'>
+      <div className='flex-col flex-none'>
         {/* gained effects */}
         { entry.hasAcquiredEffects &&
           <ListDisplay 
@@ -168,6 +169,14 @@ function EntryBodyContainer(props) {
         }
 
         <div className='flex-row'>
+          {/* adventures */}
+          { entry.hasAdventureChanges &&
+            <SingleDisplay 
+              IconComponent={AdventureSVG}
+              className='mar-2'
+              content={`${entry.adventureDisplay} adventures`} />
+          }
+
           {/* meat */}
           { entry.hasMeatChanges &&
             <SingleDisplay 
@@ -177,11 +186,11 @@ function EntryBodyContainer(props) {
           }
 
           {/* hp */}
-          { entry.attributes.manaChanges.length > 0 &&
+          { entry.attributes.healthChanges.length > 0 &&
             <SingleDisplay 
               IconComponent={HealthSVG}
               className='mar-2'
-              content={`${entry.healthDisplay}hp`} />
+              content={`${entry.healthDisplay} hp`} />
           }
 
           {/* mp */}
@@ -189,7 +198,7 @@ function EntryBodyContainer(props) {
             <SingleDisplay 
               IconComponent={ManaSVG}
               className='mar-2'
-              content={`${entry.manaDisplay}mp`} />
+              content={`${entry.manaDisplay} mp`} />
           }
         </div>
       </div>

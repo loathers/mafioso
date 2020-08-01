@@ -45,6 +45,7 @@ export function parseCommonAttributes(entryString) {
   return {
     turnNum,
     isFreeAdv: isFreeAdv(entryString),
+    adventureChanges: parseAdventureChanges(entryString),
     locationName,
     encounterName,
     isCombatEncounter: isCombatEncounter(entryString),
@@ -374,6 +375,15 @@ export function parseMeatSpent(entryString) {
   return spentTotal;
 }
 // -- stat parsers
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function parseAdventureChanges(entryString) {
+  const advGains = getRegexMatch(entryString, REGEX.CHARACTER.ADV_GAINS) || [];
+  const advLosses = getRegexMatch(entryString, REGEX.CHARACTER.ADV_LOSSES) || [];
+  return advGains.concat(advLosses).map((changeString) => Number(changeString));
+}
 /**
  * did we gain a level somewhere
  * @param {String} entryString

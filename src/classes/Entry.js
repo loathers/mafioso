@@ -36,6 +36,8 @@ export default class Entry {
       turnNum: -1,
       /** @type {Boolean} */
       isFreeAdv: false,
+      /** @type {Array<Number>} */
+      adventureChanges: [],
       /** @type {String | null} */
       locationName: null,
       /** @type {String | null} */
@@ -50,10 +52,10 @@ export default class Entry {
       acquiredEffects: [],
       /** @type {Number} */
       meatChange: 0,
-      /** @type {Number} */
-      healthChanges: 0,
-      /** @type {Number} */
-      manaChanges: 0,
+      /** @type {Array<Number>} */
+      healthChanges: [],
+      /** @type {Array<Number>} */
+      manaChanges: [],
 
       //-- stat
       /** @type {Boolean} */
@@ -143,6 +145,10 @@ export default class Entry {
 
     return this.contentDisplay !== null;
   }
+  /** @type {Number} */
+  get hasAdventureChanges() {
+    return this.attributes.adventureChanges.length > 0;
+  }
   /** @type {Boolean} */
   get hasStatChanges() {
     return this.attributes.isMusUp 
@@ -169,6 +175,15 @@ export default class Entry {
     return this.hasMeatChanges || this.hasAcquiredItems;
   }
   // -- stats
+  /** @type {Number} */
+  get adventureDisplay() {
+    const advChanged = this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0);
+    if (advChanged > 0) {
+      return `+${advChanged}`;
+    }
+
+    return advChanged;
+  }
   /** @type {Number} */
   get musSubstats() {
     return this.attributes.musExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);

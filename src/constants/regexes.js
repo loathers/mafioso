@@ -151,6 +151,10 @@ export const REGEX = {
   },
   // -- character
   CHARACTER: {
+    ADV_CHANGE_LINE: /.*(gain|lose).*\d*adventure.*/gi,
+    ADV_GAINS: /(?<=gain )\d+(?= adventure)/gi,
+    ADV_LOSSES: /(?<=lose )\d+(?= adventure)/gi,
+
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
