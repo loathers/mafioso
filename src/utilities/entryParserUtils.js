@@ -1,6 +1,8 @@
 import ListItem from 'classes/ListItem';
 
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
+import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS} from 'constants/ENTRY_DATA_MAP';
+import ENTRY_TYPE from 'constants/entryType';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
 import * as TRACKERS from 'constants/TRACKERS';
 
@@ -10,6 +12,26 @@ import {
 } from 'utilities/regexUtils';
 import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
+/**
+ * @param {String} entryString
+ * @return {EntryData}
+ */
+export function getEntryData(entryString) {
+  const foundEntryType = ENTRY_MAP_KEYS.find((entryTypeKey) => {
+    const entryTypeData = ENTRY_DATA_MAP[entryTypeKey];
+    if (entryTypeData) {
+      return hasString(entryString, entryTypeData.regex);
+    } else {
+      return undefined;
+    }
+  });
+
+  if (foundEntryType) {
+    return ENTRY_DATA_MAP[foundEntryType];
+  }
+
+  return ENTRY_DATA_MAP[ENTRY_TYPE.UNKNOWN];
+}
 /**
  * core parsing for attributes of an entry
  * 

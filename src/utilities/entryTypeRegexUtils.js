@@ -4,7 +4,6 @@ import REGEX from 'constants/regexes';
 
 import {hasString} from 'utilities/regexUtils';
 
-
 /**
  * handles determining what EntryType a log string is
  * @param {String} entryString

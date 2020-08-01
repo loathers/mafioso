@@ -13,6 +13,10 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
  * @property {String | Regex} [EntryData.content_alt]         - same, but for the body
  */
 export const ENTRY_DATA_MAP = {
+  [ENTRY_TYPE.UNKNOWN]: {
+    categories: [CATEGORY_ID.UNCATEGORIZED],
+    icon: UnknownSVG,
+  },
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
     categories: [CATEGORY_ID.USE_ITEM, CATEGORY_ID.IOTM],
     regex: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,

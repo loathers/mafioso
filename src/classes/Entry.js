@@ -25,7 +25,7 @@ export default class Entry {
     /** @type {EntryType} */
     this.entryType = getEntryType(rawText);
     /** @type {EntryData} */
-    this.entryData = undefined;
+    this.entryData = entryParserUtils.getEntryData(rawText);
 
     /** @type {RawText} */
     this.rawText = rawText;
