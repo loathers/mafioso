@@ -102,7 +102,7 @@ function EntryHeaderContainer(props) {
       }
 
       { entry.encounterDisplay &&
-        <div className='flex-row flex-none adjacent-mar-t-1'>
+        <div className='overflow-hidden flex-row flex-none adjacent-mar-t-1'>
           <div className='f-bold fontsize-7 flex-none adjacent-mar-l-5'>{entry.encounterDisplay}</div>
           { entry.hasReplacedEnemies &&
             <div

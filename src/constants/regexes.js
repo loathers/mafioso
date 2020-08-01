@@ -90,6 +90,11 @@ export const REGEX = {
 
     USELESS_USE: /main.php\?latte=1.*(\r\n|\n)(?!.)/gi,
   },
+  MELODRAMEDARY: {
+    SPIT_ON_SOMETHING_LINE: /(?<=^Round ).*spit on.*/gim,
+    SPIT_ON_THEM_LINE: /(?<=^Round ).*spit on them.*/gim,
+    SPIT_ON_ME_LINE: /(?<=^Round ).*spit on me.*/gim,
+  },
   PILL_KEEPER: {
     CHOICE_LINE: /Took choice 1395.*/gi,
     CHOICE_RESULT: /(?<=choice 1395\/\d+: ).*/gi,
@@ -198,8 +203,8 @@ export const REGEX = {
     VICTORY_LINE: /(?<=\s).*wins the fight.*/i,
 
     ACTION_ROUND: /^(?!.*(executes a macro| lose | gain |initiative| wins |becomes).*)round.*!/gmi,
-    COMBAT_ROUND_LINE: /^round\s\d:.*/gmi,
-    COMBAT_ROUND_NUM: /(?<=Round\s)\d+(?=:)/gmi,
+    COMBAT_ROUND_LINE: /^round \d:.*/gmi,
+    COMBAT_ROUND_NUM: /(?<=^Round )\d+(?=:)/gmi,
 
     ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
     SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,

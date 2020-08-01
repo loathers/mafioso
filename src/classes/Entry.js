@@ -336,6 +336,10 @@ export default class Entry {
     return this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME);
   }
   /** @type {Boolean} */
+  get hasMelodramedary() {
+    return this.hasText(REGEX.MELODRAMEDARY.SPIT_ON_SOMETHING_LINE);
+  }
+  /** @type {Boolean} */
   get isPillKeeper() {
     return this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER;
   }
