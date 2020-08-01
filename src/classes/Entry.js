@@ -372,20 +372,20 @@ export default class Entry {
     }
   }
   /** 
-   * checks if the `rawText` contains given string
+   * checks if the `entryString` contains given string
    * @param {String | Regex} txt
    * @return {Boolean}
    */
   hasText(txt) {
-    return hasString(this.rawText, txt);
+    return hasString(this.entryString, txt);
   }
   /** 
-   * gets the (first) matched text from `rawText`
+   * gets the (first) matched text from `entryString`
    * @param {String | Regex} txt
    * @return {String}
    */
   findText(txt) {
-    const matchedText = getRegexMatch(this.rawText, txt) || [];
+    const matchedText = getRegexMatch(this.entryString, txt) || [];
     return matchedText[0] || '';
   } 
   /**

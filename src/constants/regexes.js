@@ -107,8 +107,8 @@ export const REGEX = {
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
   },
   SONGBOOM_BOOMBOX: {
-    GROUPING: /^use.*?songboom.*?setting soundtrack.*/gmis,
-    RESULT: /(?<=^use.*?songboom.*?setting soundtrack to ).*/gmis,
+    GROUPING: /^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice.*(\r\n|\n){2,}setting soundtrack.*/gmi,
+    RESULT: /(?<=^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice 1312.*: ).*/gmi,
     SING_ALONG: /(?<=^round\s\d:.*)(SING ALONG)/gmi,
   },
   VOTING_BOOTH: {

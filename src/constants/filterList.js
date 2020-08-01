@@ -48,6 +48,7 @@ export const ENTRY_TYPE_FILTERS = [
     label: 'Special Uses',
     entryGroup: [
       ENTRY_TYPE.IOTM.PILLKEEPER,
+      ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX,
     ],
     isHidden: false,
     checked: true,

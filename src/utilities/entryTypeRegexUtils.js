@@ -477,7 +477,7 @@ export function isEntryClanVIP(entryString) {
  * @return {Boolean}
  */
 export function isEntryBoombox(entryString) {
-  return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.GROUPING);
+  return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.RESULT);
 }
 /**
  * @param {String} entryString
