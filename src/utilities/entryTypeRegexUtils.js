@@ -1,7 +1,9 @@
 import ENTRY_TYPE from 'constants/entryType';
+import {ENTRY_TYPE_REGEX_MAP, ENTRY_TYPE_MAP_KEYS} from 'constants/ENTRY_TYPE_MAP';
 import REGEX from 'constants/regexes';
 
 import {hasString} from 'utilities/regexUtils';
+
 
 /**
  * handles determining what EntryType a log string is
@@ -9,6 +11,23 @@ import {hasString} from 'utilities/regexUtils';
  * @return {EntryType}
  */
 export function getEntryType(entryString) {
+  const foundEntryType = ENTRY_TYPE_MAP_KEYS.find((entryTypeKey) => {
+    const entryTypeRegex = ENTRY_TYPE_REGEX_MAP[entryTypeKey];
+    return hasString(entryString, entryTypeRegex);
+  })
+
+  if (foundEntryType) {
+    return foundEntryType;
+  }
+
+  return getEntryType_legacy(entryString);
+}
+/**
+ * handles determining what EntryType a log string is
+ * @param {String} entryString
+ * @return {EntryType}
+ */
+export function getEntryType_legacy(entryString) {
   // -- kolmafia
   if (isEntryValhalla(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.VALHALLA;

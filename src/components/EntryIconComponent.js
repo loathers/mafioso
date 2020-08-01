@@ -55,7 +55,8 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.IOTM.VOTING_BOOTH:
     case ENTRY_TYPE.CLAN_VISIT:
       return InfoSVG;
-
+      
+    case ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE:
     case ENTRY_TYPE.IOTM.GARBAGE_TOTE:
     case ENTRY_TYPE.ITEMS.EQUIP:
     case ENTRY_TYPE.ITEMS.UNEQUIP:

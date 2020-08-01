@@ -63,6 +63,7 @@ export const REGEX = {
   FOURTH_OF_MAY_COSPLAY_SABER: {
     USE_THE_FORCE_TEXT: /.*(USE THE FORCE).*/i,
     USE_THE_FORCE_CHOICE_LINE: /Took choice 1387.*/gi,
+    UPGRADE_TEXT: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
   },
   GOD_LOBSTER: {
     USELESS_VISIT: /main.*fightgodlobster.*/gi,
