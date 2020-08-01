@@ -1,4 +1,4 @@
-import {BLANK_BODY_CONTENT_LIST} from 'constants/DEFAULTS';
+import {BLANK_BODY_CONTENT_LIST, COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/entryType';
 import REGEX from 'constants/regexes';
@@ -448,18 +448,8 @@ export default class Entry {
    * @return {Boolean}
    */
   canCombineWith(comparedEntry) {
-    // shopping at the same place can be condensed
-    if (this.entryType === ENTRY_TYPE.TRANSACTION && this.doesShareLocation(comparedEntry)) {
-      return true;
-    }
-
     // combine kolmafia commonly purchasing and using 
     if (this.hasText('chewing gum on a string') && comparedEntry.hasText('chewing gum on a string')) {
-      return true;
-    }
-
-    // Bastille Batallion
-    if (this.entryType === ENTRY_TYPE.IOTM.BASTILLE_BATALLION && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 
@@ -470,25 +460,12 @@ export default class Entry {
       return true;
     }
 
-    // all equip texts can be combined into one
-    if (this.entryType === ENTRY_TYPE.ITEMS.EQUIP && this.doesShareEntryType(comparedEntry)) {
-      return true;
-    }
-
-    if (this.entryType === ENTRY_TYPE.TALKING && this.doesShareEntryType(comparedEntry)) {
-      return true;
-    }
-
-    if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL && this.doesShareEntryType(comparedEntry)) {
-      return true;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY && this.doesShareEntryType(comparedEntry)) {
-      return true;
-    }
-
     // (deluxe) mr klaw - incomplete
     if (this.hasText(/mr. klaw/i) && comparedEntry.hasText(/mr. klaw/i)) {
+      return true;
+    }
+
+    if (COMBINABLE_ENTRIES_LIST.includes(this.entryType) && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
 
