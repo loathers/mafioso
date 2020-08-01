@@ -55,12 +55,16 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY;
   }
 
+  if (isEntryBastilleBatallion(entryString)) {
+    return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
+  }
+
   if (isEntryBeachComb(entryString)) {
     return ENTRY_TYPE.IOTM.BEACH_COMB;
   }
 
-  if (isEntryBastilleBatallion(entryString)) {
-    return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
+  if (isEntryBirdADay(entryString)) {
+    return ENTRY_TYPE.IOTM.BIRD_A_DAY;
   }
 
   if (isEntryCatBurglarHeist(entryString)) {
@@ -450,6 +454,13 @@ export function isEntryDistantWoodsGetaway(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
+export function isEntryBastilleBatallion(entryString) {
+  return hasString(entryString, REGEX.BASTILLE_BATALLION.TEXT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
 export function isEntryBeachComb(entryString) {
   return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
 }
@@ -457,8 +468,9 @@ export function isEntryBeachComb(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryBastilleBatallion(entryString) {
-  return hasString(entryString, REGEX.BASTILLE_BATALLION.TEXT);
+export function isEntryBirdADay(entryString) {
+  return hasString(entryString, REGEX.BIRD_A_DAY.USE_LINE)
+    || hasString(entryString, REGEX.BIRD_A_DAY.CAST_LINE);
 }
 /**
  * @param {String} entryString

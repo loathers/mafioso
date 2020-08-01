@@ -80,10 +80,11 @@ export const ENTRY_TYPE_FILTERS = [
   },
   {
     label: 'Buffs/Effects',
-    entryType: ENTRY_TYPE.EFFECTS.SPELL_CAST,
-    // entryGroup: [
-    //   ENTRY_TYPE.EFFECTS.SPELL_CAST,
-    // ],
+    // entryType: ENTRY_TYPE.EFFECTS.SPELL_CAST,
+    entryGroup: [
+      ENTRY_TYPE.EFFECTS.SPELL_CAST,
+      ENTRY_TYPE.IOTM.BIRD_A_DAY,
+    ],
     isHidden: false,
     checked: false,
   },

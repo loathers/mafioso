@@ -32,6 +32,10 @@ export const REGEX = {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
   },
+  BIRD_A_DAY: {
+    USE_LINE: /^use.*bird-a-day calendar.*/gmi,
+    CAST_LINE: /^cast.*(Seek out a Bird|Visit your favorite bird).*/gmi,      
+  },
   BOXING_DAYCARE: {
     // GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
     VISIT: /visiting the boxing daycare.*/gi,

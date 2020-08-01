@@ -92,6 +92,7 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.FAMILIAR:
       return CatSVG;
 
+    case ENTRY_TYPE.IOTM.BIRD_A_DAY:
     case ENTRY_TYPE.EFFECTS.SPELL_CAST:
       return SpellbookSVG;
 
