@@ -72,7 +72,6 @@ export const ENTRY_TYPE_FILTERS = [
       ENTRY_TYPE.IOTM.BASTILLE_BATALLION,
       ENTRY_TYPE.IOTM.BEACH_COMB,
       ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD,
-      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
       ENTRY_TYPE.IOTM.PILLKEEPER,
       ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX,
     ],
@@ -110,10 +109,12 @@ export const ENTRY_TYPE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Equipment',
+    label: 'Familiar/Equips',
     entryGroup: [
       ENTRY_TYPE.ITEMS.EQUIP,
       ENTRY_TYPE.ITEMS.UNEQUIP,
+      ENTRY_TYPE.FAMILIAR,
+      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
     ],
     entryType: ENTRY_TYPE.ITEMS.EQUIP,
     isHidden: false,

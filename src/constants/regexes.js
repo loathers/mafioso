@@ -289,7 +289,7 @@ export const REGEX = {
     EFFECTS_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/gmis,
     MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
 
-    SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}\w(?!\[)/gmi,
+    SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
   },
   // -- kolmafia snapshot
