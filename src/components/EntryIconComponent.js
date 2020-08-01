@@ -88,6 +88,7 @@ function getEntryIcon(entryType) {
     case ENTRY_TYPE.POTION:
       return PotionSVG;
 
+    case ENTRY_TYPE.IOTM.CAT_BURGLAR:
     case ENTRY_TYPE.FAMILIAR:
       return CatSVG;
 

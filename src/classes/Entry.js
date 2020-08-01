@@ -132,6 +132,10 @@ export default class Entry {
       return false;
     }
 
+    if (this.entryType === ENTRY_TYPE.IOTM.CAT_BURGLAR) {
+      return false;
+    }
+
     if (this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER) {
       return false;
     }
@@ -325,6 +329,10 @@ export default class Entry {
   get isIOTM() {
     return IOTM_ENTRIES.includes(this.entryType) 
       || this.attributes.isEndedByUseTheForce;
+  }
+  /** @type {Boolean} */
+  get isHeist() {
+    return this.entryType === ENTRY_TYPE.IOTM.CAT_BURGLAR;
   }
   /** @type {Boolean} */
   get hasIunionCrown() {

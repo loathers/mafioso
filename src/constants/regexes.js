@@ -37,6 +37,11 @@ export const REGEX = {
     VISIT: /visiting the boxing daycare.*/gi,
     NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
   },
+  CAT_BURGLAR: {
+    // NEVERMIND_HEIST_GROUP: /(?<!main.*heist.*(\r\n|\n).*).*(1320\/2).*(\r\n|\n).*$/gi,
+    USELESS_HEIST_GROUP: /main\.php.*heist=1(\r\n|\n).*(1320\/2).*(\r\n|\n).*$/gi,
+    HEISTED: /.*(choice 1320\/1).*/gi,
+  },
   DECK_OF_EVERY_CARD: {
     TEXT: /Deck of Every Card/im,
     USELESS_USE: /.*deck of every card.*(\r\n|\n)(?!.)/gim,
@@ -97,7 +102,7 @@ export const REGEX = {
     TELECYBIN: /(?<=choice 1395\/\d+: ).*Telecybin/gi,
 
     USELESS_USE: /main.php\?eowkeeper=1.*/gi,
-    NEVERMIND_LINE: /.*choice 1395\/9.*(\r\n|\n).*choice=1395.*option=9/gi,
+    NEVERMIND_LINE: /.*choice 1395\/9.*(\r\n|\n).*(choice=1395.*option=9|(\r\n|\n))/gi,
   },
   PIRATEREALM: {
     // ENTRY_GROUPING: /^\[.*?piraterealm.*?(\r\n|\n){2,}/gmis,
@@ -308,13 +313,14 @@ export const REGEX = {
     CLI_PRINT: /^> .*(\r\n|\n|$)/gmi,
     SEND_A_KMAIL: /send a kmail.*(\r\n|\n|$)/gi,
     COMBAT_MACRO: /.*executes a macro.*(\r\n|\n|$)/gi,
+    CUSTOM_OUTFIT_LINE: /^custom outfit.*/gmi, 
     MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n|$)/gmi,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n|$)/gi,
-    MALL_LINE: /^mall\.php.*/gim,
-    PVP_LINE: /^peevpee\.php.*/gim,
-    ANY_PHP_LINE: /^.*\.php.*/gim,
-    USELESS_BREAKFAST_LINE: /^main.*checkbfast.*/gim,
-    USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)/gim,
+    MALL_LINE: /^mall\.php.*(\r\n|\n)/gim,
+    PVP_LINE: /^peevpee\.php.*(\r\n|\n)/gim,
+    USELESS_PHP_LINE: /(?!.*(heist|may4|eowkeeper).*)^.*\.php.*(\r\n|\n)/gim,
+    USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,
+    USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)(\r\n|\n)/gim,
     // sometimes
     MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n|$)/g,
   },

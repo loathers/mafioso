@@ -189,6 +189,10 @@ export function parseLocationName(entryString) {
     return 'Valhalla';
   }
 
+  if (entryTypeRegexUtils.isEntryCatBurglarHeist(entryString)) {
+    return 'Cat Burglar';
+  }
+
   if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
     return 'Eight Days a Week Pill Keeper';
   }
@@ -228,6 +232,10 @@ export function parseLocationName(entryString) {
 export function parseEncounterName(entryString) {
   if (isEntryBeachComb(entryString)) {
     return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION);
+  }
+
+  if (entryTypeRegexUtils.isEntryCatBurglarHeist(entryString)) {
+    return 'A Heist!';
   }
 
   if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {

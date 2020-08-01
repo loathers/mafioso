@@ -63,6 +63,10 @@ export function getEntryType(entryString) {
     return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
   }
 
+  if (isEntryCatBurglarHeist(entryString)) {
+    return ENTRY_TYPE.IOTM.CAT_BURGLAR;
+  }
+
   if (isEntryJanuarysGarbageTote(entryString)) {
     return ENTRY_TYPE.IOTM.GARBAGE_TOTE;
   }
@@ -455,6 +459,13 @@ export function isEntryBeachComb(entryString) {
  */
 export function isEntryBastilleBatallion(entryString) {
   return hasString(entryString, REGEX.BASTILLE_BATALLION.TEXT);
+}
+/**
+ * @param {String} entryString
+ * @return {Boolean}
+ */
+export function isEntryCatBurglarHeist(entryString) {
+  return hasString(entryString, REGEX.CAT_BURGLAR.HEISTED);
 }
 /**
  * @param {String} entryString

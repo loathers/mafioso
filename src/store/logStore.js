@@ -379,7 +379,7 @@ class LogStore {
     if (!this.isAscensionLog) {
       return allEntries;
     }
-    
+
     const dateList = [];
 
     return allEntries.map((entry, idx) => {

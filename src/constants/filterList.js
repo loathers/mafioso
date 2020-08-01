@@ -47,6 +47,7 @@ export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Special Uses',
     entryGroup: [
+      ENTRY_TYPE.IOTM.CAT_BURGLAR,
       ENTRY_TYPE.IOTM.PILLKEEPER,
       ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX,
     ],
@@ -254,6 +255,13 @@ export const ATTRIBUTE_FILTERS = [
   {
     label: 'Replaced',
     attributeName: 'isReplaced',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Heisted',
+    attributeName: 'isHeist',
     attributeValue: true,
     isHidden: false,
     checked: false,
