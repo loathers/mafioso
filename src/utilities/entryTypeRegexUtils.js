@@ -1,5 +1,5 @@
 import ENTRY_TYPE from 'constants/entryType';
-import {ENTRY_TYPE_REGEX_MAP, ENTRY_TYPE_MAP_KEYS} from 'constants/ENTRY_TYPE_MAP';
+import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS} from 'constants/ENTRY_DATA_MAP';
 import REGEX from 'constants/regexes';
 
 import {hasString} from 'utilities/regexUtils';
@@ -11,9 +11,13 @@ import {hasString} from 'utilities/regexUtils';
  * @return {EntryType}
  */
 export function getEntryType(entryString) {
-  const foundEntryType = ENTRY_TYPE_MAP_KEYS.find((entryTypeKey) => {
-    const entryTypeRegex = ENTRY_TYPE_REGEX_MAP[entryTypeKey];
-    return hasString(entryString, entryTypeRegex);
+  const foundEntryType = ENTRY_MAP_KEYS.find((entryTypeKey) => {
+    const entryTypeData = ENTRY_DATA_MAP[entryTypeKey];
+    if (entryTypeData) {
+      return hasString(entryString, entryTypeData.regex);
+    } else {
+      return undefined;
+    }
   })
 
   if (foundEntryType) {

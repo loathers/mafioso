@@ -24,6 +24,8 @@ export default class Entry {
     this.entryIdx = entryIdx;
     /** @type {EntryType} */
     this.entryType = getEntryType(rawText);
+    /** @type {EntryData} */
+    this.entryData = undefined;
 
     /** @type {RawText} */
     this.rawText = rawText;
