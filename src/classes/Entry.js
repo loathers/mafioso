@@ -51,9 +51,9 @@ export default class Entry {
       /** @type {Number} */
       meatChange: 0,
       /** @type {Number} */
-      healthChange: 0,
+      healthChanges: 0,
       /** @type {Number} */
-      manaChange: 0,
+      manaChanges: 0,
 
       //-- stat
       /** @type {Boolean} */

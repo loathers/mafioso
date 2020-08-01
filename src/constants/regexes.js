@@ -152,32 +152,30 @@ export const REGEX = {
   // -- character
   CHARACTER: {
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
-    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
-    
-
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
+
+    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
     MP_GAINS: /(?<=gain\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
     MP_LOSSES: /(?<=lose\s)\d+(?=\s(muscularity|mana|mojo) point)/gi,
 
+    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*/gi,
     MUS_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
     MUS_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness))/gi,
+    MUS_GAINS: /.*you gain.*\d*muscle.*point.*/gi,
 
+    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*/gi,
     MYST_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
     MYST_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
+    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
 
+    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
     MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+    MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
 
     LEVEL_GAIN: /^You gain .* level.*\s+/gmi,
     SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
-
-    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*/gi,
-    MUS_GAINS: /.*you gain.*\d*muscle.*point.*/gi,
-    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*/gi,
-    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
-    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
-    MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
   },
   // -- combat
   COMBAT: {

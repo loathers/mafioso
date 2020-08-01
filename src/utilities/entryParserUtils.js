@@ -69,6 +69,8 @@ export function parseStatAttributes(entryString) {
     musExpChanges: parseMusSubstats(entryString),
     mystExpChanges: parseMystSubstats(entryString),
     moxExpChanges: parseMoxSubstats(entryString),
+    healthChanges: parsehealthChanges(entryString),
+    manaChanges: parsemanaChanges(entryString),
   }
 }
 /**
@@ -427,6 +429,24 @@ export function parseMoxSubstats(entryString) {
   const expGains = getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_GAINS) || [];
   const expLosses = getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parsehealthChanges(entryString) {
+  const hpGains = getRegexMatch(entryString, REGEX.CHARACTER.HP_GAINS) || [];
+  const hpLosses = getRegexMatch(entryString, REGEX.CHARACTER.HP_LOSSES) || [];
+  return hpGains.concat(hpLosses).map((changeString) => Number(changeString));
+}
+/**
+ * @param {String} entryString
+ * @return {Array<Number>}
+ */
+export function parsemanaChanges(entryString) {
+  const mpGains = getRegexMatch(entryString, REGEX.CHARACTER.MP_GAINS) || [];
+  const mpLosses = getRegexMatch(entryString, REGEX.CHARACTER.MP_LOSSES) || [];
+  return mpGains.concat(mpLosses).map((changeString) => Number(changeString));
 }
 // -- combat parsers
 /**
