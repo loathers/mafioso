@@ -378,36 +378,36 @@ export function parseMeatSpent(entryString) {
  * @return {Boolean}
  */
 export function isLevelUp(entryString) {
-  return hasString(entryString, REGEX.LINE.LEVEL_GAIN);
+  return hasString(entryString, REGEX.CHARACTER.LEVEL_GAIN);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isMusUp(entryString) {
-  return hasString(entryString, REGEX.LINE.MUS_GAINS);
+  return hasString(entryString, REGEX.CHARACTER.MUS_GAINS);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isMystUp(entryString) {
-  return hasString(entryString, REGEX.LINE.MYST_GAINS);
+  return hasString(entryString, REGEX.CHARACTER.MYST_GAINS);
 }
 /**
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isMoxUp(entryString) {
-  return hasString(entryString, REGEX.LINE.MOX_GAINS);
+  return hasString(entryString, REGEX.CHARACTER.MOX_GAINS);
 }
 /**
  * @param {String} entryString
  * @return {Array<Number>}
  */
 export function parseMusSubstats(entryString) {
-  const expGains = getRegexMatch(entryString, REGEX.VALUE.MUS_EXP_GAINS) || [];
-  const expLosses = getRegexMatch(entryString, REGEX.VALUE.MUS_EXP_LOSSES) || [];
+  const expGains = getRegexMatch(entryString, REGEX.CHARACTER.MUS_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.CHARACTER.MUS_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -415,8 +415,8 @@ export function parseMusSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseMystSubstats(entryString) {
-  const expGains = getRegexMatch(entryString, REGEX.VALUE.MYST_EXP_GAINS) || [];
-  const expLosses = getRegexMatch(entryString, REGEX.VALUE.MYST_EXP_LOSSES) || [];
+  const expGains = getRegexMatch(entryString, REGEX.CHARACTER.MYST_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.CHARACTER.MYST_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -424,8 +424,8 @@ export function parseMystSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseMoxSubstats(entryString) {
-  const expGains = getRegexMatch(entryString, REGEX.VALUE.MOX_EXP_GAINS) || [];
-  const expLosses = getRegexMatch(entryString, REGEX.VALUE.MOX_EXP_LOSSES) || [];
+  const expGains = getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_GAINS) || [];
+  const expLosses = getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 // -- combat parsers

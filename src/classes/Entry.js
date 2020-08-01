@@ -50,6 +50,10 @@ export default class Entry {
       acquiredEffects: [],
       /** @type {Number} */
       meatChange: 0,
+      /** @type {Number} */
+      healthChange: 0,
+      /** @type {Number} */
+      manaChange: 0,
 
       //-- stat
       /** @type {Boolean} */

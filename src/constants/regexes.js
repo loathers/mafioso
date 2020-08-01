@@ -122,19 +122,6 @@ export const REGEX = {
     ENCOUNTER: /Encounter:.*/g,
     USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
 
-    HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
-    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
-
-    LEVEL_GAIN: /^You gain .* level.*\s+/gmi,
-    SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
-
-    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*/gi,
-    MUS_GAINS: /.*you gain.*\d*muscle.*point.*/gi,
-    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*/gi,
-    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
-    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
-    MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
-
     MCD_CHANGE: /^mcd.*/gim,
     TELESCOPE: /^telescope.*/gim,
     EQUIP: /^equip.*/gim,
@@ -161,6 +148,12 @@ export const REGEX = {
 
     SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
     SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,
+  },
+  // -- character
+  CHARACTER: {
+    HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
+    MP_CHANGE: /.*(gain|lose).*\d*(muscularity|mana|mojo) point.*/gi,
+    
 
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
     HP_LOSSES: /(?<=lose\s)\d+(?=\shit point)/gi,
@@ -175,6 +168,16 @@ export const REGEX = {
 
     MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
+
+    LEVEL_GAIN: /^You gain .* level.*\s+/gmi,
+    SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
+
+    MUS_EXP_CHANGE: /.*gain.*\d*(Beefiness|Fortitude|Muscleboundness|Strengthliness|Strongness).*/gi,
+    MUS_GAINS: /.*you gain.*\d*muscle.*point.*/gi,
+    MYST_EXP_CHANGE: /.*gain.*\d*(Enchantedness|Magicalness|Mysteriousness|Wizardliness).*/gi,
+    MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
+    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
+    MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
   },
   // -- combat
   COMBAT: {
