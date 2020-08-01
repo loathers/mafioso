@@ -3,7 +3,7 @@ import REGEX, {
   BACK_NEW_LINE_REGEX, 
   PRE_LINE_EMPTY_SPACE,
   POST_LINE_EMPTY_SPACE,
-} from 'constants/regexes';
+} from 'constants/REGEXES';
 
 export const CLEAN_RAW_DELAY = 50;
 export const FULL_PARSE_DELAY = 50;

@@ -9,7 +9,7 @@ import {
   FULL_PARSE_DELAY,
   CLEAN_RAW_DELAY,
 } from 'constants/DEFAULTS';
-import REGEX, {EMPTY_LINES_REGEX} from 'constants/regexes';
+import REGEX, {EMPTY_LINES_REGEX} from 'constants/REGEXES';
 
 const logId = uuidv4();
 

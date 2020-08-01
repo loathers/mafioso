@@ -1,7 +1,7 @@
 import {BLANK_BODY_CONTENT_LIST, COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/entryType';
-import REGEX from 'constants/regexes';
+import REGEX from 'constants/REGEXES';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
 import {getEntryType} from 'utilities/entryTypeRegexUtils';

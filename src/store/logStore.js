@@ -11,7 +11,7 @@ import {
 } from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/entryType';
 import {DEFAULT_ENTRIES_VISIBLE, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
-import REGEX from 'constants/regexes';
+import REGEX from 'constants/REGEXES';
 
 import * as logParserUtils from 'utilities/logParserUtils';
 import download from 'utilities/download';

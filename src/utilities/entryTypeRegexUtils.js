@@ -1,6 +1,6 @@
 import ENTRY_TYPE from 'constants/entryType';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS} from 'constants/ENTRY_DATA_MAP';
-import REGEX from 'constants/regexes';
+import REGEX from 'constants/REGEXES';
 
 import {hasString} from 'utilities/regexUtils';
 
