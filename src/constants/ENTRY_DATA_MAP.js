@@ -1,4 +1,5 @@
 import ENTRY_TYPE from 'constants/entryType';
+import {CATEGORY_ID} from 'constants/CATEGORIES';
 
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
@@ -13,7 +14,7 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
  */
 export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
-    categories: ['USE_ITEM'],
+    categories: [CATEGORY_ID.USE_ITEM, CATEGORY_ID.IOTM],
     regex: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
     icon: UnknownSVG,
     locationName_alt: undefined,
