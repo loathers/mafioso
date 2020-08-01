@@ -27,6 +27,8 @@ export const REGEX = {
     TEXT: /Bastille Battalion/im,
   },
   BEACH_COMB: {
+    USELESS_VISIT: /main.*comb.*/gi,
+
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
   },
@@ -49,14 +51,19 @@ export const REGEX = {
     GAZING_LINE: /(^gazing).*/gi,
     USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
   },
-  FOURTH_OF_JULY_COSPLAY_SABER: {
+  FOURTH_OF_MAY_COSPLAY_SABER: {
     USE_THE_FORCE_TEXT: /.*(USE THE FORCE).*/i,
     USE_THE_FORCE_CHOICE_LINE: /Took choice 1387.*/gi,
   },
   GOD_LOBSTER: {
+    USELESS_VISIT: /main.*fightgodlobster.*/gi,
+
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
+  },
+  HEWN_MOON_RUNE_SPOON: {
+    USELESS_USE: /^use.*(hewn moon-rune spoon)/gmi,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
@@ -110,7 +117,7 @@ export const REGEX = {
 
   // -- common
   LINE: {
-    USELESS_USE: /^use.*(\r\n|\n)(?!.)/gi,
+    USELESS_USE: /^use.*(\r\n|\n)(?!.)/gmi,
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
     USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
@@ -256,6 +263,8 @@ export const REGEX = {
     CAST_NAME: /(?<=cast \d+ ).*/mi,
     CAST_AMOUNT: /(?<=cast )\d+(?=.*)/mi,
     USELESS_CAST_LINE: /cast.*(\r\n|\n)(?!.)/gim,
+
+    USELESS_REUP_LINE: /^upeffect.*/gim,
   },
   // -- 
   // note: these only work in raw
@@ -296,6 +305,11 @@ export const REGEX = {
     COMBAT_MACRO: /.*executes a macro.*(\r\n|\n|$)/gi,
     MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n|$)/gmi,
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n|$)/gi,
+    MALL_LINE: /^mall\.php.*/gim,
+    PVP_LINE: /^peevpee\.php.*/gim,
+    ANY_PHP_LINE: /^.*\.php.*/gim,
+    USELESS_BREAKFAST_LINE: /^main.*checkbfast.*/gim,
+    USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)/gim,
     // sometimes
     MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n|$)/g,
   },
