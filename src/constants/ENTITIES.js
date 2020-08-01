@@ -1,4 +1,4 @@
-import ENTITY_TYPE from 'constants/entityType';
+import ENTITY_TYPE from 'constants/ENTITY_TYPE';
 
 export const LOUDER_THAN_BOMB = {
   text: 'Louder Than Bomb',
