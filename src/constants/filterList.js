@@ -10,6 +10,8 @@ export const ENTRY_TYPE_FILTERS = [
     entryGroup: [
       ENTRY_TYPE.SNAPSHOT.VALHALLA,
       ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
+      ENTRY_TYPE.SNAPSHOT.DAY_INFO,
+      ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
     ],
     isHidden: false,
     checked: true,
@@ -36,7 +38,7 @@ export const ENTRY_TYPE_FILTERS = [
     checked: true,
   },
   {
-    label: 'Choice',
+    label: 'ChoiceAdv',
     entryGroup: [
       ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
       ENTRY_TYPE.IOTM.BOXING_DAYCARE,
@@ -81,7 +83,6 @@ export const ENTRY_TYPE_FILTERS = [
   },
   {
     label: 'Buffs/Effects',
-    // entryType: ENTRY_TYPE.EFFECTS.SPELL_CAST,
     entryGroup: [
       ENTRY_TYPE.EFFECTS.SPELL_CAST,
       ENTRY_TYPE.IOTM.BIRD_A_DAY,
@@ -111,7 +112,7 @@ export const ENTRY_TYPE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Familiar/Equips',
+    label: 'Familiar/Equipment',
     entryGroup: [
       ENTRY_TYPE.ITEMS.EQUIP,
       ENTRY_TYPE.ITEMS.UNEQUIP,
@@ -120,12 +121,6 @@ export const ENTRY_TYPE_FILTERS = [
     ],
     entryType: ENTRY_TYPE.ITEMS.EQUIP,
     isHidden: false,
-    checked: false,
-  },
-  {
-    label: 'Clan Visit',
-    entryType: ENTRY_TYPE.CLAN_VISIT,
-    isHidden: true,
     checked: false,
   },
   {
@@ -144,14 +139,12 @@ export const ENTRY_TYPE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Skill Breakdown',
-    entryType: ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
-    isHidden: true,
-    checked: false,
-  },
-  {
     label: 'Uncategorized',
-    entryType: ENTRY_TYPE.UNKNOWN,
+    entryGroup: [
+      ENTRY_TYPE.UNKNOWN,
+      ENTRY_TYPE.PVP,
+      ENTRY_TYPE.CLAN_VISIT,
+    ],
     isHidden: false,
     checked: false,
   },

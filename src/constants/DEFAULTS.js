@@ -12,14 +12,6 @@ export const DISPLAY_SCRUB_DELAY = 5;
 export const FILTER_DELAY = 3;
 
 // -- log level
-// some data that is always filtered out
-export const ALWAYS_HIDDEN_ENTRIES = [
-  // ENTRY_TYPE.UNKNOWN,
-  ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-  // ENTRY_TYPE.IOTM.PIRATEREALM,
-  // ENTRY_TYPE.CLAN_VISIT,
-  ENTRY_TYPE.PVP,
-];
 // strings we are going to remove from the ahead of time
 export const PREREMOVE_REGEX_LIST = [
   // always first

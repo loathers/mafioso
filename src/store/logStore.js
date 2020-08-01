@@ -68,8 +68,6 @@ class LogStore {
       entryTypesVisible: DEFAULT_ENTRIES_VISIBLE.slice(),
       /** @type {Array<EntryAttribute>} */
       filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS.slice(),
-      /** @type {Array<EntryType>} */
-      alwaysHiddenTypes: ALWAYS_HIDDEN_ENTRIES.slice(),
     });
 
     /** @type {Batcher} */
@@ -182,7 +180,6 @@ class LogStore {
       entriesPerPage: 100,
       entryTypesVisible: this.displayOptions.entryTypesVisible.slice(),
       filteredAttributes: this.displayOptions.filteredAttributes.slice(),
-      alwaysHiddenTypes: this.displayOptions.alwaysHiddenTypes.slice(),
     });
   }
   /**
@@ -470,15 +467,13 @@ class LogStore {
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
 
-    const entryTypesToFilter = this.displayOptions.alwaysHiddenTypes.concat(entryTypesVisible);
-
     console.log('⏳ %cFetching entries...', 'color: blue')
     this.isFetching.set(true);
 
     // batch find entries that are in range and not hidden
     const visibleEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
-        const isVisibleEntry = !entryTypesToFilter.includes(entry.entryType);
+        const isVisibleEntry = !entryTypesVisible.includes(entry.entryType);
         if (!isVisibleEntry) {
           return false;
         }
@@ -539,11 +534,6 @@ class LogStore {
     // batch find entries that are in range and not hidden
     const visibleEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
-        const isHiddenEntry = this.displayOptions.alwaysHiddenTypes.includes(entry.entryType);
-        if (isHiddenEntry) {
-          return false;
-        }
-
         const isVisibleEntry = entryTypesVisible.includes(entry.entryType);
         if (!isVisibleEntry) {
           return false;
