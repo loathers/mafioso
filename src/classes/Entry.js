@@ -1,3 +1,4 @@
+import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/entryType';
 import REGEX from 'constants/regexes';
 
@@ -173,6 +174,15 @@ export default class Entry {
   /** @type {Boolean} */
   get hasInventoryChanges() {
     return this.hasMeatChanges || this.hasAcquiredItems;
+  }
+  // -- 
+  /** @type {Boolean} */
+  get isClover() {
+    return CLOVER_ENCOUNTERS.includes(this.attributes.encounterName);
+  }
+  /** @type {Boolean} */
+  get isSemirare() {
+    return SEMIRARE_ENCOUNTERS.includes(this.attributes.encounterName);
   }
   // -- stats
   /** @type {Number} */

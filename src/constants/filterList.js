@@ -160,6 +160,20 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Semirares',
+    attributeName: 'isSemirare',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Clovers',
+    attributeName: 'isClover',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Keepin\' Pills',
     attributeName: 'isPillKeeper',
     attributeValue: true,
