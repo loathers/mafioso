@@ -510,7 +510,7 @@ export function isEntryPirateRealm(entryString) {
  * @return {Boolean}
  */
 export function isEntryVotingBooth(entryString) {
-  return hasString(entryString, REGEX.VOTING_BOOTH.GROUPING);
+  return hasString(entryString, REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT);
 }
 /**
  * @param {String} entryString

@@ -144,6 +144,10 @@ export default class Entry {
       return false;
     }
 
+    if (this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH) {
+      return false;
+    }
+
     if (this.entryType === ENTRY_TYPE.SNAPSHOT.VALHALLA) {
       return false;
     }

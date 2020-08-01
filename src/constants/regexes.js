@@ -118,6 +118,7 @@ export const REGEX = {
   },
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
+    DAILY_VOTE_TEXT: /Daily Loathing Ballot/i,
   },
 
   // -- common
@@ -269,10 +270,10 @@ export const REGEX = {
 
     UNAFFECT_LINE: /^uneffect.*/gim,
 
-    CAST_LINE: /cast .*/gim,
-    CAST_NAME: /(?<=cast \d+ ).*/mi,
-    CAST_AMOUNT: /(?<=cast )\d+(?=.*)/mi,
-    USELESS_CAST_LINE: /cast.*(\r\n|\n)(?!.)/gim,
+    CAST_LINE: /^cast .*/gim,
+    CAST_NAME: /(?<=^cast \d+ ).*/mi,
+    CAST_AMOUNT: /(?<=^cast )\d+(?=.*)/mi,
+    USELESS_CAST_LINE: /^cast.*(\r\n|\n)(?!.)/gim,
 
     USELESS_REUP_LINE: /^upeffect.*/gim,
   },

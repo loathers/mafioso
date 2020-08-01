@@ -197,6 +197,10 @@ export function parseLocationName(entryString) {
     return 'Eight Days a Week Pill Keeper';
   }
 
+  if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
+    return 'Voting Booth';
+  }
+
   const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];
@@ -240,6 +244,10 @@ export function parseEncounterName(entryString) {
 
   if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
     return getRegexMatch(entryString, REGEX.PILL_KEEPER.CHOICE_RESULT);
+  }
+
+  if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
+    return 'Daily Loathing Ballot';
   }
 
   if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
