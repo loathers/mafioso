@@ -1,25 +1,14 @@
 {
-  "name": "shiny_log_visualizer",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "mobx": "^5.15.4",
-    "mobx-react": "^6.2.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "uuid": "^8.2.0"
-  },
+  "name": "KoL-Mafioso",
+  "version": "0.7.0",
+  "description": "A visualizer for kolmafia logs for the game Kingdom of Loathing.",
+  "url": "https://github.com/aahvocado/KoL-Mafioso",
+  "email": "dan.dan.makes.stuff@gmail.com",
+  "license": "MIT",
   "scripts": {
     "sass.compile": "sass src/styles/main.scss src/styles/compiled/main.css",
     "sass.watch": "sass --watch src/styles/main.scss src/styles/compiled/main.css",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +24,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "aah-util-css": "^0.5.3",
