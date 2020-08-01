@@ -181,6 +181,24 @@ export default class Entry {
   get moxSubstats() {
     return this.attributes.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
   }
+  /** @type {Number} */
+  get healthDisplay() {
+    const hpChanged = this.attributes.healthChanges.reduce((total, amt) => total + amt, 0);
+    if (hpChanged > 0) {
+      return `+${hpChanged}`;
+    }
+
+    return hpChanged;
+  }
+  /** @type {Number} */
+  get manaDisplay() {
+    const mpChanged =  this.attributes.manaChanges.reduce((total, amt) => total + amt, 0);
+    if (mpChanged > 0) {
+      return `+${mpChanged}`;
+    }
+
+    return mpChanged;
+  }
   /** @type {String} */
   get contentDisplay() {
     return this.createContentDisplay();

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
+import { ReactComponent as ManaSVG } from 'images/potion-ball.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
@@ -165,15 +167,31 @@ function EntryBodyContainer(props) {
             className='flex-none' />
         }
 
-        {/* meat */}
-        { entry.hasMeatChanges &&
-          <div className='flex-row'>
+        <div className='flex-row'>
+          {/* meat */}
+          { entry.hasMeatChanges &&
             <SingleDisplay 
               IconComponent={SteakSVG}
               className='mar-2'
               content={`${entry.createMeatDisplay()} meat`} />
-          </div>
-        }
+          }
+
+          {/* hp */}
+          { entry.attributes.manaChanges.length > 0 &&
+            <SingleDisplay 
+              IconComponent={HealthSVG}
+              className='mar-2'
+              content={`${entry.healthDisplay}hp`} />
+          }
+
+          {/* mp */}
+          { entry.attributes.manaChanges.length > 0 &&
+            <SingleDisplay 
+              IconComponent={ManaSVG}
+              className='mar-2'
+              content={`${entry.manaDisplay}mp`} />
+          }
+        </div>
       </div>
     </div>
   )
