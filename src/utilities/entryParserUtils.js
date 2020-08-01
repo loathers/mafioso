@@ -2,7 +2,7 @@ import ListItem from 'classes/ListItem';
 
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
-// import ENTRY_TYPE from 'constants/entryType';
+// import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX, {EMPTY_LINES_REGEX} from 'constants/REGEXES';
 import * as TRACKERS from 'constants/TRACKERS';
 
@@ -10,7 +10,7 @@ import {
   hasString,
   getRegexMatch,
 } from 'utilities/regexUtils';
-import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
+import * as entryTypeRegexUtils from 'utilities/ENTRY_TYPERegexUtils';
 
 /**
  * @param {String} entryString

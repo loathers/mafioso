@@ -1,4 +1,4 @@
-import ENTRY_TYPE from 'constants/entryType';
+import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX, {
   BACK_NEW_LINE_REGEX, 
   PRE_LINE_EMPTY_SPACE,

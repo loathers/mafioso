@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ENTRY_TYPE from 'constants/entryType';
+import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 
 import { ReactComponent as AnvilImpactSVG } from 'images/anvil-impact.svg';
 import { ReactComponent as BattleGearSVG } from 'images/battle-gear.svg';

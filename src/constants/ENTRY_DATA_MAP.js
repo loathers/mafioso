@@ -1,4 +1,4 @@
-import ENTRY_TYPE from 'constants/entryType';
+import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
