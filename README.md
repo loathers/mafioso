@@ -1,5 +1,7 @@
-#✨ KoL Mafioso ✨
+# ✨ KoL Mafioso ✨
+
 by Daniel Xiao aka dextrial (#132084)
+
 for [Kingdom of Loathing](https://www.kingdomofloathing.com/)
 
 ## About
@@ -21,13 +23,16 @@ Definitely notify me of any actual errors or crashes via Github's bug reporting,
 
 ## Attribution
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 Icons taken from [Game-icons.net](https://game-icons.net/).
 
 ## Contributing
 Please feel free to fork or contribute pull requests.
+
 I am in the [Ascension Speed Society's discord](https://discord.gg/tbUCRT5) and you can talk to me there.
 
 If you're curious about running this locally and testing changes: 
 * [Node.js](https://nodejs.org/en/) and NPM (included in the Node.js installation) is required.
-* Download/clone the repo and navigate to the project through your command line and `npm install && npm run sass.compile`. This downloads external dependencies and compiles the stylesheet.
+* Download/clone the repo and navigate to the project via command line.
+* `npm install && npm run sass.compile`. This downloads external dependencies and compiles the stylesheet.
 * You can then `npm run start`.
