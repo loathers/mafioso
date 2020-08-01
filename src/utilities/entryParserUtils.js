@@ -70,8 +70,8 @@ export function parseStatAttributes(entryString) {
     musExpChanges: parseMusSubstats(entryString),
     mystExpChanges: parseMystSubstats(entryString),
     moxExpChanges: parseMoxSubstats(entryString),
-    healthChanges: parsehealthChanges(entryString),
-    manaChanges: parsemanaChanges(entryString),
+    healthChanges: parseHealthChanges(entryString),
+    manaChanges: parseManaChanges(entryString),
   }
 }
 /**
@@ -382,7 +382,8 @@ export function parseMeatSpent(entryString) {
 export function parseAdventureChanges(entryString) {
   const advGains = getRegexMatch(entryString, REGEX.CHARACTER.ADV_GAINS) || [];
   const advLosses = getRegexMatch(entryString, REGEX.CHARACTER.ADV_LOSSES) || [];
-  return advGains.concat(advLosses).map((changeString) => Number(changeString));
+  const negativeLosses = advLosses.map((advLoss) => (Number(advLoss) * -1));
+  return advGains.concat(negativeLosses).map((changeString) => Number(changeString));
 }
 /**
  * did we gain a level somewhere
@@ -444,19 +445,21 @@ export function parseMoxSubstats(entryString) {
  * @param {String} entryString
  * @return {Array<Number>}
  */
-export function parsehealthChanges(entryString) {
+export function parseHealthChanges(entryString) {
   const hpGains = getRegexMatch(entryString, REGEX.CHARACTER.HP_GAINS) || [];
   const hpLosses = getRegexMatch(entryString, REGEX.CHARACTER.HP_LOSSES) || [];
-  return hpGains.concat(hpLosses).map((changeString) => Number(changeString));
+  const negativeLosses = hpLosses.map((hpLoss) => (Number(hpLoss) * -1));
+  return hpGains.concat(negativeLosses).map((changeString) => Number(changeString));
 }
 /**
  * @param {String} entryString
  * @return {Array<Number>}
  */
-export function parsemanaChanges(entryString) {
+export function parseManaChanges(entryString) {
   const mpGains = getRegexMatch(entryString, REGEX.CHARACTER.MP_GAINS) || [];
   const mpLosses = getRegexMatch(entryString, REGEX.CHARACTER.MP_LOSSES) || [];
-  return mpGains.concat(mpLosses).map((changeString) => Number(changeString));
+  const negativeLosses = mpLosses.map((mpLoss) => (Number(mpLoss) * -1));
+  return mpGains.concat(negativeLosses).map((changeString) => Number(changeString));
 }
 // -- combat parsers
 /**
