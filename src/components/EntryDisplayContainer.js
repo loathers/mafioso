@@ -219,7 +219,7 @@ export default function EntryDisplayContainer(props) {
   const [isFocused, toggleFocus] = React.useState(false);
 
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
-  const selectedClass = isSelected ? 'bg-green' : '';
+  // const selectedClass = isSelected ? 'bg-green' : '';
 
   return (
     <div 
@@ -228,10 +228,10 @@ export default function EntryDisplayContainer(props) {
       className={combineClassnames('overflow-hidden flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
 
       {/* status indicator column */}
-      <div 
+      {/*<div 
         className={combineClassnames('bor-1-lightblue borradius-round height-auto flex-none', selectedClass)}
         style={{width: 10, height: 10}}>
-      </div>
+      </div>*/}
 
       {/* adventure num column */}
       <EntryAdventureColumn 

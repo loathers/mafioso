@@ -43,7 +43,7 @@ function VisualizerSection(props) {
   const {entriesList = []} = props;
 
   return (
-    <div className='width-full flex-col adjacent-mar-t-5'> 
+    <div style={{maxWidth: 1000}} className='width-full flex-col adjacent-mar-t-5'> 
       { entriesList.map((entry, idx) => {
         const currentDay = entry.attributes.dayNum;
         const previousEntry = idx >= 1 && entriesList[idx-1];
