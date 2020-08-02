@@ -166,6 +166,13 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'SongBoom™ BoomBox',
     encounterName_alt: ['♫ {1} ♫', REGEX.SONGBOOM_BOOMBOX.RESULT],
   },
+  [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT,
+    icon: InfoSVG,
+    locationName_alt: 'Voting Booth',
+    encounterName_alt: 'Daily Loathing Ballot',
+  },
 };
 // basically becomes a list of `EntryType`s that have a map value
 export const ENTRY_MAP_KEYS = Object.keys(ENTRY_DATA_MAP);

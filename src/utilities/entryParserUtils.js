@@ -214,10 +214,6 @@ export function isNonCombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
-    return 'Voting Booth';
-  }
-
   const locationNameMatches = getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];
@@ -251,10 +247,6 @@ export function parseLocationName(entryString) {
  * @return {String | null}
  */
 export function parseEncounterName(entryString) {
-  if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
-    return 'Daily Loathing Ballot';
-  }
-  
   // if monster was replaced, use the enemy that this eventually becomes
   const replacedResults = parseReplacedResults(entryString);
   if (replacedResults) {
