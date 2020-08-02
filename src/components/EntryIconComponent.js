@@ -64,7 +64,6 @@ function getEntryIcon(entryType) {
 
     case ENTRY_TYPE.ITEMS.HAGNK_PULL:
     case ENTRY_TYPE.ITEMS.CLOSET_PUT:
-    case ENTRY_TYPE.ITEMS.CLOSET_TAKE:
       return SwapBagSVG;
 
     case ENTRY_TYPE.ITEMS.COMBINE:

@@ -83,14 +83,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.ITEMS.MIX;
   }
 
-  if (isEntryClosetPut(entryString)) {
-    return ENTRY_TYPE.ITEMS.CLOSET_PUT;
-  }
-
-  if (isEntryClosetTake(entryString)) {
-    return ENTRY_TYPE.ITEMS.CLOSET_TAKE;
-  }
-
   if (isEntrySpellCast(entryString)) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
@@ -194,20 +186,6 @@ export function isEntryMix(entryString) {
  */
 export function isEntryHagnkPull(entryString) {
   return hasString(entryString, REGEX.ITEMS.HAGNK_PULL_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryClosetPut(entryString) {
-  return hasString(entryString, REGEX.ITEMS.CLOSET_PUT_TARGETS);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryClosetTake(entryString) {
-  return hasString(entryString, REGEX.ITEMS.CLOSET_TAKE_TARGETS);
 }
 /**
  * @param {String} entryString

@@ -8,6 +8,7 @@ import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
+import {ReactComponent as ItemBagSVG} from 'images/swap-bag.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as ShopSVG} from 'images/shop.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
@@ -181,6 +182,11 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   // --
+  [ENTRY_TYPE.ITEMS.CLOSET]: {
+    categories: [CATEGORY_ID.TRANSACTIONS],
+    matcher: [REGEX.ITEMS.CLOSET_PUT_TARGETS, REGEX.ITEMS.CLOSET_TAKE_TARGETS],
+    icon: ItemBagSVG,
+  },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
     matcher: [REGEX.TRANSACTIONS.AUTOSELL, REGEX.TRANSACTIONS.SHOPPING],
