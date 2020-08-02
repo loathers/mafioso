@@ -187,6 +187,13 @@ export const ENTRY_DATA_MAP = {
     matcher: [REGEX.ITEMS.CLOSET_PUT_TARGETS, REGEX.ITEMS.CLOSET_TAKE_TARGETS],
     icon: ItemBagSVG,
   },
+  [ENTRY_TYPE.ITEMS.HAGNK_PULL]: {
+    categories: [CATEGORY_ID.PULLS],
+    matcher: REGEX.ITEMS.HAGNK_PULL_LINE,
+    icon: ItemBagSVG,
+    locationName_alt: 'Hagnk\'s Ancestral Mini-Storage',
+    encounterName_alt: 'Pull from Hagnk\'s',
+  },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
     matcher: [REGEX.TRANSACTIONS.AUTOSELL, REGEX.TRANSACTIONS.SHOPPING],

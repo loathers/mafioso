@@ -244,10 +244,6 @@ export default class Entry {
       return 'January\'s Garbage Tote';
     }
 
-    if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {
-      return 'Hagnk\'s Ancestral Mini-Storage';
-    }
-
     return this.attributes.locationName;
   }
   /** @type {String} */
@@ -257,10 +253,6 @@ export default class Entry {
       if (displayerResult !== undefined) {
         return displayerResult; // can be null
       }
-    }
-
-    if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {
-      return 'Pull from Hagnk\'s';
     }
 
     return this.attributes.encounterName;

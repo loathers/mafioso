@@ -51,10 +51,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.FAMILIAR;
   }
 
-  if (isEntryHagnkPull(entryString)) {
-    return ENTRY_TYPE.ITEMS.HAGNK_PULL;
-  }
-
   if (isEntryEquip(entryString)) {
     return ENTRY_TYPE.ITEMS.EQUIP;
   }
@@ -179,13 +175,6 @@ export function isEntryCreate(entryString) {
  */
 export function isEntryMix(entryString) {
   return hasString(entryString, REGEX.ITEMS.MIX_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryHagnkPull(entryString) {
-  return hasString(entryString, REGEX.ITEMS.HAGNK_PULL_LINE);
 }
 /**
  * @param {String} entryString
