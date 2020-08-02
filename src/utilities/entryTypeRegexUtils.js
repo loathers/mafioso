@@ -95,10 +95,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
 
-  if (isEntryTransaction(entryString)) {
-    return ENTRY_TYPE.TRANSACTION;
-  }
-
   if (isEntryTalking(entryString)) {
     return ENTRY_TYPE.TALKING;
   }
@@ -125,13 +121,6 @@ export function getEntryType_legacy(entryString) {
  * @param {String} entryString
  * @return {Boolean}
  */
-export function isEntryAutosell(entryString) {
-  return hasString(entryString, REGEX.TRANSACTIONS.AUTOSELL);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
 export function isEntryEat(entryString) {
   return hasString(entryString, REGEX.ITEMS.EAT_TARGET);
 }
@@ -148,15 +137,6 @@ export function isEntryDrink(entryString) {
  */
 export function isEntryChew(entryString) {
   return hasString(entryString, REGEX.ITEMS.CHEW_TARGET);
-}
-/**
- * check if this entry is about buying something
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryTransaction(entryString) {
-  return hasString(entryString, REGEX.TRANSACTIONS.SHOPPING) 
-    || isEntryAutosell(entryString);
 }
 /**
  * @param {String} entryString

@@ -9,6 +9,7 @@ import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
+import {ReactComponent as ShopSVG} from 'images/shop.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
 import {ReactComponent as SpleenSVG} from 'images/pill.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
@@ -178,6 +179,12 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.LINE.CLAN_VISIT,
     icon: InfoSVG,
+  },
+  // --
+  [ENTRY_TYPE.TRANSACTION]: {
+    categories: [CATEGORY_ID.TRANSACTIONS],
+    matcher: [REGEX.TRANSACTIONS.AUTOSELL, REGEX.TRANSACTIONS.SHOPPING],
+    icon: ShopSVG,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value
