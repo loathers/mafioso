@@ -222,7 +222,10 @@ export default class Entry {
   /** @type {String} */
   get contentDisplay() {
     if (this.hasEntryData) {
-      return this.parseEntryDisplayer(this.entryData.content_alt);
+      const displayerResult = this.parseEntryDisplayer(this.entryData.content_alt);
+      if (displayerResult !== undefined) {
+        return displayerResult; // can be null
+      }
     }
 
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
@@ -231,7 +234,10 @@ export default class Entry {
   /** @type {String} */
   get locationDisplay() {
     if (this.hasEntryData) {
-      return this.parseEntryDisplayer(this.entryData.locationName_alt);
+      const displayerResult = this.parseEntryDisplayer(this.entryData.locationName_alt);
+      if (displayerResult !== undefined) {
+        return displayerResult; // can be null
+      }
     }
 
     if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE) {
@@ -251,7 +257,10 @@ export default class Entry {
   /** @type {String} */
   get encounterDisplay() {
     if (this.hasEntryData) {
-      return this.parseEntryDisplayer(this.entryData.encounterName_alt);
+      const displayerResult = this.parseEntryDisplayer(this.entryData.encounterName_alt);
+      if (displayerResult !== undefined) {
+        return displayerResult; // can be null
+      }
     }
 
     if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {

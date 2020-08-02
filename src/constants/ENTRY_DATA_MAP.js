@@ -70,6 +70,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.BASTILLE_BATTALION.TEXT,
     icon: NoncombatSVG,
     locationName_alt: 'Bastille Battalion control rig',
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.BEACH_COMB]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
