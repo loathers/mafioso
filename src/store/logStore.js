@@ -216,8 +216,8 @@ class LogStore {
 
       // sort files by kolmafia's date
       const sortedFiles = Array.from(files).sort((fileA, fileB) => {
-        const sessionDateA = Number(fileA.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
-        const sessionDateB = Number(fileB.name.match(REGEX.FILE.MAFIA_SESSION_DATE)[0]);
+        const sessionDateA = Number(fileA.name.match(REGEX.KOLMAFIA.SESSION_DATE)[0]);
+        const sessionDateB = Number(fileB.name.match(REGEX.KOLMAFIA.SESSION_DATE)[0]);
         return sessionDateA < sessionDateB ? -1 : 1;
       });
 

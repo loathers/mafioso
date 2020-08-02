@@ -5,6 +5,9 @@ export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
 export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
 export const REGEX = {
   // -- important
+  MAFIOSO: {
+    LOG_COMMENTS: /^\/\/.*/gm,
+  },
   ASCENSION: {
     REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n|$)/is,
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n|$)/is,
@@ -28,8 +31,6 @@ export const REGEX = {
   },
   BEACH_COMB: {
     COMB_SQUARE_LINE: /^Combing square.*/gmi,
-    USELESS_VISIT: /main.*comb.*/gi,
-
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
   },
@@ -39,19 +40,15 @@ export const REGEX = {
     ANY_RESULT: /(?<=^(cast .*\d+ |you learned.*: ).*).*/gmi,
   },
   BOXING_DAYCARE: {
-    // GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
-    VISIT: /visiting the boxing daycare.*/gi,
+    VISIT_TEXT: /visiting the boxing daycare.*/gi,
     NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
   },
   CAT_BURGLAR: {
-    // NEVERMIND_HEIST_GROUP: /(?<!main.*heist.*(\r\n|\n).*).*(1320\/2).*(\r\n|\n).*$/gi,
     USELESS_HEIST_GROUP: /main\.php.*heist=1(\r\n|\n).*(1320\/2).*(\r\n|\n).*$/gi,
     HEISTED: /.*(choice 1320\/1).*/gi,
   },
   DECK_OF_EVERY_CARD: {
     TEXT: /Deck of Every Card/im,
-    USELESS_USE: /.*deck of every card.*(\r\n|\n)(?!.)/gim,
-    USELESS_PLAY: /^play.*/gim,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
@@ -72,14 +69,11 @@ export const REGEX = {
     CONSULT_TEXT: /(.*choice 1278.*: ).*/gi,
   },
   GOD_LOBSTER: {
-    USELESS_VISIT: /main.*fightgodlobster.*/gi,
-
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
   HEWN_MOON_RUNE_SPOON: {
-    USELESS_USE: /^use.*(hewn moon-rune spoon)/gmi,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
@@ -98,8 +92,6 @@ export const REGEX = {
     THROW_LATTE_LINE: /.*Throw Latte on Opponent.*/gi,
     OFFER_LATTE_LINE: /.*Offer Latte to Opponent.*/gi,
     GULP_LATTE_LINE: /.*gulp latte.*/gi,
-
-    USELESS_USE: /main.php\?latte=1.*(\r\n|\n)(?!.)/gi,
   },
   MELODRAMEDARY: {
     SPIT_ON_SOMETHING_LINE: /(?<=^Round ).*spit on.*/gim,
@@ -118,7 +110,6 @@ export const REGEX = {
     SURPRISE: /(?<=choice 1395\/\d+: ).*Surprise/gi,
     TELECYBIN: /(?<=choice 1395\/\d+: ).*Telecybin/gi,
 
-    USELESS_USE: /main.php\?eowkeeper=1.*/gi,
     NEVERMIND_LINE: /.*choice 1395\/9.*(\r\n|\n).*(choice=1395.*option=9|(\r\n|\n))/gi,
   },
   PIRATEREALM: {
@@ -147,10 +138,8 @@ export const REGEX = {
   },
   // -- common
   LINE: {
-    USELESS_USE: /^use.*(\r\n|\n)(?!.)/gmi,
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
-    USELESS_VISIT: /visit.*(\r\n|\n)(?!.)/gim,
 
     MCD_CHANGE: /^mcd.*/gim,
     TELESCOPE: /^telescope.*/gim,
@@ -277,7 +266,6 @@ export const REGEX = {
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
     CONSUMPTION_COST: /(?<=^you gain )\d+ (fullness|drunkenness|spleen)/gmi,
-    USELESS_CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*(\r\n|\n)(?!.)/gi,
 
     EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/gi,
     EAT_TARGET: /(?<=^eat\s\d+\s).*/gi,
@@ -288,6 +276,7 @@ export const REGEX = {
 
     EQUIP_PLAYER_TARGETS: /(?<=equip (?!familiar).* ).*/gi,
     UNEQUIP_PLAYER_TARGETS: /(?<=unequip (?!familiar).* ).*/gi,
+    CUSTOM_OUTFIT_LINE: /^custom outfit.*/gmi, 
 
     HAGNK_PULL_LINE: /^pull: \d* .*/gmi,
     HAGNK_PULL_NAME: /(?<=^pull: \d* ).*/gmi,
@@ -308,9 +297,6 @@ export const REGEX = {
     CAST_LINE: /^cast .*/gim,
     CAST_NAME: /(?<=^cast \d+ ).*/mi,
     CAST_AMOUNT: /(?<=^cast )\d+(?=.*)/mi,
-    USELESS_CAST_LINE: /^cast.*(\r\n|\n)(?!.)/gim,
-
-    USELESS_REUP_LINE: /^upeffect.*/gim,
   },
   // -- 
   // note: these only work in raw
@@ -327,9 +313,15 @@ export const REGEX = {
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
   },
-  // -- kolmafia snapshot
-  FILE: {
-    MAFIA_SESSION_DATE: /(?<=_)\d*/,
+  // -- kolmafia
+  KOLMAFIA: {
+    SESSION_DATE: /(?<=_)\d*/,
+    STACK_TRACE: /^stack trace:(\r\n|\n){1,}(\s\sat.*(\r\n|\n|$))*/gmi,
+    CLI_PRINT: /^> .*(\r\n|\n|$)/gmi,
+    COMBAT_MACRO: /.*executes a macro.*(\r\n|\n|$)/gi,
+    EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n|$)/gi,
+    SEND_A_KMAIL: /send a kmail.*(\r\n|\n|$)/gi,
+    MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n|$)/gmi,
   },
   SNAPSHOT_CHECK: {
     CHARACTER_NAME: /(?<=^name: ).*/mi,
@@ -343,23 +335,15 @@ export const REGEX = {
     KOL_DATE: /(?<=- )(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
   },
   // -- misc
-  MISC: {
+  PREREMOVE: {
+    ALWAYS_CATCHALL: /^(mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*$/gmi,
+    SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|visiting|visit|took choice|Cast|choice|eat|drink|chew).*$(?!(\r\n|\n).)/gim,
+    NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*$(?!(\r\n|\n).)/gim,
+    
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
-    STACK_TRACE: /^stack trace:(\r\n|\n){1,}(\s\sat.*(\r\n|\n|$))*/gmi,
-    CLI_PRINT: /^> .*(\r\n|\n|$)/gmi,
-    SEND_A_KMAIL: /send a kmail.*(\r\n|\n|$)/gi,
-    COMBAT_MACRO: /.*executes a macro.*(\r\n|\n|$)/gi,
-    CUSTOM_OUTFIT_LINE: /^custom outfit.*/gmi, 
-    MAFIA_MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n|$)/gmi,
-    EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n|$)/gi,
-    MALL_LINE: /^mall\.php.*(\r\n|\n)/gim,
-    PVP_LINE: /^peevpee\.php.*(\r\n|\n)/gim,
-    RAFFLE_LINE: /^raffle.*/gim,
-    USELESS_PHP_LINE: /(?!.*(heist|may4|eowkeeper).*)^.*\.php.*(\r\n|\n)/gim,
+    RAFFLE_TEXT: /You acquire raffle ticket/gi,
     USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,
     USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)(\r\n|\n)/gim,
-    // sometimes
-    MAFIA_CHOICE_URL: /.*.php.*(\r\n|\n|$)/g,
   },
 };
 
