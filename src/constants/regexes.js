@@ -1,8 +1,7 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
-export const PRE_LINE_EMPTY_SPACE = /^\s*/g;
-export const POST_LINE_EMPTY_SPACE = /(\r\n|\n)*(?!.)/gs;
-export const EMPTY_LINES_REGEX = /(\r\n|\n){2,}/g;
-export const BACK_NEW_LINE_REGEX = /(?<!.\s)^(\r\n|\n)/gm;
+export const DIVIDING_NEWLINE_REGEX = /$(\r\n|\n)\s*(\r\n|\n)/gm;
+export const PRELINE_SPACES = /^(\t| )*(?=.)/gm;
+export const EXCESSIVE_NEW_LINES = /(?<=.+$(\r\n|\n)(\r\n|\n))(\r\n|\n)+/gm;
 export const REGEX = {
   // -- important
   MAFIOSO: {
@@ -297,6 +296,8 @@ export const REGEX = {
     CAST_LINE: /^cast .*/gim,
     CAST_NAME: /(?<=^cast \d+ ).*/mi,
     CAST_AMOUNT: /(?<=^cast )\d+(?=.*)/mi,
+
+    UNMATCHED_EFFECT: /(?<=^(\r\n|\n)).*acquire an (effect|intrinsic).*$(?!(\r\n|\n).)/gim,
   },
   // -- 
   // note: these only work in raw
@@ -336,10 +337,10 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*$/gmi,
-    SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|visiting|visit|took choice|Cast|choice|eat|drink|chew).*$(?!(\r\n|\n).)/gim,
-    NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*$(?!(\r\n|\n).)/gim,
-    
+    ALWAYS_CATCHALL: /^(mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
+    SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|visiting|visit|took choice|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
     RAFFLE_TEXT: /You acquire raffle ticket/gi,
     USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,

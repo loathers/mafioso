@@ -9,7 +9,7 @@ import {
   FULL_PARSE_DELAY,
   CLEAN_RAW_DELAY,
 } from 'constants/DEFAULTS';
-import REGEX, {EMPTY_LINES_REGEX} from 'constants/REGEXES';
+import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
 
 const logId = uuidv4();
 
@@ -37,7 +37,7 @@ export async function parseLogTxt(rawText) {
     //  for some reason it doesn't properly split with two new lines
     //  so we're using this weird hack
     const rawEntries = preparsedLog
-      .replace(EMPTY_LINES_REGEX, '}{')
+      .replace(DIVIDING_NEWLINE_REGEX, '}{')
       .split('}{');
 
     // create the Entry class for each entry text, which will then further parse their data
@@ -107,7 +107,7 @@ export function pregroupRawLog(rawText) {
     const pregroupMatches = accumulatedText.match(preparseRegex) || [];
     while (pregroupMatches.length > 0) {
       const nextText = pregroupMatches.shift();
-      const groupedText = nextText.replace(EMPTY_LINES_REGEX, '\n');
+      const groupedText = nextText.replace(DIVIDING_NEWLINE_REGEX, '\n');
       accumulatedText = accumulatedText.replace(nextText, groupedText);
     }
 
