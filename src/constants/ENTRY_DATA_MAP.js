@@ -176,10 +176,10 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Daily Loathing Ballot',
   },
   // --
-  [ENTRY_TYPE.CLAN_VISIT]: {
-    categories: [CATEGORY_ID.NONCOMBAT],
-    matcher: REGEX.LINE.CLAN_VISIT,
-    icon: InfoSVG,
+  [ENTRY_TYPE.CONSUMPTION.EAT]: {
+    categories: [CATEGORY_ID.DIET],
+    matcher: REGEX.ITEMS.EAT_TARGET,
+    icon: EatSVG,
   },
   // --
   [ENTRY_TYPE.ITEMS.CLOSET]: {
@@ -208,6 +208,12 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.VISIT],
     matcher: [REGEX.LINE.TALKING, REGEX.LINE.VISITING],
     icon: ShopSVG,
+  },
+  // --
+  [ENTRY_TYPE.CLAN_VISIT]: {
+    categories: [CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.LINE.CLAN_VISIT,
+    icon: InfoSVG,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value

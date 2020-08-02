@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- common
-  if (isEntryEat(entryString)) {
-    return ENTRY_TYPE.CONSUMPTION.EAT;
-  }
-
   if (isEntryDrink(entryString)) {
     return ENTRY_TYPE.CONSUMPTION.DRINK;
   }
@@ -88,13 +84,6 @@ export function getEntryType_legacy(entryString) {
   }
 
   return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryEat(entryString) {
-  return hasString(entryString, REGEX.ITEMS.EAT_TARGET);
 }
 /**
  * @param {String} entryString
