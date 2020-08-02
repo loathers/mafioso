@@ -4,6 +4,7 @@ import {REGEX} from 'constants/REGEXES';
 
 import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
+import {ReactComponent as NoncombatSVG} from 'images/battle-gear.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 /*
@@ -61,12 +62,17 @@ export const ENTRY_DATA_MAP = {
   },
   // -- iotm
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
-    categories: [CATEGORY_ID.USE_ITEM, CATEGORY_ID.IOTM],
-    matcher: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
-    icon: UnknownSVG,
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_TEXT,
+    icon: InfoSVG,
     locationName_alt: 'May the Fourth Cosplay Saber',
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     content_alt: ['[ {1} ]', /(?<=^Took choice 1386.*: ).*/gmi],
+  },
+  [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    matcher: REGEX.BOXING_DAYCARE.NONCOMBAT,
+    icon: NoncombatSVG,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value

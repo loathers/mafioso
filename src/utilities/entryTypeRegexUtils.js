@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryBoxingDaycare(entryString)) {
-    return ENTRY_TYPE.IOTM.BOXING_DAYCARE;
-  }
-
   if (isEntryDeckOfEveryCard(entryString)) {
     return ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD;
   }
@@ -367,13 +363,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBoxingDaycare(entryString) {
-  return hasString(entryString, REGEX.BOXING_DAYCARE.NONCOMBAT);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}
