@@ -35,14 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryDiabolicPizzaMake(entryString)) {
-    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
-  }
-
-  if (isEntryDiabolicPizzaEat(entryString)) {
-    return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
-  }
-
   if (isEntryDistantWoodsGetaway(entryString)) {
     return ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY;
   }
@@ -355,20 +347,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDiabolicPizzaMake(entryString) {
-  return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDiabolicPizzaEat(entryString) {
-  return hasString(entryString, REGEX.DIABOLIC_PIZZA.EAT_LINE);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}

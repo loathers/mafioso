@@ -707,14 +707,6 @@ export function isEntryBeachComb(entryString) {
 }
 /**
  * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDiabolicPizza(entryString) {
-  // console.log(hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE));
-  return hasString(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE) || hasString(entryString, REGEX.DIABOLIC_PIZZA.EAT_LINE);
-}
-/**
- * @param {String} entryString
  * @return {Array<String>}
  */
 export function parseMakeDiabolicPizza(entryString) {

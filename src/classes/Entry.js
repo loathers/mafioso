@@ -358,17 +358,8 @@ export default class Entry {
   get hasPocketProfessor() {
     return this.hasText(REGEX.POCKET_PROFESSOR.SKILL_USE_LINE);
   }
-  /** @returns {Boolean} */
-  isEntryDiabolicPizza() {
-    return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE 
-      || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
-  }
-  /** @returns {Boolean} */
-  hasDiabolicPizzaIngredients() {
-    if (!this.isEntryDiabolicPizza()) {
-      return false;
-    }
-
+  /** @type {Boolean} */
+  get hasDiabolicPizzaIngredients() {
     return this.attributes.diabolicPizzaIngredients.length > 0;
   }
   // -- utility

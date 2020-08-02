@@ -140,7 +140,7 @@ function EntryBodyContainer(props) {
 
       {/* -- custom content -- */}
       {/* diabolic pizza */}
-      { entry.hasDiabolicPizzaIngredients() &&
+      { entry.hasDiabolicPizzaIngredients &&
         <MakeDiabolicPizzaDisplay className='adjacent-mar-t-3' entry={entry} />
       }     
 

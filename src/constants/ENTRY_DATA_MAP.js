@@ -3,6 +3,8 @@ import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
 
 import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
+import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
+import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as NoncombatSVG} from 'images/battle-gear.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
@@ -61,14 +63,6 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   // -- iotm
-  [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
-    matcher: REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_TEXT,
-    icon: InfoSVG,
-    locationName_alt: 'May the Fourth Cosplay Saber',
-    encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
-    content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
-  },
   [ENTRY_TYPE.IOTM.BASTILLE_BATALLION]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
     matcher: REGEX.BASTILLE_BATALLION.TEXT,
@@ -84,6 +78,24 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.DECK_OF_EVERY_CARD.TEXT,
     icon: InfoSVG,
+  },
+  [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_TEXT,
+    icon: InfoSVG,
+    locationName_alt: 'May the Fourth Cosplay Saber',
+    encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
+    content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
+  },
+  [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
+    matcher: REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
+    icon: CraftSVG,
+  },
+  [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
+    matcher: REGEX.DIABOLIC_PIZZA.EAT_LINE,
+    icon: EatSVG,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value
