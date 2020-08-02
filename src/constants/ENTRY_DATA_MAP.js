@@ -80,6 +80,11 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.BOXING_DAYCARE.NONCOMBAT,
     icon: NoncombatSVG,
   },
+  [ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.DECK_OF_EVERY_CARD.TEXT,
+    icon: InfoSVG,
+  },
 };
 // basically becomes a list of `EntryType`s that have a map value
 export const ENTRY_MAP_KEYS = Object.keys(ENTRY_DATA_MAP);

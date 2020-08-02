@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryDeckOfEveryCard(entryString)) {
-    return ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD;
-  }
-
   if (isEntryDiabolicPizzaMake(entryString)) {
     return ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE;
   }
@@ -359,13 +355,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDeckOfEveryCard(entryString) {
-  return hasString(entryString, REGEX.DECK_OF_EVERY_CARD.TEXT);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}
