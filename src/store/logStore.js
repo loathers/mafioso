@@ -195,30 +195,6 @@ class LogStore {
     return this.ascensionAttributes;
   }
   /**
-   * @param {File} file
-   */
-  handleUpload_legacy(file) {
-    if (file.type !== 'text/plain') {
-      console.error('That is not a text file mate.');
-      return;
-    }
-
-    this.isParsing.set(true);
-
-    this.allEntries.clear();
-    // this.currentEntries.clear();
-
-    this.srcFiles = file;
-  }
-  /**
-   * @param {FileReader.Event} readerEvt
-   */
-  onReadComplete_legacy(readerEvt) {
-    const txtString = readerEvt.target.result;
-    this.rawText = txtString;
-    this.parse();
-  }
-  /**
    * @param {FileList} files
    */
   async handleUpload(files) {
@@ -447,70 +423,6 @@ class LogStore {
     // done
     this.isFetching.set(false);
     return this.currentEntries;
-  }
-  /** 
-   * @param {Object} options
-   * @return {Array<Entry>} 
-   */
-  async fetchEntries_legacy(options = {}) {
-    if (!this.canFetch(options)) {
-      return [];
-    }
-
-    const {
-      pageNum = this.displayOptions.pageNum,
-      entriesPerPage = this.displayOptions.entriesPerPage,
-      entryTypesVisible = this.displayOptions.entryTypesVisible,
-      filteredAttributes = this.displayOptions.filteredAttributes,
-    } = options;
-
-    console.log('⏳ %cFetching entries...', 'color: blue')
-    this.isFetching.set(true);
-
-    // batch find entries that are in range and not hidden
-    const visibleEntries = await this.logBatcher.run((entriesGroup) => {
-      return entriesGroup.filter((entry) => {
-        const isVisibleEntry = !entryTypesVisible.includes(entry.entryType);
-        if (!isVisibleEntry) {
-          return false;
-        }
-
-        const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
-          const entryAttributeValue = entry.attributes[attributeName];
-          return entryAttributeValue !== attributeValue;
-        });
-
-        if (!hasAllFilteredAttributes) {
-          return false;
-        }
-
-        return true;
-      });
-    }, {batchDelay: FILTER_DELAY});
-
-    // filtering resulted in nothing
-    if (visibleEntries.length <= 0) {
-      console.warn(`No results for filter on page ${pageNum}`);
-      this.isFetching.set(false);
-      this.currentEntries.replace(visibleEntries);
-      return [];
-    }
-    
-    const condensedEntries = this.condenseEntries(visibleEntries);
-    this.currentEntries.replace(condensedEntries);
-
-    // now update options with the ones used to fetch
-    this.displayOptions = {
-      ...this.displayOptions,
-      pageNum: pageNum,
-      entriesPerPage: entriesPerPage,
-      entryTypesVisible: entryTypesVisible,
-      filteredAttributes: filteredAttributes,
-    };
-
-    this.isFetching.set(false);
-
-    return condensedEntries;
   }
   /** 
    * @param {Object} options

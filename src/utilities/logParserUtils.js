@@ -131,16 +131,6 @@ export async function cleanRawLog(rawText) {
   return cleanedText;
 }
 /**
- * remove stuff that the parser will be completely ignoring
- * @param {String} rawText
- * @return {String}
- */
-export function cleanRawLog_legacy(rawText) {
-  return PREREMOVE_REGEX_LIST.reduce((currentText, replacementRegex) => {
-    return currentText.replace(replacementRegex, '');
-  }, rawText);    
-}
-/**
  * update batch size based on number of characters in the log
  *  this calculation is not very scientific
  *  
