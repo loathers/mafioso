@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryBirdADay(entryString)) {
-    return ENTRY_TYPE.IOTM.BIRD_A_DAY;
-  }
-
   if (isEntryCatBurglarHeist(entryString)) {
     return ENTRY_TYPE.IOTM.CAT_BURGLAR;
   }
@@ -339,14 +335,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBirdADay(entryString) {
-  return hasString(entryString, REGEX.BIRD_A_DAY.USE_LINE)
-    || hasString(entryString, REGEX.BIRD_A_DAY.CAST_LINE);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}

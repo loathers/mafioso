@@ -7,6 +7,7 @@ import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
+import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 /*
@@ -75,6 +76,11 @@ export const ENTRY_DATA_MAP = {
     icon: NoncombatSVG,
     locationName_alt: 'Beach Comb',
     encounterName_alt: REGEX.BEACH_COMB.COMBING_ACTION,
+  },
+  [ENTRY_TYPE.IOTM.BIRD_A_DAY]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: [REGEX.BIRD_A_DAY.CAST_LINE, REGEX.BIRD_A_DAY.USE_LINE],
+    icon: SpellsSVG,
   },
   [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
