@@ -1,6 +1,7 @@
+import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {BLANK_BODY_CONTENT_LIST, COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
-import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/ENTRY_TYPE';
+import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
@@ -303,7 +304,7 @@ export default class Entry {
   // -- iotm getters
   /** @type {Boolean} */
   get isIOTM() {
-    return IOTM_ENTRIES.includes(this.entryType) 
+    return this.categories.includes(CATEGORY_ID.IOTM) 
       || this.attributes.isEndedByUseTheForce;
   }
   /** @type {Boolean} */
