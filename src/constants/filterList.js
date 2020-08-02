@@ -58,18 +58,13 @@ export const ENTRY_TYPE_FILTERS = [
     isHidden: false,
   },
   {
-    label: 'Equipment',
-    categoryId: CATEGORY_ID.EQUIPMENT,
-    isHidden: false,
-  },
-  {
-    label: 'Visits',
-    categoryId: CATEGORY_ID.VISIT,
+    label: 'Shopping',
+    categoryId: CATEGORY_ID.TRANSACTIONS,
     isHidden: true,
   },
   {
-    label: 'Shopping',
-    categoryId: CATEGORY_ID.TRANSACTIONS,
+    label: 'Other',
+    categoryId: CATEGORY_ID.OTHER,
     isHidden: false,
   },
 ];

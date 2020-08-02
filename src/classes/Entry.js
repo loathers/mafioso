@@ -349,8 +349,8 @@ export default class Entry {
   export() {
     return {
       entryId: this.id,
-      // entryIdx: this.entryIdx,
-      entryType: this.entryType,
+      entryType: this.entryData.type,
+      categories: this.entryData.categories,
       ...this.attributes,
     }
   }

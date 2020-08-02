@@ -51,12 +51,12 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.SNAPSHOT.DAY_INFO]: {
-    categories: [CATEGORY_ID.ASCENSION_INFO],
+    categories: [CATEGORY_ID.SNAPSHOT_INFO],
     matcher: REGEX.SNAPSHOT_CHECK.KOL_DATE,
     icon: InfoSVG,
   },
   [ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO]: {
-    categories: [CATEGORY_ID.ASCENSION_INFO],
+    categories: [CATEGORY_ID.SNAPSHOT_INFO],
     matcher: [
       REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS, 
       REGEX.SNAPSHOT_CHECK.CONTAIN_EQUIPMENT, 
@@ -66,7 +66,7 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   [ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN]: {
-    categories: [CATEGORY_ID.ASCENSION_INFO],
+    categories: [CATEGORY_ID.SNAPSHOT_INFO],
     matcher: REGEX.SNAPSHOT_CHECK.CONTAIN_SKILLS,
     icon: InfoSVG,
   },
@@ -241,7 +241,7 @@ export const ENTRY_DATA_MAP = {
   },
   // --
   [ENTRY_TYPE.ITEMS.CLOSET]: {
-    categories: [CATEGORY_ID.TRANSACTIONS],
+    categories: [CATEGORY_ID.OTHER],
     matcher: [REGEX.ITEMS.CLOSET_PUT_TARGETS, REGEX.ITEMS.CLOSET_TAKE_TARGETS],
     icon: ItemBagSVG,
   },
@@ -251,7 +251,7 @@ export const ENTRY_DATA_MAP = {
     icon: CombatSVG,
   },
   [ENTRY_TYPE.ITEMS.FAMILIAR]: {
-    categories: [CATEGORY_ID.FAMILIARS],
+    categories: [CATEGORY_ID.FAMILIARS, CATEGORY_ID.OTHER],
     matcher: [REGEX.LINE.FAMILIAR, REGEX.LINE.FAMILIAR_WEIGHT_GAIN],
     icon: FamiliarSVG,
     locationName_alt: 'Familiar',
@@ -264,23 +264,23 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Pull from Hagnk\'s',
   },
   [ENTRY_TYPE.ITEMS.EQUIP]: {
-    categories: [CATEGORY_ID.EQUIPMENT],
+    categories: [CATEGORY_ID.EQUIPMENT, CATEGORY_ID.OTHER],
     matcher: [REGEX.ITEMS.EQUIP_TARGETS, REGEX.ITEMS.UNEQUIP_TARGETS],
     icon: EquipmentSVG,
   },
   [ENTRY_TYPE.TRANSACTION]: {
-    categories: [CATEGORY_ID.TRANSACTIONS],
+    categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],
     matcher: [REGEX.TRANSACTIONS.AUTOSELL, REGEX.TRANSACTIONS.SHOPPING],
     icon: ShopSVG,
   },
   [ENTRY_TYPE.VISITING]: {
-    categories: [CATEGORY_ID.VISIT],
+    categories: [CATEGORY_ID.VISIT, CATEGORY_ID.OTHER],
     matcher: [REGEX.LINE.TALKING, REGEX.LINE.VISITING],
     icon: ShopSVG,
   },
   // --
   [ENTRY_TYPE.CLAN_VISIT]: {
-    categories: [CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.OTHER],
     matcher: REGEX.LINE.CLAN_VISIT,
     icon: InfoSVG,
   },

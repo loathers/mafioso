@@ -39,25 +39,10 @@ function ControlsMenu(props) {
   }
 
   const onApplyEntries = (list) => {
-    let checkedTypes = [];
-
-    const checkedItems = list.filter((item) => item.checked);
-    checkedItems.forEach((item) => {
-      const {entryType, entryGroup} = item;
-      if (entryType && !checkedTypes.includes(entryType)) {
-        checkedTypes.push(entryType);
-      }
-
-      if (entryGroup) {
-        entryGroup.forEach((innerType) => {
-          if (!checkedTypes.includes(innerType)) {
-            checkedTypes.push(innerType);
-          }
-        })
-      }
-    });
-
-    logStore.fetchEntries({categoriesVisible: checkedTypes});
+    const checkedItems = list
+      .filter((item) => item.checked)
+      .map((item) => item.categoryId);
+    logStore.fetchEntries({categoriesVisible: checkedItems});
   }
 
   // attribute filters
