@@ -35,14 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- common
-  if (isEntryDrink(entryString)) {
-    return ENTRY_TYPE.CONSUMPTION.DRINK;
-  }
-
-  if (isEntryChew(entryString)) {
-    return ENTRY_TYPE.CONSUMPTION.CHEW;
-  }
-
   if (isEntryFamiliar(entryString)) {
     return ENTRY_TYPE.FAMILIAR;
   }
@@ -84,20 +76,6 @@ export function getEntryType_legacy(entryString) {
   }
 
   return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDrink(entryString) {
-  return hasString(entryString, REGEX.ITEMS.DRINK_TARGET);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryChew(entryString) {
-  return hasString(entryString, REGEX.ITEMS.CHEW_TARGET);
 }
 /**
  * @param {String} entryString

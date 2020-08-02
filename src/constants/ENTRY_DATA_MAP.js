@@ -5,6 +5,7 @@ import {REGEX} from 'constants/REGEXES';
 import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
 import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
 import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
+import {ReactComponent as DrinkSVG} from 'images/martini.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
@@ -176,10 +177,23 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Daily Loathing Ballot',
   },
   // --
+  [ENTRY_TYPE.CONSUMPTION.CHEW]: {
+    categories: [CATEGORY_ID.DIET],
+    matcher: REGEX.ITEMS.CHEW_TARGET,
+    icon: SpleenSVG,
+    locationName_alt: 'Chew',
+  },
+  [ENTRY_TYPE.CONSUMPTION.DRINK]: {
+    categories: [CATEGORY_ID.DIET],
+    matcher: REGEX.ITEMS.DRINK_TARGET,
+    icon: DrinkSVG,
+    locationName_alt: 'Drink',
+  },
   [ENTRY_TYPE.CONSUMPTION.EAT]: {
     categories: [CATEGORY_ID.DIET],
     matcher: REGEX.ITEMS.EAT_TARGET,
     icon: EatSVG,
+    locationName_alt: 'Eat',
   },
   // --
   [ENTRY_TYPE.ITEMS.CLOSET]: {
