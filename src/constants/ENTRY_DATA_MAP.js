@@ -181,6 +181,11 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   // --
+  [ENTRY_TYPE.TALKING]: {
+    categories: [CATEGORY_ID.VISIT],
+    matcher: REGEX.LINE.TALKING,
+    icon: ShopSVG,
+  },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
     matcher: [REGEX.TRANSACTIONS.AUTOSELL, REGEX.TRANSACTIONS.SHOPPING],

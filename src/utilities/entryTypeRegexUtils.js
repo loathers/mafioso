@@ -95,10 +95,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
 
-  if (isEntryTalking(entryString)) {
-    return ENTRY_TYPE.TALKING;
-  }
-
   if (isEntryVisiting(entryString)) {
     return ENTRY_TYPE.VISITING;
   }
@@ -137,13 +133,6 @@ export function isEntryDrink(entryString) {
  */
 export function isEntryChew(entryString) {
   return hasString(entryString, REGEX.ITEMS.CHEW_TARGET);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryTalking(entryString) {
-  return hasString(entryString, REGEX.LINE.TALKING);
 }
 /**
  * @param {String} entryString
