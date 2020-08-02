@@ -187,6 +187,11 @@ export const ENTRY_DATA_MAP = {
     matcher: [REGEX.ITEMS.CLOSET_PUT_TARGETS, REGEX.ITEMS.CLOSET_TAKE_TARGETS],
     icon: ItemBagSVG,
   },
+  [ENTRY_TYPE.ENCOUNTER.COMBAT]: {
+    categories: [CATEGORY_ID.COMBAT],
+    matcher: REGEX.COMBAT.INITIATIVE_LINE,
+    icon: CombatSVG,
+  },
   [ENTRY_TYPE.ITEMS.HAGNK_PULL]: {
     categories: [CATEGORY_ID.PULLS],
     matcher: REGEX.ITEMS.HAGNK_PULL_LINE,

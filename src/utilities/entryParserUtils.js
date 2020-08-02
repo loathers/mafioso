@@ -197,7 +197,7 @@ export function isFreeAdv(entryString) {
  * @return {Boolean}
  */
 export function isCombatEncounter(entryString) {
-  return entryTypeRegexUtils.isEntryCombatEncounter(entryString);
+  return hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE);
 }
 /**
  * @param {String} entryString

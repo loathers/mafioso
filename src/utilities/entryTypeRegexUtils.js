@@ -83,10 +83,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
 
-  if (isEntryCombatEncounter(entryString)) {
-    return ENTRY_TYPE.ENCOUNTER.COMBAT;
-  }
-
   if (isEntryNonCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
@@ -120,7 +116,7 @@ export function isEntryChew(entryString) {
  */
 export function isEntryFamiliar(entryString) {
   if (hasString(entryString, REGEX.LINE.FAMILIAR_WEIGHT_GAIN)) {
-    if (!isEntryCombatEncounter(entryString)) {
+    if (!hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE)) {
       return true;
     }
   }
@@ -185,28 +181,11 @@ export function isEntrySpellCast(entryString) {
 }
 // -- actions
 /**
- * actions (aka turn) [num]
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryAction(entryString) {
-  return hasString(entryString, REGEX.VALUE.TURN_NUM);
-}
-/**
- * check is entry is a combat encounter
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCombatEncounter(entryString) {
-  // can be confident if it has the initiative line 
-  return hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE);
-}
-/**
  * check if entry is a noncombat
  * @param {String} entryString
  * @return {Boolean}
  */
 export function isEntryNonCombatEncounter(entryString) {
   return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) 
-    && !isEntryCombatEncounter(entryString);
+    && !hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE);
 }
