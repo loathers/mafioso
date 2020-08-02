@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryCatBurglarHeist(entryString)) {
-    return ENTRY_TYPE.IOTM.CAT_BURGLAR;
-  }
-
   if (isEntryJanuarysGarbageTote(entryString)) {
     return ENTRY_TYPE.IOTM.GARBAGE_TOTE;
   }
@@ -335,13 +331,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCatBurglarHeist(entryString) {
-  return hasString(entryString, REGEX.CAT_BURGLAR.HEISTED);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}

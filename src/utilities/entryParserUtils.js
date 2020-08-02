@@ -214,10 +214,6 @@ export function isNonCombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  if (entryTypeRegexUtils.isEntryCatBurglarHeist(entryString)) {
-    return 'Cat Burglar';
-  }
-
   if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
     return 'Eight Days a Week Pill Keeper';
   }
@@ -259,14 +255,6 @@ export function parseLocationName(entryString) {
  * @return {String | null}
  */
 export function parseEncounterName(entryString) {
-  if (isEntryBeachComb(entryString)) {
-    return getRegexMatch(entryString, REGEX.BEACH_COMB.COMBING_ACTION)[0];
-  }
-
-  if (entryTypeRegexUtils.isEntryCatBurglarHeist(entryString)) {
-    return 'A Heist!';
-  }
-
   if (entryTypeRegexUtils.isEntryJanuarysGarbageTote(entryString)) {
     return getRegexMatch(entryString, REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME)[0];
   }
@@ -697,13 +685,6 @@ export function parseReplacedResults(entryString) {
  */
 export function isUseTheForce(entryString) {
   return hasString(entryString, REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_TEXT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBeachComb(entryString) {
-  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
 }
 /**
  * @param {String} entryString

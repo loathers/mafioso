@@ -5,6 +5,7 @@ import {REGEX} from 'constants/REGEXES';
 import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
 import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
+import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
@@ -78,9 +79,16 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.BEACH_COMB.COMBING_ACTION,
   },
   [ENTRY_TYPE.IOTM.BIRD_A_DAY]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
     matcher: [REGEX.BIRD_A_DAY.CAST_LINE, REGEX.BIRD_A_DAY.USE_LINE],
     icon: SpellsSVG,
+  },
+  [ENTRY_TYPE.IOTM.CAT_BURGLAR]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.FAMILIARS],
+    matcher: REGEX.CAT_BURGLAR.HEISTED,
+    icon: FamiliarSVG,
+    locationName_alt: 'Cat Burglar',
+    encounterName_alt: 'A Heist!',
   },
   [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
