@@ -65,11 +65,11 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   // -- iotm
-  [ENTRY_TYPE.IOTM.BASTILLE_BATALLION]: {
+  [ENTRY_TYPE.IOTM.BASTILLE_BATTALION]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
-    matcher: REGEX.BASTILLE_BATALLION.TEXT,
+    matcher: REGEX.BASTILLE_BATTALION.TEXT,
     icon: NoncombatSVG,
-    locationName_alt: 'Bastille Battalion',
+    locationName_alt: 'Bastille Battalion control rig',
   },
   [ENTRY_TYPE.IOTM.BEACH_COMB]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
@@ -126,6 +126,12 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'May the Fourth Cosplay Saber',
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
+  },
+  [ENTRY_TYPE.IOTM.GARBAGE_TOTE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
+    icon: NoncombatSVG,
+    encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value

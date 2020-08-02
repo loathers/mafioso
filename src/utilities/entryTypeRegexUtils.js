@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryJanuarysGarbageTote(entryString)) {
-    return ENTRY_TYPE.IOTM.GARBAGE_TOTE;
-  }
-
   if (isEntryClanVIP(entryString)) {
     return ENTRY_TYPE.CLAN_VISIT;
   }
@@ -327,18 +323,9 @@ export function isEntryCombatEncounter(entryString) {
  */
 export function isEntryNonCombatEncounter(entryString) {
   return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) 
-    && !isEntryCombatEncounter(entryString) 
-    && !isEntryMafiaMisc(entryString);
+    && !isEntryCombatEncounter(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryJanuarysGarbageTote(entryString) {
-  return hasString(entryString, REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
-    || hasString(entryString, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT);
-}
 /**
  * will be counting rumpus room also
  * @param {String} entryString

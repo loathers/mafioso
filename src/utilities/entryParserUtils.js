@@ -255,10 +255,6 @@ export function parseLocationName(entryString) {
  * @return {String | null}
  */
 export function parseEncounterName(entryString) {
-  if (entryTypeRegexUtils.isEntryJanuarysGarbageTote(entryString)) {
-    return getRegexMatch(entryString, REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME)[0];
-  }
-
   if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
     return getRegexMatch(entryString, REGEX.PILL_KEEPER.CHOICE_RESULT)[0];
   }
