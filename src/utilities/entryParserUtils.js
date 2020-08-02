@@ -10,7 +10,6 @@ import {
   hasString,
   getRegexMatch,
 } from 'utilities/regexUtils';
-import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
 /**
  * @param {String} entryString
@@ -204,7 +203,7 @@ export function isCombatEncounter(entryString) {
  * @return {Boolean}
  */
 export function isNonCombatEncounter(entryString) {
-  return entryTypeRegexUtils.isEntryNonCombatEncounter(entryString);
+  return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isCombatEncounter(entryString);
 }
 /**
  * parses name of the location,

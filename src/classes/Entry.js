@@ -4,7 +4,6 @@ import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
-import {getEntryType} from 'utilities/entryTypeRegexUtils';
 import {
   fixSpecialEntities, 
   getRegexMatch,
@@ -22,8 +21,6 @@ export default class Entry {
     this.id = entryId;
     /** @type {Number} */
     this.entryIdx = entryIdx;
-    /** @type {EntryType} */
-    this.entryType = getEntryType(rawText);
     /** @type {EntryData} */
     this.entryData = entryParserUtils.getEntryData(rawText);
 
@@ -121,6 +118,10 @@ export default class Entry {
       ...parsedAttributes,
     };
   }
+  /** @type {EntryType} */
+  get entryType() {
+    return this.entryData.type;
+  }
   /** @type {Boolean} */
   get hasEntryData() {
     return this.entryData.type !== ENTRY_TYPE.UNKNOWN;
@@ -137,6 +138,20 @@ export default class Entry {
 
     return this.contentDisplay !== null;
   }
+  /** @type {ReactComponent} */
+  get entryIcon() {
+    return this.entryData.icon;
+  }
+  // -- 
+  /** @type {Boolean} */
+  get isClover() {
+    return CLOVER_ENCOUNTERS.includes(this.attributes.encounterName);
+  }
+  /** @type {Boolean} */
+  get isSemirare() {
+    return SEMIRARE_ENCOUNTERS.includes(this.attributes.encounterName);
+  }
+  // -- stats
   /** @type {Number} */
   get hasAdventureChanges() {
     return this.attributes.adventureChanges.length > 0;
@@ -166,16 +181,6 @@ export default class Entry {
   get hasInventoryChanges() {
     return this.hasMeatChanges || this.hasAcquiredItems;
   }
-  // -- 
-  /** @type {Boolean} */
-  get isClover() {
-    return CLOVER_ENCOUNTERS.includes(this.attributes.encounterName);
-  }
-  /** @type {Boolean} */
-  get isSemirare() {
-    return SEMIRARE_ENCOUNTERS.includes(this.attributes.encounterName);
-  }
-  // -- stats
   /** @type {Number} */
   get adventureDisplay() {
     const advChanged = this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0);
