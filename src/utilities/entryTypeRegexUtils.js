@@ -51,10 +51,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY;
   }
 
-  if (isEntryBastilleBatallion(entryString)) {
-    return ENTRY_TYPE.IOTM.BASTILLE_BATALLION;
-  }
-
   if (isEntryBeachComb(entryString)) {
     return ENTRY_TYPE.IOTM.BEACH_COMB;
   }
@@ -390,13 +386,6 @@ export function isEntryDiabolicPizzaEat(entryString) {
  */
 export function isEntryDistantWoodsGetaway(entryString) {
   return hasString(entryString, REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBastilleBatallion(entryString) {
-  return hasString(entryString, REGEX.BASTILLE_BATALLION.TEXT);
 }
 /**
  * @param {String} entryString

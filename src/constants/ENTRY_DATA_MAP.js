@@ -67,7 +67,13 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
     locationName_alt: 'May the Fourth Cosplay Saber',
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
-    content_alt: ['[ {1} ]', /(?<=^Took choice 1386.*: ).*/gmi],
+    content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
+  },
+  [ENTRY_TYPE.IOTM.BASTILLE_BATALLION]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    matcher: REGEX.BASTILLE_BATALLION.TEXT,
+    icon: NoncombatSVG,
+    locationName_alt: 'Bastille Battalion',
   },
   [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],

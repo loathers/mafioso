@@ -23,7 +23,7 @@ export const REGEX = {
     // ASCEND_PHP: /ascend.php.*/is,
   },
   // -- iotm
-  BASTILLE_BATALLION: {
+  BASTILLE_BATTALION: {
     TEXT: /Bastille Battalion/im,
   },
   BEACH_COMB: {

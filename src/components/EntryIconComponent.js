@@ -38,7 +38,7 @@ function getEntryIcon(entryType) {
       return CrossedSwordsSVG;
 
     case ENTRY_TYPE.IOTM.BEACH_COMB:
-    case ENTRY_TYPE.IOTM.BASTILLE_BATALLION:
+    case ENTRY_TYPE.IOTM.BASTILLE_BATTALION:
     case ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY:
     case ENTRY_TYPE.TALKING:
     case ENTRY_TYPE.VISITING:
