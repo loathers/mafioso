@@ -234,10 +234,6 @@ export default class Entry {
       return this.parseEntryDisplayer(this.entryData.locationName_alt);
     }
 
-    if (this.entryType === ENTRY_TYPE.IOTM.BEACH_COMB) {
-      return 'Beach Comb';
-    }
-
     if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE) {
       return 'January\'s Garbage Tote';
     }

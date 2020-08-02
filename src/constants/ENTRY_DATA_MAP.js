@@ -69,6 +69,13 @@ export const ENTRY_DATA_MAP = {
     icon: NoncombatSVG,
     locationName_alt: 'Bastille Battalion',
   },
+  [ENTRY_TYPE.IOTM.BEACH_COMB]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.BEACH_COMB.COMBING_LINE,
+    icon: NoncombatSVG,
+    locationName_alt: 'Beach Comb',
+    encounterName_alt: REGEX.BEACH_COMB.COMBING_ACTION,
+  },
   [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
     matcher: REGEX.BOXING_DAYCARE.NONCOMBAT,

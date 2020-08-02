@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryBeachComb(entryString)) {
-    return ENTRY_TYPE.IOTM.BEACH_COMB;
-  }
-
   if (isEntryBirdADay(entryString)) {
     return ENTRY_TYPE.IOTM.BIRD_A_DAY;
   }
@@ -343,13 +339,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBeachComb(entryString) {
-  return hasString(entryString, REGEX.BEACH_COMB.COMBING_LINE);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}
