@@ -39,10 +39,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.CLAN_VISIT;
   }
 
-  if (isEntryPillKeeper(entryString)) {
-    return ENTRY_TYPE.IOTM.PILLKEEPER;
-  }
-
   if (isEntryPirateRealm(entryString)) {
     return ENTRY_TYPE.IOTM.PIRATEREALM;
   }
@@ -340,13 +336,6 @@ export function isEntryClanVIP(entryString) {
  */
 export function isEntryBoombox(entryString) {
   return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.RESULT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryPillKeeper(entryString) {
-  return hasString(entryString, REGEX.PILL_KEEPER.CHOICE_LINE);
 }
 /**
  * @param {String} entryString

@@ -214,10 +214,6 @@ export function isNonCombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
-    return 'Eight Days a Week Pill Keeper';
-  }
-
   if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
     return 'Voting Booth';
   }
@@ -255,10 +251,6 @@ export function parseLocationName(entryString) {
  * @return {String | null}
  */
 export function parseEncounterName(entryString) {
-  if (entryTypeRegexUtils.isEntryPillKeeper(entryString)) {
-    return getRegexMatch(entryString, REGEX.PILL_KEEPER.CHOICE_RESULT)[0];
-  }
-
   if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
     return 'Daily Loathing Ballot';
   }

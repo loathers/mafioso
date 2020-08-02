@@ -61,7 +61,7 @@ export const REGEX = {
     USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
   },
   FOURTH_OF_MAY_COSPLAY_SABER: {
-    USE_THE_FORCE_TEXT: /.*(USE THE FORCE).*/i,
+    USE_THE_FORCE_TEXT: /.*casts USE THE FORCE.*/i,
     USE_THE_FORCE_CHOICE_LINE: /Took choice 1387.*/gi,
     UPGRADE_TEXT: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
     UPGRADE_CHOICE: /(?<=^Took choice 1386.*: ).*/gmi,

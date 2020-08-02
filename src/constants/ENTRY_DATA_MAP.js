@@ -134,6 +134,14 @@ export const ENTRY_DATA_MAP = {
     icon: NoncombatSVG,
     encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
   },
+  [ENTRY_TYPE.IOTM.PILLKEEPER]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
+    icon: NoncombatSVG,
+    locationName_alt: 'Eight Days a Week Pill Keeper',
+    encounterName_alt: REGEX.PILL_KEEPER.CHOICE_RESULT,
+    content_alt: null,
+  },
 };
 // basically becomes a list of `EntryType`s that have a map value
 export const ENTRY_MAP_KEYS = Object.keys(ENTRY_DATA_MAP);
