@@ -196,6 +196,37 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Eat',
   },
   // --
+  [ENTRY_TYPE.CONSUMPTION.COMBINE]: {
+    categories: [CATEGORY_ID.CRAFTING],
+    matcher: REGEX.ITEMS.COMBINE_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Combine',
+  },
+  [ENTRY_TYPE.CONSUMPTION.COOK]: {
+    categories: [CATEGORY_ID.CRAFTING],
+    matcher: REGEX.ITEMS.COOK_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Cook',
+  },
+  [ENTRY_TYPE.CONSUMPTION.CRAFT]: {
+    categories: [CATEGORY_ID.CRAFTING],
+    matcher: REGEX.ITEMS.CRAFT_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Craft',
+  },
+  [ENTRY_TYPE.CONSUMPTION.CREATE]: {
+    categories: [CATEGORY_ID.CRAFTING],
+    matcher: REGEX.ITEMS.CREATE_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Create',
+  },
+  [ENTRY_TYPE.CONSUMPTION.MIX]: {
+    categories: [CATEGORY_ID.CRAFTING],
+    matcher: REGEX.ITEMS.MIX_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Mix',
+  },
+  // --
   [ENTRY_TYPE.ITEMS.CLOSET]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
     matcher: [REGEX.ITEMS.CLOSET_PUT_TARGETS, REGEX.ITEMS.CLOSET_TAKE_TARGETS],

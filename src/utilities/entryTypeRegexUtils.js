@@ -47,26 +47,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.ITEMS.UNEQUIP;
   }
 
-  if (isEntryCombine(entryString)) {
-    return ENTRY_TYPE.ITEMS.COMBINE;
-  }
-
-  if (isEntryCook(entryString)) {
-    return ENTRY_TYPE.ITEMS.COOK;
-  }
-
-  if (isEntryCraft(entryString)) {
-    return ENTRY_TYPE.ITEMS.CRAFT;
-  }
-
-  if (isEntryCreate(entryString)) {
-    return ENTRY_TYPE.ITEMS.CREATE;
-  }
-
-  if (isEntryMix(entryString)) {
-    return ENTRY_TYPE.ITEMS.MIX;
-  }
-
   if (isEntrySpellCast(entryString)) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
@@ -103,41 +83,6 @@ export function isEntryEquip(entryString) {
  */
 export function isEntryUnequip(entryString) {
   return hasString(entryString, REGEX.ITEMS.UNEQUIP_TARGETS);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCombine(entryString) {
-  return hasString(entryString, REGEX.ITEMS.COMBINE_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCook(entryString) {
-  return hasString(entryString, REGEX.ITEMS.COOK_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCraft(entryString) {
-  return hasString(entryString, REGEX.ITEMS.CRAFT_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCreate(entryString) {
-  return hasString(entryString, REGEX.ITEMS.CREATE_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryMix(entryString) {
-  return hasString(entryString, REGEX.ITEMS.MIX_LINE);
 }
 /**
  * @param {String} entryString
