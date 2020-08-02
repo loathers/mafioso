@@ -43,14 +43,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.IOTM.VOTING_BOOTH;
   }
 
-  if (isEntryGodLobsterCombat(entryString)) {
-    return ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT;
-  }
-
-  if (isEntryGodLobsterBoon(entryString)) {
-    return ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON;
-  }
-
   // -- common
   if (isEntryEat(entryString)) {
     return ENTRY_TYPE.CONSUMPTION.EAT;
@@ -329,18 +321,4 @@ export function isEntryClanVIP(entryString) {
  */
 export function isEntryVotingBooth(entryString) {
   return hasString(entryString, REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryGodLobsterCombat(entryString) {
-  return hasString(entryString, REGEX.GOD_LOBSTER.COMBAT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryGodLobsterBoon(entryString) {
-  return hasString(entryString, REGEX.GOD_LOBSTER.BOON);
 }

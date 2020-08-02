@@ -4,6 +4,7 @@ import {REGEX} from 'constants/REGEXES';
 
 import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
 import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
+import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
@@ -134,6 +135,16 @@ export const ENTRY_DATA_MAP = {
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
     icon: NoncombatSVG,
     encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
+  },
+  [ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
+    matcher: REGEX.GOD_LOBSTER.COMBAT,
+    icon: CombatSVG,
+  },
+  [ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.GOD_LOBSTER.BOON,
+    icon: NoncombatSVG,
   },
   [ENTRY_TYPE.IOTM.PILLKEEPER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
