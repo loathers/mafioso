@@ -1,5 +1,5 @@
 import {CATEGORY_ID} from 'constants/CATEGORIES';
-import {BLANK_BODY_CONTENT_LIST, COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
+import {COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
@@ -137,11 +137,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasContentDisplay() {
-    if (BLANK_BODY_CONTENT_LIST.includes(this.entryType)) {
-      return false;
-    }
-
-    return this.contentDisplay !== null;
+    return this.contentDisplay !== null && this.contentDisplay !== undefined;
   }
   /** @type {ReactComponent} */
   get entryIcon() {
@@ -464,7 +460,7 @@ export default class Entry {
     }
 
     // Garbage Tote
-    if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE 
+    if (this.entryType === ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE 
       && this.hasText(REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
       && comparedEntry.hasText(REGEX.JANUARYS_GARBAGE_TOTE.EQUIP_RESULT)) {
       return true;

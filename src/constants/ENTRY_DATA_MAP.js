@@ -85,10 +85,21 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Beach Comb',
     encounterName_alt: REGEX.BEACH_COMB.COMBING_ACTION,
   },
-  [ENTRY_TYPE.IOTM.BIRD_A_DAY]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
-    matcher: [REGEX.BIRD_A_DAY.CAST_LINE, REGEX.BIRD_A_DAY.USE_LINE],
+  [ENTRY_TYPE.IOTM.BIRD_A_DAY.USE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.BIRD_A_DAY.USE_LINE,
     icon: SpellsSVG,
+    locationName_alt: 'Bird-a-Day Calendar',
+    encounterName_alt: 'Time to seek out a bird ♫',
+    content_alt: null,
+  },
+  [ENTRY_TYPE.IOTM.BIRD_A_DAY.CAST]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
+    matcher: REGEX.BIRD_A_DAY.CAST_LINE,
+    icon: SpellsSVG,
+    locationName_alt: 'Bird-a-Day Calendar',
+    encounterName_alt: REGEX.BIRD_A_DAY.ANY_RESULT,
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.CAT_BURGLAR]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.FAMILIARS],
@@ -118,7 +129,7 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
     matcher: REGEX.DIABOLIC_PIZZA.EAT_LINE,
     icon: EatSVG,
-    locationName_alt: 'Eat',
+    locationName_alt: ['Eat - {1}', REGEX.ITEMS.CONSUMPTION_COST],
     encounterName_alt: 'Diabolic Pizza',
   },
   [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY]: {
@@ -136,12 +147,13 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
   },
-  [ENTRY_TYPE.IOTM.GARBAGE_TOTE]: {
+  [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
     icon: EquipmentSVG,
     locationName_alt: 'January\'s Garbage Tote',
     encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
@@ -169,9 +181,10 @@ export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.SONGBOOM_BOOMBOX.RESULT,
-    icon: NoncombatSVG,
+    icon: InfoSVG,
     locationName_alt: 'SongBoom™ BoomBox',
     encounterName_alt: ['♫ {1} ♫', REGEX.SONGBOOM_BOOMBOX.RESULT],
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
@@ -244,17 +257,20 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.OTHER],
     matcher: [REGEX.ITEMS.CLOSET_PUT_TARGETS, REGEX.ITEMS.CLOSET_TAKE_TARGETS],
     icon: ItemBagSVG,
+    locationName_alt: 'Your Colossal Closet',
   },
   [ENTRY_TYPE.ENCOUNTER.COMBAT]: {
     categories: [CATEGORY_ID.COMBAT],
     matcher: REGEX.COMBAT.INITIATIVE_LINE,
     icon: CombatSVG,
   },
-  [ENTRY_TYPE.ITEMS.FAMILIAR]: {
+  [ENTRY_TYPE.FAMILIAR]: {
     categories: [CATEGORY_ID.FAMILIARS, CATEGORY_ID.OTHER],
-    matcher: [REGEX.LINE.FAMILIAR, REGEX.LINE.FAMILIAR_WEIGHT_GAIN],
+    matcher: REGEX.FAMILIAR.SWITCH_TO_LINE,
     icon: FamiliarSVG,
-    locationName_alt: 'Familiar',
+    locationName_alt: 'Change Familiar',
+    encounterName_alt: REGEX.FAMILIAR.SWITCH_TO_RESULT,
+    content_alt: null,
   },
   [ENTRY_TYPE.ITEMS.HAGNK_PULL]: {
     categories: [CATEGORY_ID.PULLS],
@@ -263,10 +279,27 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Hagnk\'s Ancestral Mini-Storage',
     encounterName_alt: 'Pull from Hagnk\'s',
   },
-  [ENTRY_TYPE.ITEMS.EQUIP]: {
+  [ENTRY_TYPE.ITEMS.EQUIP_PLAYER]: {
     categories: [CATEGORY_ID.EQUIPMENT, CATEGORY_ID.OTHER],
-    matcher: [REGEX.ITEMS.EQUIP_TARGETS, REGEX.ITEMS.UNEQUIP_TARGETS],
+    matcher: REGEX.ITEMS.EQUIP_PLAYER_TARGETS,
     icon: EquipmentSVG,
+    locationName_alt: 'Equip',
+    encounterName_alt: REGEX.ITEMS.EQUIP_PLAYER_TARGETS,
+  },
+  [ENTRY_TYPE.ITEMS.UNEQUIP_PLAYER]: {
+    categories: [CATEGORY_ID.EQUIPMENT, CATEGORY_ID.OTHER],
+    matcher: REGEX.ITEMS.UNEQUIP_PLAYER_TARGETS,
+    icon: EquipmentSVG,
+    locationName_alt: 'Unequip',
+    encounterName_alt: REGEX.ITEMS.UNEQUIP_PLAYER_TARGETS,
+  },
+  [ENTRY_TYPE.ITEMS.EQUIP_FAMILIAR]: {
+    categories: [CATEGORY_ID.FAMILIAR, CATEGORY_ID.OTHER],
+    matcher: REGEX.FAMILIAR.EQUIP_FAMILIAR_TARGETS,
+    icon: FamiliarSVG,
+    locationName_alt: 'Equip Familiar',
+    encounterName_alt: REGEX.FAMILIAR.EQUIP_FAMILIAR_RESULT,
+    content_alt: null,
   },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],

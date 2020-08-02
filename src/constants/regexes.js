@@ -27,6 +27,7 @@ export const REGEX = {
     TEXT: /Bastille Battalion/im,
   },
   BEACH_COMB: {
+    COMB_SQUARE_LINE: /^Combing square.*/gmi,
     USELESS_VISIT: /main.*comb.*/gi,
 
     COMBING_LINE: /.*Combing.*/i,
@@ -34,7 +35,8 @@ export const REGEX = {
   },
   BIRD_A_DAY: {
     USE_LINE: /^use.*bird-a-day calendar.*/gmi,
-    CAST_LINE: /^cast.*(Seek out a Bird|Visit your favorite bird).*/gmi,      
+    CAST_LINE: /^cast.*(Seek out a Bird|Visit your favorite bird).*/gmi,
+    ANY_RESULT: /(?<=^(cast .*\d+ |you learned.*: ).*).*/gmi,
   },
   BOXING_DAYCARE: {
     // GROUPING: /visiting the boxing daycare.*?(enter the boxing daycare|Boxing Daydream|Boxing Day Spa)/gis,
@@ -65,6 +67,9 @@ export const REGEX = {
     USE_THE_FORCE_CHOICE_LINE: /Took choice 1387.*/gi,
     UPGRADE_TEXT: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
     UPGRADE_CHOICE: /(?<=^Took choice 1386.*: ).*/gmi,
+  },
+  FORTUNE_TELLER: {
+    CONSULT_TEXT: /(.*choice 1278.*: ).*/gi,
   },
   GOD_LOBSTER: {
     USELESS_VISIT: /main.*fightgodlobster.*/gi,
@@ -128,6 +133,9 @@ export const REGEX = {
     RESULT: /(?<=^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice 1312.*: ).*/gmi,
     SING_ALONG: /(?<=^round \d+:.*)(SING ALONG)/gmi,
   },
+  SNOJO: {
+    VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
+  },
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
     DAILY_VOTE_TEXT: /Daily Loathing Ballot/i,
@@ -146,9 +154,6 @@ export const REGEX = {
     UNEQUIP: /^unequip.*/gim,
     HAGNK_PULL: /^pull: .*/gim,
     DIET_GAIN_LINE: /^you gain.*(fullness|drunkenness|spleen).*/gmi,
-
-    FAMILIAR: /^familiar.*/gim,
-    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
 
     TALKING: /^talking to.*/gim,
     VISITING: /^visiting.*/gim,
@@ -199,6 +204,14 @@ export const REGEX = {
 
     LEVEL_GAIN: /^You gain .* level.*\s+/gmi,
     SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
+  },
+  FAMILIAR: {
+    SWITCH_TO_LINE: /^familiar.*/gim,
+    SWITCH_TO_RESULT: /(?<=^familiar ).*/gim,
+
+    EQUIP_FAMILIAR_RESULT: /(?<=equip familiar ).*/gi,
+
+    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
   },
   // -- combat
   COMBAT: {
@@ -260,6 +273,7 @@ export const REGEX = {
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
     CONSUMPTION_COST: /(?<=^you gain )\d+ (fullness|drunkenness|spleen)/gmi,
+    USELESS_CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*(\r\n|\n)(?!.)/gi,
 
     EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/gi,
     EAT_TARGET: /(?<=^eat\s\d+\s).*/gi,
@@ -268,8 +282,8 @@ export const REGEX = {
     CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/gi,
     CHEW_TARGET: /(?<=^chew\s\d+\s).*/gi,
 
-    EQUIP_TARGETS: /(?<=equip .*?\s).*/g,
-    UNEQUIP_TARGETS: /(?<=unequip .*?\s).*/g,
+    EQUIP_PLAYER_TARGETS: /(?<=equip (?!familiar).* ).*/gi,
+    UNEQUIP_PLAYER_TARGETS: /(?<=unequip (?!familiar).* ).*/gi,
 
     HAGNK_PULL_LINE: /^pull: \d* .*/gmi,
     HAGNK_PULL_NAME: /(?<=^pull: \d* ).*/gmi,
@@ -285,6 +299,7 @@ export const REGEX = {
     EFFECT_DURATION: /(?<=acquire an (effect|intrinsic): .*\()\d+(?=\))/mi,
 
     UNAFFECT_LINE: /^uneffect.*/gim,
+    LOSE_EFFECT_LINE: /^you lose.*effect.*/gim,
 
     CAST_LINE: /^cast .*/gim,
     CAST_NAME: /(?<=^cast \d+ ).*/mi,
@@ -335,6 +350,7 @@ export const REGEX = {
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n|$)/gi,
     MALL_LINE: /^mall\.php.*(\r\n|\n)/gim,
     PVP_LINE: /^peevpee\.php.*(\r\n|\n)/gim,
+    RAFFLE_LINE: /^raffle.*/gim,
     USELESS_PHP_LINE: /(?!.*(heist|may4|eowkeeper).*)^.*\.php.*(\r\n|\n)/gim,
     USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,
     USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)(\r\n|\n)/gim,
