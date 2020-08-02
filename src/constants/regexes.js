@@ -140,7 +140,11 @@ export const REGEX = {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
     DAILY_VOTE_TEXT: /Daily Loathing Ballot/i,
   },
-
+  // -- paths
+  COMMUNITY_SERVICE: {
+    CHOICE_LINE: /^Took choice 1089.*/gmi,
+    CHOICE_RESULT: /(?<=^took choice 1089\/\d+: ).*(?= \(\d+ adventures.*)/gmi,
+  },
   // -- common
   LINE: {
     USELESS_USE: /^use.*(\r\n|\n)(?!.)/gmi,

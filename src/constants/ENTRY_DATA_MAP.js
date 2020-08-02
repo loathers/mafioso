@@ -194,6 +194,14 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Daily Loathing Ballot',
   },
   // --
+  [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
+    categories: [CATEGORY_ID.PATH, CATEGORY_ID.CHOICEADV],
+    matcher: REGEX.COMMUNITY_SERVICE.CHOICE_LINE,
+    icon: NoncombatSVG,
+    locationName_alt: 'Community Service',
+    encounterName_alt: REGEX.COMMUNITY_SERVICE.CHOICE_RESULT,
+  },
+  // --
   [ENTRY_TYPE.CONSUMPTION.CHEW]: {
     categories: [CATEGORY_ID.DIET],
     matcher: REGEX.ITEMS.CHEW_TARGET,
