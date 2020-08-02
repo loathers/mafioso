@@ -10,7 +10,7 @@ import {
   hasString,
   getRegexMatch,
 } from 'utilities/regexUtils';
-import * as entryTypeRegexUtils from 'utilities/ENTRY_TYPERegexUtils';
+import * as entryTypeRegexUtils from 'utilities/entryTypeRegexUtils';
 
 /**
  * @param {String} entryString
@@ -214,10 +214,6 @@ export function isNonCombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
-  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
-    return 'Valhalla';
-  }
-
   if (entryTypeRegexUtils.isEntryCatBurglarHeist(entryString)) {
     return 'Cat Burglar';
   }
@@ -282,11 +278,7 @@ export function parseEncounterName(entryString) {
   if (entryTypeRegexUtils.isEntryVotingBooth(entryString)) {
     return 'Daily Loathing Ballot';
   }
-
-  if (getRegexMatch(entryString, REGEX.ASCENSION.VALHALLA_TEXT)) {
-    return 'Welcome to Valhalla!';
-  }
-
+  
   // if monster was replaced, use the enemy that this eventually becomes
   const replacedResults = parseReplacedResults(entryString);
   if (replacedResults) {

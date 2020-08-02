@@ -4,7 +4,7 @@ import ENTRY_TYPE, {IOTM_ENTRIES} from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
-import {getEntryType} from 'utilities/ENTRY_TYPERegexUtils';
+import {getEntryType} from 'utilities/entryTypeRegexUtils';
 import {
   fixSpecialEntities, 
   getRegexMatch,

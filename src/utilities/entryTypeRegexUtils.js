@@ -35,14 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- kolmafia
-  if (isEntryValhalla(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.VALHALLA;
-  }
-
-  if (isEntryAscensionInfo(entryString)) {
-    // return ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO;
-  }
-  
   if (isEntryDayInfo(entryString)) {
     return ENTRY_TYPE.SNAPSHOT.DAY_INFO;
   }
@@ -222,21 +214,6 @@ export function getEntryType_legacy(entryString) {
  */
 export function isEntryMafiaMisc(entryString) {
   return hasString(entryString, REGEX.MISC.MAFIA_MAXIMIZER);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryValhalla(entryString) {
-  return hasString(entryString, REGEX.ASCENSION.VALHALLA_TEXT);
-}
-/**
- * check if entry is telling us about this ascension
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryAscensionInfo(entryString) {
-  return hasString(entryString, REGEX.ASCENSION.VALHALLA_GROUP);
 }
 /**
  * this is going to be the gateway to the daycount

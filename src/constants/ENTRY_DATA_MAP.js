@@ -1,6 +1,8 @@
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
+import {REGEX} from 'constants/REGEXES';
 
+import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 /**
@@ -9,13 +11,21 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
  * @typedef {Object} EntryData
  * @property {EntryType} EntryData.type                         - this is the key, will be built by parser
  * @property {Array<Category>} EntryData.categories             - visible entry categories
- * @property {RegExp|Array<RegExp>} EntryData.matcher           - what to use to determine if text is this type
+ * @property {RegExp|Array<String|RegExp>} EntryData.matcher    - what to use to determine if text is this type
  * @property {ReactComponent} EntryData.icon                    - icon
  * @property {EntryDisplayer} [EntryData.locationName_alt]      - alternative text or regex to find, null shows nothing
  * @property {EntryDisplayer} [EntryData.encounterName_alt]     - same, but for encounterName
  * @property {EntryDisplayer} [EntryData.content_alt]           - same, but for the body
  */
 export const ENTRY_DATA_MAP = {
+  [ENTRY_TYPE.SNAPSHOT.VALHALLA]: {
+    categories: [CATEGORY_ID.ASCENSION_INFO],
+    matcher: REGEX.ASCENSION.VALHALLA_TEXT,
+    icon: AscendSVG,
+    locationName_alt: 'Valhalla',
+    encounterName_alt: 'Welcome to Valhalla!',
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
     categories: [CATEGORY_ID.USE_ITEM, CATEGORY_ID.IOTM],
     matcher: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,

@@ -5,10 +5,7 @@ import {
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
-import {
-  ALWAYS_HIDDEN_ENTRIES,
-  FILTER_DELAY,
-} from 'constants/DEFAULTS';
+import {FILTER_DELAY} from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {DEFAULT_ENTRIES_VISIBLE, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
 import REGEX from 'constants/REGEXES';
