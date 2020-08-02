@@ -9,6 +9,7 @@ import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
+import {ReactComponent as SpleenSVG} from 'images/pill.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 /*
@@ -137,10 +138,15 @@ export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.IOTM.PILLKEEPER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
-    icon: NoncombatSVG,
+    icon: SpleenSVG,
     locationName_alt: 'Eight Days a Week Pill Keeper',
     encounterName_alt: REGEX.PILL_KEEPER.CHOICE_RESULT,
     content_alt: null,
+  },
+  [ENTRY_TYPE.IOTM.PIRATEREALM]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.PIRATEREALM.LOCATION,
+    icon: NoncombatSVG,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value

@@ -39,10 +39,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.CLAN_VISIT;
   }
 
-  if (isEntryPirateRealm(entryString)) {
-    return ENTRY_TYPE.IOTM.PIRATEREALM;
-  }
-
   if (isEntryBoombox(entryString)) {
     return ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX;
   }
@@ -336,13 +332,6 @@ export function isEntryClanVIP(entryString) {
  */
 export function isEntryBoombox(entryString) {
   return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.RESULT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryPirateRealm(entryString) {
-  return hasString(entryString, REGEX.PIRATEREALM.LOCATION);
 }
 /**
  * will be counting rumpus room also
