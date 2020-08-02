@@ -35,14 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- common
-  if (isEntryEquip(entryString)) {
-    return ENTRY_TYPE.ITEMS.EQUIP;
-  }
-
-  if (isEntryUnequip(entryString)) {
-    return ENTRY_TYPE.ITEMS.UNEQUIP;
-  }
-
   if (isEntrySpellCast(entryString)) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
@@ -52,20 +44,6 @@ export function getEntryType_legacy(entryString) {
   }
 
   return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryEquip(entryString) {
-  return hasString(entryString, REGEX.ITEMS.EQUIP_TARGETS);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryUnequip(entryString) {
-  return hasString(entryString, REGEX.ITEMS.UNEQUIP_TARGETS);
 }
 /**
  * @param {String} entryString

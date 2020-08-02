@@ -7,6 +7,7 @@ import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
 import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
 import {ReactComponent as DrinkSVG} from 'images/martini.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
+import {ReactComponent as EquipmentSVG} from 'images/battle-gear.svg';
 import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as ItemBagSVG} from 'images/swap-bag.svg';
@@ -249,6 +250,11 @@ export const ENTRY_DATA_MAP = {
     icon: ItemBagSVG,
     locationName_alt: 'Hagnk\'s Ancestral Mini-Storage',
     encounterName_alt: 'Pull from Hagnk\'s',
+  },
+  [ENTRY_TYPE.ITEMS.EQUIP]: {
+    categories: [CATEGORY_ID.EQUIPMENT],
+    matcher: [REGEX.ITEMS.EQUIP_TARGETS, REGEX.ITEMS.UNEQUIP_TARGETS],
+    icon: EquipmentSVG,
   },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
