@@ -227,6 +227,12 @@ export const ENTRY_DATA_MAP = {
     icon: CraftSVG,
     locationName_alt: 'Mix',
   },
+  [ENTRY_TYPE.EFFECTS.SPELL_CAST]: {
+    categories: [CATEGORY_ID.EFFECTS],
+    matcher: REGEX.VALUE.SPELL_CAST_NAMES,
+    icon: SpellsSVG,
+    locationName_alt: ['✧ {1} ✧', REGEX.EFFECTS.CAST_NAME],
+  },
   // --
   [ENTRY_TYPE.ITEMS.CLOSET]: {
     categories: [CATEGORY_ID.TRANSACTIONS],

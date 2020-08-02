@@ -35,22 +35,11 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- common
-  if (isEntrySpellCast(entryString)) {
-    return ENTRY_TYPE.EFFECTS.SPELL_CAST;
-  }
-
   if (isEntryNonCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.NONCOMBAT;
   }
 
   return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntrySpellCast(entryString) {
-  return hasString(entryString, REGEX.VALUE.SPELL_CAST_NAMES);
 }
 // -- actions
 /**
