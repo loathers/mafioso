@@ -237,6 +237,12 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.COMBAT.INITIATIVE_LINE,
     icon: CombatSVG,
   },
+  [ENTRY_TYPE.ITEMS.FAMILIAR]: {
+    categories: [CATEGORY_ID.FAMILIARS],
+    matcher: [REGEX.LINE.FAMILIAR, REGEX.LINE.FAMILIAR_WEIGHT_GAIN],
+    icon: FamiliarSVG,
+    locationName_alt: 'Familiar',
+  },
   [ENTRY_TYPE.ITEMS.HAGNK_PULL]: {
     categories: [CATEGORY_ID.PULLS],
     matcher: REGEX.ITEMS.HAGNK_PULL_LINE,

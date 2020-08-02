@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- common
-  if (isEntryFamiliar(entryString)) {
-    return ENTRY_TYPE.FAMILIAR;
-  }
-
   if (isEntryEquip(entryString)) {
     return ENTRY_TYPE.ITEMS.EQUIP;
   }
@@ -56,19 +52,6 @@ export function getEntryType_legacy(entryString) {
   }
 
   return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryFamiliar(entryString) {
-  if (hasString(entryString, REGEX.LINE.FAMILIAR_WEIGHT_GAIN)) {
-    if (!hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE)) {
-      return true;
-    }
-  }
-
-  return hasString(entryString, REGEX.LINE.FAMILIAR);
 }
 /**
  * @param {String} entryString
