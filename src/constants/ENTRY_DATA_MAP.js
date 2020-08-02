@@ -173,6 +173,12 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Voting Booth',
     encounterName_alt: 'Daily Loathing Ballot',
   },
+  // --
+  [ENTRY_TYPE.CLAN_VISIT]: {
+    categories: [CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.LINE.CLAN_VISIT,
+    icon: InfoSVG,
+  },
 };
 // basically becomes a list of `EntryType`s that have a map value
 export const ENTRY_MAP_KEYS = Object.keys(ENTRY_DATA_MAP);

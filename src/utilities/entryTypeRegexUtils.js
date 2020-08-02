@@ -34,11 +34,6 @@ export function getEntryType(entryString) {
  * @return {EntryType}
  */
 export function getEntryType_legacy(entryString) {
-  // -- iotm
-  if (isEntryClanVIP(entryString)) {
-    return ENTRY_TYPE.CLAN_VISIT;
-  }
-
   // -- common
   if (isEntryEat(entryString)) {
     return ENTRY_TYPE.CONSUMPTION.EAT;
@@ -300,13 +295,4 @@ export function isEntryCombatEncounter(entryString) {
 export function isEntryNonCombatEncounter(entryString) {
   return hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) 
     && !isEntryCombatEncounter(entryString);
-}
-// -- iotm
-/**
- * will be counting rumpus room also
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryClanVIP(entryString) {
-  return hasString(entryString, REGEX.LINE.CLAN_VISIT);
 }
