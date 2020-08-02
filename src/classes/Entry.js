@@ -239,11 +239,7 @@ export default class Entry {
         return displayerResult; // can be null
       }
     }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE) {
-      return 'January\'s Garbage Tote';
-    }
-
+    
     return this.attributes.locationName;
   }
   /** @type {String} */

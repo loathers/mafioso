@@ -111,13 +111,15 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
     matcher: REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
     icon: CraftSVG,
-    locationName_alt: 'Diabolic Pizza',
+    locationName_alt: 'Your Workshed',
+    encounterName_alt: 'Diabolic Pizza cube',
   },
   [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
     matcher: REGEX.DIABOLIC_PIZZA.EAT_LINE,
     icon: EatSVG,
-    locationName_alt: 'Diabolic Pizza',
+    locationName_alt: 'Eat',
+    encounterName_alt: 'Diabolic Pizza',
   },
   [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
@@ -135,9 +137,10 @@ export const ENTRY_DATA_MAP = {
     content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
   },
   [ENTRY_TYPE.IOTM.GARBAGE_TOTE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
-    icon: NoncombatSVG,
+    icon: EquipmentSVG,
+    locationName_alt: 'January\'s Garbage Tote',
     encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
   },
   [ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT]: {
@@ -183,18 +186,21 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.ITEMS.CHEW_TARGET,
     icon: SpleenSVG,
     locationName_alt: 'Chew',
+    encounterName_alt: REGEX.ITEMS.CHEW_TARGET,
   },
   [ENTRY_TYPE.CONSUMPTION.DRINK]: {
     categories: [CATEGORY_ID.DIET],
     matcher: REGEX.ITEMS.DRINK_TARGET,
     icon: DrinkSVG,
     locationName_alt: 'Drink',
+    encounterName_alt: REGEX.ITEMS.DRINK_TARGET,
   },
   [ENTRY_TYPE.CONSUMPTION.EAT]: {
     categories: [CATEGORY_ID.DIET],
     matcher: REGEX.ITEMS.EAT_TARGET,
     icon: EatSVG,
     locationName_alt: 'Eat',
+    encounterName_alt: REGEX.ITEMS.EAT_TARGET,
   },
   // --
   [ENTRY_TYPE.CONSUMPTION.COMBINE]: {

@@ -145,6 +145,7 @@ export const REGEX = {
     EQUIP: /^equip.*/gim,
     UNEQUIP: /^unequip.*/gim,
     HAGNK_PULL: /^pull: .*/gim,
+    DIET_GAIN_LINE: /^you gain.*(fullness|drunkenness|spleen).*/gmi,
 
     FAMILIAR: /^familiar.*/gim,
     FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
@@ -255,6 +256,7 @@ export const REGEX = {
     CREATE_LINE: /create.*\d+.*/gmi,
     MIX_LINE: /mix.*\d+.*/gmi,
 
+    CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
     EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/gi,
