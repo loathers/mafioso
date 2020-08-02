@@ -378,10 +378,11 @@ class LogStore {
     }
 
     if (!this.isAscensionLog) {
+      download(this.rawText, 'mafioso_log', 'text/plain');
       return;
     }
 
-    const fileName = `${this.characterName}#${this.ascensionNum}_${this.pathLabel}`;
+    const fileName = `${this.characterName}#${this.ascensionNum}-${this.pathLabel}`;
     download(this.rawText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions

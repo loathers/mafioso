@@ -75,7 +75,7 @@ function ControlsMenu(props) {
 
       <Button 
         onClick={() => logStore.downloadFullLog()}
-        disabled={!logStore.isAscensionLog}
+        disabled={!logStore.isReady}
         className='flex-col pad-3 adjacent-mar-t-5'>
           <div className='fontsize-7 adjacent-mar-t-4'>Download Log</div>
 
