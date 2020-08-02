@@ -94,10 +94,6 @@ export function getEntryType_legacy(entryString) {
   if (isEntrySpellCast(entryString)) {
     return ENTRY_TYPE.EFFECTS.SPELL_CAST;
   }
-  
-  if (isEntryPVP(entryString)) {
-    return ENTRY_TYPE.PVP;
-  }
 
   if (isEntryCombatEncounter(entryString)) {
     return ENTRY_TYPE.ENCOUNTER.COMBAT;
@@ -129,13 +125,6 @@ export function isEntryDrink(entryString) {
  */
 export function isEntryChew(entryString) {
   return hasString(entryString, REGEX.ITEMS.CHEW_TARGET);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryPVP(entryString) {
-  return hasString(entryString, REGEX.GROUP.PVP_ATTACK);
 }
 /**
  * @param {String} entryString
