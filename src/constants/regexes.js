@@ -259,6 +259,8 @@ export const REGEX = {
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
+    CONSUMPTION_COST: /(?<=^you gain )\d+ (fullness|drunkenness|spleen)/gmi,
+
     EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/gi,
     EAT_TARGET: /(?<=^eat\s\d+\s).*/gi,
     DRINK_AMOUNT: /(?<=^drink\s)\d+(?=\s)/gi,
