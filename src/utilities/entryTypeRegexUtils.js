@@ -34,23 +34,6 @@ export function getEntryType(entryString) {
  * @return {EntryType}
  */
 export function getEntryType_legacy(entryString) {
-  // -- kolmafia
-  if (isEntryDayInfo(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.DAY_INFO;
-  }
-  
-  if (isEntryCharacterInfo(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO;
-  }
-  
-  if (isEntrySkillBreakdown(entryString)) {
-    return ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN;
-  }
-  
-  if (isEntryMafiaMisc(entryString)) {
-    return ENTRY_TYPE.MAFIA.MISC_LOG;
-  }
-
   // -- iotm
   if (isEntryBoxingDaycare(entryString)) {
     return ENTRY_TYPE.IOTM.BOXING_DAYCARE;
@@ -206,39 +189,6 @@ export function getEntryType_legacy(entryString) {
   }
 
   return ENTRY_TYPE.UNKNOWN;
-}
-/**
- * check if this is some random mafia string
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryMafiaMisc(entryString) {
-  return hasString(entryString, REGEX.MISC.MAFIA_MAXIMIZER);
-}
-/**
- * this is going to be the gateway to the daycount
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDayInfo(entryString) {
-  return hasString(entryString, REGEX.SNAPSHOT_CHECK.KOL_DATE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryCharacterInfo(entryString) {
-  return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS)
-    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_EQUIPMENT)
-    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_EFFECTS)
-    || hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_MODIFIERS);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntrySkillBreakdown(entryString) {
-  return hasString(entryString, REGEX.SNAPSHOT_CHECK.CONTAIN_SKILLS);
 }
 /**
  * @param {String} entryString

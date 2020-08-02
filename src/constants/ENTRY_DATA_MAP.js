@@ -3,7 +3,19 @@ import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
 
 import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
+import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
+
+/*
+  [ENTRY_TYPE.template]: {
+    categories: [CATEGORY_ID.],
+    matcher: REGEX.,
+    icon: UnknownSVG,
+    locationName_alt: null,
+    encounterName_alt: null,
+    content_alt: null,
+  },
+ */
 
 /**
  * @typedef {String|RegExp|Array<String|RegExp>|null} EntryDisplayer
@@ -18,6 +30,7 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
  * @property {EntryDisplayer} [EntryData.content_alt]           - same, but for the body
  */
 export const ENTRY_DATA_MAP = {
+  // -- ascension relevant
   [ENTRY_TYPE.SNAPSHOT.VALHALLA]: {
     categories: [CATEGORY_ID.ASCENSION_INFO],
     matcher: REGEX.ASCENSION.VALHALLA_TEXT,
@@ -26,6 +39,27 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Welcome to Valhalla!',
     content_alt: null,
   },
+  [ENTRY_TYPE.SNAPSHOT.DAY_INFO]: {
+    categories: [CATEGORY_ID.ASCENSION_INFO],
+    matcher: REGEX.SNAPSHOT_CHECK.KOL_DATE,
+    icon: InfoSVG,
+  },
+  [ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO]: {
+    categories: [CATEGORY_ID.ASCENSION_INFO],
+    matcher: [
+      REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS, 
+      REGEX.SNAPSHOT_CHECK.CONTAIN_EQUIPMENT, 
+      REGEX.SNAPSHOT_CHECK.CONTAIN_EFFECTS, 
+      REGEX.SNAPSHOT_CHECK.CONTAIN_MODIFIERS,
+    ],
+    icon: InfoSVG,
+  },
+  [ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN]: {
+    categories: [CATEGORY_ID.ASCENSION_INFO],
+    matcher: REGEX.SNAPSHOT_CHECK.CONTAIN_SKILLS,
+    icon: InfoSVG,
+  },
+  // -- iotm
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
     categories: [CATEGORY_ID.USE_ITEM, CATEGORY_ID.IOTM],
     matcher: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
