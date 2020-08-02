@@ -7,8 +7,8 @@ import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
+import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
-import EntryIconComponent from 'components/EntryIconComponent';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
@@ -62,6 +62,8 @@ function EntryIconColumn(props) {
 
   const {attributes} = entry;
   const {isLevelUp} = attributes;
+
+  const EntryIconComponent = entry.entryIcon || UnknownSVG;
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>
