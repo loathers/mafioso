@@ -5,9 +5,9 @@ import {
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
-import {FILTER_DELAY} from 'constants/DEFAULTS';
+import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY} from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import {DEFAULT_ENTRIES_VISIBLE, DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
+import {DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
 import REGEX from 'constants/REGEXES';
 
 import * as logParserUtils from 'utilities/logParserUtils';
@@ -61,8 +61,8 @@ class LogStore {
       pageNum: 0,
       /** @type {Number} */
       entriesPerPage: 100,
-      /** @type {Array<EntryType>} */
-      entryTypesVisible: DEFAULT_ENTRIES_VISIBLE.slice(),
+      /** @type {Array<CategoryId>} */
+      categoriesVisible: DEFAULT_CATEGORIES_VISIBLE.slice(),
       /** @type {Array<EntryAttribute>} */
       filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS.slice(),
     });
@@ -139,8 +139,8 @@ class LogStore {
     return this.displayOptions.pageNum;
   }
   /** @type {Array<EntryType>} */
-  get entryTypesVisible() {
-    return this.displayOptions.entryTypesVisible;
+  get categoriesVisible() {
+    return this.displayOptions.categoriesVisible;
   }
   /** @type {Array<EntryAttribute>} */
   get filteredAttributes() {
@@ -175,7 +175,7 @@ class LogStore {
     this.displayOptions = observable({
       pageNum: 0,
       entriesPerPage: 100,
-      entryTypesVisible: this.displayOptions.entryTypesVisible.slice(),
+      categoriesVisible: this.displayOptions.categoriesVisible.slice(),
       filteredAttributes: this.displayOptions.filteredAttributes.slice(),
     });
   }
@@ -433,17 +433,16 @@ class LogStore {
       return;
     }
 
+    // console.log('⏳ %cFetching by filter...', 'color: blue');
     const {
-      entryTypesVisible = this.displayOptions.entryTypesVisible,
+      categoriesVisible = this.displayOptions.categoriesVisible,
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
-
-    console.log('⏳ %cFetching by filter...', 'color: blue');
 
     // batch find entries that are in range and not hidden
     const visibleEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
-        const isVisibleEntry = entryTypesVisible.includes(entry.entryType);
+        const isVisibleEntry = categoriesVisible.some((category) => entry.categories.includes(category));
         if (!isVisibleEntry) {
           return false;
         }

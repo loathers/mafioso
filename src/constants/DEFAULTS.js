@@ -1,3 +1,4 @@
+import {CATEGORY_ID} from 'constants/CATEGORIES';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX, {
   BACK_NEW_LINE_REGEX, 
@@ -12,6 +13,23 @@ export const DISPLAY_SCRUB_DELAY = 5;
 export const FILTER_DELAY = 3;
 
 // -- log level
+export const DEFAULT_CATEGORIES_VISIBLE = [
+  // CATEGORY_ID.UNCATEGORIZED,
+  CATEGORY_ID.ASCENSION_INFO,
+  CATEGORY_ID.IOTM,
+  CATEGORY_ID.COMBAT,
+  CATEGORY_ID.NONCOMBAT,
+  CATEGORY_ID.CHOICEADV,
+  CATEGORY_ID.DIET,
+  CATEGORY_ID.USE_ITEM,
+  // CATEGORY_ID.EFFECTS,
+  // CATEGORY_ID.CRAFTING,
+  CATEGORY_ID.PULLS,
+  // CATEGORY_ID.FAMILIARS,
+  // CATEGORY_ID.EQUIPMENT,
+  // CATEGORY_ID.VISIT,
+  // CATEGORY_ID.TRANSACTIONS,
+];
 // strings we are going to remove from the ahead of time
 export const PREREMOVE_REGEX_LIST = [
   // always first

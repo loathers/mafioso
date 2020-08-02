@@ -1,4 +1,6 @@
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+// import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+import {CATEGORY_ID} from 'constants/CATEGORIES';
+import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/DEFAULTS';
 
 /**
  * visible
@@ -6,168 +8,78 @@ import ENTRY_TYPE from 'constants/ENTRY_TYPE';
  */
 export const ENTRY_TYPE_FILTERS = [
   {
-    label: 'Ascension Info',
-    entryGroup: [
-      ENTRY_TYPE.SNAPSHOT.VALHALLA,
-      ENTRY_TYPE.SNAPSHOT.ASCENSION_INFO,
-      // ENTRY_TYPE.SNAPSHOT.DAY_INFO,
-      // ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN,
-    ],
+    label: 'Uncategorized',
+    categoryId: CATEGORY_ID.UNCATEGORIZED,
     isHidden: false,
-    checked: true,
+  },
+  {
+    label: 'Ascension Info',
+    categoryId: CATEGORY_ID.ASCENSION_INFO,
+    isHidden: false,
   },
   {
     label: 'Combat',
-    entryGroup: [
-      ENTRY_TYPE.ENCOUNTER.COMBAT,
-      ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT,
-    ],
+    categoryId: CATEGORY_ID.COMBAT,
     isHidden: false,
-    checked: true,
   },
   {
     label: 'NonCombat',
-    entryGroup: [
-      ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-      ENTRY_TYPE.IOTM.BEACH_COMB,
-      ENTRY_TYPE.IOTM.BOXING_DAYCARE,
-      ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY,
-      ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON,
-    ],
+    categoryId: CATEGORY_ID.NONCOMBAT,
     isHidden: false,
-    checked: true,
   },
   {
     label: 'ChoiceAdv',
-    entryGroup: [
-      ENTRY_TYPE.ENCOUNTER.NONCOMBAT,
-      ENTRY_TYPE.IOTM.BOXING_DAYCARE,
-      ENTRY_TYPE.IOTM.CAT_BURGLAR,
-      ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY,
-      ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON,
-      ENTRY_TYPE.IOTM.VOTING_BOOTH,
-    ],
+    categoryId: CATEGORY_ID.CHOICEADV,
     isHidden: false,
-    checked: true,
   },
   {
     label: 'Diet',
-    entryGroup: [
-      ENTRY_TYPE.CONSUMPTION.EAT, 
-      ENTRY_TYPE.CONSUMPTION.DRINK, 
-      ENTRY_TYPE.CONSUMPTION.CHEW,
-      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE,
-      ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
-    ],
+    categoryId: CATEGORY_ID.DIET,
     isHidden: false,
-    checked: true,
   },
   {
     label: 'Pulls',
-    entryType: ENTRY_TYPE.ITEMS.HAGNK_PULL,
+    categoryId: CATEGORY_ID.PULLS,
     isHidden: false,
-    checked: true,
   },
   {
     label: 'Use Item',
-    entryGroup: [
-      ENTRY_TYPE.IOTM.BASTILLE_BATTALION,
-      ENTRY_TYPE.IOTM.BEACH_COMB,
-      ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD,
-      ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE,
-      ENTRY_TYPE.IOTM.PILLKEEPER,
-      ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX,
-    ],
+    categoryId: CATEGORY_ID.USE_ITEM,
     isHidden: false,
-    checked: true,
   },
   {
     label: 'Buffs/Effects',
-    entryGroup: [
-      ENTRY_TYPE.EFFECTS.SPELL_CAST,
-      ENTRY_TYPE.IOTM.BIRD_A_DAY,
-    ],
+    categoryId: CATEGORY_ID.EFFECTS,
     isHidden: false,
-    checked: false,
   },
   {
     label: 'Crafting',
-    entryGroup: [
-      ENTRY_TYPE.ITEMS.COMBINE,
-      ENTRY_TYPE.ITEMS.COOK,
-      ENTRY_TYPE.ITEMS.CRAFT,
-      ENTRY_TYPE.ITEMS.CREATE,
-      ENTRY_TYPE.ITEMS.MIX,
-    ],
+    categoryId: CATEGORY_ID.CRAFTING,
     isHidden: false,
-    checked: false,
   },
   {
-    label: 'Closet',
-    entryGroup: [
-      ENTRY_TYPE.ITEMS.CLOSET_PUT,
-      ENTRY_TYPE.ITEMS.CLOSET_TAKE,
-    ],
-    isHidden: true,
-    checked: false,
-  },
-  {
-    label: 'Familiar/Equipment',
-    entryGroup: [
-      ENTRY_TYPE.ITEMS.EQUIP,
-      ENTRY_TYPE.ITEMS.UNEQUIP,
-      ENTRY_TYPE.FAMILIAR,
-      ENTRY_TYPE.IOTM.GARBAGE_TOTE,
-    ],
-    entryType: ENTRY_TYPE.ITEMS.EQUIP,
+    label: 'Equipment',
+    categoryId: CATEGORY_ID.EQUIPMENT,
     isHidden: false,
-    checked: false,
   },
   {
     label: 'Visits',
-    entryGroup: [
-      ENTRY_TYPE.VISITING,
-      ENTRY_TYPE.TALKING,
-    ],
+    categoryId: CATEGORY_ID.VISIT,
     isHidden: true,
-    checked: false,
   },
   {
     label: 'Shopping',
-    entryType: ENTRY_TYPE.TRANSACTION,
+    categoryId: CATEGORY_ID.TRANSACTIONS,
     isHidden: false,
-    checked: false,
-  },
-  {
-    label: 'Uncategorized',
-    entryGroup: [
-      ENTRY_TYPE.UNKNOWN,
-      ENTRY_TYPE.PVP,
-      ENTRY_TYPE.CLAN_VISIT,
-    ],
-    isHidden: false,
-    checked: false,
   },
 ];
 /**
- * entryTypes that are filtered by default
  * @type {Array}
  */
-export let DEFAULT_ENTRIES_VISIBLE = [];
-ENTRY_TYPE_FILTERS.forEach((filterData) => {
-  if (filterData.checked) {
-    const {entryType, entryGroup} = filterData;
-    if (entryType && !DEFAULT_ENTRIES_VISIBLE.includes(entryType)) {
-      DEFAULT_ENTRIES_VISIBLE.push(entryType);
-    }
-
-    if (entryGroup) {
-      entryGroup.forEach((innerType) => {
-        if (!DEFAULT_ENTRIES_VISIBLE.includes(innerType)) {
-          DEFAULT_ENTRIES_VISIBLE.push(innerType);
-        }
-      })
-    }
+export const ENTRY_TYPE_FILTERS_SETTINGS = ENTRY_TYPE_FILTERS.map((filterData) => {
+  return {
+    ...filterData,
+    checked: DEFAULT_CATEGORIES_VISIBLE.includes(filterData.categoryId),
   }
 });
 /**

@@ -122,6 +122,10 @@ export default class Entry {
   get entryType() {
     return this.entryData.type;
   }
+  /** @type {EntryType} */
+  get categories() {
+    return this.entryData.categories;
+  }
   /** @type {Boolean} */
   get hasEntryData() {
     return this.entryData.type !== ENTRY_TYPE.UNKNOWN;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
-import {ENTRY_TYPE_FILTERS, ATTRIBUTE_FILTERS} from 'constants/filterList';
+import {ENTRY_TYPE_FILTERS_SETTINGS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 
 // import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -27,28 +27,12 @@ function ControlsMenu(props) {
   } = props;
 
   // visible entries
-  const {entryTypesVisible} = logStore;
-  const defaultVisibleEntriesList = ENTRY_TYPE_FILTERS.map((filterOption) => {
-    const hasExistingEntryType = entryTypesVisible.includes(filterOption.entryType);
-
-    let hasAllEntryGroup = false;
-    if (filterOption.entryGroup) {
-      hasAllEntryGroup = !filterOption.entryGroup.some((innerType) => !entryTypesVisible.includes(innerType));
-    }
-
-    return {
-      ...filterOption,
-      checked: hasExistingEntryType || hasAllEntryGroup,
-    }
-  });
-
-  const [visibleEntriesList, updateVisibleList] = React.useState(defaultVisibleEntriesList);
+  const [categoriesVisibleList, updateVisibleList] = React.useState(ENTRY_TYPE_FILTERS_SETTINGS);
 
   // just for changing page
   const onApplyChangePage = (nextPageNum) => {
     logStore.fetchEntries({pageNum: nextPageNum});
   };
-
 
   const onChangeVisibleEntries = (list) => {
     updateVisibleList(list);
@@ -73,7 +57,7 @@ function ControlsMenu(props) {
       }
     });
 
-    logStore.fetchEntries({entryTypesVisible: checkedTypes});
+    logStore.fetchEntries({categoriesVisible: checkedTypes});
   }
 
   // attribute filters
@@ -143,14 +127,14 @@ function ControlsMenu(props) {
 
       {/* filters */}
       <FiltersMenu 
-        label='Visible Entries'
-        defaultList={visibleEntriesList}
+        label='Visible Categories'
+        defaultList={categoriesVisibleList}
         onChange={onChangeVisibleEntries}
         inputType='checkbox'
         className='adjacent-mar-t-5'/>
 
       <Button
-        onClick={() => onApplyEntries(visibleEntriesList)}
+        onClick={() => onApplyEntries(categoriesVisibleList)}
         disabled={!logStore.isReady} 
         className='fontsize-3 pad-3 adjacent-mar-t-5'>
         Apply
