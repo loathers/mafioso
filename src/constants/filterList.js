@@ -83,6 +83,13 @@ export const ENTRY_TYPE_FILTERS_SETTINGS = ENTRY_TYPE_FILTERS.map((filterData) =
  */
 export const ATTRIBUTE_FILTERS = [
   {
+    label: 'Path-specific',
+    attributeName: 'isPathSpecific',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'IOTM',
     attributeName: 'isIOTM',
     attributeValue: true,

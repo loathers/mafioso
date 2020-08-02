@@ -143,15 +143,6 @@ export default class Entry {
   get entryIcon() {
     return this.entryData.icon;
   }
-  // -- 
-  /** @type {Boolean} */
-  get isClover() {
-    return CLOVER_ENCOUNTERS.includes(this.attributes.encounterName);
-  }
-  /** @type {Boolean} */
-  get isSemirare() {
-    return SEMIRARE_ENCOUNTERS.includes(this.attributes.encounterName);
-  }
   // -- stats
   /** @type {Number} */
   get hasAdventureChanges() {
@@ -297,7 +288,19 @@ export default class Entry {
   get hasReplacedEnemies() {
     return Boolean(this.attributes.replacedEnemies) && this.attributes.replacedEnemies.length > 0;
   }
-  // -- iotm getters
+  // -- attribute getters
+  /** @type {Boolean} */
+  get isPathSpecific() {
+    return this.categories.includes(CATEGORY_ID.PATH);
+  }
+  /** @type {Boolean} */
+  get isClover() {
+    return CLOVER_ENCOUNTERS.includes(this.attributes.encounterName);
+  }
+  /** @type {Boolean} */
+  get isSemirare() {
+    return SEMIRARE_ENCOUNTERS.includes(this.attributes.encounterName);
+  }
   /** @type {Boolean} */
   get isIOTM() {
     return this.categories.includes(CATEGORY_ID.IOTM) 

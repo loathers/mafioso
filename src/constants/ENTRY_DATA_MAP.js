@@ -2,7 +2,7 @@ import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
 
-import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
+import {ReactComponent as AscendSVG} from 'images/holy-grail.svg';
 import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
 import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
 import {ReactComponent as DrinkSVG} from 'images/martini.svg';
@@ -12,6 +12,7 @@ import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as ItemBagSVG} from 'images/swap-bag.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
+import {ReactComponent as PathSVG} from 'images/flag-objective.svg';
 import {ReactComponent as ShopSVG} from 'images/shop.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
 import {ReactComponent as SpleenSVG} from 'images/pill.svg';
@@ -197,7 +198,7 @@ export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
     categories: [CATEGORY_ID.PATH, CATEGORY_ID.CHOICEADV],
     matcher: REGEX.COMMUNITY_SERVICE.CHOICE_LINE,
-    icon: NoncombatSVG,
+    icon: PathSVG,
     locationName_alt: 'Community Service',
     encounterName_alt: REGEX.COMMUNITY_SERVICE.CHOICE_RESULT,
   },
