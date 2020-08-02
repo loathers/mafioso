@@ -148,6 +148,13 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.PIRATEREALM.LOCATION,
     icon: NoncombatSVG,
   },
+  [ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.SONGBOOM_BOOMBOX.RESULT,
+    icon: NoncombatSVG,
+    locationName_alt: 'SongBoom™ BoomBox',
+    encounterName_alt: ['♫ {1} ♫', REGEX.SONGBOOM_BOOMBOX.RESULT],
+  },
 };
 // basically becomes a list of `EntryType`s that have a map value
 export const ENTRY_MAP_KEYS = Object.keys(ENTRY_DATA_MAP);

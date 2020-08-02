@@ -39,10 +39,6 @@ export function getEntryType_legacy(entryString) {
     return ENTRY_TYPE.CLAN_VISIT;
   }
 
-  if (isEntryBoombox(entryString)) {
-    return ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX;
-  }
-
   if (isEntryVotingBooth(entryString)) {
     return ENTRY_TYPE.IOTM.VOTING_BOOTH;
   }
@@ -325,13 +321,6 @@ export function isEntryNonCombatEncounter(entryString) {
  */
 export function isEntryClanVIP(entryString) {
   return hasString(entryString, REGEX.LINE.CLAN_VISIT);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryBoombox(entryString) {
-  return hasString(entryString, REGEX.SONGBOOM_BOOMBOX.RESULT);
 }
 /**
  * will be counting rumpus room also

@@ -244,10 +244,6 @@ export default class Entry {
       return 'January\'s Garbage Tote';
     }
 
-    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
-      return 'SongBoom™ BoomBox';
-    }
-
     if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {
       return 'Hagnk\'s Ancestral Mini-Storage';
     }
@@ -261,10 +257,6 @@ export default class Entry {
       if (displayerResult !== undefined) {
         return displayerResult; // can be null
       }
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
-      return `♫ ${this.findText(REGEX.SONGBOOM_BOOMBOX.RESULT)} ♫`;
     }
 
     if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {
