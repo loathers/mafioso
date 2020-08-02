@@ -216,31 +216,31 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.ITEMS.EAT_TARGET,
   },
   // --
-  [ENTRY_TYPE.CONSUMPTION.COMBINE]: {
+  [ENTRY_TYPE.ITEMS.COMBINE]: {
     categories: [CATEGORY_ID.CRAFTING],
     matcher: REGEX.ITEMS.COMBINE_LINE,
     icon: CraftSVG,
     locationName_alt: 'Combine',
   },
-  [ENTRY_TYPE.CONSUMPTION.COOK]: {
+  [ENTRY_TYPE.ITEMS.COOK]: {
     categories: [CATEGORY_ID.CRAFTING],
     matcher: REGEX.ITEMS.COOK_LINE,
     icon: CraftSVG,
     locationName_alt: 'Cook',
   },
-  [ENTRY_TYPE.CONSUMPTION.CRAFT]: {
+  [ENTRY_TYPE.ITEMS.CRAFT]: {
     categories: [CATEGORY_ID.CRAFTING],
     matcher: REGEX.ITEMS.CRAFT_LINE,
     icon: CraftSVG,
     locationName_alt: 'Craft',
   },
-  [ENTRY_TYPE.CONSUMPTION.CREATE]: {
+  [ENTRY_TYPE.ITEMS.CREATE]: {
     categories: [CATEGORY_ID.CRAFTING],
     matcher: REGEX.ITEMS.CREATE_LINE,
     icon: CraftSVG,
     locationName_alt: 'Create',
   },
-  [ENTRY_TYPE.CONSUMPTION.MIX]: {
+  [ENTRY_TYPE.ITEMS.MIX]: {
     categories: [CATEGORY_ID.CRAFTING],
     matcher: REGEX.ITEMS.MIX_LINE,
     icon: CraftSVG,
@@ -300,7 +300,7 @@ export const ENTRY_DATA_MAP = {
   },
   [ENTRY_TYPE.ITEMS.EQUIP_FAMILIAR]: {
     categories: [CATEGORY_ID.FAMILIAR, CATEGORY_ID.OTHER],
-    matcher: REGEX.FAMILIAR.EQUIP_FAMILIAR_TARGETS,
+    matcher: REGEX.FAMILIAR.EQUIP_FAMILIAR_RESULT,
     icon: FamiliarSVG,
     locationName_alt: 'Equip Familiar',
     encounterName_alt: REGEX.FAMILIAR.EQUIP_FAMILIAR_RESULT,

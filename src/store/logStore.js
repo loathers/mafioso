@@ -5,6 +5,7 @@ import {
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
+import {createAbbreviation} from 'constants/ABBREVIATION_MAP';
 import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY} from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
@@ -124,6 +125,10 @@ class LogStore {
   /** @type {String} */
   get pathName() {
     return this.ascensionAttributes.pathName;
+  }
+  /** @type {String} */
+  get pathLabel() {
+    return createAbbreviation(this.difficultyName, this.pathName);
   }
   /** @type {Boolean} */
   get hasAscensionNum() {
@@ -376,7 +381,7 @@ class LogStore {
       return;
     }
 
-    const fileName = `${this.characterName}#${this.ascensionNum}_${this.createPathAcronym()}`;
+    const fileName = `${this.characterName}#${this.ascensionNum}_${this.pathLabel}`;
     download(this.rawText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions
@@ -514,25 +519,6 @@ class LogStore {
   calculatePageLast(entriesPerPage = this.displayOptions.entriesPerPage) {
     const lastPage = Math.ceil(this.visibleEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
-  }
-  /**
-   * @returns {String}
-   */
-  createPathAcronym() {
-    const {
-      difficultyName,
-      pathName,
-    } = this.ascensionAttributes;
-
-    const difficultyMap = {
-      hardcore: 'HC',
-      softcore: 'SC',
-      casual: 'CAS',
-    };
-
-    const difficultyAcronym = difficultyMap[difficultyName.toLowerCase()];
-    const pathAcronym = pathName.split(' ').map((pathText) => pathText.charAt(0)).join('');
-    return (`${difficultyAcronym}_${pathAcronym}`).toUpperCase();
   }
 }
 
