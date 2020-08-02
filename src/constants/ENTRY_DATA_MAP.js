@@ -6,7 +6,7 @@ import {ReactComponent as AscendSVG} from 'images/condor-emblem.svg';
 import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
-import {ReactComponent as NoncombatSVG} from 'images/battle-gear.svg';
+import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 /*
@@ -79,6 +79,25 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.DECK_OF_EVERY_CARD.TEXT,
     icon: InfoSVG,
   },
+  [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
+    matcher: REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Diabolic Pizza',
+  },
+  [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
+    matcher: REGEX.DIABOLIC_PIZZA.EAT_LINE,
+    icon: EatSVG,
+    locationName_alt: 'Diabolic Pizza',
+  },
+  [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE,
+    icon: NoncombatSVG,
+    locationName_alt: 'Your Campsite Away From Your Campsite',
+    encounterName_alt: 'Gaze at the Stars',
+  },
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_TEXT,
@@ -86,16 +105,6 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'May the Fourth Cosplay Saber',
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
-  },
-  [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
-    matcher: REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
-    icon: CraftSVG,
-  },
-  [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
-    matcher: REGEX.DIABOLIC_PIZZA.EAT_LINE,
-    icon: EatSVG,
   },
 };
 // basically becomes a list of `EntryType`s that have a map value

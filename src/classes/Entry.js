@@ -238,14 +238,6 @@ export default class Entry {
       return 'Beach Comb';
     }
 
-    if (this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT) {
-      return 'Diabolic Pizza';
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY) {
-      return 'Your Campsite Away From Your Campsite';
-    }
-
     if (this.entryType === ENTRY_TYPE.IOTM.GARBAGE_TOTE) {
       return 'January\'s Garbage Tote';
     }
@@ -268,12 +260,6 @@ export default class Entry {
 
     if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
       return `♫ ${this.findText(REGEX.SONGBOOM_BOOMBOX.RESULT)} ♫`;
-    }
-
-    if (this.entryType === ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY) {
-      if (this.hasText(REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE)) {
-        return 'Gaze at the Stars'
-      }
     }
 
     if (this.entryType === ENTRY_TYPE.ITEMS.HAGNK_PULL) {

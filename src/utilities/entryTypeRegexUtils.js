@@ -35,10 +35,6 @@ export function getEntryType(entryString) {
  */
 export function getEntryType_legacy(entryString) {
   // -- iotm
-  if (isEntryDistantWoodsGetaway(entryString)) {
-    return ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY;
-  }
-
   if (isEntryBeachComb(entryString)) {
     return ENTRY_TYPE.IOTM.BEACH_COMB;
   }
@@ -347,13 +343,6 @@ export function isEntryNonCombatEncounter(entryString) {
     && !isEntryMafiaMisc(entryString);
 }
 // -- iotm
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isEntryDistantWoodsGetaway(entryString) {
-  return hasString(entryString, REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE);
-}
 /**
  * @param {String} entryString
  * @return {Boolean}
