@@ -264,6 +264,11 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.COMBAT.INITIATIVE_LINE,
     icon: CombatSVG,
   },
+  [ENTRY_TYPE.ENCOUNTER.NONCOMBAT]: {
+    categories: [CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.VALUE.NONCOMBAT_NAME,
+    icon: NoncombatSVG,
+  },
   [ENTRY_TYPE.FAMILIAR]: {
     categories: [CATEGORY_ID.FAMILIARS, CATEGORY_ID.OTHER],
     matcher: REGEX.FAMILIAR.SWITCH_TO_LINE,
