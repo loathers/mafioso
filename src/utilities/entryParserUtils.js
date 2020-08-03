@@ -3,7 +3,7 @@ import ListItem from 'classes/ListItem';
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
 // import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
+import REGEX from 'constants/REGEXES';
 import * as TRACKERS from 'constants/TRACKERS';
 
 import {
@@ -142,9 +142,10 @@ export function parseSpecialAttributes(entryString) {
  * @return {String}
  */
 export function createEntryBody(entryString) {
-  return DISPLAY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
+  const scrubbedBody = DISPLAY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
     return currentString.replace(replacementRegex, '');
-  }, entryString).replace(DIVIDING_NEWLINE_REGEX, '\n');
+  }, entryString);
+  return scrubbedBody.replace(/(\r\n|\n)+/g, '\n');
 }
 /**
  * @param {String} entryString

@@ -49,7 +49,7 @@ export const ENTRY_DATA_MAP = {
     icon: AscendSVG,
     locationName_alt: 'Valhalla',
     encounterName_alt: 'Welcome to Valhalla!',
-    content_alt: null,
+    content_alt: ['☪ The {1}', REGEX.ASCENSION.MOON_SIGN_NAME],
   },
   [ENTRY_TYPE.SNAPSHOT.DAY_INFO]: {
     categories: [CATEGORY_ID.SNAPSHOT_INFO],

@@ -1,6 +1,7 @@
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX, {
+  USELESS_PRE_NEWLINE,
   PRELINE_SPACES,
   EXCESSIVE_NEW_LINES,
 } from 'constants/REGEXES';
@@ -116,7 +117,8 @@ export const DISPLAY_SCRUB_LIST = [
   REGEX.DIABOLIC_PIZZA.EAT_LINE,
   REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE,
   REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_LINE,
-  PRELINE_SPACES,
+  // cleans up blank lines after text is scrubbed 
+  USELESS_PRE_NEWLINE, 
 ];
 // entries that don't need to have any body text
 export const COMBINABLE_ENTRIES_LIST = [

@@ -1,5 +1,6 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
 export const DIVIDING_NEWLINE_REGEX = /$(\r\n|\n)\s*(\r\n|\n)/gm;
+export const USELESS_PRE_NEWLINE = /^\s*/g;
 export const PRELINE_SPACES = /^(\t| )*(?=.)/gm;
 export const EXCESSIVE_NEW_LINES = /(?<=.+$(\r\n|\n)(\r\n|\n))(\r\n|\n)+/gm;
 export const REGEX = {
@@ -14,6 +15,7 @@ export const REGEX = {
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n|$).*?/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy ).*(?= for \d+)/gmi,
+    MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
     PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|softcore|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
@@ -337,7 +339,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|visiting|visit|took choice|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
