@@ -109,6 +109,12 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Cat Burglar',
     encounterName_alt: 'A Heist!',
   },
+  [ENTRY_TYPE.IOTM.CONSPIRACY_ISLAND]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    matcher: REGEX.CONSPIRACY_ISLAND.TEXT,
+    icon: InfoSVG,
+    locationName_alt: 'Conspiracy Island',
+  },
   [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
     matcher: REGEX.BOXING_DAYCARE.NONCOMBAT,
@@ -148,14 +154,6 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
   },
-  [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
-    matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
-    icon: EquipmentSVG,
-    locationName_alt: 'January\'s Garbage Tote',
-    encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
-    content_alt: null,
-  },
   [ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
     matcher: REGEX.GOD_LOBSTER.COMBAT,
@@ -165,6 +163,19 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.GOD_LOBSTER.BOON,
     icon: NoncombatSVG,
+  },
+  [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
+    icon: EquipmentSVG,
+    locationName_alt: 'January\'s Garbage Tote',
+    encounterName_alt: REGEX.JANUARYS_GARBAGE_TOTE.CHOICE_NAME,
+    content_alt: null,
+  },
+  [ENTRY_TYPE.IOTM.KRAMCO_SAUSAGEOMATIC.COMBAT]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.KRAMCO_SAUSAGEOMATIC.COMBAT,
+    icon: CombatSVG,
   },
   [ENTRY_TYPE.IOTM.PILLKEEPER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],

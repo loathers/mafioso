@@ -48,6 +48,11 @@ export const REGEX = {
     USELESS_HEIST_GROUP: /main\.php.*heist=1(\r\n|\n).*(1320\/2).*(\r\n|\n).*$/gi,
     HEISTED: /.*(choice 1320\/1).*/gi,
   },
+  CONSPIRACY_ISLAND: {
+    TEXT: /.*Conspiracy Island.*/gi,
+    CONTROL_PANEL_LINE: /Took choice 986.*/gi,
+    CONTROL_PANEL_RESULT: /(?<=Took choice 986.*: )/gi,
+  },
   DECK_OF_EVERY_CARD: {
     TEXT: /Deck of Every Card/im,
   },
@@ -86,6 +91,12 @@ export const REGEX = {
     USE_RESULT: /(?<=use \d January's garbage tote).*?acquire.*?:.*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gis,
     EQUIP_RESULT: /(?<=equip \w+ ).*?(deceased crimbo tree|broken champagne bottle|tinsel tights|wad of used tape|makeshift garbage shirt)/gi,
   },
+  KRAMCO_SAUSAGEOMATIC: {
+    COMBAT: /^encounter: sausage goblin/mi,
+    EQUIP: /^equip.*kramco sausage.*/gmi,
+    GRIND: /grind/gi,
+    EAT_MAGICAL_SAUSAGE: /^eat \d+ magical sausage/gmi,
+  },
   LATTE_LOVERS_MEMBERS_MUG: {
     FILLED_MUG_LINE: /filled your mug .*/gi,
     UNLOCKED_INGREDIENT_NAME: /(?<=unlocked ).*(?= for latte)/gi,
@@ -119,6 +130,7 @@ export const REGEX = {
   },
   POCKET_PROFESSOR: {
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
+    AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*/gmi,
   },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice.*(\r\n|\n){2,}setting soundtrack.*/gmi,
@@ -325,6 +337,7 @@ export const REGEX = {
     EMPTY_CHECKPOINT: /Created an empty checkpoint.*(\r\n|\n|$)/gi,
     SEND_A_KMAIL: /send a kmail.*(\r\n|\n|$)/gi,
     MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n|$)/gmi,
+    CHOICE_PHP_LINE: /^choice\.php.*/gmi,
   },
   SNAPSHOT_CHECK: {
     CHARACTER_NAME: /(?<=^name: ).*/mi,
