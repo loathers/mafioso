@@ -179,17 +179,13 @@ export const REGEX = {
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
 
-    MCD_CHANGE: /^mcd.*/gim,
-    TELESCOPE: /^telescope.*/gim,
     EQUIP: /^equip.*/gim,
-    UNEQUIP: /^unequip.*/gim,
     HAGNK_PULL: /^pull: .*/gim,
     DIET_GAIN_LINE: /^you gain.*(fullness|drunkenness|spleen).*/gmi,
 
     TALKING: /^talking to.*/gim,
     VISITING: /^visiting.*/gim,
     CLAN_VISIT: /^visiting.*in.*clan.*/gim,
-    SWIMMING_POOL: /.*swimming pool.*/gim,
   },
   VALUE: {
     TURN_NUM: /(?!\[)\d+(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
@@ -243,8 +239,6 @@ export const REGEX = {
     SWITCH_TO_RESULT: /(?<=^familiar ).*/gim,
 
     EQUIP_FAMILIAR_RESULT: /(?<=equip familiar ).*/gi,
-
-    FAMILIAR_WEIGHT_GAIN: /.*(gains a pound).*/gi,
   },
   // -- combat
   COMBAT: {
@@ -381,14 +375,20 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(awesomemenu|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|talking|tutorial|visiting|visit|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    ALWAYS_CATCHALL: /^(awesomemenu|friars blessing|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|eat|drink|chew|talking|took choice|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
     RAFFLE_TEXT: /You acquire raffle ticket/gi,
     USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,
     USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)(\r\n|\n)/gim,
+    SWIMMING_POOL: /.*swimming pool.*(\r\n|\n)/gim,
+
+    FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,
+    UNEQUIP: /^unequip.*(\r\n|\n)/gim,
+    MCD_CHANGE: /^mcd.*(\r\n|\n)/gim,
+    TELESCOPE: /^telescope.*(\r\n|\n)/gim,
   },
 };
 
