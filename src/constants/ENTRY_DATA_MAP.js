@@ -175,7 +175,7 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.KRAMCO_SAUSAGEOMATIC.COMBAT]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
     matcher: REGEX.KRAMCO_SAUSAGEOMATIC.COMBAT,
     icon: CombatSVG,
   },
@@ -370,6 +370,12 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Equip Familiar',
     encounterName_alt: REGEX.FAMILIAR.EQUIP_FAMILIAR_RESULT,
     content_alt: null,
+  },
+  [ENTRY_TYPE.ITEMS.USE_ITEM]: {
+    categories: [CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.ITEMS.USE_ITEM_LINE,
+    icon: ItemBagSVG,
+    locationName_alt: ['Use {1}', REGEX.ITEMS.USE_ITEM_TARGET],
   },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],

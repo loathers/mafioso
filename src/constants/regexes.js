@@ -83,6 +83,7 @@ export const REGEX = {
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
   HEWN_MOON_RUNE_SPOON: {
+    TUNE_MOON: /^tuning moon.*/i,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
@@ -240,7 +241,6 @@ export const REGEX = {
 
     EQUIP_FAMILIAR_RESULT: /(?<=equip familiar ).*/gi,
   },
-  // -- combat
   COMBAT: {
     FREE_COMBAT: /.*combat.*did not cost.*/i,
 
@@ -265,7 +265,6 @@ export const REGEX = {
 
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
   },
-  // -- meat and trades
   TRANSACTIONS: {
     ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
     MEAT_CHANGED_LINE: /.*(gain|lose|spent).*meat.*/gmi,
@@ -283,13 +282,17 @@ export const REGEX = {
     SELL_ITEM_AMOUNT: /(?<=^autosell: )(\d*,*)*/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: (\d*,*)* ).*/gmi,
   },
-  // -- items
   ITEMS: {
     ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
     ACQUIRED_AN_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
     ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire ).*?(?=( \(|$))/mi,
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
+
+    USE_ITEM_LINE: /^use \d+ .*/gmi,
+    USE_ITEM_LINE_FIRST_ONLY: /^use \d+ .*/i,
+    USE_ITEM_AMOUNT: /(?<=^use )\d+/gmi,
+    USE_ITEM_TARGET: /(?<=^use \d+ ).*/gmi,
 
     MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix) .*\d+.*/gmi,
     COMBINE_LINE: /^combine .*\d+.*/gmi,
@@ -322,7 +325,6 @@ export const REGEX = {
     CLOSET_PUT_TARGETS: /(?<=^add to closet: ).*/gi,
     CLOSET_TAKE_TARGETS: /(?<=^take from closet: ).*/gi,
   },
-  // -- effects
   EFFECTS: {
     ACQUIRED_EFFECT_LINE: /.*acquire an (effect|intrinsic):.*/gmi,
     EFFECT_NAME: /(?<=acquire an (effect|intrinsic): ).*?(?=( \(|$))/mi,
@@ -351,6 +353,8 @@ export const REGEX = {
 
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
+
+    MCLUSKY_FILE_AND_USE_BINDER: /.*acquire.*mcclusky file.*(\r\n|\n).*boring bind clip.*/mi,
   },
   // -- kolmafia
   KOLMAFIA: {
