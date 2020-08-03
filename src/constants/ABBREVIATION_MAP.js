@@ -3,7 +3,7 @@
  */
 export function createAbbreviation(difficultyName = '', pathName = '') {
   const difficultyAbbr = DIFFICULTY_MAP[difficultyName.toLowerCase()];
-  const pathAbbr = PATH_MAP[pathName.replace(' ', '_').toLowerCase()];
+  const pathAbbr = PATH_MAP[pathName.replace(/ /g, '_').toLowerCase()];
   return (`${difficultyAbbr}_${pathAbbr}`).toUpperCase();
 }
 /**

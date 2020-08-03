@@ -1,3 +1,4 @@
+import {LOW_KEY_SUMMER_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
@@ -212,6 +213,11 @@ export const ENTRY_DATA_MAP = {
     icon: PathSVG,
     locationName_alt: 'Community Service',
     encounterName_alt: REGEX.COMMUNITY_SERVICE.CHOICE_RESULT,
+  },
+  [ENTRY_TYPE.PATH.LOW_KEY_SUMMER_NONCOMBAT]: {
+    categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
+    matcher: LOW_KEY_SUMMER_ENCOUNTERS,
+    icon: PathSVG,
   },
   // --
   [ENTRY_TYPE.QUEST.TOOT_ORIOLE]: {

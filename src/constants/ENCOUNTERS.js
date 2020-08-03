@@ -116,3 +116,31 @@ export const CLOVER_ENCOUNTERS = [
   'A Case of the Baskets',
   'Beginner\'s Luck',
 ];
+/**
+ * https://kol.coldfront.net/thekolwiki/index.php/Low_Key_Summer
+ */
+export const LOW_KEY_SUMMER_ENCOUNTERS = [
+  'Lucky For You',
+  'Just Taking the Opportunity to be a Pedant',
+  'Midnight Sun',
+  'Not a Lot Left',
+  'Getting the Shaft Key',
+  'Lost in Translation',
+  'OF Ice & Yetis',
+  'Batting a Thousand',
+  'It\'s a Weremoose Key',
+  'Into the Fryer',
+  'Carpool Lane',
+  'F=ma',
+  'You Found a Thing, in Hell',
+  'One Man\'s Trash is Presumably the Key to Another Man\'s Treasure',
+  'Larrrst & Found',
+  'B\'c\'le Up',
+  'Yo-ho-ho in the Ho-ho-hold‎',
+  'Hola, Amigos',
+  'Decisions, Shmecisions',
+  'Made of Stars',
+  'Lore of the Roses',
+  'Pork Key\'s Revenge',
+  'Jerk-in-the-Box',
+];
