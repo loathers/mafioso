@@ -87,7 +87,7 @@ export const REGEX = {
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
-    AFTER_BATTLE_LINEBREAK_GROUP: /^after battle.*(\r\n|\n).*crown gains.*(\r\n|\n){2}.*after battle.*/gmi,
+    AFTER_BATTLE_LINEBREAK_GROUP: /^after battle.*(\r\n|\n).*crown gains.*(\r\n|\n){2,}.*after battle.*/gmi,
   },
   JANUARYS_GARBAGE_TOTE: {
     USE_FOLDABLE: /^use \d January's garbage tote/mi,
@@ -171,6 +171,8 @@ export const REGEX = {
     STAFF_AND_DESERT_GROUP: /(combine.*(ancient amulet|eye of ed|headpiece of ed|staff of fats|staff of ed).*(amulet|eye of ed|headpiece of ed|staff of fats|staff of ed)$(\r\n|\n).*acquire.*staff of ed.*$(\r\n|\n){2}){2}.*desertbeach.*db_pyramid1.*/gmi,
     OPEN_DESERT_PYRAMID: /place.*desertbeach.*db_pyramid1/mi,
     USELESS_DESERT_PYRAMID: /(?<!.*(staff of ed|ancient amulet|eye of ed).*(\r\n|\n))(\r\n|\n).*desertbeach.*db_pyramid1.*/gmi,
+
+    COMBINE_WAND_GROUP: /(^combine.*(metallic A|ruby W|lowercase n|heavy d|WA|ND).*(\r\n|\n).*(\r\n|\n){1,2}){2}/mi,
   },
   // -- common
   LINE: {
@@ -290,17 +292,17 @@ export const REGEX = {
   // -- items
   ITEMS: {
     ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
-    // ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
+    ACQUIRED_AN_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
     ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire ).*?(?=( \(|$))/mi,
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
-    MAKE_SOMETHING_LINE: /(create|combine|craft|cook|mix).*\d+.*/gmi,
-    COMBINE_LINE: /combine.*\d+.*/gmi,
-    COOK_LINE: /cook.*\d+.*/gmi,
-    CRAFT_LINE: /craft .*\d+.*/gmi,
-    CREATE_LINE: /create.*\d+.*/gmi,
-    MIX_LINE: /mix.*\d+.*/gmi,
+    MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix) .*\d+.*/gmi,
+    COMBINE_LINE: /^combine .*\d+.*/gmi,
+    COOK_LINE: /^cook .*\d+.*/gmi,
+    CRAFT_LINE: /^craft .*\d+.*/gmi,
+    CREATE_LINE: /^create .*\d+.*/gmi,
+    MIX_LINE: /^mix .*\d+.*/gmi,
     CRAFTING_USED_LINE: /^crafting used .*(\r\n|\n)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
