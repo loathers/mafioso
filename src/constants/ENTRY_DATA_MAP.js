@@ -385,9 +385,16 @@ export const ENTRY_DATA_MAP = {
     icon: ItemBagSVG,
     locationName_alt: ['Use {1}', REGEX.ITEMS.USE_ITEM_TARGET],
   },
+  [ENTRY_TYPE.AUTOSELL]: {
+    categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],
+    matcher: REGEX.TRANSACTIONS.AUTOSELL,
+    icon: ShopSVG,
+    locationName_alt: 'Autosell',
+    encounterName_alt: REGEX.TRANSACTIONS.SELL_ITEM_TARGET,
+  },
   [ENTRY_TYPE.TRANSACTION]: {
     categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],
-    matcher: [REGEX.TRANSACTIONS.AUTOSELL, REGEX.TRANSACTIONS.SHOPPING],
+    matcher: [REGEX.TRANSACTIONS.SHOPPING, REGEX.TRANSACTIONS.TRADING_LINE],
     icon: ShopSVG,
   },
   [ENTRY_TYPE.VISITING]: {

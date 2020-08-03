@@ -34,9 +34,10 @@ export const REGEX = {
     TEXT: /Bastille Battalion/im,
   },
   BEACH_COMB: {
-    COMB_SQUARE_LINE: /^Combing square.*/gmi,
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
+    
+    COMB_SQUARE_LINE: /^Combing square.*(\r\n|\n)/gmi,
   },
   BIRD_A_DAY: {
     USE_LINE: /^use.*bird-a-day calendar.*/gmi,
@@ -73,6 +74,8 @@ export const REGEX = {
     USE_THE_FORCE_CHOICE_LINE: /Took choice 1387.*/gi,
     UPGRADE_TEXT: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
     UPGRADE_CHOICE: /(?<=^Took choice 1386.*: ).*/gmi,
+
+    USELESS_UPGRADE_LINE: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n)/mi,
   },
   FORTUNE_TELLER: {
     CONSULT_TEXT: /(.*choice 1278.*: ).*/gi,
@@ -273,6 +276,8 @@ export const REGEX = {
     SHOPPING: /.*buy.*for.*from.*/gmi,
     MEAT_SPENT: /.*spent.*meat.*/gi,
 
+    TRADING_LINE: /^trading.*for.*/gmi,
+
     MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
     MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
     
@@ -345,12 +350,12 @@ export const REGEX = {
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
 
-    MOON_SNAPSHOT: / > moon.*?(?= >)/mis,
-    STATUS_SNAPSHOT: / > status.*?(?= >)/mis,
-    EQUIPMENT_SNAPSHOT: / > equipment.*?(?= >)/mis,
-    SKILLS_SNAPSHOT: / > skills.*?(?= >)/mis,
-    EFFECTS_SNAPSHOT: / > effects.*?(?= >)/mis,
-    MODIFIERS_SNAPSHOT: / > modifiers.*?(?==-)/mis,
+    MOON_SNAPSHOT: /> moon.*?(?=>)/mis,
+    STATUS_SNAPSHOT: /> status.*?(?=>)/mis,
+    EQUIPMENT_SNAPSHOT: /> equipment.*?(?=>)/mis,
+    SKILLS_SNAPSHOT: /> skills.*?(?=>)/mis,
+    EFFECTS_SNAPSHOT: /> effects.*?(?=>)/mis,
+    MODIFIERS_SNAPSHOT: /> modifiers.*?(?==-)/mis,
 
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
@@ -381,7 +386,7 @@ export const REGEX = {
   // -- misc
   PREREMOVE: {
     ALWAYS_CATCHALL: /^(awesomemenu|friars blessing|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|eat|drink|chew|talking|took choice|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
