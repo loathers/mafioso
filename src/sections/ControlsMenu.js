@@ -112,7 +112,7 @@ function ControlsMenu(props) {
 
       <Button 
         onClick={() => appStore.toggleCompactMode()}
-        className='fontsize-2 pad-2 flex-none adjacent-mar-t-5'>
+        className='fontsize-2 pad-3 flex-none adjacent-mar-t-5'>
         Toggle Compact Mode
       </Button>
 

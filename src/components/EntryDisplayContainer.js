@@ -67,7 +67,7 @@ export default function EntryDisplayContainer(props) {
             entry={entry}
             className='flex-auto adjacent-mar-t-3' />
 
-          { !isShowCompact &&
+          { !isShowCompact && entry.hasEntryBodyData &&
             <EntryBodyContainer 
               entry={entry}
               className='flex-auto adjacent-mar-t-3' />
@@ -274,7 +274,7 @@ function EntryBodyContainer(props) {
         }
 
         {/* hp */}
-        { entry.attributes.healthChanges.length > 0 &&
+        { entry.hasHealthChanges &&
           <SingleDisplay 
             IconComponent={HealthSVG}
             className='mar-2'
@@ -282,7 +282,7 @@ function EntryBodyContainer(props) {
         }
 
         {/* mp */}
-        { entry.attributes.manaChanges.length > 0 &&
+        { entry.hasManaChanges &&
           <SingleDisplay 
             IconComponent={ManaSVG}
             className='mar-2'

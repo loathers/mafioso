@@ -139,6 +139,18 @@ export default class Entry {
   get hasContentDisplay() {
     return this.contentDisplay !== null && this.contentDisplay !== undefined;
   }
+  /** @type {Boolean} */
+  get hasEntryBodyData() {
+    return this.hasContentDisplay
+      || this.hasDiabolicPizzaIngredients
+      || this.hasStatChanges
+      || this.hasAcquiredEffects
+      || this.hasAcquiredItems
+      || this.hasAdventureChanges
+      || this.hasMeatChanges
+      || this.hasHealthChanges
+      || this.hasManaChanges;
+  }
   /** @type {ReactComponent} */
   get entryIcon() {
     return this.entryData.icon;
@@ -172,6 +184,14 @@ export default class Entry {
   /** @type {Boolean} */
   get hasInventoryChanges() {
     return this.hasMeatChanges || this.hasAcquiredItems;
+  }
+  /** @type {Number} */
+  get hasHealthChanges() {
+    return this.attributes.healthChanges.length > 0;
+  }
+  /** @type {Number} */
+  get hasManaChanges() {
+    return this.attributes.manaChanges.length > 0;
   }
   /** @type {Number} */
   get adventureDisplay() {
