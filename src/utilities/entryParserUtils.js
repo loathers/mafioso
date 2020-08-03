@@ -532,6 +532,11 @@ export function parseAttackName(entryString) {
     return useItemName[0].toUpperCase();
   }
 
+  const tryToStealText = getRegexMatch(entryString, REGEX.COMBAT.TRY_TO_STEAL);
+  if (tryToStealText) {
+    return tryToStealText[0].toUpperCase();
+  }
+
   return 'unknown attack';
 }
 /**

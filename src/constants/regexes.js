@@ -186,7 +186,6 @@ export const REGEX = {
     CLAN_VISIT: /^visiting.*in.*clan.*/gim,
     SWIMMING_POOL: /.*swimming pool.*/gim,
   },
-
   VALUE: {
     TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
     LOCATION_NAME: /(?<=\]\s).*/,
@@ -254,7 +253,8 @@ export const REGEX = {
 
     ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
     SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,
-    
+    TRY_TO_STEAL: /(?<=^Round .*)tries to steal.*(?=!)/gmi,
+
     REPLACED_LINE: /^round.*becomes.*/gmi,
     REPLACED_NAME: /(?<=becomes ).*(?=!)/gi,
 
