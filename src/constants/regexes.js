@@ -1,7 +1,7 @@
 export const NEW_LINE_REGEX = /(\r\n|\n)/g;
 export const DIVIDING_NEWLINE_REGEX = /$(\r\n|\n)\s*(\r\n|\n)/gm;
 export const USELESS_PRE_NEWLINE = /^\s*/g;
-export const PRELINE_SPACES = /^(\t| )*(?=.)/gm;
+export const PRELINE_SPACES = /^(\t| )+(?=.)/gm;
 export const EXCESSIVE_NEW_LINES = /(?<=.+$(\r\n|\n)(\r\n|\n))(\r\n|\n)+/gm;
 export const REGEX = {
   // -- important
@@ -87,6 +87,7 @@ export const REGEX = {
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
+    AFTER_BATTLE_LINEBREAK_GROUP: /^after battle.*(\r\n|\n).*crown gains.*(\r\n|\n){2}.*after battle.*/gmi,
   },
   JANUARYS_GARBAGE_TOTE: {
     USE_FOLDABLE: /^use \d January's garbage tote/mi,
@@ -110,6 +111,8 @@ export const REGEX = {
     THROW_LATTE_LINE: /.*Throw Latte on Opponent.*/gi,
     OFFER_LATTE_LINE: /.*Offer Latte to Opponent.*/gi,
     GULP_LATTE_LINE: /.*gulp latte.*/gi,
+
+    DO_NOTHING_CHOICE: /^took choice.*1329.*don't get a fill-up/gmi,
   },
   MELODRAMEDARY: {
     SPIT_ON_SOMETHING_LINE: /(?<=^Round ).*spit on.*/gim,
@@ -137,7 +140,7 @@ export const REGEX = {
   POCKET_PROFESSOR: {
     LECTURE_USE_LINE: /.*(lecture on).*/gi,
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
-    AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*/gmi,
+    AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*(\r\n|\n)/gmi,
   },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice.*(\r\n|\n){2,}setting soundtrack.*/gmi,
@@ -343,12 +346,12 @@ export const REGEX = {
   GROUP: {
     ASCENSION_SNAPSHOT: /^(Ascension)/m,
 
-    MOON_SNAPSHOT: /(> moon).*?(?=\s\s> status)/gmis,
-    STATUS_SNAPSHOT: /(> status).*?(?=\s\s> equipment)/gmis,
-    EQUIPMENT_SNAPSHOT: /(> equipment).*?(?=\s\s> skills)/gmis,
-    SKILLS_SNAPSHOT: /(> skills).*?(?=\s\s> effects)/gmis,
-    EFFECTS_SNAPSHOT: /(> effects).*?(?=\s\s> modifiers)/gmis,
-    MODIFIERS_SNAPSHOT: /(> modifiers).*?(?=(\r\n|\n){3,})/gmis,
+    MOON_SNAPSHOT: / > moon.*?(?= >)/mis,
+    STATUS_SNAPSHOT: / > status.*?(?= >)/mis,
+    EQUIPMENT_SNAPSHOT: / > equipment.*?(?= >)/mis,
+    SKILLS_SNAPSHOT: / > skills.*?(?= >)/mis,
+    EFFECTS_SNAPSHOT: / > effects.*?(?= >)/mis,
+    MODIFIERS_SNAPSHOT: / > modifiers.*?(?==-)/mis,
 
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
@@ -377,8 +380,8 @@ export const REGEX = {
   // -- misc
   PREREMOVE: {
     ALWAYS_CATCHALL: /^(awesomemenu|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|tutorial|visiting|visit|took choice|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
-    NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|talking|tutorial|visiting|visit|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
     RAFFLE_TEXT: /You acquire raffle ticket/gi,
