@@ -54,6 +54,7 @@ function App() {
             { logStore.hasCurrentEntries &&
               <VisualizerSection 
                 entriesList={logStore.currentEntries}
+                isUsingCompactMode={appStore.isUsingCompactMode.get()}
                 className='adjacent-mar-t-5'
               />
             }

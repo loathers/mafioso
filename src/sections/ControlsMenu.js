@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 
 import {ENTRY_TYPE_FILTERS_SETTINGS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 
-// import appStore from 'store/appStore';
+import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import Button from 'components/Button';
@@ -109,6 +109,12 @@ function ControlsMenu(props) {
             className='adjacent-mar-t-3' />
         </div>
       }
+
+      <Button 
+        onClick={() => appStore.toggleCompactMode()}
+        className='fontsize-2 pad-2 flex-none adjacent-mar-t-5'>
+        Toggle Compact Mode
+      </Button>
 
       {/* filters */}
       <FiltersMenu 

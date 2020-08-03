@@ -1,3 +1,4 @@
+import {observable} from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 import logStore from 'store/logStore';
@@ -8,6 +9,9 @@ import logStore from 'store/logStore';
 class AppStore {
   constructor() {
     this.appId = uuidv4();
+
+    /** @type {Boolean} */
+    this.isUsingCompactMode = observable.box(false);
   }
   // -- state
   /** @type {Boolean} */
@@ -26,6 +30,18 @@ class AppStore {
   /** @type {Boolean} */
   get currentEntries() {
     return logStore.currentEntries;
+  }
+  // --
+  /**
+   * @param {Boolean} [toState]
+   */
+  toggleCompactMode(toState) {
+    if (toState === undefined) {
+      this.isUsingCompactMode.set(!this.isUsingCompactMode.get());
+      console.log('toggle', this.isUsingCompactMode.get())
+    } else {
+      this.isUsingCompactMode.set(toState);
+    }
   }
 }
 /** export singleton */

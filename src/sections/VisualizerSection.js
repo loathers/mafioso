@@ -14,6 +14,7 @@ function VisualizerSection(props) {
   const {
     className,
     entriesList = [],
+    isUsingCompactMode,
   } = props;
 
   return (

@@ -1,6 +1,4 @@
-import {
-  observable,
-} from 'mobx';
+import {observable} from 'mobx';
 
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
