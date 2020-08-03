@@ -473,6 +473,11 @@ export default class Entry {
       return true;
     }
 
+    // Eatin' sausages
+    if (this.hasText(REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE) && comparedEntry.hasText(REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE)) {
+      return true;
+    }
+
     // (deluxe) mr klaw - incomplete
     if (this.hasText(/mr. klaw/i) && comparedEntry.hasText(/mr. klaw/i)) {
       return true;
