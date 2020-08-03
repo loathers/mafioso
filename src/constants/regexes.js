@@ -200,6 +200,9 @@ export const REGEX = {
   },
   // -- character
   CHARACTER: {
+    CHARACTER_NAME: /(?<=^name: ).*/mi,
+    CLASS_NAME: /(?<=^class: ).*/mi,
+
     ADV_CHANGE_LINE: /.*(gain|lose).*\d*adventure.*/gi,
     ADV_GAINS: /(?<=gain )\d+(?= adventure)/gi,
     ADV_LOSSES: /(?<=lose )\d+(?= adventure)/gi,
@@ -362,7 +365,6 @@ export const REGEX = {
     CHOICE_PHP_LINE: /^choice\.php.*/gmi,
   },
   SNAPSHOT_CHECK: {
-    CHARACTER_NAME: /(?<=^name: ).*/mi,
     CONTAIN_MOON: /(> moon)/i,
     CONTAIN_STATUS: /(> status)/i,
     CONTAIN_EQUIPMENT: /(> equipment)/i,

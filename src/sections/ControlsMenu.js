@@ -93,7 +93,7 @@ function ControlsMenu(props) {
 
               { logStore.hasCharacterName &&
                 <h2 className='color-gray fontsize-2 adjacent-mar-t-1'>
-                  {`${logStore.characterName}`}
+                  {`${logStore.characterName} - ${logStore.ascensionAttributes.className}`}
                 </h2>
               }
             </div>

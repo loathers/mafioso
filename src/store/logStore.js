@@ -31,6 +31,8 @@ class LogStore {
     this.ascensionAttributes = {
       /** @type {String} */
       characterName: undefined,
+      /** @type {String} */
+      className: undefined,
       /** @type {Number} */
       ascensionNum: undefined,
       /** @type {AscensionDifficulty} */
@@ -112,6 +114,10 @@ class LogStore {
   get characterName() {
     return this.ascensionAttributes.characterName;
   }
+  /** @type {String} */
+  get className() {
+    return this.ascensionAttributes.className;
+  }
   /** @type {Number} */
   get ascensionNum() {
     return this.ascensionAttributes.ascensionNum;
@@ -170,6 +176,7 @@ class LogStore {
     this.isAscensionLog = false;
     this.ascensionAttributes = {
       characterName: undefined,
+      className: undefined,
       ascensionNum: undefined,
       difficultyName: undefined,
       pathName: undefined,
