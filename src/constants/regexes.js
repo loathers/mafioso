@@ -27,6 +27,9 @@ export const REGEX = {
     NAUGHTY_SORCERESS: /.*The Naughty Sorceress.*/i,
   },
   // -- iotm
+  ASDON_MARTIN: {
+    CONVERTING_LINE: /^converting.*/gim,
+  },
   BASTILLE_BATTALION: {
     TEXT: /Bastille Battalion/im,
   },
@@ -97,6 +100,9 @@ export const REGEX = {
     GRIND: /grind/gi,
     EAT_MAGICAL_SAUSAGE: /^eat \d+ magical sausage/gmi,
   },
+  KREMLINS_GREATEST_BRIEFCASE: {
+    FIDDLING: /^place.*kgb.*/gim,
+  },
   LATTE_LOVERS_MEMBERS_MUG: {
     FILLED_MUG_LINE: /filled your mug .*/gi,
     UNLOCKED_INGREDIENT_NAME: /(?<=unlocked ).*(?= for latte)/gi,
@@ -129,6 +135,7 @@ export const REGEX = {
     LOCATION: /(?<=^\[.*\] ).*piraterealm.*/gmi,
   },
   POCKET_PROFESSOR: {
+    LECTURE_USE_LINE: /.*(lecture on).*/gi,
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
     AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*/gmi,
   },
@@ -260,15 +267,15 @@ export const REGEX = {
     SHOPPING: /.*buy.*for.*from.*/gmi,
     MEAT_SPENT: /.*spent.*meat.*/gi,
 
-    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?=\s+meat)/gi,
-    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?=\s+meat)/gi,
+    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
+    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
     
-    BUY_ITEM_AMOUNT: /(?<=buy\s)\d+/gi,
-    BUY_ITEM_COST: /(?<=for\s)\d+(?=\seach)/gi,
+    BUY_ITEM_AMOUNT: /(?<=buy\s)(\d*,*)*/gi,
+    BUY_ITEM_COST: /(?<=for\s)(\d*,*)*(?=\seach)/gi,
     
     AUTOSELL: /^autosell:.*/gmi,
-    SELL_ITEM_AMOUNT: /(?<=^autosell: )\d+/gmi,
-    SELL_ITEM_TARGET: /(?<=^autosell: \d+ ).*/gmi,
+    SELL_ITEM_AMOUNT: /(?<=^autosell: )(\d*,*)*/gmi,
+    SELL_ITEM_TARGET: /(?<=^autosell: (\d*,*)* ).*/gmi,
   },
   // -- items
   ITEMS: {
@@ -362,7 +369,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(awesomemenu|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|tutorial|visiting|visit|took choice|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 

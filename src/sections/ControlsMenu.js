@@ -71,33 +71,36 @@ function ControlsMenu(props) {
       <LogoComponent 
         className='adjacent-mar-t-5'/>
 
-      <UploadComponent
-        content={'Upload new logs'}
-        className='width-full adjacent-mar-t-5' />
+      <div className='flex-col adjacent-mar-t-5'>
+        <UploadComponent
+          content={'Upload new logs'}
+          className='fontsize-5 width-full adjacent-mar-t-2' />
 
-      <Button 
-        onClick={() => logStore.downloadFullLog()}
-        disabled={!logStore.isReady}
-        className='borradius-1 flex-col pad-3 adjacent-mar-t-5'>
-          <div className='fontsize-7 adjacent-mar-t-4'>Download Log</div>
+        <Button 
+          onClick={() => logStore.downloadFullLog()}
+          disabled={!logStore.isReady}
+          className='borradius-1 flex-col pad-3 adjacent-mar-t-2'>
+          <div className='fontsize-5 adjacent-mar-t-4'>Download Log</div>
 
           { (logStore.hasAscensionNum || logStore.hasCharacterName) &&
             <div className='adjacent-mar-t-4'>
               {/** info */}
               { logStore.hasAscensionNum &&
-                <h2 className='fontsize-4 adjacent-mar-t-1'>
+                <h2 className='fontsize-3 adjacent-mar-t-1'>
                   {`Ascension #${logStore.ascensionNum}`}
                 </h2>
               }
 
               { logStore.hasCharacterName &&
-                <h2 className='color-gray fontsize-3 adjacent-mar-t-1'>
+                <h2 className='color-gray fontsize-2 adjacent-mar-t-1'>
                   {`${logStore.characterName}`}
                 </h2>
               }
             </div>
           }
-      </Button>
+        </Button>
+      </div>
+
 
       {/* pagination */}
       { logStore.hasParsedEntries &&
@@ -118,27 +121,45 @@ function ControlsMenu(props) {
         {compactDisplay}
       </Button>
 
-      {/* filters */}
-      <FiltersMenu 
-        label='Visible Categories'
-        defaultList={categoriesVisibleList}
-        onChange={onChangeVisibleEntries}
-        inputType='checkbox'
-        className='adjacent-mar-t-5'/>
+      {/* change visible entries */}
+      <div className='flex-col adjacent-mar-t-5'>
+        <FiltersMenu 
+          label='Visible Categories'
+          defaultList={categoriesVisibleList}
+          onChange={onChangeVisibleEntries}
+          inputType='checkbox'
+          className='adjacent-mar-t-2'/>
 
-      <Button
-        onClick={() => onApplyEntries(categoriesVisibleList)}
-        disabled={!logStore.isReady} 
-        className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-5'>
-        Apply
-      </Button>
+        <Button
+          onClick={() => onApplyEntries(categoriesVisibleList)}
+          disabled={!logStore.isReady} 
+          className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
+          Apply
+        </Button>
+      </div>
 
-      <FiltersMenu 
-        label='Filter Attributes'
-        defaultList={attributeFiltersList}
-        onChange={onChangeAttributes}
-        inputType='radio'
-        className='adjacent-mar-t-5'/>
+      {/* filter by attribute */}
+      <label 
+        htmlFor='attribute-filter-selector'
+        className='adjacent-mar-t-5'>
+        <div className='fontsize-3 adjacent-mar-t-2'>Filter Attributes</div>
+        <select 
+          onChange={(evt) => {
+            console.log('select', evt.target.value);
+          }}
+          className='color-white bg-second borradius-1 fontsize-3 pad-3 width-full adjacent-mar-t-2'
+          id='attribute-filter-selector'>
+          { attributeFiltersList.map((filterData, idx) => (
+            <option 
+              className='fontsize-2'
+              key={`option-${idx}-key`}
+              value={filterData.attributeName}>
+              {filterData.label}
+            </option>
+          ))
+          }
+        </select>
+      </label>
     </div>
   );
 });
@@ -157,12 +178,12 @@ function FullPageMenu(props) {
       className={combineClassnames('fontsize-4 flex-col flex-none', className)}>
 
       <LogoComponent 
-        className='adjacent-mar-t-5'/>
+        className='adjacent-mar-t-2'/>
 
       <UploadComponent
         content={'Upload or drop in your session logs! I\'ll attempt to find a full ascension if you upload multiple logs.'}
         style={{height: '70vh', width: '100%'}}
-        className='width-full flex-auto adjacent-mar-t-5' />
+        className='width-full flex-auto adjacent-mar-t-2' />
     </div>
   )
 }

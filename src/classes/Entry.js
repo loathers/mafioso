@@ -356,7 +356,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasPocketProfessor() {
-    return this.hasText(REGEX.POCKET_PROFESSOR.SKILL_USE_LINE);
+    return this.hasText(REGEX.POCKET_PROFESSOR.LECTURE_USE_LINE);
   }
   /** @type {Boolean} */
   get hasDiabolicPizzaIngredients() {
