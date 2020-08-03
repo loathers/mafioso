@@ -166,6 +166,14 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.GOD_LOBSTER.BOON,
     icon: NoncombatSVG,
   },
+  [ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.HEWN_MOON_RUNE_SPOON.TUNE_MOON_LINE,
+    icon: InfoSVG,
+    locationName_alt: 'Hewn Moon Rune Spoon Tune',
+    encounterName_alt: ['☪ {1}', REGEX.HEWN_MOON_RUNE_SPOON.TUNE_MOON_RESULT],
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],

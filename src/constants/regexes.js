@@ -83,7 +83,8 @@ export const REGEX = {
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
   },
   HEWN_MOON_RUNE_SPOON: {
-    TUNE_MOON: /^tuning moon.*/i,
+    TUNE_MOON_LINE: /^tuning moon.*/i,
+    TUNE_MOON_RESULT: /(?<=^tuning moon to ).*/mi,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
