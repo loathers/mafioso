@@ -9,16 +9,15 @@ export default function LogoComponent(props) {
   } = props;
 
   const textStyle = {
-    letterSpacing: 5,
+    letterSpacing: 1,
   };
 
   return (
     <h1
       style={{fontSize: 30}} 
-      className={combineClassnames('color-white fontfamily-logo flex-col flex-none', className)}>
-      <div style={textStyle} className='flex-none'>KOL</div>
-      <div style={textStyle} className='flex-none'>LOG</div>
-      <div style={textStyle} className='flex-none'>VIS</div>
+      className={combineClassnames('color-white fontfamily-tertiary flex-col flex-none', className)}>
+      <div style={textStyle} className='flex-none'>kol</div>
+      <div style={textStyle} className='flex-none'>mafioso</div>
     </h1>
   )
 }

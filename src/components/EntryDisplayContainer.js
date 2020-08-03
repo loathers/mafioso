@@ -65,7 +65,7 @@ export default function EntryDisplayContainer(props) {
         <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
           <EntryHeaderContainer 
             entry={entry}
-            className='flex-auto adjacent-mar-t-3' />
+            className='flex-none adjacent-mar-t-3' />
 
           { !isShowCompact && entry.hasEntryBodyData &&
             <EntryBodyContainer 
