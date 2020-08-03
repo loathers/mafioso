@@ -108,21 +108,21 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Level Up',
+    label: 'Leveled Up',
     attributeName: 'isLevelUp',
     attributeValue: true,
     isHidden: false,
     checked: false,
   },
   {
-    label: 'Grabbin \' Pills',
+    label: 'Pill Keeper Uses',
     attributeName: 'isPillKeeper',
     attributeValue: true,
     isHidden: false,
     checked: false,
   },
   {
-    label: 'Using the Force',
+    label: 'Used the Force',
     attributeName: 'isEndedByUseTheForce',
     attributeValue: true,
     isHidden: false,
@@ -185,7 +185,7 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Melodramedary Spit',
+    label: 'Melodramedary Spat',
     attributeName: 'hasMelodramedary',
     attributeValue: true,
     isHidden: false,
@@ -202,7 +202,7 @@ export const ATTRIBUTE_FILTERS = [
     label: 'Latte Ingredient Unlock',
     attributeName: 'hasLatteIngredientUnlock',
     attributeValue: true,
-    isHidden: true,
+    isHidden: false,
     checked: false,
   },
   {
@@ -220,7 +220,7 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Free Adventure',
+    label: 'Free Fights',
     attributeName: 'isFreeAdv',
     attributeValue: true,
     isHidden: false,

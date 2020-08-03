@@ -25,12 +25,12 @@ export default function EntryDisplayContainer(props) {
   const {
     className,
     entry,
-    isUsingCompactMode,
+    isUsingCompactMode = true,
   } = props;
 
   const [isSelected, toggleSelected] = React.useState(false); // internal selection
   const [isShowRaw, toggleShowRaw] = React.useState(false); // show raw data
-  const [isShowCompact, toggleCompact] = React.useState(false); // compact mode
+  const [isShowCompact, toggleCompact] = React.useState(true); // compact mode
 
   React.useEffect(() => {
       toggleCompact(isUsingCompactMode);

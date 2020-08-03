@@ -106,7 +106,7 @@ function ControlsMenu(props) {
       { logStore.hasParsedEntries &&
         <div className='flex-col flex-none adjacent-mar-t-5'>
           <div className='fontsize-3 pad-2 flex-row-center adjacent-mar-t-3'>
-            {`Page ${logStore.currentPageNum + 1}/${logStore.calculatePageLast() + 1} - Entries ${logStore.currentCount}/${logStore.visibleCount}`}
+            {`Page ${logStore.currentPageNum + 1}/${logStore.calculatePageLast() + 1} - ${logStore.visibleCount} Entries`}
           </div>
           <SimplePaginator
             onChangePage={onApplyChangePage}
