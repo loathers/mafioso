@@ -342,6 +342,10 @@ export default class Entry {
   get hasDiabolicPizzaIngredients() {
     return this.attributes.diabolicPizzaIngredients.length > 0;
   }
+  /** @type {Boolean} */
+  get hasVampyricCloake() {
+    return this.hasText(REGEX.VAMPYRIC_CLOAK.SKILL_RESULT);
+  }
   // -- utility
   /**
    * @return {Object}

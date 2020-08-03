@@ -140,6 +140,9 @@ export const REGEX = {
   SNOJO: {
     VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
   },
+  VAMPYRIC_CLOAK: {
+    SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat)*/gi,
+  },
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
     DAILY_VOTE_TEXT: /Daily Loathing Ballot/i,
