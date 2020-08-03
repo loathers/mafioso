@@ -14,7 +14,7 @@ export const REGEX = {
 
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n|$).*?/gmis,
-    ASTRAL_SHOPPING_NAME: /(?<=buy ).*(?= for \d+)/gmi,
+    ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for \d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
@@ -255,6 +255,7 @@ export const REGEX = {
   TRANSACTIONS: {
     ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
     MEAT_CHANGED_LINE: /.*(gain|lose|spent).*meat.*/gmi,
+    BUY_AND_ACQUIRE: /buy.*(\r\n|\n)you acquire.*/gmi,
     SHOPPING: /.*buy.*for.*from.*/gmi,
     MEAT_SPENT: /.*spent.*meat.*/gi,
 

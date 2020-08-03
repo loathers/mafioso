@@ -269,7 +269,7 @@ export function parseAcquiredItems(entryString) {
       name: itemName[0].replace(/an item: /im, ''),
       amount: itemAmount[0] || 1,
     });
-  })
+  });
 }
 /**
  * @param {String} entryString
