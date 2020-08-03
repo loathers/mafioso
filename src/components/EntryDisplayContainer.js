@@ -9,6 +9,7 @@ import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
+import Button from 'components/Button';
 import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
@@ -41,66 +42,65 @@ export default function EntryDisplayContainer(props) {
   }, [isSelected]);
   
   return (
-    <button 
-      onClick={() => toggleSelected(!isSelected)} 
-      className={combineClassnames('bg-second hover:bg-second-lighter overflow-hidden flex-row pad-2 borradius-2 position-relative', className)}>
-
-      {/* adventure num column */}
-      <EntryAdventureColumn 
-        entry={entry}
-        className='adjacent-mar-l-4 flex-none'
-        style={{width: 35}} />
-
-      {/* icon column */}
-      <EntryIconColumn
-        entry={entry}
-        className='adjacent-mar-l-4 flex-none' />
-
-      { !isShowRaw && 
-        <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
-          <EntryHeaderContainer 
-            entry={entry}
-            className='flex-none adjacent-mar-t-2' />
-
-          { !isShowCompact && entry.hasEntryBodyData &&
-            <EntryBodyContainer 
-              entry={entry}
-              className='flex-auto adjacent-mar-t-2' />
-          }
-        </div>
-      }
-
-      {/* combat */}
-      { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
-        <CombatSequenceDisplay 
+    <div className={combineClassnames('flex-row position-relative', className)}>
+      <Button
+        onClick={() => toggleSelected(!isSelected)}
+        className='borradius-l-2 pad-2 overflow-hidden flex-row flex-auto' >
+        {/* adventure num column */}
+        <EntryAdventureColumn 
           entry={entry}
-          className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
-      }
+          className='adjacent-mar-l-4 flex-none'
+          style={{width: 35}} />
 
-      {/* debug stuff */}
-      { isShowRaw &&
-        <div className='borradius-1 pad-3 pad-r-8 flex-row flex-auto bg-fourth adjacent-mar-l-4'>
-          <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
-            {entry.rawText}
-          </div>
+        {/* icon column */}
+        <EntryIconColumn
+          entry={entry}
+          className='adjacent-mar-l-4 flex-none' />
 
-          <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
-            {JSON.stringify(entry.export(), null, 4)}
+        { !isShowRaw && 
+          <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
+            <EntryHeaderContainer 
+              entry={entry}
+              className='flex-none adjacent-mar-t-2' />
+
+            { !isShowCompact && entry.hasEntryBodyData &&
+              <EntryBodyContainer 
+                entry={entry}
+                className='flex-auto adjacent-mar-t-2' />
+            }
           </div>
-        </div>
-      }
+        }
+
+        {/* combat */}
+        { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
+          <CombatSequenceDisplay 
+            entry={entry}
+            className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+        }
+
+        {/* debug stuff */}
+        { isShowRaw &&
+          <div className='borradius-1 pad-3 pad-r-8 flex-row flex-auto bg-fourth adjacent-mar-l-4'>
+            <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
+              {entry.rawText}
+            </div>
+
+            <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
+              {JSON.stringify(entry.export(), null, 4)}
+            </div>
+          </div>
+        }
+      </Button>
 
       {/* right column */}
-      <div 
-        style={{width: 30}}
-        className='bg-second-lighter flex-col flex-none adjacent-mar-l-4'>
-        <div 
+      <div className='flex-col flex-none'>
+        <Button 
           onClick={() => toggleShowRaw(!isShowRaw)}
-          style={{textDecoration: 'underline'}}
-          className='talign-right cursor-pointer userselect-none color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
-        </div>
+          style={{width: 30}}
+          className='borradius-r-2 talign-right cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
+        </Button>
       </div>
-    </button>
+    </div>
   )
 }
 /**

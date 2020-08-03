@@ -18,6 +18,6 @@ export default function Button(props) {
     <button 
       {...otherProps}
       disabled={disabled}
-      className={combineClassnames('borradius-1 bg-second hover:bg-second-lighter', borderClassName, colorClassName, pointerClassName, className)} />
+      className={combineClassnames('bg-second hover:bg-second-lighter', borderClassName, colorClassName, pointerClassName, className)} />
   )
 }
