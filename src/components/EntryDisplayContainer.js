@@ -27,32 +27,28 @@ export default function EntryDisplayContainer(props) {
     isUsingCompactMode,
   } = props;
 
-  const [isSelected, toggleSelected] = React.useState(false);
-  const [isShowRaw, toggleShowRaw] = React.useState(false);
-
-  const [isFocused, toggleFocus] = React.useState(false);
-
-  const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
-  // const selectedClass = isSelected ? 'bg-green' : '';
+  const [isSelected, toggleSelected] = React.useState(false); // internal selection
+  const [isShowRaw, toggleShowRaw] = React.useState(false); // show raw data
+  const [isShowCompact, toggleCompact] = React.useState(false); // compact mode
 
   React.useEffect(() => {
-    console.log('isUsingCompactMode', isUsingCompactMode);
-    // toggleSelected(isUsingCompactMode);
-    // toggleShowRaw(false);
-  }, [isSelected, isUsingCompactMode]);
+      toggleCompact(isUsingCompactMode);
+      toggleSelected(isUsingCompactMode);
+  }, [isUsingCompactMode]);
 
+  React.useEffect(() => {
+    toggleCompact(isSelected);
+  }, [isSelected]);
+
+  const [isFocused, toggleFocus] = React.useState(false); // hovered over
+  const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
+  
   return (
     <div 
       onClick={() => toggleSelected(!isSelected)} 
       onMouseEnter={() => toggleFocus(true)}
       onMouseLeave={() => toggleFocus(false)}
       className={combineClassnames('overflow-hidden flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
-
-      {/* status indicator column */}
-      {/*<div 
-        className={combineClassnames('bor-1-lightblue borradius-round height-auto flex-none', selectedClass)}
-        style={{width: 10, height: 10}}>
-      </div>*/}
 
       {/* adventure num column */}
       <EntryAdventureColumn 
@@ -71,7 +67,7 @@ export default function EntryDisplayContainer(props) {
             entry={entry}
             className='flex-auto adjacent-mar-t-3' />
 
-          { !isSelected &&
+          { !isShowCompact &&
             <EntryBodyContainer 
               entry={entry}
               className='flex-auto adjacent-mar-t-3' />
@@ -80,7 +76,7 @@ export default function EntryDisplayContainer(props) {
       }
 
       {/* combat */}
-      { entry.hasCombatActions && !isShowRaw && !isSelected &&
+      { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
         <CombatSequenceDisplay 
           entry={entry}
           className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
