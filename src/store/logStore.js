@@ -368,7 +368,8 @@ class LogStore {
         }
       }
 
-      if (!entry.hasRawTurnNum) {
+      // mark this as not a full adventure if it's the same as previous
+      if (!entry.hasRawTurnNum && !entry.attributes.isCombatEncounter && !entry.attributes.isFreeAdv && prevTurnNum === entry.turnNum) {
         entry.attributes.isInBetweenTurns = true;
       }
 

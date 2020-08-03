@@ -118,14 +118,14 @@ function EntryAdventureColumn(props) {
   }} = entry;
 
   const shouldHideTurnNum = entry.attributes.dayNum <= 0 && entry.turnNum <= 0;
-  const fontClassName = (!shouldHideTurnNum && !entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold' : 'fontsize-3';
+  const fontClassName = (!shouldHideTurnNum && !entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold color-white' : 'fontsize-5 color-gray';
 
   return (
     <div
       onClick={props.onClick} 
       className={combineClassnames('flex-col', className)}
       style={style}>
-      <div className={combineClassnames('talign-right color-white width-full aself-start adjacent-mar-t-2', fontClassName)}>
+      <div className={combineClassnames('talign-right width-full aself-start adjacent-mar-t-2', fontClassName)}>
         {!shouldHideTurnNum ? entry.turnNum : '-'}
       </div>
 
