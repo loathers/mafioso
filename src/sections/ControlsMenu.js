@@ -46,15 +46,15 @@ function ControlsMenu(props) {
   }
 
   // attribute filters
-  const attributeFiltersList = ATTRIBUTE_FILTERS.map((filterOption) => ({
-    ...filterOption,
-    checked: logStore.filteredAttributes.includes(filterOption.attributeName),
-  }));
+  const availableAttributesList = ATTRIBUTE_FILTERS.filter((filterData) => !filterData.isHidden);
 
-  const onChangeAttributes = (list) => {
-    const checkedItems = list.filter((item) => item.checked);
-    const filteredAttributes = checkedItems.map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));
-    logStore.fetchEntries({filteredAttributes: filteredAttributes});
+  const onSelectAttributeFilter = (attributeName) => {
+    if (attributeName === 'none') {
+      logStore.fetchEntries({filteredAttributes: []});
+    } else {
+      const foundData = availableAttributesList.find((filterData) => filterData.attributeName === attributeName);
+      logStore.fetchEntries({filteredAttributes: [{attributeName, attributeValue: foundData.attributeValue}]});
+    }
   }
 
   if (showFull) {
@@ -144,12 +144,10 @@ function ControlsMenu(props) {
         className='adjacent-mar-t-5'>
         <div className='fontsize-3 adjacent-mar-t-2'>Filter Attributes</div>
         <select 
-          onChange={(evt) => {
-            console.log('select', evt.target.value);
-          }}
+          onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
           className='color-white bg-second borradius-1 fontsize-3 pad-3 width-full adjacent-mar-t-2'
           id='attribute-filter-selector'>
-          { attributeFiltersList.map((filterData, idx) => (
+          { availableAttributesList.map((filterData, idx) => (
             <option 
               className='fontsize-2'
               key={`option-${idx}-key`}

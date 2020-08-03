@@ -88,6 +88,12 @@ export const ENTRY_TYPE_FILTERS_SETTINGS = ENTRY_TYPE_FILTERS.map((filterData) =
  */
 export const ATTRIBUTE_FILTERS = [
   {
+    label: 'None',
+    attributeName: 'none',
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Path-specific',
     attributeName: 'isPathSpecific',
     attributeValue: true,
