@@ -22,8 +22,9 @@ export const REGEX = {
     DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|softcore|casual)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
-    KING_FREED: /freeing king ralph.*?(?=(\s|))/is,
-    THWAITGOLD: /You acquire an item: Thwaitgold.*/is,
+    KING_FREED: /freeing king ralph.*?(?=(\s|))/i,
+    THWAITGOLD: /You acquire an item: Thwaitgold.*/i,
+    NAUGHTY_SORCERESS: /.*The Naughty Sorceress.*/i,
   },
   // -- iotm
   BASTILLE_BATTALION: {

@@ -227,9 +227,14 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Toot Oriole',
     encounterName_alt: 'Letter from King Ralph',
   },
+  [ENTRY_TYPE.QUEST.NAUGHTY_SORCERESS]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
+    matcher: REGEX.ASCENSION.NAUGHTY_SORCERESS,
+    icon: CombatSVG,
+  },
   [ENTRY_TYPE.QUEST.ASCENSION_END]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.ASCENSION_INFO],
-    matcher: [REGEX.ASCENSION.KING_FREED, REGEX.ASCENSION.THWAITGOLD],
+    matcher: REGEX.ASCENSION.KING_FREED,
     icon: AscendSVG,
     encounterName_alt: 'Ascension Complete!',
   },
