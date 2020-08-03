@@ -54,22 +54,17 @@ export const ENTRY_DATA_MAP = {
   },
   [ENTRY_TYPE.SNAPSHOT.DAY_INFO]: {
     categories: [CATEGORY_ID.SNAPSHOT_INFO],
-    matcher: REGEX.SNAPSHOT_CHECK.KOL_DATE,
+    matcher: REGEX.SNAPSHOT.KOL_DATE,
     icon: InfoSVG,
   },
   [ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO]: {
     categories: [CATEGORY_ID.SNAPSHOT_INFO],
-    matcher: [
-      REGEX.SNAPSHOT_CHECK.CONTAIN_STATUS, 
-      REGEX.SNAPSHOT_CHECK.CONTAIN_EQUIPMENT, 
-      REGEX.SNAPSHOT_CHECK.CONTAIN_EFFECTS, 
-      REGEX.SNAPSHOT_CHECK.CONTAIN_MODIFIERS,
-    ],
+    matcher: /player snapshot/i,
     icon: InfoSVG,
   },
   [ENTRY_TYPE.SNAPSHOT.SKILL_BREAKDOWN]: {
     categories: [CATEGORY_ID.SNAPSHOT_INFO],
-    matcher: REGEX.SNAPSHOT_CHECK.CONTAIN_SKILLS,
+    matcher: REGEX.SNAPSHOT.CONTAIN_SKILLS,
     icon: InfoSVG,
   },
   // -- iotm

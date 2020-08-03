@@ -382,7 +382,7 @@ class LogStore {
 
       // use DAY_INFO entry as a possible point of a new day 
       if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO) {
-        const dateMatch = entry.rawText.match(REGEX.SNAPSHOT_CHECK.KOL_DATE)[0];
+        const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE)[0];
         if (!dateList.includes(dateMatch)) {
           dateList.push(dateMatch);
         }

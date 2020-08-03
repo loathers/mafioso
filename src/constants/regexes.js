@@ -13,7 +13,7 @@ export const REGEX = {
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?(\r\n|\n|$)/is,
 
     VALHALLA_TEXT: /welcome to valhalla/im,
-    VALHALLA_GROUP: /welcome to valhalla.*Ascension #\d+:.*?(\r\n|\n).*?(\r\n|\n).*?(\r\n|\n|$).*?/gmis,
+    VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for \d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
@@ -276,7 +276,7 @@ export const REGEX = {
     SHOPPING: /.*buy.*for.*from.*/gmi,
     MEAT_SPENT: /.*spent.*meat.*/gi,
 
-    TRADING_LINE: /^trading.*for.*/gmi,
+    TRADING_LINE: /^(trading|trade).*/gmi,
 
     MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
     MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
@@ -348,15 +348,6 @@ export const REGEX = {
   // -- 
   // note: these only work in raw
   GROUP: {
-    ASCENSION_SNAPSHOT: /^(Ascension)/m,
-
-    MOON_SNAPSHOT: /> moon.*?(?=>)/mis,
-    STATUS_SNAPSHOT: /> status.*?(?=>)/mis,
-    EQUIPMENT_SNAPSHOT: /> equipment.*?(?=>)/mis,
-    SKILLS_SNAPSHOT: /> skills.*?(?=>)/mis,
-    EFFECTS_SNAPSHOT: /> effects.*?(?=>)/mis,
-    MODIFIERS_SNAPSHOT: /> modifiers.*?(?==-)/mis,
-
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
 
@@ -373,26 +364,21 @@ export const REGEX = {
     MAXIMIZER: /^(Maximizer:|maximize ).*(\r\n|\n|$)/gmi,
     CHOICE_PHP_LINE: /^choice\.php.*/gmi,
   },
-  SNAPSHOT_CHECK: {
-    CONTAIN_MOON: /(> moon)/i,
-    CONTAIN_STATUS: /(> status)/i,
-    CONTAIN_EQUIPMENT: /(> equipment)/i,
-    CONTAIN_SKILLS: /(> skills)/i,
-    CONTAIN_EFFECTS: /(> effects)/i,
-    CONTAIN_MODIFIERS: /(> modifiers)/i,
-
+  SNAPSHOT: {
     KOL_DATE: /(?<=- )(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
+    BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,    
+    PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,    
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(awesomemenu|friars blessing|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(awesomemenu|diary|friars blessing|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
     RAFFLE_TEXT: /You acquire raffle ticket/gi,
     USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,
-    USELESS_LEAFLET_LINE: /^leaflet.*(?!plover)(\r\n|\n)/gim,
+    USELESS_LEAFLET_LINE: /^(leaflet|\(you see a).*(?!plover)(\r\n|\n)/gim,
     SWIMMING_POOL: /.*swimming pool.*(\r\n|\n)/gim,
 
     FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,

@@ -148,7 +148,7 @@ function calculateBatchSize(rawSize) {
  */
 export function findAllDates(rawText) {
   return rawText
-    .match(REGEX.SNAPSHOT_CHECK.KOL_DATE)
+    .match(REGEX.SNAPSHOT.KOL_DATE)
     .reduce((dateArray, dateText) => {
       if (!dateArray.includes(dateText)) {
         dateArray = dateArray.push(dateText);
