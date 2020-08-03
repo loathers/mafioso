@@ -37,6 +37,7 @@ function VisualizerSection(props) {
 
             <EntryDisplayContainer 
               entry={entry}
+              isUsingCompactMode={isUsingCompactMode}
               className='visualizer-cell adjacent-mar-t-2' />
           </Fragment>
         )

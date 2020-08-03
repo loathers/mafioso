@@ -38,7 +38,6 @@ class AppStore {
   toggleCompactMode(toState) {
     if (toState === undefined) {
       this.isUsingCompactMode.set(!this.isUsingCompactMode.get());
-      console.log('toggle', this.isUsingCompactMode.get())
     } else {
       this.isUsingCompactMode.set(toState);
     }
