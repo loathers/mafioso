@@ -39,6 +39,8 @@ export default class Entry {
       /** @type {Number} */
       estimatedTurnNum: undefined,
       /** @type {Boolean} */
+      isInBetweenTurns: false,
+      /** @type {Boolean} */
       isFreeAdv: false,
       /** @type {Array<Number>} */
       adventureChanges: [],
@@ -188,6 +190,10 @@ export default class Entry {
     }
 
     return undefined;
+  }
+  /** @type {Number} */
+  get isInBetweenTurns() {
+    return this.attributes.isInBetweenTurns;
   }
   // -- stats
   /** @type {Number} */

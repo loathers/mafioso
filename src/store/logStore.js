@@ -363,11 +363,13 @@ class LogStore {
       if (entry.turnNum === undefined) {
         if (prevEntry && prevTurnNum) {
           entry.turnNum = prevTurnNum;
-          // console.log('... use prev turnNum:', entry.turnNum);
         } else {
           entry.turnNum = 0;
-          // console.log('... use 0')
         }
+      }
+
+      if (!entry.hasRawTurnNum) {
+        entry.attributes.isInBetweenTurns = true;
       }
 
       // use DAY_INFO entry as a possible point of a new day 
