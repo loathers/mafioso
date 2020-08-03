@@ -164,6 +164,10 @@ export const REGEX = {
   QUEST: {
     VISIT_TOOT: /tutorial.*action=toot/i,
     OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
+
+    STAFF_AND_DESERT_GROUP: /(combine.*(ancient amulet|eye of ed|headpiece of ed|staff of fats|staff of ed).*(amulet|eye of ed|headpiece of ed|staff of fats|staff of ed)$(\r\n|\n).*acquire.*staff of ed.*$(\r\n|\n){2}){2}.*desertbeach.*db_pyramid1.*/gmi,
+    OPEN_DESERT_PYRAMID: /place.*desertbeach.*db_pyramid1/mi,
+    USELESS_DESERT_PYRAMID: /(?<!.*(staff of ed|ancient amulet|eye of ed).*(\r\n|\n))(\r\n|\n).*desertbeach.*db_pyramid1.*/gmi,
   },
   // -- common
   LINE: {
@@ -288,9 +292,10 @@ export const REGEX = {
     MAKE_SOMETHING_LINE: /(create|combine|craft|cook|mix).*\d+.*/gmi,
     COMBINE_LINE: /combine.*\d+.*/gmi,
     COOK_LINE: /cook.*\d+.*/gmi,
-    CRAFT_LINE: /craft.*\d+.*/gmi,
+    CRAFT_LINE: /craft .*\d+.*/gmi,
     CREATE_LINE: /create.*\d+.*/gmi,
     MIX_LINE: /mix.*\d+.*/gmi,
+    CRAFTING_USED_LINE: /^crafting used .*(\r\n|\n)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,

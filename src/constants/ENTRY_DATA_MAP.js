@@ -109,6 +109,7 @@ export const ENTRY_DATA_MAP = {
     icon: FamiliarSVG,
     locationName_alt: 'Cat Burglar',
     encounterName_alt: 'A Heist!',
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.CONSPIRACY_ISLAND]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
@@ -226,6 +227,13 @@ export const ENTRY_DATA_MAP = {
     icon: PathSVG,
     locationName_alt: 'Toot Oriole',
     encounterName_alt: 'Letter from King Ralph',
+  },
+  [ENTRY_TYPE.QUEST.OPEN_DESERT_PYRAMID]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.QUEST.OPEN_DESERT_PYRAMID,
+    icon: InfoSVG,
+    locationName_alt: 'A Small Pyramid',
+    encounterName_alt: 'Pyramid Unlocked',
   },
   [ENTRY_TYPE.QUEST.NAUGHTY_SORCERESS]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
