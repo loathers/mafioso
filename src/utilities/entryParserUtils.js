@@ -175,8 +175,9 @@ export function parseAscensionPath(ascensionString) {
 export function parseRawTurnNum(entryString) {
   const turnNumMatches = getRegexMatch(entryString, REGEX.VALUE.TURN_NUM);
   if (turnNumMatches === null) {
-    return;
+    return undefined;
   }
+  
   return Number(turnNumMatches[0]);
 }
 /**

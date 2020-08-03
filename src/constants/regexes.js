@@ -187,7 +187,7 @@ export const REGEX = {
     SWIMMING_POOL: /.*swimming pool.*/gim,
   },
   VALUE: {
-    TURN_NUM: /(?!\[)\d*(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
+    TURN_NUM: /(?!\[)\d+(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
     LOCATION_NAME: /(?<=\]\s).*/,
     SHOP_LOCATION_NAME: /(?<=each from\s).*/,
     ENCOUNTER_NAME: /(?<=Encounter:\s).*/,

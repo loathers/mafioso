@@ -117,8 +117,8 @@ function EntryAdventureColumn(props) {
     isFreeAdv,
   }} = entry;
 
-  const fontClassName = (!entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold' : 'fontsize-3';
-  const shouldHideTurnNum = entry.attributes.dayNum <= 0;
+  const shouldHideTurnNum = entry.attributes.dayNum <= 0 && entry.turnNum <= 0;
+  const fontClassName = (!shouldHideTurnNum && !entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold' : 'fontsize-3';
 
   return (
     <div
