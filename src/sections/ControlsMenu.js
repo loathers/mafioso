@@ -61,6 +61,8 @@ function ControlsMenu(props) {
     return <FullPageMenu />
   }
 
+  const compactDisplay = appStore.isUsingCompactMode.get() ? 'Disable Compact Mode' : 'Enable Compact Mode';
+
   return (
     <div 
       style={style} 
@@ -113,7 +115,7 @@ function ControlsMenu(props) {
       <Button 
         onClick={() => appStore.toggleCompactMode()}
         className='fontsize-2 pad-3 flex-none adjacent-mar-t-5'>
-        Toggle Compact Mode
+        {compactDisplay}
       </Button>
 
       {/* filters */}
