@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
 import { ReactComponent as AdventureSVG } from 'images/sands-of-time.svg';
 import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
@@ -28,14 +28,22 @@ export default function EntryDisplayContainer(props) {
   } = props;
 
   const [isSelected, toggleSelected] = React.useState(false);
+  const [isShowRaw, toggleShowRaw] = React.useState(false);
 
   const [isFocused, toggleFocus] = React.useState(false);
 
   const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   // const selectedClass = isSelected ? 'bg-green' : '';
 
+  React.useEffect(() => {
+    console.log('isUsingCompactMode', isUsingCompactMode);
+    // toggleSelected(isUsingCompactMode);
+    // toggleShowRaw(false);
+  }, [isSelected, isUsingCompactMode]);
+
   return (
     <div 
+      onClick={() => toggleSelected(!isSelected)} 
       onMouseEnter={() => toggleFocus(true)}
       onMouseLeave={() => toggleFocus(false)}
       className={combineClassnames('overflow-hidden flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
@@ -57,22 +65,29 @@ export default function EntryDisplayContainer(props) {
         entry={entry}
         className='adjacent-mar-l-4 flex-none' />
 
-      { isUsingCompactMode &&
-        <CompactEntryDisplay 
-          isSelected={isSelected}
-          entry={entry}
-          className='flex-auto adjacent-mar-l-4' />
+      { !isShowRaw && 
+        <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
+          <EntryHeaderContainer 
+            entry={entry}
+            className='flex-auto adjacent-mar-t-3' />
+
+          { !isSelected &&
+            <EntryBodyContainer 
+              entry={entry}
+              className='flex-auto adjacent-mar-t-3' />
+          }
+        </div>
       }
 
-      { !isUsingCompactMode &&
-        <FullEntryDisplay 
-          isSelected={isSelected}
+      {/* combat */}
+      { entry.hasCombatActions && !isShowRaw && !isSelected &&
+        <CombatSequenceDisplay 
           entry={entry}
-          className='flex-auto adjacent-mar-l-4' />
+          className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
       }
 
       {/* debug stuff */}
-      { isSelected &&
+      { isShowRaw &&
         <div className='borradius-1 pad-3 pad-r-8 flex-row flex-auto bg-fourth adjacent-mar-l-4'>
           <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
             {entry.rawText}
@@ -84,60 +99,17 @@ export default function EntryDisplayContainer(props) {
         </div>
       }
 
-      {/* raw text toggle button */}
+      {/* right column */}
       <div 
-        onClick={() => toggleSelected(!isSelected)}
-        style={{
-          textDecoration: 'underline',
-        }}
-        className='cursor-pointer userselect-none color-grayer fontsize-1 flex-none adjacent-mar-l-4'>
-        toggle raw
+        style={{width: 30}}
+        className='bg-second-lighter flex-col flex-none adjacent-mar-l-4'>
+        <div 
+          onClick={() => toggleShowRaw(!isShowRaw)}
+          style={{textDecoration: 'underline'}}
+          className='talign-right cursor-pointer userselect-none color-grayer fontsize-1 flex-auto adjacent-mar-t-3'>
+        </div>
       </div>
-      
     </div>
-  )
-}
-/** @returns {React.Component} */
-function CompactEntryDisplay(props) {
-  const {
-    entry,
-    isSelected,
-  } = props;
-
-  return (
-    <Fragment>
-      {/* entry header */}
-      { !isSelected &&
-        <EntryHeaderContainer 
-          entry={entry}
-          className='adjacent-mar-l-4 flex-auto' />
-      }
-    </Fragment>
-  )
-}
-/** @returns {React.Component} */
-function FullEntryDisplay(props) {
-  const {
-    entry,
-    isSelected,
-  } = props;
-
-  return (
-    <Fragment>
-      {/* entry body */}
-      { !isSelected &&
-        <EntryBodyContainer
-          entry={entry}
-          className='adjacent-mar-l-4 flex-auto' />
-      }
-
-      {/* combat */}
-      { entry.hasCombatActions && !isSelected &&
-        <CombatSequenceDisplay 
-          entry={entry}
-          className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
-      }
-    </Fragment>
   )
 }
 /**
@@ -253,9 +225,6 @@ function EntryBodyContainer(props) {
 
   return (
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
-      {/* header with location and encounter name */}
-      <EntryHeaderContainer entry={entry} />
-
       {/* text content */}
       { entry.hasContentDisplay &&
         <div className='flex-col adjacent-mar-t-3'>
@@ -263,7 +232,6 @@ function EntryBodyContainer(props) {
         </div>
       }
 
-      {/* -- custom content -- */}
       {/* diabolic pizza */}
       { entry.hasDiabolicPizzaIngredients &&
         <MakeDiabolicPizzaDisplay className='adjacent-mar-t-3' entry={entry} />
@@ -276,56 +244,54 @@ function EntryBodyContainer(props) {
           className='' />
       }
 
-      <div className='flex-col flex-none'>
-        {/* gained effects */}
-        { entry.hasAcquiredEffects &&
-          <ListDisplay 
-            IconComponent={SpellbookSVG}
-            list={entry.attributes.acquiredEffects}
-            className='flex-none' />
+      {/* gained effects */}
+      { entry.hasAcquiredEffects &&
+        <ListDisplay 
+          IconComponent={SpellbookSVG}
+          list={entry.attributes.acquiredEffects}
+          className='flex-none' />
+      }
+
+      {/* items */}
+      { entry.hasAcquiredItems &&
+        <ListDisplay 
+          IconComponent={SwapBagSVG}
+          list={entry.attributes.acquiredItems}
+          className='flex-none' />
+      }
+
+      <div className='flex-row'>
+        {/* adventures */}
+        { entry.hasAdventureChanges &&
+          <SingleDisplay 
+            IconComponent={AdventureSVG}
+            className='mar-2'
+            content={`${entry.adventureDisplay} adventures`} />
         }
 
-        {/* items */}
-        { entry.hasAcquiredItems &&
-          <ListDisplay 
-            IconComponent={SwapBagSVG}
-            list={entry.attributes.acquiredItems}
-            className='flex-none' />
+        {/* meat */}
+        { entry.hasMeatChanges &&
+          <SingleDisplay 
+            IconComponent={SteakSVG}
+            className='mar-2'
+            content={`${entry.createMeatDisplay()} meat`} />
         }
 
-        <div className='flex-row'>
-          {/* adventures */}
-          { entry.hasAdventureChanges &&
-            <SingleDisplay 
-              IconComponent={AdventureSVG}
-              className='mar-2'
-              content={`${entry.adventureDisplay} adventures`} />
-          }
+        {/* hp */}
+        { entry.attributes.healthChanges.length > 0 &&
+          <SingleDisplay 
+            IconComponent={HealthSVG}
+            className='mar-2'
+            content={`${entry.healthDisplay} hp`} />
+        }
 
-          {/* meat */}
-          { entry.hasMeatChanges &&
-            <SingleDisplay 
-              IconComponent={SteakSVG}
-              className='mar-2'
-              content={`${entry.createMeatDisplay()} meat`} />
-          }
-
-          {/* hp */}
-          { entry.attributes.healthChanges.length > 0 &&
-            <SingleDisplay 
-              IconComponent={HealthSVG}
-              className='mar-2'
-              content={`${entry.healthDisplay} hp`} />
-          }
-
-          {/* mp */}
-          { entry.attributes.manaChanges.length > 0 &&
-            <SingleDisplay 
-              IconComponent={ManaSVG}
-              className='mar-2'
-              content={`${entry.manaDisplay} mp`} />
-          }
-        </div>
+        {/* mp */}
+        { entry.attributes.manaChanges.length > 0 &&
+          <SingleDisplay 
+            IconComponent={ManaSVG}
+            className='mar-2'
+            content={`${entry.manaDisplay} mp`} />
+        }
       </div>
     </div>
   )
