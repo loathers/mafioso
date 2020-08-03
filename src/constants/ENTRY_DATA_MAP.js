@@ -207,11 +207,19 @@ export const ENTRY_DATA_MAP = {
   },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
-    categories: [CATEGORY_ID.PATH, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.CHOICEADV],
     matcher: REGEX.COMMUNITY_SERVICE.CHOICE_LINE,
     icon: PathSVG,
     locationName_alt: 'Community Service',
     encounterName_alt: REGEX.COMMUNITY_SERVICE.CHOICE_RESULT,
+  },
+  // --
+  [ENTRY_TYPE.QUEST.TOOT_ORIOLE]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CHOICEADV],
+    matcher: [REGEX.QUEST.VISIT_TOOT, REGEX.QUEST.OPEN_TOOT_LETTER],
+    icon: PathSVG,
+    locationName_alt: 'Toot Oriole',
+    encounterName_alt: 'Letter from King Ralph',
   },
   // --
   [ENTRY_TYPE.CONSUMPTION.CHEW]: {

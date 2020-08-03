@@ -152,6 +152,10 @@ export const REGEX = {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
     CHOICE_RESULT: /(?<=^took choice 1089\/\d+: ).*(?= \(\d+ adventures.*)/gmi,
   },
+  QUEST: {
+    VISIT_TOOT: /tutorial.*action=toot/i,
+    OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
+  },
   // -- common
   LINE: {
     LOCATION: /\[\d*\].*/g,
@@ -356,7 +360,7 @@ export const REGEX = {
   // -- misc
   PREREMOVE: {
     ALWAYS_CATCHALL: /^(main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|visiting|visit|took choice|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    SINGLELINE_CATCHALL: /^(\r\n|\n)^(main|use|talking|tutorial|visiting|visit|took choice|Cast|choice|concert|eat|drink|chew).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|took choice|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,

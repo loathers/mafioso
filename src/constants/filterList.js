@@ -18,6 +18,11 @@ export const ENTRY_TYPE_FILTERS = [
     isHidden: false,
   },
   {
+    label: 'Quests',
+    categoryId: CATEGORY_ID.QUEST,
+    isHidden: false,
+  },
+  {
     label: 'Combat',
     categoryId: CATEGORY_ID.COMBAT,
     isHidden: false,
