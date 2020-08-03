@@ -39,16 +39,11 @@ export default function EntryDisplayContainer(props) {
   React.useEffect(() => {
     toggleCompact(isSelected);
   }, [isSelected]);
-
-  const [isFocused, toggleFocus] = React.useState(false); // hovered over
-  const focusedClass = isFocused ? 'bg-second-lighter' : 'bg-second';
   
   return (
-    <div 
+    <button 
       onClick={() => toggleSelected(!isSelected)} 
-      onMouseEnter={() => toggleFocus(true)}
-      onMouseLeave={() => toggleFocus(false)}
-      className={combineClassnames('overflow-hidden flex-row adjacent-mar-t-2 pad-2 borradius-2 position-relative', focusedClass, className)}>
+      className={combineClassnames('bg-second hover:bg-second-lighter overflow-hidden flex-row pad-2 borradius-2 position-relative', className)}>
 
       {/* adventure num column */}
       <EntryAdventureColumn 
@@ -65,12 +60,12 @@ export default function EntryDisplayContainer(props) {
         <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
           <EntryHeaderContainer 
             entry={entry}
-            className='flex-none adjacent-mar-t-3' />
+            className='flex-none adjacent-mar-t-2' />
 
           { !isShowCompact && entry.hasEntryBodyData &&
             <EntryBodyContainer 
               entry={entry}
-              className='flex-auto adjacent-mar-t-3' />
+              className='flex-auto adjacent-mar-t-2' />
           }
         </div>
       }
@@ -102,10 +97,10 @@ export default function EntryDisplayContainer(props) {
         <div 
           onClick={() => toggleShowRaw(!isShowRaw)}
           style={{textDecoration: 'underline'}}
-          className='talign-right cursor-pointer userselect-none color-grayer fontsize-1 flex-auto adjacent-mar-t-3'>
+          className='talign-right cursor-pointer userselect-none color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
         </div>
       </div>
-    </div>
+    </button>
   )
 }
 /**
@@ -160,14 +155,14 @@ function EntryIconColumn(props) {
     <div className={combineClassnames('aitems-center flex-col', className)}>
       <EntryIconComponent 
         entry={entry}
-        className='flex-none adjacent-mar-t-3'
+        className='flex-none adjacent-mar-t-2'
         style={{width: 25, height: 25,
           opacity: 0.7,
         }} />
 
       { isLevelUp &&
         <StarFormationSVG 
-          className='flex-none adjacent-mar-t-3'
+          className='flex-none adjacent-mar-t-2'
           style={{width: 25, height: 25,
             opacity: 0.8,
           }} />
@@ -189,18 +184,21 @@ function EntryHeaderContainer(props) {
   }
 
   return (
-    <div className={combineClassnames('flex-col adjacent-mar-t-3', className)}>
+    <div className={combineClassnames('flex-col adjacent-mar-t-2', className)}>
       { entry.locationDisplay &&
         <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{entry.locationDisplay}</div>
       }
 
       { entry.encounterDisplay &&
-        <div className='overflow-hidden flex-row flex-none adjacent-mar-t-1'>
-          <div className='f-bold fontsize-7 flex-none adjacent-mar-l-5'>{entry.encounterDisplay}</div>
+        <div className='fontsize-5 overflow-hidden flex-row flex-none adjacent-mar-t-1'>
+          <div className='f-bold flex-none adjacent-mar-l-5'>
+            {entry.encounterDisplay}
+          </div>
+
           { entry.hasReplacedEnemies &&
             <div
               style={{textDecoration: 'line-through'}} 
-              className=' fontsize-7 flex-none adjacent-mar-l-5'>
+              className='flex-none adjacent-mar-l-5'>
               {entry.replacedEnemiesDisplay}
             </div>
           }
@@ -223,14 +221,14 @@ function EntryBodyContainer(props) {
     <div className={combineClassnames('flex-col whitespace-pre-wrap', className)}>
       {/* text content */}
       { entry.hasContentDisplay &&
-        <div className='flex-col adjacent-mar-t-3'>
+        <div className='fontsize-4 flex-col adjacent-mar-t-2'>
           {entry.contentDisplay}
         </div>
       }
 
       {/* diabolic pizza */}
       { entry.hasDiabolicPizzaIngredients &&
-        <MakeDiabolicPizzaDisplay className='adjacent-mar-t-3' entry={entry} />
+        <MakeDiabolicPizzaDisplay className='adjacent-mar-t-2' entry={entry} />
       }     
 
       {/* stat changes */}
@@ -261,7 +259,7 @@ function EntryBodyContainer(props) {
         { entry.hasAdventureChanges &&
           <SingleDisplay 
             IconComponent={AdventureSVG}
-            className='mar-2'
+            className='mar-1'
             content={`${entry.adventureDisplay} adventures`} />
         }
 
@@ -269,7 +267,7 @@ function EntryBodyContainer(props) {
         { entry.hasMeatChanges &&
           <SingleDisplay 
             IconComponent={SteakSVG}
-            className='mar-2'
+            className='mar-1'
             content={`${entry.createMeatDisplay()} meat`} />
         }
 
@@ -277,7 +275,7 @@ function EntryBodyContainer(props) {
         { entry.hasHealthChanges &&
           <SingleDisplay 
             IconComponent={HealthSVG}
-            className='mar-2'
+            className='mar-1'
             content={`${entry.healthDisplay} hp`} />
         }
 
@@ -285,7 +283,7 @@ function EntryBodyContainer(props) {
         { entry.hasManaChanges &&
           <SingleDisplay 
             IconComponent={ManaSVG}
-            className='mar-2'
+            className='mar-1'
             content={`${entry.manaDisplay} mp`} />
         }
       </div>

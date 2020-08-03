@@ -35,7 +35,7 @@ function CombatActionDisplay(props) {
 
   return (
     <div className={combineClassnames('overflow-hidden userselect-none bor-1-white borradius-2 pad-2 boxsizing-border flex-col-center position-relative', className)}>
-      <div className='fontsize-4 color-white flex-none adjacent-mar-t-2 position-absolute'
+      <div className='fontsize-1 color-white flex-none adjacent-mar-t-2 position-absolute'
         componentname='block-inner-icon'>
         {roundNum}
       </div>
@@ -66,7 +66,7 @@ export default function CombatSequenceDisplay(props) {
       className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
       { hasInitiative &&
         <Fragment>
-          <div className='flex-row-center fontsize-3 mar-1'>Initiative!</div>
+          <div className='flex-row-center fontsize-1 mar-1'>Initiative!</div>
           <div className='arrow-down flex-row-center mar-1'/>
         </Fragment>
       }
@@ -102,11 +102,11 @@ export default function CombatSequenceDisplay(props) {
       }
 
       { entry.isCopied &&
-        <div className='fontsize-1 mar-1'>Copied</div>
+        <div className='fontsize-3 mar-1'>Copied</div>
       }
 
       { entry.isDisintigrated &&
-        <div className='fontsize-1 mar-1'>Disintigrated</div>
+        <div className='fontsize-3 mar-1'>Disintigrated</div>
       }
     </div>
   )

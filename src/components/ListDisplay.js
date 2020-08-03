@@ -17,7 +17,7 @@ export default function ListDisplay(props) {
   return (
     <div 
       style={style}
-      className={combineClassnames('mar-2 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
+      className={combineClassnames('mar-1 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
       
       <IconComponent 
         componentname='block-inner-icon'
@@ -45,15 +45,15 @@ export function PairedDisplay(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('mar-2 flex-row flexwrap-yes', className)}>
+    <div className={combineClassnames('mar-1 flex-row flexwrap-yes', className)}>
       { leftContent &&
-        <div className='fontsize-3 flex-none adjacent-mar-l-2'>
+        <div className='fontsize-2 flex-none adjacent-mar-l-2'>
           {leftContent}
         </div>
       }
 
       { rightContent &&
-        <div className='fontsize-3 flex-none adjacent-mar-l-2'>
+        <div className='fontsize-2 flex-none adjacent-mar-l-2'>
           {rightContent}
         </div>
       }

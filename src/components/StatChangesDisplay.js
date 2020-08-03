@@ -16,7 +16,7 @@ function StatBlockDisplay(props) {
   return (
     <div 
       className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-3 boxsizing-border flex-col-center position-relative', className)}
-      style={{width: 70, height: 45}}>
+      style={{width: 60, height: 40}}>
 
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'
@@ -42,21 +42,21 @@ export default function StatChangesDisplay(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
+    <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-2', className)}>
       <StatBlockDisplay 
         content={entry.musSubstats}
         label='mus exp'
-        className={combineClassnames('mar-2', entry.attributes.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-1', entry.attributes.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
         content={entry.mystSubstats}
         label='myst exp'
-        className={combineClassnames('mar-2', entry.attributes.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-1', entry.attributes.isMusUp ? 'f-bold' : '')} />
 
       <StatBlockDisplay 
         content={entry.moxSubstats}
         label='mox exp'
-        className={combineClassnames('mar-2', entry.attributes.isMusUp ? 'f-bold' : '')} />
+        className={combineClassnames('mar-1', entry.attributes.isMusUp ? 'f-bold' : '')} />
     </div>
   )
 }

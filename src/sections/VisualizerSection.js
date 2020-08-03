@@ -32,13 +32,13 @@ function VisualizerSection(props) {
             { shouldShowDayDisplay &&
               <HeaderDisplay 
                 topContent={`Day ${currentDay}`} 
-                className='adjacent-mar-t-2 pad-3' />
+                className='pad-3 adjacent-mar-t-1' />
             }
 
             <EntryDisplayContainer 
               entry={entry}
               isUsingCompactMode={isUsingCompactMode}
-              className='visualizer-cell adjacent-mar-t-2' />
+              className='visualizer-cell adjacent-mar-t-1' />
           </Fragment>
         )
       })}
