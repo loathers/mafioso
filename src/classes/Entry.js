@@ -35,7 +35,9 @@ export default class Entry {
       /** @type {Number} */
       dayNum: -1,
       /** @type {Number} */
-      turnNum: -1,
+      rawTurnNum: undefined,
+      /** @type {Number} */
+      estimatedTurnNum: undefined,
       /** @type {Boolean} */
       isFreeAdv: false,
       /** @type {Array<Number>} */
@@ -155,6 +157,38 @@ export default class Entry {
   get entryIcon() {
     return this.entryData.icon;
   }
+  /** @type {Number} */
+  get rawTurnNum() {
+    return this.attributes.rawTurnNum;
+  }
+  /** @type {Boolean} */
+  get hasRawTurnNum() {
+    return this.attributes.rawTurnNum !== undefined;
+  }
+  /** @type {Number} */
+  get estimatedTurnNum() {
+    return this.attributes.estimatedTurnNum;
+  }
+  /** @type {Boolean} */
+  get hasEstimatedTurnNum() {
+    return this.attributes.estimatedTurnNum !== undefined;
+  }
+  /** @param {Number} */
+  set turnNum(num) {
+    this.attributes.estimatedTurnNum = num;
+  }
+  /** @type {Number} */
+  get turnNum() {
+    if (this.hasRawTurnNum) {
+      return this.rawTurnNum;
+    }
+
+    if (this.hasEstimatedTurnNum) {
+      return this.estimatedTurnNum;
+    }
+
+    return undefined;
+  }
   // -- stats
   /** @type {Number} */
   get hasAdventureChanges() {
@@ -185,11 +219,11 @@ export default class Entry {
   get hasInventoryChanges() {
     return this.hasMeatChanges || this.hasAcquiredItems;
   }
-  /** @type {Number} */
+  /** @type {Boolean} */
   get hasHealthChanges() {
     return this.attributes.healthChanges.length > 0;
   }
-  /** @type {Number} */
+  /** @type {Boolean} */
   get hasManaChanges() {
     return this.attributes.manaChanges.length > 0;
   }

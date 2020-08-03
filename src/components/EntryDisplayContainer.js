@@ -113,20 +113,19 @@ function EntryAdventureColumn(props) {
     entry,
   } = props;
 
-  const {attributes} = entry;
-  const {
-    turnNum,
+  const {attributes: {
     isFreeAdv,
-  } = attributes;
+  }} = entry;
+
+  const fontClassName = entry.hasRawTurnNum ? 'f-bold' : '';
 
   return (
     <div
       onClick={props.onClick} 
       className={combineClassnames('flex-col', className)}
       style={style}>      
-      <div 
-        className='talign-right color-white fontsize-5 f-bold width-full aself-start adjacent-mar-t-2'>
-        {turnNum === -1 ? '-' : turnNum}
+      <div className={combineClassnames('talign-right color-white fontsize-5 width-full aself-start adjacent-mar-t-2', fontClassName)}>
+        {entry.turnNum}
       </div>
 
       { isFreeAdv &&

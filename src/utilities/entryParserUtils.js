@@ -59,7 +59,7 @@ export function parseAttributes(entryString) {
  * @return {Array<Entry>}
  */
 export function parseCommonAttributes(entryString) {
-  const turnNum = parseTurnNum(entryString);
+  const rawTurnNum = parseRawTurnNum(entryString);
   const locationName = parseLocationName(entryString);
   const encounterName = parseEncounterName(entryString);
 
@@ -71,7 +71,7 @@ export function parseCommonAttributes(entryString) {
   const meatChange = parseMeatChange(entryString);
 
   return {
-    turnNum,
+    rawTurnNum: rawTurnNum,
     isFreeAdv: isFreeAdv(entryString),
     adventureChanges: parseAdventureChanges(entryString),
     locationName,
@@ -170,12 +170,12 @@ export function parseAscensionPath(ascensionString) {
  * todo: use previous adventure num if log does not have it
  * 
  * @param {String} entryString
- * @return {Number}
+ * @return {Number | undefined}
  */
-export function parseTurnNum(entryString) {
+export function parseRawTurnNum(entryString) {
   const turnNumMatches = getRegexMatch(entryString, REGEX.VALUE.TURN_NUM);
   if (turnNumMatches === null) {
-    return -1;
+    return;
   }
   return Number(turnNumMatches[0]);
 }

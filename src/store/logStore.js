@@ -347,15 +347,30 @@ class LogStore {
    *  - possible turn num
    *  
    * @param {Array<Entry>} allEntries
+   * @returns {Array<Entry>}
    */
   createConjectureData(allEntries) {
     if (!this.isAscensionLog) {
       return allEntries;
     }
 
+    // keeps track of kol dates this run took
     const dateList = [];
 
     return allEntries.map((entry, idx) => {
+      const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
+      const prevTurnNum = prevEntry && prevEntry.turnNum;
+      if (entry.turnNum === undefined) {
+        if (prevEntry && prevTurnNum) {
+          entry.turnNum = prevTurnNum;
+          // console.log('... use prev turnNum:', entry.turnNum);
+        } else {
+          entry.turnNum = 0;
+          // console.log('... use 0')
+        }
+      }
+
+      // use DAY_INFO entry as a possible point of a new day 
       if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO) {
         const dateMatch = entry.rawText.match(REGEX.SNAPSHOT_CHECK.KOL_DATE)[0];
         if (!dateList.includes(dateMatch)) {
@@ -363,6 +378,7 @@ class LogStore {
         }
       }
 
+      // update attributes
       entry.attributes.dayNum = dateList.length;
       return entry;
     });
