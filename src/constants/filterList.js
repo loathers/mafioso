@@ -129,13 +129,6 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Iunion Crown',
-    attributeName: 'hasIunionCrown',
-    attributeValue: true,
-    isHidden: true,
-    checked: false,
-  },
-  {
     label: 'Sniffed',
     attributeName: 'isAttracted',
     attributeValue: true,
@@ -199,20 +192,6 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Latte Lovin\' Uses',
-    attributeName: 'hasLatteLoversMug',
-    attributeValue: true,
-    isHidden: true,
-    checked: false,
-  },
-  {
-    label: 'Latte Ingredient Unlock',
-    attributeName: 'hasLatteIngredientUnlock',
-    attributeValue: true,
-    isHidden: false,
-    checked: false,
-  },
-  {
     label: 'Semirares',
     attributeName: 'isSemirare',
     attributeValue: true,
@@ -243,6 +222,27 @@ export const ATTRIBUTE_FILTERS = [
   {
     label: 'Leveled Up',
     attributeName: 'isLevelUp',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Latte Lovin\' Uses',
+    attributeName: 'hasLatteLoversMug',
+    attributeValue: true,
+    isHidden: true,
+    checked: false,
+  },
+  {
+    label: 'Latte Ingredient Unlock',
+    attributeName: 'hasLatteIngredientUnlock',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Iunion Crown',
+    attributeName: 'hasIunionCrown',
     attributeValue: true,
     isHidden: false,
     checked: false,

@@ -8,6 +8,8 @@ import DarkButton from 'components/DarkButton';
 
 import combineClassnames from 'utilities/combineClassnames';
 
+const MAX_PAGINATION_SIZE = 6;
+
 /** @returns {ReactComponent} */
 export default observer(
 function SimplePaginator(props) {
@@ -22,20 +24,11 @@ function SimplePaginator(props) {
     }
   };
 
-  const PageNumButtons = [];
-  const maxPages = logStore.calculateLastPageIdx();
-  for (let i=0; i<=maxPages; i++) {
-    const isOnThisPage = i === (logStore.currentPageNum);
-    PageNumButtons.push(
-      <DarkButton
-        key={`page-num-${i}-key`}
-        onClick={() => onApplyChangePage(i)}
-        disabled={!logStore.isReady}
-        children={i + 1} 
-        style={{width: 40}}
-        className={combineClassnames('adjacent-mar-l-3', isOnThisPage ? 'active' : '')}/>
-    )
-  }
+  const currNum = logStore.currentPageNum;
+  const pageNumAvailable = calculateAvailablePages({
+    curr: currNum,
+    last: logStore.calculateLastPageIdx(),
+  });
 
   return (
     <div 
@@ -43,12 +36,74 @@ function SimplePaginator(props) {
       componentname='pagination-menu'
       className={combineClassnames('boxshadow-dark fontfamily-primary fontsize-6 pad-2 flex-row-center', className)}>
 
-      { PageNumButtons }
+      { pageNumAvailable.map((num, idx) => {
+        const isDivider = num === '...';
+        const displayNum = isDivider ? '...' : num + 1;
+        const isOnThisNum = currNum === num;
+        return (
+          <DarkButton
+            key={`page-num-${idx}-key`}
+            onClick={() => onApplyChangePage(num)}
+            disabled={isDivider || !logStore.isReady}
+            children={displayNum} 
+            style={{width: 40}}
+            className={combineClassnames('adjacent-mar-l-3', isOnThisNum ? 'active' : '')}/>
+        )
+      })}
 
-      { PageNumButtons.length <= 0 &&
+      { pageNumAvailable.length <= 0 &&
         <div className='pad-h-6 color-gray'>...</div>
       }
 
     </div>
   )
 })
+
+/**
+ * probably a smarter way to do this /shrug
+ * @param {Number} options.curr
+ * @param {Number} options.last
+ * @return {Array<Number>}
+ */
+function calculateAvailablePages({curr, last}) {
+  let pageNumList = [0];
+
+  const HALF_MAX_SIZE = Math.round(MAX_PAGINATION_SIZE / 2);
+
+  // start
+  if (curr > HALF_MAX_SIZE) {
+    pageNumList.push('...');
+  };
+
+  for (let i=0; i<HALF_MAX_SIZE; i++) {
+    const numToAdd = Math.max(curr - (HALF_MAX_SIZE - i), 0);
+    if (!pageNumList.includes(numToAdd)) {
+      pageNumList.push(numToAdd);
+    }
+  }
+  
+  // middle
+  if (!pageNumList.includes(curr)) {
+    pageNumList.push(curr);
+  }
+
+  // end
+  for (let j=0; j<HALF_MAX_SIZE; j++) {
+    const numToAdd = Math.min(curr + j, last);
+    if (numToAdd < last && !pageNumList.includes(numToAdd)) {
+      pageNumList.push(numToAdd);
+    }
+  }
+
+  if (pageNumList[pageNumList.length - 1] < (last - 1)) {
+    pageNumList.push('...');
+  };
+
+  if (last > curr && !pageNumList.includes(last)) {
+    pageNumList.push(last);
+  }
+
+  // done
+  console.log('! result:', pageNumList)
+  return pageNumList;
+}
