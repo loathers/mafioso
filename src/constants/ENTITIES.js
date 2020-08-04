@@ -17,37 +17,37 @@ export const HUMAN_MUSK = {
   entityType: ENTITY_TYPE.COMBAT_ITEM,
 }
 export const REFLEX_HAMMER = {
-  matcher: /casts.*Reflex Hammer/,
+  matcher: /casts.*Reflex Hammer/i,
   entityType: ENTITY_TYPE.EQUIPMENT,
 }
 export const COSPLAY_SABER_BANISH = {
-  matcher: 'I am not the adventurer you are looking for',
+  matcher: /I am not the adventurer you are looking for/i,
   entityType: ENTITY_TYPE.EQUIPMENT,
 }
 export const BATTER_UP = {
-  matcher: /casts.*Batter Up/,
+  matcher: /casts.*Batter Up/i,
   entityType: ENTITY_TYPE.COMBAT_SKILL,
 }
 export const LATTE_BANISH = {
-  matcher: /casts.*THROW LATTE ON OPPONENT/,
+  matcher: /casts.*THROW LATTE ON OPPONENT/i,
   entityType: ENTITY_TYPE.EQUIPMENT,
 }
 //
 export const COSPLAY_SABER_DISINTIGRATE = {
-  matcher: 'You will drop your things and walk away',
+  matcher: /You will drop your things and walk away/i,
   entityType: ENTITY_TYPE.EQUIPMENT,
 }
 export const MICRONOVA = {
-  matcher: /uses.*micronova/,
+  matcher: /uses.*micronova/i,
   entityType: ENTITY_TYPE.COMBAT_ITEM,
 }
 export const PILLKEEPER_DISINTIGRATE = {
-  matcher: 'Explodinall',
+  matcher: /Explodinall/i,
   entityType: ENTITY_TYPE.OTHER,
 }
 //
 export const COSPLAY_SABER_DUPLICATE = {
-  matcher: 'You will go find two friends and meet me here',
+  matcher: /You will go find two friends and meet me here/i,
   entityType: ENTITY_TYPE.EQUIPMENT,
 }
 export const POCKET_PROFESSOR_DUPLICATE = {
