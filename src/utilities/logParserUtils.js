@@ -76,9 +76,9 @@ export function findAscensionLog(rawText) {
 export function parseAscensionAttributes(rawText) {
   const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || [];
   const classNameMatch = rawText.match(REGEX.CHARACTER.CLASS_NAME) || [];
-  const ascensionNumMatch = rawText.match(REGEX.CHARACTER.ASCENSION_NUMBER) || [];
-  const difficultyNameMatch = rawText.match(REGEX.CHARACTER.DIFFICULTY_NAME) || [];
-  const pathNameMatch = rawText.match(REGEX.CHARACTER.PATH_NAME) || [];
+  const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
+  const difficultyNameMatch = rawText.match(REGEX.ASCENSION.DIFFICULTY_NAME) || [];
+  const pathNameMatch = rawText.match(REGEX.ASCENSION.PATH_NAME) || [];
 
   return {
     characterName: characterNameMatch[0] || undefined,
