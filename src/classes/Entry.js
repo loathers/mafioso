@@ -279,37 +279,17 @@ export default class Entry {
   }
   /** @type {String} */
   get contentDisplay() {
-    if (this.hasEntryData) {
-      const matcherResult = this.parseMatcher(this.entryData.content_alt);
-      if (matcherResult !== undefined) {
-        return matcherResult; // can be null
-      }
-    }
-
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
-    return entryBody.length <= 0 ? null : entryBody;
+    const entryBodyDisplay = entryBody.length <= 0 ? null : entryBody;
+    return this.parseDisplayMatcher(this.entryData.content_alt, entryBodyDisplay);
   }
   /** @type {String} */
   get locationDisplay() {
-    if (this.hasEntryData) {
-      const matcherResult = this.parseMatcher(this.entryData.locationName_alt);
-      if (matcherResult !== undefined) {
-        return matcherResult; // can be null
-      }
-    }
-    
-    return this.attributes.locationName;
+    return this.parseDisplayMatcher(this.entryData.locationName_alt, this.attributes.locationName);
   }
   /** @type {String} */
   get encounterDisplay() {
-    if (this.hasEntryData) {
-      const matcherResult = this.parseMatcher(this.entryData.encounterName_alt);
-      if (matcherResult !== undefined) {
-        return matcherResult; // can be null
-      }
-    }
-
-    return this.attributes.encounterName;
+    return this.parseDisplayMatcher(this.entryData.encounterName_alt, this.attributes.encounterName);
   }
   /** @type {String} */
   get replacedEnemiesDisplay() {
@@ -449,19 +429,14 @@ export default class Entry {
     return matchedText[0] || '';
   } 
   /**
-   * 
    * @param {Matcher} matcher
    * @return {String|null}
    */
-  parseMatcher(matcher) {
-    // null means intentionally blank
-    if (matcher === null) {
-      return null;
-    }
-
+  findMatcher(matcher) {
     // search for result of regex
     if (matcher instanceof RegExp) {
-      return this.findText(matcher);
+      const matchedText = getRegexMatch(this.entryString, matcher) || [];
+      return matchedText[0];
     }
 
     // example: ["I like big {1} and I can not {2}", "butts", "lie"]
@@ -472,13 +447,37 @@ export default class Entry {
           return innermatcher;
         }
 
-        const innerResult = this.parseMatcher(innermatcher);
+        const innerResult = this.findMatcher(innermatcher);
         return result.replace(`{${idx}}`, innerResult);
       });
     }
 
-    // just string (or undefined)
-    return matcher;
+    // not found - undefined
+    return undefined;
+  }
+  /**
+   * @param {Matcher} matcher
+   * @param {String} [fallback]
+   * @return {String|null}
+   */
+  parseDisplayMatcher(matcher, fallback) {
+    // null means intentionally blank
+    if (matcher === null) {
+      return null;
+    }
+
+    // undefined means to just use the fallback
+    if (matcher === undefined) {
+      return fallback;
+    }
+
+    // just use the string
+    if (typeof matcher === 'string') {
+      return matcher;
+    }
+
+    // search for result of regex
+    return this.findMatcher(matcher) || fallback;
   }
   /** @returns {String} */
   createItemsDisplay() {
