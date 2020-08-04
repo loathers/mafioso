@@ -111,13 +111,14 @@ export const REGEX = {
     FIDDLING: /^place.*kgb.*/gim,
   },
   LATTE_LOVERS_MEMBERS_MUG: {
-    FILLED_MUG_LINE: /filled your mug .*/gi,
     UNLOCKED_INGREDIENT_NAME: /(?<=unlocked ).*(?= for latte)/gi,
 
     THROW_LATTE_LINE: /.*Throw Latte on Opponent.*/gi,
     OFFER_LATTE_LINE: /.*Offer Latte to Opponent.*/gi,
     GULP_LATTE_LINE: /.*gulp latte.*/gi,
 
+    FILLED_MUG_LINE: /filled your mug .*/gi,
+    FILLED_MUG_INGREDIENTS: /(?<=filled your mug with ).*(?=.)/gi,
     DO_NOTHING_CHOICE: /^took choice.*1329.*don't get a fill-up/gmi,
   },
   MELODRAMEDARY: {

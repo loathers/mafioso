@@ -177,6 +177,14 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: ['☪ {1}', REGEX.HEWN_MOON_RUNE_SPOON.TUNE_MOON_RESULT],
     content_alt: null,
   },
+  [ENTRY_TYPE.IOTM.LATTE_LOVERS_MEMBERS_MUG.REFILL]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE,
+    icon: InfoSVG,
+    locationName_alt: 'Latte Lovers Member\'s Mug Refill',
+    encounterName_alt: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS,
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
