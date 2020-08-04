@@ -576,7 +576,7 @@ export function parseAttractors(entryString) {
   }
 
   return TRACKERS.ATTRACTORS.filter((entity) => {  
-    const match = getRegexMatch(entryString, entity.text, 'i');
+    const match = getRegexMatch(entryString, entity.matcher, 'i');
     return Boolean(match);
   });
 }
@@ -590,7 +590,7 @@ export function parseBanishers(entryString) {
   }
 
   return TRACKERS.BANISHERS.find((entity) => {
-    const match = getRegexMatch(entryString, entity.text, 'i');
+    const match = getRegexMatch(entryString, entity.matcher, 'i');
     return match && match[0];
   });
 }
@@ -604,7 +604,7 @@ export function parseCopiers(entryString) {
   }
 
   return TRACKERS.COPIERS.filter((entity) => {  
-    const match = getRegexMatch(entryString, entity.text, 'i');
+    const match = getRegexMatch(entryString, entity.matcher, 'i');
     return Boolean(match);
   });
 }
@@ -618,7 +618,7 @@ export function parseDisintigraters(entryString) {
   }
 
   return TRACKERS.DISINTIGRATERS.find((entity) => {
-    const match = getRegexMatch(entryString, entity.text, 'i');
+    const match = getRegexMatch(entryString, entity.matcher, 'i');
     return match && match[0];
   });
 }
@@ -632,7 +632,7 @@ export function parseReplacers(entryString) {
   }
 
   return TRACKERS.REPLACERS.filter((entity) => {  
-    const match = getRegexMatch(entryString, entity.text, 'i');
+    const match = getRegexMatch(entryString, entity.matcher, 'i');
     return Boolean(match);
   });
 }

@@ -324,7 +324,7 @@ export default class Entry {
   /** @type {Boolean} */
   get hasInstakill() {
     return TRACKERS.INSTAKILLS.some((entity) => {
-      return this.hasText(entity.text);
+      return Boolean(this.findMatcher(entity.matcher));
     });
   }
   /** @type {Boolean} */
@@ -338,7 +338,7 @@ export default class Entry {
   /** @type {Boolean} */
   get isRunaway() {
     return TRACKERS.RUNAWAYS.some((entity) => {
-      return this.hasText(entity.text);
+      return Boolean(this.findMatcher(entity.matcher));
     });
   }
   // -- attribute getters
