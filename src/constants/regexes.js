@@ -175,7 +175,7 @@ export const REGEX = {
     VISIT_TOOT: /tutorial.*action=toot/i,
     OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
 
-    ICY_PEAK_ASCEND_TEXT: /^ascending the mist-shrouded peak.*/gmi,
+    ICY_PEAK_ASCEND_TEXT: /^Ascending the Mist-Shrouded Peak.*/gi,
     STAFF_AND_DESERT_GROUP: /(combine.*(ancient amulet|eye of ed|headpiece of ed|staff of fats|staff of ed).*(amulet|eye of ed|headpiece of ed|staff of fats|staff of ed)$(\r\n|\n).*acquire.*staff of ed.*$(\r\n|\n){2}){2}.*desertbeach.*db_pyramid1.*/gmi,
     OPEN_DESERT_PYRAMID: /place.*desertbeach.*db_pyramid1/mi,
     USELESS_DESERT_PYRAMID: /(?<!.*(staff of ed|ancient amulet|eye of ed).*(\r\n|\n))(\r\n|\n).*desertbeach.*db_pyramid1.*/gmi,

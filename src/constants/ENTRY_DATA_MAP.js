@@ -241,25 +241,33 @@ export const ENTRY_DATA_MAP = {
   },
   // --
   [ENTRY_TYPE.QUEST.TOOT_ORIOLE]: {
-    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.QUEST],
     matcher: [REGEX.QUEST.VISIT_TOOT, REGEX.QUEST.OPEN_TOOT_LETTER],
     icon: PathSVG,
     locationName_alt: 'Toot Oriole',
     encounterName_alt: 'Letter from King Ralph',
   },
+  [ENTRY_TYPE.QUEST.LEAFLET]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.LINE.LEAFLET,
+    icon: PathSVG,
+    locationName_alt: 'Strange Leaflet',
+    encounterName_alt: 'There is nobody named Xyzzy here',
+    content_alt: null,
+  },
   [ENTRY_TYPE.QUEST.OPEN_DESERT_PYRAMID]: {
-    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.QUEST],
     matcher: REGEX.QUEST.OPEN_DESERT_PYRAMID,
     icon: InfoSVG,
     locationName_alt: 'A Small Pyramid',
     encounterName_alt: 'Pyramid Unlocked',
   },
-  [ENTRY_TYPE.QUEST.LEAFLET]: {
-    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING],
-    matcher: REGEX.LINE.LEAFLET,
+  [ENTRY_TYPE.QUEST.ICY_PEAK_ASCEND]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.ICY_PEAK_ASCEND_TEXT,
     icon: PathSVG,
-    locationName_alt: 'Strange Leaflet',
-    encounterName_alt: 'There is nobody named Xyzzy here',
+    locationName_alt: 'Icy Peak',
+    encounterName_alt: 'Ascending the Mist-Shrouded Peak',
     content_alt: null,
   },
   [ENTRY_TYPE.QUEST.MADE_WAND]: {
