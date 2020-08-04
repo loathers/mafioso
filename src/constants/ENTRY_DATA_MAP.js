@@ -253,6 +253,21 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Created',
     encounterName_alt: 'Wand of Anagram',
   },
+  [ENTRY_TYPE.QUEST.TOWER_CONTEST_BOOTH]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.TOWER_BOOTH_TEXT,
+    icon: PathSVG,
+    locationName_alt: REGEX.LINE.FIRST_LINE,
+    encounterName_alt: REGEX.LINE.SECOND_LINE,
+    content_alt: null,
+  },
+  [ENTRY_TYPE.QUEST.TOWER_CLOSING_CEREMONY]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.TOWER_CEREMONY_TEXT,
+    icon: PathSVG,
+    locationName_alt: REGEX.LINE.FIRST_LINE,
+    content_alt: null,
+  },
   [ENTRY_TYPE.QUEST.NAUGHTY_SORCERESS]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
     matcher: REGEX.ASCENSION.NAUGHTY_SORCERESS,

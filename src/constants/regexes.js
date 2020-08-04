@@ -174,14 +174,20 @@ export const REGEX = {
     VISIT_TOOT: /tutorial.*action=toot/i,
     OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
 
+    ICY_PEAK_ASCEND_TEXT: /^ascending the mist-shrouded peak.*/gmi,
     STAFF_AND_DESERT_GROUP: /(combine.*(ancient amulet|eye of ed|headpiece of ed|staff of fats|staff of ed).*(amulet|eye of ed|headpiece of ed|staff of fats|staff of ed)$(\r\n|\n).*acquire.*staff of ed.*$(\r\n|\n){2}){2}.*desertbeach.*db_pyramid1.*/gmi,
     OPEN_DESERT_PYRAMID: /place.*desertbeach.*db_pyramid1/mi,
     USELESS_DESERT_PYRAMID: /(?<!.*(staff of ed|ancient amulet|eye of ed).*(\r\n|\n))(\r\n|\n).*desertbeach.*db_pyramid1.*/gmi,
+    TOWER_BOOTH_TEXT: /^tower: contest booth.*/gmi,
+    TOWER_CEREMONY_TEXT: /^tower: Closing Ceremony.*/gmi,
 
     COMBINE_WAND_GROUP: /(^combine.*(metallic A|ruby W|lowercase n|heavy d|WA|ND).*(\r\n|\n).*(\r\n|\n){1,2}){2}/mi,
   },
   // -- common
   LINE: {
+    FIRST_LINE: /^.*(\r\n|\n)/,
+    SECOND_LINE: /(?<=^.*(\r\n|\n)).*/,
+
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
 
@@ -375,8 +381,8 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(awesomemenu|diary|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    ALWAYS_CATCHALL: /^(awesomemenu|diary|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
