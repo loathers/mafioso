@@ -43,7 +43,7 @@ function App() {
 
       { logStore.hasParsedEntries &&
         <NavigationMenu 
-          style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50, minWidth: 300}} />
+          style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50}} />
       }
 
       { logStore.hasParsedEntries &&
@@ -67,7 +67,7 @@ function App() {
           }
 
           { !logStore.hasCurrentEntries &&
-            <div className='fontsize-6 color-white adjacent-mar-t-5'>
+            <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
               Huh, nothing here.
             </div>
           }
