@@ -59,13 +59,11 @@ export async function parseLogTxt(rawText) {
 export function findAscensionLog(rawText) {
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (fromValhallaToFreeKing) {
-    console.log('found fromValhallaToFreeKing', fromValhallaToFreeKing[0].slice(fromValhallaToFreeKing[0].length - 50, fromValhallaToFreeKing[0].length));
     return fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
-    console.log('found fromValhallaToThwaitgold');
     return fromValhallaToThwaitgold[0];
   }
 

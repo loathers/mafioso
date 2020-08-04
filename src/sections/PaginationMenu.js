@@ -23,15 +23,15 @@ function SimplePaginator(props) {
   };
 
   const PageNumButtons = [];
-  const maxPages = logStore.calculatePageLast();
-  for (let i=1; i<maxPages; i++) {
-    const isOnThisPage = i === (logStore.currentPageNum + 1);
+  const maxPages = logStore.calculateLastPageIdx();
+  for (let i=0; i<=maxPages; i++) {
+    const isOnThisPage = i === (logStore.currentPageNum);
     PageNumButtons.push(
       <DarkButton
         key={`page-num-${i}-key`}
-        onClick={() => onApplyChangePage(i - 1)}
+        onClick={() => onApplyChangePage(i)}
         disabled={!logStore.isReady}
-        children={i} 
+        children={i + 1} 
         style={{width: 40}}
         className={combineClassnames('adjacent-mar-l-3', isOnThisPage ? 'active' : '')}/>
     )

@@ -161,7 +161,7 @@ class LogStore {
   }
   /** @type {Number} */
   get isOnLastPage() {
-    return this.currentPageNum === this.calculatePageLast();
+    return this.currentPageNum === this.calculateLastPageIdx();
   }
   // -- uploading
   /**
@@ -382,9 +382,9 @@ class LogStore {
 
       // use entries with the date in them as a possible point of a new day 
       if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
-        const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE)[0];
-        if (!dateList.includes(dateMatch)) {
-          dateList.push(dateMatch);
+        const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE) || [];
+        if (dateMatch && !dateList.includes(dateMatch[0])) {
+          dateList.push(dateMatch[0]);
         }
       }
 
@@ -434,7 +434,7 @@ class LogStore {
     const visibleEntries = await this.fetchByFilter(fullOptions);
     this.visibleEntries.replace(visibleEntries);
 
-    const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculatePageLast(entriesPerPage);
+    const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculateLastPageIdx(entriesPerPage);
     if (isFilteredBeyondRange) {
       fullOptions.pageNum = 0;
     }
@@ -541,7 +541,7 @@ class LogStore {
    * @param {Number} entriesPerPage
    * @returns {Number}
    */
-  calculatePageLast(entriesPerPage = this.displayOptions.entriesPerPage) {
+  calculateLastPageIdx(entriesPerPage = this.displayOptions.entriesPerPage) {
     const lastPage = Math.ceil(this.visibleEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
