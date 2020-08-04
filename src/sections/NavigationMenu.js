@@ -20,7 +20,7 @@ export default function NavigationMenu(props) {
   return (
     <div 
       style={style}
-      className={combineClassnames('zindex-7 position-fixed flex-row-center', className)}>
+      className={combineClassnames('zindex-7 position-fixed flex-row aitems-center', className)}>
       
       <DarkButton
         onClick={() => appStore.toggleCompactMode()}
@@ -32,7 +32,7 @@ export default function NavigationMenu(props) {
 
       <PaginationMenu
         style={{height: 30}}
-        className='boxshadow-black flex-none borradius-3 adjacent-mar-l-5' />
+        className='boxshadow-black flex-none borradius-3 flex-auto adjacent-mar-l-5' />
     </div>
   )
 }

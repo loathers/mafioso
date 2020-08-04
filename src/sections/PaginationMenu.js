@@ -41,9 +41,13 @@ function SimplePaginator(props) {
     <div 
       style={style}
       componentname='pagination-menu'
-      className={combineClassnames('fontfamily-primary fontsize-6 flex-row-center flex-none', className)}>
+      className={combineClassnames('fontfamily-primary fontsize-6 flex-row-center', className)}>
 
       { PageNumButtons }
+
+      { PageNumButtons.length <= 0 &&
+        <div className='pad-h-6 color-gray'>...</div>
+      }
 
     </div>
   )

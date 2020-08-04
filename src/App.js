@@ -41,7 +41,7 @@ function App() {
 
       { logStore.hasParsedEntries &&
         <NavigationMenu 
-          style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50}} />
+          style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50, minWidth: 300}} />
       }
 
       { logStore.hasParsedEntries &&
