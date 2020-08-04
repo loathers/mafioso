@@ -4,6 +4,9 @@ import {observer} from 'mobx-react';
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
+import {ReactComponent as ChevronSVG} from 'images/chevron-up.svg';
+
+import DarkButton from 'components/DarkButton';
 import HeaderDisplay from 'components/HeaderDisplay';
 import LoaderComponent from 'components/LoaderComponent';
 
@@ -40,9 +43,18 @@ function App() {
         showFull={appStore.isShowingFullUpload} />
 
       { logStore.hasParsedEntries &&
-        <PaginationMenu 
+        <div 
           style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50}}
-          className='zindex-7 position-fixed' />
+          className='zindex-7 position-fixed flex-row-center'>
+          <DarkButton
+            className='boxshadow-black pad-5 flex-row flex-none borradius-round adjacent-mar-l-5'>
+            <ChevronSVG style={{width: 25, height: 25}} />
+          </DarkButton>
+
+          <PaginationMenu
+            style={{height: 30}}
+            className='boxshadow-black flex-none borradius-3 adjacent-mar-l-5' />
+        </div>
       }
 
       { logStore.hasParsedEntries &&
