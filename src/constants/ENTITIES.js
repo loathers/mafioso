@@ -12,6 +12,10 @@ export const TRYPTOPHAN_DART = {
   text: 'tryptophan dart',
   entityType: ENTITY_TYPE.COMBAT_ITEM,
 }
+export const HUMAN_MUSK = {
+  text: 'human musk',
+  entityType: ENTITY_TYPE.COMBAT_ITEM,
+}
 export const REFLEX_HAMMER = {
   text: 'Reflex Hammer',
   entityType: ENTITY_TYPE.EQUIPMENT,
@@ -50,6 +54,10 @@ export const POCKET_PROFESSOR_DUPLICATE = {
   text: 'LECTURE ON RELATIVITY',
   entityType: ENTITY_TYPE.FAMILIAR,
 }
+export const SOURCE_DUPLICATE = {
+  text: 'Duplicate',
+  entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
 //
 export const GALLAPAGOSIAN_MATING_CALL = {
   text: 'GALLAPAGOSIAN MATING CALL',
@@ -67,4 +75,42 @@ export const TRANSCENDENT_OLFACTION = {
 export const POWERFUL_GLOVE_REPLACE = {
   text: 'CHEAT CODE: Replace Enemy',
   entityType: ENTITY_TYPE.EQUIPMENT,
+}
+export const TANGLE_OF_RAT_TAILS = {
+  text: 'tangle of rat tails',
+  entityType: ENTITY_TYPE.COMBAT_ITEM,
+}
+export const DAILYAFFIRMATION_ADAPT = {
+  text: 'Daily Affirmation: Adapt to Change Eventually',
+  entityType: ENTITY_TYPE.COMBAT_ITEM,
+}
+export const MACROMETEORITE = {
+  text: 'Macrometeorite',
+  entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
+export const CLEESH = {
+  text: 'CLEESH',
+  entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
+//
+export const POWDERED_MADNESS = {
+  text: 'powdered madness',
+  entityType: ENTITY_TYPE.COMBAT_ITEM,
+}
+export const DOCTORS_BAG_XRAY = {
+  text: 'Chest X-Ray',
+  entityType: ENTITY_TYPE.EQUIPMENT,
+}
+export const IMPLODE_UNIVERSE = {
+  text: 'Implode Universe',
+  entityType: ENTITY_TYPE.COMBAT_SKILL,
+}
+//
+export const GREEN_SMOKE_BOMB = {
+  text: 'green smoke bomb',
+  entityType: ENTITY_TYPE.COMBAT_ITEM,
+}
+export const TURDS_KEY = {
+  text: 'T.U.R.D.S. Key',
+  entityType: ENTITY_TYPE.COMBAT_ITEM,
 }

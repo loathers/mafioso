@@ -7,6 +7,7 @@ export const BANISHERS = [
   ENTITIES.LOUDER_THAN_BOMB,
   ENTITIES.HAROLDS_BELL,
   ENTITIES.TRYPTOPHAN_DART,
+  ENTITIES.HUMAN_MUSK,
   ENTITIES.REFLEX_HAMMER,
   ENTITIES.COSPLAY_SABER_BANISH,
   ENTITIES.BATTER_UP,
@@ -36,11 +37,32 @@ export const ATTRACTORS = [
 export const COPIERS = [
   ENTITIES.COSPLAY_SABER_DUPLICATE,
   ENTITIES.POCKET_PROFESSOR_DUPLICATE,
+  ENTITIES.SOURCE_DUPLICATE,
 ];
 /**
- * aka macro
+ * https://kol.coldfront.net/thekolwiki/index.php/Monster_Changing
  * @typedef {Entity} Replacers
  */
 export const REPLACERS = [
   ENTITIES.POWERFUL_GLOVE_REPLACE,
+  ENTITIES.TANGLE_OF_RAT_TAILS,
+  ENTITIES.DAILYAFFIRMATION_ADAPT,
+  ENTITIES.MACROMETEORITE,
+  ENTITIES.CLEESH,
+];
+/**
+ * @typedef {Entity} Runaways
+ */
+export const RUNAWAYS = [
+  ENTITIES.GREEN_SMOKE_BOMB,
+  ENTITIES.TURDS_KEY,
+];
+/**
+ * https://kol.coldfront.net/thekolwiki/index.php/Insta-kill
+ * @typedef {Entity} Instakills
+ */
+export const INSTAKILLS = [
+  ENTITIES.POWDERED_MADNESS,
+  ENTITIES.DOCTORS_BAG_XRAY,
+  ENTITIES.IMPLODE_UNIVERSE,
 ];
