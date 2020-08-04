@@ -1,5 +1,7 @@
 import React from 'react';
 
+import appStore from 'store/appStore';
+
 import {ReactComponent as ChevronSVG} from 'images/chevron-up.svg';
 
 import DarkButton from 'components/DarkButton';
@@ -21,8 +23,11 @@ export default function NavigationMenu(props) {
       className={combineClassnames('zindex-7 position-fixed flex-row-center', className)}>
       
       <DarkButton
-        className='boxshadow-black pad-5 flex-row flex-none borradius-round adjacent-mar-l-5'>
-        <ChevronSVG style={{width: 25, height: 25}} />
+        onClick={() => appStore.toggleCompactMode()}
+        className={combineClassnames('boxshadow-black pad-5 flex-row flex-none borradius-round adjacent-mar-l-5')}>
+        <ChevronSVG 
+          style={{width: 25, height: 25, transition: 'transform 300ms'}}
+          className={combineClassnames(appStore.isUsingCompactMode.get() ? 'flip-y' : '')} />
       </DarkButton>
 
       <PaginationMenu

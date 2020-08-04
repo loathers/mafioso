@@ -3,7 +3,6 @@ import {observer} from 'mobx-react';
 
 import {ENTRY_TYPE_FILTERS_SETTINGS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 
-import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import Button from 'components/Button';
@@ -56,8 +55,6 @@ function ControlsMenu(props) {
     return <FullPageMenu />
   }
 
-  const compactDisplay = appStore.isUsingCompactMode.get() ? 'Disable Compact Mode' : 'Enable Compact Mode';
-
   return (
     <div 
       style={style} 
@@ -95,12 +92,6 @@ function ControlsMenu(props) {
           }
         </Button>
       </div>
-
-      <Button 
-        onClick={() => appStore.toggleCompactMode()}
-        className='borradius-1 fontsize-2 pad-3 flex-none adjacent-mar-t-5'>
-        {compactDisplay}
-      </Button>
 
       {/* change visible entries */}
       <div className='flex-col adjacent-mar-t-5'>
