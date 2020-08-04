@@ -8,7 +8,7 @@ import DarkButton from 'components/DarkButton';
 
 import combineClassnames from 'utilities/combineClassnames';
 
-const MAX_PAGINATION_SIZE = 6;
+const MAX_PAGINATION_SIZE = 7;
 
 /** @returns {ReactComponent} */
 export default observer(
@@ -25,9 +25,10 @@ function SimplePaginator(props) {
   };
 
   const currNum = logStore.currentPageNum;
+  const lastNum = logStore.calculateLastPageIdx();
   const pageNumAvailable = calculateAvailablePages({
     curr: currNum,
-    last: logStore.calculateLastPageIdx(),
+    last: lastNum,
   });
 
   return (
@@ -58,52 +59,65 @@ function SimplePaginator(props) {
     </div>
   )
 })
-
 /**
- * probably a smarter way to do this /shrug
+ * there's gotta be a smarter way to have done this
+ * pretty sure I have no idea wtf I wrote
+ * 
  * @param {Number} options.curr
  * @param {Number} options.last
  * @return {Array<Number>}
  */
 function calculateAvailablePages({curr, last}) {
-  let pageNumList = [0];
+  let pageNumList = [0]; // always include first
+  if (curr === 0 && last === 0) {
+    return pageNumList;
+  }
 
-  const HALF_MAX_SIZE = Math.round(MAX_PAGINATION_SIZE / 2);
+  let unallocatedAmt = MAX_PAGINATION_SIZE;
+  const HALF_SIZE = Math.round(MAX_PAGINATION_SIZE / 2);
+  const willNeedStartEllipses = curr > HALF_SIZE + 1;
+  const willNeedEndEllipses = curr < (last - HALF_SIZE - 1);
 
-  // start
-  if (curr > HALF_MAX_SIZE) {
+  // need start ellipses
+  if (willNeedStartEllipses) {
     pageNumList.push('...');
+    unallocatedAmt -= 1;
   };
 
-  for (let i=0; i<HALF_MAX_SIZE; i++) {
-    const numToAdd = Math.max(curr - (HALF_MAX_SIZE - i), 0);
-    if (!pageNumList.includes(numToAdd)) {
-      pageNumList.push(numToAdd);
-    }
-  }
-  
-  // middle
-  if (!pageNumList.includes(curr)) {
-    pageNumList.push(curr);
-  }
-
-  // end
-  for (let j=0; j<HALF_MAX_SIZE; j++) {
-    const numToAdd = Math.min(curr + j, last);
-    if (numToAdd < last && !pageNumList.includes(numToAdd)) {
-      pageNumList.push(numToAdd);
-    }
-  }
-
-  if (pageNumList[pageNumList.length - 1] < (last - 1)) {
-    pageNumList.push('...');
+  // end ellipsis
+  if (willNeedEndEllipses) {
+    unallocatedAmt -= 1;
   };
 
-  if (last > curr && !pageNumList.includes(last)) {
-    pageNumList.push(last);
+  const shouldStartHigh = curr > (last / 2);
+  if (shouldStartHigh) {
+    const possibleEnd = Math.round(curr + (unallocatedAmt/2));
+    const endNum = Math.min(possibleEnd, last - 1);
+    unallocatedAmt -= (endNum - curr);
+    const startNum = Math.max(curr - unallocatedAmt, 1);
+
+    for (let k=startNum; k<=endNum; k++) {
+      pageNumList.push(k);
+    }
+
+  } else {
+    const possibleStart = Math.round(curr - (unallocatedAmt/2)) - 1;
+    const startNum = Math.max(possibleStart, 1);
+    unallocatedAmt -= (curr - startNum);
+    const endNum = Math.min(curr + unallocatedAmt, last - 1);
+
+    for (let k=startNum; k<=endNum; k++) {
+      pageNumList.push(k);
+    }
   }
+
+  if (willNeedEndEllipses) {
+    pageNumList.push('...');
+  }
+
+  // always include last
+  pageNumList.push(last);
 
   // done
-  console.log('! result:', pageNumList)
   return pageNumList;
 }
