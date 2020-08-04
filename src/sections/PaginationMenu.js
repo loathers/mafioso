@@ -4,14 +4,9 @@ import {observer} from 'mobx-react';
 // import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
-import Button from 'components/Button';
-
 import combineClassnames from 'utilities/combineClassnames';
 
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
+/** @returns {ReactComponent} */
 export default observer(
 function SimplePaginator(props) {
   const {
@@ -23,40 +18,45 @@ function SimplePaginator(props) {
     logStore.fetchEntries({pageNum: nextPageNum});
   };
 
+  const PageNumButtons = [];
+  const maxPages = logStore.calculatePageLast();
+  for (let i=1; i<maxPages; i++) {
+    const isOnThisPage = i === (logStore.currentPageNum + 1);
+    PageNumButtons.push(
+      <PaginationButton
+        key={`page-num-${i}-key`}
+        onClick={() => onApplyChangePage(i - 1)}
+        disabled={!logStore.isReady}
+        children={i} 
+        className={combineClassnames('adjacent-mar-l-3', isOnThisPage ? 'active' : '')}/>
+    )
+  }
+
   return (
     <div 
       style={style}
       componentname='pagination-menu'
-      className={combineClassnames('fontsize-4 flex-row-center flex-none', className)}>
-      <Button 
-        onClick={() => onApplyChangePage(0)}
-        disabled={logStore.isOnFirstPage}
-        className='borradius-1 pad-4 textalign-center adjacent-mar-l-4'>
-          First
-      </Button>
+      className={combineClassnames('fontfamily-primary fontsize-8 flex-row-center flex-none', className)}>
 
-      <Button 
-        onClick={() => onApplyChangePage(logStore.currentPageNum - 1)}
-        disabled={logStore.isOnFirstPage}
-        className='borradius-1 pad-4 textalign-center adjacent-mar-l-4'>
-          {"<"}
-      </Button>
+      { PageNumButtons }
 
-      {/*<div className='bg-second pad-4 flex-row-center adjacent-mar-l-4'>{currentPageNum}</div>*/}
-
-      <Button 
-        onClick={() => onApplyChangePage(logStore.currentPageNum + 1)}
-        disabled={logStore.isOnLastPage}
-        className='borradius-1 pad-4 textalign-center adjacent-mar-l-4'>
-          {">"}
-      </Button>
-
-      <Button 
-        onClick={() => onApplyChangePage(logStore.calculatePageLast())}
-        disabled={logStore.isOnLastPage}
-        className='borradius-1 pad-4 textalign-center adjacent-mar-l-4'>
-          Last
-      </Button>
     </div>
   )
 })
+/** @returns {ReactComponent} */
+function PaginationButton(props) {
+  const {
+    children,
+    className,
+    ...otherProps
+  } = props;
+
+  return (
+    <button 
+      {...otherProps}
+      componentname='pagination-button'
+      className={combineClassnames('talign-center borradius-2 pad-3', className)}>
+      {children}
+    </button>
+  )
+}

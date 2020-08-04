@@ -1,0 +1,32 @@
+
+div[componentname="pagination-menu"] {
+  position: fixed;
+  bottom: 50px;
+  // left: 50%;
+  // transform: translateX(-50%);
+  background: #1d1a21;
+  color: #f7f7f7;
+  box-shadow: 0 0 10px 8px rgb(23 23 23 / 50%);
+  z-index: 10;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+button[componentname='pagination-button'] {
+  border: 1px solid transparent;
+  width: 40px;
+
+  &:disabled:not(.active) {
+    color: #909090;
+  }
+
+  &:hover:enabled:not(.active),
+  &:focus:enabled:not(.active) {
+    background: #302a38;
+  }
+
+  &:active:enabled,
+  &.active {
+    background: #6088bd;
+  }
+}
