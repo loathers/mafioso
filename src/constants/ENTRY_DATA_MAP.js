@@ -247,6 +247,18 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Toot Oriole',
     encounterName_alt: 'Letter from King Ralph',
   },
+  [ENTRY_TYPE.QUEST.CRACKPOT_MYSTIC]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.TALK_CRACKPOT_MYSTIC_LINE,
+    icon: PathSVG,
+    locationName_alt: 'Crackpot Mystic',
+  },
+  [ENTRY_TYPE.QUEST.LADY_SPOOKYRAVEN]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.TALK_LADY_SPOOKYRAVEN_LINE,
+    icon: PathSVG,
+    locationName_alt: 'Lady Spookyraven',
+  },
   [ENTRY_TYPE.QUEST.LEAFLET]: {
     categories: [CATEGORY_ID.QUEST],
     matcher: REGEX.LINE.LEAFLET,
