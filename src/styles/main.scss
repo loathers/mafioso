@@ -53,3 +53,7 @@ button:hover:enabled {
     background-color: #455a6d;
   }
 }
+
+.flip-y {
+  transform: scaleY(-1);
+}
