@@ -1,6 +1,8 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
+import {ReactComponent as ChevronSVG} from 'images/chevron-up.svg';
+
 // import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
@@ -15,7 +17,9 @@ function SimplePaginator(props) {
   } = props;
 
   const onApplyChangePage = (nextPageNum) => {
-    logStore.fetchEntries({pageNum: nextPageNum});
+    if (nextPageNum !== logStore.currentPageNum) {
+      logStore.fetchEntries({pageNum: nextPageNum});
+    }
   };
 
   const PageNumButtons = [];

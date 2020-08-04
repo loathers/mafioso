@@ -105,7 +105,7 @@ function ControlsMenu(props) {
       {/* change visible entries */}
       <div className='flex-col adjacent-mar-t-5'>
         <FiltersMenu 
-          label='Visible Categories'
+          label={`Visible Categories (${logStore.visibleCount})`}
           defaultList={categoriesVisibleList}
           onChange={onChangeVisibleEntries}
           inputType='checkbox'

@@ -41,8 +41,8 @@ function App() {
 
       { logStore.hasParsedEntries &&
         <PaginationMenu 
-          style={{marginLeft: MENU_WIDTH + MENU_LEFT}}
-          className='zindex-7' />
+          style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50}}
+          className='zindex-7 position-fixed' />
       }
 
       { logStore.hasParsedEntries &&
