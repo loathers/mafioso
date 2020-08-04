@@ -24,7 +24,7 @@ export default function NavigationMenu(props) {
       
       <DarkButton
         onClick={() => appStore.toggleCompactMode()}
-        className={combineClassnames('boxshadow-black pad-5 flex-row flex-none borradius-round adjacent-mar-l-5')}>
+        className={combineClassnames('boxshadow-dark pad-5 flex-row flex-none borradius-round adjacent-mar-l-5')}>
         <ChevronSVG 
           style={{width: 25, height: 25, transition: 'transform 300ms'}}
           className={combineClassnames(appStore.isUsingCompactMode.get() ? 'flip-y' : '')} />
