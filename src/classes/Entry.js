@@ -543,6 +543,11 @@ export default class Entry {
       return true;
     }
 
+    // autoscend loves to buy and use these individually
+    if (this.hasText(REGEX.LINE.DOC_GALATIK_SHOP_OR_USE) && comparedEntry.hasText(REGEX.LINE.DOC_GALATIK_SHOP_OR_USE)) {
+      return true;
+    }
+
     if (COMBINABLE_ENTRIES_LIST.includes(this.entryType) && this.doesShareEntryType(comparedEntry)) {
       return true;
     }
