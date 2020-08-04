@@ -6,11 +6,7 @@ import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
-import {
-  fixSpecialEntities, 
-  getRegexMatch,
-  hasString,
-} from 'utilities/regexUtils';
+import * as regexUtils from 'utilities/regexUtils';
 
 /**
  * @typedef {String} RawText - text extracted from the log
@@ -29,7 +25,7 @@ export default class Entry {
     /** @type {RawText} */
     this.rawText = rawText;
     /** @type {EntryString} */
-    this.entryString = fixSpecialEntities(rawText);
+    this.entryString = regexUtils.fixSpecialEntities(rawText);
 
     /** @type {Object} */
     this.attributes = {
@@ -417,7 +413,7 @@ export default class Entry {
    * @return {Boolean}
    */
   hasText(txt) {
-    return hasString(this.entryString, txt);
+    return regexUtils.hasString(this.entryString, txt);
   }
   /** 
    * gets the (first) matched text from `entryString`
@@ -425,7 +421,7 @@ export default class Entry {
    * @return {String}
    */
   findText(txt) {
-    const matchedText = getRegexMatch(this.entryString, txt) || [];
+    const matchedText = regexUtils.getRegexMatch(this.entryString, txt) || [];
     return matchedText[0] || '';
   } 
   /**
@@ -433,27 +429,7 @@ export default class Entry {
    * @return {String|null}
    */
   findMatcher(matcher) {
-    // search for result of regex
-    if (matcher instanceof RegExp) {
-      const matchedText = getRegexMatch(this.entryString, matcher) || [];
-      return matchedText[0];
-    }
-
-    // example: ["I like big {1} and I can not {2}", "butts", "lie"]
-    //  results in "I like big butts and I can not lie"
-    if (Array.isArray(matcher)) {
-      return matcher.reduce((result, innermatcher, idx) => {
-        if (idx === 0) {
-          return innermatcher;
-        }
-
-        const innerResult = this.findMatcher(innermatcher);
-        return result.replace(`{${idx}}`, innerResult);
-      });
-    }
-
-    // not found - undefined
-    return undefined;
+    return regexUtils.findMatcher(this.entryString, matcher);
   }
   /**
    * @param {Matcher} matcher

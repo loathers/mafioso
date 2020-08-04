@@ -1,4 +1,31 @@
 /**
+ * @param {Matcher} matcher
+ * @return {String|null}
+ */
+export function findMatcher(searchStr, matcher) {
+  // search for result of regex
+  if (matcher instanceof RegExp) {
+    const matchedText = getRegexMatch(searchStr, matcher) || [];
+    return matchedText[0];
+  }
+
+  // example: ["I like big {1} and I can not {2}", "butts", "lie"]
+  //  results in "I like big butts and I can not lie"
+  if (Array.isArray(matcher)) {
+    return matcher.reduce((result, innermatcher, idx) => {
+      if (idx === 0) {
+        return innermatcher;
+      }
+
+      const innerResult = findMatcher(searchStr, innermatcher);
+      return result.replace(`{${idx}}`, innerResult);
+    });
+  }
+
+  // not found - undefined
+  return undefined;
+}
+/**
  * (there are many different types of string matching methods
  *  I might want to do a lot of swapping around to test efficiency)
  * 
