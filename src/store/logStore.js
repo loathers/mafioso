@@ -380,8 +380,8 @@ class LogStore {
         entry.attributes.isInBetweenTurns = true;
       }
 
-      // use DAY_INFO entry as a possible point of a new day 
-      if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO) {
+      // use entries with the date in them as a possible point of a new day 
+      if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
         const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE)[0];
         if (!dateList.includes(dateMatch)) {
           dateList.push(dateMatch);

@@ -37,6 +37,7 @@ export const REGEX = {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
     WANDERING_LINE: /.*wandering to a random section of the beach.*/gi,
+    COMB_THE_BEACH_LINE: /.*comb the beach.*/gi,
 
     COMB_SQUARE_LINE: /^Combing square.*(\r\n|\n)/gmi,
   },
@@ -52,6 +53,7 @@ export const REGEX = {
   CAT_BURGLAR: {
     USELESS_HEIST_GROUP: /main\.php.*heist=1(\r\n|\n).*(1320\/2).*(\r\n|\n).*$/gi,
     HEISTED: /.*(choice 1320\/1).*/gi,
+    NEVERMIND_LINE: /.*choice 1320\/2.*(\r\n|\n)/gi,
   },
   CONSPIRACY_ISLAND: {
     TEXT: /.*Conspiracy Island.*/gi,
@@ -342,6 +344,8 @@ export const REGEX = {
 
     CLOSET_PUT_TARGETS: /(?<=^add to closet: ).*/gi,
     CLOSET_TAKE_TARGETS: /(?<=^take from closet: ).*/gi,
+
+    USE_CHEWING_GUM_LINE: /^use \d+ chewing gum on a string.*(\r\n|\n)/gmi,
   },
   EFFECTS: {
     ACQUIRED_EFFECT_LINE: /.*acquire an (effect|intrinsic):.*/gmi,

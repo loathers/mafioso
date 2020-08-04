@@ -84,7 +84,7 @@ export const ENTRY_DATA_MAP = {
   },
   [ENTRY_TYPE.IOTM.BEACH_COMB.WANDERING]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
-    matcher: REGEX.BEACH_COMB.WANDERING_LINE,
+    matcher: REGEX.BEACH_COMB.COMB_THE_BEACH_LINE,
     icon: NoncombatSVG,
     locationName_alt: 'Beach Comb',
     encounterName_alt: 'Comb the Beach',
