@@ -31,16 +31,16 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
  */
 
 /**
- * @typedef {String|RegExp|Array<String|RegExp>|null} EntryDisplayer
+ * @typedef {String|RegExp|Array<String|RegExp>|null} Matcher
  * 
  * @typedef {Object} EntryData
  * @property {EntryType} EntryData.type                         - this is the key, will be built by parser
  * @property {Array<Category>} EntryData.categories             - visible entry categories
  * @property {RegExp|Array<String|RegExp>} EntryData.matcher    - what to use to determine if text is this type
  * @property {ReactComponent} EntryData.icon                    - icon
- * @property {EntryDisplayer} [EntryData.locationName_alt]      - alternative text or regex to find, null shows nothing
- * @property {EntryDisplayer} [EntryData.encounterName_alt]     - same, but for encounterName
- * @property {EntryDisplayer} [EntryData.content_alt]           - same, but for the body
+ * @property {Matcher} [EntryData.locationName_alt]      - alternative text or regex to find, null shows nothing
+ * @property {Matcher} [EntryData.encounterName_alt]     - same, but for encounterName
+ * @property {Matcher} [EntryData.content_alt]           - same, but for the body
  */
 export const ENTRY_DATA_MAP = {
   // -- ascension relevant

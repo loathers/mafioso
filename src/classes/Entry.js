@@ -1,6 +1,7 @@
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
+import * as TRACKERS from 'constants/TRACKERS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
@@ -279,9 +280,9 @@ export default class Entry {
   /** @type {String} */
   get contentDisplay() {
     if (this.hasEntryData) {
-      const displayerResult = this.parseEntryDisplayer(this.entryData.content_alt);
-      if (displayerResult !== undefined) {
-        return displayerResult; // can be null
+      const matcherResult = this.parseMatcher(this.entryData.content_alt);
+      if (matcherResult !== undefined) {
+        return matcherResult; // can be null
       }
     }
 
@@ -291,9 +292,9 @@ export default class Entry {
   /** @type {String} */
   get locationDisplay() {
     if (this.hasEntryData) {
-      const displayerResult = this.parseEntryDisplayer(this.entryData.locationName_alt);
-      if (displayerResult !== undefined) {
-        return displayerResult; // can be null
+      const matcherResult = this.parseMatcher(this.entryData.locationName_alt);
+      if (matcherResult !== undefined) {
+        return matcherResult; // can be null
       }
     }
     
@@ -302,9 +303,9 @@ export default class Entry {
   /** @type {String} */
   get encounterDisplay() {
     if (this.hasEntryData) {
-      const displayerResult = this.parseEntryDisplayer(this.entryData.encounterName_alt);
-      if (displayerResult !== undefined) {
-        return displayerResult; // can be null
+      const matcherResult = this.parseMatcher(this.entryData.encounterName_alt);
+      if (matcherResult !== undefined) {
+        return matcherResult; // can be null
       }
     }
 
@@ -341,12 +342,24 @@ export default class Entry {
     return Boolean(this.attributes.disintigrater);
   }
   /** @type {Boolean} */
+  get hasInstakill() {
+    return TRACKERS.INSTAKILLS.some((entity) => {
+      return this.hasText(entity.text);
+    });
+  }
+  /** @type {Boolean} */
   get isReplaced() {
     return Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0;
   }
   /** @type {Boolean} */
   get hasReplacedEnemies() {
     return Boolean(this.attributes.replacedEnemies) && this.attributes.replacedEnemies.length > 0;
+  }
+  /** @type {Boolean} */
+  get isRunaway() {
+    return TRACKERS.RUNAWAYS.some((entity) => {
+      return this.hasText(entity.text);
+    });
   }
   // -- attribute getters
   /** @type {Boolean} */
@@ -437,35 +450,35 @@ export default class Entry {
   } 
   /**
    * 
-   * @param {EntryDisplayer} displayer
+   * @param {Matcher} matcher
    * @return {String|null}
    */
-  parseEntryDisplayer(displayer) {
+  parseMatcher(matcher) {
     // null means intentionally blank
-    if (displayer === null) {
+    if (matcher === null) {
       return null;
     }
 
     // search for result of regex
-    if (displayer instanceof RegExp) {
-      return this.findText(displayer);
+    if (matcher instanceof RegExp) {
+      return this.findText(matcher);
     }
 
     // example: ["I like big {1} and I can not {2}", "butts", "lie"]
     //  results in "I like big butts and I can not lie"
-    if (Array.isArray(displayer)) {
-      return displayer.reduce((result, innerDisplayer, idx) => {
+    if (Array.isArray(matcher)) {
+      return matcher.reduce((result, innermatcher, idx) => {
         if (idx === 0) {
-          return innerDisplayer;
+          return innermatcher;
         }
 
-        const innerResult = this.parseEntryDisplayer(innerDisplayer);
+        const innerResult = this.parseMatcher(innermatcher);
         return result.replace(`{${idx}}`, innerResult);
       });
     }
 
     // just string (or undefined)
-    return displayer;
+    return matcher;
   }
   /** @returns {String} */
   createItemsDisplay() {

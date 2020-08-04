@@ -108,13 +108,6 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Leveled Up',
-    attributeName: 'isLevelUp',
-    attributeValue: true,
-    isHidden: false,
-    checked: false,
-  },
-  {
     label: 'Pill Keeper Uses',
     attributeName: 'isPillKeeper',
     attributeValue: true,
@@ -171,8 +164,22 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
+    label: 'Instakilled',
+    attributeName: 'hasInstakill',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
     label: 'Replaced',
     attributeName: 'isReplaced',
+    attributeValue: true,
+    isHidden: false,
+    checked: false,
+  },
+  {
+    label: 'Runaway',
+    attributeName: 'isRunaway',
     attributeValue: true,
     isHidden: false,
     checked: false,
@@ -231,6 +238,13 @@ export const ATTRIBUTE_FILTERS = [
     attributeName: 'hasAdventureGains',
     attributeValue: true,
     isHidden: true,
+    checked: false,
+  },
+  {
+    label: 'Leveled Up',
+    attributeName: 'isLevelUp',
+    attributeValue: true,
+    isHidden: false,
     checked: false,
   },
   {
