@@ -7,7 +7,7 @@ import logStore from 'store/logStore';
 import HeaderDisplay from 'components/HeaderDisplay';
 import LoaderComponent from 'components/LoaderComponent';
 
-import ControlsMenu from 'sections/ControlsMenu';
+import MainMenu from 'sections/MainMenu';
 import NavigationMenu from 'sections/NavigationMenu';
 import VisualizerSection from 'sections/VisualizerSection';
 
@@ -35,7 +35,7 @@ function App() {
         <LoaderComponent />
       }
 
-      <ControlsMenu
+      <MainMenu
         style={{width: MENU_WIDTH, left: MENU_LEFT}}
         showFull={appStore.isShowingFullUpload} />
 

@@ -18,7 +18,7 @@ import combineClassnames from 'utilities/combineClassnames';
  * @returns {React.Component}
  */
 export default observer(
-function ControlsMenu(props) {
+function MainMenu(props) {
   const {
     className,
     style,
