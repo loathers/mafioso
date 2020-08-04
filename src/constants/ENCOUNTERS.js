@@ -144,3 +144,20 @@ export const LOW_KEY_SUMMER_ENCOUNTERS = [
   'Pork Key\'s Revenge',
   'Jerk-in-the-Box',
 ];
+/**
+ * https://kol.coldfront.net/thekolwiki/index.php/Low_Key_Summer
+ */
+export const FRIARS_QUEST_ENCOUNTERS = [
+  'How Do We Do It? Quaint and Curious Volume!',
+  'Strike One!',
+  'Olive My Love To You, Oh.',
+  'Dodecahedrariffic!',
+  'Moon Over the Dark Heart',
+  'Running the Lode',
+  'I, Martin',
+  'Imp Be Nimble, Imp Be Quick',
+  'Deep Imp Act',
+  'Imp Art, Some Wisdom',
+  'A Secret, But Not the Secret You\'re Looking For',
+  'Butter Knife? I\'ll Take the Knife',
+];

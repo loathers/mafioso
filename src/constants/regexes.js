@@ -128,6 +128,9 @@ export const REGEX = {
     SPIT_ON_THEM_LINE: /(?<=^Round ).*spit on them.*/gim,
     SPIT_ON_ME_LINE: /(?<=^Round ).*spit on me.*/gim,
   },
+  NEVERENDING_PARTY: {
+    INTRO_CHOICE_GROUP: /.*neverending party.*(\r\n|\n).*took choice 1322.*(\r\n|\n).*(whichchoice=1322.*)?(\r\n|\n)/gim,
+  },
   PILL_KEEPER: {
     CHOICE_LINE: /Took choice 1395.*/gi,
     CHOICE_RESULT: /(?<=choice 1395\/\d+: ).*/gi,

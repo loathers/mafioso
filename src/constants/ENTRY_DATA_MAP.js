@@ -1,4 +1,4 @@
-import {LOW_KEY_SUMMER_ENCOUNTERS} from 'constants/ENCOUNTERS';
+import {FRIARS_QUEST_ENCOUNTERS, LOW_KEY_SUMMER_ENCOUNTERS,} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
@@ -258,6 +258,11 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.QUEST.TALK_LADY_SPOOKYRAVEN_LINE,
     icon: PathSVG,
     locationName_alt: 'Lady Spookyraven',
+  },
+  [ENTRY_TYPE.QUEST.DEEP_FAT_FRIARS]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
+    matcher: FRIARS_QUEST_ENCOUNTERS,
+    icon: PathSVG,
   },
   [ENTRY_TYPE.QUEST.LEAFLET]: {
     categories: [CATEGORY_ID.QUEST],
