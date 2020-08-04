@@ -26,8 +26,13 @@ function App() {
     }
   });
 
+  const appStyle = {
+    paddingLeft: logStore.hasParsedEntries ? MENU_WIDTH + MENU_LEFT + 5 : undefined,
+  }
+
   return (
     <div 
+      style={appStyle}
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
       id='app-main'>
 
@@ -43,13 +48,11 @@ function App() {
 
       { logStore.hasParsedEntries &&
         <NavigationMenu 
-          style={{marginLeft: MENU_WIDTH + MENU_LEFT, bottom: 50}} />
+          style={{bottom: 50}} />
       }
 
       { logStore.hasParsedEntries &&
-        <div 
-          style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} 
-          className='flex-col-center flex-auto'>
+        <div className='width-full flex-col-center flex-auto'>
           { logStore.isAscensionLog &&
             <HeaderDisplay
               topContent={logStore.difficultyName}
@@ -75,7 +78,7 @@ function App() {
       }
 
       <Footer 
-        style={{bottom: 20}}
+        style={{left: MENU_LEFT, bottom: 20}}
         className='position-fixed' />
     </div>
   );

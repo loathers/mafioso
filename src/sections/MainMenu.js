@@ -148,9 +148,6 @@ export function FullPageMenu(props) {
       <div className='flex-row flex-none adjacent-mar-t-2'>
         <LogoComponent 
           className='flex-auto adjacent-mar-l-2'/>
-
-        <button
-          className='aself-end fontsize-2 pad-4 flex-none adjacent-mar-l-2'>Try a demo</button>
       </div>
 
       <UploadComponent
