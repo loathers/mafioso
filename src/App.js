@@ -40,7 +40,9 @@ function App() {
         showFull={appStore.isShowingFullUpload} />
 
       { logStore.hasParsedEntries &&
-        <PaginationMenu />
+        <PaginationMenu 
+          style={{marginLeft: MENU_WIDTH + MENU_LEFT}}
+          className='zindex-7' />
       }
 
       { logStore.hasParsedEntries &&

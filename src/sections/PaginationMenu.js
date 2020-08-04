@@ -36,7 +36,7 @@ function SimplePaginator(props) {
     <div 
       style={style}
       componentname='pagination-menu'
-      className={combineClassnames('fontfamily-primary fontsize-8 flex-row-center flex-none', className)}>
+      className={combineClassnames('fontfamily-primary fontsize-6 flex-row-center flex-none', className)}>
 
       { PageNumButtons }
 
@@ -54,7 +54,7 @@ function PaginationButton(props) {
   return (
     <button 
       {...otherProps}
-      componentname='pagination-button'
+      componentname='transparent-button'
       className={combineClassnames('talign-center borradius-2 pad-3', className)}>
       {children}
     </button>
