@@ -1,15 +1,12 @@
 
 div[componentname="pagination-menu"] {
   background: #1d1a21;
-  color: #f7f7f7;
-  box-shadow: 0 0 10px 6px rgb(23 23 23 / 50%);
   padding: 5px;
-  border-radius: 10px;
 }
 
-button[componentname='transparent-button'] {
-  border: 1px solid transparent;
-  width: 40px;
+button[componentname='dark-button'] {
+  background: #1d1a21;
+  color: #f7f7f7;
 
   &:disabled:not(.active) {
     color: #909090;
@@ -24,4 +21,8 @@ button[componentname='transparent-button'] {
   &.active {
     background: #6088bd;
   }
+}
+
+.boxshadow-dark {
+  box-shadow: 0 0 10px 6px rgb(23 23 23 / 50%);
 }

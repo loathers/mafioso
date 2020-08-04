@@ -1,10 +1,10 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
-import {ReactComponent as ChevronSVG} from 'images/chevron-up.svg';
-
 // import appStore from 'store/appStore';
 import logStore from 'store/logStore';
+
+import DarkButton from 'components/DarkButton';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -27,11 +27,12 @@ function SimplePaginator(props) {
   for (let i=1; i<maxPages; i++) {
     const isOnThisPage = i === (logStore.currentPageNum + 1);
     PageNumButtons.push(
-      <PaginationButton
+      <DarkButton
         key={`page-num-${i}-key`}
         onClick={() => onApplyChangePage(i - 1)}
         disabled={!logStore.isReady}
         children={i} 
+        style={{width: 40}}
         className={combineClassnames('adjacent-mar-l-3', isOnThisPage ? 'active' : '')}/>
     )
   }
@@ -47,20 +48,3 @@ function SimplePaginator(props) {
     </div>
   )
 })
-/** @returns {ReactComponent} */
-function PaginationButton(props) {
-  const {
-    children,
-    className,
-    ...otherProps
-  } = props;
-
-  return (
-    <button 
-      {...otherProps}
-      componentname='transparent-button'
-      className={combineClassnames('talign-center borradius-2 pad-3', className)}>
-      {children}
-    </button>
-  )
-}
