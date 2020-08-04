@@ -145,13 +145,18 @@ export function FullPageMenu(props) {
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col', className)}>
 
-      <LogoComponent 
-        className='adjacent-mar-t-2'/>
+      <div className='flex-row flex-none adjacent-mar-t-2'>
+        <LogoComponent 
+          className='flex-auto adjacent-mar-l-2'/>
+
+        <button
+          className='aself-end fontsize-2 pad-4 flex-none adjacent-mar-l-2'>Try a demo</button>
+      </div>
 
       <UploadComponent
-        content={'Upload or drop in your session logs! I\'ll attempt to find a full ascension if you upload multiple logs.'}
+        content={'Hello! Click here to upload your Kolmafia session logs. You can also drag and drop.\n\nYou can upload multiple files and Mafioso here will try to find a full ascension to display for ya!'}
         style={{height: '70vh', width: '100%'}}
-        className='width-full flex-auto adjacent-mar-t-2' />
+        className='fontsize-9 width-full flex-auto adjacent-mar-t-2' />
     </div>
   )
 }
