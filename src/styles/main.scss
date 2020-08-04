@@ -31,6 +31,17 @@ div[componentname="block-inner-icon"] {
   opacity: 0.5;
 }
 
+div[componentname="pagination-menu"] {
+  position: fixed;
+  bottom: 50px;
+  // left: 50%;
+  // transform: translateX(-50%);
+  background: #66457b;
+  border: 2px solid black;
+  z-index: 10;
+  padding: 5px;
+  border-radius: 10px;
+}
 .userselect-none {
   user-select: none;
 }

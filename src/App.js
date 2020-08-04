@@ -8,6 +8,7 @@ import HeaderDisplay from 'components/HeaderDisplay';
 import LoaderComponent from 'components/LoaderComponent';
 
 import ControlsMenu from 'sections/ControlsMenu';
+import PaginationMenu from 'sections/PaginationMenu';
 import VisualizerSection from 'sections/VisualizerSection';
 
 // todo: css or constant
@@ -35,38 +36,38 @@ function App() {
       }
 
       <ControlsMenu
-        style={{
-          width: MENU_WIDTH,
-          left: MENU_LEFT,
-        }}
+        style={{width: MENU_WIDTH, left: MENU_LEFT}}
         showFull={appStore.isShowingFullUpload} />
 
-        { logStore.isReady &&
-          <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
-            { logStore.isAscensionLog &&
-              <HeaderDisplay
-                topContent={logStore.difficultyName}
-                bottomContent={logStore.pathName}
-                className='adjacent-mar-t-5'
-              />
-            }
+      { logStore.hasParsedEntries &&
+        <PaginationMenu />
+      }
 
-            { logStore.hasCurrentEntries &&
-              <VisualizerSection 
-                entriesList={logStore.currentEntries}
-                isUsingCompactMode={appStore.isUsingCompactMode.get()}
-                className='adjacent-mar-t-5'
-              />
-            }
+      { logStore.hasParsedEntries &&
+        <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
+          { logStore.isAscensionLog &&
+            <HeaderDisplay
+              topContent={logStore.difficultyName}
+              bottomContent={logStore.pathName}
+              className='adjacent-mar-t-5'
+            />
+          }
 
-            { !logStore.hasCurrentEntries &&
-              <div className='fontsize-6 color-white adjacent-mar-t-5'>
-                Huh, nothing here.
-              </div>
-            }
-          </div>
-        }
+          { logStore.hasCurrentEntries &&
+            <VisualizerSection 
+              entriesList={logStore.currentEntries}
+              isUsingCompactMode={appStore.isUsingCompactMode.get()}
+              className='adjacent-mar-t-5'
+            />
+          }
 
+          { !logStore.hasCurrentEntries &&
+            <div className='fontsize-6 color-white adjacent-mar-t-5'>
+              Huh, nothing here.
+            </div>
+          }
+        </div>
+      }
     </div>
   );
 })
