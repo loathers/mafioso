@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ReactComponent as BanishSVG } from 'images/island.svg';
 import { ReactComponent as CarrionSVG } from 'images/carrion.svg';
 import { ReactComponent as LaurelCrownSVG } from 'images/laurel-crown.svg';
+import { ReactComponent as RunawaySVG } from 'images/run.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -99,6 +100,16 @@ export default function CombatSequenceDisplay(props) {
         <CombatResultDisplay 
           content='Banished!'
           IconComponent={BanishSVG} />
+      }
+
+      { entry.hasRunaway && !isVictory &&
+        <CombatResultDisplay 
+          content='Ran Away!'
+          IconComponent={RunawaySVG} />
+      }
+
+      { entry.hasRunaway && !isVictory && entry.attributes.isFreeAdv &&
+        <div className='fontsize-1 mar-1'>(for free)</div>
       }
 
       { entry.isCopied &&

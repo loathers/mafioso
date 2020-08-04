@@ -332,7 +332,7 @@ export default class Entry {
     return Boolean(this.attributes.replacedEnemies) && this.attributes.replacedEnemies.length > 0;
   }
   /** @type {Boolean} */
-  get isRunaway() {
+  get hasRunaway() {
     return TRACKERS.RUNAWAYS.some((entity) => {
       return Boolean(this.findMatcher(entity.matcher));
     });

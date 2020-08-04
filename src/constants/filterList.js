@@ -178,8 +178,8 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Runaway',
-    attributeName: 'isRunaway',
+    label: 'Run Away (attempts)',
+    attributeName: 'hasRunaway',
     attributeValue: true,
     isHidden: false,
     checked: false,
