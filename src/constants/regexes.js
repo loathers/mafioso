@@ -36,7 +36,8 @@ export const REGEX = {
   BEACH_COMB: {
     COMBING_LINE: /.*Combing.*/i,
     COMBING_ACTION: /Combing.*/i,
-    
+    WANDERING_LINE: /.*wandering to a random section of the beach.*/gi,
+
     COMB_SQUARE_LINE: /^Combing square.*(\r\n|\n)/gmi,
   },
   BIRD_A_DAY: {

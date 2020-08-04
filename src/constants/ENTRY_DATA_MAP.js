@@ -75,12 +75,20 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Bastille Battalion control rig',
     content_alt: null,
   },
-  [ENTRY_TYPE.IOTM.BEACH_COMB]: {
+  [ENTRY_TYPE.IOTM.BEACH_COMB.BEACH_HEAD]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.BEACH_COMB.COMBING_LINE,
-    icon: NoncombatSVG,
+    icon: InfoSVG,
     locationName_alt: 'Beach Comb',
     encounterName_alt: REGEX.BEACH_COMB.COMBING_ACTION,
+  },
+  [ENTRY_TYPE.IOTM.BEACH_COMB.WANDERING]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.BEACH_COMB.WANDERING_LINE,
+    icon: NoncombatSVG,
+    locationName_alt: 'Beach Comb',
+    encounterName_alt: 'Comb the Beach',
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.BIRD_A_DAY.USE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
