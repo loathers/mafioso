@@ -7,6 +7,7 @@ import logStore from 'store/logStore';
 import HeaderDisplay from 'components/HeaderDisplay';
 import LoaderComponent from 'components/LoaderComponent';
 
+import Footer from 'sections/Footer';
 import MainMenu from 'sections/MainMenu';
 import NavigationMenu from 'sections/NavigationMenu';
 import VisualizerSection from 'sections/VisualizerSection';
@@ -27,8 +28,8 @@ function App() {
 
   return (
     <div 
-      className='color-white fontfamily-primary fontsize-5 pad-7 flex-row jcontent-center'
-      id='slv-main'>
+      className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
+      id='app-main'>
 
       {/* loader */}
       { appStore.isLoading &&
@@ -36,8 +37,9 @@ function App() {
       }
 
       <MainMenu
+        showFull={appStore.isShowingFullUpload}
         style={{width: MENU_WIDTH, left: MENU_LEFT}}
-        showFull={appStore.isShowingFullUpload} />
+        className='flex-auto' />
 
       { logStore.hasParsedEntries &&
         <NavigationMenu 
@@ -45,7 +47,9 @@ function App() {
       }
 
       { logStore.hasParsedEntries &&
-        <div style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} className='flex-col-center flex-auto'>
+        <div 
+          style={{marginLeft: MENU_WIDTH + MENU_LEFT, width: '100%'}} 
+          className='flex-col-center flex-auto'>
           { logStore.isAscensionLog &&
             <HeaderDisplay
               topContent={logStore.difficultyName}
@@ -58,7 +62,7 @@ function App() {
             <VisualizerSection 
               entriesList={logStore.currentEntries}
               isUsingCompactMode={appStore.isUsingCompactMode.get()}
-              className='adjacent-mar-t-5'
+              className='flex-auto adjacent-mar-t-5'
             />
           }
 
@@ -69,6 +73,10 @@ function App() {
           }
         </div>
       }
+
+      <Footer 
+        style={{bottom: 20}}
+        className='position-fixed' />
     </div>
   );
 })

@@ -13,11 +13,12 @@ body {
   align-items: center;
 }
 
-#slv-main {
+#app-main {
   width: 100%;
+  min-height: 100vh;
   max-width: 1280px;
   box-sizing: border-box;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 }
 
 div[componentname="visualizer-tooltip"] {
@@ -45,6 +46,10 @@ div[componentname="block-inner-icon"] {
   border-top: 5px solid #ececec;
 }
 
+.flip-y {
+  transform: scaleY(-1);
+}
+
 button:hover:enabled {
   cursor: pointer;
 }
@@ -55,6 +60,8 @@ button:hover:enabled {
   }
 }
 
-.flip-y {
-  transform: scaleY(-1);
+.hover\:color-grayer:enabled {
+  &:hover {
+    color: #909090;
+  }
 }

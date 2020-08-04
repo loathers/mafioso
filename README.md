@@ -24,7 +24,9 @@ Definitely notify me of any actual errors or crashes via Github's bug reporting,
 ## Attribution
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Icons taken from [Game-icons.net](https://game-icons.net/).
+Many of the App Icons were gotten from [Game-icons.net](https://game-icons.net/).
+
+Some from [Simple Icons](https://github.com/simple-icons/simple-icons), thanks open source!
 
 ## Contributing
 Please feel free to fork or contribute pull requests.

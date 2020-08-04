@@ -52,7 +52,7 @@ function MainMenu(props) {
   }
 
   if (showFull) {
-    return <FullPageMenu />
+    return <FullPageMenu {...props} />
   }
 
   return (
@@ -61,9 +61,9 @@ function MainMenu(props) {
       className={combineClassnames('position-fixed flex-col', className)}>
 
       <LogoComponent 
-        className='adjacent-mar-t-5'/>
+        className='flex-none adjacent-mar-t-5'/>
 
-      <div className='flex-col adjacent-mar-t-5'>
+      <div className='flex-col flex-none adjacent-mar-t-5'>
         <UploadComponent
           content={'Upload new logs'}
           className='fontsize-5 width-full adjacent-mar-t-2' />
@@ -94,7 +94,7 @@ function MainMenu(props) {
       </div>
 
       {/* change visible entries */}
-      <div className='flex-col adjacent-mar-t-5'>
+      <div className='flex-col flex-none adjacent-mar-t-5'>
         <FiltersMenu 
           label={`Visible Categories (${logStore.visibleCount})`}
           defaultList={categoriesVisibleList}
@@ -113,7 +113,7 @@ function MainMenu(props) {
       {/* filter by attribute */}
       <label 
         htmlFor='attribute-filter-selector'
-        className='adjacent-mar-t-5'>
+        className='flex-none adjacent-mar-t-5'>
         <div className='fontsize-3 adjacent-mar-t-2'>Filter Attributes</div>
         <select 
           onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
@@ -134,11 +134,8 @@ function MainMenu(props) {
     </div>
   );
 });
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-function FullPageMenu(props) {
+/** @returns {React.Component} */
+export function FullPageMenu(props) {
   const {
     className,
   } = props;
@@ -146,7 +143,7 @@ function FullPageMenu(props) {
   return (
     <div 
       style={{width: '90%'}}
-      className={combineClassnames('fontsize-4 flex-col flex-none', className)}>
+      className={combineClassnames('fontsize-4 flex-col', className)}>
 
       <LogoComponent 
         className='adjacent-mar-t-2'/>
