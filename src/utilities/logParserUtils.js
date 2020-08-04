@@ -59,11 +59,13 @@ export async function parseLogTxt(rawText) {
 export function findAscensionLog(rawText) {
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (fromValhallaToFreeKing) {
+    console.log('found fromValhallaToFreeKing', fromValhallaToFreeKing[0].slice(fromValhallaToFreeKing[0].length - 50, fromValhallaToFreeKing[0].length));
     return fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
+    console.log('found fromValhallaToThwaitgold');
     return fromValhallaToThwaitgold[0];
   }
 
@@ -74,12 +76,18 @@ export function findAscensionLog(rawText) {
  * @returns {AscensionAttributes}
  */
 export function parseAscensionAttributes(rawText) {
+  const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || [];
+  const classNameMatch = rawText.match(REGEX.CHARACTER.CLASS_NAME) || [];
+  const ascensionNumMatch = rawText.match(REGEX.CHARACTER.ASCENSION_NUMBER) || [];
+  const difficultyNameMatch = rawText.match(REGEX.CHARACTER.DIFFICULTY_NAME) || [];
+  const pathNameMatch = rawText.match(REGEX.CHARACTER.PATH_NAME) || [];
+
   return {
-    characterName: rawText.match(REGEX.CHARACTER.CHARACTER_NAME)[0] || undefined,
-    className: rawText.match(REGEX.CHARACTER.CLASS_NAME)[0] || undefined,
-    ascensionNum: rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER)[0] || undefined,
-    difficultyName: rawText.match(REGEX.ASCENSION.DIFFICULTY_NAME)[0] || undefined,
-    pathName: rawText.match(REGEX.ASCENSION.PATH_NAME)[0] || undefined,
+    characterName: characterNameMatch[0] || undefined,
+    className: classNameMatch[0] || undefined,
+    ascensionNum: ascensionNumMatch[0] || undefined,
+    difficultyName: difficultyNameMatch[0] || undefined,
+    pathName: pathNameMatch[0] || undefined,
   }
 }
 /** 
