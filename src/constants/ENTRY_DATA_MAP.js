@@ -380,6 +380,12 @@ export const ENTRY_DATA_MAP = {
     icon: ItemBagSVG,
     locationName_alt: ['Use {1}', REGEX.ITEMS.USE_ITEM_TARGET],
   },
+  [ENTRY_TYPE.ITEMS.ZAP]: {
+    categories: [CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.ITEMS.ZAP_LINE,
+    icon: ItemBagSVG,
+    locationName_alt: ['Zap {1}', REGEX.ITEMS.ZAP_TARGET],
+  },
   [ENTRY_TYPE.AUTOSELL]: {
     categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],
     matcher: REGEX.TRANSACTIONS.AUTOSELL,

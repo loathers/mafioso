@@ -300,12 +300,15 @@ export const REGEX = {
     USE_ITEM_AMOUNT: /(?<=^use )\d+/gmi,
     USE_ITEM_TARGET: /(?<=^use \d+ ).*/gmi,
 
+    ZAP_LINE: /^zap .*/gmi,
+    ZAP_TARGET: /(?<=^zap ).*/gmi,
+
     MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix) .*\d+.*/gmi,
-    COMBINE_LINE: /^combine .*\d+.*/gmi,
-    COOK_LINE: /^cook .*\d+.*/gmi,
-    CRAFT_LINE: /^craft .*\d+.*/gmi,
-    CREATE_LINE: /^create .*\d+.*/gmi,
-    MIX_LINE: /^mix .*\d+.*/gmi,
+    COMBINE_LINE: /^combine .*/gmi,
+    COOK_LINE: /^cook .*/gmi,
+    CRAFT_LINE: /^craft .*/gmi,
+    CREATE_LINE: /^create .*/gmi,
+    MIX_LINE: /^mix .*/gmi,
     CRAFTING_USED_LINE: /^crafting used .*(\r\n|\n)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
@@ -371,7 +374,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(awesomemenu|diary|friars blessing|main|mall|peevpee|play|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(awesomemenu|diary|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|upeffect|uneffect|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
