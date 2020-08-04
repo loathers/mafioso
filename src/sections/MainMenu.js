@@ -117,11 +117,12 @@ function MainMenu(props) {
         <div className='fontsize-3 adjacent-mar-t-2'>Filter Attributes</div>
         <select 
           onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
-          className='color-white bg-second borradius-1 fontsize-3 pad-3 width-full adjacent-mar-t-2'
+          size={10}
+          className='color-white bg-second borradius-1 fontsize-3 width-full adjacent-mar-t-2'
           id='attribute-filter-selector'>
           { availableAttributesList.map((filterData, idx) => (
             <option 
-              className='fontsize-2'
+              className='fontsize-2 pad-v-1 pad-h-3 adjacent-mar-t-1'
               key={`option-${idx}-key`}
               value={filterData.attributeName}>
               {filterData.label}
