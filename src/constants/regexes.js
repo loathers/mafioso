@@ -198,6 +198,7 @@ export const REGEX = {
     TALKING: /^talking to.*/gim,
     VISITING: /^visiting.*/gim,
     CLAN_VISIT: /^visiting.*in.*clan.*/gim,
+    LEAFLET: /^leaflet.*/gim,
   },
   VALUE: {
     TURN_NUM: /(?!\[)\d+(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
@@ -347,7 +348,6 @@ export const REGEX = {
     EFFECT_DURATION: /(?<=acquire an (effect|intrinsic): .*\()\d+(?=\))/mi,
 
     UNAFFECT_LINE: /^uneffect.*/gim,
-    LOSE_EFFECT_LINE: /^you lose.*effect.*/gim,
 
     CAST_LINE: /^cast .*/gim,
     CAST_NAME: /(?<=^cast \d+ ).*/mi,
@@ -385,12 +385,11 @@ export const REGEX = {
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
-    LOG_BORDER: /(=-)+=+(\r\n|\n)/g,
-    RAFFLE_TEXT: /You acquire raffle ticket/gi,
-    USELESS_BREAKFAST_LINE: /^main.*checkbfast.*(\r\n|\n)/gim,
-    USELESS_LEAFLET_LINE: /^(leaflet|\(you see a).*(?!plover)(\r\n|\n)/gim,
+    RAFFLE_TEXT: /.*You acquire raffle ticket.*/gi,
+    USELESS_LEAFLET_LINE: /(?!.*(plover|open chest|look in hole|take ring))^(leaflet|\(you see a).*(\r\n|\n)/gim,
     SWIMMING_POOL: /.*swimming pool.*(\r\n|\n)/gim,
 
+    LOSE_EFFECT_LINE: /^you lose.*effect.*(\r\n|\n)/gim,
     FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,
     UNEQUIP: /^unequip.*(\r\n|\n)/gim,
     MCD_CHANGE: /^mcd.*(\r\n|\n)/gim,

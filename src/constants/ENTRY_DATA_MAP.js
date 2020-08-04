@@ -246,6 +246,14 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'A Small Pyramid',
     encounterName_alt: 'Pyramid Unlocked',
   },
+  [ENTRY_TYPE.QUEST.LEAFLET]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING],
+    matcher: REGEX.LINE.LEAFLET,
+    icon: PathSVG,
+    locationName_alt: 'Strange Leaflet',
+    encounterName_alt: 'There is nobody named Xyzzy here',
+    content_alt: null,
+  },
   [ENTRY_TYPE.QUEST.MADE_WAND]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING],
     matcher: /.*acquire.*wand of nagamar.*/i,
