@@ -1,0 +1,36 @@
+button:hover:enabled {
+  cursor: pointer;
+}
+
+
+.hover\:bg-second-lighter:enabled {
+  &:hover {
+    background-color: #455a6d;
+  }
+}
+
+.hover\:color-grayer:enabled {
+  &:hover {
+    color: #909090;
+  }
+}
+
+.userselect-none {
+  user-select: none;
+}
+
+.boxshadow-dark {
+  box-shadow: 0 0 7px 3px rgb(23 23 23 / 50%);
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 5px solid #ececec;
+}
+
+.flip-y {
+  transform: scaleY(-1);
+}

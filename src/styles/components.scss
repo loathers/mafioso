@@ -1,0 +1,38 @@
+[componentname='main-menu'] {
+  width: $MENU_WIDTH;
+  left: $APP_MARGIN;
+}
+
+[componentname='app-footer'] {
+  left: $APP_MARGIN;
+}
+
+[componentname='dark-button'] {
+  background: #1d1a21;
+  color: #f7f7f7;
+
+  &:disabled:not(.active) {
+    color: #909090;
+  }
+
+  &:hover:enabled:not(.active),
+  &:focus:enabled:not(.active) {
+    background: #302a38;
+  }
+
+  &:active:enabled,
+  &.active {
+    background: #6088bd;
+  }
+}
+
+[componentname='pagination-menu'] {
+  background: #1d1a21;
+}
+
+[componentname='block-inner-icon'] {
+  top: 5px;
+  left: 5px;
+  opacity: 0.5;
+}
+

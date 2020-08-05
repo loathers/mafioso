@@ -12,10 +12,6 @@ import MainMenu from 'sections/MainMenu';
 import NavigationMenu from 'sections/NavigationMenu';
 import VisualizerSection from 'sections/VisualizerSection';
 
-// todo: css or constant
-const MENU_WIDTH = 200;
-const MENU_LEFT = 30;
-
 export default observer(
 function App() {
   // scroll to the top when loading is complete
@@ -26,13 +22,8 @@ function App() {
     }
   });
 
-  const appStyle = {
-    paddingLeft: logStore.hasParsedEntries ? MENU_WIDTH + MENU_LEFT + 5 : undefined,
-  }
-
   return (
     <div 
-      style={appStyle}
       className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
       id='app-main'>
 
@@ -43,7 +34,6 @@ function App() {
 
       <MainMenu
         showFull={appStore.isShowingFullUpload}
-        style={{width: MENU_WIDTH, left: MENU_LEFT}}
         className='flex-auto' />
 
       { logStore.hasParsedEntries &&
@@ -78,7 +68,7 @@ function App() {
       }
 
       <Footer 
-        style={{left: MENU_LEFT, bottom: 20}}
+        style={{bottom: 20}}
         className='position-fixed' />
     </div>
   );

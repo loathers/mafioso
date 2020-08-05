@@ -13,7 +13,8 @@ export default function Footer(props) {
   } = props;
 
   return (
-    <div 
+    <div
+      componentname='app-footer'
       style={style}
       className={combineClassnames('aself-start fontsize-2 flex-row-center', className)}>
 
