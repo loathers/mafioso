@@ -1,0 +1,49 @@
+// should be hidden (start)
+
+use 1 Evilometer
+
+use 1 green rocket
+Took choice 1089/30: Perform Service
+
+Maximizer: +com
+
+Visiting the Untinker
+
+raffle 1 storage
+
+cast 1 Seek out a Bird
+
+main.php?talktoreanimator=1
+
+upeffect.php?efid=166&qty=2&pwd&ajax=1&_=1594834475717
+
+eat 1 magical sausage
+
+main.php?eowkeeper=1
+
+main.php?eowkeeper=1
+Maximizer: ml
+Took choice 1395/9: Nevermind
+choice.php?pwd&whichchoice=1395&option=9
+
+Maximizer: 5item,meat,0.5initiative,0.1da 1000max,dr,0.5all res,1.5mainstat,mox,-fumble,0.4hp,0.2mp 1000max,3mp regen,1.5weapon damage,-0.75weapon damage percent,1.5elemental damage,2familiar weight,5familiar exp,10exp,5Muscle experience percent,-equip hewn moon-rune spoon,-equip deceased crimbo tree,-equip broken champagne bottle,-equip makeshift garbage shirt,100sleaze damage,100sleaze spell damage,-200combat 25max,50item 667.0max,ml 50max,effective
+
+peevpee.php?action=smashstone&pwd&confirm=on&shatter=Smash%2Bthat%2BHippy%2BCrap%2521
+
+mall.php?pudnuggler=%22deck+of+lewd+playing+cards%22&category=allitems&consumable_byme=0&weaponattribute=3&wearable_byme=0&nolimits=0&max_price=0&sortresultsby=price&justitems=0&x_cheapest=0
+
+Visiting April Shower in clan VIP lounge
+
+raffle 1 inventory
+You acquire raffle ticket
+
+// should be hidden (end)
+
+// visible (start)
+
+Took choice 1089/8: Perform Service (24 Adventures)
+You lose 24 Adventures
+You acquire an item: silver face paint
+
+shower cold
+You acquire shard of double-ice (4)

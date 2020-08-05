@@ -1,0 +1,90 @@
+
+use 1 Bastille Battalion control rig
+Encounter: Bastille Battalion
+Took choice 1313/3: (secret choice)
+choice.php?whichchoice=1313&option=3&pwd
+Encounter: Bastille Battalion
+Took choice 1313/4: (secret choice)
+choice.php?whichchoice=1313&option=4&pwd
+Encounter: Bastille Battalion
+Took choice 1313/5: (secret choice)
+choice.php?whichchoice=1313&option=5&pwd
+Encounter: Bastille Battalion (turn #1)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Raid the cart
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Bastille Battalion (turn #2)
+You gain 21 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Rob the suburb
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Castle vs. Castle
+You gain 101 cheese!
+Took choice 1315/3: Ready your defenses and wait for them
+choice.php?whichchoice=1315&option=3&pwd
+Encounter: Bastille Battalion (turn #4)
+You gain 44 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Raid the cave
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Bastille Battalion (turn #5)
+You gain 130 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/1: Grab the boulder
+choice.php?whichchoice=1319&option=1&pwd
+Encounter: Castle vs. Castle
+You gain 98 cheese!
+Took choice 1315/2: Bide your time
+choice.php?whichchoice=1315&option=2&pwd
+Encounter: Bastille Battalion (turn #7)
+You gain 91 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Let the cheese horse in
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Bastille Battalion (turn #8)
+You gain 60 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Submit embarrassing catapult photos
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Castle vs. Castle
+You gain 90 cheese!
+Took choice 1315/3: Ready your defenses and wait for them
+choice.php?whichchoice=1315&option=3&pwd
+Encounter: Bastille Battalion (turn #10)
+You gain 131 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/1: Convert the barracks
+choice.php?whichchoice=1319&option=1&pwd
+Encounter: Bastille Battalion (turn #11)
+You gain 134 cheese!
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Enter the childrens' art contest
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Castle vs. Castle
+You gain 105 cheese!
+Took choice 1315/1: Try to get the jump on them
+choice.php?whichchoice=1315&option=1&pwd
+Encounter: GAME OVER
+Took choice 1316/3: I'm done for now
+choice.php?whichchoice=1316&option=3&pwd
+You gain 275 Wizardliness
+You gain some Mysticality points!
+You acquire an item: Draftsman's driving gloves
+You acquire an effect: Bastille Bourgeoisie (100)
+You acquire an item: boiling broth

@@ -1,0 +1,8 @@
+use 1 Bird-a-Day calendar
+You learned a new skill: Seek out a Bird
+
+cast 1 Seek out a Bird
+You acquire an effect: Blessing of the Bird (10)
+
+cast 1 Visit your Favorite Bird
+You acquire an effect: Blessing of your favorite Bird (20)

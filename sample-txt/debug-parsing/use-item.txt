@@ -1,0 +1,39 @@
+use 1 Evilometer
+
+use 1 Evilometer
+
+use 1 Evilometer
+
+upeffect.php?efid=1427&qty=1&pwd&ajax=1&_=1596042410592
+
+cast 1 Blessing of the Storm Tortoise
+You acquire an effect: Disdain of the Storm Tortoise (10)
+
+upeffect.php?efid=2455&qty=11&pwd&ajax=1&_=1596042415009
+
+cast 11 Blood Frenzy
+You acquire an effect: Frenzied, Bloody (110)
+
+upeffect.php?efid=70&qty=1&pwd&ajax=1&_=1596042417220
+
+cast 1 Stevedave's Shanty of Superiority
+You acquire an effect: Stevedave's Shanty of Superiority (10)
+
+upeffect.php?efid=1427&qty=5&pwd&ajax=1&_=1596042421179
+
+main.php?action=may4
+Encounter: Upgrade Your May the Fourth Cosplay Saber
+Took choice 1386/4: Empathy Chip
+choice.php?pwd&whichchoice=1386&option=4
+
+[47] Guano Junction
+Encounter: How I Wonder What You're At
+You lose 5 hit points
+You acquire an item: sonar-in-a-biscuit
+You acquire an item: sonar-in-a-biscuit
+
+use 1 sonar-in-a-biscuit
+
+use 1 sonar-in-a-biscuit
+
+use 1 sonar-in-a-biscuit

@@ -1,0 +1,35 @@
+cast 1 Advanced Saucecrafting
+You acquire scrumptious reagent (5)
+
+cast 1 Spirit of Bacon Grease
+You acquire an intrinsic: Spirit of Bacon Grease
+
+cast 1 Astral Shell
+You acquire an effect: Astral Shell (5)
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 Smooth Movement
+You acquire an effect: The Sonata of Sneakiness (10)
+
+cast 11 Empathy of the Newt
+You acquire an effect: Empathy (55)
+
+upeffect.php?efid=131&qty=11&pwd&ajax=1&_=1595976766549
+
+cast 11 Rage of the Reindeer
+You acquire an effect: Rage of the Reindeer (110)
+
+upeffect.php?efid=1365&qty=11&pwd&ajax=1&_=1595976772311
+
+cast 11 Blubber Up
+You acquire an effect: Blubbered Up (110)
+
+cast 1 Bind Vermincelli
+
+cast 5 Blood Bond
+You acquire an effect: Blood Bond (50)
+
+You lose some of an effect: Ode to Booze (-2)
+
+You acquire an effect: Blood Bubble (3)

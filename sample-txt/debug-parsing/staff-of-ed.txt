@@ -1,0 +1,37 @@
+// should work
+
+Combine 1 ancient amulet + 1 Eye of Ed
+You acquire an item: headpiece of the Staff of Ed
+Crafting used 1 each of ancient amulet and Eye of Ed
+
+Combine 1 headpiece of the Staff of Ed + 1 Staff of Fats
+You acquire an item: Staff of Ed
+Crafting used 1 each of Staff of Fats and headpiece of the Staff of Ed
+
+place.php?whichplace=desertbeach&action=db_pyramid1
+
+Combine 1 headpiece of the Staff of Ed + 1 Staff of Fats
+You acquire an item: headpiece of the Staff of Ed
+Crafting used 1 each of Staff of Fats and headpiece of the Staff of Ed
+
+Combine 1 ancient amulet + 1 Eye of Ed
+You acquire an item: Staff of Ed
+Crafting used 1 each of ancient amulet and Eye of Ed
+
+place.php?whichplace=desertbeach&action=db_pyramid1
+
+// should not work
+
+Combine 1 ancient amulet + 1 Eye of Ed
+You acquire an item: headpiece of the Staff of Ed
+Crafting used 1 each of ancient amulet and Eye of Ed
+
+doing something
+
+Combine 1 headpiece of the Staff of Ed + 1 Staff of Fats
+You acquire an item: Staff of Ed
+Crafting used 1 each of Staff of Fats and headpiece of the Staff of Ed
+
+doing something
+
+place.php?whichplace=desertbeach&action=db_pyramid1

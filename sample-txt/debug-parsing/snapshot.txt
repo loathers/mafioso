@@ -1,0 +1,337 @@
+
+> moon
+
+July 30, 2020 - Bor 6
+
+Ronald: waning gibbous
+Grimace: first quarter
+Mini-moon: far right
+
+Arrrbor Day: 6 days
+Lab&oacute;r Day: 16 days
+Halloween: 26 days
+Feast of Boris: 33 days
+Yuletide: 38 days
+Festival of Jarlsberg: 43 days
+Valentine's Day: 54 days
+St. Sneaky Pete's Day: 61 days
+Oyster Egg Day: 68 days
+El Dia De Los Muertos Borrachos: 76 days
+Generic Summer Holiday: 85 days
+Dependence Day: 94 days
+
+3 days until Muscle.
+
+> status
+
+Name: dextrial
+Class: Accordion Thief
+
+Lv: 1
+HP: 37 / 164
+MP: 37 / 155
+
+Mus: 33 (2), tnp = 5
+Mys: 32 (1), tnp = 3
+Mox: 34 (3), tnp = 7
+
+Advs: 40
+Meat: 0
+
+Full: 0 / 15
+Drunk: 0 / 15
+Spleen: 0 / 15
+
+> equipment
+
+Hat: Iunion Crown
+Weapon: Fourth of May Cosplay Saber
+Off-hand: Kramco Sausage-o-Matic&trade;
+Shirt: makeshift garbage shirt
+Pants: old sweatpants
+Back: vampyric cloake
+
+Acc. 1: Retrospecs
+Acc. 2: Powerful Glove
+Acc. 3: hewn moon-rune spoon
+
+Pet: Left-Hand Man (11 lbs)
+Item: (none)
+
+> skills
+
+Uncategorized
+- 20/20 Vision
+- Alien Source Code
+- Always Never Not Guzzling
+- Bear Essence
+- Budget Conscious
+- CLEESH
+- Chip on your Shoulder
+- Deep Dark Visions
+- Drescher's Annoying Noise
+- Drinking to Drink
+- Drippy Eye-Beetle
+- Eggsplosion
+- Expert Corner-Cutter
+- Implode Universe
+- Lock Picking
+- Marginally Insane
+- Prevent Scurvy and Sobriety
+- Singer's Faithful Ocelot
+- Snowclone
+- Summon Annoyance
+- Summon Carrot
+- Summon Holiday Fun!
+- The Spirit of Taking
+- Thick-Skinned
+- Tiki Mixology
+- Transcendent Olfaction
+- Visit your Favorite Bird
+- Walberg's Dim Bulb
+
+Seal Clubber
+- Audacity of the Otter
+- Batter Up!
+- Blood Frenzy
+- Blubber Up
+- Buoyancy of the Beluga
+- Cavalcade of Fury
+- Claws of the Walrus
+- Clobber
+- Cold Shoulder
+- Double-Fisted Skull Smashing
+- Fortitude of the Muskox
+- Furious Wallop
+- Get Big
+- Harpoon!
+- Hide of the Walrus
+- Ire of the Orca
+- Lunge Smack
+- Lunging Thrust-Smack
+- Musk of the Moose
+- Northern Explosion
+- Northern Exposure
+- Precision of the Penguin
+- Pride of the Puffin
+- Pulverize
+- Rage of the Reindeer
+- Scowl of the Auk
+- Seal Clubbing Frenzy
+- Seething of the Snow Leopard
+- Silent Hunter
+- Snarl of the Timberwolf
+- Super-Advanced Meatsmithing
+- Thirst of the Weasel
+- Thrust-Smack
+- Tongue of the Walrus
+- Wrath of the Wolverine
+
+Turtle Tamer
+- Amphibian Sympathy
+- Armorcraftiness
+- Astral Shell
+- Blessing of the Storm Tortoise
+- Blessing of the War Snapper
+- Blood Bond
+- Butts of Steel
+- Cold-Blooded Fearlessness
+- Empathy of the Newt
+- Gallapagosian Mating Call
+- Headbutt
+- Hero of the Half-Shell
+- Kneebutt
+- Patience of the Tortoise
+- Patient Smile
+- Pizza Lover
+- Quiet Determination
+- Reptilian Fortitude
+- Shell Up
+- Shieldbutt
+- Skin of the Leatherback
+- Spectral Snapper
+- Spiky Shell
+- Spirit Boon
+- Spirit Snap
+- Stiff Upper Lip
+- Summon Leviatuga
+- Tao of the Terrapin
+- Tenacity of the Snapper
+- Testudinal Teachings
+- The Long View
+- Toss
+- Turtle Power
+- Wisdom of the Elder Tortoises
+
+Pastamancer
+- Arched Eyebrow of the Archmage
+- Bind Lasagmbie
+- Bind Spaghetti Elemental
+- Bind Spice Ghost
+- Bind Vampieroghi
+- Bind Vermincelli
+- Blood Bucatini
+- Bringing Up the Rear
+- Cannelloni Cannon
+- Cannelloni Cocoon
+- Entangling Noodles
+- Flavour of Magic
+- Lasagna Bandages
+- Leash of Linguini
+- Manicotti Meditation
+- Pastamastery
+- Quiet Judgement
+- Ravioli Shurikens
+- Shield of the Pastalord
+- Spaghetti Spear
+- Spirit of Ravioli
+- Spirit of Rigatoni
+- Springy Fusilli
+- Stuffed Mortar Shell
+- Subtle and Quick to Anger
+- Tempuramancy
+- Thrall Unit Tactics
+- Tolerance of the Kitchen
+- Transcendental Noodlecraft
+- Utensil Twist
+- Weapon of the Pastalord
+- Wizard Squint
+
+Sauceror
+- Advanced Saucecrafting
+- Antibiotic Saucesphere
+- Blood Bubble
+- Blood Sugar Sauce Magic
+- Curse of Marinara
+- Curse of Vichyssoise
+- Curse of Weaksauce
+- Curse of the Thousand Islands
+- Deep Saucery
+- Diminished Gag Reflex
+- Elemental Saucesphere
+- Expert Panhandling
+- Icy Glare
+- Impetuous Sauciness
+- Inner Sauce
+- Intrinsic Spiciness
+- Irrepressible Spunk
+- Itchy Curse Finger
+- Jalape&ntilde;o Saucesphere
+- Love Mixology
+- Master Saucier
+- Salsaball
+- Sauce Contemplation
+- Sauce Monocle
+- Saucecicle
+- Saucegeyser
+- Saucemaven
+- Saucestorm
+- Saucy Salve
+- Scarysauce
+- Simmer
+- Soul Saucery
+- Stream of Sauce
+- The Way of Sauce
+- Wave of Sauce
+- Wry Smile
+
+Disco Bandit
+- Acquire Rhinestones
+- Advanced Cocktailcrafting
+- Adventurer of Leisure
+- Ambidextrous Funkslinging
+- Deft Hands
+- Disco Aerobics
+- Disco Bravado
+- Disco Dance 3: Back in the Habit
+- Disco Dance II: Electric Boogaloo
+- Disco Dance of Doom
+- Disco Eye-Poke
+- Disco Face Stab
+- Disco Fever
+- Disco Greed
+- Disco Leer
+- Disco Nap
+- Disco Smirk
+- Disco State of Mind
+- Flashy Dancer
+- Frantic Gyrations
+- Heart of Polyester
+- Mad Looting Skillz
+- Nimble Fingers
+- Overdeveloped Sense of Self Preservation
+- Sensitive Fingers
+- Smooth Movement
+- Suckerpunch
+- Superhuman Cocktailcrafting
+- That's Not a Knife
+- Tricky Knifework
+
+Accordion Thief
+- Accordion Bash
+- Aloysius' Antiphon of Aptitude
+- Bawdy Refrain
+- Bram's Bloody Bagatelle
+- Brawnee's Anthem of Absorption
+- Carlweather's Cantata of Confrontation
+- Chorale of Companionship
+- Cletus's Canticle of Celerity
+- Concerto de los Muertos
+- Donho's Bubbly Ballad
+- Fat Leon's Phat Loot Lyric
+- Five Finger Discount
+- Jackasses' Symphony of Destruction
+- Knowing Smile
+- Mariachi Memory
+- Master Accordion Master Thief
+- Moxie of the Mariachi
+- Quiet Desperation
+- Sing
+- Stevedave's Shanty of Superiority
+- Sticky Fingers
+- Suspicious Gaze
+- The Ballad of Richie Thingfinder
+- The Magical Mojomuscular Melody
+- The Moxious Madrigal
+- The Ode to Booze
+- The Polka of Plenty
+- The Power Ballad of the Arrowsmith
+- The Psalm of Pointiness
+- The Sonata of Sneakiness
+- Thief Among the Honorable
+- Ur-Kel's Aria of Annoyance
+
+Conditional
+- CHEAT CODE: Invisible Avatar
+- CHEAT CODE: Replace Enemy
+- CHEAT CODE: Shrink Enemy
+- CHEAT CODE: Triple Size
+- Festoon Buffoon
+- Spirit of Bacon Grease
+- Spirit of Cayenne
+- Spirit of Garlic
+- Spirit of Nothing
+- Spirit of Peppermint
+- Spirit of Wormwood
+- Use the Force
+
+Gnome Trainer
+- Cosmic Ugnderstanding
+- Gnefarious Pickpocketing
+- Gnomish Hardigness
+- Powers of Observatiogn
+- Torso Awaregness
+
+> effects
+
+0 of 4 AT buffs active.
+
+> modifiers
+
+ML: +0
+Enc: +0.00%
+Init: +100.00%
+
+Exp: +12.00
+Meat: +60.00%
+Item: +80.00%

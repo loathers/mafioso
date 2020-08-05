@@ -1,0 +1,31 @@
+main.php?eowkeeper=1
+
+familiar Melodramedary (50 lbs)
+Took choice 1395/1: Monday - Explodinall
+choice.php?pwd&whichchoice=1395&option=1
+
+main.php?eowkeeper=1
+Took choice 1395/1: Monday - Explodinall
+choice.php?pwd&whichchoice=1395&option=1
+custom outfit 2
+
+[57] The Dark Elbow of the Woods
+Encounter: Deep Imp Act
+You acquire Imp Ale (3)
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+
+[58] The Dark Elbow of the Woods
+Encounter: Imp Art, Some Wisdom
+
+Took choice 1395/9: Nevermind
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+
+cast 1 The Spirit of Taking
+Took choice 1395/9: Nevermind
+choice.php?pwd&whichchoice=1395&option=9

@@ -1,0 +1,51 @@
+use 1 astral six-pack
+You acquire astral pilsner (6)
+
+buy 1 chewing gum on a string for 47 each from The General Store
+You acquire an item: chewing gum on a string
+
+Use 1 chewing gum on a string to retrieve items from the sewer.
+You acquire an item: worthless knick-knack
+
+cast 1 Acquire Rhinestones
+You acquire rhinestone (33)
+
+cast 1 Elemental Saucesphere
+You acquire an effect: Elemental Saucesphere (5)
+
+Create 2 meat paste
+You acquire meat paste (2)
+You lose 20 Meat
+
+trading 8 pink clay beads for 8 quarters
+You acquire 8 quarters
+
+trading 1 purple clay bead for 3 quarters
+You acquire 3 quarters
+
+trading 4 green clay beads for 20 quarters
+You acquire 20 quarters
+cast 1 Patience of the Tortoise
+You acquire an effect: Patience of the Tortoise (5)
+
+cast 1 Seal Clubbing Frenzy
+You acquire an effect: Seal Clubbing Frenzy (5)
+
+[403] Inside the Palindome
+Encounter: Drab Bard
+Round 0: dextrial wins initiative!
+> [INFO] - auto_combatHandler: 0
+Round 1: dextrial casts GULP LATTE!
+Round 2: You gain no hit points
+Round 2: You gain 109 Muscularity Points
+Round 2: dextrial casts CHEST X-RAY!
+Round 3: dextrial wins the fight!
+You gain 380 Meat
+After Battle: Lagertha winks at you and does the "Didn't Do Nuthin', Officer" shuffle.
+You acquire an item: olive
+You acquire an item: drab sonata
+You acquire an item: glass of warm milk
+
+[411] Cook 1 wet stew + 1 stunt nuts
+You acquire an item: wet stunt nut stew
+Crafting used 1 each of stunt nuts and wet stew

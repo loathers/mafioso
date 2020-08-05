@@ -1,0 +1,146 @@
+[1] The Haunted Kitchen
+Encounter: skullery maid
+Round 0: dextrial wins initiative!
+Round 1: You lose 1 hit point
+Round 1: dextrial tries to steal an item!
+Round 2: dextrial attacks!
+Round 3: skullery maid takes 634 damage.
+Round 3: dextrial wins the fight!
+After Battle: One of your Iunion stones makes a brief detour into an oven and back.
+The crown gains +3 Hot Damage
+
+Your familiar gains a pound: Billy Merritt, the 12 lb. Pocket Professor
+After Battle: Billy Merritt quantum-shifts you to a nearby universe where everything is the same except you have more MP.
+After Battle: You gain 57 Mojo Points
+You gain 32 Meat
+After Battle: Billy Merritt displays "PHYSICS IS THE DANCE OF THE UNIVERSE."
+You acquire an item: bottle of popskull
+You acquire an item: dishrag
+After Battle: You gain 38 Muscleboundness
+You gain a Muscle point!
+After Battle: You gain 38 Enchantedness
+You gain a Mysticality point!
+After Battle: You gain 90 Smarm
+You gain a Moxie point!
+
+[401] Next to that Barrel with Something Burning in it
+Encounter: batwinged gremlin
+Round 0: dextrial wins initiative!
+> [INFO] - auto_JunkyardCombatHandler: 0
+Round 1: dextrial casts CURSE OF WEAKSAUCE!
+Round 2: batwinged gremlin (tool) drops 9 attack power.
+Round 2: batwinged gremlin (tool) drops 9 defense.
+> [INFO] - auto_JunkyardCombatHandler: 1
+Round 2: dextrial uses the seal tooth!
+Round 3: batwinged gremlin (tool) takes 1 damage.
+Round 3: batwinged gremlin (tool) drops 7 attack power.
+Round 3: batwinged gremlin (tool) drops 9 defense.
+> [INFO] - auto_JunkyardCombatHandler: 2
+Round 3: dextrial uses the seal tooth!
+Round 4: batwinged gremlin (tool) takes 1 damage.
+Round 4: batwinged gremlin (tool) drops 8 attack power.
+Round 4: batwinged gremlin (tool) drops 7 defense.
+Round 4: batwinged gremlin (tool) takes 1 damage.
+Round 4: You lose 1 hit point
+> [INFO] - auto_JunkyardCombatHandler: 3
+Round 4: dextrial uses the seal tooth!
+Round 5: batwinged gremlin (tool) takes 1 damage.
+Round 5: batwinged gremlin (tool) drops 7 attack power.
+Round 5: batwinged gremlin (tool) drops 8 defense.
+Round 5: batwinged gremlin (tool) takes 1 damage.
+Round 5: You lose 1 hit point
+> [INFO] - auto_JunkyardCombatHandler: 4
+Round 5: dextrial uses the molybdenum magnet!
+You acquire an item: molybdenum hammer
+Round 6: batwinged gremlin (tool) drops 9 attack power.
+Round 6: batwinged gremlin (tool) drops 8 defense.
+Round 6: dextrial wins the fight!
+You gain 75 Meat
+After Battle: Jankjenk whirls around picking up items, like a little couscous tornado.
+You acquire an item: blue pixel
+After Battle: You gain 9 Fortitude
+You gain a Muscle point!
+After Battle: You gain 39 Enchantedness
+After Battle: You gain 13 Roguishness
+
+[580] Inside the Palindome
+Encounter: Bob Racecar
+Round 0: dextrial wins initiative!
+Round 1: dextrial uses the disposable instant camera!
+You acquire an item: photograph of a dog
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SING ALONG!
+Round 3: dextrial executes a macro!
+Round 3: dextrial attacks!
+Round 4: dextrial wins the fight!
+You acquire an item: mesh cap
+You acquire an item: stunt nuts
+You acquire an item: ketchup hound
+You acquire an item: a butt tuba
+Maximizer: -com
+
+[4] The Haunted Kitchen
+Encounter: possessed silverware drawer
+Round 0: dextrial wins initiative!
+Round 1: dextrial tries to steal an item!
+You acquire an item: antique packet of ketchup
+You gain 19 Meat.
+Round 2: dextrial attacks!
+Round 3: possessed silverware drawer takes 624 damage.
+Round 3: dextrial wins the fight!
+After Battle: One of your Iunion stones makes a brief detour into an oven and back.
+The crown gains +3 Hot Damage
+
+Your familiar gains a pound: Billy Merritt, the 13 lb. Pocket Professor
+After Battle: You reach out to grab Billy Merritt and receive a jolt from the battery.
+After Battle: You gain 53 Mojo Points
+After Battle: Billy Merritt displays "MATHEMATICS IS THE DANCING OF SCIENCE."
+You acquire an item: corn holder
+After Battle: You gain 33 Beefiness
+After Battle: You gain 28 Enchantedness
+After Battle: You gain 109 Cheek
+You gain a Moxie point!
+
+[584] Inside the Palindome
+Encounter: Evil Olive
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts REFLEX HAMMER!
+This combat did not cost a turn
+
+[525] The Battlefield (Frat Uniform)
+Encounter: Green Ops Soldier
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts %FN, SPIT ON THEM!!
+Round 2: dextrial executes a macro!
+Round 2: dextrial attacks!
+Round 3: dextrial wins the fight!
+You acquire an item: green clay bead
+You acquire an item: green clay bead
+You acquire an item: communications windchimes
+You acquire an item: communications windchimes
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: green smoke bomb
+You acquire an item: green smoke bomb
+You acquire an item: henna face paint
+You acquire an item: henna face paint
+You acquire an item: round green sunglasses
+You acquire an item: round green sunglasses
+You acquire an item: green clay bead
+You acquire an item: green clay bead
+You acquire an item: communications windchimes
+You acquire an item: communications windchimes
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: green smoke bomb
+You acquire an item: green smoke bomb
+You acquire an item: henna face paint
+You acquire an item: henna face paint
+You acquire an item: round green sunglasses
+You acquire an item: round green sunglasses
+32 hippies defeated; 704 down, 296 left.
+Keep your eyes open for Zim Merman!

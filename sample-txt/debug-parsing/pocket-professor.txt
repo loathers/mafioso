@@ -1,0 +1,183 @@
+[63] The Penultimate Fantasy Airship
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: You lose 15 hit points
+Round 1: dextrial casts DELIVER YOUR THESIS!!
+Round 2: You gain 8 Adventures
+Round 2: dextrial wins the fight!
+After Battle: You reach out to grab Billy Merritt and receive a jolt from the battery.
+After Battle: You gain 58 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 7 Mana Points
+After Battle: You gain 2 Strengthliness
+After Battle: You gain 3 Mysteriousness
+After Battle: You gain 2 Smarm
+This combat did not cost a turn
+
+[218] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: Ben bites your opponent for 5 damage, and he gets a disconcerted look on his face as his blood turns into poison.
+Round 2: lobsterfrogman takes 5 damage.
+Round 2: Your opponent writhes as he takes 5 damage from the poison.
+Round 2: lobsterfrogman takes 5 damage.
+Round 2: dextrial casts LECTURE ON RELATIVITY!
+Round 3: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 6 damage.
+Round 3: lobsterfrogman takes 6 damage.
+Round 3: Your opponent writhes as he takes 3 damage from the poison.
+Round 3: lobsterfrogman takes 3 damage.
+Round 3: dextrial casts SAUCY SALVE!
+Round 4: You gain 13 hit points
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCY SALVE!
+Round 3: You gain 12 hit points
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCY SALVE!
+Round 3: You gain 14 hit points
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCY SALVE!
+Round 4: You gain 10 hit points
+Round 4: Ben nibbles your opponent for 6 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 4: lobsterfrogman takes 6 damage.
+Round 4: Your opponent writhes as he takes 1 damage from the poison.
+Round 4: lobsterfrogman takes 1 damage.
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: lobsterfrogman takes 1044 damage.
+Round 5: Ben delicately nibbles your opponent's leg. So delicately, in fact, that your opponent doesn't even notice until the leg turns black and falls off, causing 3 damage.
+Round 5: lobsterfrogman takes 3 damage.
+Round 5: dextrial wins the fight!
+After Battle: To avoid overloading its circuits, Billy Merritt dumps some excess electricity into you.
+After Battle: You gain 62 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 13 Mana Points
+You gain 92 Meat
+After Battle: Billy Merritt displays "PHYSICS IS THE DANCE OF THE UNIVERSE."
+You acquire an item: barrel of gunpowder
+After Battle: You gain 58 Strengthliness
+After Battle: You gain 117 Enchantedness
+After Battle: You gain 65 Chutzpah
+You gain a Moxie point!
+
+upeffect.php?efid=70&qty=11&pwd&ajax=1&_=1596042951557
+upeffect.php?efid=70&qty=5&pwd&ajax=1&_=1596042955815
+
+[219] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: lobsterfrogman takes 983 damage.
+Round 2: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 6 damage.
+Round 2: lobsterfrogman takes 6 damage.
+Round 2: Your opponent writhes as he takes 6 damage from the poison.
+Round 2: lobsterfrogman takes 6 damage.
+Round 2: dextrial wins the fight!
+After Battle: Billy Merritt quantum-shifts you to a nearby universe where everything is the same except you have more MP.
+After Battle: You gain 62 Mana Points
+After Battle: Ben stands up on his hind legs and sniffs the air, chirping adorably.
+After Battle: You gain 13 Mana Points
+You gain 96 Meat
+After Battle: Billy Merritt displays "MATHEMATICS IS THE DANCING OF SCIENCE."
+You acquire an item: barrel of gunpowder
+After Battle: You gain 55 Beefiness
+You gain a Muscle point!
+After Battle: You gain 119 Enchantedness
+After Battle: You gain 63 Sarcasm
+
+upeffect.php?efid=2456&qty=11&pwd&ajax=1&_=1596043018954
+
+cast 11 Blood Bond
+You acquire an effect: Blood Bond (110)
+
+upeffect.php?efid=2455&qty=5&pwd&ajax=1&_=1596043022388
+
+cast 5 Blood Frenzy
+You acquire an effect: Frenzied, Bloody (50)
+
+[220] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts GULP LATTE!
+Round 2: You gain 410 hit points
+Round 2: You gain 960 Mana Points
+Round 2: Ben delicately nibbles your opponent's leg. So delicately, in fact, that your opponent doesn't even notice until the leg turns black and falls off, causing 5 damage.
+Round 2: lobsterfrogman takes 5 damage.
+Round 2: Your opponent writhes as he takes 5 damage from the poison.
+Round 2: lobsterfrogman takes 5 damage.
+Round 2: dextrial casts LECTURE ON RELATIVITY!
+Round 3: Ben delicately nibbles your opponent's leg. So delicately, in fact, that your opponent doesn't even notice until the leg turns black and falls off, causing 3 damage.
+Round 3: lobsterfrogman takes 3 damage.
+Round 3: Your opponent writhes as he takes 3 damage from the poison.
+Round 3: lobsterfrogman takes 3 damage.
+Round 3: dextrial attacks!
+Round 4: lobsterfrogman takes 1053 damage.
+Round 4: Ben nibbles your opponent for 5 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 4: lobsterfrogman takes 5 damage.
+Round 4: Your opponent writhes as he takes 1 damage from the poison.
+Round 4: lobsterfrogman takes 1 damage.
+Round 4: dextrial wins the fight!
+After Battle: To avoid overloading its circuits, Billy Merritt dumps some excess electricity into you.
+After Battle: You gain 56 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 14 Mana Points
+You gain 100 Meat
+After Battle: Billy Merritt displays "MATHEMATICS IS THE DANCING OF SCIENCE."
+You acquire an item: barrel of gunpowder
+After Battle: You gain 53 Fortitude
+After Battle: You gain 135 Wizardliness
+You gain a Mysticality point!
+After Battle: You gain 50 Chutzpah
+
+[221] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: You don't actually see Ben bite your opponent, but you can tell he did because of the swelling. About 6 damage worth of swelling, it looks like.
+Round 2: lobsterfrogman takes 6 damage.
+Round 2: Your opponent writhes as he takes 6 damage from the poison.
+Round 2: lobsterfrogman takes 6 damage.
+Round 2: dextrial attacks!
+Round 3: lobsterfrogman takes 981 damage.
+Round 3: Ben claws at your opponent with filth-caked scratches. ...Wait, I think I mean that the other way around. Anyway, he does 6 damage.
+Round 3: lobsterfrogman takes 6 damage.
+Round 3: Your opponent writhes as he takes 3 damage from the poison.
+Round 3: lobsterfrogman takes 3 damage.
+Round 3: dextrial wins the fight!
+After Battle: You reach out to grab Billy Merritt and receive a jolt from the battery.
+After Battle: You gain 39 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 16 Mana Points
+You gain 88 Meat
+After Battle: Billy Merritt displays "WHEEEEEE."
+You acquire an item: barrel of gunpowder
+After Battle: You gain 35 Muscleboundness
+After Battle: You gain 152 Wizardliness
+After Battle: You gain 50 Cheek
+You gain a Moxie point!
+You acquire an item: Special Seasoning
+
+[222] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: lobsterfrogman takes 996 damage.
+Round 2: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 4 damage.
+Round 2: lobsterfrogman takes 4 damage.
+Round 2: Your opponent writhes as he takes 4 damage from the poison.
+Round 2: lobsterfrogman takes 4 damage.
+Round 2: dextrial wins the fight!
+After Battle: To avoid overloading its circuits, Billy Merritt dumps some excess electricity into you.
+After Battle: You gain 42 Mana Points
+After Battle: Ben stands up on his hind legs and sniffs the air, chirping adorably.
+After Battle: You gain 10 Mana Points
+You gain 89 Meat
+After Battle: Billy Merritt displays "MATHEMATICS IS THE DANCING OF SCIENCE."
+You acquire an item: barrel of gunpowder
+You acquire an item: white pixel
+After Battle: You gain 53 Beefiness
+You gain a Muscle point!
+After Battle: You gain 125 Wizardliness
+You gain a Mysticality point!
+After Battle: You gain 63 Smarm

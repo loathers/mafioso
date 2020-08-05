@@ -1,0 +1,6240 @@
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+               Player Snapshot
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ > moon
+
+July 16, 2020 - Martinus 8
+
+Ronald: waning crescent
+Grimace: waxing gibbous
+Mini-moon: far left
+
+Generic Summer Holiday: 3 days
+Dependence Day: 12 days
+Arrrbor Day: 20 days
+Lab&oacute;r Day: 30 days
+Halloween: 40 days
+Feast of Boris: 47 days
+Yuletide: 52 days
+Festival of Jarlsberg: 57 days
+Valentine's Day: 68 days
+St. Sneaky Pete's Day: 75 days
+Oyster Egg Day: 82 days
+El Dia De Los Muertos Borrachos: 90 days
+
+
+Muscle bonus tomorrow (not today).
+
+
+ > status
+
+Name: dextrial
+Class: Pastamancer
+
+Lv: 12
+HP: 611 / 611
+MP: 716 / 1,279
+
+Mus: 316 (85), tnp = 25
+Mys: 570 (126), tnp = 71
+Mox: 281 (78), tnp = 100
+
+Advs: 85
+Meat: 4,475
+
+Full: 0 / 15
+Drunk: 0 / 15
+Spleen: 0 / 15
+
+
+ > equipment
+
+Hat: Iunion Crown
+Weapon: Fourth of May Cosplay Saber
+Off-hand: latte lovers member's mug
+Shirt: shoe ad T-shirt
+Pants: (none)
+Back: vampyric cloake
+
+Acc. 1: knob shaft skate key
+Acc. 2: black rose key
+Acc. 3: Powerful Glove
+
+Pet: Left-Hand Man (27 lbs)
+Item: (none)
+
+ > skills
+
+Uncategorized
+ - 20/20 Vision
+ - Alien Source Code
+ - Bear Essence
+ - Budget Conscious
+ - CLEESH
+ - Chip on your Shoulder
+ - Drescher's Annoying Noise
+ - Drinking to Drink
+ - Drippy Eye-Beetle
+ - Expert Corner-Cutter
+ - Implode Universe
+ - Lock Picking
+ - Marginally Insane
+ - Prevent Scurvy and Sobriety
+ - Singer's Faithful Ocelot
+ - Summon Annoyance
+ - Summon Carrot
+ - Summon Holiday Fun!
+ - The Spirit of Taking
+ - Thick-Skinned
+ - Tiki Mixology
+ - Transcendent Olfaction
+ - Visit your Favorite Bird
+ - Walberg's Dim Bulb
+
+Seal Clubber
+ - Audacity of the Otter
+ - Batter Up!
+ - Blubber Up
+ - Claws of the Walrus
+ - Clobber
+ - Double-Fisted Skull Smashing
+ - Fortitude of the Muskox
+ - Get Big
+ - Hide of the Walrus
+ - Ire of the Orca
+ - Lunge Smack
+ - Lunging Thrust-Smack
+ - Musk of the Moose
+ - Northern Explosion
+ - Northern Exposure
+ - Precision of the Penguin
+ - Pride of the Puffin
+ - Pulverize
+ - Rage of the Reindeer
+ - Scowl of the Auk
+ - Seal Clubbing Frenzy
+ - Silent Hunter
+ - Snarl of the Timberwolf
+ - Super-Advanced Meatsmithing
+ - Thrust-Smack
+ - Tongue of the Walrus
+ - Wrath of the Wolverine
+
+Turtle Tamer
+ - Amphibian Sympathy
+ - Armorcraftiness
+ - Astral Shell
+ - Cold-Blooded Fearlessness
+ - Empathy of the Newt
+ - Gallapagosian Mating Call
+ - Hero of the Half-Shell
+ - Kneebutt
+ - Patience of the Tortoise
+ - Patient Smile
+ - Quiet Determination
+ - Reptilian Fortitude
+ - Shieldbutt
+ - Skin of the Leatherback
+ - Spectral Snapper
+ - Spiky Shell
+ - Stiff Upper Lip
+ - Tao of the Terrapin
+ - Tenacity of the Snapper
+ - Testudinal Teachings
+ - The Long View
+ - Toss
+ - Wisdom of the Elder Tortoises
+
+Pastamancer
+ - Arched Eyebrow of the Archmage
+ - Bind Lasagmbie
+ - Bind Spice Ghost
+ - Blood Bucatini
+ - Cannelloni Cannon
+ - Cannelloni Cocoon
+ - Entangling Noodles
+ - Flavour of Magic
+ - Lasagna Bandages
+ - Leash of Linguini
+ - Manicotti Meditation
+ - Pastamastery
+ - Shield of the Pastalord
+ - Spaghetti Spear
+ - Spirit of Ravioli
+ - Spirit of Rigatoni
+ - Springy Fusilli
+ - Subtle and Quick to Anger
+ - Thrall Unit Tactics
+ - Tolerance of the Kitchen
+ - Transcendental Noodlecraft
+ - Weapon of the Pastalord
+ - Wizard Squint
+
+Sauceror
+ - Advanced Saucecrafting
+ - Blood Sugar Sauce Magic
+ - Curse of Marinara
+ - Curse of Weaksauce
+ - Curse of the Thousand Islands
+ - Diminished Gag Reflex
+ - Elemental Saucesphere
+ - Expert Panhandling
+ - Icy Glare
+ - Impetuous Sauciness
+ - Inner Sauce
+ - Intrinsic Spiciness
+ - Irrepressible Spunk
+ - Itchy Curse Finger
+ - Love Mixology
+ - Master Saucier
+ - Sauce Monocle
+ - Saucegeyser
+ - Saucemaven
+ - Saucestorm
+ - Scarysauce
+ - Soul Saucery
+ - The Way of Sauce
+ - Wave of Sauce
+ - Wry Smile
+
+Disco Bandit
+ - Acquire Rhinestones
+ - Advanced Cocktailcrafting
+ - Adventurer of Leisure
+ - Ambidextrous Funkslinging
+ - Deft Hands
+ - Disco Bravado
+ - Disco Dance 3: Back in the Habit
+ - Disco Dance II: Electric Boogaloo
+ - Disco Dance of Doom
+ - Disco Eye-Poke
+ - Disco Face Stab
+ - Disco Fever
+ - Disco Greed
+ - Disco Leer
+ - Disco Smirk
+ - Disco State of Mind
+ - Flashy Dancer
+ - Heart of Polyester
+ - Mad Looting Skillz
+ - Nimble Fingers
+ - Overdeveloped Sense of Self Preservation
+ - Sensitive Fingers
+ - Smooth Movement
+ - Suckerpunch
+ - Superhuman Cocktailcrafting
+ - That's Not a Knife
+ - Tricky Knifework
+
+Accordion Thief
+ - Aloysius' Antiphon of Aptitude
+ - Bram's Bloody Bagatelle
+ - Brawnee's Anthem of Absorption
+ - Carlweather's Cantata of Confrontation
+ - Chorale of Companionship
+ - Cletus's Canticle of Celerity
+ - Fat Leon's Phat Loot Lyric
+ - Five Finger Discount
+ - Jackasses' Symphony of Destruction
+ - Knowing Smile
+ - Mariachi Memory
+ - Master Accordion Master Thief
+ - Stevedave's Shanty of Superiority
+ - Sticky Fingers
+ - Suspicious Gaze
+ - The Magical Mojomuscular Melody
+ - The Moxious Madrigal
+ - The Ode to Booze
+ - The Polka of Plenty
+ - The Power Ballad of the Arrowsmith
+ - The Psalm of Pointiness
+ - The Sonata of Sneakiness
+ - Thief Among the Honorable
+ - Ur-Kel's Aria of Annoyance
+
+Conditional
+ - CHEAT CODE: Invisible Avatar
+ - CHEAT CODE: Replace Enemy
+ - CHEAT CODE: Shrink Enemy
+ - CHEAT CODE: Triple Size
+ - Dismiss Pasta Thrall
+ - Gulp Latte
+ - Offer Latte to Opponent
+ - Sing Along
+ - Spirit of Bacon Grease
+ - Spirit of Cayenne
+ - Spirit of Garlic
+ - Spirit of Nothing
+ - Spirit of Peppermint
+ - Spirit of Wormwood
+ - Throw Latte on Opponent
+ - Use the Force
+
+Gnome Trainer
+ - Cosmic Ugnderstanding
+ - Gnefarious Pickpocketing
+ - Gnomish Hardigness
+ - Powers of Observatiogn
+ - Torso Awaregness
+
+
+ > effects
+
+3 of 4 AT buffs active.
+♫ Ode to Booze
+☺ Wry Smile (4)
+♫ The Sonata of Sneakiness (11)
+Blessing of your favorite Bird (14)
+Triple-Sized (14)
+Drescher's Annoying Noise (19)
+♫ Fat Leon's Phat Loot Lyric (22)
+Smooth Movements (30)
+Leash of Linguini (42)
+Invisible Avatar (50)
+Big (67)
+Reptilian Fortitude (73)
+The Spirit of Taking (100)
+Elemental Saucesphere (104)
+Rage of the Reindeer (130)
+Singer's Faithful Ocelot (202)
+Empathy (237)
+Shield of the Pastalord (344)
+Scarysauce (379)
+Sauce Monocle (434)
+Springy Fusilli (573)
+Astral Shell (840)
+Spirit of Peppermint (∞)
+
+
+ > modifiers
+
+ML: +10
+Enc: -26.00%
+Init: +95.00%
+
+Exp: +6.76
+Meat: +120.00%
+Item: +127.00%
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+Visiting Mr. Klaw "Skill" Crane Game in clan rumpus room
+Visiting Mr. Klaw "Skill" Crane Game in clan rumpus room
+Visiting Mr. Klaw "Skill" Crane Game in clan rumpus room
+
+Visiting Deluxe Mr. Klaw "Skill" Crane Game in clan VIP lounge
+
+Visiting Deluxe Mr. Klaw "Skill" Crane Game in clan VIP lounge
+You acquire an item: stuffed key
+
+Visiting Deluxe Mr. Klaw "Skill" Crane Game in clan VIP lounge
+You acquire an item: stuffed key
+
+buy 2 chewing gum on a string for 47 each from The General Store
+You acquire chewing gum on a string (2)
+
+Use 2 chewing gums on strings to retrieve items from the sewer.
+You acquire an item: pasta spoon
+You acquire an item: worthless trinket
+
+buy 1 chewing gum on a string for 47 each from The General Store
+You acquire an item: chewing gum on a string
+
+add to closet: 1 worthless trinket
+
+Use 1 chewing gum on a string to retrieve items from the sewer.
+You acquire an item: worthless knick-knack
+
+take from closet: 1 worthless trinket
+You acquire an item: worthless trinket
+
+trading 2 worthless items for 2 ten-leaf clovers
+You acquire ten-leaf clover (2)
+
+Use 2 ten-leaf clover
+You acquire disassembled clover (2)
+
+Visiting the Boxing Daycare
+
+[182] Boxing Daycare
+Encounter: Have a Boxing Daydream
+You acquire an item: glass of raw eggs
+
+Visiting the Ruined House
+You acquire an item: anticheese
+
+cast 1 Summon Annoyance
+You acquire an item: roll of toilet paper
+
+cast 1 Advanced Cocktailcrafting
+You acquire an item: little paper umbrella
+You acquire an item: coconut shell
+You acquire an item: magical ice cubes
+You acquire an item: coconut shell
+You acquire an item: coconut shell
+
+cast 1 Advanced Saucecrafting
+You acquire scrumptious reagent (5)
+
+cast 1 Pastamastery
+You acquire dry noodles (5)
+
+cast 1 Summon Holiday Fun!
+You acquire an item: Holiday Fun!
+
+cast 1 Summon Carrot
+You acquire an item: Aggressive Carrot
+
+cast 1 Acquire Rhinestones
+You acquire rhinestone (32)
+
+cast 1 Prevent Scurvy and Sobriety
+You acquire bottle of rum (3)
+You acquire an item: lime
+You acquire grapefruit (2)
+> You have the latest use_for_items.txt.  Will not check again today.
+
+Visiting Fortune Teller in clan VIP lounge
+Took choice 1278/1: Consult with Zatara
+choice.php?whichchoice=1278&option=1&which=1&whichid=cheesefax&q1=pizza&q2=batman&q3=thick
+You enter your answers and wait for cheesefax
+
+Visiting Fortune Teller in clan VIP lounge
+Took choice 1278/1: Consult with Zatara
+choice.php?whichchoice=1278&option=1&which=1&whichid=cheesefax&q1=pizza&q2=batman&q3=thick
+You enter your answers and wait for cheesefax
+
+Visiting Fortune Teller in clan VIP lounge
+Took choice 1278/1: Consult with Zatara
+choice.php?whichchoice=1278&option=1&which=1&whichid=cheesefax&q1=pizza&q2=batman&q3=thick
+You enter your answers and wait for cheesefax
+> ... Finished Solving Detective Cases
+
+Talking to the Old Man
+> ... Started Old Man and the Sea quest
+> ... Started Walford's Bucket quest
+> ... Started Conspiracy Radio quest
+
+Visiting Snojo Control Console
+> Snojo set to Mysticality
+teatree shake
+You acquire an item: cuppa Royal tea
+You acquire an item: cuppa Frost tea
+You acquire an item: cuppa Obscuri tea
+> ... Used Guild Manual
+
+cast 1 That's Not a Knife
+You acquire an item: soap knife
+> ... You got a Disco Knife
+> Custom Login complete!
+
+cast 0 That's Not a Knife
+
+main.php?checkbfast=56
+main.php?vote=1
+Encounter: Daily Loathing Ballot
+Took choice 1331/1: (secret choice)
+choice.php?pwd&option=1&whichchoice=1331&g=2&local[]=0&local[]=3
+You have cast your votes
+You acquire an item: &quot;I Voted!&quot; sticker
+
+equip pants tinsel tights
+
+Visiting the Boxing Daycare
+
+[182] Boxing Daycare
+Encounter: Enter the Boxing Daycare
+Activity: Scavenge for gym equipment
+You have found 165 pieces of gym equipment
+
+[182] Boxing Daycare
+Encounter: Enter the Boxing Daycare
+Activity: Recruit toddlers
+You have recruited 293 toddlers
+
+main.php?action=may4
+Encounter: Upgrade Your May the Fourth Cosplay Saber
+Took choice 1386/4: Empathy Chip
+choice.php?pwd&whichchoice=1386&option=4
+
+use 1 Bird-a-Day calendar
+You learned a new skill: Seek out a Bird
+
+use 1 Bastille Battalion control rig
+Encounter: Bastille Battalion
+Took choice 1313/2: (secret choice)
+choice.php?whichchoice=1313&option=2&pwd
+Encounter: Bastille Battalion
+Took choice 1313/4: (secret choice)
+choice.php?whichchoice=1313&option=4&pwd
+Encounter: Bastille Battalion
+Took choice 1313/4: (secret choice)
+choice.php?whichchoice=1313&option=4&pwd
+Encounter: Bastille Battalion
+Took choice 1313/2: (secret choice)
+choice.php?whichchoice=1313&option=2&pwd
+Encounter: Bastille Battalion
+Took choice 1313/2: (secret choice)
+choice.php?whichchoice=1313&option=2&pwd
+Encounter: Bastille Battalion
+Took choice 1313/5: (secret choice)
+choice.php?whichchoice=1313&option=5&pwd
+Encounter: Bastille Battalion (turn #1)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Rob the suburb
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Bastille Battalion (turn #2)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/2: Stand in the waterfall
+choice.php?whichchoice=1319&option=2&pwd
+Encounter: Castle vs. Castle
+Took choice 1315/1: Try to get the jump on them
+choice.php?whichchoice=1315&option=1&pwd
+Encounter: Bastille Battalion (turn #4)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Shoot the glacier
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Bastille Battalion (turn #5)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/2: Enter the Weakest Army competition
+choice.php?whichchoice=1319&option=2&pwd
+Encounter: Castle vs. Castle
+Took choice 1315/1: Try to get the jump on them
+choice.php?whichchoice=1315&option=1&pwd
+Encounter: Bastille Battalion (turn #7)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/1: Convert the barracks
+choice.php?whichchoice=1319&option=1&pwd
+Encounter: Bastille Battalion (turn #8)
+Took choice 1314/3: Look for cheese
+choice.php?whichchoice=1314&option=3&pwd
+Encounter: Cheese Seeking Behavior
+Took choice 1319/3: Enter the childrens' art contest
+choice.php?whichchoice=1319&option=3&pwd
+Encounter: Castle vs. Castle
+Took choice 1315/3: Ready your defenses and wait for them
+choice.php?whichchoice=1315&option=3&pwd
+Encounter: GAME OVER
+Took choice 1316/3: I'm done for now
+choice.php?whichchoice=1316&option=3&pwd
+You acquire an item: Brutal brogues
+You acquire an item: boiling broth
+
+equip off-hand Kramco Sausage-o-Matic™
+
+familiar God Lobster (31 lbs)
+
+use 1 January's Garbage Tote
+Took choice 1275/5: Assemble a shirt
+choice.php?whichchoice=1275&option=5&pwd
+You acquire an item: makeshift garbage shirt
+
+equip shirt makeshift garbage shirt
+
+equip off-hand latte lovers member's mug
+
+equip pants psychic's pslacks
+
+equip acc1 peg key
+
+equip acc2 Brutal brogues
+
+equip off-hand Kramco Sausage-o-Matic™
+
+familiar Pocket Professor (51 lbs)
+
+[182] The Bat Hole Entrance
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+> You have the latest batfactors.txt.  Will not check again today.
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+You acquire an item: spices
+Round 2: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+familiar God Lobster (34 lbs)
+
+equip off-hand latte lovers member's mug
+
+main.php?fightgodlobster=1
+
+[182] God Lobster
+Encounter: the God Lobster
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+This combat did not cost a turn
+
+[182] God Lobster
+Encounter: Granted a Boon
+Took choice 1310/1: &quot;I'd like part of your regalia.&quot;
+choice.php?pwd&whichchoice=1310&option=1
+You acquire an item: God Lobster's Ring
+
+equip familiar God Lobster's Ring
+
+main.php?fightgodlobster=1
+
+[182] God Lobster
+Encounter: the God Lobster
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+This combat did not cost a turn
+
+[182] God Lobster
+Encounter: Granted a Boon
+Took choice 1310/1: &quot;I'd like part of your regalia.&quot;
+choice.php?pwd&whichchoice=1310&option=1
+You acquire an item: God Lobster's Rod
+
+equip familiar God Lobster's Rod
+
+familiar Pocket Professor (56 lbs)
+
+Gazing at the Stars
+WHY IS MY COMPUTER ON FIRE?
+Smoked by Awaiko (1861458)
+
+Gazing at the Stars
+
+familiar Cat Burglar (49 lbs)
+
+Visiting a Science Tent
+Encounter: Dr. Gordon Stuart, a Scientist
+Took choice 1201/1: Can I fight that tentacle you saved for science?
+choice.php?pwd&whichchoice=1201&option=1
+
+[182] Dr. Gordon Stuart's Science Tent
+Encounter: Eldritch Tentacle
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+You acquire an item: spices
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: eldritch effluvium
+You acquire an item: eldritch effluvium
+This combat did not cost a turn
+
+familiar Pocket Professor (56 lbs)
+
+equip acc2 black rose key
+
+[182] The Neverending Party
+Took choice 1322/1: accept quest
+choice.php?pwd&whichchoice=1322&option=1
+
+[182] The Neverending Party
+Encounter: &quot;plain&quot; girl
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+You acquire an item: spices
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: electronics kit
+You acquire an item: PB&J with the crusts cut off
+You acquire an item: dorky glasses
+You acquire an item: ponytail clip
+This combat did not cost a turn
+
+[182] The Neverending Party
+Encounter: &quot;plain&quot; girl
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+You acquire an item: spices
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: electronics kit
+You acquire an item: PB&J with the crusts cut off
+You acquire an item: red pixel
+This combat did not cost a turn
+
+[182] The Neverending Party
+Encounter: jock
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+You acquire an item: spices
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: unremarkable duffel bag
+You acquire an item: Purple Beast energy drink
+You acquire an item: cosmetic football
+You acquire an item: green pixel
+This combat did not cost a turn
+Maximizer: item
+
+cast 1 Disco Fever
+
+cast 1 Disco Smirk
+
+cast 1 Rage of the Reindeer
+
+cast 1 Blubber Up
+
+Visiting Fortune Teller in clan VIP lounge
+Took choice 1278/1: Consult with Zatara
+choice.php?whichchoice=1278&option=1&which=-1&q1=pizza&q2=batman&q3=thick
+Maximizer: item
+
+[182] The Neverending Party
+Encounter: jock
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+You acquire an item: spices
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Billy Merritt, the 19 lb. Pocket Professor
+You acquire an item: unremarkable duffel bag
+You acquire an item: Purple Beast energy drink
+You acquire an item: shoe ad T-shirt
+This combat did not cost a turn
+
+use 1 unremarkable duffel bag
+You acquire bottle of Amontillado (2)
+You acquire an item: martini
+You acquire Sacramento wine (2)
+
+[182] The Neverending Party
+Encounter: party girl
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+You acquire an item: spices
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: runproof mascara
+You acquire an item: very small red dress
+You acquire an item: noticeable pumps
+You acquire an item: green pixel
+This combat did not cost a turn
+
+[182] The Neverending Party
+Encounter: burnout
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+You acquire an item: spices
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: van key
+You acquire an item: jam band bootleg
+You acquire an item: denim jacket
+You acquire an item: ratty knitted cap
+This combat did not cost a turn
+
+use 1 van key
+You acquire Lord of the Flies-sized fries (2)
+You acquire an item: papaya
+You acquire raw potato (2)
+
+[182] The Neverending Party
+Encounter: party girl
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+You acquire an item: spices
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: runproof mascara
+You acquire an item: very small red dress
+You acquire an item: surprisingly capacious handbag
+This combat did not cost a turn
+
+[182] The Neverending Party
+Encounter: It Hasn't Ended, It's Just Paused
+Took choice 1324/5: fight random partier
+choice.php?pwd&whichchoice=1324&option=5
+Encounter: It Hasn't Ended, It's Just Paused
+Took choice 1324/5: fight random partier
+choice.php?pwd&whichchoice=1324&option=5
+Encounter: party girl
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+You acquire an item: spices
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: runproof mascara
+You acquire an item: very small red dress
+This combat did not cost a turn
+
+[182] The Neverending Party
+Encounter: biker
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: gas can
+You acquire an item: Middle of the Road&trade; brand whiskey
+You acquire an item: neverending wallet chain
+This combat did not cost a turn
+
+[182] The Neverending Party
+Encounter: burnout
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: van key
+You acquire an item: jam band bootleg
+You acquire an item: red pixel
+This combat did not cost a turn
+
+use 1 van key
+You acquire an item: lihc eye pie
+You acquire an item: spicy enchanted bean burrito
+You acquire cherry pie (2)
+
+zap linoleum ore
+You acquire an item: chrome ore
+
+equip shirt astral shirt
+
+Visiting the Super-Secret Canadian Mind Control Device
+Took choice 769/1: Touch that dial!
+choice.php?whichchoice=769&option=1&setting=11
+
+Visiting the Super-Secret Canadian Mind Control Device
+Took choice 769/1: Touch that dial!
+choice.php?whichchoice=769&option=1&setting=0
+
+[182] Madness Bakery
+Encounter: Our Bakery in the Middle of Our Street
+
+[182] Madness Bakery
+Encounter: dinner troll
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: wad of dough
+You acquire an item: wad of dough
+Unlocked butternut for Latte.
+
+main.php?latte=1
+
+[183] Madness Bakery
+Encounter: cr&ecirc;ep
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cr&ecirc;epy mask
+You acquire an item: wad of dough
+You acquire an item: Special Seasoning
+
+[184] Madness Bakery
+Encounter: cr&ecirc;ep
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cr&ecirc;epy mask
+You acquire an item: wad of dough
+
+upeffect.php?efid=53&qty=22&pwd&ajax=1&_=1594875755488
+
+cast 22 Elemental Saucesphere
+
+upeffect.php?efid=1193&qty=33&pwd&ajax=1&_=1594875759755
+
+cast 33 Singer's Faithful Ocelot
+
+upeffect.php?efid=2541&qty=1&pwd&ajax=1&_=1594875762727
+
+cast 1 The Spirit of Taking
+
+upeffect.php?efid=2541&qty=6&pwd&ajax=1&_=1594875767978
+
+cast 6 The Spirit of Taking
+
+[185] Madness Bakery
+Encounter: gingerbread murderer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: glob of enchanted icing
+You acquire an item: ginger snaps
+
+[186] Madness Bakery
+Encounter: Heart of Madness
+Took choice 1061/1: try to enter office
+choice.php?pwd&whichchoice=1061&option=1
+
+[187] Madness Bakery
+Encounter: cr&ecirc;ep
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cr&ecirc;epy mask
+You acquire an item: wad of dough
+
+[188] Madness Bakery
+Encounter: baguette lady
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: magical baguette
+You acquire an item: wad of dough
+
+equip acc2 "I Voted!" sticker
+
+equip acc1 black rose key
+
+[189] Madness Bakery
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+This combat did not cost a turn
+
+equip acc2 Brutal brogues
+
+[189] Madness Bakery
+Encounter: Heart of Madness
+Took choice 1061/1: try to enter office
+choice.php?pwd&whichchoice=1061&option=1
+
+[190] Madness Bakery
+Encounter: cr&ecirc;ep
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cr&ecirc;epy mask
+You acquire an item: wad of dough
+You acquire an item: blue pixel
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594875821871
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594875822022
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594875822162
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594875822335
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=1379&qty=1&pwd&ajax=1&_=1594875824290
+upeffect.php?efid=1379&qty=1&pwd&ajax=1&_=1594875824461
+
+cast 1 Disco Fever
+
+cast 1 Disco Fever
+
+[191] Madness Bakery
+Encounter: baguette lady
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: magical baguette
+You acquire an item: wad of dough
+
+[192] Madness Bakery
+Encounter: Into the Fryer
+You acquire an item: deep-fried key
+
+upeffect.php?efid=1379&qty=1&pwd&ajax=1&_=1594875867493
+upeffect.php?efid=1379&qty=1&pwd&ajax=1&_=1594875867659
+
+cast 1 Disco Fever
+
+cast 1 Disco Fever
+
+[193] The Shore, Inc. Travel Agency
+Took choice 793/3: Moxie Vacation
+choice.php?pwd&whichchoice=793&option=3
+You acquire an item: your father's MacGuffin diary
+
+diary.php?textversion=1
+diary.php?textversion=1
+diary.php?whichpage=2
+diary.php?whichpage=3
+diary.php?whichpage=4
+
+Talking to Dakota Fanning
+
+main.php?latte=1
+
+upeffect.php?efid=16&qty=1&pwd&ajax=1&_=1594876031919
+upeffect.php?efid=16&qty=1&pwd&ajax=1&_=1594876032055
+upeffect.php?efid=16&qty=1&pwd&ajax=1&_=1594876032203
+
+cast 1 Leash of Linguini
+
+upeffect.php?efid=16&qty=1&pwd&ajax=1&_=1594876032341
+
+cast 1 Leash of Linguini
+
+cast 1 Leash of Linguini
+
+cast 1 Leash of Linguini
+
+upeffect.php?efid=2372&qty=11&pwd&ajax=1&_=1594876037675
+
+cast 11 Get Big
+
+[196] The Haunted Conservatory
+Encounter: skeletal cat
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: pile of dusty animal bones
+You acquire an item: blue pixel
+
+familiar Cat Burglar (59 lbs)
+
+upeffect.php?efid=19&qty=11&pwd&ajax=1&_=1594876062620
+
+cast 11 Reptilian Fortitude
+
+upeffect.php?efid=16&qty=22&pwd&ajax=1&_=1594876066636
+
+cast 22 Leash of Linguini
+
+[197] The Haunted Conservatory
+Encounter: Is It Plant Lunch or Plant Dinner?
+You acquire an item: pellet of plant food
+
+Visiting Vending Machine
+
+trading 1 fat loot token for 1 sewing kit
+You acquire an item: sewing kit
+
+[198] The Penultimate Fantasy Airship
+Encounter: Random Lack of an Encounter
+Took choice 182/1: enter combat
+choice.php?pwd&whichchoice=182&option=1
+Encounter: Quiet Healer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: scroll of drastic healing
+You acquire an item: soft green echo eyedrop antidote
+You acquire an item: blue pixel
+
+[199] The Penultimate Fantasy Airship
+Encounter: Spunky Princess
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: tiny house
+You acquire an item: cocoa eggshell fragment
+
+equip acc1 key sausage
+
+equip acc3 "I Voted!" sticker
+
+[200] The Penultimate Fantasy Airship
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 12 lb. Cat Burglar
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+This combat did not cost a turn
+
+equip acc3 Powerful Glove
+
+[200] The Penultimate Fantasy Airship
+Encounter: The Most Absorbent Spirit Ever
+You acquire an item: Gauze Immateria
+
+[201] The Penultimate Fantasy Airship
+Encounter: Quiet Healer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: scroll of drastic healing
+You acquire an item: soft green echo eyedrop antidote
+
+upeffect.php?efid=67&qty=11&pwd&ajax=1&_=1594876174208
+
+cast 11 Fat Leon's Phat Loot Lyric
+
+[202] The Penultimate Fantasy Airship
+Encounter: MagiMechTech MechaMech
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: metallic A
+You acquire an item: glowing red eye
+You acquire an item: photoprotoneutron torpedo
+You acquire an item: magilaser blastercannon
+You acquire an item: white pixel
+You acquire an item: Special Seasoning
+
+[203] The Penultimate Fantasy Airship
+Encounter: Random Lack of an Encounter
+Took choice 182/1: enter combat
+choice.php?whichchoice=182&option=1&pwd
+Encounter: Quiet Healer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: scroll of drastic healing
+You acquire an item: soft green echo eyedrop antidote
+You acquire an item: Tears of the Quiet Healer
+You acquire an item: white pixel
+
+[204] The Penultimate Fantasy Airship
+Encounter: MagiMechTech MechaMech
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 13 lb. Cat Burglar
+You acquire an item: metallic A
+You acquire an item: glowing red eye
+You acquire an item: photoprotoneutron torpedo
+
+[205] The Penultimate Fantasy Airship
+Encounter: Burly Sidekick
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: Mohawk wig
+You acquire an item: cocoa eggshell fragment
+You acquire an item: tiny house
+
+[206] The Penultimate Fantasy Airship
+Encounter: Rip Rop Wrappety Do
+You acquire an item: Plastic Wrap Immateria
+
+[207] The Penultimate Fantasy Airship
+Encounter: Random Lack of an Encounter
+Took choice 182/1: enter combat
+choice.php?whichchoice=182&option=1&pwd
+Encounter: Burly Sidekick
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cocoa eggshell fragment
+You acquire an item: tiny house
+
+[208] The Penultimate Fantasy Airship
+Encounter: Random Lack of an Encounter
+Took choice 182/1: enter combat
+choice.php?whichchoice=182&option=1&pwd
+Encounter: Protagonist
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: super-spiky hair gel
+You acquire an item: phonics down
+
+[209] The Penultimate Fantasy Airship
+Encounter: Random Lack of an Encounter
+Took choice 182/1: enter combat
+choice.php?whichchoice=182&option=1&pwd
+Encounter: Burly Sidekick
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cocoa eggshell fragment
+You acquire an item: tiny house
+
+[210] The Penultimate Fantasy Airship
+Encounter: Irritating Series of Random Encounters
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 14 lb. Cat Burglar
+You acquire an item: cocoa eggshell fragment
+You acquire an item: blue pixel
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594876241100
+
+equip acc3 "I Voted!" sticker
+
+[211] South of the Border
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+This combat did not cost a turn
+
+equip acc3 Powerful Glove
+
+equip off-hand Kramco Sausage-o-Matic™
+
+[211] South of the Border
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+equip off-hand latte lovers member's mug
+
+[211] The Penultimate Fantasy Airship
+Encounter: Protagonist
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: ridiculously huge sword
+You acquire an item: super-spiky hair gel
+You acquire an item: phonics down
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594876299867
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594876302878
+
+cast 1 Smooth Movement
+
+[212] The Penultimate Fantasy Airship
+Encounter: Irritating Series of Random Encounters
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 15 lb. Cat Burglar
+You acquire an item: tiny house
+You acquire an item: cocoa eggshell fragment
+
+[213] The Penultimate Fantasy Airship
+Encounter: Quiet Healer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the seal tooth!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the seal tooth!
+Round 3: dextrial executes a macro!
+Round 3: dextrial uses the seal tooth!
+Round 4: dextrial executes a macro!
+Round 4: dextrial uses the seal tooth!
+Round 5: dextrial executes a macro!
+Round 5: dextrial uses the seal tooth!
+Round 6: dextrial executes a macro!
+Round 6: dextrial uses the seal tooth!
+Round 7: dextrial executes a macro!
+Round 7: dextrial uses the seal tooth!
+Round 8: dextrial executes a macro!
+Round 8: dextrial uses the seal tooth!
+Round 9: dextrial executes a macro!
+Round 9: dextrial uses the seal tooth!
+Round 10: dextrial executes a macro!
+Round 10: dextrial uses the seal tooth!
+Round 11: dextrial executes a macro!
+Round 11: dextrial uses the seal tooth!
+Round 12: dextrial executes a macro!
+Round 12: dextrial uses the seal tooth!
+Round 13: dextrial uses the seal tooth!
+Round 14: dextrial uses the seal tooth!
+Round 15: dextrial executes a macro!
+Round 15: dextrial uses the seal tooth!
+Round 16: dextrial uses the seal tooth!
+Round 17: dextrial uses the seal tooth!
+Round 18: dextrial uses the seal tooth!
+Round 19: dextrial uses the seal tooth!
+Round 20: dextrial uses the seal tooth!
+Round 21: dextrial uses the seal tooth!
+Round 22: dextrial uses the seal tooth!
+Round 23: dextrial executes a macro!
+Round 23: dextrial uses the seal tooth!
+Round 24: dextrial executes a macro!
+Round 24: dextrial uses the seal tooth!
+Round 25: dextrial uses the seal tooth!
+Round 26: dextrial executes a macro!
+Round 26: dextrial casts SAUCESTORM!
+Round 27: dextrial wins the fight!
+You acquire an item: scroll of drastic healing
+You acquire an item: soft green echo eyedrop antidote
+
+[214] The Penultimate Fantasy Airship
+Encounter: F-F-Fantastic!
+Took choice 681/1: Give him the spirits
+choice.php?whichchoice=681&option=1&pwd
+You acquire an item: S.O.C.K.
+
+equip acc1 amulet of extreme plot significance
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+
+[215] The Castle in the Clouds in the Sky (Basement)
+Encounter: Out in the Open Source
+Took choice 671/4: Fitness Choice
+choice.php?pwd&whichchoice=671&option=4
+Encounter: You Don't Mess Around with Gym
+Took choice 670/4: open Ground Floor (amulet equipped)
+choice.php?pwd&whichchoice=670&option=4
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594876416214
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594876418427
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594876418850
+
+cast 1 Smooth Movement
+
+[216] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Possibility Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: probability potion
+You acquire an item: red pixel
+You acquire an item: Special Seasoning
+
+[217] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Renaissance Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: Ye Olde Meade
+You acquire an item: Ye Olde Bawdy Limerick
+You acquire an item: Ye Olde Medieval Insult
+
+use 1 Ye Olde Bawdy Limerick
+
+[218] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Possibility Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: plot hole
+You acquire an item: probability potion
+
+equip acc1 key sausage
+
+[219] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Renaissance Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 16 lb. Cat Burglar
+You acquire an item: Ye Olde Bawdy Limerick
+You acquire an item: Ye Olde Medieval Insult
+
+use 1 Ye Olde Bawdy Limerick
+
+[220] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Foodie Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: giant artisanal rice peeler
+You acquire an item: chipotle wasabi cilantro aioli
+You acquire an item: blue pixel
+
+[221] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Procrastination Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: procrastination potion
+
+equip acc3 "I Voted!" sticker
+
+[222] South of the Border
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc3 Powerful Glove
+
+[223] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Foodie Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: artisanal hand-squeezed wheatgrass juice
+
+[224] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Huzzah!
+Took choice 674/3: skip adventure
+choice.php?whichchoice=674&option=3&pwd
+
+[224] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: There's No Ability Like Possibility
+Took choice 672/3: skip adventure
+choice.php?whichchoice=672&option=3&pwd
+
+[224] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Possibility Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: probability potion
+You acquire an item: green pixel
+
+[225] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Procrastination Giant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 17 lb. Cat Burglar
+
+[226] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Home on the Free Range
+Took choice 1026/2: electric boning knife, then skip adventure
+choice.php?whichchoice=1026&option=2&pwd
+You acquire an item: electric boning knife
+
+[227] The Castle in the Clouds in the Sky (Ground Floor)
+Encounter: Top of the Castle, Ma
+
+equip hat Mohawk wig
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+
+[228] The Castle in the Clouds in the Sky (Top Floor)
+Encounter: Flavor of a Raver
+Took choice 676/4: Punk Rock Choice
+choice.php?pwd&whichchoice=676&option=4
+Encounter: Yeah, You're for Me, Punk Rock Giant
+Took choice 678/1: Finish quest (mohawk wig equipped)
+choice.php?pwd&whichchoice=678&option=1
+Encounter: Keep On Turnin' the Wheel in the Sky
+Took choice 679/1: Spin That Wheel, Giants Get Real
+choice.php?pwd&whichchoice=679&option=1
+
+equip hat Iunion Crown
+You acquire an item: giant discarded plastic fork
+Maximizer: 20 cold dmg, 20 hot dmg, 20 spooky dmg, 20 stench dmg
+
+equip hat whittled tiara
+
+equip acc1 bejeweled cufflinks
+Maximizer: 20 cold dmg, 20 hot dmg, 20 spooky dmg, 20 stench dmg
+Maximizer:  cold dmg, hot dmg, spooky dmg,  stench dmg
+
+main.php?latte=1
+
+[229] The Haunted Gallery
+Encounter: cubist bull
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+Unlocked paint for Latte.
+
+equip off-hand Kramco Sausage-o-Matic™
+
+[231] South of the Border
+Encounter: Lost in Translation
+You acquire an item: aqu&iacute;
+
+cobbsknob.php?action=tolabs
+cobbsknob.php?action=tolabs
+
+[231] Cobb's Knob Treasury
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[231] Your Mushroom Garden
+Encounter: piranha plant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: piranha pollen
+You acquire an item: white pixel
+This combat did not cost a turn
+
+equip off-hand latte lovers member's mug
+
+[231] Your Mushroom Garden
+Encounter: The Mushy Center
+Took choice 1410/1: Fertilize the mushroom
+choice.php?pwd&whichchoice=1410&option=1
+Maximizer:  cold dmg
+Maximizer: hot dmg
+Maximizer: sleaze dmg
+Maximizer: prismatic dmg
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+
+[231] The Dark Neck of the Woods
+Encounter: Olive My Love To You, Oh.
+You acquire an item: olive
+You acquire an item: olive
+Maximizer: -ml
+Maximizer: cold dmg
+
+cast 1 Icy Glare
+Maximizer: cold dmg
+Maximizer: myst, spell dmg
+
+use 1 January's Garbage Tote
+Took choice 1275/4: Grab some used tape
+choice.php?whichchoice=1275&option=4&pwd
+You acquire an item: wad of used tape
+
+equip hat wad of used tape
+
+equip acc1 Retrospecs
+
+equip acc2 dorky glasses
+Maximizer: myst, spell dmg
+
+Visiting the Boxing Daycare
+
+[232] Boxing Daycare
+Encounter: Visit the Boxing Day Spa
+Maximizer: myst, spell dmg
+
+cast 1 Seek out a Bird
+
+telescope look high
+Maximizer: myst, spell dmg
+
+Visiting Lyle, LyleCo CEO
+Maximizer: myst, spell dmg
+
+use 1 ginger snaps
+Maximizer: myst, spell dmg
+
+cast 1 Arched Eyebrow of the Archmage
+Maximizer: myst, spell dmg
+
+cast 1 Stevedave's Shanty of Superiority
+
+cast 1 Jackasses' Symphony of Destruction
+
+cast 1 The Magical Mojomuscular Melody
+Maximizer: myst, spell dmg
+
+main.php?comb=1&pwd
+
+[232] Combing (mysticality) Beach Head
+Maximizer: myst, spell dmg
+
+cast 1 CHEAT CODE: Triple Size
+Maximizer: myst, spell dmg
+Maximizer: item
+
+[232] The Smut Orc Logging Camp
+Encounter: smut orc pipelayer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts SAUCEGEYSER!
+Round 2: dextrial wins the fight!
+You acquire an item: morningwood plank
+You acquire an item: orcish rubber
+You acquire an item: Special Seasoning
+You acquire an item: stick of firewood
+
+upeffect.php?efid=1441&qty=1&pwd&ajax=1&_=1594877124413
+
+cast 1 Arched Eyebrow of the Archmage
+
+equip acc3 "I Voted!" sticker
+
+[233] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 18 lb. Cat Burglar
+You acquire an item: orange slime glob
+
+equip acc3 Powerful Glove
+
+[234] The Smut Orc Logging Camp
+Encounter: smut orc jacker
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts GULP LATTE!
+Round 2: dextrial casts NORTHERN EXPLOSION!
+Round 3: dextrial wins the fight!
+You acquire an item: morningwood plank
+You acquire an item: orcish hand lotion
+
+[235] The Smut Orc Logging Camp
+Encounter: smut orc pipelayer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: raging hardwood plank
+You acquire an item: messy butt joint
+You acquire an item: stick of firewood
+
+[236] The Smut Orc Logging Camp
+Encounter: smut orc pipelayer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+After Battle: You look behind you and notice an item you missed earlier.
+You acquire an item: orcish rubber
+You acquire an item: weirdwood plank
+Maximizer: spell dmg percent
+
+use 1 black eye shadow
+Maximizer: spell dmg percent
+Maximizer: myst
+
+buy 1 glittery mascara for 22 each from The General Store
+You acquire an item: glittery mascara
+
+buy 4 glittery mascara for 22 each from The General Store
+You acquire glittery mascara (4)
+
+use 5 glittery mascara
+
+cast 1 Stevedave's Shanty of Superiority
+
+buy 1 black sheepskin diploma for 285 each from The Black Market
+You acquire an item: black sheepskin diploma
+
+upeffect.php?efid=69&qty=1&pwd&ajax=1&_=1594877306693
+
+cast 1 Jackasses' Symphony of Destruction
+
+upeffect.php?efid=64&qty=1&pwd&ajax=1&_=1594877307130
+
+use 1 black sheepskin diploma
+
+cast 1 The Magical Mojomuscular Melody
+Maximizer: myst
+
+upeffect.php?efid=70&qty=1&pwd&ajax=1&_=1594877310023
+
+cast 1 Stevedave's Shanty of Superiority
+
+upeffect.php?efid=69&qty=1&pwd&ajax=1&_=1594877310313
+upeffect.php?efid=64&qty=1&pwd&ajax=1&_=1594877310546
+
+cast 1 Jackasses' Symphony of Destruction
+
+cast 1 The Magical Mojomuscular Melody
+
+[237] The Smut Orc Logging Camp
+Encounter: Blech House
+Took choice 1345/2: use myst/spell damage
+choice.php?pwd&whichchoice=1345&option=2
+You acquire an item: morningwood plank
+You acquire an item: raging hardwood plank
+You acquire weirdwood plank (4)
+You acquire thick caulk (3)
+You acquire an item: long hard screw
+You acquire messy butt joint (2)
+
+[238] The Smut Orc Logging Camp
+Encounter: smut orc nailer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: messy butt joint
+You acquire an item: orcish stud-finder
+You acquire an item: green pixel
+
+[239] The Smut Orc Logging Camp
+Encounter: smut orc screwer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: long hard screw
+You acquire an item: backwoods screwdriver
+
+[240] The Smut Orc Logging Camp
+Encounter: smut orc nailer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 19 lb. Cat Burglar
+You acquire an item: long hard screw
+You acquire an item: orcish nailing lube
+You acquire an item: stick of firewood
+
+upeffect.php?efid=69&qty=1&pwd&ajax=1&_=1594877380548
+
+cast 1 Jackasses' Symphony of Destruction
+
+upeffect.php?efid=64&qty=1&pwd&ajax=1&_=1594877380855
+
+cast 1 The Magical Mojomuscular Melody
+
+upeffect.php?efid=70&qty=1&pwd&ajax=1&_=1594877381173
+
+cast 1 Stevedave's Shanty of Superiority
+
+upeffect.php?efid=1441&qty=1&pwd&ajax=1&_=1594877382319
+
+cast 1 Arched Eyebrow of the Archmage
+
+upeffect.php?efid=2551&qty=1&pwd&ajax=1&_=1594877383730
+
+cast 1 Seek out a Bird
+
+[241] The Smut Orc Logging Camp
+Encounter: Blech House
+Took choice 1345/2: use myst/spell damage
+choice.php?pwd&whichchoice=1345&option=2
+You acquire morningwood plank (3)
+You acquire an item: raging hardwood plank
+You acquire weirdwood plank (2)
+You acquire thick caulk (3)
+You acquire messy butt joint (3)
+
+[242] The Smut Orc Logging Camp
+Encounter: smut orc pipelayer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: raging hardwood plank
+You acquire an item: long hard screw
+You acquire an item: freshwater pearl necklace
+
+[243] The Smut Orc Logging Camp
+Encounter: smut orc jacker
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: raging hardwood plank
+You acquire an item: green pixel
+
+equip acc3 "I Voted!" sticker
+
+[244] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: orange slime glob
+
+equip acc3 Powerful Glove
+
+[245] The Smut Orc Logging Camp
+Encounter: smut orc nailer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: long hard screw
+You acquire an item: orcish nailing lube
+You acquire an item: Special Seasoning
+
+main.php?heist=1
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+Maximizer: myst
+Maximizer: myst, spell damage
+
+[246] The Smut Orc Logging Camp
+Encounter: Blech House
+Took choice 1345/2: use myst/spell damage
+choice.php?pwd&whichchoice=1345&option=2
+You acquire an item: morningwood plank
+You acquire raging hardwood plank (2)
+You acquire weirdwood plank (3)
+You acquire an item: thick caulk
+You acquire long hard screw (5)
+
+[247] The Smut Orc Logging Camp
+Encounter: smut orc screwer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: thick caulk
+You acquire an item: backwoods screwdriver
+You acquire an item: screwing pooch
+
+[248] The Smut Orc Logging Camp
+Encounter: smut orc screwer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: long hard screw
+You acquire an item: backwoods screwdriver
+
+[249] The Smut Orc Logging Camp
+Encounter: smut orc screwer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts NORTHERN EXPLOSION!
+Round 2: dextrial wins the fight!
+You acquire an item: thick caulk
+You acquire an item: morningwood plank
+You acquire an item: backwoods screwdriver
+You acquire an item: screwing pooch
+You acquire an item: red pixel
+
+[250] The Smut Orc Logging Camp
+Encounter: Blech House
+Took choice 1345/2: use myst/spell damage
+choice.php?pwd&whichchoice=1345&option=2
+You acquire raging hardwood plank (2)
+You acquire weirdwood plank (3)
+You acquire an item: thick caulk
+You acquire long hard screw (2)
+You acquire messy butt joint (3)
+
+familiar Melodramedary (46 lbs)
+Maximizer: item
+
+use 1 January's Garbage Tote
+Took choice 1275/2: Grab a broken champagne bottle
+choice.php?whichchoice=1275&option=2&pwd
+You acquire an item: broken champagne bottle
+
+equip weapon broken champagne bottle
+
+equip acc1 Guzzlr tablet
+Maximizer: item
+
+upeffect.php?efid=70&qty=11&pwd&ajax=1&_=1594877590594
+
+cast 11 Stevedave's Shanty of Superiority
+
+upeffect.php?efid=67&qty=11&pwd&ajax=1&_=1594877593479
+
+cast 11 Fat Leon's Phat Loot Lyric
+
+upeffect.php?efid=131&qty=11&pwd&ajax=1&_=1594877598408
+
+cast 11 Rage of the Reindeer
+
+equip hat Iunion Crown
+Maximizer: item
+
+equip acc2 Lil' Doctor™ bag
+
+[251] A-Boo Peak
+Encounter: Faction Traction = Inaction
+
+[251] A-Boo Peak
+Encounter: Space Tourist Explorer Ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn
+
+[251] A-Boo Peak
+Encounter: Claybender Sorcerer Ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 1: dextrial casts REFLEX HAMMER!
+This combat did not cost a turn
+
+[251] A-Boo Peak
+Encounter: Dusken Raider Ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes a Battlie Knight Ghost!
+Round 2: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 3: your opponent becomes a Dusken Raider Ghost!
+Round 3: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 4: your opponent becomes a Battlie Knight Ghost!
+Round 4: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 5: your opponent becomes a Whatsian Commando Ghost!
+Round 5: dextrial casts OFFER LATTE TO OPPONENT!
+Round 6: dextrial casts BECOME A BAT!
+Round 7: dextrial casts OTOSCOPE!
+Round 8: dextrial casts %FN, SPIT ON THEM!!
+Round 9: dextrial attacks!
+Round 10: dextrial attacks!
+Round 11: dextrial wins the fight!
+You acquire an item: A-Boo clue
+You acquire an item: T.U.R.D.S. Key
+You acquire an item: T.U.R.D.S. Key
+You acquire an item: Whatsian Ionic Pliers
+You acquire an item: ectoplasmic orbs
+You acquire an item: A-Boo clue
+You acquire an item: T.U.R.D.S. Key
+You acquire an item: T.U.R.D.S. Key
+You acquire an item: Whatsian Ionic Pliers
+You acquire an item: ectoplasmic orbs
+You acquire an item: ectoplasmic orbs
+
+equip weapon Fourth of May Cosplay Saber
+
+familiar Cat Burglar (55 lbs)
+
+equip weapon broken champagne bottle
+
+[252] A-Boo Peak
+Encounter: Whatsian Commando Ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial casts OTOSCOPE!
+Round 3: dextrial attacks!
+Round 4: dextrial attacks!
+Round 5: dextrial attacks!
+Round 6: dextrial attacks!
+Round 7: dextrial wins the fight!
+You acquire an item: A-Boo clue
+You acquire an item: T.U.R.D.S. Key
+You acquire an item: ectoplasmic orbs
+
+[253] A-Boo Peak
+Encounter: Battlie Knight Ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes a Whatsian Commando Ghost!
+Round 2: dextrial attacks!
+Round 3: dextrial casts BECOME A BAT!
+Round 4: dextrial attacks!
+Round 5: dextrial wins the fight!
+You acquire an item: T.U.R.D.S. Key
+You acquire an item: ectoplasmic orbs
+
+[254] A-Boo Peak
+Encounter: Battlie Knight Ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: A-Boo clue
+
+upeffect.php?efid=2541&qty=11&pwd&ajax=1&_=1594878235842
+
+cast 11 The Spirit of Taking
+
+equip weapon Fourth of May Cosplay Saber
+
+equip acc2 "I Voted!" sticker
+
+upeffect.php?efid=19&qty=5&pwd&ajax=1&_=1594878281233
+
+cast 5 Reptilian Fortitude
+
+[255] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+upeffect.php?efid=19&qty=5&pwd&ajax=1&_=1594878303626
+
+cast 5 Reptilian Fortitude
+
+familiar Melodramedary (46 lbs)
+
+equip off-hand Kramco Sausage-o-Matic™
+
+[256] Cobb's Knob Treasury
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+equip off-hand latte lovers member's mug
+
+equip acc2 Brutal brogues
+
+equip acc1 key sausage
+
+[256] The Haunted Gallery
+Encounter: guy with a pitchfork, and his wife
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+
+[257] The Haunted Gallery
+Encounter: guy with a pitchfork, and his wife
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+
+[258] The Haunted Gallery
+Encounter: cubist bull
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: broken sword
+You acquire an item: white pixel
+You acquire an item: Special Seasoning
+
+[259] The Haunted Gallery
+Encounter: Out in the Garden
+Took choice 89/4: skip adventure
+choice.php?whichchoice=89&option=4&pwd
+
+[259] The Haunted Gallery
+Encounter: empty suit of armor
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: antique greaves
+
+[260] The Haunted Gallery
+Encounter: cubist bull
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: blue pixel
+
+cast 1 Carlweather's Cantata of Confrontation
+
+cast 1 Carlweather's Cantata of Confrontation
+
+cast 1 Musk of the Moose
+Maximizer: +com
+unequip acc1
+outfit Swashbuckling Getup
+Maximizer: +com
+
+main.php?latte=1
+Took choice 1329/1: (secret choice)
+choice.php?pwd&whichchoice=1329&option=1&l1=m0UeVnQgdqHEqsQ146yipIsnCdHtENnKX%2Be62NsWR74IGCe%2Fm4Rm7bbSAibWFNDpR09IMFgxQlZKUnlxdXEzTkUzdm1YZz09&l2=IzVWfYNuKaBLiniqIwhDMHEzi51bGlh0NfBz1ESxhEkwW99Gyc4fR2D1s4tXX6pYRzFkL0dLcmZWRWN2YndKMGo0d3gvQT09&l3=LqC7aP87ugh9KRnvoIjP8YcP%2FdFzI8GnRQkdn7I93DvHxdXIYE4yyNCfHMsku2aseUh3SlV0Tkg1bFpoWUJSUWxoZ29ldz09
+Filled your mug with Carrot rawhide Latte with a hot wing in it.
+
+[261] Barrrney's Barrr
+Encounter: Step Up to the Table, Put the Ball in Play
+
+[262] Barrrney's Barrr
+Encounter: Arrr You Man Enough?
+Took choice 187/1: 100.00% chance of winning
+choice.php?pwd&whichchoice=187&option=1
+Insult: Arrr, the power of me serve'll flay the skin from yer bones!
+Retort: Obviously neither your tongue nor your wit is sharp enough for the job.
+Insult: In all my years I've not seen a more loathsome worm than yerself!
+Retort: Amazing!  How do you manage to shave without using a mirror?
+Insult: Not a single man has faced me and lived to tell the tale!
+Retort: It only seems that way because you haven't learned to count to one.
+
+[263] The F'c'le
+Encounter: curmudgeonly pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: mizzenmast mop
+You acquire an item: all-purpose cleaner
+You acquire an item: handful of sawdust
+You acquire an item: li'l pirate costume
+
+use 1 mizzenmast mop
+Maximizer: item
+
+familiar Cat Burglar (63 lbs)
+
+equip acc3 Guzzlr tablet
+
+[264] The F'c'le
+Encounter: creamy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: ball polish
+You acquire an item: creamsicle
+
+use 1 ball polish
+
+[265] The F'c'le
+Encounter: cleanly pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: rigging shampoo
+You acquire an item: Tom's of the Spanish Main Toothpaste
+
+use 1 rigging shampoo
+
+equip acc3 "I Voted!" sticker
+
+[266] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc3 Guzzlr tablet
+
+equip acc3 Powerful Glove
+
+familiar Melodramedary (56 lbs)
+
+main.php?latte=1
+Took choice 1329/2: Don't get a Fill-Up
+choice.php?pwd&whichchoice=1329&option=2
+
+[267] Mix 1 martini + 1 ghostly ectoplasm
+You acquire an item: haunted martini
+Crafting used 1 each of martini and ghostly ectoplasm
+
+[267] Mix
+
+[267] Mix
+You acquire an item: martini
+You acquire an item: haunted martini
+Crafting used 1 each of bottle of gin and olive
+Crafting used 1 each of martini and ghostly ectoplasm
+You acquire an item: martini
+You acquire an item: haunted martini
+Crafting used 1 each of bottle of gin and olive
+Crafting used 1 each of martini and ghostly ectoplasm
+
+cast 1 The Ode to Booze
+
+drink 2 astral pilsner
+
+drink 1 haunted martini
+
+[267] The F'c'le
+Encounter: A Fledgling Pirate Is You!
+You acquire an item: pirate fledges
+
+equip acc1 pirate fledges
+
+equip hat Iunion Crown
+
+equip pants psychic's pslacks
+
+familiar Melodramedary (56 lbs)
+
+[268] The Haunted Bedroom
+Encounter: elegant animated nightstand
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: dextrial wins the fight!
+Encounter: One Elegant Nightstand
+Took choice 880/1: Lady Spookyraven's finest gown (once only)
+choice.php?pwd&whichchoice=880&option=1
+You acquire an item: Lady Spookyraven's finest gown
+
+[269] The Haunted Bathroom
+Encounter: claw-foot bathtub
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: bottle of Monsieur Bubble
+You acquire an item: fancy bath salts
+You acquire an item: white pixel
+
+[270] Twin Peak
+Encounter: Synecdoche, Twin Peak
+You acquire an item: miniature boiler
+
+equip acc1 key sausage
+
+cast 1 Smooth Movement
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 Smooth Movement
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 CHEAT CODE: Invisible Avatar
+
+[271] Twin Peak
+Encounter: Welcome to the Great Overlook Lodge
+Took choice 604/1: Continue...
+choice.php?pwd&whichchoice=604&option=1
+Encounter: Welcome to the Great Overlook Lodge
+Took choice 604/1: Everything goes black.
+choice.php?pwd&whichchoice=604&option=1
+
+[271] Twin Peak
+Encounter: Lost in the Great Overlook Lodge
+Took choice 606/1: need +4 stench resist, have 6
+choice.php?pwd&whichchoice=606&option=1
+Encounter: Room 237
+Took choice 607/1: Carefully inspect the body
+choice.php?pwd&whichchoice=607&option=1
+
+familiar Cat Burglar (63 lbs)
+
+familiar Melodramedary (56 lbs)
+
+uneffect The Sonata of Sneakiness
+
+cast 1 Musk of the Moose
+
+cast 1 Carlweather's Cantata of Confrontation
+
+equip acc1 Guzzlr tablet
+Maximizer: +com
+
+uneffect Carlweather's Cantata of Confrontation
+
+cast 1 Smooth Movement
+
+cast 1 Smooth Movement
+
+equip off-hand Kramco Sausage-o-Matic™
+
+equip acc1 key sausage
+
+[272] Cobb's Knob Treasury
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: dextrial wins the fight!
+You acquire an item: magical sausage casing
+You acquire an item: white pixel
+This combat did not cost a turn
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 The Sonata of Sneakiness
+
+equip off-hand titanium assault umbrella
+
+[272] Twin Peak
+Encounter: Lost in the Great Overlook Lodge
+Took choice 606/2: need +50% item drop, have 233%
+choice.php?pwd&whichchoice=606&option=2
+Encounter: Go Check It Out!
+Took choice 608/1: Search the shelves
+choice.php?pwd&whichchoice=608&option=1
+
+[273] The Haunted Gallery
+Encounter: Louvre It or Leave It
+Took choice 914/1: Enter the Drawing
+choice.php?pwd&whichchoice=914&option=1
+Encounter: Louvre It or Leave It (Relativity)
+Took choice 904/1: 
+choice.php?whichchoice=904&option=1&pwd
+Encounter: Louvre It or Leave It (The Scream)
+Took choice 907/2: The Birth of Venus: Swordholder (buff), Nighthawks, Adam
+choice.php?whichchoice=907&option=2&pwd
+Encounter: Louvre It or Leave It (The Birth of Venus)
+Took choice 908/2: Nighthawks: Is This Your Card? (buff), Persistence of Memory, Sunday Afternoon
+choice.php?whichchoice=908&option=2&pwd
+Encounter: Louvre It or Leave It (Nighthawks)
+Took choice 911/2: The Persistence of Memory: shoes/Dancin' Fool (buff), Venus, Piet Mondrian
+choice.php?whichchoice=911&option=2&pwd
+Encounter: Louvre It or Leave It (The Persistence of Memory)
+Took choice 905/1: Lady Spookyraven's shoes/Dancin' Fool (buff)
+choice.php?whichchoice=905&option=1&pwd
+You acquire an item: Lady Spookyraven's dancing shoes
+
+[274] The Haunted Bathroom
+Encounter: malevolent hair clog
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: gob of wet hair
+
+[275] The Haunted Bathroom
+Encounter: toilet papergeist
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: roll of toilet paper
+
+[276] The Haunted Bathroom
+Encounter: toilet papergeist
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: cardboard wakizashi
+You acquire an item: roll of toilet paper
+You acquire an item: Special Seasoning
+
+equip acc1 "I Voted!" sticker
+
+[277] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc1 key sausage
+
+upeffect.php?efid=2372&qty=22&pwd&ajax=1&_=1594879075457
+
+cast 22 Get Big
+
+[278] The Haunted Bathroom
+Encounter: claw-foot bathtub
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: bottle of Monsieur Bubble
+You acquire an item: fancy bath salts
+You acquire an item: blue pixel
+
+[279] The Haunted Bathroom
+Encounter: claw-foot bathtub
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: bottle of Monsieur Bubble
+You acquire an item: fancy bath salts
+
+[280] The Haunted Bathroom
+Encounter: malevolent hair clog
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: gob of wet hair
+You acquire an item: blue pixel
+
+uneffect The Sonata of Sneakiness
+
+upeffect.php?efid=163&qty=1&pwd&ajax=1&_=1594879100558
+
+cast 1 Carlweather's Cantata of Confrontation
+
+equip off-hand latte lovers member's mug
+
+cast 1 Musk of the Moose
+
+cast 1 Musk of the Moose
+
+familiar God Lobster (44 lbs)
+
+main.php?fightgodlobster=1
+
+[281] God Lobster
+Encounter: the God Lobster
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+This combat did not cost a turn
+
+[281] God Lobster
+Encounter: Granted a Boon
+Took choice 1310/2: &quot;I'd like a blessing.&quot;
+choice.php?pwd&whichchoice=1310&option=2
+
+familiar Melodramedary (58 lbs)
+
+familiar Pocket Professor (63 lbs)
+Maximizer: +com
+
+equip acc1 black rose key
+
+[281] The Goatlet
+Encounter: drunk goat
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn
+
+[281] The Goatlet
+Encounter: dairy goat
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts OFFER LATTE TO OPPONENT!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: goat cheese
+You acquire an item: glass of goat's milk
+You acquire an item: Shivering Ch&egrave;vre
+
+[282] The Goatlet
+Encounter: sabre-toothed goat
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes a dairy goat!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts GALLAPAGOSIAN MATING CALL!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: goat cheese
+You acquire an item: glass of goat's milk
+You acquire an item: white pixel
+
+[283] The Goatlet
+Encounter: dairy goat
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: goat cheese
+You acquire an item: glass of goat's milk
+
+Visiting the Trapper
+
+main.php?latte=1
+Took choice 1329/1: (secret choice)
+choice.php?pwd&whichchoice=1329&option=1&l1=mRwIPNyKdX24O39fmP8S%2BmAEzKG5moNKf3tw5E3Ss8TjSWgu0wlH0hAnO%2BDEyS9qdFA2M1VnV2lxd1R4SVRxUGtoT1Nydz09&l2=9TtKdaSyajY8GHGfGCkIswvakKBbk5fUWOxz5Ux3h1K1b5t1Z9oopNX7Iz08PViKcWRyY2cwcFhpbWVHTUtUTWYzY290UT09&l3=sdAt1qSLTyOZWkv8WBpghmgXNTlYwXrlzuYjP7wIA6Sqs8Z2xLKCJ8otlNyGrEt5TkJ6REV3dkMza2NXYjZkbkFVRUdzQT09
+Filled your mug with Inky motor oil Latte with carrot.
+> You baked a pizza!
+> Ingredients: {462,9957,5810,596}
+> [0] green pixel
+> [1] unremarkable duffel bag
+> [2] Tears of the Quiet Healer
+> [3] titanium assault umbrella
+> Adventures:
+> 8
+> Effect turns:
+> 15
+> Special features:
+> clover
+> Possible effects:
+> Matches:1
+> Initials considered:[gutt]
+> Effect:Gutterminded Id:1024
+
+pizza green pixel, unremarkable duffel bag, Tears of the Quiet Healer, titanium assault umbrella
+You acquire an item: diabolic pizza
+
+[284] Cook 1 scrumptious reagent + 1 glass of goat's milk
+You acquire an item: milk of magnesium
+Crafting used 1 each of glass of goat's milk and scrumptious reagent
+
+use 1 milk of magnesium
+
+eat 1 diabolic pizza
+You acquire an item: disassembled clover
+You ate Special Seasoning with your food
+Your milk of magnesium kicked in
+> You baked a pizza!
+> Ingredients: {214,1958,6012,1444}
+> [0] filthy knitted dread sack
+> [1] inkwell
+> [2] freshwater pearl necklace
+> [3] twinkly nuggets
+> Adventures:
+> 7
+> Effect turns:
+> 17
+> Special features:
+> combat
+> Possible effects:
+> Matches:1
+> Initials considered:[fift]
+> Effect:Fifty Ways to Bereave Your Lover Id:1269
+
+pizza filthy knitted dread sack, inkwell, freshwater pearl necklace, twinkly nuggets
+You acquire an item: diabolic pizza
+
+eat 1 diabolic pizza
+You acquire an item: short writ of habeas corpus
+You acquire an item: cigarette lighter
+You acquire an item: sonar-in-a-biscuit
+You ate Special Seasoning with your food
+> You baked a pizza!
+> Ingredients: {2273,470,586,2966}
+> [0] dusty bottle of Pinot Noir
+> [1] Imp Ale
+> [2] ridiculously huge sword
+> [3] Tom's of the Spanish Main Toothpaste
+> Adventures:
+> 9
+> Effect turns:
+> 16
+> Special features:
+> combat
+> Possible effects:
+> Matches:1
+> Initials considered:[dirt]
+> Effect:Dirty Pear Id:959
+
+pizza dusty bottle of spooky Pinot Noir, Imp Ale, ridiculously huge sword, Tom's of the Spanish Main Toothpaste
+You acquire an item: diabolic pizza
+
+eat 1 diabolic pizza
+You acquire an item: unnamed cocktail
+You acquire an item: glark cable
+You acquire an item: cocktail napkin
+You ate Special Seasoning with your food
+> You baked a pizza!
+> Ingredients: {588,1444,6017,9949}
+> [0] soft green echo eyedrop antidote
+> [1] twinkly nuggets
+> [2] orcish nailing lube
+> [3] neverending wallet chain
+> Adventures:
+> 9
+> Effect turns:
+> 17
+> Special features:
+> clover star 
+> Possible effects:
+> Matches:1
+> Initials considered:[ston]
+> Effect:Stone-Faced Id:1031
+
+pizza soft green echo eyedrop antidote, twinkly nuggets, orcish nailing lube, neverending wallet chain
+You acquire an item: diabolic pizza
+
+eat 1 diabolic pizza
+You acquire an item: disassembled clover
+You ate Special Seasoning with your food
+
+[284] The Hidden Temple
+Encounter: 
+
+[284] A Mob of Zeppelin Protesters
+Encounter: Too Much Humanity
+
+Use 4 disassembled clover
+You acquire ten-leaf clover (4)
+Maximizer: sleaze dmg
+
+equip hat ratty knitted cap
+
+use 1 January's Garbage Tote
+Took choice 1275/3: Grab a mass of tinsel
+choice.php?whichchoice=1275&option=3&pwd
+You acquire an item: tinsel tights
+
+equip pants tinsel tights
+
+equip acc1 deep-fried key
+*** slot acc1: KoL has black rose key but KoLmafia has deep-fried key
+*** slot acc1: KoL has deep-fried key but KoLmafia has black rose key
+
+equip acc2 ghost of a necklace
+
+equip acc3 bejeweled cufflinks
+
+main.php?comb=1&pwd
+
+[284] Combing (sleaze) Beach Head
+Maximizer: sleaze dmg
+Maximizer: sleaze spell dmg
+
+uneffect Carlweather's Cantata of Confrontation
+
+cast 4 Stevedave's Shanty of Superiority
+
+cast 2 Fat Leon's Phat Loot Lyric
+
+[284] A Mob of Zeppelin Protesters
+Encounter: Methinks the Protesters Doth Protest Too Little
+Took choice 866/2: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=866&option=2
+Encounter: Bench Warrant
+Took choice 857/1: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=857&option=1
+
+[285] A Mob of Zeppelin Protesters
+Encounter: Methinks the Protesters Doth Protest Too Little
+Took choice 866/2: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=866&option=2
+Encounter: Bench Warrant
+Took choice 857/1: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=857&option=1
+
+[286] A Mob of Zeppelin Protesters
+Encounter: Methinks the Protesters Doth Protest Too Little
+Took choice 866/2: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=866&option=2
+Encounter: Bench Warrant
+Took choice 857/1: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=857&option=1
+
+[287] A Mob of Zeppelin Protesters
+Encounter: Methinks the Protesters Doth Protest Too Little
+Took choice 866/2: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=866&option=2
+Encounter: Bench Warrant
+Took choice 857/1: creep protestors (more with sleaze damage/sleaze spell damage)
+choice.php?pwd&whichchoice=857&option=1
+
+equip acc3 Powerful Glove
+
+equip acc1 "I Voted!" sticker
+
+equip acc2 Brutal brogues
+
+equip pants psychic's pslacks
+
+equip hat Iunion Crown
+
+familiar Melodramedary (48 lbs)
+
+cast 1 Smooth Movement
+
+cast 1 The Sonata of Sneakiness
+
+[288] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: orange slime glob
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594880123639
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594880124287
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594880127701
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=67&qty=11&pwd&ajax=1&_=1594880130199
+
+cast 11 Fat Leon's Phat Loot Lyric
+
+equip acc1 key sausage
+Maximizer: -com
+
+cast 1 CHEAT CODE: Invisible Avatar
+
+cast 1 Seek out a Bird
+Maximizer: -com
+
+[289] The Dark Heart of the Woods
+Encounter: G imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot wing
+You acquire an item: Imp Ale
+You acquire an item: stick of firewood
+
+[290] The Dark Heart of the Woods
+Encounter: Running the Lode
+
+[291] The Dark Heart of the Woods
+Encounter: I, Martin
+You acquire an item: martini
+
+[292] The Dark Heart of the Woods
+Encounter: G imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot wing
+You acquire an item: Imp Ale
+You acquire an item: green pixel
+
+[293] The Dark Heart of the Woods
+Encounter: Imp Be Nimble, Imp Be Quick
+You acquire an item: box of birthday candles
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+
+[294] The Dark Neck of the Woods
+Encounter: Dodecahedrariffic!
+You acquire an item: dodecagram
+
+[295] Friar Ceremony Location
+
+equip off-hand Kramco Sausage-o-Matic™
+
+[295] Cobb's Knob Treasury
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: magical sausage casing
+You acquire an item: white pixel
+This combat did not cost a turn
+
+equip off-hand latte lovers member's mug
+
+[295] Pandamonium Slums
+Encounter: Hellion
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts OFFER LATTE TO OPPONENT!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: hellion cube
+You acquire an item: red pixel
+You acquire an item: Special Seasoning
+
+equip acc1 pirate fledges
+
+[296] The Poop Deck
+Encounter: O Cap'm, My Cap'm
+Took choice 189/2: Step away from the helm
+choice.php?pwd&whichchoice=189&option=2
+
+[296] The Poop Deck
+Encounter: warty pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: fish-liver oil
+You acquire an item: vinegar-soaked lemon slice
+
+[297] The Poop Deck
+Encounter: It's Always Swordfish
+
+[298] Pandamonium Slums
+Encounter: Demoninja
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot katana blade
+You acquire an item: demon skin
+You acquire an item: li'l ninja costume
+
+equip acc1 "I Voted!" sticker
+
+[299] Cobb's Knob Treasury
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc1 Guzzlr tablet
+
+[300] Pandamonium Slums
+Encounter: Highway to Hey Deze
+You acquire an item: Hey Deze map
+
+cast 4 Stevedave's Shanty of Superiority
+
+cast 1 Reptilian Fortitude
+
+[301] Pandamonium Slums
+Encounter: G imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot wing
+You acquire an item: Imp Ale
+
+upeffect.php?efid=19&qty=11&pwd&ajax=1&_=1594880391825
+
+cast 11 Reptilian Fortitude
+
+upeffect.php?efid=70&qty=11&pwd&ajax=1&_=1594880395314
+
+cast 11 Stevedave's Shanty of Superiority
+
+upeffect.php?efid=50&qty=11&pwd&ajax=1&_=1594880398149
+
+cast 11 Empathy of the Newt
+
+[302] Pandamonium Slums
+Encounter: P imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot wing
+You acquire an item: Imp Ale
+
+[303] Pandamonium Slums
+Encounter: L imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: Imp Ale
+You acquire an item: flaming crutch
+You acquire an item: cast
+
+[304] Pandamonium Slums
+Encounter: Hellion
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts GALLAPAGOSIAN MATING CALL!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: hellion cube
+You acquire an item: white pixel
+
+[305] Pandamonium Slums
+Encounter: W imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: Imp Ale
+You acquire an item: ruby W
+
+[306] Pandamonium Slums
+Encounter: Demoninja
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot katana blade
+You acquire an item: demon skin
+
+[307] Pandamonium Slums
+Encounter: Hellion
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hellion cube
+
+[308] Pandamonium Slums
+Encounter: P imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot wing
+You acquire an item: Imp Ale
+You acquire an item: red pixel
+You acquire an item: Special Seasoning
+
+[309] Pandamonium Slums
+Encounter: You Found a Thing, in Hell
+You acquire an item: demonic key
+
+equip acc3 "I Voted!" sticker
+*** slot acc3: KoL has Powerful Glove but KoLmafia has &quot;I Voted!&quot; sticker
+*** slot acc3: KoL has &quot;I Voted!&quot; sticker but KoLmafia has Powerful Glove
+
+[310] Cobb's Knob Treasury
+Encounter: Decisions, Shmecisions
+You acquire an item: knob treasury key
+
+equip acc3 Powerful Glove
+
+[311] Pandamonium Slums
+Encounter: Hellion
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hellion cube
+
+upeffect.php?efid=53&qty=11&pwd&ajax=1&_=1594880469127
+
+cast 11 Elemental Saucesphere
+
+familiar Cat Burglar (53 lbs)
+
+[312] Pandamonium Slums
+Encounter: P imp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hot wing
+You acquire an item: Imp Ale
+You acquire an item: diamond-studded cane
+You acquire an item: green pixel
+
+[313] Pandamonium Slums
+Encounter: Hellion
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: hellion cube
+
+[314] Pandamonium Slums
+Encounter: Fallen Archfiend
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: demon skin
+You acquire an item: pink slime
+You acquire an item: heavy-duty bendy straw
+
+Talking to Dakota Fanning
+
+[315] Oil Peak
+Encounter: Pushin' Down on Me, Pushin' Down on You
+
+Visiting the Super-Secret Canadian Mind Control Device
+Took choice 769/1: Touch that dial!
+choice.php?whichchoice=769&option=1&setting=11
+Maximizer: ml
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+cast 1 Drescher's Annoying Noise
+
+cast 1 Pride of the Puffin
+Maximizer: ml
+
+equip pants tinsel tights
+Maximizer: ml
+
+equip acc1 pirate fledges
+
+equip pants psychic's pslacks
+
+[315] The F'c'le
+Encounter: chatty pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+
+[316] The F'c'le
+Encounter: clingy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the cocktail napkin!
+This combat did not cost a turn
+
+[316] The F'c'le
+Encounter: creamy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial uses the T.U.R.D.S. Key and uses the T.U.R.D.S. Key!
+This combat did not cost a turn
+
+[316] The F'c'le
+Encounter: curmudgeonly pirate
+Round 0: dextrial wins initiative!
+Adjusted combat item count: T.U.R.D.S. Key
+Round 1: dextrial uses the T.U.R.D.S. Key and uses the T.U.R.D.S. Key!
+Round 2: dextrial uses the T.U.R.D.S. Key and uses the T.U.R.D.S. Key!
+Round 3: dextrial uses the T.U.R.D.S. Key!
+Round 4: dextrial attacks!
+Round 5: dextrial wins the fight!
+You acquire an item: all-purpose cleaner
+You acquire an item: handful of sawdust
+
+[317] The F'c'le
+Encounter: crusty pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: barrrnacle
+You acquire an item: tarrrnish charrrm
+You acquire an item: green pixel
+
+equip off-hand Kramco Sausage-o-Matic™
+
+[318] The F'c'le
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[318] The F'c'le
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[318] The F'c'le
+Encounter: B'c'le Up
+You acquire an item: f'c'le sh'c'le k'y
+
+[319] Belowdecks
+Encounter: gritty pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: true grit
+
+[320] Belowdecks
+Encounter: grassy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: grassy cutlass
+
+equip acc3 "I Voted!" sticker
+
+[321] Belowdecks
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc3 Powerful Glove
+
+[322] Belowdecks
+Encounter: groovy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: Special Seasoning
+
+[323] Belowdecks
+Encounter: gaudy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+
+main.php?heist=1
+
+[324] Belowdecks
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+familiar Melodramedary (49 lbs)
+
+main.php?eowkeeper=1
+Took choice 1395/7: Sunday - Surprise Me
+choice.php?pwd&whichchoice=1395&option=7
+
+[324] The Hidden Temple
+Encounter: Baa'baa'bu'ran
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: dextrial wins the fight!
+You acquire an item: stone wool
+You acquire an item: stone wool
+
+familiar Cat Burglar (53 lbs)
+
+use 1 stone wool
+
+[325] The Hidden Temple
+Encounter: Fitting In
+Took choice 582/1: mysticality substats, gain the Nostril of the Serpent or gain 3 adventures
+choice.php?pwd&whichchoice=582&option=1
+Encounter: Such Great Heights
+Took choice 579/2: gain the Nostril of the Serpent
+choice.php?pwd&whichchoice=579&option=2
+You acquire an item: the Nostril of the Serpent
+
+use 1 stone wool
+
+[326] The Hidden Temple
+Encounter: Fitting In
+Took choice 582/2: Hidden Heart of the Hidden Temple
+choice.php?pwd&whichchoice=582&option=2
+Encounter: The Hidden Heart of the Hidden Temple
+Took choice 580/3: moxie substats and 5 turns of Somewhat poisoned
+choice.php?pwd&whichchoice=580&option=3
+
+main.php?heist=1
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+
+[327] Belowdecks
+Encounter: gaudy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+
+[328] Belowdecks
+Encounter: gritty pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: true grit
+You acquire an item: keel-haulin' knife
+You acquire an item: white pixel
+
+[329] Belowdecks
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: magical sausage casing
+You acquire an item: white pixel
+This combat did not cost a turn
+
+[329] Belowdecks
+Encounter: grungy pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: acoustic guitarrr
+
+[330] Belowdecks
+Encounter: gritty pirate
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: true grit
+You acquire an item: keel-haulin' knife
+
+[331] Belowdecks
+Encounter: Yo-ho-ho in the Ho-ho-hold
+You acquire an item: treasure chest key
+Maximizer: -com
+
+equip off-hand latte lovers member's mug
+
+equip acc1 key sausage
+*** slot acc1: KoL has pirate fledges but KoLmafia has key sausage
+*** slot acc1: KoL has key sausage but KoLmafia has pirate fledges
+
+cast 1 CHEAT CODE: Invisible Avatar
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 Smooth Movement
+Maximizer: -com
+
+familiar Pocket Professor (53 lbs)
+
+equip acc3 "I Voted!" sticker
+
+cast 2 Drescher's Annoying Noise
+
+cast 3 Fat Leon's Phat Loot Lyric
+
+[332] The Bat Hole Entrance
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc3 Powerful Glove
+
+[333] The Hidden Temple
+Encounter: The Hidden Heart of the Hidden Temple
+Took choice 580/2: choose Hidden Heart adventure
+choice.php?pwd&whichchoice=580&option=2
+Encounter: Unconfusing Buttons
+Took choice 584/4: Hidden Temple (Pikachutlotal) - Hidden City unlock
+choice.php?pwd&whichchoice=584&option=4
+Encounter: The Hidden Heart of the Hidden Temple
+Took choice 580/1: unlock Hidden City
+choice.php?pwd&whichchoice=580&option=1
+
+[333] The Hidden Temple
+Encounter: At Least It's Not Full Of Trash
+Took choice 123/2: Unlock Quest Puzzle
+choice.php?pwd&whichchoice=123&option=2
+Encounter: Now What?
+
+[334] The Hidden Temple
+Encounter: Beginning at the Beginning of Beginning
+Give me a B!
+Give me an A!
+Give me an N!
+Give me an A!
+Give me an N!
+Give me an A!
+Give me an S!
+What's that spell? BANANAS!
+
+[335] The Hidden Temple
+Encounter: No Visible Means of Support
+Took choice 125/3: Unlock Hidden City
+choice.php?whichchoice=125&option=3&pwd
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594881348890
+
+cast 1 The Sonata of Sneakiness
+
+[336] The Hidden Park
+Encounter: pygmy assault squad
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the short writ of habeas corpus!
+This combat did not cost a turn
+
+[336] The Hidden Park
+Encounter: boaraffe
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: long pork
+You acquire an item: blue pixel
+
+cast 2 Drescher's Annoying Noise
+
+cast 3 Fat Leon's Phat Loot Lyric
+
+[337] The Hidden Park
+Encounter: boaraffe
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: long pork
+You acquire an item: green pixel
+Unlocked grass for Latte.
+
+[338] The Hidden Park
+Encounter: boaraffe
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: long pork
+You acquire an item: green pixel
+
+cast 2 Stevedave's Shanty of Superiority
+
+cast 3 Fat Leon's Phat Loot Lyric
+
+[339] The Hidden Park
+Encounter: Where Does The Lone Ranger Take His Garbagester?
+Took choice 789/1: Get random items
+choice.php?pwd&whichchoice=789&option=1
+You acquire an item: attorney's badge
+You acquire an item: surgical mask
+
+[340] The Hidden Park
+Encounter: pygmy blowgunner
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: pygmy blowgun
+You acquire an item: pygmy nose-bone
+You acquire an item: big bad voodoo mask
+You acquire an item: Special Seasoning
+
+cast 2 Stevedave's Shanty of Superiority
+
+[341] The Hidden Park
+Encounter: Dr. Henry "Dakota" Fanning, Ph.D., R.I.P.
+You acquire an item: antique machete
+You acquire an item: cool whip
+
+main.php?eowkeeper=1
+Took choice 1395/3: Wednesday - Sneakisol
+choice.php?pwd&whichchoice=1395&option=3
+Maximizer: ml
+
+equip pants tinsel tights
+
+equip acc1 f'c'le sh'c'le k'y
+*** slot acc1: KoL has key sausage but KoLmafia has f'c'le sh'c'le k'y
+*** slot acc1: KoL has f'c'le sh'c'le k'y but KoLmafia has key sausage
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+cast 1 Pride of the Puffin
+Maximizer: ml
+
+use 1 SongBoom&trade; BoomBox
+Encounter: Choose a Soundtrack
+Took choice 1312/1: &quot;Eye of the Giger&quot;
+choice.php?whichchoice=1312&option=1&pwd
+Setting soundtrack to Eye of the Giger
+
+[342] The Defiled Cranny
+Encounter: Death Rattlin'
+Took choice 523/4: fight swarm of ghuol whelps
+choice.php?pwd&whichchoice=523&option=4
+Encounter: giant swarm of ghuol whelps
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial attacks!
+Round 3: dextrial attacks!
+Round 4: dextrial wins the fight!
+After Battle: You pant as you smash the last of the little buggers. Your Evilometer beeps 11 times.
+
+[343] The Defiled Cranny
+Encounter: giant swarm of ghuol whelps
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+After Battle: You pant as you smash the last of the little buggers. Your Evilometer beeps 11 times.
+You acquire an item: blue pixel
+
+[344] The Defiled Cranny
+Encounter: giant swarm of ghuol whelps
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts SAUCEGEYSER!
+Round 2: dextrial wins the fight!
+After Battle: You pant as you smash the last of the little buggers. Your Evilometer beeps 10 times.
+
+cast 2 Ur-Kel's Aria of Annoyance
+
+[345] A Mob of Zeppelin Protesters
+Encounter: Not So Much With The Humanity
+
+[345] Mix 1 miniature boiler + 1 Guzzlr cocktail set
+You acquire an item: Steamboat
+Crafting used 1 each of miniature boiler and Guzzlr cocktail set
+
+[345] Mix 1 martini + 1 ghostly ectoplasm
+You acquire an item: haunted martini
+Crafting used 1 each of martini and ghostly ectoplasm
+
+Create 1 dense meat stack
+You acquire dense meat stack (10)
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+
+cast 1 The Ode to Booze
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+
+upeffect.php?efid=71&qty=1&pwd&ajax=1&_=1594881675161
+
+cast 1 The Ode to Booze
+
+drink 1 haunted martini
+
+drink 1 Steamboat
+
+drink 1 twice-haunted screwdriver
+
+familiar Cat Burglar (53 lbs)
+
+[345] Oil Peak
+Encounter: oil cartel
+Round 0: dextrial loses initiative!
+Round 1: dextrial uses the cast and uses the Duskwalker syringe!
+You acquire an item: bubblin' crude
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: bubblin' crude
+You acquire an item: bubblin' crude
+
+[346] Oil Peak
+Encounter: oil cartel
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: bubblin' crude
+You acquire an item: bubblin' crude
+
+[347] Oil Peak
+Encounter: oil cartel
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: bubblin' crude
+You acquire an item: bubblin' crude
+
+[348] Oil Peak
+Encounter: oil cartel
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: bubblin' crude
+You acquire an item: bubblin' crude
+You acquire an item: red pixel
+
+[349] Oil Peak
+Encounter: oil cartel
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial wins the fight!
+You acquire an item: bubblin' crude
+You acquire an item: bubblin' crude
+You acquire an item: bubblin' crude
+
+Use 12 bubblin' crude
+You acquire an item: jar of oil
+
+[350] Oil Peak
+Encounter: Unimpressed with Pressure
+outfit Filthy Hippy Disguise
+
+[351] Frat House
+Encounter: Fratacombs
+Took choice 145/1: muscle substats
+choice.php?pwd&whichchoice=145&option=1
+
+[352] Wartime Frat House (Hippy Disguise)
+Encounter: War Pledge
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts USE THE FORCE!
+Encounter: Using the Force
+Took choice 1387/3: &quot;You will drop your things and walk away.&quot;
+choice.php?pwd&whichchoice=1387&option=3
+You acquire an item: beer helmet
+You acquire an item: bejeweled pledge pin
+You acquire an item: distressed denim pants
+outfit Frat Warrior Fatigues
+
+equip acc1 Powerful Glove
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594881921496
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594881921658
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594881921827
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 Smooth Movement
+
+cast 1 Smooth Movement
+
+equip acc2 key sausage
+*** slot acc2: KoL has Brutal brogues but KoLmafia has key sausage
+*** slot acc2: KoL has key sausage but KoLmafia has Brutal brogues
+
+[352] Hippy Camp
+Encounter: War Hippy (space) cadet
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+Maximizer: -com
+
+cast 1 Seek out a Bird
+Maximizer: -com
+
+[353] Wartime Hippy Camp (Frat Disguise)
+Encounter: War Hippy drill sergeant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: reinforced beaded headband
+You acquire an item: round purple sunglasses
+You acquire an item: bullet-proof corduroys
+
+equip acc1 Lil' Doctor™ bag
+
+familiar Melodramedary (41 lbs)
+
+equip hat Iunion Crown
+Maximizer: item
+
+equip acc3 treasure chest key
+
+equip acc2 Guzzlr tablet
+
+use 1 January's Garbage Tote
+Took choice 1275/2: Grab a broken champagne bottle
+choice.php?whichchoice=1275&option=2&pwd
+You acquire an item: broken champagne bottle
+
+equip off-hand broken champagne bottle
+
+equip off-hand latte lovers member's mug
+*** slot off-hand: KoL has broken champagne bottle but KoLmafia has latte lovers member's mug
+
+equip acc1 "I Voted!" sticker
+*** slot off-hand: KoL has latte lovers member's mug but KoLmafia has broken champagne bottle
+
+cobbsknob.php?action=tolabs
+
+[354] Cobb's Knob Laboratory
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+You acquire an item: Nightmare Fuel
+
+equip acc1 Powerful Glove
+*** slot acc1: KoL has &quot;I Voted!&quot; sticker but KoLmafia has Powerful Glove
+
+equip acc1 Lil' Doctor™ bag
+Maximizer: item
+
+equip off-hand broken champagne bottle
+
+[355] Cobb's Knob Laboratory
+Encounter: toothy sklelton
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts %FN, SPIT ON THEM!!
+Round 2: dextrial attacks!
+Round 3: dextrial wins the fight!
+After Battle: Your Evilometer emits a single beep. The air in this part of the crypt smells slightly less evil...
+You acquire an item: loose teeth
+You acquire an item: loose teeth
+You acquire an item: loose teeth
+You acquire an item: loose teeth
+You acquire an item: skeleton bone
+You acquire an item: skeleton bone
+You acquire an item: evil eye
+You acquire an item: loose teeth
+You acquire an item: loose teeth
+You acquire an item: loose teeth
+You acquire an item: loose teeth
+You acquire an item: skeleton bone
+You acquire an item: skeleton bone
+You acquire an item: bone flute
+You acquire an item: bone flute
+You acquire an item: evil eye
+
+use 2 evil eye
+
+equip off-hand latte lovers member's mug
+outfit Frat Warrior Fatigues
+
+equip acc2 key sausage
+*** slot acc2: KoL has Guzzlr tablet but KoLmafia has key sausage
+
+equip acc1 Powerful Glove
+*** slot acc2: KoL has key sausage but KoLmafia has Guzzlr tablet
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594882266955
+
+cast 1 The Sonata of Sneakiness
+
+[356] Hippy Camp
+Encounter: Bait and Switch
+Took choice 139/3: enter combat
+choice.php?pwd&whichchoice=139&option=3
+Encounter: War Hippy (space) cadet
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: bullet-proof corduroys
+
+[357] Wartime Hippy Camp (Frat Disguise)
+Encounter: Blockin' Out the Scenery
+Took choice 142/3: start the war
+choice.php?pwd&whichchoice=142&option=3
+
+Visiting the lighthouse keeper with 0 barrels of gunpowder.
+
+Visiting the lighthouse keeper with 0 barrels of gunpowder.
+
+Visiting the Mysterious Island Arena
+You acquire an item: rock band flyers
+
+Visiting the Mysterious Island Arena
+
+Visiting Yossarian
+You acquire an item: molybdenum magnet
+
+Visiting Yossarian
+
+Visiting Yossarian
+
+equip hat Iunion Crown
+
+equip acc3 treasure chest key
+> You baked a pizza!
+> Ingredients: {569,9190,2974,528}
+> [0] Lord of the Flies-sized fries
+> [1] eldritch effluvium
+> [2] tarrrnish charrrm
+> [3] blood-faced volleyball
+> Adventures:
+> 9
+> Effect turns:
+> 18
+> Special features:
+> familiar
+> Possible effects:
+> Matches:1
+> Initials considered:[let]
+> Effect:Let's Go Shopping! Id:948
+
+pizza Lord of the Flies-sized fries, eldritch effluvium, tarrrnish charrrm, blood-faced volleyball
+You acquire an item: diabolic pizza
+
+eat 1 diabolic pizza
+Your familiar gains a pound: Fauci, the 17 lb. Melodramedary
+You acquire an item: dromedary drinking helmet
+You ate Special Seasoning with your food
+
+equip familiar dromedary drinking helmet
+*** slot familiar: KoL has (none) but KoLmafia has dromedary drinking helmet
+
+equip weapon broken champagne bottle
+outfit War Hippy Fatigues
+*** slot hat: KoL has Iunion Crown but KoLmafia has reinforced beaded headband
+*** slot pants: KoL has distressed denim pants but KoLmafia has bullet-proof corduroys
+*** slot acc3: KoL has treasure chest key but KoLmafia has round purple sunglasses
+*** slot familiar: KoL has dromedary drinking helmet but KoLmafia has (none)
+*** slot hat: KoL has reinforced beaded headband but KoLmafia has Iunion Crown
+*** slot pants: KoL has bullet-proof corduroys but KoLmafia has distressed denim pants
+*** slot acc3: KoL has round purple sunglasses but KoLmafia has treasure chest key
+
+Visiting the Super-Secret Canadian Mind Control Device
+Took choice 769/1: Touch that dial!
+choice.php?whichchoice=769&option=1&setting=0
+Maximizer: item
+
+equip acc1 treasure chest key
+
+familiar Cat Burglar (35 lbs)
+
+equip acc2 Guzzlr tablet
+*** slot acc2: KoL has key sausage but KoLmafia has Guzzlr tablet
+*** slot acc2: KoL has Guzzlr tablet but KoLmafia has key sausage
+Maximizer: item
+Maximizer: item
+
+Visiting The Organic Produce Stand
+
+cast 2 Reptilian Fortitude
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+[358] The Hatching Chamber
+Encounter: larval filthworm
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial attacks!
+Round 3: dextrial attacks!
+Round 4: dextrial wins the fight!
+You acquire an item: filthworm hatchling scent gland
+
+use 1 filthworm hatchling scent gland
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+cast 1 Reptilian Fortitude
+
+[359] The Feeding Chamber
+Encounter: filthworm drone
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: filthworm drone scent gland
+
+use 1 filthworm drone scent gland
+
+[360] The Royal Guard Chamber
+Encounter: filthworm royal guard
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: filthworm royal guard scent gland
+
+use 1 filthworm royal guard scent gland
+
+familiar Hobo Monkey (16 lbs)
+Maximizer: meat
+
+use 1 January's Garbage Tote
+Took choice 1275/4: Grab some used tape
+choice.php?whichchoice=1275&option=4&pwd
+You acquire an item: wad of used tape
+
+equip hat wad of used tape
+
+equip weapon Fourth of May Cosplay Saber
+*** slot weapon: KoL has (none) but KoLmafia has Fourth of May Cosplay Saber
+
+equip acc2 Brutal brogues
+*** slot weapon: KoL has Fourth of May Cosplay Saber but KoLmafia has (none)
+
+equip acc3 knob treasury key
+*** slot acc3: KoL has round purple sunglasses but KoLmafia has knob treasury key
+*** slot acc3: KoL has knob treasury key but KoLmafia has round purple sunglasses
+Maximizer: meat
+
+cast 1 The Polka of Plenty
+
+use 1 SongBoom&trade; BoomBox
+Encounter: Choose a Soundtrack
+Took choice 1312/5: &quot;Total Eclipse of Your Meat&quot;
+choice.php?whichchoice=1312&option=5&pwd
+Setting soundtrack to Total Eclipse of Your Meat
+
+[361] The Filthworm Queen's Chamber
+Encounter: the queen filthworm
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts SAUCEGEYSER!
+Round 2: dextrial attacks!
+Round 3: dextrial wins the fight!
+You acquire an item: heart of the filthworm queen
+
+use 1 SongBoom&trade; BoomBox
+Encounter: Choose a Soundtrack
+Took choice 1312/1: &quot;Eye of the Giger&quot;
+choice.php?whichchoice=1312&option=1&pwd
+Setting soundtrack to Eye of the Giger
+
+equip acc1 Powerful Glove
+
+equip acc3 "I Voted!" sticker
+*** slot acc3: KoL has knob treasury key but KoLmafia has &quot;I Voted!&quot; sticker
+
+equip acc3 Guzzlr tablet
+Maximizer: -com
+
+equip acc3 key sausage
+Maximizer: -com
+
+cast 1 CHEAT CODE: Invisible Avatar
+Maximizer: -com
+
+[362] The Haunted Bathroom
+Encounter: toilet papergeist
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts CURSE OF MARINARA!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: roll of toilet paper
+
+familiar Melodramedary (50 lbs)
+
+[363] The Haunted Bathroom
+Encounter: malevolent hair clog
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts ENTANGLING NOODLES!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts CURSE OF MARINARA!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: gob of wet hair
+
+[364] The Haunted Bathroom
+Encounter: Never Gonna Make You Up
+Took choice 881/1: Open it
+choice.php?whichchoice=881&option=1&pwd
+Encounter: cosmetics wraith
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: Lady Spookyraven's powder puff
+You acquire an item: old eyebrow pencil
+You acquire an item: old rosewater cream
+You acquire an item: old bronzer
+
+Talking to Lady Spookyraven
+
+equip acc2 "I Voted!" sticker
+
+cast 5 The Polka of Plenty
+
+[365] The Haunted Ballroom
+Encounter: Lights Out in the Ballroom
+Took choice 895/1: Get out of the Ballroom
+choice.php?whichchoice=895&option=1&pwd
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594883232560
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594883235407
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=131&qty=11&pwd&ajax=1&_=1594883240963
+
+cast 9 Rage of the Reindeer
+
+upeffect.php?efid=131&qty=1&pwd&ajax=1&_=1594883246643
+
+cast 1 Rage of the Reindeer
+
+upeffect.php?efid=19&qty=1&pwd&ajax=1&_=1594883247058
+
+cast 1 Reptilian Fortitude
+
+upeffect.php?efid=53&qty=1&pwd&ajax=1&_=1594883247510
+
+cast 1 Elemental Saucesphere
+
+[365] The Haunted Ballroom
+Encounter: Having a Ball in the Ballroom
+
+[366] The Haunted Ballroom
+Encounter: Strung-Up Quartet
+Took choice 106/3: increase item drops
+choice.php?pwd&whichchoice=106&option=3
+
+[367] The Haunted Ballroom
+Encounter: floating platter of hors d'oeuvres
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: dehydrated caviar
+You acquire an item: desiccated apricot
+You acquire an item: flute of flat champagne
+
+equip acc2 treasure chest key
+*** slot acc2: KoL has &quot;I Voted!&quot; sticker but KoLmafia has treasure chest key
+
+[368] The Haunted Ballroom
+Encounter: zombie waltzers
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts GALLAPAGOSIAN MATING CALL!
+*** slot acc2: KoL has treasure chest key but KoLmafia has &quot;I Voted!&quot; sticker
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: dance card
+You acquire an item: ballroom blintz
+You acquire an item: Nightmare Fuel
+
+[369] The Haunted Ballroom
+Encounter: Curtains
+Took choice 90/3: skip adventure
+choice.php?whichchoice=90&option=3&pwd
+
+[369] The Haunted Ballroom
+Encounter: Curtains
+Took choice 90/3: skip adventure
+choice.php?whichchoice=90&option=3&pwd
+
+[369] The Haunted Ballroom
+Encounter: Curtains
+Took choice 90/1: enter combat
+choice.php?pwd&whichchoice=90&option=1
+Encounter: ghastly organist
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+
+cast 2 The Polka of Plenty
+
+[370] The Haunted Ballroom
+Encounter: We'll All Be Flat
+Took choice 921/1: Play the music
+choice.php?pwd&whichchoice=921&option=1
+
+Inspecting the Suspicious Masonry
+You acquire an item: recipe: mortar-dissolving solution
+
+equip acc3 Lord Spookyraven's spectacles
+*** slot acc3: KoL has key sausage but KoLmafia has Lord Spookyraven's spectacles
+*** slot acc3: KoL has Lord Spookyraven's spectacles but KoLmafia has key sausage
+
+use 1 recipe: mortar-dissolving solution
+
+equip acc3 key sausage
+*** slot acc3: KoL has Lord Spookyraven's spectacles but KoLmafia has key sausage
+*** slot acc3: KoL has key sausage but KoLmafia has Lord Spookyraven's spectacles
+
+[371] The Haunted Wine Cellar
+Encounter: skeletal sommelier
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn
+
+[371] The Haunted Wine Cellar
+Encounter: possessed wine rack
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: dusty bottle of great Zinfandel
+You acquire an item: dusty bottle of great Zinfandel
+You acquire an item: actual tapas
+
+equip weapon antique machete
+
+cast 5 The Polka of Plenty
+
+[372] An Overgrown Shrine (Northwest)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: white pixel
+This combat did not cost a turn
+
+cast 1 Stevedave's Shanty of Superiority
+
+cast 1 The Polka of Plenty
+
+[372] An Overgrown Shrine (Northwest)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+cast 1 The Polka of Plenty
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+[372] An Overgrown Shrine (Northwest)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: red pixel
+This combat did not cost a turn
+
+familiar Left-Hand Man (17 lbs)
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+               Player Snapshot
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ > moon
+
+July 16, 2020 - Martinus 8
+
+Ronald: waning crescent
+Grimace: waxing gibbous
+Mini-moon: far left
+
+Generic Summer Holiday: 3 days
+Dependence Day: 12 days
+Arrrbor Day: 20 days
+Lab&oacute;r Day: 30 days
+Halloween: 40 days
+Feast of Boris: 47 days
+Yuletide: 52 days
+Festival of Jarlsberg: 57 days
+Valentine's Day: 68 days
+St. Sneaky Pete's Day: 75 days
+Oyster Egg Day: 82 days
+El Dia De Los Muertos Borrachos: 90 days
+
+
+Muscle bonus tomorrow (not today).
+
+
+ > status
+
+Name: dextrial
+Class: Pastamancer
+
+Lv: 13
+HP: 438 / 438
+MP: 151 / 158
+
+Mus: 180 (109), tnp = 20
+Mys: 1 (158), tnp = 182
+Mox: 152 (101), tnp = 103
+
+Advs: 29
+Meat: 27,651
+
+Full: 15 / 15
+Drunk: 13 / 15
+Spleen: 15 / 15
+
+
+ > equipment
+
+Hat: wad of used tape
+Weapon: antique machete
+Off-hand: latte lovers member's mug
+Shirt: astral shirt
+Pants: bullet-proof corduroys
+Back: vampyric cloake
+
+Acc. 1: Powerful Glove
+Acc. 2: treasure chest key
+Acc. 3: key sausage
+
+Pet: Left-Hand Man (17 lbs)
+Item: (none)
+
+ > skills
+
+Uncategorized
+ - 20/20 Vision
+ - Alien Source Code
+ - Bear Essence
+ - Budget Conscious
+ - CLEESH
+ - Chip on your Shoulder
+ - Drescher's Annoying Noise
+ - Drinking to Drink
+ - Drippy Eye-Beetle
+ - Expert Corner-Cutter
+ - Implode Universe
+ - Lock Picking
+ - Marginally Insane
+ - Prevent Scurvy and Sobriety
+ - Singer's Faithful Ocelot
+ - Summon Annoyance
+ - Summon Carrot
+ - Summon Holiday Fun!
+ - The Spirit of Taking
+ - Thick-Skinned
+ - Tiki Mixology
+ - Transcendent Olfaction
+ - Visit your Favorite Bird
+ - Walberg's Dim Bulb
+
+Seal Clubber
+ - Audacity of the Otter
+ - Batter Up!
+ - Blubber Up
+ - Claws of the Walrus
+ - Clobber
+ - Double-Fisted Skull Smashing
+ - Fortitude of the Muskox
+ - Get Big
+ - Hide of the Walrus
+ - Ire of the Orca
+ - Lunge Smack
+ - Lunging Thrust-Smack
+ - Musk of the Moose
+ - Northern Explosion
+ - Northern Exposure
+ - Precision of the Penguin
+ - Pride of the Puffin
+ - Pulverize
+ - Rage of the Reindeer
+ - Scowl of the Auk
+ - Seal Clubbing Frenzy
+ - Silent Hunter
+ - Snarl of the Timberwolf
+ - Super-Advanced Meatsmithing
+ - Thrust-Smack
+ - Tongue of the Walrus
+ - Wrath of the Wolverine
+
+Turtle Tamer
+ - Amphibian Sympathy
+ - Armorcraftiness
+ - Astral Shell
+ - Cold-Blooded Fearlessness
+ - Empathy of the Newt
+ - Gallapagosian Mating Call
+ - Hero of the Half-Shell
+ - Kneebutt
+ - Patience of the Tortoise
+ - Patient Smile
+ - Quiet Determination
+ - Reptilian Fortitude
+ - Shieldbutt
+ - Skin of the Leatherback
+ - Spectral Snapper
+ - Spiky Shell
+ - Stiff Upper Lip
+ - Tao of the Terrapin
+ - Tenacity of the Snapper
+ - Testudinal Teachings
+ - The Long View
+ - Toss
+ - Wisdom of the Elder Tortoises
+
+Pastamancer
+ - Arched Eyebrow of the Archmage
+ - Bind Lasagmbie
+ - Bind Spice Ghost
+ - Blood Bucatini
+ - Cannelloni Cannon
+ - Cannelloni Cocoon
+ - Entangling Noodles
+ - Flavour of Magic
+ - Lasagna Bandages
+ - Leash of Linguini
+ - Manicotti Meditation
+ - Pastamastery
+ - Shield of the Pastalord
+ - Spaghetti Spear
+ - Spirit of Ravioli
+ - Spirit of Rigatoni
+ - Springy Fusilli
+ - Subtle and Quick to Anger
+ - Thrall Unit Tactics
+ - Tolerance of the Kitchen
+ - Transcendental Noodlecraft
+ - Weapon of the Pastalord
+ - Wizard Squint
+
+Sauceror
+ - Advanced Saucecrafting
+ - Blood Sugar Sauce Magic
+ - Curse of Marinara
+ - Curse of Weaksauce
+ - Curse of the Thousand Islands
+ - Diminished Gag Reflex
+ - Elemental Saucesphere
+ - Expert Panhandling
+ - Icy Glare
+ - Impetuous Sauciness
+ - Inner Sauce
+ - Intrinsic Spiciness
+ - Irrepressible Spunk
+ - Itchy Curse Finger
+ - Love Mixology
+ - Master Saucier
+ - Sauce Monocle
+ - Saucegeyser
+ - Saucemaven
+ - Saucestorm
+ - Scarysauce
+ - Soul Saucery
+ - The Way of Sauce
+ - Wave of Sauce
+ - Wry Smile
+
+Disco Bandit
+ - Acquire Rhinestones
+ - Advanced Cocktailcrafting
+ - Adventurer of Leisure
+ - Ambidextrous Funkslinging
+ - Deft Hands
+ - Disco Bravado
+ - Disco Dance 3: Back in the Habit
+ - Disco Dance II: Electric Boogaloo
+ - Disco Dance of Doom
+ - Disco Eye-Poke
+ - Disco Face Stab
+ - Disco Fever
+ - Disco Greed
+ - Disco Leer
+ - Disco Smirk
+ - Disco State of Mind
+ - Flashy Dancer
+ - Heart of Polyester
+ - Mad Looting Skillz
+ - Nimble Fingers
+ - Overdeveloped Sense of Self Preservation
+ - Sensitive Fingers
+ - Smooth Movement
+ - Suckerpunch
+ - Superhuman Cocktailcrafting
+ - That's Not a Knife
+ - Tricky Knifework
+
+Accordion Thief
+ - Aloysius' Antiphon of Aptitude
+ - Bram's Bloody Bagatelle
+ - Brawnee's Anthem of Absorption
+ - Carlweather's Cantata of Confrontation
+ - Chorale of Companionship
+ - Cletus's Canticle of Celerity
+ - Fat Leon's Phat Loot Lyric
+ - Five Finger Discount
+ - Jackasses' Symphony of Destruction
+ - Knowing Smile
+ - Mariachi Memory
+ - Master Accordion Master Thief
+ - Stevedave's Shanty of Superiority
+ - Sticky Fingers
+ - Suspicious Gaze
+ - The Magical Mojomuscular Melody
+ - The Moxious Madrigal
+ - The Ode to Booze
+ - The Polka of Plenty
+ - The Power Ballad of the Arrowsmith
+ - The Psalm of Pointiness
+ - The Sonata of Sneakiness
+ - Thief Among the Honorable
+ - Ur-Kel's Aria of Annoyance
+
+Conditional
+ - CHEAT CODE: Invisible Avatar
+ - CHEAT CODE: Replace Enemy
+ - CHEAT CODE: Shrink Enemy
+ - CHEAT CODE: Triple Size
+ - Dismiss Pasta Thrall
+ - Gulp Latte
+ - Offer Latte to Opponent
+ - Seek out a Bird
+ - Sing Along
+ - Spirit of Bacon Grease
+ - Spirit of Cayenne
+ - Spirit of Garlic
+ - Spirit of Nothing
+ - Spirit of Peppermint
+ - Spirit of Wormwood
+ - Throw Latte on Opponent
+
+Gnome Trainer
+ - Cosmic Ugnderstanding
+ - Gnefarious Pickpocketing
+ - Gnomish Hardigness
+ - Powers of Observatiogn
+ - Torso Awaregness
+
+
+ > effects
+
+4 of 4 AT buffs active.
+Let's Go Shopping! (4)
+♫ The Sonata of Sneakiness (5)
+Smooth Movements (10)
+Haunted Liver (33)
+Drescher's Annoying Noise (43)
+♫ Stevedave's Shanty of Superiority (55)
+♫ Polka of Plenty (64)
+♫ Fat Leon's Phat Loot Lyric (67)
+Reptilian Fortitude (68)
+Rage of the Reindeer (70)
+Elemental Saucesphere (84)
+The Spirit of Taking (90)
+Empathy (102)
+Leash of Linguini (112)
+Shield of the Pastalord (154)
+Scarysauce (189)
+Big (207)
+Sauce Monocle (244)
+Singer's Faithful Ocelot (342)
+Springy Fusilli (383)
+Astral Shell (650)
+Spirit of Peppermint (∞)
+
+
+ > modifiers
+
+ML: +10
+Enc: -26.00%
+Init: +85.00%
+
+Exp: +7.93
+Meat: +345.00%
+Item: +315.00%
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+
+Talking to the Old Man
+> ... Started Old Man and the Sea quest
+> ... Started Walford's Bucket quest
+> ... Started Conspiracy Radio quest
+
+Visiting Snojo Control Console
+> Snojo set to Mysticality
+> ... Used Guild Manual
+> Custom Login complete!
+
+familiar Melodramedary (32 lbs)
+
+cast 1 Stevedave's Shanty of Superiority
+
+[372] An Overgrown Shrine (Southwest)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+upeffect.php?efid=19&qty=1&pwd&ajax=1&_=1594887994978
+upeffect.php?efid=19&qty=1&pwd&ajax=1&_=1594887995138
+upeffect.php?efid=19&qty=1&pwd&ajax=1&_=1594887995274
+
+cast 1 Reptilian Fortitude
+
+cast 1 Reptilian Fortitude
+
+upeffect.php?efid=131&qty=1&pwd&ajax=1&_=1594887995566
+
+cast 1 Reptilian Fortitude
+
+cast 1 Rage of the Reindeer
+
+upeffect.php?efid=131&qty=1&pwd&ajax=1&_=1594887995701
+upeffect.php?efid=131&qty=1&pwd&ajax=1&_=1594887995868
+
+cast 1 Rage of the Reindeer
+
+upeffect.php?efid=131&qty=1&pwd&ajax=1&_=1594887996018
+
+cast 1 Rage of the Reindeer
+
+cast 1 Rage of the Reindeer
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594887999558
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594887999750
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=162&qty=1&pwd&ajax=1&_=1594887999960
+
+cast 1 The Sonata of Sneakiness
+
+cast 1 The Sonata of Sneakiness
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594888000878
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594888001061
+
+cast 1 Smooth Movement
+
+[372] An Overgrown Shrine (Southwest)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+[372] An Overgrown Shrine (Southwest)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+[372] An Overgrown Shrine (Southwest)
+Encounter: Water You Dune
+Took choice 783/6: skip adventure
+choice.php?pwd&whichchoice=783&option=6
+
+[372] An Overgrown Shrine (Southeast)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: blue pixel
+This combat did not cost a turn
+
+[372] An Overgrown Shrine (Southeast)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+[372] An Overgrown Shrine (Southeast)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+[372] An Overgrown Shrine (Southeast)
+Encounter: Fire When Ready
+Took choice 787/6: skip adventure
+choice.php?pwd&whichchoice=787&option=6
+
+[372] An Overgrown Shrine (Northeast)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: red pixel
+This combat did not cost a turn
+
+cast 1 The Polka of Plenty
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+[372] An Overgrown Shrine (Northeast)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: red pixel
+This combat did not cost a turn
+
+cast 1 Stevedave's Shanty of Superiority
+
+cast 1 The Polka of Plenty
+
+[372] An Overgrown Shrine (Northeast)
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+cast 1 The Polka of Plenty
+
+[372] A Massive Ziggurat
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+familiar Cat Burglar (35 lbs)
+
+familiar Melodramedary (33 lbs)
+
+equip weapon Fourth of May Cosplay Saber
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+cast 1 The Polka of Plenty
+
+[372] An Overgrown Shrine (Southeast)
+Encounter: Fire When Ready
+Took choice 787/6: skip adventure
+choice.php?pwd&whichchoice=787&option=6
+
+familiar Red-Nosed Snapper (28 lbs)
+
+equip acc1 black rose key
+
+[372] The Haunted Wine Cellar
+Encounter: possessed wine rack
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+Your familiar gains a pound: Siren, the 4 lb. Red-Nosed Snapper
+You acquire an item: dusty bottle of average Merlot
+You acquire an item: dusty bottle of glassy Marsala
+You acquire an item: actual tapas
+
+[373] The Haunted Wine Cellar
+Encounter: possessed wine rack
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial attacks!
+Round 3: dextrial executes a macro!
+Round 3: dextrial uses the rock band flyers!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: dusty bottle of bad Muscat
+You acquire an item: bottle of Chateau de Vinegar
+
+familiar.php?action=guideme&pwd
+Took choice 1396/1: Guide me!
+choice.php?pwd&whichchoice=1396&option=1&cat=undead
+
+equip acc3 Lil' Doctor™ bag
+
+use 1 January's Garbage Tote
+Took choice 1275/2: Grab a broken champagne bottle
+choice.php?whichchoice=1275&option=2&pwd
+You acquire an item: broken champagne bottle
+
+equip off-hand broken champagne bottle
+
+[374] The Haunted Laundry Room
+Encounter: plaid ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts USE THE FORCE!
+Encounter: Using the Force
+Took choice 1387/1: &quot;I am not the adventurer you are looking for.&quot;
+choice.php?pwd&whichchoice=1387&option=1
+
+[374] The Haunted Laundry Room
+Encounter: the cabinet of Dr. Limpieza
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts CURSE OF MARINARA!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial casts SAUCESTORM!
+Round 6: dextrial wins the fight!
+You acquire an item: bloodstain stick
+You acquire an item: fabric softener
+You acquire an item: fabric hardener
+You acquire an item: bottle of laundry sherry
+
+equip hat Iunion Crown
+
+[375] The Haunted Laundry Room
+Encounter: plaid ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEST X-RAY!
+Round 2: dextrial wins the fight!
+Your familiar gains a pound: Siren, the 5 lb. Red-Nosed Snapper
+You acquire an item: plaid swatch
+This combat did not cost a turn
+
+equip acc3 Powerful Glove
+
+familiar Pocket Professor (50 lbs)
+
+[375] The Haunted Laundry Room
+Encounter: possessed laundry press
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes the cabinet of Dr. Limpieza!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts CURSE OF MARINARA!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: bloodstain stick
+You acquire an item: fabric softener
+You acquire an item: fabric hardener
+You acquire an item: bottle of laundry sherry
+You acquire an item: blasting soda
+
+[376] Cook 1 bottle of Chateau de Vinegar + 1 blasting soda
+You acquire an item: unstable fulminate
+Crafting used 1 each of bottle of Chateau de Vinegar and blasting soda
+
+Visiting the Super-Secret Canadian Mind Control Device
+Took choice 769/1: Touch that dial!
+choice.php?whichchoice=769&option=1&setting=11
+
+uneffect The Sonata of Sneakiness
+
+equip off-hand latte lovers member's mug
+
+Visiting the lighthouse keeper with 0 barrels of gunpowder.
+
+Visiting the Mysterious Island Arena
+
+Visiting Yossarian
+
+[376] An Overgrown Shrine (Northwest)
+Encounter: Earthbound and Down
+Took choice 781/1: Unlock Hidden Apartment Building
+choice.php?pwd&whichchoice=781&option=1
+Maximizer: ml
+
+use 1 January's Garbage Tote
+Took choice 1275/3: Grab a mass of tinsel
+choice.php?whichchoice=1275&option=3&pwd
+You acquire an item: tinsel tights
+
+equip pants tinsel tights
+Maximizer: ml
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+cast 1 Pride of the Puffin
+Maximizer: ml
+
+familiar Melodramedary (48 lbs)
+Maximizer: item
+
+use 1 January's Garbage Tote
+Took choice 1275/4: Grab some used tape
+choice.php?whichchoice=1275&option=4&pwd
+You acquire an item: wad of used tape
+
+equip hat wad of used tape
+Maximizer: item
+
+equip pants bullet-proof corduroys
+Maximizer: item
+
+equip acc1 Guzzlr tablet
+Maximizer: item
+
+[377] The Hidden Apartment Building
+Encounter: pygmy janitor
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts USE THE FORCE!
+Encounter: Using the Force
+Took choice 1387/3: &quot;You will drop your things and walk away.&quot;
+choice.php?pwd&whichchoice=1387&option=3
+You acquire an item: book of matches
+You acquire an item: short-handled mop
+You acquire an item: jungle floor wax
+You acquire an item: all-purpose cleaner
+
+use 1 book of matches
+
+buy 5 Bowl of Scorpions for 475 each from The Hidden Tavern
+You acquire Bowl of Scorpions (5)
+
+[377] The Hidden Apartment Building
+Encounter: pygmy witch lawyer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: short deposition
+
+equip acc1 Lil' Doctor™ bag
+
+[378] An Overgrown Shrine (Southeast)
+Encounter: Fire When Ready
+Took choice 787/1: Unlock Hidden Bowling Alley
+choice.php?pwd&whichchoice=787&option=1
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594889020636
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+upeffect.php?efid=1367&qty=1&pwd&ajax=1&_=1594889021626
+
+[379] The Hidden Bowling Alley
+Encounter: pygmy janitor
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts REFLEX HAMMER!
+This combat did not cost a turn
+
+[379] The Hidden Bowling Alley
+Encounter: drunk pygmy
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: green pixel
+This combat did not cost a turn
+
+[379] The Hidden Bowling Alley
+Encounter: pygmy orderlies
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts USE THE FORCE!
+Encounter: Using the Force
+Took choice 1387/1: &quot;I am not the adventurer you are looking for.&quot;
+choice.php?pwd&whichchoice=1387&option=1
+
+[379] The Hidden Bowling Alley
+Encounter: pygmy bowler
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts %FN, SPIT ON THEM!!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts CURSE OF MARINARA!
+Round 4: dextrial casts ENTANGLING NOODLES!
+Round 5: dextrial executes a macro!
+Round 5: dextrial casts SAUCESTORM!
+Round 6: dextrial wins the fight!
+You acquire an item: bowling ball
+You acquire an item: bowling ball
+You acquire an item: tiny bowler
+You acquire an item: imitation White Russian
+You acquire an item: bowling ball
+You acquire an item: bowling ball
+You acquire an item: imitation White Russian
+You acquire an item: imitation White Russian
+
+add to closet: 4 bowling ball
+
+[380] The Hidden Bowling Alley
+Encounter: pygmy bowler
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: bowling ball
+You acquire an item: tiny bowler
+You acquire an item: imitation White Russian
+
+[381] An Overgrown Shrine (Southwest)
+Encounter: Water You Dune
+Took choice 783/1: Unlock Hidden Hospital
+choice.php?pwd&whichchoice=783&option=1
+
+take from closet: 4 bowling ball
+You acquire bowling ball (4)
+Maximizer: surgeon
+Maximizer: surgeonosity
+
+equip acc2 surgical mask
+
+[382] The Hidden Hospital
+Encounter: pygmy witch surgeon
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: surgical apron
+
+equip shirt surgical apron
+
+[383] The Hidden Hospital
+Encounter: pygmy witch nurse
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEST X-RAY!
+Round 2: dextrial wins the fight!
+This combat did not cost a turn
+
+[383] The Hidden Hospital
+Encounter: You, M. D.
+Took choice 784/1: Fight ancient protector spirit
+choice.php?pwd&whichchoice=784&option=1
+Encounter: ancient protector spirit
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: dripping stone sphere
+You acquire an item: green pixel
+You acquire an item: Nightmare Fuel
+
+[384] An Overgrown Shrine (Southwest)
+Encounter: Water You Dune
+Took choice 783/2: Get stone triangle
+choice.php?pwd&whichchoice=783&option=2
+You acquire an item: stone triangle
+
+equip weapon antique machete
+
+equip shirt astral shirt
+
+equip acc2 treasure chest key
+
+[384] A Massive Ziggurat
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+This combat did not cost a turn
+
+[384] A Massive Ziggurat
+Encounter: dense liana
+Round 0: dextrial wins initiative!
+Round 1: dextrial wins the fight!
+You acquire an item: red pixel
+This combat did not cost a turn
+
+equip weapon Fourth of May Cosplay Saber
+
+[384] An Overgrown Shrine (Northeast)
+Encounter: Air Apparent
+Took choice 785/1: Unlock Hidden Office Building
+choice.php?pwd&whichchoice=785&option=1
+
+upeffect.php?efid=164&qty=2&pwd&ajax=1&_=1594889288941
+
+cast 2 Ur-Kel's Aria of Annoyance
+
+upeffect.php?efid=1367&qty=2&pwd&ajax=1&_=1594889291151
+
+cast 2 Pride of the Puffin
+
+equip acc2 ring of Detect Boring Doors
+
+[385] The Daily Dungeon (Room 1)
+Encounter: pencil golem
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: pencil stub
+
+[386] The Daily Dungeon (Room 2)
+Encounter: tonic water elemental
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: tonic djinn
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594889350230
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594889350411
+
+cast 1 Smooth Movement
+
+cast 1 Smooth Movement
+
+equip acc1 "I Voted!" sticker
+
+cobbsknob.php?action=tolabs
+
+[387] Cobb's Knob Laboratory
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc1 treasure chest key
+
+[388] The Daily Dungeon (Room 3)
+Encounter: vampire clam
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: vampire chowder
+
+[389] The Daily Dungeon (Room 4)
+Encounter: mayonnaise wasp
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: glob of spoiled mayo
+
+[390] The Daily Dungeon (Room 5)
+Encounter: The First Chest Isn't the Deepest.
+Took choice 690/2: Skip to 8th chamber, no turn spent
+choice.php?whichchoice=690&option=2&pwd
+
+[390] The Daily Dungeon (Room 8)
+Encounter: I Wanna Be a Door
+Took choice 692/3: pick lock with lockpicks, no turn spent
+choice.php?whichchoice=692&option=3&pwd
+
+[390] The Daily Dungeon (Room 9)
+Encounter: I Wanna Be a Door
+Took choice 692/3: pick lock with lockpicks, no turn spent
+choice.php?whichchoice=692&option=3&pwd
+
+[390] The Daily Dungeon (Room 10)
+Encounter: Second Chest
+Took choice 691/2: Skip to 13th chamber, no turn spent
+choice.php?whichchoice=691&option=2&pwd
+
+[390] The Daily Dungeon (Room 13)
+Encounter: It's Almost Certainly a Trap
+Took choice 693/2: Avoid trap with eleven-foot pole, no turn spent
+choice.php?whichchoice=693&option=2&pwd
+
+[390] The Daily Dungeon (Room 14)
+Encounter: It's Almost Certainly a Trap
+Took choice 693/2: Avoid trap with eleven-foot pole, no turn spent
+choice.php?whichchoice=693&option=2&pwd
+
+[390] The Daily Dungeon (Room 15)
+Encounter: The Final Reward
+Took choice 689/1: Get fat loot token
+choice.php?whichchoice=689&option=1&pwd
+You acquire an item: fat loot token
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594889414397
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+upeffect.php?efid=1367&qty=1&pwd&ajax=1&_=1594889416513
+
+cast 1 Pride of the Puffin
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594889416910
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=1194&qty=1&pwd&ajax=1&_=1594889417261
+upeffect.php?efid=19&qty=1&pwd&ajax=1&_=1594889417585
+
+cast 1 Drescher's Annoying Noise
+
+cast 1 Reptilian Fortitude
+
+upeffect.php?efid=53&qty=1&pwd&ajax=1&_=1594889417931
+
+cast 1 Elemental Saucesphere
+
+equip acc2 key sausage
+
+Create 15 dense meat stack
+You acquire dense meat stack (15)
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+
+cast 11 Empathy of the Newt
+
+cast 10 Leash of Linguini
+
+eat 1 magical sausage
+
+cast 55 Astral Shell
+
+eat 1 magical sausage
+
+cast 44 Elemental Saucesphere
+
+[391] The Copperhead Club
+Encounter: Welcome to the Copperhead Club
+Took choice 1074/1: Approach Shen's table
+choice.php?pwd&whichchoice=1074&option=1
+Encounter: Shen Copperhead, Nightclub Owner
+Took choice 851/1: &quot;Agreed.&quot;
+choice.php?pwd&whichchoice=851&option=1
+
+[392] The Smut Orc Logging Camp
+Encounter: smut orc jacker
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+
+[393] The Smut Orc Logging Camp
+Encounter: smut orc pipelayer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: orcish rubber
+
+[394] The Smut Orc Logging Camp
+Encounter: smut orc nailer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: red pixel
+You acquire an item: stick of firewood
+
+[395] The Smut Orc Logging Camp
+Encounter: smut orc pervert
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: smut orc keepsake box
+You acquire an item: smut orc sunglasses
+
+[396] The Smut Orc Logging Camp
+Encounter: smut orc pipelayer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: orcish rubber
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594889568807
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594889569275
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+[397] The Smut Orc Logging Camp
+Encounter: The Frattlesnake
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: The Lacrosse Stick of Lacoronado
+You acquire an item: Nightmare Fuel
+
+equip acc3 "I Voted!" sticker
+
+cobbsknob.php?action=tolabs
+
+[398] Cobb's Knob Laboratory
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc3 Powerful Glove
+
+equip acc3 Lil' Doctor™ bag
+
+[399] The Copperhead Club
+Encounter: the Mob Penguin Capo
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts CHEST X-RAY!
+Round 2: dextrial wins the fight!
+You acquire an item: drum of tommy ammo
+This combat did not cost a turn
+
+equip acc3 Powerful Glove
+
+[399] The Copperhead Club
+Encounter: Harold Collins the bartender
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: handful of tips
+You acquire an item: electric copperhead potion
+
+use 1 handful of tips
+
+[400] The Copperhead Club
+Encounter: waiter dressed as a ninja
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: crappy waiter disguise
+You acquire an item: ninja eyeblack
+
+uneffect Stevedave's Shanty of Superiority
+
+cast 1 The Ode to Booze
+
+drink 1 bottle of laundry sherry
+
+uneffect Ode to Booze
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594889662839
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+upeffect.php?efid=1367&qty=1&pwd&ajax=1&_=1594889663501
+
+cast 1 Pride of the Puffin
+
+Gazing at the Stars
+
+Gazing at the Stars
+
+Gazing at the Stars
+
+Gazing at the Stars
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594889673520
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594889674333
+upeffect.php?efid=67&qty=1&pwd&ajax=1&_=1594889675438
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+upeffect.php?efid=63&qty=1&pwd&ajax=1&_=1594889675851
+
+cast 1 The Polka of Plenty
+
+upeffect.php?efid=1194&qty=1&pwd&ajax=1&_=1594889678621
+
+cast 1 Drescher's Annoying Noise
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594889678928
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=19&qty=11&pwd&ajax=1&_=1594889684567
+
+cast 11 Reptilian Fortitude
+
+upeffect.php?efid=1194&qty=1&pwd&ajax=1&_=1594889688338
+
+cast 1 Drescher's Annoying Noise
+
+[401] Rest in your campaway tent
+
+use 1 crappy waiter disguise
+
+[401] The Copperhead Club
+Encounter: Behind the 'Stache
+Took choice 855/2: can get priceless diamond
+choice.php?pwd&whichchoice=855&option=2
+Maximizer: item
+
+equip acc2 Guzzlr tablet
+Maximizer: item
+
+equip acc3 Lil' Doctor™ bag
+
+[401] The Defiled Nook
+Encounter: Skull, Skull, Skull
+Took choice 155/5: skip adventure
+choice.php?pwd&whichchoice=155&option=5
+
+[401] The Defiled Nook
+Encounter: Skull, Skull, Skull
+Took choice 155/5: skip adventure
+choice.php?whichchoice=155&option=5&pwd
+
+[401] The Defiled Nook
+Encounter: spiny skelelton
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts %FN, SPIT ON THEM!!
+Round 2: dextrial casts BECOME A BAT!
+Round 3: dextrial casts OTOSCOPE!
+Round 4: dextrial executes a macro!
+Round 4: dextrial uses the rock band flyers!
+Round 5: dextrial executes a macro!
+Round 5: dextrial casts SAUCESTORM!
+Round 6: dextrial wins the fight!
+After Battle: Your Evilometer emits a single beep. The air in this part of the crypt smells slightly less evil...
+You acquire an item: skeleton bone
+You acquire an item: skeleton bone
+You acquire an item: smart skull
+You acquire an item: smart skull
+You acquire an item: spiked femur
+You acquire an item: evil eye
+You acquire an item: skelelton spine
+You acquire an item: succulent marrow
+You acquire an item: succulent marrow
+You acquire an item: skeleton bone
+You acquire an item: skeleton bone
+You acquire an item: smart skull
+You acquire an item: smart skull
+You acquire an item: spiked femur
+You acquire an item: spiked femur
+You acquire an item: evil eye
+You acquire an item: skelelton spine
+You acquire an item: succulent marrow
+You acquire an item: succulent marrow
+
+use 2 evil eye
+
+equip hat Iunion Crown
+
+equip acc2 key sausage
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594889896792
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=2541&qty=1&pwd&ajax=1&_=1594889897347
+
+cast 1 The Spirit of Taking
+
+upeffect.php?efid=2541&qty=1&pwd&ajax=1&_=1594889898371
+
+[402] The Copperhead Club
+Encounter: the Mob Penguin Capo
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial casts SAUCESTORM!
+Round 6: dextrial casts SAUCESTORM!
+Round 7: dextrial wins the fight!
+You acquire an item: drum of tommy ammo
+Unlocked squash for Latte.
+
+[403] The Copperhead Club
+Encounter: Shen Copperhead, Jerk
+Took choice 852/1: Give him the artifact.
+choice.php?whichchoice=852&option=1&pwd
+
+friars blessing 3
+
+use 1 tonic djinn
+
+[404] tonic djinn
+Encounter: If You Could Only See
+Took choice 778/1: gain 400-500 meat
+choice.php?pwd&whichchoice=778&option=1
+
+Visiting Your Campfire
+
+trading 5 sticks of firewood for 1 whittled flute
+You acquire an item: whittled flute
+
+[404] The Haunted Pantry
+Encounter: possessed can of tomatoes
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: razor-sharp can lid
+You acquire an item: tomato
+
+[405] The Haunted Pantry
+Encounter: Cut Down in His Prime
+You acquire an item: razor-sharp can lid
+
+[406] The Haunted Pantry
+Encounter: Shoe of Many Colors
+You acquire an item: pretentious palette
+
+[407] The Haunted Pantry
+Encounter: A Sandwich Appears!
+Took choice 544/1: sudo exorcise me a sandwich
+choice.php?whichchoice=544&option=1&pwd
+You acquire an item: exorcised sandwich
+
+Visiting Gorgonzola, the Chief Chef
+
+Visiting Blaine
+You acquire an item: Degrassi Knoll shopping list
+
+Visiting Blaine
+
+Visiting Gorgonzola, the Chief Chef
+
+Visiting Gorgonzola, the Chief Chef
+
+Visiting Asiago, the Pastamancer
+
+Visiting Asiago, the Pastamancer
+
+Visiting Asiago, the Pastamancer
+
+Visiting Asiago, the Pastamancer
+
+Visiting Edam, the Sauceror
+
+Visiting Edam, the Sauceror
+
+Visiting Edam, the Sauceror
+
+Visiting Edam, the Sauceror
+
+Visiting Brie, the Trainer
+
+upeffect.php?efid=2541&qty=2&pwd&ajax=1&_=1594890060944
+
+cast 2 The Spirit of Taking
+
+[408] The Haunted Pantry
+Encounter: The Singing Tree
+Took choice 116/4: skip adventure
+choice.php?pwd&whichchoice=116&option=4
+
+[408] The Haunted Pantry
+Encounter: Spirit of the Dolphin King
+You acquire an item: Dolphin King's map
+
+equip acc3 "I Voted!" sticker
+
+[409] The Haunted Pantry
+Encounter: slime blob
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts GULP LATTE!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial casts SAUCESTORM!
+Round 6: dextrial wins the fight!
+You acquire an item: green slime glob
+You acquire an item: orange slime glob
+
+equip acc3 Lil' Doctor™ bag
+
+Trade 8 red pixel, 8 green pixel, 8 blue pixel
+You acquire white pixel (8)
+
+Trade 30 white pixel
+You acquire an item: digital key
+
+Talking to Lady Spookyraven
+You acquire an item: dusty poppet
+You acquire an item: rickety rocking horse
+You acquire an item: antique jack-in-the-box
+
+Talking to Lady Spookyraven
+
+main.php?latte=1
+Took choice 1329/1: (secret choice)
+choice.php?pwd&whichchoice=1329&option=1&l1=X0VphYFuB4Ocpfwov2bt%2FJZmnz4IEUf26UEEmul8bA49p7KU1l8JPRQU4uwXhJiVNXVrTzVrTjZBSTNZRDB2OHRQSytjdz09&l2=ii9N9TKhrEOt4tRDnu%2FeqsLuFsuK%2FZI35xv%2FcLXL%2BGFLlyiGP6Xu7PwBIg1%2Bna%2BxbDBURVNOZkFXckNYNGY3WVE4VDkvZz09&l3=KCyUoruqVuJUzjCiVhN7qdZrmfGSFQPL3G1HNcKUqjG4egRP%2BYFnzv8xBo7TkR2VdG5KaWxvRmllL0tPUVRPL1FGa1Z4QT09
+Filled your mug with Hot wing and guarna Latte with rawhide.
+
+familiar Pocket Professor (50 lbs)
+
+equip off-hand Kramco Sausage-o-Matic™
+Maximizer: mus
+
+equip acc1 Brutal brogues
+
+equip acc2 Powerful Glove
+
+cast 1 CHEAT CODE: Triple Size
+
+equip acc2 key sausage
+Maximizer: mus
+
+main.php?comb=1&pwd
+
+[410] Combing (muscle) Beach Head
+
+use 1 true grit
+
+buy 1 Ben-Gal™ Balm for 22 each from The General Store
+You acquire an item: Ben-Gal&trade; Balm
+
+buy 4 Ben-Gal™ Balm for 22 each from The General Store
+You acquire Ben-Gal&trade; Balm (4)
+
+use 5 Ben-Gal&trade; Balm
+
+cast 1 Stevedave's Shanty of Superiority
+Maximizer: mus
+
+[410] The Haunted Nursery
+Encounter: Shadow Play
+
+[410] The Haunted Nursery
+Encounter: possessed toy chest
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial casts SAUCESTORM!
+Round 4: dextrial wins the fight!
+You acquire an item: spooky sound effects record
+You acquire an item: spooky alphabet block
+
+[411] The Haunted Nursery
+Encounter: spooky music box
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: dextrial wins the fight!
+You acquire an item: spooky music box mechanism
+
+upeffect.php?efid=1367&qty=1&pwd&ajax=1&_=1594890391570
+
+cast 1 Pride of the Puffin
+
+upeffect.php?efid=70&qty=11&pwd&ajax=1&_=1594890394025
+
+cast 11 Stevedave's Shanty of Superiority
+
+upeffect.php?efid=164&qty=1&pwd&ajax=1&_=1594890396025
+
+cast 1 Ur-Kel's Aria of Annoyance
+
+eat 1 magical sausage
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dextrial casts SAUCESTORM!
+Round 6: dextrial casts SAUCESTORM!
+Round 7: dextrial casts SAUCESTORM!
+Round 8: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: red-hot sausage fork
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts LECTURE ON RELATIVITY!
+Round 2: dextrial executes a macro!
+Round 2: dextrial uses the rock band flyers!
+Round 3: dextrial casts ENTANGLING NOODLES!
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: dextrial wins the fight!
+You acquire an item: magical sausage casing
+This combat did not cost a turn
+
+[412] The Haunted Nursery
+Encounter: sausage goblin
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts DELIVER YOUR THESIS!!
+Round 2: dextrial wins the fight!
+This combat did not cost a turn
+
+familiar Melodramedary (51 lbs)
+
+cast 6 Ur-Kel's Aria of Annoyance
+
+cast 1 Pride of the Puffin
+
+cast 1 Fat Leon's Phat Loot Lyric
+
+[412] The Haunted Nursery
+Encounter: Jerk-in-the-Box
+You acquire an item: music box key
+
+Create 10 dense meat stack
+You acquire dense meat stack (10)
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+
+cast 1 Cannelloni Cocoon
+
+upeffect.php?efid=63&qty=11&pwd&ajax=1&_=1594890576739
+
+cast 11 The Polka of Plenty
+
+upeffect.php?efid=67&qty=11&pwd&ajax=1&_=1594890581436
+
+cast 11 Fat Leon's Phat Loot Lyric
+
+upeffect.php?efid=1193&qty=22&pwd&ajax=1&_=1594890586378
+
+cast 22 Singer's Faithful Ocelot
+
+upeffect.php?efid=50&qty=22&pwd&ajax=1&_=1594890590038
+
+cast 22 Empathy of the Newt
+
+equip off-hand latte lovers member's mug
+
+[413] The Hidden Apartment Building
+Encounter: pygmy shaman
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts GULP LATTE!
+Round 2: dextrial casts OFFER LATTE TO OPPONENT!
+Round 3: dextrial executes a macro!
+Round 3: dextrial uses the rock band flyers!
+Round 4: dextrial casts CURSE OF MARINARA!
+Round 5: dextrial executes a macro!
+Round 5: dextrial casts WEAPON OF THE PASTALORD!
+Round 6: dextrial wins the fight!
+You acquire an item: colorful toad
+
+[414] The Hidden Apartment Building
+Encounter: pygmy janitor
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts WEAPON OF THE PASTALORD!
+Round 4: dextrial wins the fight!
+You acquire an item: jungle floor wax
+You acquire an item: all-purpose cleaner
+You acquire an item: Nightmare Fuel
+
+[415] The Hidden Apartment Building
+Encounter: pygmy witch accountant
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts WEAPON OF THE PASTALORD!
+Round 4: dextrial wins the fight!
+You acquire an item: short calculator
+You acquire an item: McClusky file (page 1)
+
+upeffect.php?efid=131&qty=22&pwd&ajax=1&_=1594890705937
+
+cast 22 Rage of the Reindeer
+
+[416] The Hidden Apartment Building
+Encounter: pygmy shaman
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts WEAPON OF THE PASTALORD!
+Round 4: dextrial wins the fight!
+You acquire an item: voodoo glowskull
+
+upeffect.php?efid=2541&qty=10&pwd&ajax=1&_=1594890717039
+
+cast 10 The Spirit of Taking
+
+[417] The Hidden Apartment Building
+Encounter: pygmy shaman
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: dextrial casts CURSE OF MARINARA!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts WEAPON OF THE PASTALORD!
+Round 4: dextrial wins the fight!
+You acquire an item: voodoo glowskull
+
+[418] The Hidden Apartment Building
+Encounter: pygmy witch lawyer
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts WEAPON OF THE PASTALORD!
+Round 3: dextrial wins the fight!
+You acquire an item: short writ of habeas corpus
+
+[419] The Hidden Apartment Building
+Encounter: pygmy shaman
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts WEAPON OF THE PASTALORD!
+Round 3: dextrial wins the fight!
+You acquire an item: smirking shrunken head
+You acquire an item: voodoo glowskull
+
+[420] The Hidden Apartment Building
+Encounter: Action Elevator
+Took choice 780/1: Fight ancient protector spirit
+choice.php?pwd&whichchoice=780&option=1
+Encounter: ancient protector spirit
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial casts ENTANGLING NOODLES!
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts WEAPON OF THE PASTALORD!
+Round 4: dextrial wins the fight!
+You acquire an item: moss-covered stone sphere
+
+[421] An Overgrown Shrine (Northwest)
+Encounter: Earthbound and Down
+Took choice 781/2: Get stone triangle
+choice.php?pwd&whichchoice=781&option=2
+You acquire an item: stone triangle
+
+[421] An Overgrown Shrine (Southwest)
+Encounter: Water You Dune
+Took choice 783/6: skip adventure
+choice.php?pwd&whichchoice=783&option=6
+
+[421] An Overgrown Shrine (Southeast)
+Encounter: Fire When Ready
+Took choice 787/6: skip adventure
+choice.php?pwd&whichchoice=787&option=6
+
+equip off-hand unstable fulminate
+Maximizer: ml
+
+use 1 January's Garbage Tote
+Took choice 1275/3: Grab a mass of tinsel
+choice.php?whichchoice=1275&option=3&pwd
+You acquire an item: tinsel tights
+
+equip pants tinsel tights
+
+equip acc2 f'c'le sh'c'le k'y
+Maximizer: ml
+
+[421] The Haunted Boiler Room
+Encounter: coaltergeist
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts REFLEX HAMMER!
+This combat did not cost a turn
+
+equip acc3 Powerful Glove
+
+[421] The Haunted Boiler Room
+Encounter: steam elemental
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts USE THE FORCE!
+Encounter: Using the Force
+Took choice 1387/1: &quot;I am not the adventurer you are looking for.&quot;
+choice.php?pwd&whichchoice=1387&option=1
+
+[421] The Haunted Boiler Room
+Encounter: monstrous boiler
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts CURSE OF MARINARA!
+Round 2: dextrial executes a macro!
+Round 2: dextrial casts WEAPON OF THE PASTALORD!
+Round 3: dextrial wins the fight!
+You acquire an item: wine bomb
+
+Inspecting the Suspicious Masonry
+
+equip off-hand latte lovers member's mug
+
+eat 1 magical sausage
+
+upeffect.php?efid=2372&qty=55&pwd&ajax=1&_=1594890829661
+
+cast 55 Get Big
+
+upeffect.php?efid=2541&qty=1&pwd&ajax=1&_=1594890832974
+upeffect.php?efid=1455&qty=1&pwd&ajax=1&_=1594890833215
+
+cast 1 The Spirit of Taking
+
+cast 1 Sauce Monocle
+
+upeffect.php?efid=19&qty=11&pwd&ajax=1&_=1594890839276
+
+cast 11 Reptilian Fortitude
+
+eat 1 magical sausage
+
+upeffect.php?efid=1444&qty=22&pwd&ajax=1&_=1594890845896
+
+cast 22 Shield of the Pastalord
+
+upeffect.php?efid=224&qty=22&pwd&ajax=1&_=1594890848231
+
+cast 22 Scarysauce
+
+cast 55 Wizard Squint
+
+eat 1 magical sausage
+
+cast 55 Wizard Squint
+
+cast 55 Rage of the Reindeer
+
+eat 1 magical sausage
+
+cast 1 Seek out a Bird
+
+cast 1 Seek out a Bird
+
+cast 1 Seek out a Bird
+Encounter: New Favorite Bird?
+Took choice 1399/2: On Second Thought...
+choice.php?pwd&whichchoice=1399&option=2
+
+cast 1 Visit your Favorite Bird
+
+cast 22 Scarysauce
+
+cast 22 Spiky Shell
+
+eat 1 magical sausage
+
+cast 33 The Psalm of Pointiness
+
+cast 55 Springy Fusilli
+
+cast 55 Walberg's Dim Bulb
+
+cast 55 Walberg's Dim Bulb
+
+eat 1 magical sausage
+
+cast 11 Walberg's Dim Bulb
+
+cast 11 Scarysauce
+
+cast 55 Astral Shell
+
+cast 6 Empathy of the Newt
+
+[422] The Hidden Office Building
+Encounter: pygmy witch accountant
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts WEAPON OF THE PASTALORD!
+Round 2: dextrial wins the fight!
+You acquire an item: bone abacus
+You acquire an item: McClusky file (page 2)
+
+[423] The Hidden Office Building
+Encounter: pygmy witch lawyer
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts WEAPON OF THE PASTALORD!
+Round 2: dextrial wins the fight!
+You acquire an item: attorney's badge
+
+[424] The Hidden Office Building
+Encounter: pygmy witch lawyer
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts WEAPON OF THE PASTALORD!
+Round 2: dextrial wins the fight!
+You acquire an item: short deposition
+
+[425] The Hidden Office Building
+Encounter: pygmy headhunter
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn
+
+equip off-hand Kramco Sausage-o-Matic™
+
+[425] The Hidden Office Building
+Encounter: pygmy witch lawyer
+Round 0: dextrial loses initiative!
+Round 1: dextrial uses the short writ of habeas corpus!
+This combat did not cost a turn
+
+[425] The Hidden Office Building
+Encounter: Working Holiday
+Took choice 786/2: Get boring binder clip
+choice.php?pwd&whichchoice=786&option=2
+You acquire an item: boring binder clip
+
+eat 1 magical sausage
+
+upeffect.php?efid=67&qty=55&pwd&ajax=1&_=1594891085184
+
+cast 55 Fat Leon's Phat Loot Lyric
+
+[426] The Hidden Office Building
+Encounter: pygmy witch lawyer
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts WEAPON OF THE PASTALORD!
+Round 2: dextrial wins the fight!
+You acquire an item: short writ of habeas corpus
+You acquire an item: Nightmare Fuel
+
+[427] The Hidden Office Building
+Encounter: pygmy janitor
+Round 0: dextrial loses initiative!
+Round 1: dextrial uses the short writ of habeas corpus!
+This combat did not cost a turn
+
+[427] The Hidden Office Building
+Encounter: pygmy witch accountant
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts WEAPON OF THE PASTALORD!
+Round 2: dextrial wins the fight!
+You acquire an item: bone abacus
+You acquire an item: McClusky file (page 3)
+
+[428] The Hidden Apartment Building
+Encounter: pygmy shaman
+Round 0: dextrial loses initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial casts WEAPON OF THE PASTALORD!
+Round 2: dextrial wins the fight!
+
+main.php?comb=1
+
+eat 1 magical sausage
+
+main.php?comb=1
+
+[429] Combing (initiative) Beach Head
+
+[429] Combing (familiar) Beach Head
+
+[429] Combing (hot) Beach Head
+
+[429] Combing (cold) Beach Head
+
+[429] Combing (stench) Beach Head
+
+[429] Combing (spooky) Beach Head
+
+[429] Wandering to a random section of the beach
+Encounter: Comb the Beach (7938 minutes down the beach)
+Combing square 9,5 (7938 minutes down the beach)
+You acquire an item: driftwood bracelet
+You acquire grain of sand (2)
+
+[429] Wandering to a random section of the beach
+Encounter: Comb the Beach (46 minutes down the beach)
+Combing square 9,7 (46 minutes down the beach)
+You acquire an item: bunch of sea grapes
+You acquire grain of sand (3)
+upeffect.php?efid=19&qty=55&pwd&ajax=1&_=1594891211113
+
+cast 55 Reptilian Fortitude
+
+upeffect.php?efid=16&qty=55&pwd&ajax=1&_=1594891214161
+
+cast 55 Leash of Linguini
+
+upeffect.php?efid=2541&qty=11&pwd&ajax=1&_=1594891217011
+
+cast 11 The Spirit of Taking
+
+eat 1 magical sausage
+
+upeffect.php?efid=1455&qty=55&pwd&ajax=1&_=1594891221366
+
+cast 55 Sauce Monocle
+
+upeffect.php?efid=50&qty=22&pwd&ajax=1&_=1594891224462
+
+cast 2 Empathy of the Newt
+
+eat 1 magical sausage
+
+upeffect.php?efid=50&qty=33&pwd&ajax=1&_=1594891228970
+
+cast 33 Empathy of the Newt
+
+eat 1 magical sausage
+
+upeffect.php?efid=53&qty=33&pwd&ajax=1&_=1594891233956
+
+cast 33 Elemental Saucesphere
+
+upeffect.php?efid=2541&qty=11&pwd&ajax=1&_=1594891237668
+
+cast 11 The Spirit of Taking
+
+eat 1 magical sausage
+
+upeffect.php?efid=2541&qty=33&pwd&ajax=1&_=1594891242558
+
+cast 33 The Spirit of Taking
+
+eat 1 magical sausage
+
+upeffect.php?efid=50&qty=44&pwd&ajax=1&_=1594891248470
+
+cast 44 Empathy of the Newt
+
+eat 1 magical sausage
+
+upeffect.php?efid=224&qty=66&pwd&ajax=1&_=1594891253147
+
+cast 66 Scarysauce
+
+eat 1 magical sausage
+
+upeffect.php?efid=1193&qty=55&pwd&ajax=1&_=1594891257504
+
+cast 55 Singer's Faithful Ocelot
+
+upeffect.php?efid=1444&qty=55&pwd&ajax=1&_=1594891260091
+
+cast 42 Shield of the Pastalord
+
+upeffect.php?efid=1444&qty=22&pwd&ajax=1&_=1594891262840
+
+cast 22 Shield of the Pastalord
+
+eat 1 magical sausage
+
+upeffect.php?efid=53&qty=22&pwd&ajax=1&_=1594891267558
+
+cast 22 Elemental Saucesphere
+
+upeffect.php?efid=53&qty=11&pwd&ajax=1&_=1594891270275
+
+cast 11 Elemental Saucesphere
+
+upeffect.php?efid=1430&qty=33&pwd&ajax=1&_=1594891273556
+
+cast 33 Spiky Shell
+
+eat 1 magical sausage
+
+upeffect.php?efid=1430&qty=55&pwd&ajax=1&_=1594891279118
+
+cast 55 Spiky Shell
+
+upeffect.php?efid=50&qty=55&pwd&ajax=1&_=1594891285920
+
+cast 55 Empathy of the Newt
+
+upeffect.php?efid=2372&qty=11&pwd&ajax=1&_=1594891288866
+
+cast 11 Get Big
+
+upeffect.php?efid=16&qty=11&pwd&ajax=1&_=1594891291795
+
+cast 11 Leash of Linguini
+
+eat 1 magical sausage
+
+upeffect.php?efid=2541&qty=11&pwd&ajax=1&_=1594891297653
+
+cast 11 The Spirit of Taking
+
+upeffect.php?efid=53&qty=55&pwd&ajax=1&_=1594891301745
+
+cast 55 Elemental Saucesphere
+
+eat 1 magical sausage
+
+eat 1 magical sausage
+
+Visiting Vending Machine
+
+Visiting Vending Machine
+
+trading 1 fat loot token for 1 Jarlsberg's key
+You acquire an item: Jarlsberg's key
+
+[429] Cook 2 glass of goat's milk + 2 scrumptious reagent
+You acquire milk of magnesium (2)
+Crafting used 2 each of glass of goat's milk and scrumptious reagent
+Encounter: Guzzlr Client Selection
+Took choice 1412/4: Platinum Tier
+choice.php?pwd&whichchoice=1412&option=4
+You acquire an item: Guzzlr cocktail set
+Encounter: Guzzlr Client Selection
+Took choice 1412/1: Abandon Client
+choice.php?pwd&whichchoice=1412&option=1
+Encounter: Guzzlr Client Selection
+Encounter: Guzzlr Client Selection
+Took choice 1412/5: Don't take a client right now
+choice.php?pwd&whichchoice=1412&option=5
+pulverize 1 broken sword
+You acquire twinkly powder (2)
+You acquire stench powder (2)
+pulverize 2 glowing red eye
+You acquire an item: twinkly nuggets
+You acquire hot nuggets (2)
+You acquire an item: stench nuggets
+You acquire an item: hot wad
+
+upeffect.php?efid=1367&qty=1&pwd&ajax=1&_=1594891477427
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594891477811
+
+cast 1 Pride of the Puffin
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594891477995
+
+cast 1 Smooth Movement
+
+cast 1 Smooth Movement
+
+upeffect.php?efid=1367&qty=1&pwd&ajax=1&_=1594891480657
+
+cast 1 Pride of the Puffin
+
+upeffect.php?efid=165&qty=1&pwd&ajax=1&_=1594891481039
+
+cast 1 Smooth Movement
+
+cast 1 Bram's Bloody Bagatelle
+
+uneffect Ur-Kel's Aria of Annoyance
+outfit Frat Warrior Fatigues
+
+Visiting the Mysterious Island Arena
+
+Visiting the Mysterious Island Arena
+
+concert 3
+Maximizer: adv
+
+familiar Stooper (44 lbs)
+
+eat 1 magical sausage
+
+cast 1 The Ode to Booze
+
+cast 1 The Ode to Booze
+
+drink 1 astral pilsner
+
+drink 1 Ye Olde Meade
+
+equip hat psychic's circlet
+
+equip shirt shoe ad T-shirt
+
+equip acc2 knob shaft skate key
+Maximizer: adv
+
+familiar Left-Hand Man (45 lbs)

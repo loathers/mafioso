@@ -1,0 +1,97 @@
+main.php?heist=1
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+
+main.php?heist=1
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5784=morningwood+plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5783=morningwood+plank
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+main.php?heist=1
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5783=morningwood+plank
+You acquire an item: raging hardwood plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5784=morningwood+plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1232:5783=morningwood+plank
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+main.php?heist=1
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5784=morningwood+plank
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+main.php?heist=1
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5783=morningwood+plank
+You acquire an item: raging hardwood plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5783=morningwood+plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5782=morningwood+plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5782=morningwood+plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5782=morningwood+plank
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+main.php?heist=1
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1233:5783=morningwood+plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1232:5783=morningwood+plank
+You acquire an item: raging hardwood plank
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1232:5784=morningwood+plank
+Took choice 1320/2: Nevermind
+choice.php?whichchoice=1320&pwd&option=2
+main.php?heist=1
+Took choice 1320/1: morningwood plank
+choice.php?whichchoice=1320&pwd&option=1&st:1232:5784=morningwood+plank
+You acquire an item: weirdwood plank
+
+main.php?heist=1
+Took choice 1320/1: rat whisker
+choice.php?whichchoice=1320&pwd&option=1&st:996:4736=tangle+of+rat+tails
+You acquire an item: tangle of rat tails
+Took choice 1320/1: rat whisker
+choice.php?whichchoice=1320&pwd&option=1&st:996:4736=tangle+of+rat+tails
+You acquire an item: tangle of rat tails
+
+main.php?heist=1
+Took choice 1320/1: pestopiary
+choice.php?whichchoice=1320&pwd&option=1&st:1246:5115=rusty+hedge+trimmers
+You acquire an item: rusty hedge trimmers
+
+[229] The Smut Orc Logging Camp
+Encounter: smut orc screwer
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts BECOME A BAT!
+You acquire an effect: Bat-Adjacent Form (1)
+Round 2: Ben scampers adorably around your opponent's ankles, twitching and blinking his adorable red eyes, and when he bites your foe with his adorable little teeth, he leaves adorable puddles of green foam in the adorable little wound, along with 5 damage.
+Round 2: smut orc screwer takes 5 damage.
+Round 2: Your opponent writhes as he takes 5 damage from the poison.
+Round 2: smut orc screwer takes 5 damage.
+Round 2: dextrial casts %FN, SPIT ON THEM!!
+Round 3: At your command, Fauci spits a tremendous globule of saliva at your foe. The shock and disgust completely overwhelm them, to the point of being literally beside themselves.
+Round 3: Ben nibbles your opponent for 4 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 3: smut orc screwer takes 4 damage.
+Round 3: Your opponent writhes as he takes 2 damage from the poison.
+Round 3: smut orc screwer takes 2 damage.
+Round 3: dextrial casts OTOSCOPE!
+Round 4: smut orc screwer drops 17 attack power.
+Round 4: smut orc screwer drops 17 defense.
+Round 4: Ben nibbles your opponent for 6 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 4: smut orc screwer takes 6 damage.
+Round 4: Your opponent writhes as he takes 1 damage from the poison.
+Round 4: smut orc screwer takes 1 damage.
+Round 4: dextrial attacks!
+Round 5: smut orc screwer takes 633 damage.
+Round 5: Ben claws at your opponent with filth-caked scratches. ...Wait, I think I mean that the other way around. Anyway, he does 4 damage.
+Round 5: smut orc screwer takes 4 damage.
+Round 5: dextrial wins the fight!
+After Battle: Your Iunion stones collectively turn up their noses at the level of discourse in this area.
+The crown gains 1 level of Sleaze Resistance

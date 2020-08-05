@@ -1,0 +1,250 @@
+[13] The Haunted Library
+Encounter: banshee librarian
+Round 0: dextrial wins initiative!
+Round 1: You lose 1 hit point
+Round 1: dextrial casts USE THE FORCE!
+Encounter: Using the Force
+Took choice 1387/3: &quot;You will drop your things and walk away.&quot;
+choice.php?pwd&whichchoice=1387&option=3
+You acquire an item: disintegrating quill pen
+You acquire an item: killing jar
+
+[584] Inside the Palindome
+Encounter: Evil Olive
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts REFLEX HAMMER!
+This combat did not cost a turn
+
+[77] The Boss Bat's Lair
+Encounter: beefy bodyguard bat
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes The Boss Bat!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: Boss Bat takes 135 damage.
+Round 3: Boss Bat takes 135 damage.
+Round 3: Ben nibbles your opponent for 4 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 3: Boss Bat takes 4 damage.
+Round 3: Your opponent writhes as he takes 4 damage from the poison.
+Round 3: Boss Bat takes 4 damage.
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 8 lb. Cat Burglar
+After Battle: Ben stands up on his hind legs and sniffs the air, chirping adorably.
+After Battle: You gain 5 Mana Points
+After Battle: Lagertha shows you his new dance move that he calls the "Totally Gonna Rob This Joint".
+You acquire an item: dense meat stack
+You acquire an item: batskin belt
+After Battle: You gain 8 Strongness
+After Battle: You gain 17 Magicalness
+After Battle: You gain 5 Chutzpah
+You acquire an item: Nightmare Fuel
+After Battle: Lagertha watches carefully to see if there are any guards and when they change shifts.
+
+[139] The Defiled Niche
+Encounter: dirty old lihc
+Round 0: dextrial wins initiative!
+Round 1: You lose 1 hit point
+> [INFO] - auto_combatHandler: 0
+Round 1: dextrial casts TRANSCENDENT OLFACTION!
+You acquire an effect: On the Trail (40)
+Round 2: Ben bites your opponent for 2 damage, and he gets a disconcerted look on his face as his blood turns into poison.
+Round 2: dirty old lihc takes 2 damage.
+Round 2: Your opponent writhes as he takes 2 damage from the poison.
+Round 2: dirty old lihc takes 2 damage.
+Round 2: dirty old lihc takes 4 damage.
+Round 2: dirty old lihc takes 1 damage.
+Round 2: dirty old lihc takes 1 damage.
+Round 2: You lose 5 hit points
+Round 2: dextrial casts GALLAPAGOSIAN MATING CALL!
+Round 3: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 4 damage.
+Round 3: dirty old lihc takes 4 damage.
+Round 3: Your opponent writhes as he takes 1 damage from the poison.
+Round 3: dirty old lihc takes 1 damage.
+Round 3: dirty old lihc takes 4 damage.
+Round 3: dirty old lihc takes 2 damage.
+Round 3: dirty old lihc takes 1 damage.
+Round 3: You lose 6 hit points
+Round 3: dextrial casts SING ALONG!
+Round 4: Ben claws at your opponent with filth-caked scratches. ...Wait, I think I mean that the other way around. Anyway, he does 4 damage.
+Round 4: dirty old lihc takes 4 damage.
+Round 4: dirty old lihc takes 3 damage.
+Round 4: dirty old lihc takes 1 damage.
+Round 4: dirty old lihc takes 1 damage.
+Round 4: You lose 6 hit points
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dirty old lihc takes 88 damage.
+Round 5: dirty old lihc takes 176 damage.
+Round 5: Ben scampers adorably around your opponent's ankles, twitching and blinking his adorable red eyes, and when he bites your foe with his adorable little teeth, he leaves adorable puddles of green foam in the adorable little wound, along with 4 damage.
+Round 5: dirty old lihc takes 4 damage.
+Round 5: dextrial wins the fight!
+After Battle: Either way, your Evilometer beeps three times.
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 10 Mana Points
+You gain 51 Meat
+After Battle: Siren either performs an energetic can-can dance, or flops around on the ground gasping for air.
+You acquire an item: salacious crumbs
+After Battle: You gain 14 Strengthliness
+After Battle: You gain 38 Enchantedness
+After Battle: You gain 13 Smarm
+> [INFO] - Post Adventure done, beep.
+> [INFO] - Turn(139): Starting with 11 left and 0 pulls left at Level: 11
+> [INFO] - Encounter: 0.0   Exp Bonus: 26.51770833333333
+> [INFO] - Meat Drop: 115.0  Item Drop: 224.24283374069717
+> [INFO] - HP: 406/431, MP: 543/661, Meat: 5320
+> [INFO] - Tummy: 5/15 Liver: 12/15 Spleen: 15/15
+> [INFO] - ML: 88 control: 11
+> [INFO] - Delay between adventures... beep boop... 
+
+[340] The VERY Unquiet Garves
+Encounter: senile lihc
+Round 0: dextrial wins initiative!
+> [INFO] - auto_combatHandler: 0
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes a gluttonous ghuol!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: gluttonous ghuol takes 110 damage.
+Round 3: gluttonous ghuol takes 220 damage.
+Round 4: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 4: your opponent becomes a second ghoul!
+Round 5: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 5: your opponent becomes a a third cooler ghuol!
+Round 3: Siren pulls out a tiny bowling ball and hurls it at your opponent, striking it for 12 damage.
+Round 3: gluttonous ghuol takes 12 damage.
+Round 3: dextrial wins the fight!
+You gain 115 Meat
+After Battle: Jankjenk pirouettes in the air, searching for scattered items. Maybe he was a pierougi in a past life.
+After Battle: Siren either performs an energetic can-can dance, or flops around on the ground gasping for air.
+You acquire an item: ghuol ears
+You acquire an item: ghuol guolash
+After Battle: You gain 6 Fortitude
+After Battle: You gain 15 Enchantedness
+After Battle: You gain 6 Sarcasm
+You acquire an item: Pok&eacute;-Gro fertilizer
+> [INFO] - Post Adventure done, beep.
+> [INFO] - Turn(340): Starting with 105 left and 1 pulls left at Level: 13
+> [INFO] - Encounter: -10.0   Exp Bonus: 12.015104166666667
+> [INFO] - Meat Drop: 90.0   Item Drop: 225.38093031466053
+> [INFO] - HP: 354/423, MP: 671/840, Meat: 8899
+> [INFO] - Tummy: 7/15 Liver: 8/15 Spleen: 3/15
+> [INFO] - ML: 20 control: 0
+> [INFO] - Delay between adventures... beep boop... 
+
+[584] Inside the Palindome
+Encounter: Taco Cat
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn
+
+equip off-hand latte lovers member's mug
+Took choice 1395/1: Monday - Explodinall
+choice.php?pwd&whichchoice=1395&option=1
+
+[525] The Battlefield (Frat Uniform)
+Encounter: Green Ops Soldier
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts %FN, SPIT ON THEM!!
+Round 2: dextrial executes a macro!
+Round 2: dextrial attacks!
+Round 3: dextrial wins the fight!
+You acquire an item: green clay bead
+You acquire an item: green clay bead
+You acquire an item: communications windchimes
+You acquire an item: communications windchimes
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: green smoke bomb
+You acquire an item: green smoke bomb
+You acquire an item: henna face paint
+You acquire an item: henna face paint
+You acquire an item: round green sunglasses
+You acquire an item: round green sunglasses
+You acquire an item: green clay bead
+You acquire an item: green clay bead
+You acquire an item: communications windchimes
+You acquire an item: communications windchimes
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: gas balloon
+You acquire an item: green smoke bomb
+You acquire an item: green smoke bomb
+You acquire an item: henna face paint
+You acquire an item: henna face paint
+You acquire an item: round green sunglasses
+You acquire an item: round green sunglasses
+32 hippies defeated; 704 down, 296 left.
+Keep your eyes open for Zim Merman!
+
+[218] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial executes a macro!
+Round 1: dextrial uses the rock band flyers!
+Round 2: Ben bites your opponent for 5 damage, and he gets a disconcerted look on his face as his blood turns into poison.
+Round 2: lobsterfrogman takes 5 damage.
+Round 2: Your opponent writhes as he takes 5 damage from the poison.
+Round 2: lobsterfrogman takes 5 damage.
+Round 2: dextrial casts LECTURE ON RELATIVITY!
+Round 3: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 6 damage.
+Round 3: lobsterfrogman takes 6 damage.
+Round 3: Your opponent writhes as he takes 3 damage from the poison.
+Round 3: lobsterfrogman takes 3 damage.
+Round 3: dextrial casts SAUCY SALVE!
+Round 4: You gain 13 hit points
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts SAUCY SALVE!
+Round 3: You gain 12 hit points
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCY SALVE!
+Round 3: You gain 14 hit points
+Round 3: dextrial executes a macro!
+Round 3: dextrial casts SAUCY SALVE!
+Round 4: You gain 10 hit points
+Round 4: Ben nibbles your opponent for 6 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 4: lobsterfrogman takes 6 damage.
+Round 4: Your opponent writhes as he takes 1 damage from the poison.
+Round 4: lobsterfrogman takes 1 damage.
+Round 4: dextrial executes a macro!
+Round 4: dextrial casts WEAPON OF THE PASTALORD!
+Round 5: lobsterfrogman takes 1044 damage.
+Round 5: Ben delicately nibbles your opponent's leg. So delicately, in fact, that your opponent doesn't even notice until the leg turns black and falls off, causing 3 damage.
+Round 5: lobsterfrogman takes 3 damage.
+Round 5: dextrial wins the fight!
+After Battle: To avoid overloading its circuits, Billy Merritt dumps some excess electricity into you.
+After Battle: You gain 62 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 13 Mana Points
+You gain 92 Meat
+After Battle: Billy Merritt displays "PHYSICS IS THE DANCE OF THE UNIVERSE."
+You acquire an item: barrel of gunpowder
+After Battle: You gain 58 Strengthliness
+After Battle: You gain 117 Enchantedness
+After Battle: You gain 65 Chutzpah
+You gain a Moxie point!
+
+upeffect.php?efid=70&qty=11&pwd&ajax=1&_=1596042951557
+upeffect.php?efid=70&qty=5&pwd&ajax=1&_=1596042955815
+
+[219] Sonofa Beach
+Encounter: lobsterfrogman
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: lobsterfrogman takes 983 damage.
+Round 2: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 6 damage.
+Round 2: lobsterfrogman takes 6 damage.
+Round 2: Your opponent writhes as he takes 6 damage from the poison.
+Round 2: lobsterfrogman takes 6 damage.
+Round 2: dextrial wins the fight!
+After Battle: Billy Merritt quantum-shifts you to a nearby universe where everything is the same except you have more MP.
+After Battle: You gain 62 Mana Points
+After Battle: Ben stands up on his hind legs and sniffs the air, chirping adorably.
+After Battle: You gain 13 Mana Points
+You gain 96 Meat
+After Battle: Billy Merritt displays "MATHEMATICS IS THE DANCING OF SCIENCE."
+You acquire an item: barrel of gunpowder
+After Battle: You gain 55 Beefiness
+You gain a Muscle point!
+After Battle: You gain 119 Enchantedness
+After Battle: You gain 63 Sarcasm

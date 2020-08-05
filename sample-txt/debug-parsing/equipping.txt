@@ -1,0 +1,16 @@
+equip acc1 mafia thumb ring
+
+equip weapon Fourth of May Cosplay Saber
+
+equip familiar God Lobster's Ring
+
+unequip hat
+unequip container
+unequip shirt
+unequip weapon
+unequip offhand
+unequip pants
+unequip acc1
+unequip acc2
+unequip acc3
+unequip familiarequip

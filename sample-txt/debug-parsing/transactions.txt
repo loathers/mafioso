@@ -1,0 +1,62 @@
+buy 1 black sheepskin diploma for 285 each from The Black Market
+You spent 285 Meat
+You acquire an item: black sheepskin diploma
+
+buy 1 mafia thumb ring for 300000 each from shop #2783392 on 20200723
+
+use 1 black sheepskin diploma
+You acquire an effect: Erudite (10)
+
+buy 1 black facepaint for 285 each from The Black Market
+You spent 285 Meat
+You acquire an item: black facepaint
+
+Create 2 dense meat stack
+You acquire dense meat stack (2)
+You lose 2,000 Meat
+
+Create 9 meat stack
+You acquire meat stack (9)
+You lose 900 Meat
+
+autosell: 1 facsimile dictionary
+You gain 21,337 Meat
+
+Create 10 meat paste
+You acquire meat paste (10)
+You lose 100 Meat
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+You acquire an item: magical sausage
+> [INFO] - We're gonna slurp up some sausage, let's make sure we have enough max mp
+Maximizer: mp,-tie
+
+[2] The Neverending Party
+Encounter: &quot;plain&quot; girl
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts SAUCESTORM!
+Round 2: "plain" girl takes 89 damage.
+Round 2: "plain" girl takes 89 damage.
+Round 2: dextrial wins the fight!
+Your familiar gains a pound: Billy Merritt, the 4 lb. Pocket Professor
+After Battle: You reach out to grab Billy Merritt and receive a jolt from the battery.
+After Battle: You gain 42 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 2 Mana Points
+You gain 152 Meat
+After Battle: Billy Merritt displays "PHYSICS IS THE DANCE OF THE UNIVERSE."
+You acquire an item: electronics kit
+You acquire an item: PB&J with the crusts cut off
+You acquire an item: ponytail clip
+After Battle: You gain 58 Beefiness
+You gain some Muscle points!
+After Battle: You gain 165 Wizardliness
+You gain some Mysticality points!
+After Battle: You gain 55 Chutzpah
+You gain a Moxie point!
+This combat did not cost a turn

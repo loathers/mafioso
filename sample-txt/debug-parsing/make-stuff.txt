@@ -1,0 +1,37 @@
+Create 1 dense meat stack
+You acquire an item: dense meat stack
+You lose 1,000 Meat
+
+Create 5 meat stack
+You acquire meat stack (5)
+You lose 500 Meat
+
+Create 5 meat paste
+You acquire meat paste (5)
+You lose 50 Meat
+You acquire an item: magical sausage
+> [INFO] - We're gonna slurp up some sausage, let's make sure we have enough max mp
+Maximizer: mp,-tie
+
+[128] Mix 1 ghostly ectoplasm + 1 bottle of vodka
+You acquire an item: haunted bottle of vodka
+Crafting used 1 each of bottle of vodka and ghostly ectoplasm
+
+[128] Cook 1 ghostly ectoplasm + 1 orange
+You acquire an item: haunted orange
+Crafting used 1 each of orange and ghostly ectoplasm
+
+[128] Mix 1 haunted bottle of vodka + 1 haunted orange
+You acquire an item: twice-haunted screwdriver
+Crafting used 1 each of haunted orange and haunted bottle of vodka
+> [INFO] - Shrugging song: Cletus's Canticle of Celerity
+
+Combine 1 batskin belt + 1 skull of the Bonerdagon
+You acquire an item: badass belt
+Crafting used 1 each of batskin belt and skull of the Bonerdagon
+You acquire an item: chest of the Bonerdagon
+After Battle: You gain 35 Strongness
+After Battle: You gain 86 Enchantedness
+You gain a Mysticality point!
+After Battle: You gain 35 Roguishness
+> [INFO] - Post Adventure done, beep.

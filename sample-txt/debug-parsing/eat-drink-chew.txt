@@ -1,0 +1,50 @@
+
+buy 1 fortune cookie for 38 each from The General Store
+You spent 38 Meat
+You acquire an item: fortune cookie
+
+pull: 1 milk of magnesium
+
+use 1 milk of magnesium
+
+eat 1 fortune cookie
+You gain 12 Adventures
+You gain 13 Strengthliness
+You gain 14 Enchantedness
+You gain 7 Roguishness
+You gain 1 Fullness
+You ate Special Seasoning with your food
+Your milk of magnesium kicked in
+Lucky numbers: 199, 10, 194
+
+drink 1 CSA cheerfulness ration
+
+cast 1 The Ode to Booze
+You acquire an effect: Ode to Booze (10)
+
+drink 1 twice-haunted screwdriver
+You gain 13 Adventures
+You gain 88 Fortitude
+You gain a Muscle point!
+You acquire an effect: Haunted Liver (40)
+You gain 2 Drunkenness
+You lose some of an effect: Ode to Booze (-2)
+
+chew 1 body spradium
+You gain 13 Fortitude
+You gain 11 Mysteriousness
+You gain 14 Cheek
+You acquire an effect: Boxing Day Glow (100)
+
+
+eat 1 magical sausage
+You gain 1 Adventure
+You gain 999 Mojo Points
+
+eat 1 magical sausage
+You gain 1 Adventure
+You gain 999 Mojo Points
+
+eat 1 magical sausage
+You gain 1 Adventure
+You gain 999 Mojo Points

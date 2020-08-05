@@ -1,0 +1,113 @@
+[77] The Boss Bat's Lair
+Encounter: beefy bodyguard bat
+Round 0: dextrial wins initiative!
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes The Boss Bat!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: Boss Bat takes 135 damage.
+Round 3: Boss Bat takes 135 damage.
+Round 3: Ben nibbles your opponent for 4 damage, which sounds like a bad deal, but at least the extra-virulent bacteria are a free bonus.
+Round 3: Boss Bat takes 4 damage.
+Round 3: Your opponent writhes as he takes 4 damage from the poison.
+Round 3: Boss Bat takes 4 damage.
+Round 3: dextrial wins the fight!
+Your familiar gains a pound: Lagertha, the 8 lb. Cat Burglar
+After Battle: Ben stands up on his hind legs and sniffs the air, chirping adorably.
+After Battle: You gain 5 Mana Points
+After Battle: Lagertha shows you his new dance move that he calls the "Totally Gonna Rob This Joint".
+You acquire an item: dense meat stack
+You acquire an item: batskin belt
+After Battle: You gain 8 Strongness
+After Battle: You gain 17 Magicalness
+After Battle: You gain 5 Chutzpah
+You acquire an item: Nightmare Fuel
+After Battle: Lagertha watches carefully to see if there are any guards and when they change shifts.
+
+[139] The Defiled Niche
+Encounter: dirty old lihc
+Round 0: dextrial wins initiative!
+Round 1: You lose 1 hit point
+> [INFO] - auto_combatHandler: 0
+Round 1: dextrial casts TRANSCENDENT OLFACTION!
+You acquire an effect: On the Trail (40)
+Round 2: Ben bites your opponent for 2 damage, and he gets a disconcerted look on his face as his blood turns into poison.
+Round 2: dirty old lihc takes 2 damage.
+Round 2: Your opponent writhes as he takes 2 damage from the poison.
+Round 2: dirty old lihc takes 2 damage.
+Round 2: dirty old lihc takes 4 damage.
+Round 2: dirty old lihc takes 1 damage.
+Round 2: dirty old lihc takes 1 damage.
+Round 2: You lose 5 hit points
+Round 2: dextrial casts GALLAPAGOSIAN MATING CALL!
+Round 3: Ben rubs up against your opponent's leg, and a bright red rash instantly develops as a horde of teeny-tiny pasta fleas attack for 4 damage.
+Round 3: dirty old lihc takes 4 damage.
+Round 3: Your opponent writhes as he takes 1 damage from the poison.
+Round 3: dirty old lihc takes 1 damage.
+Round 3: dirty old lihc takes 4 damage.
+Round 3: dirty old lihc takes 2 damage.
+Round 3: dirty old lihc takes 1 damage.
+Round 3: You lose 6 hit points
+Round 3: dextrial casts SING ALONG!
+Round 4: Ben claws at your opponent with filth-caked scratches. ...Wait, I think I mean that the other way around. Anyway, he does 4 damage.
+Round 4: dirty old lihc takes 4 damage.
+Round 4: dirty old lihc takes 3 damage.
+Round 4: dirty old lihc takes 1 damage.
+Round 4: dirty old lihc takes 1 damage.
+Round 4: You lose 6 hit points
+Round 4: dextrial casts SAUCESTORM!
+Round 5: dirty old lihc takes 88 damage.
+Round 5: dirty old lihc takes 176 damage.
+Round 5: Ben scampers adorably around your opponent's ankles, twitching and blinking his adorable red eyes, and when he bites your foe with his adorable little teeth, he leaves adorable puddles of green foam in the adorable little wound, along with 4 damage.
+Round 5: dirty old lihc takes 4 damage.
+Round 5: dextrial wins the fight!
+After Battle: Either way, your Evilometer beeps three times.
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 10 Mana Points
+You gain 51 Meat
+After Battle: Siren either performs an energetic can-can dance, or flops around on the ground gasping for air.
+You acquire an item: salacious crumbs
+After Battle: You gain 14 Strengthliness
+After Battle: You gain 38 Enchantedness
+After Battle: You gain 13 Smarm
+> [INFO] - Post Adventure done, beep.
+> [INFO] - Turn(139): Starting with 11 left and 0 pulls left at Level: 11
+> [INFO] - Encounter: 0.0   Exp Bonus: 26.51770833333333
+> [INFO] - Meat Drop: 115.0  Item Drop: 224.24283374069717
+> [INFO] - HP: 406/431, MP: 543/661, Meat: 5320
+> [INFO] - Tummy: 5/15 Liver: 12/15 Spleen: 15/15
+> [INFO] - ML: 88 control: 11
+> [INFO] - Delay between adventures... beep boop... 
+
+[340] The VERY Unquiet Garves
+Encounter: senile lihc
+Round 0: dextrial wins initiative!
+> [INFO] - auto_combatHandler: 0
+Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 2: your opponent becomes a gluttonous ghuol!
+Round 2: dextrial casts SAUCESTORM!
+Round 3: gluttonous ghuol takes 110 damage.
+Round 3: gluttonous ghuol takes 220 damage.
+Round 4: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 4: your opponent becomes a cooler ghoul!
+Round 5: dextrial casts CHEAT CODE: REPLACE ENEMY!
+Round 5: your opponent becomes the coolest ghuol!
+Round 3: Siren pulls out a tiny bowling ball and hurls it at your opponent, striking it for 12 damage.
+Round 3: gluttonous ghuol takes 12 damage.
+Round 3: dextrial wins the fight!
+You gain 115 Meat
+After Battle: Jankjenk pirouettes in the air, searching for scattered items. Maybe he was a pierougi in a past life.
+After Battle: Siren either performs an energetic can-can dance, or flops around on the ground gasping for air.
+You acquire an item: ghuol ears
+You acquire an item: ghuol guolash
+After Battle: You gain 6 Fortitude
+After Battle: You gain 15 Enchantedness
+After Battle: You gain 6 Sarcasm
+You acquire an item: Pok&eacute;-Gro fertilizer
+> [INFO] - Post Adventure done, beep.
+> [INFO] - Turn(340): Starting with 105 left and 1 pulls left at Level: 13
+> [INFO] - Encounter: -10.0   Exp Bonus: 12.015104166666667
+> [INFO] - Meat Drop: 90.0   Item Drop: 225.38093031466053
+> [INFO] - HP: 354/423, MP: 671/840, Meat: 8899
+> [INFO] - Tummy: 7/15 Liver: 8/15 Spleen: 3/15
+> [INFO] - ML: 20 control: 0
+> [INFO] - Delay between adventures... beep boop... 

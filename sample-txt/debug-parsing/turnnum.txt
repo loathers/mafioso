@@ -1,0 +1,64 @@
+Welcome to Valhalla!
+You have 874 banked Karma.
+You gain 261 Karma
+You gain 99 Karma
+Your new Karma balance is 1234
+
+Ascend as a Hardcore Male Pastamancer under the Wallaby sign on a Low Key Summer path, banking 23 Karma.
+Encounter: Low-Key Summer
+Took choice 1413/1: Yeah, it is!  Fastest ascension ever!
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Beginning New Ascension      
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+Ascension #174:
+Hardcore Low Key Summer Pastamancer
+Wallaby
+
+Name: dextrial
+Class: Pastamancer
+
+
+[1] Boxing Daycare
+Encounter: Have a Boxing Daydream
+You acquire an item: punch-drunk punch
+
+use 1 January's Garbage Tote
+Took choice 1275/3: Grab a mass of tinsel
+choice.php?whichchoice=1275&option=3&pwd
+You acquire an item: tinsel tights
+
+familiar Cat Burglar (40 lbs)
+
+use 1 evil eye
+Took choice 1320/1: loose teeth
+choice.php?whichchoice=1320&pwd&option=1&st:186:5010=evil+eye
+You acquire an item: evil eye
+
+[2] The Spooky Forest
+Encounter: angry ghost
+Round 0: dextrial wins initiative!
+Round 1: dextrial attacks!
+Round 2: dextrial wins the fight!
+Your familiar gains a pound: Rusty, the 4 lb. Gelatinous Cubeling
+You acquire an item: ghostly ectoplasm
+You acquire an item: Knob Goblin firecracker
+This combat did not cost a turn
+
+Encounter: Daily Loathing Ballot
+Took choice 1331/1: (secret choice)
+choice.php?pwd&option=1&whichchoice=1331&g=2&local[]=0&local[]=3
+You have cast your votes
+You acquire an item: &quot;I Voted!&quot; sticker
+
+buy 1 The Big Book of Pirate Insults for 475 each from Barrrtleby's Barrrgain Books
+You acquire an item: The Big Book of Pirate Insults
+
+Took choice 1395/3: Wednesday - Sneakisol
+
+[3] The Dark Elbow of the Woods
+Encounter: Butter Knife?  I'll Take the Knife
+You acquire an item: eldritch butterknife
+
+[4] Freeing King Ralph

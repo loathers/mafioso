@@ -1,0 +1,94 @@
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+               Player Snapshot
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ > moon
+
+July 26, 2020 - Bor 2
+
+Ronald: waxing crescent
+Grimace: new moon
+Mini-moon: in back, near Ronald
+
+Dependence Day: 2 days
+Arrrbor Day: 10 days
+Lab&oacute;r Day: 20 days
+Halloween: 30 days
+Feast of Boris: 37 days
+Yuletide: 42 days
+Festival of Jarlsberg: 47 days
+Valentine's Day: 58 days
+St. Sneaky Pete's Day: 65 days
+Oyster Egg Day: 72 days
+El Dia De Los Muertos Borrachos: 80 days
+Generic Summer Holiday: 89 days
+
+ > moon
+
+July 27, 2020 - Bor 3
+
+ > moon
+
+July 27, 2020 - Bor 3
+
+use 1 hewn moon-rune spoon
+> [WARNING] - Tried to change signs to marmot, but moon has already been tuned
+> [INFO] - Must get a snake nose.
+Stack trace:
+
+  at L11_nostrilOfTheSerpent (level_11.ash:1182)
+  at doTasks (autoscend.ash:3430)
+  at auto_begin (autoscend.ash:3624)
+  at safe_preference_reset_wrapper (autoscend.ash:3659)
+  at safe_preference_reset_wrapper (autoscend.ash:3666)
+  at safe_preference_reset_wrapper (autoscend.ash:3666)
+  at safe_preference_reset_wrapper (autoscend.ash:3666)
+  at main (autoscend.ash:3694)
+
+Visiting Crimbo Tree in clan VIP lounge
+
+Visiting Hot Dog Stand in clan VIP lounge
+
+Visiting Speakeasy in clan VIP lounge
+
+Visiting Floundry in clan VIP lounge
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+               Player Snapshot
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+ > moon
+
+July 28, 2020 - Bor 4
+
+Ronald: waxing gibbous
+Grimace: waxing crescent
+Mini-moon: in front of Ronald, R side
+
+Dependence Day: today
+Arrrbor Day: 8 days
+Lab&oacute;r Day: 18 days
+Halloween: 28 days
+Feast of Boris: 35 days
+Yuletide: 40 days
+Festival of Jarlsberg: 45 days
+Valentine's Day: 56 days
+St. Sneaky Pete's Day: 63 days
+Oyster Egg Day: 70 days
+El Dia De Los Muertos Borrachos: 78 days
+Generic Summer Holiday: 87 days
+
+Dependence Day
+Mysticism bonus tomorrow (not today).
+
+Stack trace:
+
+  at L11_unlockHiddenCity (level_11.ash:1100)
+  at doTasks (autoscend.ash:3431)
+  at auto_begin (autoscend.ash:3624)
+  at safe_preference_reset_wrapper (autoscend.ash:3659)
+  at safe_preference_reset_wrapper (autoscend.ash:3666)
+  at safe_preference_reset_wrapper (autoscend.ash:3666)
+  at safe_preference_reset_wrapper (autoscend.ash:3666)
+  at main (autoscend.ash:3694)

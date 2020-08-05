@@ -1,0 +1,82 @@
+
+Visiting Fortune Teller in clan VIP lounge
+Took choice 1278/1: Consult with Zatara
+choice.php?whichchoice=1278&option=1&which=-1&q1=pizza&q2=batman&q3=thick
+You acquire an effect: A Girl Named Sue (100)
+
+equip off-hand latte lovers member's mug
+
+[2] Dr. Gordon Stuart's Science Tent
+Encounter: Eldritch Tentacle
+Round 0: dextrial wins initiative!
+Round 1: You lose 4 hit points
+Round 1: dextrial attacks!
+Round 2: Eldritch Tentacle takes 77 damage.
+Round 2: dextrial casts GULP LATTE!
+Round 3: You gain 95 hit points
+Round 3: You gain 237 Mana Points
+Round 3: You lose 51 hit points
+Round 3: dextrial attacks!
+Round 4: Eldritch Tentacle takes 76 damage.
+Round 4: dextrial wins the fight!
+Your familiar gains a pound: Billy Merritt, the 2 lb. Pocket Professor
+After Battle: You reach out to grab Billy Merritt and receive a jolt from the battery.
+After Battle: You gain 34 Mana Points
+After Battle: Ben nuzzles your ankle. Aww.
+After Battle: You gain 1 Mana Point
+After Battle: Billy Merritt displays "MATHEMATICS IS THE DANCING OF SCIENCE."
+You acquire an item: eldritch effluvium
+You acquire an item: eldritch effluvium
+You acquire an item: red pixel
+After Battle: You gain 73 Strongness
+You gain some Muscle points!
+After Battle: You gain 141 Enchantedness
+You gain some Mysticality points!
+After Battle: You gain 48 Sarcasm
+You gain a Moxie point!
+This combat did not cost a turn
+
+[3] The Haunted Kitchen
+Encounter: demonic icebox
+Round 0: dextrial loses initiative!
+Round 1: dextrial attacks!
+Round 2: demonic icebox takes 439 damage.
+Round 2: dextrial wins the fight!
+After Battle: To avoid overloading its circuits, Billy Merritt dumps some excess electricity into you.
+After Battle: You gain 58 Mana Points
+After Battle: Ben stands up on his hind legs and sniffs the air, chirping adorably.
+After Battle: You gain 2 Mana Points
+You gain 19 Meat
+After Battle: Billy Merritt displays "PHYSICS IS THE DANCE OF THE UNIVERSE."
+You acquire an item: ancient frozen dinner
+You acquire an item: leftovers of indeterminate origin
+You acquire an item: accidental cider
+You acquire an item: dire fudgesicle
+After Battle: You gain 23 Muscleboundness
+After Battle: You gain 97 Enchantedness
+You gain a Mysticality point!
+After Battle: You gain 43 Smarm
+You gain a Moxie point!
+You acquire an item: Special Seasoning
+Unlocked chili for Latte.
+
+main.php?latte=1
+
+equip off-hand latte lovers member's mug
+
+[13] The Haunted Library
+Encounter: bookbat
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn
+
+main.php?latte=1
+Took choice 1329/1: (secret choice)
+choice.php?pwd&whichchoice=1329&option=1&l1=G8u0Z9d%2BzLyLVdKOndi4WQ2AWz1DUGLNMTwsMLgU5qnMoJ5fL%2F5DY9ztRSwA6wIkdTAxaDVMekpaRmpha1NOMFNZVm1sUT09&l2=7NhkYX1GOhXQ7KR%2BCtet84ym9IuasqrS%2F5PXrc1FB0KjLsaAOmTnANlbQOMY9DGuTkFnZlFtWU9qK1VvV2ZJQzdBUlhTZz09&l3=mn6rA0AKrRB6fLwbMK9Vc24tfDH9qLS6rNashNJCdz2CP18g7f1Ubjnh4PeQphspYndaZkdXalAvVisvQkRHaFNuN3ZTdz09
+Filled your mug with Vanilla pumpkin spice Latte with ink.
+
+[49] The Penultimate Fantasy Airship
+Encounter: Irritating Series of Random Encounters
+Round 0: dextrial loses initiative!
+Round 1: dextrial casts THROW LATTE ON OPPONENT!
+This combat did not cost a turn

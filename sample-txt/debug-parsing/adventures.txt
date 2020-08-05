@@ -1,0 +1,38 @@
+eat 1 magical sausage
+You gain 1 Adventure
+You gain 999 Mana Points
+
+drink 1 twice-haunted screwdriver
+You gain 13 Adventures
+You gain 88 Fortitude
+You gain a Muscle point!
+You acquire an effect: Haunted Liver (40)
+You gain 2 Drunkenness
+You lose some of an effect: Ode to Booze (-2)
+
+drink 1 astral pilsner
+You gain 12 Adventures
+You gain 1 Beefiness
+You gain 2 Wizardliness
+You gain 21 Smarm
+You gain 1 Drunkenness
+You lose some of an effect: Ode to Booze (-1)
+
+equip acc2 Powerful Glove
+Took choice 1089/7: Perform Service (43 Adventures)
+choice.php?whichchoice=1089&option=7&pwd
+You lose 43 Adventures
+You acquire an item: sausage without a cause
+> [INFO] - Community Service Quest 7: Spell Damage completed for 43 adventures.
+> [WARNING] - Machine Elf isnt valid, player is in a 100% familiar run with Left-Hand Man
+> [WARNING] - God Lobster isnt valid, player is in a 100% familiar run with Left-Hand Man
+> [INFO] - Turn(180): Starting with 157 left at Level: 12
+> [INFO] - Encounter: -10.0   Exp Bonus: 34.08333333333333
+> [INFO] - Meat Drop: 180.0  Item Drop: 275.0
+> [INFO] - HP: 559/559, MP: 2393/2393, Meat: 13241
+> [INFO] - Tummy: 0/15 Liver: 0/15 Spleen: 0/15
+> [INFO] - ML: 11 control: 11
+> [INFO] - Delay between adventures... beep boop... 
+> [INFO] - Community Service Quest 10: Hot Protection
+> [WARNING] - 100% familiar is dangerous, to disable: set auto_100familiar=none
+> [WARNING] - I'm going to keep going anyway because, whatevs, your problem meatbag.
