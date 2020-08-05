@@ -65,7 +65,7 @@ function MainMenu(props) {
 
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <UploadComponent
-          content={'Upload new logs'}
+          children={'Upload new logs'}
           className='fontsize-5 width-full adjacent-mar-t-2' />
 
         <Button 
@@ -151,9 +151,18 @@ export function FullPageMenu(props) {
       </div>
 
       <UploadComponent
-        content={'Hello! Click here to upload your Kolmafia session logs. You can also drag and drop.\n\nYou can upload multiple files and Mafioso here will try to find a full ascension to display for ya!'}
         style={{height: '70vh', width: '100%'}}
-        className='fontsize-9 width-full flex-auto adjacent-mar-t-2' />
+        className='height-full width-full flex-auto adjacent-mar-t-2' >
+        <div className='flex-col-center height-full'>
+          <div style={{lineHeight: '30px'}} className='flex-col-center fontsize-8 flex-auto'>
+            {'Buongiorno!\n\nClick here or drag and drop to upload your Kolmafia session logs.\nYou can upload multiple files and Mafioso here will try to find a full ascension to display for you.'}
+          </div>
+
+          <div className='flex-none fontsize-4'>
+            {'Thanks for using Mafioso beta!\nThere are still a lot of unsupported text and older logs might not have the data that is needed.\nStill, you should be able to drop them in and visualize them.\n\nIf you get an error or have any requests, make a report on Github.\nPlease know that no data is collected and uploaded files are never sent anywhere.'}
+          </div>
+        </div>
+      </UploadComponent>
     </div>
   )
 }

@@ -31,7 +31,7 @@ export default function UploadComponent(props) {
     className,
     disabled,
     style,
-    content,
+    children,
   } = props;
 
   const [isOver, setIsOver] = React.useState(false);
@@ -48,9 +48,9 @@ export default function UploadComponent(props) {
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
       <label 
-        className={combineClassnames('flex-row-center talign-center whitespace-pre-wrap pad-4 flex-auto cursor-pointer', borderClassName, colorClassName)}
+        className={combineClassnames('talign-center whitespace-pre-wrap pad-4 flex-auto cursor-pointer', borderClassName, colorClassName)}
         htmlFor='log-uploader'>
-        {content}
+        {children}
       </label>
 
       <input
