@@ -36,14 +36,16 @@ $MEDIA_QUERY_KEY_MAP: (
   "extra-small": "xs",
   "small": "s",
   "medium": "m",
-  "large": "l"
+  "large": "l",
+  "extra-large": "xl"
 );
 
 $BREAKPOINT_WIDTH_MAP: (
   "xs": 320px,
   "s": 480px,
   "m": 768px,
-  "l": 1024px
+  "l": 1024px,
+  "xl": 1440px
 );
 
 // -- Base Sizing per iteration

@@ -10,20 +10,30 @@ body {
 }
 
 #root {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  padding: $APP_MARGIN;
 }
 
 #app-main {
-  width: 100%;
-  min-height: 100vh;
-  max-width: 1280px;
   box-sizing: border-box;
+  max-width: 100vw;
+  min-height: 100vh;
+  // max-width: 1280px;
+
   padding-bottom: 100px;
-  
-  @media (max-width: 1280px) {
-    padding-left: $MENU_WIDTH + $APP_MARGIN;
+
+  display: flex;
+
+  &[appmode='splash'] {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &[appmode='ready'] {
+    flex-direction: row;
+    justify-content: center;
   }
 }

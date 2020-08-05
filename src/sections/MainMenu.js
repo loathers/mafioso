@@ -59,7 +59,7 @@ function MainMenu(props) {
     <div 
       componentname='main-menu'
       style={style} 
-      className={combineClassnames('position-fixed flex-col', className)}>
+      className={combineClassnames('flex-col', className)}>
 
       <LogoComponent 
         className='flex-none adjacent-mar-t-5'/>

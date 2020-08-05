@@ -14,12 +14,11 @@ import combineClassnames from 'utilities/combineClassnames';
 export default function NavigationMenu(props) {
   const {
     className,
-    style,
   } = props;
 
   return (
     <div 
-      style={style}
+      componentname='navigation-menu'
       className={combineClassnames('zindex-7 position-fixed flex-row aitems-center', className)}>
       
       <DarkButton

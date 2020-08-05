@@ -24,8 +24,9 @@ function App() {
 
   return (
     <div 
-      className='color-white fontfamily-primary fontsize-5 pad-7 flex-col aitems-center'
-      id='app-main'>
+      id='app-main'
+      appmode={appStore.isShowingFullUpload ? 'splash' : 'ready'}
+      className='color-white fontfamily-primary fontsize-5'>
 
       {/* loader */}
       { appStore.isLoading &&
@@ -37,12 +38,11 @@ function App() {
         className='flex-auto' />
 
       { logStore.hasParsedEntries &&
-        <NavigationMenu 
-          style={{bottom: 50}} />
+        <NavigationMenu />
       }
 
       { logStore.hasParsedEntries &&
-        <div className='width-full flex-col-center flex-auto'>
+        <div componentname='app-content' className='flex-col-center flex-auto'>
           { logStore.isAscensionLog &&
             <HeaderDisplay
               topContent={logStore.difficultyName}
@@ -68,7 +68,6 @@ function App() {
       }
 
       <Footer 
-        style={{bottom: 20}}
         className='position-fixed' />
     </div>
   );

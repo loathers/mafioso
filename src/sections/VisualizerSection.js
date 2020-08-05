@@ -19,7 +19,6 @@ function VisualizerSection(props) {
 
   return (
     <div 
-      style={{maxWidth: 1000}} 
       className={combineClassnames('width-full flex-col adjacent-mar-t-5', className)}> 
       { entriesList.map((entry, idx) => {
         const currentDay = entry.attributes.dayNum;
