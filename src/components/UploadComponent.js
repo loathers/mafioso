@@ -44,7 +44,7 @@ export default function UploadComponent(props) {
       onDragLeave={e => { ignoreEvent(e); setIsOver(false); }}
       componentname='upload-component'
       componentstate={disabled ? 'disabled' : 'enabled'}
-      // isDragOver={isOver}
+      isDragOver={isOver}
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
       <label 

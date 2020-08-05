@@ -37,13 +37,13 @@ export default function FiltersMenu(props) {
   }
 
   const onClickSelectAll = () => {
-    const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? true : item.checked}));
+    const newList = filterList.map((item) => ({...item, checked: (!item.isHidden && !item.isDisabled) ? true : item.checked}));
     updateList(newList);
     onChange(newList);
   }
 
   const onClickSelectNone = () => {
-    const newList = filterList.map((item) => ({...item, checked: !item.isHidden ? false : item.checked}));
+    const newList = filterList.map((item) => ({...item, checked: (!item.isHidden && !item.isDisabled) ? false : item.checked}));
     updateList(newList);
     onChange(newList);
   }
@@ -95,6 +95,7 @@ function FilterInput(props) {
   const {
     label,
     checked,
+    isDisabled,
     isHidden,
   } = optionData;
 
@@ -105,6 +106,7 @@ function FilterInput(props) {
       <label className='flex-row'>
         <input
           checked={checked}
+          disabled={isDisabled}
           onChange={onChange}
           className='adjacent-mar-l-2' 
           type={type} />

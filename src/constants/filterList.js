@@ -11,6 +11,7 @@ export const ENTRY_TYPE_FILTERS = [
     label: 'Uncategorized',
     categoryId: CATEGORY_ID.UNCATEGORIZED,
     isHidden: false,
+    isDisabled: true,
   },
   {
     label: 'Ascension Info',
