@@ -6,7 +6,7 @@
 [componentname='app-content'] {
   flex: auto;
   padding-left: $APP_MARGIN;
-  padding-right: $APP_MARGIN;
+  // padding-right: $APP_MARGIN;
   max-width: map.get($BREAKPOINT_WIDTH_MAP, 'l');
 }
 
@@ -24,10 +24,48 @@
   position: fixed;
 }
 
+[componentname='upload-component'] {
+  label {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  &[componentstate='disabled'] {
+    pointer-events: none;
+    color: map.get($COLOR_MAP, "grayer");
+    
+    label {
+      border-color: map.get($COLOR_MAP, "grayer");
+    }
+  }
+
+  &[componentstate='enabled'] {
+    color: map.get($COLOR_MAP, "white");
+
+    label {
+      border-color: map.get($COLOR_MAP, "gray");
+      cursor: pointer;
+    }
+
+    label:hover {
+      border-color: map.get($COLOR_MAP, "white");
+    }
+  }
+
+  &[isDragOver] {
+    label {
+      border-color: map.get($COLOR_MAP, "green");
+    }
+  }
+}
+
 [componentname='navigation-menu'] {
   bottom: $APP_MARGIN + 30;
 }
 
+[componentname='pagination-menu'] {
+  background: map.get($COLOR_MAP, "first");
+}
 [componentname='dark-button'] {
   background: map.get($COLOR_MAP, "first");
   color: map.get($COLOR_MAP, "white");
@@ -45,10 +83,6 @@
   &.active {
     background: map.get($COLOR_MAP, "lightblue");
   }
-}
-
-[componentname='pagination-menu'] {
-  background: map.get($COLOR_MAP, "first");
 }
 
 [componentname='block-inner-icon'] {

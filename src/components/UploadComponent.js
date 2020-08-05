@@ -36,19 +36,19 @@ export default function UploadComponent(props) {
 
   const [isOver, setIsOver] = React.useState(false);
 
-  const borderClassName = disabled ? 'bor-1-grayer' : (isOver ? 'bor-2-green' : 'bor-1-white');
-  const colorClassName = disabled ? 'color-grayer' : 'color-white';
-
   return (
     <form 
       onDrop={(evt) => { onUpload(evt); }}
       onDragOver={e => { ignoreEvent(e); }}
       onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
-      onDragLeave={e => { ignoreEvent(e); setIsOver(false); }} 
+      onDragLeave={e => { ignoreEvent(e); setIsOver(false); }}
+      componentname='upload-component'
+      componentstate={disabled ? 'disabled' : 'enabled'}
+      // isDragOver={isOver}
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
       <label 
-        className={combineClassnames('borradius-2 talign-center whitespace-pre-wrap pad-4 flex-auto cursor-pointer', borderClassName, colorClassName)}
+        className={combineClassnames('borradius-2 talign-center whitespace-pre-wrap pad-4 flex-auto')}
         htmlFor='log-uploader'>
         {children}
       </label>
