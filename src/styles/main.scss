@@ -10,10 +10,6 @@ body {
 }
 
 #root {
-  // width: 100%;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
   padding: $APP_MARGIN;
 }
 
@@ -21,8 +17,6 @@ body {
   box-sizing: border-box;
   max-width: 100vw;
   min-height: 100vh;
-  // max-width: 1280px;
-
   padding-bottom: 100px;
 
   display: flex;

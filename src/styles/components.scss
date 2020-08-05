@@ -29,26 +29,26 @@
 }
 
 [componentname='dark-button'] {
-  background: #1d1a21;
-  color: #f7f7f7;
+  background: map.get($COLOR_MAP, "first");
+  color: map.get($COLOR_MAP, "white");
 
   &:disabled:not(.active) {
-    color: #909090;
+    color: map.get($COLOR_MAP, "grayer");
   }
 
   &:hover:enabled:not(.active),
   &:focus:enabled:not(.active) {
-    background: #302a38;
+    background: map.get($COLOR_MAP, "first-lighter");
   }
 
   &:active:enabled,
   &.active {
-    background: #6088bd;
+    background: map.get($COLOR_MAP, "lightblue");
   }
 }
 
 [componentname='pagination-menu'] {
-  background: #1d1a21;
+  background: map.get($COLOR_MAP, "first");
 }
 
 [componentname='block-inner-icon'] {
