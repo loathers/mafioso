@@ -48,7 +48,7 @@ export default function UploadComponent(props) {
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
       <label 
-        className={combineClassnames('talign-center whitespace-pre-wrap pad-4 flex-auto cursor-pointer', borderClassName, colorClassName)}
+        className={combineClassnames('borradius-2 talign-center whitespace-pre-wrap pad-4 flex-auto cursor-pointer', borderClassName, colorClassName)}
         htmlFor='log-uploader'>
         {children}
       </label>

@@ -7,16 +7,22 @@
 
 body {
   background-color: map.get($COLOR_MAP, "third");
+  width: 100vw;
+  max-width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 #root {
   padding: $APP_MARGIN;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
 }
 
 #app-main {
+  min-height: 100%;
   box-sizing: border-box;
-  max-width: 100vw;
-  min-height: 100vh;
   padding-bottom: 100px;
 
   display: flex;

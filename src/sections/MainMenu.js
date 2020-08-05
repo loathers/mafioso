@@ -66,13 +66,13 @@ function MainMenu(props) {
 
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <UploadComponent
-          children={'Upload new logs'}
-          className='fontsize-5 width-full adjacent-mar-t-2' />
+          children={'Upload New'}
+          className='fontsize-5 width-full adjacent-mar-t-4' />
 
         <Button 
           onClick={() => logStore.downloadFullLog()}
           disabled={!logStore.isReady}
-          className='borradius-1 flex-col pad-3 adjacent-mar-t-2'>
+          className='borradius-1 flex-col pad-3 adjacent-mar-t-4'>
           <div className='fontsize-5 adjacent-mar-t-4'>Download Log</div>
 
           { (logStore.hasAscensionNum || logStore.hasCharacterName) &&
@@ -146,14 +146,14 @@ export function FullPageMenu(props) {
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col', className)}>
 
-      <div className='flex-row flex-none adjacent-mar-t-2'>
+      <div className='flex-row flex-none adjacent-mar-t-4'>
         <LogoComponent 
           className='flex-auto adjacent-mar-l-2'/>
       </div>
 
       <UploadComponent
         style={{height: '70vh', width: '100%'}}
-        className='height-full width-full flex-auto adjacent-mar-t-2' >
+        className='height-full width-full flex-auto adjacent-mar-t-4' >
         <div className='flex-col-center height-full'>
           <div style={{lineHeight: '30px'}} className='flex-col-center fontsize-8 flex-auto'>
             {'Buongiorno!\n\nClick here or drag and drop to upload your Kolmafia session logs.\nYou can upload multiple files and Mafioso here will try to find a full ascension to display for you.'}
