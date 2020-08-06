@@ -6,7 +6,6 @@ export function sortBySessionDate(files) {
   return Array.from(files).sort((fileA, fileB) => {
     const sessionDateA = getSessionDateFromFile(fileA);
     const sessionDateB = getSessionDateFromFile(fileB);
-    // console.log('.. sortBySessionDate', sessionDateA, sessionDateB)
     return sessionDateA < sessionDateB ? -1 : 1;
   });
 }
