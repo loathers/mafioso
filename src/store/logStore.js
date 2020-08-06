@@ -9,6 +9,7 @@ import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
 import REGEX from 'constants/REGEXES';
 
+import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import download from 'utilities/download';
 
@@ -220,11 +221,7 @@ class LogStore {
       this.srcFiles = files;
 
       // sort files by kolmafia's date
-      const sortedFiles = Array.from(files).sort((fileA, fileB) => {
-        const sessionDateA = Number(fileA.name.match(REGEX.KOLMAFIA.SESSION_DATE)[0]);
-        const sessionDateB = Number(fileB.name.match(REGEX.KOLMAFIA.SESSION_DATE)[0]);
-        return sessionDateA < sessionDateB ? -1 : 1;
-      });
+      const sortedFiles = fileParserUtils.sortBySessionDate(files);
 
       // get the text from all the files
       this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));

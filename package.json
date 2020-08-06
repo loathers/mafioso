@@ -8,6 +8,7 @@
   "scripts": {
     "sass.compile": "sass src/styles/main.scss src/styles/compiled/main.css",
     "sass.watch": "sass --watch src/styles/main.scss src/styles/compiled/main.css",
+    "test": "react-scripts test",
     "start": "react-scripts start"
   },
   "eslintConfig": {
@@ -26,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.2",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "react": "^16.13.1",
