@@ -10,6 +10,9 @@ import {
   CLEAN_RAW_DELAY,
 } from 'constants/DEFAULTS';
 import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
+import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
+
+import * as regexUtils from 'utilities/regexUtils';
 
 const logId = uuidv4();
 
@@ -162,4 +165,29 @@ export function findAllDates(rawText) {
 
       return dateArray;
     }, []);
+}
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function createPathLabel(rawText) {
+  const difficultyName = parseDifficultyName(rawText);
+  const pathName = parsePathName(rawText);
+  const difficultyAbbr = DIFFICULTY_MAP[difficultyName];
+  const pathAbbr = PATH_MAP[pathName];
+  return (`${difficultyAbbr}_${pathAbbr}`).toUpperCase();
+}
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function parseDifficultyName(rawText) {
+  return regexUtils.findMatcher(rawText, REGEX.ASCENSION.DIFFICULTY_NAME);
+}
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function parsePathName(rawText) {
+  return regexUtils.findMatcher(rawText, REGEX.ASCENSION.PATH_NAME);
 }

@@ -335,12 +335,12 @@ export const REGEX = {
     CONSUMPTION_TARGET: /(?<=^(eat|drink|chew)\s\d+\s).*/gi,
     CONSUMPTION_COST: /(?<=^you gain )\d+ (fullness|drunkenness|spleen)/gmi,
 
-    EAT_AMOUNT: /(?<=^eat\s)\d+(?=\s)/gi,
-    EAT_TARGET: /(?<=^eat\s\d+\s).*/gi,
-    DRINK_AMOUNT: /(?<=^drink\s)\d+(?=\s)/gi,
-    DRINK_TARGET: /(?<=^drink\s\d+\s).*/gi,
-    CHEW_AMOUNT: /(?<=^chew\s)\d+(?=\s)/gi,
-    CHEW_TARGET: /(?<=^chew\s\d+\s).*/gi,
+    EAT_AMOUNT: /(?<=^eat )\d+(?= )/gi,
+    EAT_TARGET: /(?<=^eat \d+ ).*/gi,
+    DRINK_AMOUNT: /(?<=^drink )\d+(?= )/gi,
+    DRINK_TARGET: /(?<=^drink \d+ ).*/gi,
+    CHEW_AMOUNT: /(?<=^chew )\d+(?= )/gi,
+    CHEW_TARGET: /(?<=^chew \d+ ).*/gi,
 
     EQUIP_PLAYER_TARGETS: /(?<=equip (?!familiar).* ).*/gi,
     UNEQUIP_PLAYER_TARGETS: /(?<=unequip (?!familiar).* ).*/gi,

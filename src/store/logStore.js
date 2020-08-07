@@ -3,7 +3,6 @@ import {observable} from 'mobx';
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
-import {createAbbreviation} from 'constants/ABBREVIATION_MAP';
 import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY} from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
@@ -133,7 +132,7 @@ class LogStore {
   }
   /** @type {String} */
   get pathLabel() {
-    return createAbbreviation(this.difficultyName, this.pathName);
+    return logParserUtils.createPathLabel(this.difficultyName, this.pathName);
   }
   /** @type {Boolean} */
   get hasAscensionNum() {

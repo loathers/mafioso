@@ -1,19 +1,11 @@
 /**
- * @returns {String}
- */
-export function createAbbreviation(difficultyName = '', pathName = '') {
-  const difficultyAbbr = DIFFICULTY_MAP[difficultyName.toLowerCase()];
-  const pathAbbr = PATH_MAP[pathName];
-  return (`${difficultyAbbr}_${pathAbbr}`).toUpperCase();
-}
-/**
  * @typedef {String} DifficultyName
  * @typedef {String} DifficultyAbbr
  */
 export const DIFFICULTY_MAP = {
-  hardcore: 'HC',
-  softcore: 'SC',
-  casual: 'CAS',
+  Hardcore: 'HC',
+  Normal: 'SC',
+  Casual: 'CAS',
 };
 /**
  * @typedef {String} PathName
@@ -53,6 +45,6 @@ export const PATH_MAP = {
   'Way of the Surprising Fist': 'FIST',
   'Bees Hate You': 'BEES',
   'Oxygenarian': 'OXY',
-  'Boozetafarian': 'BOOZE',
+  'Boozetafarian': 'BOOZY',
   'Teetotaler': 'TEET',
 };
