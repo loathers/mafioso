@@ -24,7 +24,7 @@ test('logParserUtils.parsePathName(): parses a couple different paths', () => {
   const LKSMockText = 'Ascension #111:\nNormal Low Key Summer Pastamancer\nWallaby';
   expect(logParserUtils.parsePathName(LKSMockText)).toBe('Low Key Summer');
 
-  const OXYMockText = 'Ascension #111:\nHardcore Oxygenarian Pastamancer\nWallaby';
+  const OXYMockText = 'Ascension #111:\nHardcore Oxygenarian Turtle Tamer\Mongoose';
   expect(logParserUtils.parsePathName(OXYMockText)).toBe('Oxygenarian');
 });
 
@@ -32,6 +32,6 @@ test('logParserUtils.createPathLabel(): creates the label as expected', () => {
   const LKSMockText = 'Ascension #111:\nNormal Low Key Summer Pastamancer\nWallaby';
   expect(logParserUtils.createPathLabel(LKSMockText)).toBe('SC_LKS');
 
-  const OXYMockText = 'Ascension #111:\nHardcore Oxygenarian Pastamancer\nWallaby';
+  const OXYMockText = 'Ascension #111:\nHardcore Oxygenarian Pastamancer\Mongoose';
   expect(logParserUtils.createPathLabel(OXYMockText)).toBe('HC_OXY');
 });

@@ -132,7 +132,7 @@ class LogStore {
   }
   /** @type {String} */
   get pathLabel() {
-    return logParserUtils.createPathLabel(this.difficultyName, this.pathName);
+    return logParserUtils.createPathLabel(this.rawText);
   }
   /** @type {Boolean} */
   get hasAscensionNum() {
