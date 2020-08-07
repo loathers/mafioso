@@ -393,7 +393,7 @@ export const REGEX = {
     KOL_DATE: /(?<=- )(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,    
     PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
-    PLAYER_SNAPSHOT_WITH_DATE_AS_CAPTURE_GROUP_WTF: /(?:(?:=-){22}=)(?:\r\n|\n)(?: *)player snapshot(?:\r\n|\n)(?:(?:=-){22}=).*?((?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*?(?=\r\n|\n)).*?(?:(?:=-){22}=)/gmis,
+    WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP: /(?:(?:=-){22}=)(?:\r\n|\n)(?: *)player snapshot(?:\r\n|\n)(?:(?:=-){22}=).*?((?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*?(?=\r\n|\n)).*?(name:.*?class:.*?(?=\r\n|\n)).*?(?:(?:=-){22}=)/gmis,
   },
   // -- misc
   PREREMOVE: {
