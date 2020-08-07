@@ -18,8 +18,8 @@ export const REGEX = {
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
-    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|softcore|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
-    DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|softcore|casual)/gmi,
+    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|normal|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
+    DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|normal|casual)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
     KING_FREED: /freeing king ralph.*?(?=(\s|))/i,
