@@ -245,6 +245,9 @@ class LogStore {
         console.warn('No Ascension specific log was found.');
       }
 
+      // clean up once more...
+      this.rawText = await logParserUtils.postParseCleanup(this.rawText);
+      
       // raw data gotten, now parse it to create individual entries
       this.parse();
       

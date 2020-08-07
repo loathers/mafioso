@@ -4,7 +4,7 @@ import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
 import {
-  PREREMOVE_REGEX_LIST, 
+  PREREMOVE_REGEX_LIST,
   PREGROUP_REGEX_LIST,
   FULL_PARSE_DELAY,
   CLEAN_RAW_DELAY,
@@ -60,14 +60,20 @@ export async function parseLogTxt(rawText) {
  * @returns {String | null} 
  */
 export function findAscensionLog(rawText) {
+  // because the snapshot date might be cut off from the rest of the ascension,
+  //  capture it here ahead of time to be certain that we have it
+  const snapshotText = regexUtils.findMatcher(rawText, REGEX.SNAPSHOT.PLAYER_SNAPSHOT);
+  const snapshotDate = snapshotText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
+  const formattedDate = snapshotDate ? `<mafioso date=${snapshotDate}/>\n\n` : '';
+
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (fromValhallaToFreeKing) {
-    return fromValhallaToFreeKing[0];
+    return formattedDate + fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
-    return fromValhallaToThwaitgold[0];
+    return formattedDate + fromValhallaToThwaitgold[0];
   }
 
   return null;
@@ -137,6 +143,22 @@ export async function cleanRawLog(rawText) {
   });
 
   return cleanedText;
+}
+/**
+ * remove some text from the log after the log has been parsed for data
+ * @param {String} rawText
+ * @return {String}
+ */
+export async function postParseCleanup(rawText) {
+  // replace text under "Beginning New Ascension"
+  const ascensionDetailGroup = regexUtils.findMatcher(rawText, REGEX.ASCENSION.ASCENSION_DETAIL_GROUP);
+  const ascensionDetailReplacement = ascensionDetailGroup ? `<mafioso>\n${ascensionDetailGroup}</mafioso>` : '';
+  rawText = rawText.replace(REGEX.SNAPSHOT.BEGIN_ASCENSION_SNAPSHOT, ascensionDetailReplacement);
+
+  // replace all the stuff under "Player Snapshot"
+  return rawText.replace(REGEX.SNAPSHOT.PLAYER_SNAPSHOT_WITH_DATE_AS_CAPTURE_GROUP_WTF, (match, p1) => {
+    return `<mafioso date="${p1}"/>\n\n`;
+  });
 }
 /**
  * update batch size based on number of characters in the log

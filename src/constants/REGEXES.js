@@ -17,6 +17,7 @@ export const REGEX = {
     ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for \d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
+    ASCENSION_DETAIL_GROUP: /^Ascension #\d+(.*(\r\n|\n)){3}/mi,
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
     PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|normal|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
     DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|normal|casual)/gmi,
@@ -388,9 +389,11 @@ export const REGEX = {
     CHOICE_PHP_LINE: /^choice\.php.*/gmi,
   },
   SNAPSHOT: {
+    SNAPSHOT_DATE: /(?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     KOL_DATE: /(?<=- )(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,    
-    PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,    
+    PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
+    PLAYER_SNAPSHOT_WITH_DATE_AS_CAPTURE_GROUP_WTF: /(?:(?:=-){22}=)(?:\r\n|\n)(?: *)player snapshot(?:\r\n|\n)(?:(?:=-){22}=).*?((?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*?(?=\r\n|\n)).*?(?:(?:=-){22}=)/gmis,
   },
   // -- misc
   PREREMOVE: {
