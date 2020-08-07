@@ -4,7 +4,8 @@
  */
 export const DIFFICULTY_MAP = {
   Hardcore: 'HC',
-  Normal: 'SC',
+  Softcore: 'SC',
+  Normal: 'SC', // ???
   Casual: 'CAS',
 };
 /**

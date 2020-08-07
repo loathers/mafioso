@@ -64,7 +64,7 @@ export function findAscensionLog(rawText) {
   //  capture it here ahead of time to be certain that we have it
   const snapshotText = regexUtils.findMatcher(rawText, REGEX.SNAPSHOT.PLAYER_SNAPSHOT);
   const snapshotDate = snapshotText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
-  const formattedDate = snapshotDate ? `<mafioso date="${snapshotDate}"/>\n\n` : '';
+  const formattedDate = snapshotDate ? `<mafioso>\nLog Start: ${snapshotDate}\n<mafioso/>\n\n` : '';
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (fromValhallaToFreeKing) {
@@ -150,6 +150,8 @@ export async function cleanRawLog(rawText) {
  * @return {String}
  */
 export async function postParseCleanup(rawText) {
+  rawText = rawText.replace(REGEX.ASCENSION.KARMA_TEXT, '<3');
+
   // replace text under "Beginning New Ascension"
   const ascensionDetailGroup = regexUtils.findMatcher(rawText, REGEX.ASCENSION.ASCENSION_DETAIL_GROUP);
   const ascensionDetailReplacement = ascensionDetailGroup ? `<mafioso>\n${ascensionDetailGroup}</mafioso>` : '';

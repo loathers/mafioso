@@ -15,12 +15,13 @@ export const REGEX = {
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for \d+)/gmi,
+    KARMA_TEXT: /(\d+(?= karma| banked karma)|(?<=balance = )\d+|(?<=balance is )\d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
     ASCENSION_DETAIL_GROUP: /^Ascension #\d+(.*(\r\n|\n)){3}/mi,
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
-    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|normal|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
-    DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|normal|casual)/gmi,
+    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|softcore|normal|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
+    DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|softcore|normal|casual)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
     KING_FREED: /freeing king ralph.*?(?=(\s|))/i,
