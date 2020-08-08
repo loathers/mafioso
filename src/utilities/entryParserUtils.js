@@ -1,5 +1,6 @@
 import ListItem from 'classes/ListItem';
 
+import {ATTRACTORS, ATTRACTORS_MAP} from 'constants/ATTRACTORS'
 import {COPIERS, COPIERS_MAP} from 'constants/COPIERS'
 import {BANISHERS, BANISHERS_MAP} from 'constants/BANISHERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
@@ -573,9 +574,9 @@ export function parseAttractors(entryString) {
     return null;
   }
 
-  return TRACKERS.ATTRACTORS.filter((entity) => {  
-    const match = regexUtils.getRegexMatch(entryString, entity.matcher, 'i');
-    return Boolean(match);
+  return ATTRACTORS.find((entityKey) => {
+    const entity = ATTRACTORS_MAP[entityKey];
+    return regexUtils.findMatcher(entryString, entity.matcher);
   });
 }
 /**

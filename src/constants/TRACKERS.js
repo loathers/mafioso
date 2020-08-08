@@ -10,15 +10,6 @@ export const DISINTIGRATERS = [
   ENTITIES.PILLKEEPER_DISINTIGRATE,
 ];
 /**
- * aka sniff
- * @typedef {Entity} Attractors
- */
-export const ATTRACTORS = [
-  ENTITIES.GALLAPAGOSIAN_MATING_CALL,
-  ENTITIES.LATTE_ATTRACT,
-  ENTITIES.TRANSCENDENT_OLFACTION,
-];
-/**
  * https://kol.coldfront.net/thekolwiki/index.php/Monster_Changing
  * @typedef {Entity} Replacers
  */

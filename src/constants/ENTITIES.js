@@ -14,19 +14,6 @@ export const PILLKEEPER_DISINTIGRATE = {
   entityType: ENTITY_TYPE.OTHER,
 }
 //
-export const GALLAPAGOSIAN_MATING_CALL = {
-  matcher: /casts.*GALLAPAGOSIAN MATING CALL/i,
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
-}
-export const LATTE_ATTRACT = {
-  matcher: /casts.*OFFER LATTE TO OPPONENT/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
-export const TRANSCENDENT_OLFACTION = {
-  matcher: /casts.*TRANSCENDENT OLFACTION/i,
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
-}
-//
 export const POWERFUL_GLOVE_REPLACE = {
   matcher: /casts.*CHEAT CODE: Replace Enemy/i,
   entityType: ENTITY_TYPE.EQUIPMENT,
