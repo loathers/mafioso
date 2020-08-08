@@ -116,6 +116,7 @@ function MainMenu(props) {
       {/* filter by attribute */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <SelectOptionsComponent 
+          label='Filter by Attributes'
           onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
           selected={selectedAttribute}
           list={ATTRIBUTE_FILTERS}
@@ -125,7 +126,7 @@ function MainMenu(props) {
         <Button
           onClick={() => onSelectAttributeFilter('none')}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
-          None
+          Clear
         </Button>
       </div>
     </div>
