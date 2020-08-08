@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import {observer} from 'mobx-react';
 
+import appStore from 'store/appStore';
+
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
 import HeaderDisplay from 'components/HeaderDisplay';
 
@@ -37,6 +39,7 @@ function VisualizerSection(props) {
             <EntryDisplayContainer 
               entry={entry}
               isUsingCompactMode={isUsingCompactMode}
+              isDevMode={appStore.isDevMode.get()}
               className='visualizer-cell adjacent-mar-t-1' />
           </Fragment>
         )

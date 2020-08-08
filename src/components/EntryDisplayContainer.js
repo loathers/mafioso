@@ -44,6 +44,12 @@ export default function EntryDisplayContainer(props) {
   
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
+      { entry.hasAnnotations &&
+        <div componentname='arrow-box-down' className='borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-none'>
+          {entry.attributes.annotations}
+        </div>
+      }
+
       <Button
         onClick={() => toggleSelected(!isSelected)}
         className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isDevMode ? 'borradius-r-2' : '')} >

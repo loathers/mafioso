@@ -30,6 +30,9 @@ export default class Entry {
 
     /** @type {Object} */
     this.attributes = {
+      /** @type {String} */
+      annotations: null,
+
       /** @type {Number} */
       dayNum: -1,
       /** @type {Number} */
@@ -152,6 +155,10 @@ export default class Entry {
       || this.hasMeatChanges
       || this.hasHealthChanges
       || this.hasManaChanges;
+  }
+  /** @type {Boolean} */
+  get hasAnnotations() {
+    return Boolean(this.attributes.annotations);
   }
   /** @type {ReactComponent} */
   get entryIcon() {

@@ -46,6 +46,7 @@ export function getEntryData(entryString) {
  */
 export function parseAttributes(entryString) {
   return {
+    annotations: parseMafiosoAnnotations(entryString),
     ...parseCommonAttributes(entryString),
     ...parseStatAttributes(entryString),
     ...parseCombatAttributes(entryString),
@@ -130,7 +131,6 @@ export function parseCombatAttributes(entryString) {
  */
 export function parseSpecialAttributes(entryString) {
   return {
-    annotations: parseMafiosoAnnotations(entryString),
     isEndedByUseTheForce: isUseTheForce(entryString),
     diabolicPizzaIngredients: parseMakeDiabolicPizza(entryString),
   }
