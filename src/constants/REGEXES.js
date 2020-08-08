@@ -190,6 +190,8 @@ export const REGEX = {
     USELESS_DESERT_PYRAMID: /(?<!.*(staff of ed|ancient amulet|eye of ed).*(\r\n|\n))(\r\n|\n).*desertbeach.*db_pyramid1.*/gmi,
     TOWER_BOOTH_TEXT: /^tower: contest booth.*/gmi,
     TOWER_CEREMONY_TEXT: /^tower: Closing Ceremony.*/gmi,
+    HEDGE_MAZE_TEXT: /.*The Hedge Maze*/gmi,
+    TOWER_DOOR_TEXT: /.*Tower Door:*/gmi,
 
     COMBINE_WAND_GROUP: /(^combine.*(metallic A|ruby W|lowercase n|heavy d|WA|ND).*(\r\n|\n).*(\r\n|\n){1,2}){2}/mi,
   },

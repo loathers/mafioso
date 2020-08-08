@@ -90,6 +90,7 @@ export const PREGROUP_REGEX_LIST = [
   REGEX.SONGBOOM_BOOMBOX.GROUPING,
   // REGEX.GOD_LOBSTER.GROUPING,
   // REGEX.VOTING_BOOTH.GROUPING,
+  REGEX.QUEST.TOWER_DOOR_TEXT,
 ];
 // -- individual entry level
 // text we will remove from the display text,

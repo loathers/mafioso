@@ -309,6 +309,17 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: REGEX.LINE.FIRST_LINE,
     content_alt: null,
   },
+  [ENTRY_TYPE.QUEST.HEDGE_MAZE]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.QUEST.HEDGE_MAZE_TEXT,
+    icon: NoncombatSVG,
+  },
+  [ENTRY_TYPE.QUEST.TOWER_DOOR]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.TOWER_DOOR_TEXT,
+    icon: PathSVG,
+    encounterName_alt: 'The Naughty Sorceress\' Tower Door',
+  },
   [ENTRY_TYPE.QUEST.NAUGHTY_SORCERESS]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
     matcher: REGEX.ASCENSION.NAUGHTY_SORCERESS,
