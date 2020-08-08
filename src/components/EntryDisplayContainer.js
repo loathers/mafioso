@@ -26,6 +26,7 @@ export default function EntryDisplayContainer(props) {
     className,
     entry,
     isUsingCompactMode = true,
+    isDevMode = false,
   } = props;
 
   const [isSelected, toggleSelected] = React.useState(false); // internal selection
@@ -42,10 +43,10 @@ export default function EntryDisplayContainer(props) {
   }, [isSelected]);
   
   return (
-    <div className={combineClassnames('flex-row position-relative', className)}>
+    <div className={combineClassnames('flex-col position-relative', className)}>
       <Button
         onClick={() => toggleSelected(!isSelected)}
-        className='borradius-l-2 pad-2 overflow-hidden flex-row flex-auto' >
+        className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isDevMode ? 'borradius-r-2' : '')} >
         {/* adventure num column */}
         <EntryAdventureColumn 
           entry={entry}
@@ -93,13 +94,15 @@ export default function EntryDisplayContainer(props) {
       </Button>
 
       {/* right column */}
-      <div className='flex-col flex-none'>
-        <Button 
-          onClick={() => toggleShowRaw(!isShowRaw)}
-          style={{width: 30}}
-          className='borradius-r-2 talign-right cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
-        </Button>
-      </div>
+      { isDevMode &&
+        <div className='borradius-r-2 bg-second flex-col flex-none'>
+          <Button 
+            onClick={() => toggleShowRaw(!isShowRaw)}
+            style={{width: 30}}
+            className='talign-right cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
+          </Button>
+        </div>
+      }
     </div>
   )
 }
