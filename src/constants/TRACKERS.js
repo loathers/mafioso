@@ -1,17 +1,6 @@
 import * as ENTITIES from 'constants/ENTITIES';
 
 /**
- * https://kol.coldfront.net/thekolwiki/index.php/Monster_Changing
- * @typedef {Entity} Replacers
- */
-export const REPLACERS = [
-  ENTITIES.POWERFUL_GLOVE_REPLACE,
-  ENTITIES.TANGLE_OF_RAT_TAILS,
-  ENTITIES.DAILYAFFIRMATION_ADAPT,
-  ENTITIES.MACROMETEORITE,
-  ENTITIES.CLEESH,
-];
-/**
  * https://kol.coldfront.net/thekolwiki/index.php/Run_Away
  * @typedef {Entity} Runaways
  */
