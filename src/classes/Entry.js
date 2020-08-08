@@ -2,7 +2,7 @@ import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import {INSTAKILLS, INSTAKILLS_MAP} from 'constants/INSTAKILLS'
-import * as TRACKERS from 'constants/TRACKERS';
+import {RUNAWAYS, RUNAWAYS_MAP} from 'constants/RUNAWAYS'
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
@@ -335,8 +335,9 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasRunaway() {
-    return TRACKERS.RUNAWAYS.some((entity) => {
-      return Boolean(this.findMatcher(entity.matcher));
+    return RUNAWAYS.some((entityKey) => {
+      const entity = RUNAWAYS_MAP[entityKey];
+      return this.hasText(entity.matcher);
     });
   }
   // -- attribute getters
