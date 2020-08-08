@@ -46,8 +46,14 @@ function MainMenu(props) {
     if (attributeName === 'none') {
       logStore.fetchEntries({filteredAttributes: []});
     } else {
-      const foundData = availableAttributesList.find((filterData) => filterData.attributeName === attributeName);
-      logStore.fetchEntries({filteredAttributes: [{attributeName, attributeValue: foundData.attributeValue}]});
+      // const foundData = availableAttributesList.find((filterData) => {
+      //   if (filterData.optionGroup) {
+      //     return filterData.optionGroup.find((innerData) => innerData.attributeName === attributeName);
+      //   }
+
+      //   return filterData.attributeName === attributeName;
+      // });
+      logStore.fetchEntries({filteredAttributes: [{attributeName, attributeValue: true}]});
     }
   }
 
@@ -121,15 +127,34 @@ function MainMenu(props) {
           size={10}
           className='color-white bg-second borradius-1 fontsize-3 width-full adjacent-mar-t-2'
           id='attribute-filter-selector'>
-          { availableAttributesList.map((filterData, idx) => (
-            <option 
-              className='fontsize-2 pad-v-1 pad-h-3 adjacent-mar-t-1'
-              key={`option-${idx}-key`}
-              value={filterData.attributeName}>
-              {filterData.label}
-            </option>
-          ))
-          }
+          { availableAttributesList.map((filterData, idx) => {
+            if (filterData.optionGroup) {
+              return (
+                <optgroup 
+                  className='pad-v-1 pad-h-3 adjacent-mar-t-1'
+                  key={`optiongroup-${idx}-key`}
+                  label={filterData.label}>
+                  { filterData.optionGroup.map((suboption, subidx) => (
+                    <option 
+                      className='fontsize-2 pad-v-1 adjacent-mar-t-1'
+                      key={`option-${idx}-${subidx}-key`}
+                      value={suboption.attributeName}>
+                      {suboption.label}
+                    </option>
+                  ))}
+                </optgroup>
+              )
+            }
+
+            return (
+              <option 
+                className='fontsize-2 pad-v-1 pad-h-3 adjacent-mar-t-1'
+                key={`option-${idx}-key`}
+                value={filterData.attributeName}>
+                {filterData.label}
+              </option>
+            )
+          })}
         </select>
       </label>
     </div>
