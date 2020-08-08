@@ -125,6 +125,9 @@ export const REGEX = {
     FILLED_MUG_INGREDIENTS: /(?<=filled your mug with ).*(?=.)/gi,
     DO_NOTHING_CHOICE: /^took choice.*1329.*don't get a fill-up/gmi,
   },
+  LIL_DOCTORS_BAG: {
+    USED_SKILL_LINE: /^cast (Otoscope|Reflex Hamme|Chest X-Ray).*/gi,
+  },
   MELODRAMEDARY: {
     SPIT_ON_SOMETHING_LINE: /(?<=^Round ).*spit on.*/gim,
     SPIT_ON_THEM_LINE: /(?<=^Round ).*spit on them.*/gim,

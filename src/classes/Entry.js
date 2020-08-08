@@ -391,12 +391,21 @@ export default class Entry {
     return this.hasText(REGEX.POCKET_PROFESSOR.LECTURE_USE_LINE);
   }
   /** @type {Boolean} */
+  get isDiabolicPizza() {
+    return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE
+      || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
+  }
+  /** @type {Boolean} */
   get hasDiabolicPizzaIngredients() {
     return this.attributes.diabolicPizzaIngredients.length > 0;
   }
   /** @type {Boolean} */
   get hasVampyricCloake() {
     return this.hasText(REGEX.VAMPYRIC_CLOAK.SKILL_RESULT);
+  }
+  /** @type {Boolean} */
+  get hasDoctorsBag() {
+    return this.hasText(REGEX.LIL_DOCTORS_BAG.USED_SKILL_LINE);
   }
   // -- utility
   /**
