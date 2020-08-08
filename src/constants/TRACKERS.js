@@ -19,14 +19,6 @@ export const ATTRACTORS = [
   ENTITIES.TRANSCENDENT_OLFACTION,
 ];
 /**
- * @typedef {Entity} Copiers
- */
-export const COPIERS = [
-  ENTITIES.COSPLAY_SABER_DUPLICATE,
-  ENTITIES.POCKET_PROFESSOR_DUPLICATE,
-  ENTITIES.SOURCE_DUPLICATE,
-];
-/**
  * https://kol.coldfront.net/thekolwiki/index.php/Monster_Changing
  * @typedef {Entity} Replacers
  */

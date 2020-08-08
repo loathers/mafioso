@@ -14,19 +14,6 @@ export const PILLKEEPER_DISINTIGRATE = {
   entityType: ENTITY_TYPE.OTHER,
 }
 //
-export const COSPLAY_SABER_DUPLICATE = {
-  matcher: /You will go find two friends and meet me here/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
-export const POCKET_PROFESSOR_DUPLICATE = {
-  matcher: /casts.*LECTURE ON RELATIVITY/i,
-  entityType: ENTITY_TYPE.FAMILIAR,
-}
-export const SOURCE_DUPLICATE = {
-  matcher: /casts.*Duplicate/i,
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
-}
-//
 export const GALLAPAGOSIAN_MATING_CALL = {
   matcher: /casts.*GALLAPAGOSIAN MATING CALL/i,
   entityType: ENTITY_TYPE.COMBAT_SKILL,

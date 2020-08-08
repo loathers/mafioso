@@ -1,5 +1,6 @@
 import ListItem from 'classes/ListItem';
 
+import {COPIERS, COPIERS_MAP} from 'constants/COPIERS'
 import {BANISHERS, BANISHERS_MAP} from 'constants/BANISHERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
@@ -600,7 +601,8 @@ export function parseCopiers(entryString) {
     return null;
   }
 
-  return TRACKERS.COPIERS.filter((entity) => {
+  return COPIERS.find((entityKey) => {
+    const entity = COPIERS_MAP[entityKey];
     return regexUtils.findMatcher(entryString, entity.matcher);
   });
 }
