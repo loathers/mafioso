@@ -14,7 +14,7 @@ export const REGEX = {
 
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,
-    ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for \d+)/gmi,
+    ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for)/gmi,
     KARMA_TEXT: /(\d+(?= karma| banked karma)|(?<=balance = )\d+|(?<=balance is )\d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
