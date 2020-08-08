@@ -8,8 +8,10 @@ export default function SelectOptionsComponent(props) {
     className,
     id,
     label,
+    selected,
     onChange,
     list,
+    size = 10,
   } = props;
 
   return (
@@ -19,7 +21,8 @@ export default function SelectOptionsComponent(props) {
       <div className='fontsize-3 adjacent-mar-t-2'>{label}</div>
       <select 
         onChange={onChange}
-        size={10}
+        size={size}
+        value={selected}
         className='color-white bg-second borradius-1 fontsize-3 width-full adjacent-mar-t-2'
         id={id}>
         { list.map((filterData, idx) => {

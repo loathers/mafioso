@@ -41,10 +41,14 @@ function MainMenu(props) {
   }
 
   // attribute filters
+  const [selectedAttribute, updateSelectedAttribute] = React.useState();
+
   const onSelectAttributeFilter = (attributeName) => {
     if (attributeName === 'none') {
+      updateSelectedAttribute('');
       logStore.fetchEntries({filteredAttributes: []});
     } else {
+      updateSelectedAttribute(attributeName);
       logStore.fetchEntries({filteredAttributes: [{attributeName, attributeValue: true}]});
     }
   }
@@ -110,11 +114,20 @@ function MainMenu(props) {
       </div>
 
       {/* filter by attribute */}
-      <SelectOptionsComponent 
-        onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
-        list={ATTRIBUTE_FILTERS}
-        id='attribute-filter-selector'
-        className='flex-none adjacent-mar-t-5' />
+      <div className='flex-col flex-none adjacent-mar-t-5'>
+        <SelectOptionsComponent 
+          onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
+          selected={selectedAttribute}
+          list={ATTRIBUTE_FILTERS}
+          id='attribute-filter-selector'
+          className='flex-none adjacent-mar-t-2' />
+
+        <Button
+          onClick={() => onSelectAttributeFilter('none')}
+          className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
+          None
+        </Button>
+      </div>
     </div>
   );
 });

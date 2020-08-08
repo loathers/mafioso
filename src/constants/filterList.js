@@ -91,7 +91,7 @@ export const ATTRIBUTE_FILTERS = [
   {
     label: 'None',
     attributeName: 'none',
-    isHidden: false,
+    isHidden: true,
     checked: false,
   },
   {
