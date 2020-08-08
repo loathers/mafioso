@@ -1,19 +1,5 @@
 import ENTITY_TYPE from 'constants/ENTITY_TYPE';
 
-//
-export const COSPLAY_SABER_DISINTIGRATE = {
-  matcher: /You will drop your things and walk away/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
-export const MICRONOVA = {
-  matcher: /uses.*micronova/i,
-  entityType: ENTITY_TYPE.COMBAT_ITEM,
-}
-export const PILLKEEPER_DISINTIGRATE = {
-  matcher: /Explodinall/i,
-  entityType: ENTITY_TYPE.OTHER,
-}
-//
 export const POWERFUL_GLOVE_REPLACE = {
   matcher: /casts.*CHEAT CODE: Replace Enemy/i,
   entityType: ENTITY_TYPE.EQUIPMENT,

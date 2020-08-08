@@ -1,15 +1,6 @@
 import * as ENTITIES from 'constants/ENTITIES';
 
 /**
- * aka yellow ray
- * @typedef {Entity} Disintigraters
- */
-export const DISINTIGRATERS = [
-  ENTITIES.COSPLAY_SABER_DISINTIGRATE,
-  ENTITIES.MICRONOVA,
-  ENTITIES.PILLKEEPER_DISINTIGRATE,
-];
-/**
  * https://kol.coldfront.net/thekolwiki/index.php/Monster_Changing
  * @typedef {Entity} Replacers
  */

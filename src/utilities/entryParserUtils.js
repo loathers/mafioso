@@ -1,8 +1,9 @@
 import ListItem from 'classes/ListItem';
 
 import {ATTRACTORS, ATTRACTORS_MAP} from 'constants/ATTRACTORS'
-import {COPIERS, COPIERS_MAP} from 'constants/COPIERS'
 import {BANISHERS, BANISHERS_MAP} from 'constants/BANISHERS'
+import {COPIERS, COPIERS_MAP} from 'constants/COPIERS'
+import {DISINTEGRATERS, DISINTEGRATERS_MAP} from 'constants/DISINTEGRATERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
 // import ENTRY_TYPE from 'constants/ENTRY_TYPE';
@@ -616,7 +617,8 @@ export function parseDisintigraters(entryString) {
     return null;
   }
 
-  return TRACKERS.DISINTIGRATERS.find((entity) => {
+  return DISINTEGRATERS.find((entityKey) => {
+    const entity = DISINTEGRATERS_MAP[entityKey];
     return regexUtils.findMatcher(entryString, entity.matcher);
   });
 }
