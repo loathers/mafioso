@@ -63,7 +63,7 @@ export function findAscensionLog(rawText) {
   // because the snapshot date might be cut off from the rest of the ascension,
   //  capture it here ahead of time to be certain that we have it
   const snapshotText = regexUtils.findMatcher(rawText, REGEX.SNAPSHOT.PLAYER_SNAPSHOT);
-  const snapshotDate = snapshotText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
+  const snapshotDate = snapshotText && snapshotText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
   const formattedDate = snapshotDate ? `<mafioso>\nLog Start: ${snapshotDate}\n<mafioso/>\n\n` : '';
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);

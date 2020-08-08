@@ -1,37 +1,5 @@
 import ENTITY_TYPE from 'constants/ENTITY_TYPE';
 
-export const LOUDER_THAN_BOMB = {
-  matcher: /uses.*Louder Than Bomb/i,
-  entityType: ENTITY_TYPE.COMBAT_ITEM,
-}
-export const HAROLDS_BELL = {
-  matcher: /uses.*Harold's bell/i,
-  entityType: ENTITY_TYPE.COMBAT_ITEM,
-}
-export const TRYPTOPHAN_DART = {
-  matcher: /uses.*tryptophan dart/i,
-  entityType: ENTITY_TYPE.COMBAT_ITEM,
-}
-export const HUMAN_MUSK = {
-  matcher: /uses.*human musk/i,
-  entityType: ENTITY_TYPE.COMBAT_ITEM,
-}
-export const REFLEX_HAMMER = {
-  matcher: /casts.*Reflex Hammer/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
-export const COSPLAY_SABER_BANISH = {
-  matcher: /I am not the adventurer you are looking for/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
-export const BATTER_UP = {
-  matcher: /casts.*Batter Up/i,
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
-}
-export const LATTE_BANISH = {
-  matcher: /casts.*THROW LATTE ON OPPONENT/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
 //
 export const COSPLAY_SABER_DISINTIGRATE = {
   matcher: /You will drop your things and walk away/i,

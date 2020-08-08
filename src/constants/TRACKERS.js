@@ -1,19 +1,6 @@
 import * as ENTITIES from 'constants/ENTITIES';
 
 /**
- * @typedef {Entity} Banisher
- */
-export const BANISHERS = [
-  ENTITIES.LOUDER_THAN_BOMB,
-  ENTITIES.HAROLDS_BELL,
-  ENTITIES.TRYPTOPHAN_DART,
-  ENTITIES.HUMAN_MUSK,
-  ENTITIES.REFLEX_HAMMER,
-  ENTITIES.COSPLAY_SABER_BANISH,
-  ENTITIES.BATTER_UP,
-  ENTITIES.LATTE_BANISH,
-];
-/**
  * aka yellow ray
  * @typedef {Entity} Disintigraters
  */

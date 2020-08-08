@@ -1,5 +1,6 @@
 import ListItem from 'classes/ListItem';
 
+import {BANISHERS, BANISHERS_MAP} from 'constants/BANISHERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
 // import ENTRY_TYPE from 'constants/ENTRY_TYPE';
@@ -585,7 +586,8 @@ export function parseBanishers(entryString) {
     return null;
   }
 
-  return TRACKERS.BANISHERS.find((entity) => {
+  return BANISHERS.find((entityKey) => {
+    const entity = BANISHERS_MAP[entityKey];
     return regexUtils.findMatcher(entryString, entity.matcher);
   });
 }
