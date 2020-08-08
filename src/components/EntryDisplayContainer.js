@@ -7,6 +7,7 @@ import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
+import { ReactComponent as TalkSVG } from 'images/talk.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 import Button from 'components/Button';
@@ -45,8 +46,9 @@ export default function EntryDisplayContainer(props) {
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
       { entry.hasAnnotations &&
-        <div componentname='arrow-box-down' className='borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-none'>
-          {entry.attributes.annotations}
+        <div componentname='arrow-box-down' className='borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row flex-none'>
+          <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+          <div className='adjacent-mar-l-3'>{entry.attributes.annotations}</div>
         </div>
       }
 
