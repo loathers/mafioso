@@ -21,19 +21,6 @@ export const CLEESH = {
   entityType: ENTITY_TYPE.COMBAT_SKILL,
 }
 //
-export const POWDERED_MADNESS = {
-  matcher: /uses.*powdered madness/i,
-  entityType: ENTITY_TYPE.COMBAT_ITEM,
-}
-export const DOCTORS_BAG_XRAY = {
-  matcher: /casts.*Chest X-Ray/i,
-  entityType: ENTITY_TYPE.EQUIPMENT,
-}
-export const IMPLODE_UNIVERSE = {
-  matcher: /casts.*Implode Universe/i,
-  entityType: ENTITY_TYPE.COMBAT_SKILL,
-}
-//
 export const RUNNING_AWAY = {
   matcher: /you.*run away.*like a little coward.*/i,
   entityType: ENTITY_TYPE.COMBAT_SKILL,

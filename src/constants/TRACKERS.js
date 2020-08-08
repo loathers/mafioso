@@ -20,12 +20,3 @@ export const RUNAWAYS = [
   ENTITIES.GREEN_SMOKE_BOMB,
   ENTITIES.TURDS_KEY,
 ];
-/**
- * https://kol.coldfront.net/thekolwiki/index.php/Insta-kill
- * @typedef {Entity} Instakills
- */
-export const INSTAKILLS = [
-  ENTITIES.POWDERED_MADNESS,
-  ENTITIES.DOCTORS_BAG_XRAY,
-  ENTITIES.IMPLODE_UNIVERSE,
-];
