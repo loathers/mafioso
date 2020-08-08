@@ -95,29 +95,15 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Path-specific',
-    attributeName: 'isPathSpecific',
-    attributeValue: true,
-    isHidden: false,
-    checked: false,
-  },
-  {
-    label: 'IOTM',
-    attributeName: 'isIOTM',
-    attributeValue: true,
-    isHidden: true,
-    checked: false,
-  },
-  {
-    label: 'Gained Adventure',
-    attributeName: 'hasAdventureGains',
-    attributeValue: true,
-    isHidden: true,
-    checked: false,
-  },
-  {
-    label: 'Evergreen Encounters',
+    label: 'Evergreen Info',
     optionGroup: [
+      {
+        label: 'Path-specific',
+        attributeName: 'isPathSpecific',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
       {
         label: 'Semirares',
         attributeName: 'isSemirare',
@@ -146,24 +132,10 @@ export const ATTRIBUTE_FILTERS = [
         isHidden: false,
         checked: false,
       },
-      {
-        label: 'Victories',
-        attributeName: 'isVictory',
-        attributeValue: true,
-        isHidden: true,
-        checked: false,
-      },
-      {
-        label: 'Beaten Up',
-        attributeName: 'isDeath',
-        attributeValue: true,
-        isHidden: true,
-        checked: false,
-      },
     ]
   },
   {
-    label: 'Good Stuff',
+    label: 'Resource Usage',
     optionGroup: [
       {
         label: 'Banished',
@@ -289,7 +261,7 @@ export const ATTRIBUTE_FILTERS = [
         label: 'Latte Lovin\' Uses',
         attributeName: 'hasLatteLoversMug',
         attributeValue: true,
-        isHidden: true,
+        isHidden: false,
         checked: false,
       },
       {
@@ -308,11 +280,37 @@ export const ATTRIBUTE_FILTERS = [
       },
     ]
   },
+  {
+    label: 'Fun Filters',
+    optionGroup: [
+      {
+        label: 'IOTM',
+        attributeName: 'isIOTM',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Gained Adventure',
+        attributeName: 'hasAdventureGains',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Victories',
+        attributeName: 'isVictory',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Beaten Up',
+        attributeName: 'isDeath',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+    ]
+  },
 ];
-/**
- * attributes that are filtered by default
- * @type {Array}
- */
-export const DEFAULT_ATTRIBUTE_FILTERS = ATTRIBUTE_FILTERS
-  .filter((filterData) => filterData.checked)
-  .map(({attributeName, attributeValue}) => ({attributeName, attributeValue}));

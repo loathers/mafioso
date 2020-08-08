@@ -5,7 +5,6 @@ import Entry from 'classes/Entry';
 
 import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY} from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import {DEFAULT_ATTRIBUTE_FILTERS} from 'constants/filterList';
 import REGEX from 'constants/REGEXES';
 
 import * as fileParserUtils from 'utilities/fileParserUtils';
@@ -65,7 +64,7 @@ class LogStore {
       /** @type {Array<CategoryId>} */
       categoriesVisible: DEFAULT_CATEGORIES_VISIBLE.slice(),
       /** @type {Array<EntryAttribute>} */
-      filteredAttributes: DEFAULT_ATTRIBUTE_FILTERS.slice(),
+      filteredAttributes: [],
     });
 
     /** @type {Batcher} */

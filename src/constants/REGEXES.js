@@ -126,7 +126,7 @@ export const REGEX = {
     DO_NOTHING_CHOICE: /^took choice.*1329.*don't get a fill-up/gmi,
   },
   LIL_DOCTORS_BAG: {
-    USED_SKILL_LINE: /^cast (Otoscope|Reflex Hamme|Chest X-Ray).*/gi,
+    USED_SKILL_LINE: /casts.*(Otoscope|Reflex Hammer|Chest X-Ray).*/gi,
   },
   MELODRAMEDARY: {
     SPIT_ON_SOMETHING_LINE: /(?<=^Round ).*spit on.*/gim,
