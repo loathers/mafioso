@@ -36,7 +36,6 @@ export const DEFAULT_CATEGORIES_VISIBLE = [
 // strings we are going to remove from the ahead of time
 export const PREREMOVE_REGEX_LIST = [
   // -- always first
-  REGEX.MAFIOSO.LOG_COMMENTS,
   REGEX.KOLMAFIA.STACK_TRACE,
   REGEX.KOLMAFIA.CLI_PRINT,
   REGEX.KOLMAFIA.SEND_A_KMAIL,
@@ -96,6 +95,7 @@ export const PREGROUP_REGEX_LIST = [
 // text we will remove from the display text,
 //  most likely because we already parsed the data
 export const DISPLAY_SCRUB_LIST = [
+  REGEX.MAFIOSO.LOG_COMMENTS,
   REGEX.LINE.LOCATION,
   REGEX.LINE.ENCOUNTER,
   REGEX.LINE.DIET_GAIN_LINE,

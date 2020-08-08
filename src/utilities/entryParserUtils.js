@@ -130,6 +130,7 @@ export function parseCombatAttributes(entryString) {
  */
 export function parseSpecialAttributes(entryString) {
   return {
+    annotations: parseMafiosoAnnotations(entryString),
     isEndedByUseTheForce: isUseTheForce(entryString),
     diabolicPizzaIngredients: parseMakeDiabolicPizza(entryString),
   }
@@ -162,6 +163,19 @@ export function parseAscensionDifficulty(ascensionString) {
 export function parseAscensionPath(ascensionString) {
   const pathMatch = regexUtils.getRegexMatch(ascensionString, REGEX.ASCENSION.PATH_NAME) || [];
   return pathMatch[0];
+}
+/**
+ * @param {String} entryString
+ * @return {String}
+ */
+export function parseMafiosoAnnotations(entryString) {
+  const annotationMatches = entryString.match(REGEX.MAFIOSO.LOG_COMMENTS);
+  if (annotationMatches === null) {
+    return null;
+  }
+  const annotations = annotationMatches.join('\n');
+  console.log('parseMafiosoAnnotations', annotations.replace(/\/\//g, ''));
+  return annotations.replace(/\/\//g, '');
 }
 // -- common parsers
 /**
