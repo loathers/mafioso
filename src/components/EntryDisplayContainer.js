@@ -42,7 +42,7 @@ export default function EntryDisplayContainer(props) {
   React.useEffect(() => {
     toggleCompact(isSelected);
   }, [isSelected]);
-  
+
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
       { entry.hasAnnotations &&
@@ -52,65 +52,67 @@ export default function EntryDisplayContainer(props) {
         </div>
       }
 
-      <Button
-        onClick={() => toggleSelected(!isSelected)}
-        className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isDevMode ? 'borradius-r-2' : '')} >
-        {/* adventure num column */}
-        <EntryAdventureColumn 
-          entry={entry}
-          className='adjacent-mar-l-4 flex-none'
-          style={{width: 35}} />
-
-        {/* icon column */}
-        <EntryIconColumn
-          entry={entry}
-          className='adjacent-mar-l-4 flex-none' />
-
-        { !isShowRaw && 
-          <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
-            <EntryHeaderContainer 
-              entry={entry}
-              className='flex-none adjacent-mar-t-2' />
-
-            { !isShowCompact && entry.hasEntryBodyData &&
-              <EntryBodyContainer 
-                entry={entry}
-                className='flex-auto adjacent-mar-t-2' />
-            }
-          </div>
-        }
-
-        {/* combat */}
-        { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
-          <CombatSequenceDisplay 
+      <div className='flex-row'>
+        <Button
+          onClick={() => toggleSelected(!isSelected)}
+          className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isDevMode ? 'borradius-r-2' : '')} >
+          {/* adventure num column */}
+          <EntryAdventureColumn
             entry={entry}
-            className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
-        }
+            className='adjacent-mar-l-4 flex-none'
+            style={{width: 35}} />
 
-        {/* debug stuff */}
-        { isShowRaw &&
-          <div className='borradius-1 pad-3 pad-r-8 flex-row flex-auto bg-fourth adjacent-mar-l-4'>
-            <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
-              {entry.rawText}
-            </div>
+          {/* icon column */}
+          <EntryIconColumn
+            entry={entry}
+            className='adjacent-mar-l-4 flex-none' />
 
-            <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
-              {JSON.stringify(entry.export(), null, 4)}
+          { !isShowRaw &&
+            <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
+              <EntryHeaderContainer
+                entry={entry}
+                className='flex-none adjacent-mar-t-2' />
+
+              { !isShowCompact && entry.hasEntryBodyData &&
+                <EntryBodyContainer
+                  entry={entry}
+                  className='flex-auto adjacent-mar-t-2' />
+              }
             </div>
+          }
+
+          {/* combat */}
+          { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
+            <CombatSequenceDisplay
+              entry={entry}
+              className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+          }
+
+          {/* debug stuff */}
+          { isShowRaw &&
+            <div className='borradius-1 pad-3 pad-r-8 flex-row flex-auto bg-fourth adjacent-mar-l-4'>
+              <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
+                {entry.rawText}
+              </div>
+
+              <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
+                {JSON.stringify(entry.export(), null, 4)}
+              </div>
+            </div>
+          }
+        </Button>
+
+        {/* right column */}
+        { isDevMode &&
+          <div className='borradius-r-2 bg-second flex-col flex-none'>
+            <Button
+              onClick={() => toggleShowRaw(!isShowRaw)}
+              style={{width: 30}}
+              className='talign-right cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
+            </Button>
           </div>
         }
-      </Button>
-
-      {/* right column */}
-      { isDevMode &&
-        <div className='borradius-r-2 bg-second flex-col flex-none'>
-          <Button 
-            onClick={() => toggleShowRaw(!isShowRaw)}
-            style={{width: 30}}
-            className='talign-right cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
-          </Button>
-        </div>
-      }
+      </div>
     </div>
   )
 }
@@ -133,7 +135,7 @@ function EntryAdventureColumn(props) {
 
   return (
     <div
-      onClick={props.onClick} 
+      onClick={props.onClick}
       className={combineClassnames('flex-col', className)}
       style={style}>
       <div className={combineClassnames('talign-right width-full aself-start adjacent-mar-t-2', fontClassName)}>
@@ -164,7 +166,7 @@ function EntryIconColumn(props) {
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>
-      <EntryIconComponent 
+      <EntryIconComponent
         entry={entry}
         className='flex-none adjacent-mar-t-2'
         style={{width: 25, height: 25,
@@ -172,7 +174,7 @@ function EntryIconColumn(props) {
         }} />
 
       { isLevelUp &&
-        <StarFormationSVG 
+        <StarFormationSVG
           className='flex-none adjacent-mar-t-2'
           style={{width: 25, height: 25,
             opacity: 0.8,
@@ -208,7 +210,7 @@ function EntryHeaderContainer(props) {
 
           { entry.hasReplacedEnemies &&
             <div
-              style={{textDecoration: 'line-through'}} 
+              style={{textDecoration: 'line-through'}}
               className='flex-none adjacent-mar-l-5'>
               {entry.replacedEnemiesDisplay}
             </div>
@@ -240,18 +242,18 @@ function EntryBodyContainer(props) {
       {/* diabolic pizza */}
       { entry.hasDiabolicPizzaIngredients &&
         <MakeDiabolicPizzaDisplay className='adjacent-mar-t-2' entry={entry} />
-      }     
+      }
 
       {/* stat changes */}
       { entry.hasStatChanges &&
-        <StatChangesDisplay 
+        <StatChangesDisplay
           entry={entry}
           className='' />
       }
 
       {/* gained effects */}
       { entry.hasAcquiredEffects &&
-        <ListDisplay 
+        <ListDisplay
           IconComponent={SpellbookSVG}
           list={entry.attributes.acquiredEffects}
           className='flex-none' />
@@ -259,7 +261,7 @@ function EntryBodyContainer(props) {
 
       {/* items */}
       { entry.hasAcquiredItems &&
-        <ListDisplay 
+        <ListDisplay
           IconComponent={SwapBagSVG}
           list={entry.attributes.acquiredItems}
           className='flex-none' />
@@ -268,7 +270,7 @@ function EntryBodyContainer(props) {
       <div className='flex-row'>
         {/* adventures */}
         { entry.hasAdventureChanges &&
-          <SingleDisplay 
+          <SingleDisplay
             IconComponent={AdventureSVG}
             className='mar-1'
             content={`${entry.adventureDisplay} adventures`} />
@@ -276,7 +278,7 @@ function EntryBodyContainer(props) {
 
         {/* meat */}
         { entry.hasMeatChanges &&
-          <SingleDisplay 
+          <SingleDisplay
             IconComponent={SteakSVG}
             className='mar-1'
             content={`${entry.createMeatDisplay()} meat`} />
@@ -284,7 +286,7 @@ function EntryBodyContainer(props) {
 
         {/* hp */}
         { entry.hasHealthChanges &&
-          <SingleDisplay 
+          <SingleDisplay
             IconComponent={HealthSVG}
             className='mar-1'
             content={`${entry.healthDisplay} hp`} />
@@ -292,7 +294,7 @@ function EntryBodyContainer(props) {
 
         {/* mp */}
         { entry.hasManaChanges &&
-          <SingleDisplay 
+          <SingleDisplay
             IconComponent={ManaSVG}
             className='mar-1'
             content={`${entry.manaDisplay} mp`} />
