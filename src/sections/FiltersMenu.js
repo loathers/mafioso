@@ -1,6 +1,7 @@
 import React from 'react';
+import {observer} from 'mobx-react';
 
-// import Button from 'components/Button';
+import appStore from 'store/appStore';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -8,7 +9,8 @@ import combineClassnames from 'utilities/combineClassnames';
  * @param {Object} props
  * @returns {React.Component}
  */
-export default function FiltersMenu(props) {
+export default observer(
+function FiltersMenu(props) {
   const {
     label,
     inputType = 'checkbox',
@@ -36,6 +38,8 @@ export default function FiltersMenu(props) {
     onChange(newList);
   }
 
+  const forceEnabled = appStore.isDevMode.get();
+
   const onClickSelectAll = () => {
     const newList = filterList.map((item) => ({...item, checked: (!item.isHidden && !item.isDisabled) ? true : item.checked}));
     updateList(newList);
@@ -55,6 +59,7 @@ export default function FiltersMenu(props) {
       <div className='flex-col adjacent-mar-t-3'>
         { filterList.map((filterOption, idx) => (
           <FilterInput 
+            forceEnabled={forceEnabled}
             onChange={() => toggledChecked(idx)}
             optionData={filterOption}
             type={inputType}
@@ -83,13 +88,15 @@ export default function FiltersMenu(props) {
       </div>
     </div>
   )
-}
+})
+
 function FilterInput(props) {
   const {
     className,
     optionData,
     onChange,
     type,
+    forceEnabled,
   } = props;
 
   const {
@@ -99,14 +106,14 @@ function FilterInput(props) {
     isHidden,
   } = optionData;
 
-  const hiddenClassName = isHidden ? 'display-none' : '';
+  const hiddenClassName = (!forceEnabled && isHidden)  ? 'display-none' : '';
 
   return (
     <div className={combineClassnames('fontsize-4 flex-none', hiddenClassName, className)}>
       <label className='flex-row'>
         <input
           checked={checked}
-          disabled={isDisabled}
+          disabled={!forceEnabled && isDisabled}
           onChange={onChange}
           className='adjacent-mar-l-2' 
           type={type} />
