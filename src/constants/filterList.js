@@ -98,6 +98,13 @@ export const ATTRIBUTE_FILTERS = [
     label: 'Evergreen Info',
     optionGroup: [
       {
+        label: 'Annotated',
+        attributeName: 'hasAnnotations',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Path-specific',
         attributeName: 'isPathSpecific',
         attributeValue: true,
