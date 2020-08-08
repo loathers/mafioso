@@ -314,7 +314,7 @@ export default class Entry {
     return Boolean(this.attributes.copiers) && this.attributes.copiers.length > 0;
   }
   /** @type {Boolean} */
-  get isDisintigrated() {
+  get isDisintegrated() {
     return Boolean(this.attributes.disintigrater);
   }
   /** @type {Boolean} */

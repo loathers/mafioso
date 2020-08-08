@@ -116,8 +116,8 @@ export default function CombatSequenceDisplay(props) {
         <div className='fontsize-3 mar-1'>Copied</div>
       }
 
-      { entry.isDisintigrated &&
-        <div className='fontsize-3 mar-1'>Disintigrated</div>
+      { entry.isDisintegrated &&
+        <div className='fontsize-3 mar-1'>Disintegrated</div>
       }
     </div>
   )

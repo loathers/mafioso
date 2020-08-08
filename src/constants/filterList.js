@@ -151,8 +151,8 @@ export const ATTRIBUTE_FILTERS = [
     checked: false,
   },
   {
-    label: 'Disintigrated',
-    attributeName: 'isDisintigrated',
+    label: 'Disintegrated',
+    attributeName: 'isDisintegrated',
     attributeValue: true,
     isHidden: false,
     checked: false,
