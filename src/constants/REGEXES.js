@@ -403,7 +403,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(awesomemenu|backoffice|diary|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 

@@ -75,8 +75,8 @@ function calculateAvailablePages({curr, last}) {
 
   let unallocatedAmt = MAX_PAGINATION_SIZE;
   const HALF_SIZE = Math.round(MAX_PAGINATION_SIZE / 2);
-  const willNeedStartEllipses = curr > HALF_SIZE + 1;
-  const willNeedEndEllipses = curr < (last - HALF_SIZE - 1);
+  const willNeedStartEllipses = (last - 2 > MAX_PAGINATION_SIZE) && curr > HALF_SIZE + 1;
+  const willNeedEndEllipses = (last - 2 > MAX_PAGINATION_SIZE) && curr < (last - HALF_SIZE - 1);
 
   // need start ellipses
   if (willNeedStartEllipses) {
