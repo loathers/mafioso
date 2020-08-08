@@ -75,7 +75,7 @@ Encounter: Low-Key Summer
 Took choice 1413/1: Yeah, it is!  Fastest ascension ever!
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Beginning New Ascension	     
+Beginning New Ascension
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 Ascension #174:
@@ -585,6 +585,7 @@ You acquire an item: stuffed treasure chest
 Visiting Deluxe Mr. Klaw "Skill" Crane Game in clan VIP lounge
 You acquire an item: bejeweled cufflinks
 
+// whoops, this should still be a [0] adv
 [1] Boxing Daycare
 Encounter: Have a Boxing Daydream
 You acquire an item: punch-drunk punch
@@ -1215,6 +1216,7 @@ You acquire an item: tinsel tights
 
 equip pants tinsel tights
 
+//looking for the +adv latte unlock
 [8] The Dire Warren
 Encounter: fluffy bunny
 Round 0: dextrial loses initiative!
@@ -1265,6 +1267,7 @@ Round 1: dextrial casts WEAPON OF THE PASTALORD!
 Round 2: dextrial wins the fight!
 This combat did not cost a turn
 
+//should have gotten the blessing before fighting those bunnies...
 [11] God Lobster
 Encounter: Granted a Boon
 Took choice 1310/2: &quot;I'd like a blessing.&quot;
@@ -1671,6 +1674,7 @@ You acquire an item: Middle of the Road&trade; brand whiskey
 You acquire an item: pentagram bandana
 This combat did not cost a turn
 
+//should I have gotten ML?
 [19] The Neverending Party
 Encounter: It Hasn't Ended, It's Just Paused
 Took choice 1324/1: to bedroom
@@ -1991,6 +1995,9 @@ You acquire an item: tinsel tights
 
 equip pants tinsel tights
 
+//just using the saber as a yellow ray feels lazy
+//
+//and I love it
 [42] Hippy Camp
 Encounter: crusty hippy
 Round 0: dextrial loses initiative!
@@ -3223,7 +3230,7 @@ Round 3: dextrial wins the fight!
 You acquire an item: pink slime
 
 [147] The Dark Heart of the Woods
-Encounter: 
+Encounter:
 
 drink 1 astral pilsner
 You acquire an item: magical sausage
@@ -3357,6 +3364,7 @@ equip acc3 Powerful Glove
 
 Took choice 1395/3: Wednesday - Sneakisol
 
+// first time using sneakisol for the friars quest and it was like opening my third eye
 [157] The Dark Elbow of the Woods
 Encounter: Deep Imp Act
 You acquire Imp Ale (3)
@@ -3391,6 +3399,7 @@ Took choice 1395/3: Wednesday - Sneakisol
 Encounter: Strike One!
 You acquire an item: imp unity ring
 
+//prob not worth a saber use here
 [163] The Penultimate Fantasy Airship
 Encounter: Quiet Healer
 Round 0: dextrial wins initiative!
@@ -3625,6 +3634,7 @@ You acquire an item: cocoa eggshell fragment
 
 equip acc3 "I Voted!" sticker
 
+//I never had enough vodkas, how does everyone plan to make so many twice-haunted screwdrivers?!?
 [178] South of the Border
 Encounter: angry ghost
 Round 0: dextrial wins initiative!
@@ -4170,6 +4180,8 @@ Took choice 1386/4: Empathy Chip
 use 1 Bird-a-Day calendar
 You learned a new skill: Seek out a Bird
 
+//for some reason I just thought using muscle for exp on day1 was a good idea even though I was a myst class
+//to be honest I can't tell the difference so I'll just keep doing it
 use 1 Bastille Battalion control rig
 Encounter: Bastille Battalion
 Took choice 1313/2: (secret choice)
@@ -5263,6 +5275,9 @@ Round 1: dextrial casts CHEAT CODE: REPLACE ENEMY!
 Round 1: dextrial casts REFLEX HAMMER!
 This combat did not cost a turn
 
+//everyone was talking about how TURDS key was sweet
+//and I looked at the wiki description and saw it was
+//a free runaway. Did not feel like it was worth all the resources though...
 [251] A-Boo Peak
 Encounter: Dusken Raider Ghost
 Round 0: dextrial wins initiative!
@@ -5562,7 +5577,7 @@ Encounter: Louvre It or Leave It
 Took choice 914/1: Enter the Drawing
 choice.php?pwd&whichchoice=914&option=1
 Encounter: Louvre It or Leave It (Relativity)
-Took choice 904/1: 
+Took choice 904/1:
 choice.php?whichchoice=904&option=1&pwd
 Encounter: Louvre It or Leave It (The Scream)
 Took choice 907/2: The Birth of Venus: Swordholder (buff), Nighthawks, Adam
@@ -5738,7 +5753,7 @@ You acquire an item: disassembled clover
 You ate Special Seasoning with your food
 
 [284] The Hidden Temple
-Encounter: 
+Encounter:
 
 [284] A Mob of Zeppelin Protesters
 Encounter: Too Much Humanity
@@ -6179,6 +6194,7 @@ You acquire an item: stone wool
 
 familiar Cat Burglar (53 lbs)
 
+// normally I don't take this, I think this was a fat finger
 [325] The Hidden Temple
 Encounter: Fitting In
 Took choice 582/1: mysticality substats, gain the Nostril of the Serpent or gain 3 adventures
@@ -10657,6 +10673,10 @@ familiar Melodramedary (55 lbs)
 equip off-hand latte lovers member's mug
 Took choice 1395/1: Monday - Explodinall
 
+//I think I just heard about everyone on Discord talking about
+//how you could use Saber to get three friends them come back with
+//melodramedary and explodinall - this was wild to see for the first time!
+//I wasn't very experienced with using green smoke bombs though lol
 [525] The Battlefield (Frat Uniform)
 Encounter: Green Ops Soldier
 Round 0: dextrial wins initiative!
@@ -11630,7 +11650,7 @@ Encounter: Using the Force
 Took choice 1387/2: &quot;You will go find two friends and meet me here.&quot;
 
 [590] The Battlefield (Frat Uniform)
-Encounter: 
+Encounter:
 
 [590] The Arid, Extra-Dry Desert
 Encounter: cactuary
@@ -12000,7 +12020,8 @@ You acquire an item: headpiece of the Staff of Ed
 
 Combine 1 headpiece of the Staff of Ed + 1 Staff of Fats
 You acquire an item: Staff of Ed
-
+
+
 
 equip acc1 Lil' Doctor™ bag
 

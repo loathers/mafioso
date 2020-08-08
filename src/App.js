@@ -23,7 +23,7 @@ function App() {
   });
 
   return (
-    <div 
+    <div
       id='app-main'
       appmode={appStore.isShowingFullUpload ? 'splash' : 'ready'}
       className='color-white fontfamily-primary fontsize-5'>
@@ -52,7 +52,7 @@ function App() {
           }
 
           { logStore.hasCurrentEntries &&
-            <VisualizerSection 
+            <VisualizerSection
               entriesList={logStore.currentEntries}
               isUsingCompactMode={appStore.isUsingCompactMode.get()}
               className='flex-auto adjacent-mar-t-5'
@@ -67,7 +67,7 @@ function App() {
         </div>
       }
 
-      <Footer 
+      <Footer
         className='position-fixed' />
     </div>
   );

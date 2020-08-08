@@ -174,7 +174,6 @@ export function parseMafiosoAnnotations(entryString) {
     return null;
   }
   const annotations = annotationMatches.join('\n');
-  console.log('parseMafiosoAnnotations', annotations.replace(/\/\//g, ''));
   return annotations.replace(/\/\//g, '');
 }
 // -- common parsers
