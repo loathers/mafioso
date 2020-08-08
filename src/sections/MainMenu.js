@@ -7,6 +7,7 @@ import logStore from 'store/logStore';
 
 import Button from 'components/Button';
 import LogoComponent from 'components/LogoComponent';
+import SelectOptionsComponent from 'components/SelectOptionsComponent';
 import UploadComponent from 'components/UploadComponent';
 
 import FiltersMenu from 'sections/FiltersMenu';
@@ -109,47 +110,11 @@ function MainMenu(props) {
       </div>
 
       {/* filter by attribute */}
-      <label 
-        htmlFor='attribute-filter-selector'
-        className='flex-none adjacent-mar-t-5'>
-        <div className='fontsize-3 adjacent-mar-t-2'>Filter Attributes</div>
-        <select 
-          onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
-          size={10}
-          className='color-white bg-second borradius-1 fontsize-3 width-full adjacent-mar-t-2'
-          id='attribute-filter-selector'>
-          { ATTRIBUTE_FILTERS.map((filterData, idx) => {
-            if (filterData.optionGroup) {
-              return (
-                <optgroup 
-                  className='pad-v-1 pad-h-3 mar-v-1'
-                  key={`optiongroup-${idx}-key`}
-                  label={filterData.label}>
-                  { filterData.optionGroup.map((suboption, subidx) => (
-                    <option 
-                      className='fontsize-2 pad-v-1 adjacent-mar-t-1'
-                      key={`option-${idx}-${subidx}-key`}
-                      hidden={suboption.isHidden}
-                      value={suboption.attributeName}>
-                      {suboption.label}
-                    </option>
-                  ))}
-                </optgroup>
-              )
-            }
-
-            return (
-              <option 
-                className='fontsize-2 pad-v-1 pad-h-3 adjacent-mar-t-1'
-                key={`option-${idx}-key`}
-                hidden={filterData.isHidden}
-                value={filterData.attributeName}>
-                {filterData.label}
-              </option>
-            )
-          })}
-        </select>
-      </label>
+      <SelectOptionsComponent 
+        onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
+        list={ATTRIBUTE_FILTERS}
+        id='attribute-filter-selector'
+        className='flex-none adjacent-mar-t-5' />
     </div>
   );
 });
