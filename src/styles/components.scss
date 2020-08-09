@@ -2,7 +2,7 @@
   left: $APP_MARGIN;
   bottom: $APP_MARGIN;
 }
-  
+
 [componentname='app-content'] {
   flex: auto;
   padding-left: $APP_MARGIN;
@@ -33,7 +33,7 @@
   &[componentstate='disabled'] {
     pointer-events: none;
     color: map.get($COLOR_MAP, "grayer");
-    
+
     label {
       border-color: map.get($COLOR_MAP, "grayer");
     }
@@ -89,6 +89,10 @@
   top: 5px;
   left: 5px;
   opacity: 0.5;
+}
+[componentname='annotation-box'] {
+  position: relative;
+  background: #312e3a;
 }
 
 [componentname='arrow-box-down'] {

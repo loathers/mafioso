@@ -11,7 +11,7 @@ import * as regexUtils from 'utilities/regexUtils';
 
 /**
  * @typedef {String} RawText - text extracted from the log
- * @typedef {String} EntryString - text after it has some formatting and clean up 
+ * @typedef {String} EntryString - text after it has some formatting and clean up
  */
 export default class Entry {
   /** @default */
@@ -160,6 +160,10 @@ export default class Entry {
   get hasAnnotations() {
     return Boolean(this.attributes.annotations);
   }
+  /** @type {Boolean} */
+  get isAnnotationOnly() {
+    return this.entryType === ENTRY_TYPE.ANNOTATION_ONLY;
+  }
   /** @type {ReactComponent} */
   get entryIcon() {
     return this.entryData.icon;
@@ -207,11 +211,11 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasStatChanges() {
-    return this.attributes.isMusUp 
-      || this.attributes.isMystUp 
-      || this.attributes.isMoxUp 
-      || this.musSubstats !== 0 
-      || this.mystSubstats !== 0 
+    return this.attributes.isMusUp
+      || this.attributes.isMystUp
+      || this.attributes.isMoxUp
+      || this.musSubstats !== 0
+      || this.mystSubstats !== 0
       || this.moxSubstats !== 0;
   }
   /** @type {Boolean} */
@@ -362,7 +366,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isIOTM() {
-    return this.categories.includes(CATEGORY_ID.IOTM) 
+    return this.categories.includes(CATEGORY_ID.IOTM)
       || this.attributes.isEndedByUseTheForce;
   }
   /** @type {Boolean} */
@@ -426,7 +430,7 @@ export default class Entry {
       ...this.attributes,
     }
   }
-  /** 
+  /**
    * checks if the `entryString` contains given string
    * @param {String | Regex} txt
    * @return {Boolean}
@@ -434,7 +438,7 @@ export default class Entry {
   hasText(txt) {
     return regexUtils.hasString(this.entryString, txt);
   }
-  /** 
+  /**
    * gets the (first) matched text from `entryString`
    * @param {String | Regex} txt
    * @return {String}
@@ -442,7 +446,7 @@ export default class Entry {
   findText(txt) {
     const matchedText = regexUtils.getRegexMatch(this.entryString, txt) || [];
     return matchedText[0] || '';
-  } 
+  }
   /**
    * @param {Matcher} matcher
    * @return {String|null}
@@ -482,7 +486,7 @@ export default class Entry {
   createMeatDisplay() {
     const meatChange = this.attributes.meatChange;
     const meatDisplay = meatChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    
+
     if (meatChange > 0) {
       return `+${meatDisplay}`;
     }
@@ -528,13 +532,13 @@ export default class Entry {
    * @return {Boolean}
    */
   canCombineWith(comparedEntry) {
-    // combine kolmafia commonly purchasing and using 
+    // combine kolmafia commonly purchasing and using
     if (this.hasText('chewing gum on a string') && comparedEntry.hasText('chewing gum on a string')) {
       return true;
     }
 
     // Garbage Tote
-    if (this.entryType === ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE 
+    if (this.entryType === ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE
       && this.hasText(REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
       && comparedEntry.hasText(REGEX.JANUARYS_GARBAGE_TOTE.EQUIP_RESULT)) {
       return true;

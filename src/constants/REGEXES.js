@@ -7,7 +7,7 @@ export const REGEX = {
   // -- important
   MAFIOSO: {
     LOG_COMMENTS: /^\/\/.*/gm,
-    LOG_COMMENTS_ONLY: /^\s(\/\/.*(\r\n|\n))+(?!.)/gm,
+    LOG_COMMENTS_ONLY: /(^\/\/.*$)+(?!(\r\n|\n).)/gm,
   },
   ASCENSION: {
     REGULAR_COMPLETE: /welcome to valhalla.*?freeing king ralph.*?(\r\n|\n|$)/is,

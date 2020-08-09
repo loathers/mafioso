@@ -46,13 +46,15 @@ export default function EntryDisplayContainer(props) {
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
       { entry.hasAnnotations &&
-        <div componentname='arrow-box-down' className='borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row flex-none'>
+        <div
+          componentname={entry.isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
+          className='borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row flex-none'>
           <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
           <div className='adjacent-mar-l-3'>{entry.attributes.annotations}</div>
         </div>
       }
 
-      <div className='flex-row'>
+      <div className={combineClassnames(entry.isAnnotationOnly ? 'display-none' : 'flex-row')}>
         <Button
           onClick={() => toggleSelected(!isSelected)}
           className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isDevMode ? 'borradius-r-2' : '')} >

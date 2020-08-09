@@ -485,8 +485,8 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   // --
-  [ENTRY_TYPE.ANNOTATION]: {
-    categories: [CATEGORY_ID.OTHER],
+  [ENTRY_TYPE.ANNOTATION_ONLY]: {
+    categories: [CATEGORY_ID.ASCENSION_INFO, CATEGORY_ID.OTHER],
     matcher: REGEX.MAFIOSO.LOG_COMMENTS_ONLY,
   },
 };
