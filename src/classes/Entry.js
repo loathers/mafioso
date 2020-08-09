@@ -190,12 +190,13 @@ export default class Entry {
   }
   /** @type {Number} */
   get turnNum() {
-    if (this.hasRawTurnNum) {
-      return this.rawTurnNum;
-    }
-
+    // prefer estimated turn num if it exists
     if (this.hasEstimatedTurnNum) {
       return this.estimatedTurnNum;
+    }
+
+    if (this.hasRawTurnNum) {
+      return this.rawTurnNum;
     }
 
     return undefined;
@@ -419,6 +420,22 @@ export default class Entry {
     return this.hasText(REGEX.LIL_DOCTORS_BAG.USED_SKILL_LINE);
   }
   // -- utility
+  /**
+   * since there's getters and entry.attributes, this helps get it
+   * @param {String} attributeName
+   * @return {*}
+   */
+  findAttribute(attributeName) {
+    if (this.attributes[attributeName] !== undefined) {
+      return this.attributes[attributeName];
+    }
+
+    if (this[attributeName] !== undefined) {
+      return this[attributeName];
+    }
+
+    return undefined;
+  }
   /**
    * @return {Object}
    */

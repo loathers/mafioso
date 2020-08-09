@@ -585,7 +585,7 @@ You acquire an item: stuffed treasure chest
 Visiting Deluxe Mr. Klaw "Skill" Crane Game in clan VIP lounge
 You acquire an item: bejeweled cufflinks
 
-// whoops, this should still be a [0] adv
+// whoops, this should still be 0 adv
 [1] Boxing Daycare
 Encounter: Have a Boxing Daydream
 You acquire an item: punch-drunk punch
@@ -1216,7 +1216,7 @@ You acquire an item: tinsel tights
 
 equip pants tinsel tights
 
-//looking for the +adv latte unlock
+//looking for the +item latte unlock
 [8] The Dire Warren
 Encounter: fluffy bunny
 Round 0: dextrial loses initiative!
@@ -13396,6 +13396,8 @@ equip acc3 "I Voted!" sticker
 [706] Cobb's Knob Menagerie, Level 2
 Encounter: It's a Weremoose Key
 You acquire an item: weremoose key
+
+// phew finally got all the keys
 
 [707] Tower Door
 
