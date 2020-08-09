@@ -312,6 +312,13 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
+        label: 'Mafia Thumb Ring',
+        attributeName: 'hasMafiaThumbRing',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Beaten Up',
         attributeName: 'isDeath',
         attributeValue: true,

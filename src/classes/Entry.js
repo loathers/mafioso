@@ -440,6 +440,10 @@ export default class Entry {
   get hasDoctorsBag() {
     return this.hasText(REGEX.LIL_DOCTORS_BAG.USED_SKILL_LINE);
   }
+  /** @type {Boolean} */
+  get hasMafiaThumbRing() {
+    return this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION);
+  }
   // -- utility
   /**
    * since there's getters and entry.attributes, this helps get it

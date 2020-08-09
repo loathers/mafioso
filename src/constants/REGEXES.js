@@ -219,6 +219,8 @@ export const REGEX = {
     MIND_CONTROL_DEVICE_LINE: /.*(Canadian Mind Control Device|Took choice 769).*(\r\n|\n)/gim,
 
     DOC_GALATIK_SHOP_OR_USE: /(^buy.*doc Galaktik's|^use.*doc Galaktik's)/i,
+
+    MAFIA_THUMB_RING_ACTIVATION: /your weighty thumb ring walloped/i,
   },
   VALUE: {
     TURN_NUM: /(?!\[)\d+(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`
