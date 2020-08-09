@@ -148,7 +148,7 @@ function EntryAdventureColumn(props) {
     entry,
   } = props;
 
-  const shouldHideTurnNum = entry.attributes.dayNum <= 0 && entry.turnNum <= 0;
+  const shouldHideTurnNum = !entry.isCombatEncounter && entry.turnNum <= 0;
   const fontClassName = (!shouldHideTurnNum && !entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold color-white' : 'fontsize-5 color-gray';
 
   return (
