@@ -382,6 +382,12 @@ class LogStore {
           entry.turnNum = nextTurnNum - 1;
         }
 
+        // freeing the king doesn't actually take a turn
+        if (entry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END) {
+          entry.attributes.isInBetweenTurns = true;
+          entry.turnNum = myTurnNum - 1;
+        }
+
       // I don't have a number, so we'll assume this is before the next adventure
       } else {
         if (nextTurnNum) {
