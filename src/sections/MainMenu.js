@@ -58,12 +58,12 @@ function MainMenu(props) {
   }
 
   return (
-    <div 
+    <div
       componentname='main-menu'
-      style={style} 
+      style={style}
       className={combineClassnames('flex-col', className)}>
 
-      <LogoComponent 
+      <LogoComponent
         className='flex-none adjacent-mar-t-5'/>
 
       <div className='flex-col flex-none adjacent-mar-t-5'>
@@ -71,7 +71,7 @@ function MainMenu(props) {
           children={'Upload New'}
           className='fontsize-5 width-full adjacent-mar-t-4' />
 
-        <Button 
+        <Button
           onClick={() => logStore.downloadFullLog()}
           disabled={!logStore.isReady}
           className='borradius-1 flex-col pad-3 adjacent-mar-t-4'>
@@ -98,7 +98,7 @@ function MainMenu(props) {
 
       {/* change visible entries */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
-        <FiltersMenu 
+        <FiltersMenu
           label={`Visible Categories (${logStore.visibleCount})`}
           defaultList={categoriesVisibleList}
           onChange={onChangeVisibleEntries}
@@ -107,7 +107,7 @@ function MainMenu(props) {
 
         <Button
           onClick={() => onApplyEntries(categoriesVisibleList)}
-          disabled={!logStore.isReady} 
+          disabled={!logStore.isReady}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
           Apply
         </Button>
@@ -115,7 +115,7 @@ function MainMenu(props) {
 
       {/* filter by attribute */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
-        <SelectOptionsComponent 
+        <SelectOptionsComponent
           label='Filter by Attributes'
           onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
           selected={selectedAttribute}
@@ -139,12 +139,12 @@ export function FullPageMenu(props) {
   } = props;
 
   return (
-    <div 
+    <div
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col', className)}>
 
       <div className='flex-row flex-none adjacent-mar-t-4'>
-        <LogoComponent 
+        <LogoComponent
           className='flex-auto adjacent-mar-l-2'/>
       </div>
 
@@ -157,7 +157,7 @@ export function FullPageMenu(props) {
           </div>
 
           <div className='flex-none fontsize-4'>
-            {'Thanks for using Mafioso beta!\nThere are still a lot of unsupported text and older logs might not have the data that is needed.\nStill, you should be able to drop them in and visualize them.\n\nIf you get an error or have any requests, make a report on Github.\nPlease know that no data is collected and uploaded files are never sent anywhere.'}
+            {'Thanks for using Mafioso beta!\n\nIf you get an error or have any requests, make a report on Github.\nPlease know that no data is collected and uploaded files are never sent anywhere.'}
           </div>
         </div>
       </UploadComponent>
