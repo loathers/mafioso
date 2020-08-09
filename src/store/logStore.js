@@ -369,7 +369,7 @@ class LogStore {
       // const prevTurnNum = prevEntry && prevEntry.turnNum;
 
       // find the next entry that is not a free adventure
-      const nextEntry = this.findNextEntry(idx, {hasRawTurnNum: true, isFreeAdv: false});
+      const nextEntry = this.findNextEntry(idx, {hasRawTurnNum: true, isFreeCombat: false});
       const nextTurnNum = nextEntry && nextEntry.rawTurnNum;
 
       const myTurnNum = entry.turnNum;

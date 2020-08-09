@@ -129,7 +129,7 @@ function EntryAdventureColumn(props) {
   } = props;
 
   const {attributes: {
-    isFreeAdv,
+    isFreeCombat,
   }} = entry;
 
   const shouldHideTurnNum = entry.attributes.dayNum <= 0 && entry.turnNum <= 0;
@@ -144,7 +144,7 @@ function EntryAdventureColumn(props) {
         {!shouldHideTurnNum ? entry.turnNum : '-'}
       </div>
 
-      { isFreeAdv &&
+      { isFreeCombat &&
         <div className='talign-right fontsize-2 adjacent-mar-t-2'>
           free
         </div>

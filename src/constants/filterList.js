@@ -127,7 +127,7 @@ export const ATTRIBUTE_FILTERS = [
       },
       {
         label: 'Free Fights',
-        attributeName: 'isFreeAdv',
+        attributeName: 'isFreeCombat',
         attributeValue: true,
         isHidden: false,
         checked: false,

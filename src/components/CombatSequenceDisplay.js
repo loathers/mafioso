@@ -18,7 +18,7 @@ function CombatResultDisplay(props) {
 
   return (
     <div className={combineClassnames('flex-col-center flex-none mar-1', className)}>
-      <IconComponent 
+      <IconComponent
         className='adjacent-mar-t-1'
         style={{width: 30, height: 30}} />
       <div className='talign-center fontsize-3 adjacent-mar-t-1'>{content}</div>
@@ -62,7 +62,7 @@ export default function CombatSequenceDisplay(props) {
   }} = entry;
 
   return (
-    <div 
+    <div
       style={{width: 170}}
       className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
       { hasInitiative &&
@@ -73,42 +73,42 @@ export default function CombatSequenceDisplay(props) {
       }
 
       { combatActions.map((attributes, idx) => (
-        <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>    
-          <CombatActionDisplay 
+        <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>
+          <CombatActionDisplay
             className='mar-1 width-full'
             content={attributes.actionName}
-            roundNum={attributes.roundNum} 
-          /> 
+            roundNum={attributes.roundNum}
+          />
 
           <div className='arrow-down flex-row-center mar-1'/>
         </Fragment>
       ))}
 
       { isVictory &&
-        <CombatResultDisplay 
+        <CombatResultDisplay
           content='Victory!'
           IconComponent={LaurelCrownSVG} />
       }
 
       { isDeath &&
-        <CombatResultDisplay 
+        <CombatResultDisplay
           content='Beaten up :('
           IconComponent={CarrionSVG} />
       }
 
       { entry.isBanished &&
-        <CombatResultDisplay 
+        <CombatResultDisplay
           content='Banished!'
           IconComponent={BanishSVG} />
       }
 
       { entry.hasRunaway && !isVictory &&
-        <CombatResultDisplay 
+        <CombatResultDisplay
           content='Ran Away!'
           IconComponent={RunawaySVG} />
       }
 
-      { entry.hasRunaway && !isVictory && entry.attributes.isFreeAdv &&
+      { entry.hasRunaway && !isVictory && entry.attributes.isFreeCombat &&
         <div className='fontsize-1 mar-1'>(for free)</div>
       }
 

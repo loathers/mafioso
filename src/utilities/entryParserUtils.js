@@ -74,7 +74,7 @@ export function parseCommonAttributes(entryString) {
 
   return {
     rawTurnNum: rawTurnNum,
-    isFreeAdv: isFreeAdv(entryString),
+    isFreeCombat: isFreeCombat(entryString),
     adventureChanges: parseAdventureChanges(entryString),
     locationName,
     encounterName,
@@ -200,12 +200,17 @@ export function parseRawTurnNum(entryString) {
  * @param {String} entryString
  * @return {String}
  */
-export function isFreeAdv(entryString) {
+export function isFreeCombat(entryString) {
   if (isUseTheForce(entryString)) {
     return true;
   }
 
-  return regexUtils.hasString(entryString, REGEX.COMBAT.FREE_COMBAT);
+  const freeCombatMatch = regexUtils.hasString(entryString, REGEX.COMBAT.FREE_COMBAT);
+  if (freeCombatMatch) {
+    return true;
+  }
+
+  return false;
 }
 /**
  * @param {String} entryString
@@ -590,7 +595,7 @@ export function parseCombatLoss(entryString) {
 
   // combat is counted as a loss if not a victory
   //  except in the case that there was a free runaway/banish used
-  return !isFreeAdv(entryString) && !parseCombatVictory(entryString);
+  return !isFreeCombat(entryString) && !parseCombatVictory(entryString);
 }
 /**
  * @param {String} entryString

@@ -42,7 +42,7 @@ export default class Entry {
       /** @type {Boolean} */
       isInBetweenTurns: false,
       /** @type {Boolean} */
-      isFreeAdv: false,
+      isFreeCombat: false,
       /** @type {Array<Number>} */
       adventureChanges: [],
       /** @type {String | null} */
