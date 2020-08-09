@@ -123,6 +123,7 @@ export const REGEX = {
 
     FILLED_MUG_LINE: /filled your mug .*/gi,
     FILLED_MUG_INGREDIENTS: /(?<=filled your mug with ).*(?=.)/gi,
+    FILLED_MUG_INGREDIENTS_CAPTURE_GROUP: /(?<=^filled your mug with )(.*)(?: and )(.*)(?: latte with )(.*)(?:.)/gmi,
     DO_NOTHING_CHOICE: /^took choice.*1329.*don't get a fill-up/gmi,
   },
   LIL_DOCTORS_BAG: {
@@ -257,7 +258,7 @@ export const REGEX = {
     MYST_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Enchantedness|Magicalness|Mysteriousness|Wizardliness))/gi,
     MYST_GAINS: /.*you gain.*\d*mysticality.*point.*/gi,
 
-    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,    
+    MOX_EXP_CHANGE: /.*gain.*\d*(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm).*/gi,
     MOX_EXP_GAINS: /(?<=gain\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
@@ -306,10 +307,10 @@ export const REGEX = {
 
     MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
     MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
-    
+
     BUY_ITEM_AMOUNT: /(?<=buy\s)(\d*,*)*/gi,
     BUY_ITEM_COST: /(?<=for\s)(\d*,*)*(?=\seach)/gi,
-    
+
     AUTOSELL: /^autosell:.*/gmi,
     SELL_ITEM_AMOUNT: /(?<=^autosell: )(\d*,*)*/gmi,
     SELL_ITEM_TARGET: /(?<=^autosell: (\d*,*)* ).*/gmi,
@@ -351,7 +352,7 @@ export const REGEX = {
 
     EQUIP_PLAYER_TARGETS: /(?<=equip (?!familiar).* ).*/gi,
     UNEQUIP_PLAYER_TARGETS: /(?<=unequip (?!familiar).* ).*/gi,
-    CUSTOM_OUTFIT_LINE: /^custom outfit.*/gmi, 
+    CUSTOM_OUTFIT_LINE: /^custom outfit.*/gmi,
 
     HAGNK_PULL_LINE: /^pull: \d* .*/gmi,
     HAGNK_PULL_NAME: /(?<=^pull: \d* ).*/gmi,
@@ -375,7 +376,7 @@ export const REGEX = {
 
     UNMATCHED_EFFECT: /(?<=^(\r\n|\n)).*acquire an (effect|intrinsic).*$(?!(\r\n|\n).)/gim,
   },
-  // -- 
+  // --
   // note: these only work in raw
   GROUP: {
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
@@ -397,7 +398,7 @@ export const REGEX = {
   SNAPSHOT: {
     SNAPSHOT_DATE: /(?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     KOL_DATE: /(?<=- )(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
-    BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,    
+    BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
     PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
     WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP: /(?:(?:=-){22}=)(?:\r\n|\n)(?: *)player snapshot(?:\r\n|\n)(?:(?:=-){22}=).*?((?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*?(?=\r\n|\n)).*?(name:.*?class:.*?(?=\r\n|\n)).*?(?:(?:=-){22}=)/gmis,
   },

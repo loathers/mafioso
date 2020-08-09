@@ -21,7 +21,7 @@ const MIN_CHAR_COUNT = 5;
 
 /**
  * core parsing handler - start here
- * 
+ *
  * @param {String} rawText
  * @return {Array<Entry>}
  */
@@ -57,7 +57,7 @@ export async function parseLogTxt(rawText) {
  * finds the specific ascension session from given string
  *
  * @string {String} rawText
- * @returns {String | null} 
+ * @returns {String | null}
  */
 export function findAscensionLog(rawText) {
   // because the snapshot date might be cut off from the rest of the ascension,
@@ -78,7 +78,7 @@ export function findAscensionLog(rawText) {
 
   return null;
 }
-/** 
+/**
  * @param {String} rawText
  * @returns {AscensionAttributes}
  */
@@ -95,10 +95,10 @@ export function parseAscensionAttributes(rawText) {
     pathName: parsePathName(rawText),
   }
 }
-/** 
- * creates a list of Entry class, 
- *  which will have parsed an entry's data 
- * 
+/**
+ * creates a list of Entry class,
+ *  which will have parsed an entry's data
+ *
  * @async
  * @param {Array<String>} logArray
  * @param {Number} startIdx
@@ -165,7 +165,7 @@ export async function postParseCleanup(rawText) {
 /**
  * update batch size based on number of characters in the log
  *  this calculation is not very scientific
- *  
+ *
  * @param {Number} rawSize
  */
 function calculateBatchSize(rawSize) {

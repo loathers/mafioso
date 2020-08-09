@@ -32,7 +32,7 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 /**
  * @typedef {String|RegExp|Array<String|RegExp>|null} Matcher
- * 
+ *
  * @typedef {Object} EntryData
  * @property {EntryType} EntryData.type                         - this is the key, will be built by parser
  * @property {Array<Category>} EntryData.categories             - visible entry categories
@@ -182,7 +182,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE,
     icon: InfoSVG,
     locationName_alt: 'Latte Lovers Member\'s Mug Refill',
-    encounterName_alt: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS,
+    // encounterName_alt: parseEncounterName() special case
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {

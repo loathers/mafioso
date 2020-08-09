@@ -7,6 +7,7 @@ import {DISINTEGRATERS, DISINTEGRATERS_MAP} from 'constants/DISINTEGRATERS'
 import {REPLACERS, REPLACERS_MAP} from 'constants/REPLACERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
+import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from 'constants/LATTE_EFFECTS_MAP';
 // import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 import * as regexUtils from 'utilities/regexUtils';
@@ -40,7 +41,7 @@ export function getEntryData(entryString) {
 }
 /**
  * core parsing for attributes of an entry
- * 
+ *
  * @param {String} entryString
  * @return {Array<Entry>}
  */
@@ -55,7 +56,7 @@ export function parseAttributes(entryString) {
 }
 /**
  * parse some of the common entry attributes
- * 
+ *
  * @param {String} entryString
  * @return {Array<Entry>}
  */
@@ -86,7 +87,7 @@ export function parseCommonAttributes(entryString) {
 }
 /**
  * parsing for stat related data
- * 
+ *
  * @param {String} entryString
  * @return {Array<Entry>}
  */
@@ -105,7 +106,7 @@ export function parseStatAttributes(entryString) {
 }
 /**
  * parsing for combat related data
- * 
+ *
  * @param {String} entryString
  * @return {Array<Entry>}
  */
@@ -125,7 +126,7 @@ export function parseCombatAttributes(entryString) {
 }
 /**
  * parsing special data
- * 
+ *
  * @param {String} entryString
  * @return {Array<Entry>}
  */
@@ -138,7 +139,7 @@ export function parseSpecialAttributes(entryString) {
 /**
  * scrub the main text of data that will be
  *  displayed for things I haven't implemented
- * 
+ *
  * @param {String} entryString
  * @return {String}
  */
@@ -181,7 +182,7 @@ export function parseMafiosoAnnotations(entryString) {
  * parses the adventure number
  *
  * todo: use previous adventure num if log does not have it
- * 
+ *
  * @param {String} entryString
  * @return {Number | undefined}
  */
@@ -190,12 +191,12 @@ export function parseRawTurnNum(entryString) {
   if (turnNumMatches === null) {
     return undefined;
   }
-  
+
   return Number(turnNumMatches[0]);
 }
 /**
  * determine if this is a free adventure
- * 
+ *
  * @param {String} entryString
  * @return {String}
  */
@@ -223,7 +224,7 @@ export function isNonCombatEncounter(entryString) {
 /**
  * parses name of the location,
  *  typically first line after "[num] "
- * 
+ *
  * @param {String} entryString
  * @return {String | null}
  */
@@ -248,7 +249,7 @@ export function parseLocationName(entryString) {
 /**
  * parses name of the encounter,
  *  typically right after "Encounter: "
- * 
+ *
  * @param {String} entryString
  * @return {String | null}
  */
@@ -257,6 +258,18 @@ export function parseEncounterName(entryString) {
   const replacedResults = parseReplacedResults(entryString);
   if (replacedResults) {
     return replacedResults.pop();
+  }
+
+  // special text for Latte refill
+  const latteIngredientsMatch = entryString.match(REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS);
+  if (latteIngredientsMatch) {
+    const latteEffectsResult = LATTE_EFFECTS_LIST.filter((effectKey) => {
+      const effectMatcher = LATTE_EFFECTS_MAP[effectKey];
+      const ingredientMatch = entryString.match(effectMatcher);
+      return ingredientMatch !== null;
+    });
+
+    return `${latteEffectsResult.join(', ')} (${latteIngredientsMatch})`
   }
 
   const encounterNameMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
@@ -319,7 +332,7 @@ export function parsePulledItems(entryString) {
 }
 /**
  * builds an array of all the effects that were gained
- * 
+ *
  * @param {String} entryString
  * @return {Array<String>}
  */
@@ -340,7 +353,7 @@ export function parseAcquiredEffects(entryString) {
 }
 /**
  * parses the amount of meat that was gained/lost
- * 
+ *
  * @param {String} entryString
  * @return {Number}
  */
@@ -480,7 +493,7 @@ export function parseManaChanges(entryString) {
 /**
  * builds an array of attacks/skills/etc used in combat
  *  includes: initiative, combat victory
- * 
+ *
  * @param {String} entryString
  * @return {Array<String>}
  */
@@ -521,7 +534,7 @@ export function hasInitiative(entryString) {
 }
 /**
  * builds an array of all the items that were gained
- * 
+ *
  * @param {String} entryString
  * @return {Array<String>}
  */
@@ -555,17 +568,17 @@ export function parseAttackName(entryString) {
 }
 /**
  * was this a won combat?
- * 
+ *
  * @param {String} entryString
  * @return {Boolean}
  */
 export function parseCombatVictory(entryString) {
-  return regexUtils.hasString(entryString, REGEX.COMBAT.VICTORY_LINE) 
+  return regexUtils.hasString(entryString, REGEX.COMBAT.VICTORY_LINE)
     || Boolean(parseDisintigraters(entryString));
 }
 /**
  * was this a lost combat?
- * 
+ *
  * @param {String} entryString
  * @return {Boolean}
  */
@@ -663,7 +676,7 @@ export function parseReplacedResults(entryString) {
   if (replacedMatches.length > 0) {
     // hard to regex "becomes a" and "becomes the" when I need to include The in the name,
     //  so this is the workaround
-    const removeA = replacedMatches.map((match) => match.replace('a ', '')); 
+    const removeA = replacedMatches.map((match) => match.replace('a ', ''));
     return originalEncounter.concat(removeA);
   }
 
