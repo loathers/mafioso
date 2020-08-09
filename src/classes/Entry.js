@@ -330,8 +330,8 @@ export default class Entry {
   }
   /** @type {String} */
   get additionalDisplay() {
+    // special text for Latte refill
     if (this.entryType === ENTRY_TYPE.IOTM.LATTE_LOVERS_MEMBERS_MUG.REFILL) {
-      // special text for Latte refill
       const latteEffectsResult = LATTE_EFFECTS_LIST.filter((effectKey) => {
         const effectMatcher = LATTE_EFFECTS_MAP[effectKey];
         const ingredientMatch = this.findMatcher(effectMatcher);
@@ -341,6 +341,11 @@ export default class Entry {
       if (latteEffectsResult.length > 0) {
         return `(${latteEffectsResult.join(', ')})`
       }
+    }
+
+    // show what choice was made for God Lobster Boon
+    if (this.entryType === ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON) {
+      return this.findMatcher(REGEX.GOD_LOBSTER.BOON_CHOICE_RESULT);
     }
 
     return this.attributes.additionalDisplay;

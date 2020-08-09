@@ -90,6 +90,7 @@ export const REGEX = {
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,
     GROUPING: /the God Lobster.*?Granted a Boon/gis,
+    BOON_CHOICE_RESULT: /(?<=^took choice 1310.*: ).*/gmi,
   },
   HEWN_MOON_RUNE_SPOON: {
     TUNE_MOON_LINE: /^tuning moon.*/i,
