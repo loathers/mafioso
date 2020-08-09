@@ -484,6 +484,11 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.LINE.CLAN_VISIT,
     icon: InfoSVG,
   },
+  // --
+  [ENTRY_TYPE.ANNOTATION]: {
+    categories: [CATEGORY_ID.OTHER],
+    matcher: REGEX.MAFIOSO.LOG_COMMENTS_ONLY,
+  },
 };
 // basically becomes a list of `EntryType`s that have a map value
 export const ENTRY_MAP_KEYS = Object.keys(ENTRY_DATA_MAP);
