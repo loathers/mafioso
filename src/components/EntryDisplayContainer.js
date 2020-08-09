@@ -233,6 +233,13 @@ function EntryHeaderContainer(props) {
               {entry.replacedEnemiesDisplay}
             </div>
           }
+
+          { entry.hasAdditionalDisplay &&
+            <div
+              className='flex-none adjacent-mar-l-5'>
+              {entry.additionalDisplay}
+            </div>
+          }
         </div>
       }
 

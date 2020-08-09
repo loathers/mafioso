@@ -198,7 +198,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.KRAMCO_SAUSAGEOMATIC.COMBAT,
     icon: CombatSVG,
   },
-  [ENTRY_TYPE.IOTM.PILLKEEPER]: {
+  [ENTRY_TYPE.IOTM.PILL_KEEPER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
     icon: SpleenSVG,

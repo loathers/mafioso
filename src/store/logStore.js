@@ -407,6 +407,16 @@ class LogStore {
 
       // set this dayNum
       entry.attributes.dayNum = dateList.length;
+
+      // lets see if we can get the noncombat that this sneakisol went to
+      if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER && entry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
+        const sneakisolNonCombat = this.findNextEntry(idx, {isNonCombatEncounter: true});
+        if (sneakisolNonCombat) {
+          entry.attributes.additionalDisplay = sneakisolNonCombat.encounterDisplay;
+        }
+      }
+
+      // done
       return entry;
     });
   }

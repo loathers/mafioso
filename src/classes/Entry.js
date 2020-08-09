@@ -85,6 +85,8 @@ export default class Entry {
       replacedEnemies: [],
 
       // -- special, includes iotm
+      /** @type {String} */
+      additionalDisplay: null,
       /** @type {Array<Entity> | undefined | null} */
       attractors: null,
       /** @type {Entity | undefined | null} */
@@ -147,6 +149,10 @@ export default class Entry {
       || this.hasMeatChanges
       || this.hasHealthChanges
       || this.hasManaChanges;
+  }
+  /** @type {Boolean} */
+  get hasAdditionalDisplay() {
+    return Boolean(this.attributes.additionalDisplay);
   }
   /** @type {Boolean} */
   get hasAnnotations() {
@@ -317,6 +323,10 @@ export default class Entry {
     return this.parseDisplayMatcher(this.entryData.encounterName_alt, this.attributes.encounterName);
   }
   /** @type {String} */
+  get additionalDisplay() {
+    return this.attributes.additionalDisplay;
+  }
+  /** @type {String} */
   get replacedEnemiesDisplay() {
     if (!this.hasReplacedEnemies) {
       return null;
@@ -423,7 +433,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isPillKeeper() {
-    return this.entryType === ENTRY_TYPE.IOTM.PILLKEEPER;
+    return this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER;
   }
   /** @type {Boolean} */
   get hasPocketProfessor() {
