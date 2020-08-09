@@ -9,6 +9,45 @@ import { ReactComponent as RunawaySVG } from 'images/run.svg';
 import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {React.Component} */
+export default function CombatSequenceDisplay(props) {
+  const {
+    className,
+    entry,
+  } = props;
+
+  const {attributes: {
+    combatActions,
+    hasInitiative,
+  }} = entry;
+
+  return (
+    <div
+      style={{width: 170}}
+      className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
+      { hasInitiative &&
+        <Fragment>
+          <div className='flex-row-center fontsize-1 mar-1'>Initiative!</div>
+          <div className='arrow-down flex-row-center mar-1'/>
+        </Fragment>
+      }
+
+      { combatActions.map((attributes, idx) => (
+        <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>
+          <CombatActionDisplay
+            className='mar-1 width-full'
+            content={attributes.actionName}
+            roundNum={attributes.roundNum}
+          />
+
+          <div className='arrow-down flex-row-center mar-1'/>
+        </Fragment>
+      ))}
+
+      <CombatResultDisplayHandler entry={entry}/>
+    </div>
+  )
+}
+/** @returns {React.Component} */
 function CombatResultDisplay(props) {
   const {
     className,
@@ -48,40 +87,13 @@ function CombatActionDisplay(props) {
   )
 }
 /** @returns {React.Component} */
-export default function CombatSequenceDisplay(props) {
+export function CombatResultDisplayHandler(props) {
   const {
-    className,
     entry,
   } = props;
 
-  const {attributes: {
-    combatActions,
-    hasInitiative,
-  }} = entry;
-
   return (
-    <div
-      style={{width: 170}}
-      className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
-      { hasInitiative &&
-        <Fragment>
-          <div className='flex-row-center fontsize-1 mar-1'>Initiative!</div>
-          <div className='arrow-down flex-row-center mar-1'/>
-        </Fragment>
-      }
-
-      { combatActions.map((attributes, idx) => (
-        <Fragment key={`combat-action-${uuidv4()}-${idx}-key`}>
-          <CombatActionDisplay
-            className='mar-1 width-full'
-            content={attributes.actionName}
-            roundNum={attributes.roundNum}
-          />
-
-          <div className='arrow-down flex-row-center mar-1'/>
-        </Fragment>
-      ))}
-
+    <Fragment>
       { entry.isVictory &&
         <CombatResultDisplay
           content='Victory!'
@@ -117,6 +129,6 @@ export default function CombatSequenceDisplay(props) {
       { entry.isDisintegrated &&
         <div className='fontsize-3 mar-1'>Disintegrated</div>
       }
-    </div>
+    </Fragment>
   )
 }
