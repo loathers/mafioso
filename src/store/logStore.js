@@ -40,17 +40,17 @@ class LogStore {
       pathName: undefined,
     }
 
-    /** 
+    /**
      * literally all the entries
      * @type {ObservableArray<Entry>}
      */
     this.allEntries = observable([]);
-    /** 
+    /**
      * entries that pass the current filters
      * @type {ObservableArray<Entry>}
      */
     this.visibleEntries = observable([]);
-    /** 
+    /**
      * entries that are currently visible by page
      * @type {ObservableArray<Entry>}
      */
@@ -198,7 +198,7 @@ class LogStore {
     }
 
     if (this.hasRawText) {
-      this.ascensionAttributes = logParserUtils.parseAscensionAttributes(this.rawText); 
+      this.ascensionAttributes = logParserUtils.parseAscensionAttributes(this.rawText);
     }
 
     return this.ascensionAttributes;
@@ -238,7 +238,7 @@ class LogStore {
         this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
         this.setAscensionAttributes();
         console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
-      
+
       } else {
         this.rawText = await logParserUtils.cleanRawLog(allText);
         console.warn('No Ascension specific log was found.');
@@ -246,10 +246,10 @@ class LogStore {
 
       // clean up once more...
       this.rawText = await logParserUtils.postParseCleanup(this.rawText);
-      
+
       // raw data gotten, now parse it to create individual entries
       this.parse();
-      
+
     } catch (e) {
       console.error(e);
       this.isParsing.set(false);
@@ -273,7 +273,7 @@ class LogStore {
         console.log(`%c☌ ...file "${file.name}" read.`, 'color: #6464ff');
         resolve(readResult);
       }
-      
+
       fileReader.readAsText(file);
     });
   }
@@ -291,6 +291,8 @@ class LogStore {
 
       const parsedData = await logParserUtils.parseLogTxt(this.rawText);
       const newData = this.condenseEntries(parsedData);
+      this.allEntries.replace(newData);
+
       const additionalData = this.createConjectureData(newData);
       this.allEntries.replace(additionalData);
       this.visibleEntries.replace([]);
@@ -313,7 +315,7 @@ class LogStore {
    * currently the parameter passed isn't a shallow copy
    *  but it might be something to consider
    *
-   * @param {Array<Entry>} entriesList 
+   * @param {Array<Entry>} entriesList
    * @returns {Array<Entry>}
    */
   condenseEntries(entriesList) {
@@ -350,7 +352,7 @@ class LogStore {
    * there are some things we're going to guess about an entry
    *  - day
    *  - possible turn num
-   *  
+   *
    * @param {Array<Entry>} allEntries
    * @returns {Array<Entry>}
    */
@@ -363,22 +365,33 @@ class LogStore {
     const dateList = [];
 
     return allEntries.map((entry, idx) => {
-      const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
-      const prevTurnNum = prevEntry && prevEntry.turnNum;
-      if (entry.turnNum === undefined) {
-        if (prevEntry && prevTurnNum) {
-          entry.turnNum = prevTurnNum;
+      // const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
+      // const prevTurnNum = prevEntry && prevEntry.turnNum;
+
+      // find the next entry that is not a free adventure
+      const nextEntry = this.findNextEntry(idx, {hasRawTurnNum: true, isFreeAdv: false});
+      const nextTurnNum = nextEntry && nextEntry.rawTurnNum;
+
+      const myTurnNum = entry.turnNum;
+
+      // double check what mafia thinks this turn number is
+      if (entry.hasRawTurnNum) {
+        // if the next number is the same as current number, most likely this is a free adv (thanks CaptainScotch!)
+        if (nextTurnNum === myTurnNum) {
+          entry.attributes.isInBetweenTurns = true;
+          entry.turnNum = nextTurnNum - 1;
+        }
+
+      // I don't have a number, so we'll assume this is before the next adventure
+      } else {
+        if (nextTurnNum) {
+          entry.turnNum = nextTurnNum - 1;
         } else {
           entry.turnNum = 0;
         }
       }
 
-      // mark this as not a full adventure if it's the same as previous
-      if (!entry.attributes.isCombatEncounter && !entry.attributes.isFreeAdv && prevTurnNum === entry.turnNum) {
-        entry.attributes.isInBetweenTurns = true;
-      }
-
-      // use entries with the date in them as a possible point of a new day 
+      // use entries with the date in them as a possible point of a new day
       if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
         const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE) || [];
         if (dateMatch && !dateList.includes(dateMatch[0])) {
@@ -386,13 +399,50 @@ class LogStore {
         }
       }
 
-      // update attributes
+      // set this dayNum
       entry.attributes.dayNum = dateList.length;
       return entry;
     });
   }
   /**
-   * 
+   * starting from allEntries[startIdx],
+   *  looks for the next entry that matches given `attributesFilter`
+   *
+   * @param {Number} startIdx
+   * @param {Object} [attributesFilter]
+   * @returns {Entry}
+   */
+  findNextEntry(startIdx, attributesFilter) {
+    if (this.allEntries.length <= 0) {
+      return undefined;
+    }
+
+    // not a valid index
+    if (!this.allEntries[startIdx]) {
+      return undefined;
+    }
+
+    // there is nothing next
+    if (startIdx + 1 > this.allEntries.length - 1) {
+      return undefined;
+    }
+
+    // no attributesFilter is simple
+    if (attributesFilter === undefined) {
+      return this.allEntries[startIdx + 1];
+    }
+
+    const checkEntries = this.allEntries.slice(startIdx + 1, this.allEntries.length);
+    return checkEntries.find((entry) => {
+      const checkAttributeNames = Object.keys(attributesFilter);
+      return !checkAttributeNames.some((attributeName) => {
+        const entryAttributeValue = entry.findAttribute(attributeName);
+        return entryAttributeValue !== attributesFilter[attributeName];
+      })
+    })
+  }
+  /**
+   *
    */
   downloadFullLog() {
     if (!this.isReady) {
@@ -408,9 +458,9 @@ class LogStore {
     download(this.rawText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions
-   /** 
+   /**
    * @param {Object} options
-   * @return {Array<Entry>} 
+   * @return {Array<Entry>}
    */
   async fetchEntries(options = {}) {
     if (!this.canFetch(options)) {
@@ -452,9 +502,9 @@ class LogStore {
     this.isFetching.set(false);
     return this.currentEntries;
   }
-  /** 
+  /**
    * @param {Object} options
-   * @return {Array<Entry>} 
+   * @return {Array<Entry>}
    */
   async fetchByFilter(options = {}) {
     if (!this.canFetch(options)) {
@@ -493,12 +543,12 @@ class LogStore {
       console.log(`⌛ %cNo results for filter.`, 'color: blue');
       return [];
     }
-  
+
     return visibleEntries;
   }
   /**
    * @param {Object} options
-   * @return {Array<Entry>} 
+   * @return {Array<Entry>}
    */
   async fetchByPage(options = {}) {
     if (!this.canFetch(options)) {
