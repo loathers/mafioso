@@ -1,3 +1,8 @@
+/**
+ * holy crap I don't know if this was worth it
+ * thanks to everyone's hard work on
+ * https://docs.google.com/spreadsheets/d/17F5DN0Jld9nfHcblc5-Y8-V47r686hdbsRxCHFdp4rs/edit#gid=1899088336
+ */
 export const LATTE_EFFECTS_MAP = {
   'Moxie Default': /(Cinna-|cinnamon|with a shake of cinnamon)/im,
   'Mus Default': /(Vanilla|vanilla|with a shot of vanilla)/im,
@@ -48,7 +53,7 @@ export const LATTE_EFFECTS_MAP = {
   '+3 Cold Resistance': /(Cocoa|cocoa powder|mocha loca)/im,
   '+3 Hot Resistance': /(Chili|chili seeds|with a kick)/im,
   '+3 Sleaze Resistance': /(Floured|white flour dusted|flour)/im,
-  '+3 Spooky Resistance': /(Cloven|cloves|with)/im,
+  '+3 Spooky Resistance': /(Cloven|cloves|with a puff of cloves)/im,
   '+3 Stench Resistance': /(Squamous-salted|squamous|with squamous salt)/im,
   'Spell Damage +10': /(Butternutty|butternut-spice|with a puff of cloves)/im,
   'Spell Damage +20': /(Spaghetti-squashy|spaghetti squash spice|with butternut)/im,
