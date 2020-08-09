@@ -409,10 +409,19 @@ class LogStore {
       entry.attributes.dayNum = dateList.length;
 
       // lets see if we can get the noncombat that this sneakisol went to
-      if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER && entry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
-        const sneakisolNonCombat = this.findNextEntry(idx, {isNonCombatEncounter: true});
-        if (sneakisolNonCombat) {
-          entry.attributes.additionalDisplay = `(${sneakisolNonCombat.encounterDisplay})`;
+      if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
+        if (entry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
+          const sneakisolNonCombat = this.findNextEntry(idx, {isNonCombatEncounter: true});
+          if (sneakisolNonCombat) {
+            entry.attributes.additionalDisplay = `(${sneakisolNonCombat.encounterDisplay})`;
+          }
+        }
+
+        if (entry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
+          const surpriseEncounter = this.findNextEntry(idx, {isSemirare: true});
+          if (surpriseEncounter) {
+            entry.attributes.additionalDisplay = `(${surpriseEncounter.encounterDisplay})`;
+          }
         }
       }
 
