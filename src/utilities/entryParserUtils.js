@@ -78,7 +78,6 @@ export function parseCommonAttributes(entryString) {
     locationName,
     encounterName,
     isCombatEncounter: isCombatEncounter(entryString),
-    isNonCombatEncounter: isNonCombatEncounter(entryString),
     acquiredItems: astralItems.concat(pulledItems.concat(acquiredItems)),
     acquiredEffects,
     meatChange,
@@ -197,13 +196,6 @@ export function parseRawTurnNum(entryString) {
  */
 export function isCombatEncounter(entryString) {
   return regexUtils.hasString(entryString, REGEX.COMBAT.INITIATIVE_LINE);
-}
-/**
- * @param {String} entryString
- * @return {Boolean}
- */
-export function isNonCombatEncounter(entryString) {
-  return regexUtils.hasString(entryString, REGEX.VALUE.NONCOMBAT_NAME) && !isCombatEncounter(entryString);
 }
 /**
  * parses name of the location,

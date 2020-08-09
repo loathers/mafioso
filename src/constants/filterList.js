@@ -305,6 +305,13 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
+        label: 'NonCombat',
+        attributeName: 'isNonCombatEncounter',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Victories',
         attributeName: 'isVictory',
         attributeValue: true,

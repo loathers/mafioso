@@ -48,9 +48,7 @@ export default class Entry {
       /** @type {String | null} */
       encounterName: null,
       /** @type {Boolean} */
-      isCombatEncounter: false, // todo: is a duplication of entryType
-      /** @type {Boolean} */
-      isNonCombatEncounter: false, // todo: is a duplication of entryType
+      isCombatEncounter: false,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Array<String>} */
@@ -202,6 +200,10 @@ export default class Entry {
   /** @type {Boolean} */
   get isCombatEncounter() {
     return this.attributes.isCombatEncounter;
+  }
+  /** @type {Boolean} */
+  get isNonCombatEncounter() {
+    return !this.isCombatEncounter && this.hasText(REGEX.VALUE.NONCOMBAT_NAME) && !this.isInBetweenTurns;
   }
   /** @type {Boolean} */
   get isFreeCombat() {
