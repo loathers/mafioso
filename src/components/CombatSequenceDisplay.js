@@ -52,14 +52,17 @@ function CombatResultDisplay(props) {
   const {
     className,
     content,
+    shouldShowIcon = true,
     IconComponent,
   } = props;
 
   return (
     <div className={combineClassnames('flex-col-center flex-none mar-1', className)}>
-      <IconComponent
-        className='adjacent-mar-t-1'
-        style={{width: 30, height: 30}} />
+      { shouldShowIcon &&
+        <IconComponent
+          className='adjacent-mar-t-1'
+          style={{width: 30, height: 30}} />
+      }
       <div className='talign-center fontsize-3 adjacent-mar-t-1'>{content}</div>
     </div>
   )
@@ -89,18 +92,20 @@ function CombatActionDisplay(props) {
 /** @returns {React.Component} */
 export function CombatResultDisplayHandler(props) {
   const {
+    className,
     entry,
+    isShowCompact = false,
   } = props;
 
   return (
-    <Fragment>
-      { entry.isVictory &&
+    <div className={combineClassnames('flex-col', className)}>
+      { !isShowCompact && entry.isVictory && !entry.isBanished &&
         <CombatResultDisplay
-          content='Victory!'
+          content='Victory'
           IconComponent={LaurelCrownSVG} />
       }
 
-      { entry.isDeath &&
+      { !isShowCompact && entry.isDeath &&
         <CombatResultDisplay
           content='Beaten up :('
           IconComponent={CarrionSVG} />
@@ -109,12 +114,14 @@ export function CombatResultDisplayHandler(props) {
       { entry.isBanished &&
         <CombatResultDisplay
           content='Banished!'
+          shouldShowIcon={!isShowCompact}
           IconComponent={BanishSVG} />
       }
 
       { entry.hasRunaway && !entry.isVictory &&
         <CombatResultDisplay
           content='Ran Away!'
+          shouldShowIcon={!isShowCompact}
           IconComponent={RunawaySVG} />
       }
 
@@ -123,12 +130,12 @@ export function CombatResultDisplayHandler(props) {
       }
 
       { entry.isCopied &&
-        <div className='fontsize-3 mar-1'>Copied</div>
+        <div className='fontsize-3 mar-1'>Copied!</div>
       }
 
       { entry.isDisintegrated &&
-        <div className='fontsize-3 mar-1'>Disintegrated</div>
+        <div className='fontsize-3 mar-1'>Disintegrated!</div>
       }
-    </Fragment>
+    </div>
   )
 }

@@ -11,7 +11,7 @@ import { ReactComponent as TalkSVG } from 'images/talk.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 import Button from 'components/Button';
-import CombatSequenceDisplay from 'components/CombatSequenceDisplay';
+import CombatSequenceDisplay, {CombatResultDisplayHandler} from 'components/CombatSequenceDisplay';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
 import SingleDisplay from 'components/SingleDisplay';
@@ -88,6 +88,13 @@ export default function EntryDisplayContainer(props) {
             <CombatSequenceDisplay
               entry={entry}
               className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+          }
+
+          { entry.hasCombatActions && !isShowRaw && isShowCompact &&
+            <CombatResultDisplayHandler
+              entry={entry}
+              isShowCompact={isShowCompact}
+              className='aitems-end adjacent-mar-l-4' />
           }
 
           {/* debug stuff */}
