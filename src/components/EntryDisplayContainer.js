@@ -111,6 +111,19 @@ export default function EntryDisplayContainer(props) {
           }
         </Button>
 
+
+        { !isShowCompact && entry.dayNum > 0 &&
+          <div
+            style={{
+              fontWeight: 300,
+              bottom: 4,
+              left: 4,
+            }}
+            className='fontsize-3 opacity-4 position-absolute'>
+            {`Day ${entry.dayNum}`}
+          </div>
+        }
+
         {/* right column */}
         { isDevMode &&
           <div className='borradius-r-2 bg-second flex-col flex-none'>

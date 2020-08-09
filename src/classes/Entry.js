@@ -178,6 +178,10 @@ export default class Entry {
   get hasEstimatedTurnNum() {
     return this.attributes.estimatedTurnNum !== undefined;
   }
+  /** @type {Number} */
+  get dayNum() {
+    return this.attributes.dayNum;
+  }
   /** @param {Number} */
   set turnNum(num) {
     this.attributes.estimatedTurnNum = num;
