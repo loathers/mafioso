@@ -1,300 +1,93 @@
+<mafioso>
+Log Start: July 15, 2020 - Martinus 7
+<mafioso/>
+
 Welcome to Valhalla!
-You have 874 banked Karma.
-You gain 261 Karma
-You gain 99 Karma
-Your new Karma balance is 1234
+You have <3 banked Karma.
+You gain <3 Karma
+You gain <3 Karma
+Your new Karma balance is <3
 
-Softcore perm Awesome Balls of Fire for 100 Karma (initial balance = 1234)
-You spend 100 Karma
+Softcore perm Awesome Balls of Fire for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Softcore perm Conjure Relaxing Campfire for 100 Karma (initial balance = 1134)
-You spend 100 Karma
+Softcore perm Conjure Relaxing Campfire for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Softcore perm Inappropriate Backrub for 100 Karma (initial balance = 1034)
-You spend 100 Karma
+Softcore perm Inappropriate Backrub for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Hardcore perm Rapid Prototyping for 200 Karma (initial balance = 934)
-You spend 200 Karma
+Hardcore perm Rapid Prototyping for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Hardcore perm Unoffendable for 200 Karma (initial balance = 734)
-You spend 200 Karma
+Hardcore perm Unoffendable for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Softcore perm Dark Ritual for 100 Karma (initial balance = 534)
-You spend 100 Karma
+Softcore perm Dark Ritual for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Hardcore perm Asbestos Heart for 200 Karma (initial balance = 434)
-You spend 200 Karma
+Hardcore perm Asbestos Heart for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Return Softcore Skill Dark Ritual for 100 Karma (initial balance = 234)
-You gain 100 Karma
+Return Softcore Skill Dark Ritual for <3 Karma (initial balance = <3)
+You gain <3 Karma
 
-Return Hardcore Skill Asbestos Heart for 200 Karma (initial balance = 334)
-You gain 200 Karma
+Return Hardcore Skill Asbestos Heart for <3 Karma (initial balance = <3)
+You gain <3 Karma
 
-Return Hardcore Skill Unoffendable for 200 Karma (initial balance = 534)
-You gain 200 Karma
+Return Hardcore Skill Unoffendable for <3 Karma (initial balance = <3)
+You gain <3 Karma
 
-Softcore perm Quiet Desperation for 100 Karma (initial balance = 734)
-You spend 100 Karma
+Softcore perm Quiet Desperation for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Softcore perm Quiet Judgement for 100 Karma (initial balance = 634)
-You spend 100 Karma
+Softcore perm Quiet Judgement for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Hardcore perm 5-D Earning Potential for 200 Karma (initial balance = 534)
-You spend 200 Karma
+Hardcore perm 5-D Earning Potential for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Hardcore perm Expert Corner-Cutter for 200 Karma (initial balance = 334)
-You spend 200 Karma
+Hardcore perm Expert Corner-Cutter for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Softcore perm Always Never Not Guzzling for 100 Karma (initial balance = 134)
-You spend 100 Karma
+Softcore perm Always Never Not Guzzling for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Return Softcore Skill Conjure Relaxing Campfire for 100 Karma (initial balance = 34)
-You gain 100 Karma
+Return Softcore Skill Conjure Relaxing Campfire for <3 Karma (initial balance = <3)
+You gain <3 Karma
 
-Return Softcore Skill Inappropriate Backrub for 100 Karma (initial balance = 134)
-You gain 100 Karma
+Return Softcore Skill Inappropriate Backrub for <3 Karma (initial balance = <3)
+You gain <3 Karma
 
-Softcore perm Gingerbread Mob Hit for 100 Karma (initial balance = 234)
-You spend 100 Karma
+Softcore perm Gingerbread Mob Hit for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Return Softcore Skill Awesome Balls of Fire for 100 Karma (initial balance = 134)
-You gain 100 Karma
+Return Softcore Skill Awesome Balls of Fire for <3 Karma (initial balance = <3)
+You gain <3 Karma
 
-Buy astral six-pack for 1 Karma (initial balance = 234)
-You spend 1 Karma
+Buy astral six-pack for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Buy astral shirt for 10 Karma (initial balance = 233)
-You spend 10 Karma
+Buy astral shirt for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Hardcore perm Asbestos Heart for 200 Karma (initial balance = 223)
-You spend 200 Karma
+Hardcore perm Asbestos Heart for <3 Karma (initial balance = <3)
+You spend <3 Karma
 
-Ascend as a Hardcore Male Pastamancer under the Wallaby sign on a Low Key Summer path, banking 23 Karma.
+Ascend as a Hardcore Male Pastamancer under the Wallaby sign on a Low Key Summer path, banking <3 Karma.
 Encounter: Low-Key Summer
 Took choice 1413/1: Yeah, it is!  Fastest ascension ever!
 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Beginning New Ascension
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
+<mafioso>
 Ascension #174:
 Hardcore Low Key Summer Pastamancer
 Wallaby
-
-Uncategorized
-- 20/20 Vision
-- Alien Source Code
-- Bear Essence
-- Budget Conscious
-- CLEESH
-- Chip on your Shoulder
-- Drescher's Annoying Noise
-- Drinking to Drink
-- Drippy Eye-Beetle
-- Expert Corner-Cutter
-- Implode Universe
-- Lock Picking
-- Marginally Insane
-- Prevent Scurvy and Sobriety
-- Singer's Faithful Ocelot
-- Summon Annoyance
-- Summon Carrot
-- Summon Holiday Fun!
-- The Spirit of Taking
-- Thick-Skinned
-- Tiki Mixology
-- Transcendent Olfaction
-- Visit your Favorite Bird
-- Walberg's Dim Bulb
-
-Seal Clubber
-- Audacity of the Otter
-- Batter Up!
-- Blubber Up
-- Claws of the Walrus
-- Clobber
-- Double-Fisted Skull Smashing
-- Fortitude of the Muskox
-- Get Big
-- Hide of the Walrus
-- Ire of the Orca
-- Lunge Smack
-- Lunging Thrust-Smack
-- Musk of the Moose
-- Northern Explosion
-- Northern Exposure
-- Precision of the Penguin
-- Pride of the Puffin
-- Pulverize
-- Rage of the Reindeer
-- Scowl of the Auk
-- Seal Clubbing Frenzy
-- Silent Hunter
-- Snarl of the Timberwolf
-- Super-Advanced Meatsmithing
-- Thrust-Smack
-- Tongue of the Walrus
-- Wrath of the Wolverine
-
-Turtle Tamer
-- Amphibian Sympathy
-- Armorcraftiness
-- Astral Shell
-- Cold-Blooded Fearlessness
-- Empathy of the Newt
-- Gallapagosian Mating Call
-- Hero of the Half-Shell
-- Kneebutt
-- Patience of the Tortoise
-- Patient Smile
-- Quiet Determination
-- Reptilian Fortitude
-- Shieldbutt
-- Skin of the Leatherback
-- Spectral Snapper
-- Spiky Shell
-- Stiff Upper Lip
-- Tao of the Terrapin
-- Tenacity of the Snapper
-- Testudinal Teachings
-- The Long View
-- Toss
-- Wisdom of the Elder Tortoises
-
-Pastamancer
-- Arched Eyebrow of the Archmage
-- Bind Lasagmbie
-- Bind Spice Ghost
-- Blood Bucatini
-- Cannelloni Cannon
-- Cannelloni Cocoon
-- Entangling Noodles
-- Flavour of Magic
-- Lasagna Bandages
-- Leash of Linguini
-- Manicotti Meditation
-- Pastamastery
-- Shield of the Pastalord
-- Spaghetti Spear
-- Spirit of Ravioli
-- Spirit of Rigatoni
-- Springy Fusilli
-- Subtle and Quick to Anger
-- Thrall Unit Tactics
-- Tolerance of the Kitchen
-- Transcendental Noodlecraft
-- Weapon of the Pastalord
-- Wizard Squint
-
-Sauceror
-- Advanced Saucecrafting
-- Blood Sugar Sauce Magic
-- Curse of Marinara
-- Curse of Weaksauce
-- Curse of the Thousand Islands
-- Diminished Gag Reflex
-- Elemental Saucesphere
-- Expert Panhandling
-- Icy Glare
-- Impetuous Sauciness
-- Inner Sauce
-- Intrinsic Spiciness
-- Irrepressible Spunk
-- Itchy Curse Finger
-- Love Mixology
-- Master Saucier
-- Sauce Monocle
-- Saucegeyser
-- Saucemaven
-- Saucestorm
-- Scarysauce
-- Soul Saucery
-- The Way of Sauce
-- Wave of Sauce
-- Wry Smile
-
-Disco Bandit
-- Acquire Rhinestones
-- Advanced Cocktailcrafting
-- Adventurer of Leisure
-- Ambidextrous Funkslinging
-- Deft Hands
-- Disco Bravado
-- Disco Dance 3: Back in the Habit
-- Disco Dance II: Electric Boogaloo
-- Disco Dance of Doom
-- Disco Eye-Poke
-- Disco Face Stab
-- Disco Fever
-- Disco Greed
-- Disco Leer
-- Disco Smirk
-- Disco State of Mind
-- Flashy Dancer
-- Heart of Polyester
-- Mad Looting Skillz
-- Nimble Fingers
-- Overdeveloped Sense of Self Preservation
-- Sensitive Fingers
-- Smooth Movement
-- Suckerpunch
-- Superhuman Cocktailcrafting
-- That's Not a Knife
-- Tricky Knifework
-
-Accordion Thief
-- Aloysius' Antiphon of Aptitude
-- Bram's Bloody Bagatelle
-- Brawnee's Anthem of Absorption
-- Carlweather's Cantata of Confrontation
-- Chorale of Companionship
-- Cletus's Canticle of Celerity
-- Fat Leon's Phat Loot Lyric
-- Five Finger Discount
-- Jackasses' Symphony of Destruction
-- Knowing Smile
-- Mariachi Memory
-- Master Accordion Master Thief
-- Stevedave's Shanty of Superiority
-- Sticky Fingers
-- Suspicious Gaze
-- The Magical Mojomuscular Melody
-- The Moxious Madrigal
-- The Ode to Booze
-- The Polka of Plenty
-- The Power Ballad of the Arrowsmith
-- The Psalm of Pointiness
-- The Sonata of Sneakiness
-- Thief Among the Honorable
-- Ur-Kel's Aria of Annoyance
-
-Conditional
-- CHEAT CODE: Invisible Avatar
-- CHEAT CODE: Triple Size
-- Spirit of Bacon Grease
-- Spirit of Cayenne
-- Spirit of Garlic
-- Spirit of Nothing
-- Spirit of Peppermint
-- Spirit of Wormwood
-
-Gnome Trainer
-- Cosmic Ugnderstanding
-- Gnefarious Pickpocketing
-- Gnomish Hardigness
-- Powers of Observatiogn
-- Torso Awaregness
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+</mafioso>
 
 familiar Left-Hand Man (6 lbs)
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Player Snapshot
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-> moon
 
 July 15, 2020 - Martinus 7
 
@@ -317,8 +110,6 @@ El Dia De Los Muertos Borrachos: 91 days
 
 2 days until Muscle.
 
-> status
-
 Name: dextrial
 Class: Pastamancer
 
@@ -337,8 +128,6 @@ Full: 0 / 15
 Drunk: 0 / 15
 Spleen: 0 / 15
 
-> equipment
-
 Hat: (none)
 Weapon: (none)
 Off-hand: (none)
@@ -351,8 +140,6 @@ Acc. 3: (none)
 
 Pet: Left-Hand Man (6 lbs)
 Item: (none)
-
-> skills
 
 Uncategorized
 - 20/20 Vision
@@ -558,11 +345,7 @@ Gnome Trainer
 - Powers of Observatiogn
 - Torso Awaregness
 
-> effects
-
 0 of 4 AT buffs active.
-
-> modifiers
 
 ML: +0
 Enc: +0.00%
@@ -3751,10 +3534,7 @@ equip acc1 knob shaft skate key
 familiar Left-Hand Man (37 lbs)
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Player Snapshot
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-> moon
 
 July 16, 2020 - Martinus 8
 
@@ -3777,8 +3557,6 @@ El Dia De Los Muertos Borrachos: 90 days
 
 Muscle bonus tomorrow (not today).
 
-> status
-
 Name: dextrial
 Class: Pastamancer
 
@@ -3797,8 +3575,6 @@ Full: 0 / 15
 Drunk: 0 / 15
 Spleen: 0 / 15
 
-> equipment
-
 Hat: Iunion Crown
 Weapon: Fourth of May Cosplay Saber
 Off-hand: latte lovers member's mug
@@ -3812,8 +3588,6 @@ Acc. 3: Powerful Glove
 
 Pet: Left-Hand Man (27 lbs)
 Item: (none)
-
-> skills
 
 Uncategorized
 - 20/20 Vision
@@ -4027,8 +3801,6 @@ Gnome Trainer
 - Powers of Observatiogn
 - Torso Awaregness
 
-> effects
-
 3 of 4 AT buffs active.
 ♫ Ode to Booze
 ☺ Wry Smile (4)
@@ -4053,8 +3825,6 @@ Sauce Monocle (434)
 Springy Fusilli (573)
 Astral Shell (840)
 Spirit of Peppermint (∞)
-
-> modifiers
 
 ML: +10
 Enc: -26.00%
@@ -6881,10 +6651,7 @@ This combat did not cost a turn
 familiar Left-Hand Man (17 lbs)
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Player Snapshot
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-> moon
 
 July 16, 2020 - Martinus 8
 
@@ -6907,8 +6674,6 @@ El Dia De Los Muertos Borrachos: 90 days
 
 Muscle bonus tomorrow (not today).
 
-> status
-
 Name: dextrial
 Class: Pastamancer
 
@@ -6927,8 +6692,6 @@ Full: 15 / 15
 Drunk: 13 / 15
 Spleen: 15 / 15
 
-> equipment
-
 Hat: wad of used tape
 Weapon: antique machete
 Off-hand: latte lovers member's mug
@@ -6942,8 +6705,6 @@ Acc. 3: key sausage
 
 Pet: Left-Hand Man (17 lbs)
 Item: (none)
-
-> skills
 
 Uncategorized
 - 20/20 Vision
@@ -7157,8 +6918,6 @@ Gnome Trainer
 - Powers of Observatiogn
 - Torso Awaregness
 
-> effects
-
 4 of 4 AT buffs active.
 Let's Go Shopping! (4)
 ♫ The Sonata of Sneakiness (5)
@@ -7182,8 +6941,6 @@ Singer's Faithful Ocelot (342)
 Springy Fusilli (383)
 Astral Shell (650)
 Spirit of Peppermint (∞)
-
-> modifiers
 
 ML: +10
 Enc: -26.00%
@@ -8311,10 +8068,7 @@ equip acc2 knob shaft skate key
 familiar Left-Hand Man (45 lbs)
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Player Snapshot
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-> moon
 
 July 17, 2020 - Bill 1
 
@@ -8337,8 +8091,6 @@ El Dia De Los Muertos Borrachos: 89 days
 
 Muscle bonus today and tomorrow.
 
-> status
-
 Name: dextrial
 Class: Pastamancer
 
@@ -8357,8 +8109,6 @@ Full: 0 / 15
 Drunk: 0 / 15
 Spleen: 0 / 15
 
-> equipment
-
 Hat: psychic's circlet
 Weapon: Fourth of May Cosplay Saber
 Off-hand: latte lovers member's mug
@@ -8372,8 +8122,6 @@ Acc. 3: bejeweled pledge pin
 
 Pet: Left-Hand Man (27 lbs)
 Item: (none)
-
-> skills
 
 Uncategorized
 - 20/20 Vision
@@ -8585,8 +8333,6 @@ Gnome Trainer
 - Powers of Observatiogn
 - Torso Awaregness
 
-> effects
-
 4 of 4 AT buffs active.
 Triple-Sized
 ♫ Ode to Booze (4)
@@ -8626,8 +8372,6 @@ Astral Shell (1,143)
 Walberg's Dim Bulb (1,203)
 Ancient Annoying Serpent Poison (∞)
 Spirit of Peppermint (∞)
-
-> modifiers
 
 ML: +31
 Enc: -4.00%
@@ -8746,10 +8490,7 @@ choice.php?pwd&whichchoice=1412&option=4
 You acquire an item: Guzzlr cocktail set
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Player Snapshot
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-> moon
 
 July 17, 2020 - Bill 1
 
@@ -8772,8 +8513,6 @@ El Dia De Los Muertos Borrachos: 89 days
 
 Muscle bonus today and tomorrow.
 
-> status
-
 Name: dextrial
 Class: Pastamancer
 
@@ -8792,8 +8531,6 @@ Full: 0 / 15
 Drunk: 0 / 15
 Spleen: 0 / 15
 
-> equipment
-
 Hat: Iunion Crown
 Weapon: Fourth of May Cosplay Saber
 Off-hand: Kramco Sausage-o-Matic&trade;
@@ -8807,8 +8544,6 @@ Acc. 3: Guzzlr tablet
 
 Pet: Left-Hand Man (22 lbs)
 Item: (none)
-
-> skills
 
 Uncategorized
 - 20/20 Vision
@@ -9019,8 +8754,6 @@ Gnome Trainer
 - Powers of Observatiogn
 - Torso Awaregness
 
-> effects
-
 4 of 4 AT buffs active.
 Triple-Sized
 ♫ Ode to Booze (4)
@@ -9060,8 +8793,6 @@ Astral Shell (1,143)
 Walberg's Dim Bulb (1,203)
 Ancient Annoying Serpent Poison (∞)
 Spirit of Peppermint (∞)
-
-> modifiers
 
 ML: +41
 Enc: -14.00%
@@ -10455,8 +10186,6 @@ You acquire an item: dense meat stack
 You acquire an item: batskin belt
 
 equip acc3 "I Voted!" sticker
-
-cobbsknob.php?action=tomenagerie
 
 [508] The Haunted Pantry
 Encounter: angry ghost
@@ -12020,8 +11749,6 @@ You acquire an item: headpiece of the Staff of Ed
 
 Combine 1 headpiece of the Staff of Ed + 1 Staff of Fats
 You acquire an item: Staff of Ed
-
-
 
 equip acc1 Lil' Doctor™ bag
 

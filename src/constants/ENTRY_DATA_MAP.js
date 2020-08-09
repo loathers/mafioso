@@ -186,7 +186,7 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
     icon: EquipmentSVG,
     locationName_alt: 'January\'s Garbage Tote',
