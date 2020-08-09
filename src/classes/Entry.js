@@ -3,6 +3,7 @@ import {COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import {INSTAKILLS, INSTAKILLS_MAP} from 'constants/INSTAKILLS'
 import {RUNAWAYS, RUNAWAYS_MAP} from 'constants/RUNAWAYS'
+import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from 'constants/LATTE_EFFECTS_MAP';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
@@ -152,7 +153,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasAdditionalDisplay() {
-    return Boolean(this.attributes.additionalDisplay);
+    return Boolean(this.additionalDisplay);
   }
   /** @type {Boolean} */
   get hasAnnotations() {
@@ -329,6 +330,19 @@ export default class Entry {
   }
   /** @type {String} */
   get additionalDisplay() {
+    if (this.entryType === ENTRY_TYPE.IOTM.LATTE_LOVERS_MEMBERS_MUG.REFILL) {
+      // special text for Latte refill
+      const latteEffectsResult = LATTE_EFFECTS_LIST.filter((effectKey) => {
+        const effectMatcher = LATTE_EFFECTS_MAP[effectKey];
+        const ingredientMatch = this.findMatcher(effectMatcher);
+        return Boolean(ingredientMatch);
+      });
+
+      if (latteEffectsResult.length > 0) {
+        return `(${latteEffectsResult.join(', ')})`
+      }
+    }
+
     return this.attributes.additionalDisplay;
   }
   /** @type {String} */

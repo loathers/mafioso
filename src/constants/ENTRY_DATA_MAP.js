@@ -182,7 +182,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE,
     icon: InfoSVG,
     locationName_alt: 'Latte Lovers Member\'s Mug Refill',
-    // encounterName_alt: parseEncounterName() special case
+    encounterName_alt: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS,
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {

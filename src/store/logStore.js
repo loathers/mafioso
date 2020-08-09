@@ -412,7 +412,7 @@ class LogStore {
       if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER && entry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
         const sneakisolNonCombat = this.findNextEntry(idx, {isNonCombatEncounter: true});
         if (sneakisolNonCombat) {
-          entry.attributes.additionalDisplay = sneakisolNonCombat.encounterDisplay;
+          entry.attributes.additionalDisplay = `(${sneakisolNonCombat.encounterDisplay})`;
         }
       }
 

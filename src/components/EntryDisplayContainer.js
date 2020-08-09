@@ -100,7 +100,7 @@ export default function EntryDisplayContainer(props) {
           {/* debug stuff */}
           { isShowRaw &&
             <div className='borradius-1 pad-3 pad-r-8 flex-row flex-auto bg-fourth adjacent-mar-l-4'>
-              <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-3')}>
+              <div style={{flex: '1 1 33%'}} className={combineClassnames('flex-col whitespace-pre-wrap wordbreak-break flex-auto adjacent-mar-l-3')}>
                 {entry.rawText}
               </div>
 

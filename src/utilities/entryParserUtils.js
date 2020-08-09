@@ -7,7 +7,6 @@ import {DISINTEGRATERS, DISINTEGRATERS_MAP} from 'constants/DISINTEGRATERS'
 import {REPLACERS, REPLACERS_MAP} from 'constants/REPLACERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
-import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from 'constants/LATTE_EFFECTS_MAP';
 // import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 import * as regexUtils from 'utilities/regexUtils';
@@ -234,18 +233,6 @@ export function parseEncounterName(entryString) {
   const replacedResults = parseReplacedResults(entryString);
   if (replacedResults) {
     return replacedResults.pop();
-  }
-
-  // special text for Latte refill
-  const latteIngredientsMatch = entryString.match(REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS);
-  if (latteIngredientsMatch) {
-    const latteEffectsResult = LATTE_EFFECTS_LIST.filter((effectKey) => {
-      const effectMatcher = LATTE_EFFECTS_MAP[effectKey];
-      const ingredientMatch = entryString.match(effectMatcher);
-      return ingredientMatch !== null;
-    });
-
-    return `${latteEffectsResult.join(', ')} (${latteIngredientsMatch})`
   }
 
   const encounterNameMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
