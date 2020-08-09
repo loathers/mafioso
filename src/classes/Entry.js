@@ -209,6 +209,11 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isNonCombatEncounter() {
+    // going to make an exception where this was a choiceadv that led to a combat
+    if (this.hasText(REGEX.LINE.GENERIC_TOOK_CHOICE)) {
+      return this.hasText(REGEX.VALUE.NONCOMBAT_NAME) && !this.isInBetweenTurns;
+    }
+
     return !this.isCombatEncounter && this.hasText(REGEX.VALUE.NONCOMBAT_NAME) && !this.isInBetweenTurns;
   }
   /** @type {Boolean} */

@@ -207,6 +207,7 @@ export const REGEX = {
 
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
+    GENERIC_TOOK_CHOICE: /^took choice/gmi,
 
     EQUIP: /^equip.*/gim,
     HAGNK_PULL: /^pull: .*/gim,
