@@ -74,7 +74,6 @@ export function parseCommonAttributes(entryString) {
 
   return {
     rawTurnNum: rawTurnNum,
-    isFreeCombat: isFreeCombat(entryString),
     adventureChanges: parseAdventureChanges(entryString),
     locationName,
     encounterName,
@@ -114,8 +113,6 @@ export function parseCombatAttributes(entryString) {
   return {
     combatActions: parseCombatActions(entryString),
     hasInitiative: hasInitiative(entryString),
-    isVictory: parseCombatVictory(entryString),
-    isDeath: parseCombatLoss(entryString),
     attractors: parseAttractors(entryString),
     banisher: parseBanishers(entryString),
     copiers: parseCopiers(entryString),
@@ -193,24 +190,6 @@ export function parseRawTurnNum(entryString) {
   }
 
   return Number(turnNumMatches[0]);
-}
-/**
- * determine if this is a free adventure
- *
- * @param {String} entryString
- * @return {String}
- */
-export function isFreeCombat(entryString) {
-  if (isUseTheForce(entryString)) {
-    return true;
-  }
-
-  const freeCombatMatch = regexUtils.hasString(entryString, REGEX.COMBAT.FREE_COMBAT);
-  if (freeCombatMatch) {
-    return true;
-  }
-
-  return false;
 }
 /**
  * @param {String} entryString
@@ -570,32 +549,6 @@ export function parseAttackName(entryString) {
   }
 
   return 'unknown attack';
-}
-/**
- * was this a won combat?
- *
- * @param {String} entryString
- * @return {Boolean}
- */
-export function parseCombatVictory(entryString) {
-  return regexUtils.hasString(entryString, REGEX.COMBAT.VICTORY_LINE)
-    || Boolean(parseDisintigraters(entryString));
-}
-/**
- * was this a lost combat?
- *
- * @param {String} entryString
- * @return {Boolean}
- */
-export function parseCombatLoss(entryString) {
-  // only want to check if combat
-  if (!isCombatEncounter(entryString)) {
-    return false;
-  }
-
-  // combat is counted as a loss if not a victory
-  //  except in the case that there was a free runaway/banish used
-  return !isFreeCombat(entryString) && !parseCombatVictory(entryString);
 }
 /**
  * @param {String} entryString

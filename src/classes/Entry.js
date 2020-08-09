@@ -41,8 +41,6 @@ export default class Entry {
       estimatedTurnNum: undefined,
       /** @type {Boolean} */
       isInBetweenTurns: false,
-      /** @type {Boolean} */
-      isFreeCombat: false,
       /** @type {Array<Number>} */
       adventureChanges: [],
       /** @type {String | null} */
@@ -85,10 +83,6 @@ export default class Entry {
       hasInitiative: false,
       /** @type {Array<String>} */
       combatActions: [],
-      /** @type {Boolean} */
-      isVictory: false,
-      /** @type {Boolean} */
-      isDeath: false,
       /** @type {Array<String>} */
       replacedEnemies: [],
 
@@ -201,12 +195,28 @@ export default class Entry {
 
     return undefined;
   }
-  /** @type {Number} */
+  /** @type {Boolean} */
+  get isCombatEncounter() {
+    return this.attributes.isCombatEncounter;
+  }
+  /** @type {Boolean} */
+  get isFreeCombat() {
+    if (this.hasText(REGEX.COMBAT.FREE_COMBAT)) {
+      return true;
+    }
+
+    if (this.attributes.isInBetweenTurns && this.isCombatEncounter) {
+      return true;
+    }
+
+    return false;
+  }
+  /** @type {Boolean} */
   get isInBetweenTurns() {
     return this.attributes.isInBetweenTurns;
   }
   // -- stats
-  /** @type {Number} */
+  /** @type {Boolean} */
   get hasAdventureChanges() {
     return this.attributes.adventureChanges.length > 0;
   }
@@ -313,6 +323,17 @@ export default class Entry {
   /** @type {Boolean} */
   get hasCombatActions() {
     return this.attributes.combatActions.length > 0;
+  }
+  /** @type {Boolean} */
+  get isVictory() {
+    return this.isDisintegrated
+      || this.hasInstakill
+      || this.isFreeCombat
+      || this.hasText(REGEX.COMBAT.VICTORY_LINE);
+  }
+  /** @type {Boolean} */
+  get isDeath() {
+    return this.attributes.isCombatEncounter && !this.isVictory;
   }
   /** @type {Boolean} */
   get isAttracted() {

@@ -57,8 +57,6 @@ export default function CombatSequenceDisplay(props) {
   const {attributes: {
     combatActions,
     hasInitiative,
-    isVictory,
-    isDeath,
   }} = entry;
 
   return (
@@ -84,13 +82,13 @@ export default function CombatSequenceDisplay(props) {
         </Fragment>
       ))}
 
-      { isVictory &&
+      { entry.isVictory &&
         <CombatResultDisplay
           content='Victory!'
           IconComponent={LaurelCrownSVG} />
       }
 
-      { isDeath &&
+      { entry.isDeath &&
         <CombatResultDisplay
           content='Beaten up :('
           IconComponent={CarrionSVG} />
@@ -102,13 +100,13 @@ export default function CombatSequenceDisplay(props) {
           IconComponent={BanishSVG} />
       }
 
-      { entry.hasRunaway && !isVictory &&
+      { entry.hasRunaway && !entry.isVictory &&
         <CombatResultDisplay
           content='Ran Away!'
           IconComponent={RunawaySVG} />
       }
 
-      { entry.hasRunaway && !isVictory && entry.attributes.isFreeCombat &&
+      { entry.hasRunaway && !entry.isVictory && entry.isFreeCombat &&
         <div className='fontsize-1 mar-1'>(for free)</div>
       }
 
