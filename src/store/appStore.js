@@ -27,7 +27,7 @@ class AppStore {
   /** @type {Boolean} */
   get isReady() {
     return logStore.isReady;
-  }   
+  }
   /** @type {Boolean} */
   get isShowingFullUpload() {
     return !logStore.hasFiles;
@@ -46,6 +46,10 @@ class AppStore {
       // don't use the hotkeys if trying to type
       if (evt.srcElement.type === 'text' || evt.srcElement.type === 'textarea' || evt.srcElement.type === 'number') {
         return;
+      }
+
+      if (evt.keyCode === keycodes.c) {
+        this.toggleCompactMode();
       }
 
       if (evt.keyCode === keycodes.backquote) {
