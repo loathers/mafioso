@@ -128,10 +128,6 @@ function EntryAdventureColumn(props) {
     entry,
   } = props;
 
-  const {attributes: {
-    isFreeCombat,
-  }} = entry;
-
   const shouldHideTurnNum = entry.attributes.dayNum <= 0 && entry.turnNum <= 0;
   const fontClassName = (!shouldHideTurnNum && !entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold color-white' : 'fontsize-5 color-gray';
 
@@ -144,7 +140,7 @@ function EntryAdventureColumn(props) {
         {!shouldHideTurnNum ? entry.turnNum : '-'}
       </div>
 
-      { isFreeCombat &&
+      { entry.isFreeCombat &&
         <div className='talign-right fontsize-2 adjacent-mar-t-2'>
           free
         </div>
