@@ -38,6 +38,8 @@ class LogStore {
       difficultyName: undefined,
       /** @type {String} */
       pathName: undefined,
+      /** @type {Array<String>} */
+      dateList: [],
     }
 
     /**
@@ -122,6 +124,10 @@ class LogStore {
     return this.ascensionAttributes.className;
   }
   /** @type {Number} */
+  get dayCount() {
+    return this.ascensionAttributes.dateList.length;
+  }
+  /** @type {Number} */
   get ascensionNum() {
     return this.ascensionAttributes.ascensionNum;
   }
@@ -183,6 +189,7 @@ class LogStore {
       ascensionNum: undefined,
       difficultyName: undefined,
       pathName: undefined,
+      dateList: [],
     };
 
     this.displayOptions = observable({
@@ -355,8 +362,8 @@ class LogStore {
   }
   /**
    * there are some things we're going to guess about an entry
-   *  - day
-   *  - possible turn num
+   *  - what day it is on
+   *  - turn num, and adjusted if needed
    *
    * @param {Array<Entry>} allEntries
    * @returns {Array<Entry>}
@@ -367,9 +374,9 @@ class LogStore {
     }
 
     // keeps track of kol dates this run took
-    const dateList = [];
+    const dateListEstimate = [];
 
-    return allEntries.map((entry, idx) => {
+    const conjecturedEntries = allEntries.map((entry, idx) => {
       // const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
       // const prevTurnNum = prevEntry && prevEntry.turnNum;
 
@@ -405,13 +412,13 @@ class LogStore {
       // use entries with the date in them as a possible point of a new day
       if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
         const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE) || [];
-        if (dateMatch && !dateList.includes(dateMatch[0])) {
-          dateList.push(dateMatch[0]);
+        if (dateMatch && !dateListEstimate.includes(dateMatch[0])) {
+          dateListEstimate.push(dateMatch[0]);
         }
       }
 
       // set this dayNum
-      entry.attributes.dayNum = dateList.length;
+      entry.attributes.dayNum = dateListEstimate.length;
 
       // lets see if we can get the noncombat that this sneakisol went to
       if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
@@ -430,9 +437,13 @@ class LogStore {
         }
       }
 
-      // done
+      // completed create conjecture data for entry
       return entry;
     });
+
+    // done
+    this.ascensionAttributes.dateList = dateListEstimate;
+    return conjecturedEntries;
   }
   /**
    * starting from allEntries[startIdx],
