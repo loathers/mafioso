@@ -18,6 +18,20 @@ function NavigationMenu(props) {
     className,
   } = props;
 
+  const onClickChangeDay = (nextDayNum) => {
+    if (nextDayNum !== logStore.currentDayNum) {
+      logStore.fetchEntries({dayNumFilter: nextDayNum});
+      appStore.shouldScrollUp.set(true);
+    }
+  }
+
+  const onClickChangePage = (nextPageNum) => {
+    if (nextPageNum !== logStore.currentPageNum) {
+      logStore.fetchByPage({pageNum: nextPageNum});
+      appStore.shouldScrollUp.set(true);
+    }
+  }
+
   return (
     <div
       componentname='navigation-menu'
@@ -37,32 +51,20 @@ function NavigationMenu(props) {
         <PaginationComponent
           currNum={logStore.isUsingDayFilter ? logStore.currentDayNum : -1}
           lastNum={logStore.dayCount}
-          onChangePage={(nextDayNum) => {
-            if (nextDayNum !== logStore.currentDayNum) {
-              logStore.fetchEntries({dayNumFilter: nextDayNum});
-              appStore.shouldScrollUp.set(true);
-            }
-          }}
+          onChangePage={onClickChangeDay}
           label='Day'
           disabled={!logStore.isReady}
           style={{height: 30}}
           className='boxshadow-black flex-none borradius-3 aself-start adjacent-mar-t-5' />
 
-        { appStore.shouldShowPagination.get() &&
-          <PaginationComponent
-            currNum={logStore.currentPageNum}
-            lastNum={logStore.calculateLastPageIdx()}
-            onChangePage={(nextPageNum) => {
-              if (nextPageNum !== logStore.currentPageNum) {
-                logStore.fetchEntries({pageNum: nextPageNum});
-                appStore.shouldScrollUp.set(true);
-              }
-            }}
-            label='Page'
-            disabled={!logStore.isReady}
-            style={{height: 30}}
-            className='boxshadow-black flex-none borradius-3 aself-start adjacent-mar-t-5' />
-        }
+        <PaginationComponent
+          currNum={logStore.currentPageNum}
+          lastNum={logStore.calculateLastPageIdx()}
+          onChangePage={onClickChangePage}
+          label='Page'
+          disabled={!logStore.isReady}
+          style={{height: 30}}
+          className='boxshadow-black flex-none borradius-3 aself-start adjacent-mar-t-5' />
       </div>
     </div>
   )
