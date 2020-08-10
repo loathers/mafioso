@@ -512,7 +512,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchEntries(options = {}) {
-    if (!this.canFetch(options)) {
+    if (!this.canFetch()) {
       return;
     }
 
@@ -552,7 +552,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchByFilter(options = {}, isFinal = false) {
-    if (!this.canFetch(options)) {
+    if (!this.canFetch()) {
       return;
     }
 
@@ -618,7 +618,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchByPage(options = {}, isFinal = false) {
-    if (!this.canFetch(options)) {
+    if (!this.canFetch()) {
       return;
     }
 
@@ -649,7 +649,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchEntriesAppended(options = {}) {
-    if (!this.canFetch(options)) {
+    if (!this.canFetch()) {
       return;
     }
 
@@ -688,10 +688,9 @@ class LogStore {
     this.isLazyLoading.set(false);
   }
   /**
-   * @param {Object} options
    * @returns {Boolean}
    */
-  canFetch(options = {}) {
+  canFetch() {
     if (!this.hasParsedEntries) {
       return false;
     }
