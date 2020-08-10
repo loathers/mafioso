@@ -11,6 +11,7 @@ export default function SimplePaginator(props) {
   const {
     className,
     style,
+    label,
     disabled,
     currNum,
     lastNum,
@@ -27,6 +28,12 @@ export default function SimplePaginator(props) {
       style={style}
       componentname='pagination-menu'
       className={combineClassnames('boxshadow-dark fontfamily-primary fontsize-6 pad-2 flex-row-center', className)}>
+
+      { label &&
+        <div className='fontsize-2 pad-h-3 flex-none adjacent-mar-l-3'>
+          {label}
+        </div>
+      }
 
       { pageNumAvailable.map((num, idx) => {
         const isDivider = num === '...';
