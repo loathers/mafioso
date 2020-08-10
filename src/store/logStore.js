@@ -38,6 +38,8 @@ class LogStore {
       difficultyName: undefined,
       /** @type {String} */
       pathName: undefined,
+      /** @type {Array<String>} */
+      dateList: [],
     }
 
     /**
@@ -49,18 +51,20 @@ class LogStore {
      * entries that pass the current filters
      * @type {ObservableArray<Entry>}
      */
-    this.visibleEntries = observable([]);
+    this.validEntries = observable([]);
     /**
-     * entries that are currently visible by page
+     * entries that are currently displayed on the page
      * @type {ObservableArray<Entry>}
      */
     this.currentEntries = observable([]);
     /** @type {Object} */
     this.displayOptions = observable({
+      /** @type {Number|'all'} */
+      dayNumFilter: 'all',
       /** @type {Number} */
       pageNum: 0,
       /** @type {Number} */
-      entriesPerPage: 100,
+      entriesPerPage: 110,
       /** @type {Array<CategoryId>} */
       categoriesVisible: DEFAULT_CATEGORIES_VISIBLE.slice(),
       /** @type {Array<EntryAttribute>} */
@@ -74,6 +78,8 @@ class LogStore {
     this.isParsing = observable.box(false);
     /** @type {Boolean} */
     this.isFetching = observable.box(false);
+    /** @type {Boolean} */
+    this.isLazyLoading = observable.box(false);
   }
   /** @type {Boolean} */
   get hasFiles() {
@@ -81,7 +87,7 @@ class LogStore {
   }
   /** @type {Boolean} */
   get isReady() {
-    return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
+    return !this.isParsing.get() && !this.isFetching.get() && !this.isLazyLoading.get() && this.hasParsedEntries;
   }
   // -- log data
   /** @type {Boolean} */
@@ -101,11 +107,11 @@ class LogStore {
     return this.allEntries.length;
   }
   /** @type {Number} */
-  get visibleCount() {
-    return this.visibleEntries.length;
+  get validEntriesCount() {
+    return this.validEntries.length;
   }
   /** @type {Number} */
-  get currentCount() {
+  get currentEntriesCount() {
     return this.currentEntries.length;
   }
   // -- ascension attributes
@@ -116,6 +122,10 @@ class LogStore {
   /** @type {String} */
   get className() {
     return this.ascensionAttributes.className;
+  }
+  /** @type {Number} */
+  get dayCount() {
+    return this.ascensionAttributes.dateList.length;
   }
   /** @type {Number} */
   get ascensionNum() {
@@ -170,7 +180,7 @@ class LogStore {
     this.srcFiles = [];
     this.srcRawTexts = [];
     this.allEntries.clear();
-    this.visibleEntries.clear();
+    this.validEntries.clear();
 
     this.isAscensionLog = false;
     this.ascensionAttributes = {
@@ -179,9 +189,11 @@ class LogStore {
       ascensionNum: undefined,
       difficultyName: undefined,
       pathName: undefined,
+      dateList: [],
     };
 
     this.displayOptions = observable({
+      dayNumFilter: 'all',
       pageNum: 0,
       entriesPerPage: 100,
       categoriesVisible: this.displayOptions.categoriesVisible.slice(),
@@ -295,7 +307,7 @@ class LogStore {
 
       const additionalData = this.createConjectureData(newData);
       this.allEntries.replace(additionalData);
-      this.visibleEntries.replace([]);
+      this.validEntries.replace([]);
 
       const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
       this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
@@ -350,8 +362,8 @@ class LogStore {
   }
   /**
    * there are some things we're going to guess about an entry
-   *  - day
-   *  - possible turn num
+   *  - what day it is on
+   *  - turn num, and adjusted if needed
    *
    * @param {Array<Entry>} allEntries
    * @returns {Array<Entry>}
@@ -362,9 +374,9 @@ class LogStore {
     }
 
     // keeps track of kol dates this run took
-    const dateList = [];
+    const dateListEstimate = [];
 
-    return allEntries.map((entry, idx) => {
+    const conjecturedEntries = allEntries.map((entry, idx) => {
       // const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
       // const prevTurnNum = prevEntry && prevEntry.turnNum;
 
@@ -400,13 +412,13 @@ class LogStore {
       // use entries with the date in them as a possible point of a new day
       if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
         const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE) || [];
-        if (dateMatch && !dateList.includes(dateMatch[0])) {
-          dateList.push(dateMatch[0]);
+        if (dateMatch && !dateListEstimate.includes(dateMatch[0])) {
+          dateListEstimate.push(dateMatch[0]);
         }
       }
 
       // set this dayNum
-      entry.attributes.dayNum = dateList.length;
+      entry.attributes.dayNum = dateListEstimate.length;
 
       // lets see if we can get the noncombat that this sneakisol went to
       if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
@@ -425,9 +437,13 @@ class LogStore {
         }
       }
 
-      // done
+      // completed create conjecture data for entry
       return entry;
     });
+
+    // done
+    this.ascensionAttributes.dateList = dateListEstimate;
+    return conjecturedEntries;
   }
   /**
    * starting from allEntries[startIdx],
@@ -492,8 +508,6 @@ class LogStore {
       return;
     }
 
-    this.isFetching.set(true);
-
     const fullOptions = {
       ...this.displayOptions,
       ...options,
@@ -504,8 +518,10 @@ class LogStore {
       entriesPerPage,
     } = fullOptions;
 
-    const visibleEntries = await this.fetchByFilter(fullOptions);
-    this.visibleEntries.replace(visibleEntries);
+    this.isFetching.set(true);
+
+    const validEntries = await this.fetchByFilter(fullOptions);
+    this.validEntries.replace(validEntries);
 
     const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculateLastPageIdx(entriesPerPage);
     if (isFilteredBeyondRange) {
@@ -513,11 +529,11 @@ class LogStore {
     }
 
     // can only continue to fetch by page if filter created entries
-    if (this.visibleEntries.length > 0) {
+    if (this.validEntries.length > 0) {
       const pagedEntries = await this.fetchByPage(fullOptions);
       this.currentEntries.replace(pagedEntries);
     } else {
-      this.currentEntries.replace(visibleEntries);
+      this.currentEntries.replace(validEntries);
     }
 
     // now update options with the ones used to fetch
@@ -538,18 +554,28 @@ class LogStore {
 
     // console.log('⏳ %cFetching by filter...', 'color: blue');
     const {
+      dayNumFilter = this.displayOptions.dayNumFilter,
       categoriesVisible = this.displayOptions.categoriesVisible,
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
 
     // batch find entries that are in range and not hidden
-    const visibleEntries = await this.logBatcher.run((entriesGroup) => {
+    const validEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
+        // check day
+        if (dayNumFilter !== 'all') {
+          if (entry.dayNum !== dayNumFilter) {
+            return false;
+          }
+        }
+
+        // check visibleEntries list
         const isVisibleEntry = categoriesVisible.some((category) => entry.categories.includes(category));
         if (!isVisibleEntry) {
           return false;
         }
 
+        // check chosen attributes
         const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
           const entryAttributeValue = entry.attributes[attributeName] || entry[attributeName];
           return entryAttributeValue !== attributeValue;
@@ -564,12 +590,12 @@ class LogStore {
     }, {batchDelay: FILTER_DELAY});
 
     // filtering resulted in nothing
-    if (visibleEntries.length <= 0) {
+    if (validEntries.length <= 0) {
       console.log(`⌛ %cNo results for filter.`, 'color: blue');
       return [];
     }
 
-    return visibleEntries;
+    return validEntries;
   }
   /**
    * @param {Object} options
@@ -589,11 +615,33 @@ class LogStore {
     const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
     // console.log(`⏳ %cGetting page ${pageNum}... from ${startIdx} to ${endIdx}`, 'color: blue');
 
-    const pagedEntries = this.visibleEntries.slice(startIdx, endIdx);
+    const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
     // delay for a millisec so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, 1));
     return pagedEntries;
+  }
+  /**
+   * @param {Object} options
+   * @return {Array<Entry>}
+   */
+  async fetchEntriesAppended(options = {}) {
+    if (!this.canFetch(options)) {
+      return;
+    }
+
+    this.isLazyLoading.set(true);
+
+    // const previousEntries = this.currentEntries.slice(Math.max(this.currentEntries.length - entriesPerPage - 15, 0), this.currentEntries.length);
+    const previousEntries = this.currentEntries.slice();
+
+    const fetchedEntries = await this.fetchEntries(options);
+    const combinedEntries = previousEntries.concat(fetchedEntries);
+    this.currentEntries.replace(combinedEntries);
+
+    // done
+    this.isLazyLoading.set(false);
+    return this.currentEntries;
   }
   /**
    * @param {Object} options
@@ -615,7 +663,7 @@ class LogStore {
    * @returns {Number}
    */
   calculateLastPageIdx(entriesPerPage = this.displayOptions.entriesPerPage) {
-    const lastPage = Math.ceil(this.visibleEntries.length / entriesPerPage) - 1;
+    const lastPage = Math.ceil(this.validEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
 }

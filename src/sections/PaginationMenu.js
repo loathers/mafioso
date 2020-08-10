@@ -1,7 +1,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
-// import appStore from 'store/appStore';
+import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import DarkButton from 'components/DarkButton';
@@ -21,6 +21,7 @@ function SimplePaginator(props) {
   const onApplyChangePage = (nextPageNum) => {
     if (nextPageNum !== logStore.currentPageNum) {
       logStore.fetchEntries({pageNum: nextPageNum});
+      appStore.shouldScrollUp.set(true);
     }
   };
 
@@ -32,7 +33,7 @@ function SimplePaginator(props) {
   });
 
   return (
-    <div 
+    <div
       style={style}
       componentname='pagination-menu'
       className={combineClassnames('boxshadow-dark fontfamily-primary fontsize-6 pad-2 flex-row-center', className)}>
@@ -46,7 +47,7 @@ function SimplePaginator(props) {
             key={`page-num-${idx}-key`}
             onClick={() => onApplyChangePage(num)}
             disabled={isDivider || !logStore.isReady}
-            children={displayNum} 
+            children={displayNum}
             style={{width: 40}}
             className={combineClassnames('adjacent-mar-l-3', isOnThisNum ? 'active' : '')}/>
         )
@@ -62,7 +63,7 @@ function SimplePaginator(props) {
 /**
  * there's gotta be a smarter way to have done this
  * pretty sure I have no idea wtf I wrote
- * 
+ *
  * @param {Number} options.curr
  * @param {Number} options.last
  * @return {Array<Number>}

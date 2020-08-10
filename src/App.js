@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {observer} from 'mobx-react';
 
 import appStore from 'store/appStore';
@@ -14,10 +14,36 @@ import VisualizerSection from 'sections/VisualizerSection';
 
 export default observer(
 function App() {
-  // scroll to the top when loading is complete
-  //  such as when navigating pages
-  React.useEffect(() => {
-    if (!appStore.isLoading) {
+  const onScroll = (evt) => {
+    const currY = window.scrollY;
+    const totalY = window.document.body.clientHeight;
+    if ((totalY - currY) < 1000) {
+      if (appStore.isReady && !logStore.isLazyLoading.get() && !logStore.isOnLastPage) {
+        // experiment compacting everything and not showing pagination menu when using lazy load
+        appStore.isUsingCompactMode.set(true);
+        appStore.shouldShowPagination.set(false);
+
+        logStore.fetchEntriesAppended({
+          pageNum: logStore.currentPageNum + 1,
+          entriesPerPage: 50,
+        });
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  });
+
+  // scroll to the top if someone told the appStore we should
+  //  might need a better implementation
+  useEffect(() => {
+    if (appStore.shouldScrollUp.get()) {
+      appStore.shouldScrollUp.set(false);
+      appStore.shouldShowPagination.set(true);
       window.scrollTo({top: 0});
     }
   });
@@ -29,7 +55,7 @@ function App() {
       className='color-white fontfamily-primary fontsize-5'>
 
       {/* loader */}
-      { appStore.isLoading &&
+      { appStore.isLoading && !logStore.isLazyLoading.get() &&
         <LoaderComponent />
       }
 
@@ -63,6 +89,18 @@ function App() {
             <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
               Huh, nothing here.
             </div>
+          }
+
+          { logStore.isLazyLoading.get() &&
+            <div
+              className='spinner flex-none adjacent-mar-t-5'
+              style={{
+                width: 30,
+                height: 30,
+                borderColor: 'white',
+                borderWidth: 5,
+              }}
+            />
           }
         </div>
       }
