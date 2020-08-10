@@ -6,11 +6,11 @@ import REGEX, {
   EXCESSIVE_NEW_LINES,
 } from 'constants/REGEXES';
 
-export const CLEAN_RAW_DELAY = 50;
-export const FULL_PARSE_DELAY = 50;
+export const CLEAN_RAW_DELAY = 5;
+export const FULL_PARSE_DELAY = 5;
 
 export const DISPLAY_SCRUB_DELAY = 5;
-export const FILTER_DELAY = 3;
+export const FILTER_DELAY = 5;
 
 // -- log level
 export const DEFAULT_CATEGORIES_VISIBLE = [
@@ -132,11 +132,11 @@ export const DISPLAY_SCRUB_LIST = [
   REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE,
   REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_LINE,
   REGEX.POCKET_PROFESSOR.AFTER_COMBAT_TEXT,
-  REGEX.QUEST.VISIT_TOOT,  
+  REGEX.QUEST.VISIT_TOOT,
   REGEX.QUEST.COMBINE_WAND_GROUP,
   REGEX.QUEST.OPEN_DESERT_PYRAMID,
-  // cleans up blank lines after text is scrubbed 
-  USELESS_PRE_NEWLINE, 
+  // cleans up blank lines after text is scrubbed
+  USELESS_PRE_NEWLINE,
 ];
 // entries that don't need to have any body text
 export const COMBINABLE_ENTRIES_LIST = [
