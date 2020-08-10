@@ -218,7 +218,10 @@ class LogStore {
     }
 
     if (this.hasRawText) {
-      this.ascensionAttributes = logParserUtils.parseAscensionAttributes(this.rawText);
+      this.ascensionAttributes = {
+        ...this.ascensionAttributes,
+        ...logParserUtils.parseAscensionAttributes(this.rawText),
+      };
     }
 
     return this.ascensionAttributes;
@@ -450,7 +453,7 @@ class LogStore {
     });
 
     // done
-    this.ascensionAttributes.dateList = dateListEstimate;
+    this.ascensionAttributes.dateList = dateListEstimate || [];
     return conjecturedEntries;
   }
   /**
