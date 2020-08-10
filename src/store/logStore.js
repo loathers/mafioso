@@ -528,7 +528,7 @@ class LogStore {
 
     this.isFetching.set(true);
 
-    const validEntries = await this.fetchByFilter(fullOptions);
+    const validEntries = await this.fetchByFilter(fullOptions, false);
     this.validEntries.replace(validEntries);
 
     const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculateLastPageIdx(entriesPerPage);
@@ -538,17 +538,12 @@ class LogStore {
 
     // can only continue to fetch by page if filter created entries
     if (this.validEntries.length > 0) {
-      const pagedEntries = await this.fetchByPage(fullOptions);
+      const pagedEntries = await this.fetchByPage(fullOptions, false);
       this.currentEntries.replace(pagedEntries);
-    } else {
-      this.currentEntries.replace(validEntries);
     }
 
-    // now update options with the ones used to fetch
-    this.displayOptions = fullOptions;
-
     // done
-    this.isFetching.set(false);
+    this.onFetchDone(fullOptions);
     return this.currentEntries;
   }
   /**
@@ -603,13 +598,18 @@ class LogStore {
     // filtering resulted in nothing
     if (validEntries.length <= 0) {
       console.log(`⌛ %cNo results for filter.`, 'color: blue');
+      if (isFinal) {
+        console.warn('fetchByFilter.final is not handled.');
+      }
       return [];
     }
 
+    // if marked as final, then go ahead and only filter to first page
     if (isFinal) {
-      return await this.fetchByPage({pageNum: 0});
+      await this.fetchByPage({pageNum: 0});
     }
 
+    // otherwise, here are all entries that are valid
     return validEntries;
   }
   /**
@@ -638,13 +638,9 @@ class LogStore {
 
     const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
-    // update pageNum
-    this.displayOptions.pageNum = pageNum;
-
     // done
     if (isFinal) {
-      this.currentEntries.replace(pagedEntries);
-      this.isFetching.set(false);
+      this.onFetchDone(options, pagedEntries);
     }
     return pagedEntries;
   }
@@ -662,15 +658,34 @@ class LogStore {
 
     // const previousEntries = this.currentEntries.slice(Math.max(this.currentEntries.length - entriesPerPage - 15, 0), this.currentEntries.length);
     const previousEntries = this.currentEntries.slice();
-
     const fetchedEntries = await this.fetchByPage(options);
     const combinedEntries = previousEntries.concat(fetchedEntries);
-    this.currentEntries.replace(combinedEntries);
 
     // done
+    this.onFetchDone(options, combinedEntries);
+    return this.currentEntries;
+  }
+  /**
+   * @param {Object} options
+   * @param {Array<Entry>} [newCurrentEntries]
+   * @param {Array<Entry>} [newValidEntries]
+   */
+  onFetchDone(options = {}, newCurrentEntries, newValidEntries) {
+    this.displayOptions = {
+      ...this.displayOptions,
+      ...options,
+    };
+
+    if (newCurrentEntries !== undefined) {
+      this.currentEntries.replace(newCurrentEntries);
+    }
+
+    if (newValidEntries !== undefined) {
+      this.validEntries.replace(newValidEntries);
+    }
+
     this.isFetching.set(false);
     this.isLazyLoading.set(false);
-    return this.currentEntries;
   }
   /**
    * @param {Object} options
