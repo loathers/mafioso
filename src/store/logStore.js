@@ -540,6 +540,8 @@ class LogStore {
     if (this.validEntries.length > 0) {
       const pagedEntries = await this.fetchByPage(fullOptions, false);
       this.currentEntries.replace(pagedEntries);
+    } else {
+      this.currentEntries.replace([]);
     }
 
     // done
