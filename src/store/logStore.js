@@ -57,10 +57,12 @@ class LogStore {
     this.currentEntries = observable([]);
     /** @type {Object} */
     this.displayOptions = observable({
+      /** @type {Number|'all'} */
+      dayNumFilter: 'all',
       /** @type {Number} */
       pageNum: 0,
       /** @type {Number} */
-      entriesPerPage: 100,
+      entriesPerPage: 110,
       /** @type {Array<CategoryId>} */
       categoriesVisible: DEFAULT_CATEGORIES_VISIBLE.slice(),
       /** @type {Array<EntryAttribute>} */
@@ -184,6 +186,7 @@ class LogStore {
     };
 
     this.displayOptions = observable({
+      dayNumFilter: 'all',
       pageNum: 0,
       entriesPerPage: 100,
       categoriesVisible: this.displayOptions.categoriesVisible.slice(),
@@ -540,6 +543,7 @@ class LogStore {
 
     // console.log('⏳ %cFetching by filter...', 'color: blue');
     const {
+      dayNumFilter = this.displayOptions.dayNumFilter,
       categoriesVisible = this.displayOptions.categoriesVisible,
       filteredAttributes = this.displayOptions.filteredAttributes,
     } = options;
@@ -547,11 +551,20 @@ class LogStore {
     // batch find entries that are in range and not hidden
     const validEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
+        // check day
+        if (dayNumFilter !== 'all') {
+          if (entry.dayNum !== dayNumFilter) {
+            return false;
+          }
+        }
+
+        // check visibleEntries list
         const isVisibleEntry = categoriesVisible.some((category) => entry.categories.includes(category));
         if (!isVisibleEntry) {
           return false;
         }
 
+        // check chosen attributes
         const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
           const entryAttributeValue = entry.attributes[attributeName] || entry[attributeName];
           return entryAttributeValue !== attributeValue;
