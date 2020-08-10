@@ -74,6 +74,8 @@ class LogStore {
     this.isParsing = observable.box(false);
     /** @type {Boolean} */
     this.isFetching = observable.box(false);
+    /** @type {Boolean} */
+    this.isLazyLoading = observable.box(false);
   }
   /** @type {Boolean} */
   get hasFiles() {
@@ -81,7 +83,7 @@ class LogStore {
   }
   /** @type {Boolean} */
   get isReady() {
-    return !this.isParsing.get() && !this.isFetching.get() && this.hasParsedEntries;
+    return !this.isParsing.get() && !this.isFetching.get() && !this.isLazyLoading.get() && this.hasParsedEntries;
   }
   // -- log data
   /** @type {Boolean} */
@@ -492,8 +494,6 @@ class LogStore {
       return;
     }
 
-    this.isFetching.set(true);
-
     const fullOptions = {
       ...this.displayOptions,
       ...options,
@@ -503,6 +503,8 @@ class LogStore {
       pageNum,
       entriesPerPage,
     } = fullOptions;
+
+    this.isFetching.set(true);
 
     const visibleEntries = await this.fetchByFilter(fullOptions);
     this.visibleEntries.replace(visibleEntries);
@@ -594,6 +596,28 @@ class LogStore {
     // delay for a millisec so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, 1));
     return pagedEntries;
+  }
+  /**
+   * @param {Object} options
+   * @return {Array<Entry>}
+   */
+  async fetchEntriesAppended(options = {}) {
+    if (!this.canFetch(options)) {
+      return;
+    }
+
+    this.isLazyLoading.set(true);
+
+    // const previousEntries = this.currentEntries.slice(Math.max(this.currentEntries.length - entriesPerPage - 15, 0), this.currentEntries.length);
+    const previousEntries = this.currentEntries.slice();
+
+    const fetchedEntries = await this.fetchEntries(options);
+    const combinedEntries = previousEntries.concat(fetchedEntries);
+    this.currentEntries.replace(combinedEntries);
+
+    // done
+    this.isLazyLoading.set(false);
+    return this.currentEntries;
   }
   /**
    * @param {Object} options
