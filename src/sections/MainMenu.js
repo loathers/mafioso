@@ -3,6 +3,7 @@ import {observer} from 'mobx-react';
 
 import {ENTRY_TYPE_FILTERS_SETTINGS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 
+import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import Button from 'components/Button';
@@ -38,6 +39,7 @@ function MainMenu(props) {
       .filter((item) => item.checked)
       .map((item) => item.categoryId);
     logStore.fetchEntries({categoriesVisible: checkedItems});
+    appStore.shouldScrollUp.set(true);
   }
 
   // attribute filters
@@ -47,9 +49,11 @@ function MainMenu(props) {
     if (attributeName === 'none') {
       updateSelectedAttribute('');
       logStore.fetchEntries({filteredAttributes: []});
+      appStore.shouldScrollUp.set(true);
     } else {
       updateSelectedAttribute(attributeName);
       logStore.fetchEntries({filteredAttributes: [{attributeName, attributeValue: true}]});
+      appStore.shouldScrollUp.set(true);
     }
   }
 
