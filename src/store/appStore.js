@@ -15,6 +15,9 @@ class AppStore {
     /** @type {Boolean} */
     this.isUsingCompactMode = observable.box(false);
     /** @type {Boolean} */
+    this.shouldScrollUp = observable.box(false);
+
+    /** @type {Boolean} */
     this.isDevMode = observable.box(false);
 
     this.initializeListeners();

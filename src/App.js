@@ -34,14 +34,14 @@ function App() {
     };
   });
 
-  // scroll to the top when loading is complete
-  //  such as when navigating pages
-  // useEffect(() => {
-  //   if (!appStore.isLoading) {
-  //     window.scrollTo({top: 0});
-  //     setScrollUp(false);
-  //   }
-  // });
+  // scroll to the top if someone told the appStore we should
+  //  might need a better implementation
+  useEffect(() => {
+    if (appStore.shouldScrollUp.get()) {
+      appStore.shouldScrollUp.set(false);
+      window.scrollTo({top: 0});
+    }
+  });
 
   return (
     <div
