@@ -24,7 +24,7 @@ function FiltersMenu(props) {
   const toggledChecked = (changedIdx) => {
     const newList = filterList.slice().map((item, idx) => {
       if (inputType === 'radio') {
-        item.checked = false;  
+        item.checked = false;
       }
 
       if (idx === changedIdx) {
@@ -54,11 +54,12 @@ function FiltersMenu(props) {
 
   return (
     <div className={combineClassnames('flex-col flex-none', className)}>
-      <div className='flex-none fontsize-3 adjacent-mar-t-3'>{label}</div>  
+      <div className='flex-none fontsize-3 adjacent-mar-t-3'>{label}</div>
 
       <div className='flex-col adjacent-mar-t-3'>
         { filterList.map((filterOption, idx) => (
-          <FilterInput 
+          <FilterInput
+            appDisabled={!appStore.isReady}
             forceEnabled={forceEnabled}
             onChange={() => toggledChecked(idx)}
             optionData={filterOption}
@@ -72,19 +73,19 @@ function FiltersMenu(props) {
       <div className='flex-row fontsize-1 flex-none adjacent-mar-t-3'>
         { inputType !== 'radio' &&
           <React.Fragment>
-          <button 
-            onClick={onClickSelectAll} 
+          <button
+            onClick={onClickSelectAll}
             className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
             All
-          </button>  
-          <div className='flex-none adjacent-mar-l-2'>/</div>  
+          </button>
+          <div className='flex-none adjacent-mar-l-2'>/</div>
           </React.Fragment>
         }
-        <button 
-          onClick={onClickSelectNone} 
+        <button
+          onClick={onClickSelectNone}
           className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
           None
-        </button>  
+        </button>
       </div>
     </div>
   )
@@ -96,6 +97,7 @@ function FilterInput(props) {
     optionData,
     onChange,
     type,
+    appDisabled,
     forceEnabled,
   } = props;
 
@@ -113,12 +115,12 @@ function FilterInput(props) {
       <label className='flex-row'>
         <input
           checked={checked}
-          disabled={!forceEnabled && isDisabled}
+          disabled={!forceEnabled && (appDisabled || isDisabled)}
           onChange={onChange}
-          className='adjacent-mar-l-2' 
+          className='adjacent-mar-l-2'
           type={type} />
 
-        <div 
+        <div
           className='adjacent-mar-l-2'>
           {label}
         </div>

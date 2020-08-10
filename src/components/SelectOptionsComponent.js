@@ -10,16 +10,18 @@ export default function SelectOptionsComponent(props) {
     label,
     selected,
     onChange,
+    disabled,
     list,
     size = 10,
   } = props;
 
   return (
-    <label 
+    <label
       htmlFor={id}
       className={combineClassnames('', className)}>
       <div className='fontsize-3 adjacent-mar-t-2'>{label}</div>
-      <select 
+      <select
+        disabled={disabled}
         onChange={onChange}
         size={size}
         value={selected}
@@ -28,12 +30,12 @@ export default function SelectOptionsComponent(props) {
         { list.map((filterData, idx) => {
           if (filterData.optionGroup) {
             return (
-              <optgroup 
+              <optgroup
                 className='pad-v-1 pad-h-3 mar-v-1'
                 key={`optiongroup-${idx}-key`}
                 label={filterData.label}>
                 { filterData.optionGroup.map((suboption, subidx) => (
-                  <option 
+                  <option
                     className='fontsize-2 pad-v-1 adjacent-mar-t-1'
                     key={`option-${idx}-${subidx}-key`}
                     hidden={suboption.isHidden}
@@ -46,7 +48,7 @@ export default function SelectOptionsComponent(props) {
           }
 
           return (
-            <option 
+            <option
               className='fontsize-2 pad-v-1 pad-h-3 adjacent-mar-t-1'
               key={`option-${idx}-key`}
               hidden={filterData.isHidden}

@@ -77,7 +77,7 @@ function MainMenu(props) {
 
         <Button
           onClick={() => logStore.downloadFullLog()}
-          disabled={!logStore.isReady}
+          disabled={!appStore.isReady}
           className='borradius-1 flex-col pad-3 adjacent-mar-t-4'>
           <div className='fontsize-5 adjacent-mar-t-4'>Download Log</div>
 
@@ -111,7 +111,7 @@ function MainMenu(props) {
 
         <Button
           onClick={() => onApplyEntries(categoriesVisibleList)}
-          disabled={!logStore.isReady}
+          disabled={!appStore.isReady}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
           Apply
         </Button>
@@ -124,10 +124,12 @@ function MainMenu(props) {
           onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
           selected={selectedAttribute}
           list={ATTRIBUTE_FILTERS}
+          disabled={!appStore.isReady}
           id='attribute-filter-selector'
           className='flex-none adjacent-mar-t-2' />
 
         <Button
+          disabled={!appStore.isReady}
           onClick={() => onSelectAttributeFilter('none')}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
           Clear

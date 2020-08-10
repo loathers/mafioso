@@ -31,7 +31,7 @@ class AppStore {
   }
   /** @type {Boolean} */
   get isReady() {
-    return logStore.isReady;
+    return logStore.isReady && !this.isLoading;
   }
   /** @type {Boolean} */
   get isShowingFullUpload() {
