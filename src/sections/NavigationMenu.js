@@ -37,15 +37,14 @@ function NavigationMenu(props) {
       componentname='navigation-menu'
       className={combineClassnames('zindex-7 position-fixed flex-row aitems-center', className)}>
 
-      { appStore.shouldShowPagination.get() &&
-        <DarkButton
-          onClick={() => appStore.toggleCompactMode()}
-          className={combineClassnames('boxshadow-dark pad-5 flex-row flex-none borradius-round adjacent-mar-l-5')}>
-          <ChevronSVG
-            style={{width: 25, height: 25, transition: 'transform 300ms'}}
-            className={combineClassnames(appStore.isUsingCompactMode.get() ? 'flip-y' : '')} />
-        </DarkButton>
-      }
+      <DarkButton
+        disabled={!appStore.canToggleCompact.get()}
+        onClick={() => appStore.toggleCompactMode()}
+        className={combineClassnames('boxshadow-dark pad-5 flex-row flex-none borradius-round adjacent-mar-l-5')}>
+        <ChevronSVG
+          style={{width: 25, height: 25, transition: 'transform 300ms'}}
+          className={combineClassnames(appStore.isUsingCompactMode.get() ? 'flip-y' : '')} />
+      </DarkButton>
 
       <div className='flex-col adjacent-mar-l-5'>
         <PaginationComponent

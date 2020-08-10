@@ -17,7 +17,7 @@ class AppStore {
     /** @type {Boolean} */
     this.shouldScrollUp = observable.box(false);
     /** @type {Boolean} */
-    this.shouldShowPagination = observable.box(true);
+    this.canToggleCompact = observable.box(true);
 
     /** @type {Boolean} */
     this.isDevMode = observable.box(false);
@@ -67,6 +67,10 @@ class AppStore {
    * @param {Boolean} [toState]
    */
   toggleCompactMode(toState) {
+    if (!this.canToggleCompact.get() && !this.isDevMode.get()) {
+      return;
+    }
+
     if (toState === undefined) {
       this.isUsingCompactMode.set(!this.isUsingCompactMode.get());
     } else {
