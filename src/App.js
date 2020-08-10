@@ -19,6 +19,10 @@ function App() {
     const totalY = window.document.body.clientHeight;
     if ((totalY - currY) < 1000) {
       if (appStore.isReady && !logStore.isLazyLoading.get() && !logStore.isOnLastPage) {
+        // experiment compacting everything and not showing pagination menu when using lazy load
+        appStore.isUsingCompactMode.set(true);
+        appStore.shouldShowPagination.set(false);
+
         logStore.fetchEntriesAppended({
           pageNum: logStore.currentPageNum + 1,
           entriesPerPage: 50,
@@ -39,6 +43,7 @@ function App() {
   useEffect(() => {
     if (appStore.shouldScrollUp.get()) {
       appStore.shouldScrollUp.set(false);
+      appStore.shouldShowPagination.set(true);
       window.scrollTo({top: 0});
     }
   });
