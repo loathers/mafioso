@@ -3,7 +3,7 @@ import {observable} from 'mobx';
 import Batcher from 'classes/Batcher';
 import Entry from 'classes/Entry';
 
-import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY} from 'constants/DEFAULTS';
+import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY, PAGINATE_DELAY} from 'constants/DEFAULTS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
@@ -625,8 +625,11 @@ class LogStore {
 
     const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
-    // delay for a millisec so the loader can show up
-    await new Promise((resolve) => setTimeout(resolve, 1));
+    // delay for a bit so the loader can show up
+    await new Promise((resolve) => setTimeout(resolve, PAGINATE_DELAY));
+
+    // done, update pageNum
+    this.displayOptions.pageNum = pageNum;
     return pagedEntries;
   }
   /**
@@ -638,16 +641,18 @@ class LogStore {
       return;
     }
 
+    this.isFetching.set(true);
     this.isLazyLoading.set(true);
 
     // const previousEntries = this.currentEntries.slice(Math.max(this.currentEntries.length - entriesPerPage - 15, 0), this.currentEntries.length);
     const previousEntries = this.currentEntries.slice();
 
-    const fetchedEntries = await this.fetchEntries(options);
+    const fetchedEntries = await this.fetchByPage(options);
     const combinedEntries = previousEntries.concat(fetchedEntries);
     this.currentEntries.replace(combinedEntries);
 
     // done
+    this.isFetching.set(false);
     this.isLazyLoading.set(false);
     return this.currentEntries;
   }
