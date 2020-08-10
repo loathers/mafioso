@@ -47,20 +47,32 @@ function NavigationMenu(props) {
       </DarkButton>
 
       <div className='flex-col adjacent-mar-l-5'>
-        <PaginationComponent
-          currNum={logStore.isUsingDayFilter ? logStore.currentDayNum : -1}
-          lastNum={logStore.dayCount}
-          onChangePage={onClickChangeDay}
-          label='Day'
-          disabled={!logStore.isReady}
-          style={{height: 30}}
-          className='boxshadow-black flex-none borradius-3 aself-start adjacent-mar-t-5' />
+        { logStore.dayCount > 1 &&
+          <div className='flex-row flex-none aself-start adjacent-mar-t-5'>
+            <PaginationComponent
+              currNum={logStore.isUsingDayFilter ? logStore.currentDayNum : -1}
+              lastNum={logStore.dayCount}
+              onChangePage={onClickChangeDay}
+              label='Day:'
+              disabled={!logStore.isReady}
+              style={{height: 30}}
+              className='boxshadow-black flex-none borradius-3 adjacent-mar-l-2' />
+
+
+            <DarkButton
+              disabled={!logStore.isReady}
+              onClick={() => onClickChangeDay('all')}
+              className={combineClassnames('fontsize-4 fontfamily-primary flex-none boxshadow-dark pad-h-5 borradius-2 adjacent-mar-l-2', !logStore.isUsingDayFilter ? 'active' : '')}>
+              any
+            </DarkButton>
+          </div>
+        }
 
         <PaginationComponent
           currNum={logStore.currentPageNum}
           lastNum={logStore.calculateLastPageIdx()}
           onChangePage={onClickChangePage}
-          label='Page'
+          label='Page:'
           disabled={!logStore.isReady}
           style={{height: 30}}
           className='boxshadow-black flex-none borradius-3 aself-start adjacent-mar-t-5' />
