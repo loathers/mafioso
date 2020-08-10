@@ -125,7 +125,7 @@ class LogStore {
   }
   /** @type {Number} */
   get dayCount() {
-    return this.ascensionAttributes.dateList.length;
+    return Math.max(this.ascensionAttributes.dateList.length - 1, 0);
   }
   /** @type {Number} */
   get ascensionNum() {
@@ -152,6 +152,14 @@ class LogStore {
     return this.characterName !== undefined;
   }
   // -- display options
+  /** @type {Number} */
+  get isUsingDayFilter() {
+    return this.displayOptions.dayNumFilter !== 'all';
+  }
+  /** @type {Number} */
+  get currentDayNum() {
+    return this.displayOptions.dayNumFilter;
+  }
   /** @type {Number} */
   get currentPageNum() {
     return this.displayOptions.pageNum;
@@ -564,7 +572,7 @@ class LogStore {
       return entriesGroup.filter((entry) => {
         // check day
         if (dayNumFilter !== 'all') {
-          if (entry.dayNum !== dayNumFilter) {
+          if (entry.dayNum !== (dayNumFilter + 1)) {
             return false;
           }
         }

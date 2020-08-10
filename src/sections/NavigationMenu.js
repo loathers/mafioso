@@ -47,6 +47,19 @@ function NavigationMenu(props) {
           style={{height: 30}}
           className='boxshadow-black flex-none borradius-3 flex-auto adjacent-mar-l-5' />
       }
+
+      <PaginationComponent
+        currNum={logStore.isUsingDayFilter ? logStore.currentDayNum : -1}
+        lastNum={logStore.dayCount}
+        onChangePage={(nextDayNum) => {
+          if (nextDayNum !== logStore.currentPageNum) {
+            logStore.fetchEntries({dayNumFilter: nextDayNum});
+            appStore.shouldScrollUp.set(true);
+          }
+        }}
+        disabled={!logStore.isReady}
+        style={{height: 30}}
+        className='boxshadow-black flex-none borradius-3 flex-auto adjacent-mar-l-5' />
     </div>
   )
 })
