@@ -94,7 +94,7 @@ export default function EntryDisplayContainer(props) {
           { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
             <CombatSequenceDisplay
               entry={entry}
-              className='mar-t-8 bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+              className='bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
           }
 
           { entry.hasCombatActions && !isShowRaw && isShowCompact &&
