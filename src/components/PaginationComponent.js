@@ -1,8 +1,4 @@
 import React from 'react';
-import {observer} from 'mobx-react';
-
-import appStore from 'store/appStore';
-import logStore from 'store/logStore';
 
 import DarkButton from 'components/DarkButton';
 
@@ -11,22 +7,16 @@ import combineClassnames from 'utilities/combineClassnames';
 const MAX_PAGINATION_SIZE = 7;
 
 /** @returns {ReactComponent} */
-export default observer(
-function SimplePaginator(props) {
+export default function SimplePaginator(props) {
   const {
     className,
     style,
+    disabled,
+    currNum,
+    lastNum,
+    onChangePage,
   } = props;
 
-  const onApplyChangePage = (nextPageNum) => {
-    if (nextPageNum !== logStore.currentPageNum) {
-      logStore.fetchEntries({pageNum: nextPageNum});
-      appStore.shouldScrollUp.set(true);
-    }
-  };
-
-  const currNum = logStore.currentPageNum;
-  const lastNum = logStore.calculateLastPageIdx();
   const pageNumAvailable = calculateAvailablePages({
     curr: currNum,
     last: lastNum,
@@ -45,8 +35,8 @@ function SimplePaginator(props) {
         return (
           <DarkButton
             key={`page-num-${idx}-key`}
-            onClick={() => onApplyChangePage(num)}
-            disabled={isDivider || !logStore.isReady}
+            onClick={() => onChangePage(num)}
+            disabled={isDivider || disabled}
             children={displayNum}
             style={{width: 40}}
             className={combineClassnames('adjacent-mar-l-3', isOnThisNum ? 'active' : '')}/>
@@ -59,7 +49,7 @@ function SimplePaginator(props) {
 
     </div>
   )
-})
+}
 /**
  * there's gotta be a smarter way to have done this
  * pretty sure I have no idea wtf I wrote
