@@ -553,12 +553,15 @@ class LogStore {
   }
   /**
    * @param {Object} options
+   * @param {Boolean} [isFinal]
    * @return {Array<Entry>}
    */
-  async fetchByFilter(options = {}) {
+  async fetchByFilter(options = {}, isFinal = false) {
     if (!this.canFetch(options)) {
       return;
     }
+
+    this.isFetching.set(true);
 
     // console.log('⏳ %cFetching by filter...', 'color: blue');
     const {
@@ -603,21 +606,31 @@ class LogStore {
       return [];
     }
 
+    if (isFinal) {
+      return await this.fetchByPage({pageNum: 0});
+    }
+
     return validEntries;
   }
   /**
    * @param {Object} options
+   * @param {Boolean} [isFinal]
    * @return {Array<Entry>}
    */
-  async fetchByPage(options = {}) {
+  async fetchByPage(options = {}, isFinal = false) {
     if (!this.canFetch(options)) {
       return;
     }
+
+    this.isFetching.set(true);
 
     const {
       pageNum = this.displayOptions.pageNum,
       entriesPerPage = this.displayOptions.entriesPerPage,
     } = options;
+
+    // delay for a bit so the loader can show up
+    await new Promise((resolve) => setTimeout(resolve, PAGINATE_DELAY));
 
     const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
     const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
@@ -625,11 +638,14 @@ class LogStore {
 
     const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
-    // delay for a bit so the loader can show up
-    await new Promise((resolve) => setTimeout(resolve, PAGINATE_DELAY));
-
-    // done, update pageNum
+    // update pageNum
     this.displayOptions.pageNum = pageNum;
+
+    // done
+    if (isFinal) {
+      this.currentEntries.replace(pagedEntries);
+      this.isFetching.set(false);
+    }
     return pagedEntries;
   }
   /**

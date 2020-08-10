@@ -27,7 +27,7 @@ function NavigationMenu(props) {
 
   const onClickChangePage = (nextPageNum) => {
     if (nextPageNum !== logStore.currentPageNum) {
-      logStore.fetchByPage({pageNum: nextPageNum});
+      logStore.fetchByPage({pageNum: nextPageNum}, true);
       appStore.shouldScrollUp.set(true);
     }
   }
