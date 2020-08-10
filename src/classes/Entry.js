@@ -48,6 +48,8 @@ export default class Entry {
       locationName: null,
       /** @type {String | null} */
       encounterName: null,
+      /** @type {Array<String>} */
+      choiceProgression: [],
       /** @type {Boolean} */
       isCombatEncounter: false,
       /** @type {Array<String>} */
@@ -150,6 +152,10 @@ export default class Entry {
       || this.hasMeatChanges
       || this.hasHealthChanges
       || this.hasManaChanges;
+  }
+  /** @type {Boolean} */
+  get hasChoiceProgression() {
+    return this.attributes.choiceProgression.length > 0;
   }
   /** @type {Boolean} */
   get hasAdditionalDisplay() {
@@ -346,6 +352,15 @@ export default class Entry {
     // show what choice was made for God Lobster Boon
     if (this.entryType === ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON) {
       return this.findMatcher(REGEX.GOD_LOBSTER.BOON_CHOICE_RESULT);
+    }
+
+    // let custom additionaDisplay have precedence
+    if (this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
+      return this.attributes.additionalDisplay;
+    }
+
+    if (this.hasChoiceProgression && !this.isEndedByUseTheForce) {
+      return '⇾ ' + this.attributes.choiceProgression.join('⇾ ');
     }
 
     return this.attributes.additionalDisplay;

@@ -76,6 +76,7 @@ export function parseCommonAttributes(entryString) {
     adventureChanges: parseAdventureChanges(entryString),
     locationName,
     encounterName,
+    choiceProgression: parseChoiceProgression(entryString),
     isCombatEncounter: isCombatEncounter(entryString),
     acquiredItems: astralItems.concat(pulledItems.concat(acquiredItems)),
     acquiredEffects,
@@ -241,6 +242,20 @@ export function parseEncounterName(entryString) {
   }
 
   return null;
+}
+/**
+ * @param {String} entryString
+ * @return {String | null}
+ */
+export function parseChoiceProgression(entryString) {
+  const choiceMatches = regexUtils.getRegexMatch(entryString, REGEX.LINE.GENERIC_TOOK_CHOICE);
+  if (choiceMatches === null) {
+    return [];
+  }
+
+  return choiceMatches
+    .map((choiceText) => choiceText.match(REGEX.VALUE.TOOK_CHOICE_RESULT))
+    .filter(Boolean);
 }
 /**
  * @param {String} entryString

@@ -208,7 +208,7 @@ export const REGEX = {
 
     LOCATION: /\[\d*\].*/g,
     ENCOUNTER: /Encounter:.*/g,
-    GENERIC_TOOK_CHOICE: /^took choice/gmi,
+    GENERIC_TOOK_CHOICE: /^took choice.*/gmi,
 
     EQUIP: /^equip.*/gim,
     HAGNK_PULL: /^pull: .*/gim,
@@ -232,6 +232,7 @@ export const REGEX = {
     NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
     VISIT_LOCATION_NAME: /(?<=^visiting ).*(?=( in))*/im,
     VISIT_ENCOUNTER_NAME: /(?<=^visiting( the| )).*?(?=( in|(\r\n|\n)))/im,
+    TOOK_CHOICE_RESULT: /(?!.*secret choice)(?<=^took choice.*: ).+/gmi,
 
     SPELL_CAST_AMOUNTS: /(?<=^cast )\d+/gm,
     SPELL_CAST_NAMES: /(?<=^cast \d+ ).*/gm,

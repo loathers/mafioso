@@ -97,6 +97,7 @@ export const PREGROUP_REGEX_LIST = [
 //  most likely because we already parsed the data
 export const DISPLAY_SCRUB_LIST = [
   REGEX.MAFIOSO.LOG_COMMENTS,
+  REGEX.LINE.GENERIC_TOOK_CHOICE,
   REGEX.LINE.LOCATION,
   REGEX.LINE.ENCOUNTER,
   REGEX.LINE.DIET_GAIN_LINE,
