@@ -10,7 +10,7 @@ export const CLEAN_RAW_DELAY = 5;
 export const FULL_PARSE_DELAY = 5;
 
 export const DISPLAY_SCRUB_DELAY = 5;
-export const FILTER_DELAY = 5;
+export const FILTER_DELAY = 55;
 
 // -- log level
 export const DEFAULT_CATEGORIES_VISIBLE = [

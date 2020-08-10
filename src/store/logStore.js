@@ -49,9 +49,9 @@ class LogStore {
      * entries that pass the current filters
      * @type {ObservableArray<Entry>}
      */
-    this.visibleEntries = observable([]);
+    this.validEntries = observable([]);
     /**
-     * entries that are currently visible by page
+     * entries that are currently displayed on the page
      * @type {ObservableArray<Entry>}
      */
     this.currentEntries = observable([]);
@@ -103,11 +103,11 @@ class LogStore {
     return this.allEntries.length;
   }
   /** @type {Number} */
-  get visibleCount() {
-    return this.visibleEntries.length;
+  get validEntriesCount() {
+    return this.validEntries.length;
   }
   /** @type {Number} */
-  get currentCount() {
+  get currentEntriesCount() {
     return this.currentEntries.length;
   }
   // -- ascension attributes
@@ -172,7 +172,7 @@ class LogStore {
     this.srcFiles = [];
     this.srcRawTexts = [];
     this.allEntries.clear();
-    this.visibleEntries.clear();
+    this.validEntries.clear();
 
     this.isAscensionLog = false;
     this.ascensionAttributes = {
@@ -297,7 +297,7 @@ class LogStore {
 
       const additionalData = this.createConjectureData(newData);
       this.allEntries.replace(additionalData);
-      this.visibleEntries.replace([]);
+      this.validEntries.replace([]);
 
       const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
       this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
@@ -506,8 +506,8 @@ class LogStore {
 
     this.isFetching.set(true);
 
-    const visibleEntries = await this.fetchByFilter(fullOptions);
-    this.visibleEntries.replace(visibleEntries);
+    const validEntries = await this.fetchByFilter(fullOptions);
+    this.validEntries.replace(validEntries);
 
     const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculateLastPageIdx(entriesPerPage);
     if (isFilteredBeyondRange) {
@@ -515,11 +515,11 @@ class LogStore {
     }
 
     // can only continue to fetch by page if filter created entries
-    if (this.visibleEntries.length > 0) {
+    if (this.validEntries.length > 0) {
       const pagedEntries = await this.fetchByPage(fullOptions);
       this.currentEntries.replace(pagedEntries);
     } else {
-      this.currentEntries.replace(visibleEntries);
+      this.currentEntries.replace(validEntries);
     }
 
     // now update options with the ones used to fetch
@@ -545,7 +545,7 @@ class LogStore {
     } = options;
 
     // batch find entries that are in range and not hidden
-    const visibleEntries = await this.logBatcher.run((entriesGroup) => {
+    const validEntries = await this.logBatcher.run((entriesGroup) => {
       return entriesGroup.filter((entry) => {
         const isVisibleEntry = categoriesVisible.some((category) => entry.categories.includes(category));
         if (!isVisibleEntry) {
@@ -566,12 +566,12 @@ class LogStore {
     }, {batchDelay: FILTER_DELAY});
 
     // filtering resulted in nothing
-    if (visibleEntries.length <= 0) {
+    if (validEntries.length <= 0) {
       console.log(`⌛ %cNo results for filter.`, 'color: blue');
       return [];
     }
 
-    return visibleEntries;
+    return validEntries;
   }
   /**
    * @param {Object} options
@@ -591,7 +591,7 @@ class LogStore {
     const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
     // console.log(`⏳ %cGetting page ${pageNum}... from ${startIdx} to ${endIdx}`, 'color: blue');
 
-    const pagedEntries = this.visibleEntries.slice(startIdx, endIdx);
+    const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
     // delay for a millisec so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, 1));
@@ -639,7 +639,7 @@ class LogStore {
    * @returns {Number}
    */
   calculateLastPageIdx(entriesPerPage = this.displayOptions.entriesPerPage) {
-    const lastPage = Math.ceil(this.visibleEntries.length / entriesPerPage) - 1;
+    const lastPage = Math.ceil(this.validEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
 }
