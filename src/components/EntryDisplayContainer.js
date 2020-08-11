@@ -114,7 +114,7 @@ export default function EntryDisplayContainer(props) {
               </div>
 
               <div style={{flex: '1 1 67%'}} className='pad-2 whitespace-pre-wrap bor-l-1-grayest flex-col flex-auto adjacent-mar-l-3'>
-                {JSON.stringify(entry.export(), null, 4)}
+                {JSON.stringify(entry.createRawDataDisplay(), null, 4)}
               </div>
             </div>
           }

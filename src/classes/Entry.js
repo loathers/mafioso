@@ -522,13 +522,28 @@ export default class Entry {
   /**
    * @return {Object}
    */
-  export() {
+  createRawDataDisplay() {
     return {
       entryId: this.id,
       entryType: this.entryData.type,
       categories: this.entryData.categories,
       ...this.attributes,
     }
+  }
+  /**
+   * @return {Object}
+   */
+  export() {
+    if (!this.hasAnnotations) {
+      return this.rawText;
+    }
+
+    // format comments to have two slashes
+    const formattedAnnotations = `//${this.attributes.annotations.replace(/(?<=^.*(\r\n|\n))(?=.)/m, '//')}`;
+    // clear out existing comments
+    const clearedText = this.rawText.replace(REGEX.MAFIOSO.LOG_COMMENTS, '');
+    // append to front of text
+    return `${formattedAnnotations}${clearedText}`;
   }
   /**
    * checks if the `entryString` contains given string
@@ -604,13 +619,9 @@ export default class Entry {
   }
   /**
    * @param {String} newText
-   * @return {Boolean}
    */
   updateAnnotation(newText) {
-    console.log('updateAnnotation', newText);
-    // if (this.attributes.annotations === null) {
-      this.attributes.annotations = newText;
-    // }
+    this.attributes.annotations = newText;
   }
   // -- comparators
   /**

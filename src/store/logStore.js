@@ -501,13 +501,15 @@ class LogStore {
       return;
     }
 
+    const rebuiltText = this.allEntries.map((entry) => entry.export()).join('\n\n');
+
     if (!this.isAscensionLog) {
-      download(this.rawText, 'mafioso_log', 'text/plain');
+      download(rebuiltText, 'mafioso_log', 'text/plain');
       return;
     }
 
     const fileName = `${this.characterName}#${this.ascensionNum}-${this.pathLabel}`;
-    download(this.rawText, fileName, 'text/plain');
+    download(rebuiltText, fileName, 'text/plain');
   }
   // -- update current logs and fetch functions
    /**
