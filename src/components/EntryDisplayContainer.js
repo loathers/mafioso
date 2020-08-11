@@ -54,7 +54,7 @@ export default function EntryDisplayContainer(props) {
   const [currentAnnotations, updateAnnotations] = useState(entry.attributes.annotations);
   const shouldShowAnnotations = currentAnnotations !== null && currentAnnotations !== undefined;
 
-  const isShowRightColumn = isDevMode || !isShowCompact;
+  const isShowRightColumn = (isDevMode || !isShowCompact);
 
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
@@ -400,25 +400,37 @@ function AnnotationContainer(props) {
       componentname={isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
       className={combineClassnames('borradius-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row aitems-center jcontent-start flex-none', className)}>
 
-      <div className='flex-row mar-h-5 adjacent-mar-l-3'>
-        <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+      <div className='flex-col mar-h-5 adjacent-mar-l-3'>
+        { !isEditing &&
+          <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} />
+        }
         { isEditing &&
-          <EditSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+          <EditSVG style={{width: 20, height: 20, opacity: 0.5}} />
         }
       </div>
 
-      { !isEditing &&
-        <div className='pad-3 adjacent-mar-l-3'>{editText}</div>
-      }
+      <div className='width-full position-relative adjacent-mar-l-3'>
+        <div style={{minHeight: 20}} className={combineClassnames('mar-3 pad-3', isEditing ? 'opacity-0' : '')}>
+          {editText}
+        </div>
 
-      <textarea
-        ref={inputRef}
-        onChange={onChangeText}
-        onBlur={onBlurInput}
-        value={editText}
-        type='text'
-        className={combineClassnames('pad-3 bor-1-gray width-full adjacent-mar-l-3', !isEditing ? 'display-none' : '')} />
-
+        <textarea
+          ref={inputRef}
+          onChange={onChangeText}
+          onBlur={onBlurInput}
+          value={editText}
+          type='text'
+          style={{
+            position: 'absolute',
+            width: '95%',
+            lineHeight: '15px',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+          className={combineClassnames('mar-3 pad-3', !isEditing ? 'opacity-0' : '')} />
+      </div>
     </button>
   )
 }
