@@ -172,14 +172,6 @@ export default class Entry {
   get showAdditionalDisplay() {
     return this.entryData.showAdditionalDisplay;
   }
-  /** @type {Boolean} */
-  get hasAnnotations() {
-    return Boolean(this.attributes.annotations);
-  }
-  /** @type {Boolean} */
-  get isAnnotationOnly() {
-    return this.entryType === ENTRY_TYPE.ANNOTATION_ONLY;
-  }
   /** @type {ReactComponent} */
   get entryIcon() {
     return this.entryData.icon;
@@ -600,6 +592,25 @@ export default class Entry {
     }
 
     return meatDisplay;
+  }
+  // -- annotation
+  /** @type {Boolean} */
+  get hasAnnotations() {
+    return Boolean(this.attributes.annotations);
+  }
+  /** @type {Boolean} */
+  get isAnnotationOnly() {
+    return this.entryType === ENTRY_TYPE.ANNOTATION_ONLY;
+  }
+  /**
+   * @param {String} newText
+   * @return {Boolean}
+   */
+  updateAnnotation(newText) {
+    console.log('updateAnnotation', newText);
+    // if (this.attributes.annotations === null) {
+      this.attributes.annotations = newText;
+    // }
   }
   // -- comparators
   /**

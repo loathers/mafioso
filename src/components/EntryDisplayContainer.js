@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { ReactComponent as AdventureSVG } from 'images/sands-of-time.svg';
 import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
 import { ReactComponent as ManaSVG } from 'images/potion-ball.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
 import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
+import {ReactComponent as EditSVG} from 'images/scroll-quill.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 import { ReactComponent as TalkSVG } from 'images/talk.svg';
@@ -30,9 +31,9 @@ export default function EntryDisplayContainer(props) {
     isDevMode = false,
   } = props;
 
-  const [isSelected, toggleSelected] = React.useState(false); // internal selection state, show expanded
-  const [isShowRaw, toggleShowRaw] = React.useState(false); // show raw data
-  const [isShowCompact, toggleCompact] = React.useState(true); // compact mode
+  const [isSelected, toggleSelected] = useState(false); // internal selection state, show expanded
+  const [isShowRaw, toggleShowRaw] = useState(false); // show raw data
+  const [isShowCompact, toggleCompact] = useState(true); // compact mode
   const prevCompactRef = React.useRef();
 
   React.useEffect(() => {
@@ -50,18 +51,17 @@ export default function EntryDisplayContainer(props) {
     toggleCompact(isSelected);
   }, [isSelected]);
 
+  const [currentAnnotations, updateAnnotations] = useState(entry.attributes.annotations);
+  const shouldShowAnnotations = currentAnnotations !== null && currentAnnotations !== undefined;
+
   const isShowRightColumn = isDevMode || !isShowCompact;
 
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
-      { entry.hasAnnotations &&
-        <div
-          componentname={entry.isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
-          className='borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row flex-none'>
-          <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
-          <div className='adjacent-mar-l-3'>{entry.attributes.annotations}</div>
-        </div>
-      }
+      <AnnotationContainer
+        onComplete={(newText) => entry.updateAnnotation(newText)}
+        shouldShowAnnotations={shouldShowAnnotations}
+        annotations={currentAnnotations} />
 
       <div className={combineClassnames(entry.isAnnotationOnly ? 'display-none' : 'flex-row')}>
         <Button
@@ -137,7 +137,7 @@ export default function EntryDisplayContainer(props) {
         { isShowRightColumn &&
           <div className='borradius-r-2 bg-second flex-row pad-2 flex-none'>
             <Button
-              onClick={() => {}}
+              onClick={() => updateAnnotations('')}
               style={{width: 30, borderWidth: 0}}
               className='flex-row jcontent-center bg-second fontsize-1 flex-auto adjacent-mar-l-2'>
               <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='' />
@@ -346,5 +346,58 @@ function EntryBodyContainer(props) {
         }
       </div>
     </div>
+  )
+}
+/** @returns {React.Component} */
+function AnnotationContainer(props) {
+  const {
+    className,
+    isAnnotationOnly,
+    shouldShowAnnotations,
+    annotations,
+    onComplete,
+  } = props;
+
+  const [isEditing, toggleEditing] = useState(false);
+  const [editText, changeEditText] = useState(annotations);
+
+  const onToggleEditing = (evt) => {
+    if (evt.target.type === 'text') {
+      evt.preventDefault();
+    } else if (isEditing) {
+      onComplete(editText);
+      toggleEditing(false);
+    } else {
+      toggleEditing(true);
+    }
+  }
+
+  if (!shouldShowAnnotations) {
+    return null;
+  }
+
+  return (
+    <button
+      onClick={onToggleEditing}
+      componentname={isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
+      className={combineClassnames('borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row flex-none', className)}>
+
+      <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+      { isEditing &&
+        <EditSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+      }
+
+      { !isEditing &&
+        <div className='adjacent-mar-l-3'>{editText}</div>
+      }
+
+      { isEditing &&
+        <input
+          onChange={(evt) => changeEditText(evt.target.value)}
+          value={editText}
+          type='text'
+          className='bor-1-gray width-full adjacent-mar-l-3' />
+      }
+    </button>
   )
 }
