@@ -369,7 +369,7 @@ function AnnotationContainer(props) {
   }
 
   const onToggleEditing = (evt) => {
-    if (isEditing && (evt.target.type === 'text' || evt.target.type === 'submit')) {
+    if (isEditing && (evt.target.type === 'text' || evt.target.type === 'submit' || evt.target.type === 'textarea')) {
       evt.preventDefault();
     } else if (isEditing) {
       onComplete(editText);
@@ -411,7 +411,7 @@ function AnnotationContainer(props) {
         <div className='pad-3 adjacent-mar-l-3'>{editText}</div>
       }
 
-      <input
+      <textarea
         ref={inputRef}
         onChange={onChangeText}
         onBlur={onBlurInput}

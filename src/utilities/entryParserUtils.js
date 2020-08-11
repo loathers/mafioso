@@ -172,7 +172,7 @@ export function parseMafiosoAnnotations(entryString) {
     return null;
   }
 
-  const annotations = annotationMatches[0];
+  const annotations = annotationMatches.join('\n');
   return annotations.replace(/\/\//g, '');
 }
 // -- common parsers

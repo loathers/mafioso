@@ -5,7 +5,7 @@ import {INSTAKILLS, INSTAKILLS_MAP} from 'constants/INSTAKILLS'
 import {RUNAWAYS, RUNAWAYS_MAP} from 'constants/RUNAWAYS'
 import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from 'constants/LATTE_EFFECTS_MAP';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import REGEX from 'constants/REGEXES';
+import REGEX, {NEW_LINE_REGEX} from 'constants/REGEXES';
 
 import * as entryParserUtils from 'utilities/entryParserUtils';
 import * as regexUtils from 'utilities/regexUtils';
@@ -539,11 +539,11 @@ export default class Entry {
     }
 
     // format comments to have two slashes
-    const formattedAnnotations = `//${this.attributes.annotations.replace(/(?<=^.*(\r\n|\n))(?=.)/m, '//')}`;
+    const formattedAnnotations = `//${this.attributes.annotations.replace(NEW_LINE_REGEX, '\n//')}`;
     // clear out existing comments
-    const clearedText = this.rawText.replace(REGEX.MAFIOSO.LOG_COMMENTS, '');
+    const clearedText = this.rawText.replace(REGEX.MAFIOSO.LOG_COMMENTS_NEWLINE, '');
     // append to front of text
-    return `${formattedAnnotations}${clearedText}`;
+    return `${formattedAnnotations}\n${clearedText}`;
   }
   /**
    * checks if the `entryString` contains given string

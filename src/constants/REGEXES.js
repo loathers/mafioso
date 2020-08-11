@@ -6,7 +6,8 @@ export const EXCESSIVE_NEW_LINES = /(?<=.+$(\r\n|\n)(\r\n|\n))(\r\n|\n)+/gm;
 export const REGEX = {
   // -- important
   MAFIOSO: {
-    LOG_COMMENTS: /(^\/\/.*(\r\n|\n))+(^\/\/.*)*/gm,
+    LOG_COMMENTS: /(^\/\/.*)+/gm,
+    LOG_COMMENTS_NEWLINE: /(^\/\/.*(\r\n|\n))+(?=\/\/)*/gm,
     LOG_COMMENTS_ONLY: /(^\/\/.*$)+(?!(\r\n|\n).)/gm,
   },
   ASCENSION: {
