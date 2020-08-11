@@ -358,6 +358,7 @@ function AnnotationContainer(props) {
     onComplete,
   } = props;
 
+  const inputRef = React.useRef();
   const [isEditing, toggleEditing] = useState(false);
   const [editText, updateEditText] = useState(annotations);
 
@@ -368,7 +369,7 @@ function AnnotationContainer(props) {
   }
 
   const onToggleEditing = (evt) => {
-    if (evt.target.type === 'text' || evt.target.type === 'submit') {
+    if (isEditing && (evt.target.type === 'text' || evt.target.type === 'submit')) {
       evt.preventDefault();
     } else if (isEditing) {
       onComplete(editText);
@@ -382,6 +383,12 @@ function AnnotationContainer(props) {
     onComplete(editText);
     toggleEditing(false);
   }
+
+  React.useEffect(() => {
+    if (inputRef && inputRef.current && isEditing) {
+      inputRef.current.focus();
+    }
+  }, [isEditing])
 
   if (!shouldShowAnnotations) {
     return null;
@@ -404,14 +411,14 @@ function AnnotationContainer(props) {
         <div className='pad-3 adjacent-mar-l-3'>{editText}</div>
       }
 
-      { isEditing &&
-        <input
-          onChange={onChangeText}
-          onBlur={onBlurInput}
-          value={editText}
-          type='text'
-          className='pad-3 bor-1-gray width-full adjacent-mar-l-3' />
-      }
+      <input
+        ref={inputRef}
+        onChange={onChangeText}
+        onBlur={onBlurInput}
+        value={editText}
+        type='text'
+        className={combineClassnames('pad-3 bor-1-gray width-full adjacent-mar-l-3', !isEditing ? 'display-none' : '')} />
+
     </button>
   )
 }
