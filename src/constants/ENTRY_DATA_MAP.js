@@ -1,4 +1,14 @@
-import {FRIARS_QUEST_ENCOUNTERS, LOW_KEY_SUMMER_ENCOUNTERS,} from 'constants/ENCOUNTERS';
+import {
+  FRIARS_QUEST_ENCOUNTERS,
+  LOW_KEY_SUMMER_ENCOUNTERS,
+  SPOOKYRAVEN_MANOR_QUEST_ENCOUNTERS,
+  KNOB_GOBLIN_KING_ENCOUNTERS,
+  BOSS_BAT_ENCOUNTERS,
+  CRYPT_BOSS_ENCOUNTERS,
+  MIST_SHROUDED_PEAK_BOSS_ENCOUNTERS,
+  HIGHLAND_LORD_ENCOUNTERS,
+  MISC_QUEST_ENCOUNTERS,
+} from 'constants/ENCOUNTERS';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
@@ -263,6 +273,31 @@ export const ENTRY_DATA_MAP = {
     icon: PathSVG,
     locationName_alt: 'Lady Spookyraven',
   },
+  [ENTRY_TYPE.QUEST.SPOOKYRAVEN_MANOR]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: SPOOKYRAVEN_MANOR_QUEST_ENCOUNTERS,
+    icon: PathSVG,
+  },
+  [ENTRY_TYPE.QUEST.KNOB_GOBLIN_KING]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
+    matcher: KNOB_GOBLIN_KING_ENCOUNTERS,
+    icon: CombatSVG,
+  },
+  [ENTRY_TYPE.QUEST.BOSS_BAT_BOSS]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
+    matcher: BOSS_BAT_ENCOUNTERS,
+    icon: CombatSVG,
+  },
+  [ENTRY_TYPE.QUEST.CRYPT_BOSSES]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
+    matcher: CRYPT_BOSS_ENCOUNTERS,
+    icon: CombatSVG,
+  },
+  [ENTRY_TYPE.QUEST.MIST_SHROUDED_PEAK_BOSS]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
+    matcher: MIST_SHROUDED_PEAK_BOSS_ENCOUNTERS,
+    icon: CombatSVG,
+  },
   [ENTRY_TYPE.QUEST.DEEP_FAT_FRIARS]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: FRIARS_QUEST_ENCOUNTERS,
@@ -275,6 +310,11 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Strange Leaflet',
     encounterName_alt: 'There is nobody named Xyzzy here',
     content_alt: null,
+  },
+  [ENTRY_TYPE.QUEST.ED_THE_UNDYING_BOSS]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.COMBAT],
+    matcher: REGEX.QUEST.ED_THE_UNDYING_BOSS,
+    icon: CombatSVG,
   },
   [ENTRY_TYPE.QUEST.OPEN_DESERT_PYRAMID]: {
     categories: [CATEGORY_ID.QUEST],
@@ -290,6 +330,11 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Icy Peak',
     encounterName_alt: 'Ascending the Mist-Shrouded Peak',
     content_alt: null,
+  },
+  [ENTRY_TYPE.QUEST.HIGHLAND_LORD]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: HIGHLAND_LORD_ENCOUNTERS,
+    icon: PathSVG,
   },
   [ENTRY_TYPE.QUEST.MADE_WAND]: {
     categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING],
@@ -334,6 +379,11 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.ASCENSION.KING_FREED,
     icon: AscendSVG,
     encounterName_alt: 'Ascension Complete!',
+  },
+  [ENTRY_TYPE.QUEST.MISC]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: MISC_QUEST_ENCOUNTERS,
+    icon: PathSVG,
   },
   // --
   [ENTRY_TYPE.CONSUMPTION.CHEW]: {
