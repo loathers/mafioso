@@ -50,6 +50,8 @@ export default function EntryDisplayContainer(props) {
     toggleCompact(isSelected);
   }, [isSelected]);
 
+  const isShowRightColumn = isDevMode || !isShowCompact;
+
   return (
     <div className={combineClassnames('flex-col position-relative', className)}>
       { entry.hasAnnotations &&
@@ -64,7 +66,7 @@ export default function EntryDisplayContainer(props) {
       <div className={combineClassnames(entry.isAnnotationOnly ? 'display-none' : 'flex-row')}>
         <Button
           onClick={() => toggleSelected(!isSelected)}
-          className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isDevMode ? 'borradius-r-2' : '')} >
+          className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isShowRightColumn ? 'borradius-r-2' : '')} >
           {/* adventure num column */}
           <EntryAdventureColumn
             entry={entry}
@@ -118,7 +120,7 @@ export default function EntryDisplayContainer(props) {
           }
         </Button>
 
-
+        {/* inline day num */}
         { !isShowCompact && entry.dayNum > 0 &&
           <div
             style={{
@@ -132,15 +134,26 @@ export default function EntryDisplayContainer(props) {
         }
 
         {/* right column */}
-        { isDevMode &&
-          <div className='borradius-r-2 bg-second flex-col flex-none'>
+        { isShowRightColumn &&
+          <div className='borradius-r-2 bg-second flex-row pad-2 flex-none'>
             <Button
-              onClick={() => toggleShowRaw(!isShowRaw)}
-              style={{width: 30}}
-              className='talign-right cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-t-2'>
+              onClick={() => {}}
+              style={{width: 30, borderWidth: 0}}
+              className='flex-row jcontent-center bg-second fontsize-1 flex-auto adjacent-mar-l-2'>
+              <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='' />
             </Button>
+
+            { isDevMode &&
+              <Button
+                onClick={() => toggleShowRaw(!isShowRaw)}
+                style={{width: 30, borderWidth: 0}}
+                className='flex-row jcontent-center cursor-pointer color-grayer fontsize-1 flex-auto adjacent-mar-l-2'>
+                raw
+              </Button>
+            }
           </div>
         }
+
       </div>
     </div>
   )
