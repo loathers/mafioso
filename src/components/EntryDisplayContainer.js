@@ -56,8 +56,10 @@ export default function EntryDisplayContainer(props) {
 
   const onToggleAnnotations = () => {
     if (shouldShowAnnotations) {
+      entry.willRemoveAnnotation = true;
       updateAnnotations(null);
     } else {
+      entry.willRemoveAnnotation = false;
       updateAnnotations(currentAnnotations || '');
     }
   }

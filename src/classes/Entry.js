@@ -106,6 +106,9 @@ export default class Entry {
       diabolicPizzaIngredients: [],
     }
 
+    /** @type {Boolean} */
+    this.willRemoveAnnotation = false;
+
     // start parsing we have the raw text
     if (rawText !== '' && Boolean(rawText)) {
       this.initialize();
@@ -538,10 +541,15 @@ export default class Entry {
       return this.rawText;
     }
 
-    // format comments to have two slashes
-    const formattedAnnotations = `//${this.attributes.annotations.replace(NEW_LINE_REGEX, '\n//')}`;
     // clear out existing comments
     const clearedText = this.rawText.replace(REGEX.MAFIOSO.LOG_COMMENTS_NEWLINE, '');
+    // if annotations are to be removed, return just the text
+    if (this.willRemoveAnnotation) {
+      return clearedText;
+    }
+
+    // format comments to have two slashes
+    const formattedAnnotations = `//${this.attributes.annotations.replace(NEW_LINE_REGEX, '\n//')}`;
     // append to front of text
     return `${formattedAnnotations}\n${clearedText}`;
   }
