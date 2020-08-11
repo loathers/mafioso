@@ -336,13 +336,6 @@ export const ENTRY_DATA_MAP = {
     matcher: HIGHLAND_LORD_ENCOUNTERS,
     icon: PathSVG,
   },
-  [ENTRY_TYPE.QUEST.MADE_WAND]: {
-    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING],
-    matcher: /.*acquire.*wand of nagamar.*/i,
-    icon: PathSVG,
-    locationName_alt: 'Created',
-    encounterName_alt: 'Wand of Anagram',
-  },
   [ENTRY_TYPE.QUEST.TOWER_CONTEST_BOOTH]: {
     categories: [CATEGORY_ID.QUEST],
     matcher: REGEX.QUEST.TOWER_BOOTH_TEXT,
@@ -384,6 +377,20 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.QUEST],
     matcher: MISC_QUEST_ENCOUNTERS,
     icon: PathSVG,
+  },
+  [ENTRY_TYPE.QUEST.MADE_WAND]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING],
+    matcher: /.*acquire.*wand of nagamar.*/i,
+    icon: PathSVG,
+    locationName_alt: 'Created',
+    encounterName_alt: 'Wand of Anagram',
+  },
+  [ENTRY_TYPE.QUEST.MAKE_MCCLUSKY_FILE]: {
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING, CATEGORY_ID.USE_ITEM],
+    matcher: REGEX.QUEST.MAKE_MCCLUSKY_FILE,
+    icon: PathSVG,
+    locationName_alt: 'Created',
+    encounterName_alt: 'McClusky file (complete)',
   },
   // --
   [ENTRY_TYPE.CONSUMPTION.CHEW]: {

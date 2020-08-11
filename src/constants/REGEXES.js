@@ -200,6 +200,7 @@ export const REGEX = {
     TOWER_DOOR_TEXT: /.*Tower Door:*/gmi,
 
     COMBINE_WAND_GROUP: /(^combine.*(metallic A|ruby W|lowercase n|heavy d|WA|ND).*(\r\n|\n).*(\r\n|\n){1,2}){2}/mi,
+    MAKE_MCCLUSKY_FILE: /^use.*boring binder clip.*(\r\n|\n).*McClusky file \(complete\)/mi,
 
     ED_THE_UNDYING_BOSS: /^Encounter: Ed the Undying/mi,
   },

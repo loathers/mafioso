@@ -202,9 +202,9 @@ export const CRYPT_BOSS_ENCOUNTERS = [
   "huge ghuol",
   "conjoined zmombie",
   "The Haert of Darkness",
-  "Bonerdagon",
-  "Auqadargon",
-  "Donerbagon",
+  "Encounter: Bonerdagon",
+  "Encounter: Auqadargon",
+  "Encounter: Donerbagon",
   "Jayden %belmont%",
   "Jerry Bradford",
 ];
