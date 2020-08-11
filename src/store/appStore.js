@@ -13,7 +13,7 @@ class AppStore {
     this.appId = uuidv4();
 
     /** @type {Boolean} */
-    this.isUsingCompactMode = observable.box(false);
+    this.isUsingCompactMode = observable.box(true);
     /** @type {Boolean} */
     this.shouldScrollUp = observable.box(false);
     /** @type {Boolean} */
