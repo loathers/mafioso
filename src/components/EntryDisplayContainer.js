@@ -54,6 +54,14 @@ export default function EntryDisplayContainer(props) {
   const [currentAnnotations, updateAnnotations] = useState(entry.attributes.annotations);
   const shouldShowAnnotations = currentAnnotations !== null && currentAnnotations !== undefined;
 
+  const onToggleAnnotations = () => {
+    if (shouldShowAnnotations) {
+      updateAnnotations(null);
+    } else {
+      updateAnnotations(currentAnnotations || '');
+    }
+  }
+
   const isShowRightColumn = (isDevMode || !isShowCompact);
 
   return (
@@ -137,10 +145,10 @@ export default function EntryDisplayContainer(props) {
         { isShowRightColumn &&
           <div className='borradius-r-2 bg-second flex-row pad-2 flex-none'>
             <Button
-              onClick={() => updateAnnotations('')}
+              onClick={onToggleAnnotations}
               style={{width: 30, borderWidth: 0}}
-              className='flex-row jcontent-center bg-second fontsize-1 flex-auto adjacent-mar-l-2'>
-              <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='' />
+              className={combineClassnames('position-relative flex-row jcontent-center fontsize-1 flex-auto adjacent-mar-l-2', shouldShowAnnotations ? 'unusable' : '')}>
+              <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='mar-t-3' />
             </Button>
 
             { isDevMode &&

@@ -114,3 +114,14 @@
     margin-left: -10px;
   }
 }
+
+.unusable {
+  &:after {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    content: '⨉';
+    font-size: 10px;
+    opacity: 0.8;
+  }
+}
