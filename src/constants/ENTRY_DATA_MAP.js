@@ -211,6 +211,13 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.KRAMCO_SAUSAGEOMATIC.COMBAT,
     icon: CombatSVG,
   },
+  [ENTRY_TYPE.IOTM.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
+    matcher: REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE,
+    icon: EatSVG,
+    locationName_alt: 'Eat - 0 fullness',
+    encounterName_alt: REGEX.ITEMS.EAT_TARGET,
+  },
   [ENTRY_TYPE.IOTM.PILL_KEEPER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
