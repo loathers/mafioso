@@ -34,11 +34,6 @@ export const ENTRY_TYPE_FILTERS = [
     isHidden: false,
   },
   {
-    label: 'ChoiceAdv',
-    categoryId: CATEGORY_ID.CHOICEADV,
-    isHidden: false,
-  },
-  {
     label: 'Diet',
     categoryId: CATEGORY_ID.DIET,
     isHidden: false,
@@ -107,6 +102,13 @@ export const ATTRIBUTE_FILTERS = [
       {
         label: 'Path-specific',
         attributeName: 'isPathSpecific',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Took a Choice',
+        attributeName: 'hasChoiceProgression',
         attributeValue: true,
         isHidden: false,
         checked: false,

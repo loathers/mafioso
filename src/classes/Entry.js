@@ -155,6 +155,13 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasChoiceProgression() {
+    if (this.entryType === ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE) {
+      return false;
+    }
+    if (this.entryType === ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX) {
+      return false;
+    }
+
     return this.attributes.choiceProgression.length > 0;
   }
   /** @type {Boolean} */
