@@ -30,6 +30,7 @@ export function getEntryData(entryString) {
 
   if (foundEntryType) {
     return {
+      showAdditionalDisplay: true,
       type: foundEntryType,
       ...ENTRY_DATA_MAP[foundEntryType],
     };

@@ -241,7 +241,7 @@ function EntryHeaderContainer(props) {
             </div>
           }
 
-          { entry.hasAdditionalDisplay &&
+          { entry.showAdditionalDisplay && entry.hasAdditionalDisplay &&
             <div
               className='flex-none adjacent-mar-l-5'>
               {entry.additionalDisplay}

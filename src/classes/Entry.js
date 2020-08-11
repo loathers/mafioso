@@ -162,6 +162,10 @@ export default class Entry {
     return Boolean(this.additionalDisplay);
   }
   /** @type {Boolean} */
+  get showAdditionalDisplay() {
+    return this.entryData.showAdditionalDisplay;
+  }
+  /** @type {Boolean} */
   get hasAnnotations() {
     return Boolean(this.attributes.annotations);
   }
@@ -359,8 +363,8 @@ export default class Entry {
       return this.attributes.additionalDisplay;
     }
 
-    if (this.hasChoiceProgression && !this.isEndedByUseTheForce) {
-      return '⇾ ' + this.attributes.choiceProgression.join('⇾ ');
+    if (this.hasChoiceProgression && this.showAdditionalDisplay && !this.attributes.isEndedByUseTheForce) {
+      return '⇾ ' + this.attributes.choiceProgression.join(' ⇾ ');
     }
 
     return this.attributes.additionalDisplay;
