@@ -359,10 +359,16 @@ function AnnotationContainer(props) {
   } = props;
 
   const [isEditing, toggleEditing] = useState(false);
-  const [editText, changeEditText] = useState(annotations);
+  const [editText, updateEditText] = useState(annotations);
+
+  const onChangeText = (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+    updateEditText(evt.target.value);
+  }
 
   const onToggleEditing = (evt) => {
-    if (evt.target.type === 'text') {
+    if (evt.target.type === 'text' || evt.target.type === 'submit') {
       evt.preventDefault();
     } else if (isEditing) {
       onComplete(editText);
@@ -370,6 +376,11 @@ function AnnotationContainer(props) {
     } else {
       toggleEditing(true);
     }
+  }
+
+  const onBlurInput = (evt) => {
+    onComplete(editText);
+    toggleEditing(false);
   }
 
   if (!shouldShowAnnotations) {
@@ -380,23 +391,26 @@ function AnnotationContainer(props) {
     <button
       onClick={onToggleEditing}
       componentname={isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
-      className={combineClassnames('borradius-3 pad-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row flex-none', className)}>
+      className={combineClassnames('borradius-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row aitems-center jcontent-start flex-none', className)}>
 
-      <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
-      { isEditing &&
-        <EditSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
-      }
+      <div className='flex-row mar-h-5 adjacent-mar-l-3'>
+        <TalkSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+        { isEditing &&
+          <EditSVG style={{width: 20, height: 20, opacity: 0.5}} className='adjacent-mar-l-3' />
+        }
+      </div>
 
       { !isEditing &&
-        <div className='adjacent-mar-l-3'>{editText}</div>
+        <div className='pad-3 adjacent-mar-l-3'>{editText}</div>
       }
 
       { isEditing &&
         <input
-          onChange={(evt) => changeEditText(evt.target.value)}
+          onChange={onChangeText}
+          onBlur={onBlurInput}
           value={editText}
           type='text'
-          className='bor-1-gray width-full adjacent-mar-l-3' />
+          className='pad-3 bor-1-gray width-full adjacent-mar-l-3' />
       }
     </button>
   )
