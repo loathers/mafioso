@@ -62,8 +62,7 @@ export async function parseLogTxt(rawText) {
 export function findAscensionLog(rawText) {
   // because the snapshot date might be cut off from the rest of the ascension,
   //  capture it here ahead of time to be certain that we have it
-  const snapshotText = regexUtils.findMatcher(rawText, REGEX.SNAPSHOT.PLAYER_SNAPSHOT);
-  const snapshotDate = snapshotText && snapshotText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
+  const snapshotDate = rawText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
   const formattedDate = snapshotDate ? `<mafioso>\nLog Start: ${snapshotDate}\n<mafioso/>\n\n` : '';
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
@@ -159,7 +158,7 @@ export async function postParseCleanup(rawText) {
 
   // replace all the stuff under "Player Snapshot"
   return rawText.replace(REGEX.SNAPSHOT.WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP, (match, p1, p2) => {
-    return `<mafioso>\n${p1}\n${p2}\n<mafioso/>\n`;
+    return `<mafioso>\n${p1}\n${p2}\n</mafioso>\n`;
   });
 }
 /**
