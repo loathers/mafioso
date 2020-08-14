@@ -153,7 +153,7 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.DIET],
     matcher: REGEX.DIABOLIC_PIZZA.EAT_LINE,
     icon: EatSVG,
-    locationName_alt: ['Eat - {1}', REGEX.ITEMS.CONSUMPTION_COST],
+    locationName_alt: 'Eat - 3 fullness',
     encounterName_alt: 'Diabolic Pizza',
   },
   [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY]: {
