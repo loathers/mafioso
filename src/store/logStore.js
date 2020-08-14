@@ -421,12 +421,12 @@ class LogStore {
       }
 
       // use entries with the date in them as a possible point of a new day
-      if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
-        const dateMatch = entry.rawText.match(REGEX.SNAPSHOT.KOL_DATE) || [];
-        if (dateMatch && !dateListEstimate.includes(dateMatch[0])) {
-          dateListEstimate.push(dateMatch[0]);
-        }
+      // if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
+      const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
+      if (dateMatch && !dateListEstimate.includes(dateMatch)) {
+        dateListEstimate.push(dateMatch);
       }
+      // }
 
       // set this dayNum
       entry.attributes.dayNum = dateListEstimate.length;
