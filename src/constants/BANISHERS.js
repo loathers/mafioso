@@ -148,6 +148,10 @@ export const BANISHERS_MAP = {
     matcher: /(uses|casts).*Daily Affirmation: Be a Mind Master/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
+  'Spooky Music Box Mechanism': {
+    matcher: /(uses|casts|).*spooky music box mechanism/i,
+    entityType: ENTITY_TYPE.COMBAT_ITEM,
+  },
 }
 
 export const BANISHERS = Object.keys(BANISHERS_MAP);
