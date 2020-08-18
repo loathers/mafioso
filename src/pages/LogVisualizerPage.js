@@ -4,7 +4,7 @@ import {observer} from 'mobx-react';
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
-import HeaderDisplay from 'components/HeaderDisplay';
+import EntryHeaderDisplay from 'components/EntryHeaderDisplay';
 
 import MainMenu from 'sections/MainMenu';
 import PageControlMenu from 'sections/PageControlMenu';
@@ -68,7 +68,7 @@ function LogVisualizerPage(props) {
       { logStore.hasParsedEntries && isReady &&
         <div elementname='app-content' className='flex-col-center flex-auto'>
           { logStore.isAscensionLog &&
-            <HeaderDisplay
+            <EntryHeaderDisplay
               topContent={logStore.difficultyName}
               bottomContent={logStore.pathName}
               className='adjacent-mar-t-5'

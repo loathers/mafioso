@@ -4,7 +4,7 @@ import {observer} from 'mobx-react';
 import appStore from 'store/appStore';
 
 import EntryDisplayContainer from 'components/EntryDisplayContainer';
-import HeaderDisplay from 'components/HeaderDisplay';
+import EntryHeaderDisplay from 'components/EntryHeaderDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -31,7 +31,7 @@ function LogEntryViewer(props) {
         return (
           <Fragment key={`entry-display-${entry.id}-${idx}-key`}>
             { shouldShowDayDisplay &&
-              <HeaderDisplay
+              <EntryHeaderDisplay
                 topContent={`Day ${currentDay}`}
                 className='pad-3 adjacent-mar-t-1' />
             }

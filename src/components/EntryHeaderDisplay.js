@@ -3,7 +3,7 @@ import React from 'react';
 import combineClassnames from 'utilities/combineClassnames';
 
 /**  @returns {React.Component} */
-export default function HeaderDisplay(props) {
+export default function EntryHeaderDisplay(props) {
   const {
     className,
     topContent,
