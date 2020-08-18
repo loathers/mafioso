@@ -9,7 +9,7 @@ import LoaderComponent from 'components/LoaderComponent';
 
 import Footer from 'sections/Footer';
 import MainMenu from 'sections/MainMenu';
-import NavigationMenu from 'sections/NavigationMenu';
+import PageControlMenu from 'sections/PageControlMenu';
 import VisualizerSection from 'sections/VisualizerSection';
 
 export default observer(
@@ -64,7 +64,7 @@ function App() {
         className='flex-auto' />
 
       { logStore.hasParsedEntries &&
-        <NavigationMenu />
+        <PageControlMenu />
       }
 
       { logStore.hasParsedEntries &&

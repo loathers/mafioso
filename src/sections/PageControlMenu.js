@@ -13,7 +13,7 @@ import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {ReactComponent} */
 export default observer(
-function NavigationMenu(props) {
+function PageControlMenu(props) {
   const {
     className,
   } = props;
