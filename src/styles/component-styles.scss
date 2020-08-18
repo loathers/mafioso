@@ -1,29 +1,3 @@
-[componentname='app-footer'] {
-  left: $APP_MARGIN;
-  bottom: $APP_MARGIN;
-}
-
-[componentname='app-content'] {
-  flex: auto;
-  padding-left: $APP_MARGIN;
-  // padding-right: $APP_MARGIN;
-  max-width: map.get($BREAKPOINT_WIDTH_MAP, 'l');
-}
-
-@media (max-width: (map.get($BREAKPOINT_WIDTH_MAP, 'xl') + $MENU_WIDTH)) {
-  [componentname='app-content'],
-  [componentname='navigation-menu'] {
-    margin-left: $MENU_WIDTH + $APP_MARGIN;
-  }
-}
-
-[componentname='main-menu'] {
-  flex: none;
-  width: $MENU_WIDTH;
-  left: $APP_MARGIN;
-  position: fixed;
-}
-
 [componentname='upload-component'] {
   label {
     border-width: 1px;
@@ -59,13 +33,6 @@
   }
 }
 
-[componentname='navigation-menu'] {
-  bottom: $APP_MARGIN + 30;
-}
-
-[componentname='pagination-menu'] {
-  background: map.get($COLOR_MAP, "first");
-}
 [componentname='dark-button'] {
   background: map.get($COLOR_MAP, "first");
   color: map.get($COLOR_MAP, "white");
