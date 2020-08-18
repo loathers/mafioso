@@ -60,55 +60,60 @@ function App() {
         <LoaderComponent />
       }
 
+      {/* Top */}
       <Navbar
         className='adjacent-mar-t-5' />
 
-      <MainMenu
-        showFull={appStore.isShowingFullUpload}
-        className='flex-auto adjacent-mar-t-5' />
+      {/* Inner */}
+      <div className='flex-auto'>
+        <MainMenu
+          showFull={appStore.isShowingFullUpload}
+          className='flex-auto adjacent-mar-t-5' />
 
-      { logStore.hasParsedEntries &&
-        <PageControlMenu />
-      }
+        { logStore.hasParsedEntries &&
+          <PageControlMenu />
+        }
 
-      { logStore.hasParsedEntries &&
-        <div componentname='app-content' className='flex-col-center flex-auto'>
-          { logStore.isAscensionLog &&
-            <HeaderDisplay
-              topContent={logStore.difficultyName}
-              bottomContent={logStore.pathName}
-              className='adjacent-mar-t-5'
-            />
-          }
+        { logStore.hasParsedEntries &&
+          <div componentname='app-content' className='flex-col-center flex-auto'>
+            { logStore.isAscensionLog &&
+              <HeaderDisplay
+                topContent={logStore.difficultyName}
+                bottomContent={logStore.pathName}
+                className='adjacent-mar-t-5'
+              />
+            }
 
-          { logStore.hasCurrentEntries &&
-            <VisualizerSection
-              entriesList={logStore.currentEntries}
-              isUsingCompactMode={appStore.isUsingCompactMode.get()}
-              className='flex-auto adjacent-mar-t-5'
-            />
-          }
+            { logStore.hasCurrentEntries &&
+              <VisualizerSection
+                entriesList={logStore.currentEntries}
+                isUsingCompactMode={appStore.isUsingCompactMode.get()}
+                className='flex-auto adjacent-mar-t-5'
+              />
+            }
 
-          { !logStore.hasCurrentEntries &&
-            <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
-              Huh, nothing here.
-            </div>
-          }
+            { !logStore.hasCurrentEntries &&
+              <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
+                Huh, nothing here.
+              </div>
+            }
 
-          { logStore.isLazyLoading.get() &&
-            <div
-              className='spinner flex-none adjacent-mar-t-5'
-              style={{
-                width: 30,
-                height: 30,
-                borderColor: 'white',
-                borderWidth: 5,
-              }}
-            />
-          }
-        </div>
-      }
+            { logStore.isLazyLoading.get() &&
+              <div
+                className='spinner flex-none adjacent-mar-t-5'
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderColor: 'white',
+                  borderWidth: 5,
+                }}
+              />
+            }
+          </div>
+        }
+      </div>
 
+      {/* Bottom */}
       <Footer
         className='position-fixed' />
     </div>
