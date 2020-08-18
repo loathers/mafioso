@@ -1,8 +1,11 @@
 [componentname='app-navbar'] {
   box-sizing: border-box;
   height: $NAVBAR_HEIGHT;
-  width: 100vw;
+  width: 100%;
   background-color: map.get($COLOR_MAP, "second-darkest");
+
+  padding-left: $APP_MARGIN;
+  padding-right: $APP_MARGIN;
 }
 
 [componentname='app-content'] {
