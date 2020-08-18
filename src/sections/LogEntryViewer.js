@@ -12,7 +12,7 @@ import combineClassnames from 'utilities/combineClassnames';
  * @returns {React.Component}
  */
 export default observer(
-function VisualizerSection(props) {
+function LogEntryViewer(props) {
   const {
     className,
     entriesList = [],
@@ -20,8 +20,8 @@ function VisualizerSection(props) {
   } = props;
 
   return (
-    <div 
-      className={combineClassnames('width-full flex-col adjacent-mar-t-5', className)}> 
+    <div
+      className={combineClassnames('width-full flex-col adjacent-mar-t-5', className)}>
       { entriesList.map((entry, idx) => {
         const currentDay = entry.attributes.dayNum;
         const previousEntry = idx >= 1 && entriesList[idx-1];
@@ -31,12 +31,12 @@ function VisualizerSection(props) {
         return (
           <Fragment key={`entry-display-${entry.id}-${idx}-key`}>
             { shouldShowDayDisplay &&
-              <HeaderDisplay 
-                topContent={`Day ${currentDay}`} 
+              <HeaderDisplay
+                topContent={`Day ${currentDay}`}
                 className='pad-3 adjacent-mar-t-1' />
             }
 
-            <EntryDisplayContainer 
+            <EntryDisplayContainer
               entry={entry}
               isUsingCompactMode={isUsingCompactMode}
               isDevMode={appStore.isDevMode.get()}

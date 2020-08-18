@@ -8,7 +8,7 @@ import HeaderDisplay from 'components/HeaderDisplay';
 
 import MainMenu from 'sections/MainMenu';
 import PageControlMenu from 'sections/PageControlMenu';
-import VisualizerSection from 'sections/VisualizerSection';
+import LogEntryViewer from 'sections/LogEntryViewer';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -73,7 +73,7 @@ function VisualizerPage(props) {
           }
 
           { logStore.hasCurrentEntries &&
-            <VisualizerSection
+            <LogEntryViewer
               entriesList={logStore.currentEntries}
               isUsingCompactMode={appStore.isUsingCompactMode.get()}
               className='flex-auto adjacent-mar-t-5'
