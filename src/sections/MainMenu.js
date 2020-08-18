@@ -8,7 +8,7 @@ import logStore from 'store/logStore';
 
 import Button from 'components/Button';
 import SelectOptionsComponent from 'components/SelectOptionsComponent';
-import UploadComponent from 'components/UploadComponent';
+import LogUploader from 'sections/LogUploader';
 
 import FiltersMenu from 'sections/FiltersMenu';
 
@@ -67,7 +67,7 @@ function MainMenu(props) {
       className={combineClassnames('flex-col', className)}>
 
       <div className='flex-col flex-none adjacent-mar-t-5'>
-        <UploadComponent
+        <LogUploader
           children={'Upload New'}
           className='fontsize-5 width-full adjacent-mar-t-4' />
 
@@ -145,7 +145,7 @@ export function FullPageMenu(props) {
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col', className)}>
 
-      <UploadComponent
+      <LogUploader
         style={{height: '70vh', width: '100%'}}
         className='height-full width-full flex-auto adjacent-mar-t-4' >
         <div className='flex-col-center height-full'>
@@ -157,7 +157,7 @@ export function FullPageMenu(props) {
             {'Thanks for using Mafioso beta!\n\nIf you get an error or have any requests, make a report on Github.\nPlease know that no data is collected and uploaded files are never sent anywhere.'}
           </div>
         </div>
-      </UploadComponent>
+      </LogUploader>
     </div>
   )
 }

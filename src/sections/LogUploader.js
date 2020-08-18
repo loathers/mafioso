@@ -26,7 +26,7 @@ function ignoreEvent(evt) {
 /**
  * @returns {React.Component}
  */
-export default function UploadComponent(props) {
+export default function LogUploader(props) {
   const {
     className,
     disabled,
