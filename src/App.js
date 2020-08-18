@@ -9,7 +9,7 @@ import LoaderComponent from 'components/LoaderComponent';
 import Footer from 'sections/Footer';
 import Navbar from 'sections/Navbar';
 
-import VisualizerPage from 'pages/VisualizerPage';
+import LogVisualizerPage from 'pages/LogVisualizerPage';
 
 export default observer(
 function App() {
@@ -31,7 +31,7 @@ function App() {
         className='adjacent-mar-t-5' />
 
       {/* Body */}
-      <VisualizerPage
+      <LogVisualizerPage
         className='adjacent-mar-t-5' />
 
       {/* Bottom */}

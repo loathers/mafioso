@@ -13,7 +13,7 @@ import LogEntryViewer from 'sections/LogEntryViewer';
 import combineClassnames from 'utilities/combineClassnames';
 
 export default observer(
-function VisualizerPage(props) {
+function LogVisualizerPage(props) {
   const {
     className,
   } = props;
