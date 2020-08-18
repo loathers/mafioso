@@ -7,7 +7,6 @@ import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import Button from 'components/Button';
-import LogoComponent from 'components/LogoComponent';
 import SelectOptionsComponent from 'components/SelectOptionsComponent';
 import UploadComponent from 'components/UploadComponent';
 
@@ -66,9 +65,6 @@ function MainMenu(props) {
       componentname='main-menu'
       style={style}
       className={combineClassnames('flex-col', className)}>
-
-      <LogoComponent
-        className='flex-none adjacent-mar-t-5'/>
 
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <UploadComponent
@@ -148,11 +144,6 @@ export function FullPageMenu(props) {
     <div
       style={{width: '90%'}}
       className={combineClassnames('fontsize-4 flex-col', className)}>
-
-      <div className='flex-row flex-none adjacent-mar-t-4'>
-        <LogoComponent
-          className='flex-auto adjacent-mar-l-2'/>
-      </div>
 
       <UploadComponent
         style={{height: '70vh', width: '100%'}}

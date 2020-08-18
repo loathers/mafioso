@@ -9,6 +9,7 @@ import LoaderComponent from 'components/LoaderComponent';
 
 import Footer from 'sections/Footer';
 import MainMenu from 'sections/MainMenu';
+import Navbar from 'sections/Navbar';
 import PageControlMenu from 'sections/PageControlMenu';
 import VisualizerSection from 'sections/VisualizerSection';
 
@@ -59,9 +60,12 @@ function App() {
         <LoaderComponent />
       }
 
+      <Navbar
+        className='adjacent-mar-t-5' />
+
       <MainMenu
         showFull={appStore.isShowingFullUpload}
-        className='flex-auto' />
+        className='flex-auto adjacent-mar-t-5' />
 
       { logStore.hasParsedEntries &&
         <PageControlMenu />

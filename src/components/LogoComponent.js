@@ -14,10 +14,9 @@ export default function LogoComponent(props) {
 
   return (
     <h1
-      style={{fontSize: 30}} 
+      style={{fontSize: 30}}
       className={combineClassnames('color-white fontfamily-tertiary flex-col', className)}>
-      <div style={textStyle} className='flex-none'>kol</div>
-      <div style={textStyle} className='flex-none'>mafioso</div>
+      <div style={textStyle} className='flex-none'>kol mafioso</div>
     </h1>
   )
 }

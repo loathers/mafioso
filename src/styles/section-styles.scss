@@ -1,6 +1,8 @@
-[componentname='app-footer'] {
-  left: $APP_MARGIN;
-  bottom: $APP_MARGIN;
+[componentname='app-navbar'] {
+  box-sizing: border-box;
+  height: $NAVBAR_HEIGHT;
+  width: 100vw;
+  background-color: map.get($COLOR_MAP, "second-darkest");
 }
 
 [componentname='app-content'] {
@@ -30,4 +32,9 @@
 
 [componentname='pagination-menu'] {
   background: map.get($COLOR_MAP, "first");
+}
+
+[componentname='app-footer'] {
+  left: $APP_MARGIN;
+  bottom: $APP_MARGIN;
 }
