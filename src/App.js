@@ -46,7 +46,6 @@ function App() {
 
           <Route path={LOG_VIS_URL}>
             <LogVisualizerPage
-              isReady={appStore.isReady}
               className='adjacent-mar-t-5' />
           </Route>
         </Switch>
