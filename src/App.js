@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link,
+} from "react-router-dom";
 import {observer} from 'mobx-react';
 
 import appStore from 'store/appStore';
@@ -14,28 +20,34 @@ import LogVisualizerPage from 'pages/LogVisualizerPage';
 export default observer(
 function App() {
   return (
-    <div
-      id='app-main'
-      appmode={appStore.isShowingFullUpload ? 'splash' : 'ready'}
-      className='color-white fontfamily-primary fontsize-5'>
+    <Router>
+      <div
+        id='app-main'
+        appmode={appStore.isShowingFullUpload ? 'splash' : 'ready'}
+        className='color-white fontfamily-primary fontsize-5'>
 
-      {/* loader */}
-      { appStore.isLoading && !logStore.isLazyLoading.get() &&
-        <LoaderComponent />
-      }
+        {/* loader */}
+        { appStore.isLoading && !logStore.isLazyLoading.get() &&
+          <LoaderComponent />
+        }
 
-      {/* Top */}
-      <Navbar
-        className='adjacent-mar-t-5' />
+        {/* Top */}
+        <Navbar
+          className='adjacent-mar-t-5' />
 
-      {/* Body */}
-      <LogVisualizerPage
-        isReady={appStore.isReady}
-        className='adjacent-mar-t-5' />
+        {/* Body */}
+        <Switch>
+          <Route path='/'>
+            <LogVisualizerPage
+              isReady={appStore.isReady}
+              className='adjacent-mar-t-5' />
+          </Route>
+        </Switch>
 
-      {/* Bottom */}
-      <Footer
-        className='position-fixed' />
-    </div>
+        {/* Bottom */}
+        <Footer
+          className='position-fixed' />
+      </div>
+    </Router>
   );
 })
