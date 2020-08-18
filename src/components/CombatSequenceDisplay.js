@@ -79,7 +79,7 @@ function CombatActionDisplay(props) {
   return (
     <div className={combineClassnames('overflow-hidden userselect-none bor-1-white borradius-2 pad-2 boxsizing-border flex-col-center position-relative', className)}>
       <div className='fontsize-1 color-white flex-none adjacent-mar-t-2 position-absolute'
-        componentname='block-inner-icon'>
+        elementname='block-inner-icon'>
         {roundNum}
       </div>
 

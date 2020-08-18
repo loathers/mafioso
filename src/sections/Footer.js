@@ -14,7 +14,7 @@ export default function Footer(props) {
 
   return (
     <div
-      componentname='app-footer'
+      elementname='app-footer'
       style={style}
       className={combineClassnames('aself-start fontsize-2 flex-row-center', className)}>
 
@@ -36,9 +36,9 @@ export default function Footer(props) {
 }
 
 /** @returns {React.Component} */
-function FooterLink(props) { 
+function FooterLink(props) {
   return (
-    <a 
+    <a
       target='_blank'
       rel='noopener noreferrer'
       {...props}

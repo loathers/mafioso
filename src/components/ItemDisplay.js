@@ -13,12 +13,12 @@ export default function ItemDisplay(props) {
   } = props;
 
   return (
-    <div 
+    <div
       className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-v-6 pad-h-8 boxsizing-border flex-col-center position-relative', className)}>
 
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'
-        componentname='block-inner-icon'>
+        elementname='block-inner-icon'>
         <IconComponent style={{width: 20, height: 20}} />
       </div>
 

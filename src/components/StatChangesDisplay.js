@@ -14,13 +14,13 @@ function StatBlockDisplay(props) {
   } = props;
 
   return (
-    <div 
+    <div
       className={combineClassnames('overflow-hidden bg-second-darker borradius-2 pad-3 boxsizing-border flex-col-center position-relative', className)}
       style={{width: 60, height: 40}}>
 
       <div
         className='flex-none adjacent-mar-t-2 position-absolute'
-        componentname='block-inner-icon'>
+        elementname='block-inner-icon'>
         <StarsStackSVG style={{width: 20, height: 20}} />
       </div>
 
@@ -43,17 +43,17 @@ export default function StatChangesDisplay(props) {
 
   return (
     <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-2', className)}>
-      <StatBlockDisplay 
+      <StatBlockDisplay
         content={entry.musSubstats}
         label='mus exp'
         className={combineClassnames('mar-1', entry.attributes.isMusUp ? 'f-bold' : '')} />
 
-      <StatBlockDisplay 
+      <StatBlockDisplay
         content={entry.mystSubstats}
         label='myst exp'
         className={combineClassnames('mar-1', entry.attributes.isMusUp ? 'f-bold' : '')} />
 
-      <StatBlockDisplay 
+      <StatBlockDisplay
         content={entry.moxSubstats}
         label='mox exp'
         className={combineClassnames('mar-1', entry.attributes.isMusUp ? 'f-bold' : '')} />

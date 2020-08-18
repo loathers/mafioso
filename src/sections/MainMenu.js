@@ -62,7 +62,7 @@ function MainMenu(props) {
 
   return (
     <div
-      componentname='main-menu'
+      elementname='main-menu'
       style={style}
       className={combineClassnames('flex-col', className)}>
 

@@ -11,9 +11,9 @@ export default function DarkButton(props) {
   } = props;
 
   return (
-    <button 
+    <button
       {...otherProps}
-      componentname='dark-button'
+      elementname='dark-button'
       className={combineClassnames('talign-center borradius-2 pad-3', className)}>
       {children}
     </button>

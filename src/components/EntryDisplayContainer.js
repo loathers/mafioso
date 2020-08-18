@@ -407,7 +407,7 @@ function AnnotationContainer(props) {
   return (
     <button
       onClick={onToggleEditing}
-      componentname={isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
+      elementname={isAnnotationOnly ? 'annotation-box' : 'arrow-box-down'}
       className={combineClassnames('borradius-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row aitems-center jcontent-start flex-none', className)}>
 
       <div className='flex-col mar-h-5 adjacent-mar-l-3'>

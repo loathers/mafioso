@@ -34,7 +34,7 @@ function PageControlMenu(props) {
 
   return (
     <div
-      componentname='navigation-menu'
+      elementname='navigation-menu'
       className={combineClassnames('zindex-7 position-fixed flex-row aitems-center', className)}>
 
       <DarkButton

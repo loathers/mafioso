@@ -53,7 +53,7 @@ function LogVisualizerPage(props) {
   });
 
   return (
-    <div className={combineClassnames('flex-row', className)}>
+    <div elementname='page-visualizer' className={combineClassnames('flex-row', className)}>
       <MainMenu
         showFull={appStore.isShowingFullUpload}
         className='flex-auto adjacent-mar-t-5' />
@@ -63,7 +63,7 @@ function LogVisualizerPage(props) {
       }
 
       { logStore.hasParsedEntries &&
-        <div componentname='app-content' className='flex-col-center flex-auto'>
+        <div elementname='app-content' className='flex-col-center flex-auto'>
           { logStore.isAscensionLog &&
             <HeaderDisplay
               topContent={logStore.difficultyName}

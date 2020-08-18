@@ -15,18 +15,18 @@ export default function ListDisplay(props) {
   } = props;
 
   return (
-    <div 
+    <div
       style={style}
       className={combineClassnames('mar-1 pad-2 overflow-hidden bg-second-darker borradius-2 flex-row flexwrap-yes position-relative', className)}>
-      
-      <IconComponent 
-        componentname='block-inner-icon'
+
+      <IconComponent
+        elementname='block-inner-icon'
         style={{width: 20, height: 20, opacity: 0.7}}
         className='flex-none adjacent-mar-l-2' />
 
       <div className='flex-col flex-auto jcontent-center adjacent-mar-l-2'>
         { list.map((listItem, idx) => (
-          <PairedDisplay 
+          <PairedDisplay
             leftContent={listItem.displayName}
             rightContent={listItem.displayAmount}
             className='adjacent-mar-t-2'

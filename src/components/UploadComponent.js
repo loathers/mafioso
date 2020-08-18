@@ -38,16 +38,16 @@ export default function UploadComponent(props) {
   const overClassName = isOver ? 'bor-1-green' : '';
 
   return (
-    <form 
+    <form
       onDrop={(evt) => { onUpload(evt); }}
       onDragOver={e => { ignoreEvent(e); }}
       onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
       onDragLeave={e => { ignoreEvent(e); setIsOver(false); }}
-      componentname='upload-component'
+      elementname='upload-component'
       componentstate={disabled ? 'disabled' : 'enabled'}
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
-      <label 
+      <label
         className={combineClassnames('borradius-2 talign-center whitespace-pre-wrap pad-4 flex-auto', overClassName)}
         htmlFor='log-uploader'>
         {children}

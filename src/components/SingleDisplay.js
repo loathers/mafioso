@@ -14,12 +14,12 @@ export default function SingleDisplay(props) {
   } = props;
 
   return (
-    <div 
+    <div
       style={style}
       className={combineClassnames('mar-1 pad-v-2 pad-h-3 overflow-hidden bg-second-darker borradius-2 flex-row aitems-center flexwrap-yes position-relative', className)}>
 
-      <IconComponent 
-        componentname='block-inner-icon'
+      <IconComponent
+        elementname='block-inner-icon'
         style={{width: 20, height: 20, opacity: 0.7}}
         className='flex-none adjacent-mar-l-2' />
 
