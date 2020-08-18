@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
 
+import {HOME_URL} from 'constants/PAGE_URLS';
+
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
@@ -55,7 +57,7 @@ function LogVisualizerPage(props) {
   });
 
   if (!logStore.hasParsedEntries) {
-    return <Redirect to='/'/>
+    return <Redirect to={HOME_URL}/>
   }
 
   return (

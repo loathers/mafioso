@@ -2,6 +2,8 @@ import React from 'react';
 import {observer} from 'mobx-react';
 import {Link} from "react-router-dom";
 
+import {LOG_VIS_URL, WIKI_URL, DATABASE_URL} from 'constants/PAGE_URLS';
+
 // import appStore from 'store/appStore';
 
 // import DarkButton from 'components/DarkButton';
@@ -24,20 +26,20 @@ function Navbar(props) {
 
       <div className='jcontent-end flex-auto flex-row mar-l-6'>
         <NavbarLink
-          to='/vis'
+          to={LOG_VIS_URL}
           isActive
           children='Visualizer'
           className='adjacent-mar-l-3' />
 
         <NavbarLink
           disabled
-          to='/wiki'
+          to={WIKI_URL}
           children='Wiki'
           className='adjacent-mar-l-3' />
 
         <NavbarLink
           disabled
-          to='/logdb'
+          to={DATABASE_URL}
           children='Database'
           className='adjacent-mar-l-3' />
       </div>
