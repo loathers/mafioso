@@ -18,7 +18,7 @@ function Navbar(props) {
   return (
     <div
       elementname='app-navbar'
-      className={combineClassnames('pad-3 flex-row aitems-center', className)}>
+      className={combineClassnames('pad-v-1 flex-row aitems-center', className)}>
       <LogoComponent />
     </div>
   )

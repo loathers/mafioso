@@ -5,6 +5,7 @@
 @import 'css-util-extension.scss';
 @import 'component-styles.scss';
 @import 'section-styles.scss';
+@import 'page-styles.scss';
 
 body {
   background-color: map.get($COLOR_MAP, "third");

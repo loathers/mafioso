@@ -53,7 +53,9 @@ function LogVisualizerPage(props) {
   });
 
   return (
-    <div elementname='page-visualizer' className={combineClassnames('flex-row', className)}>
+    <div
+      elementname='app-page-visualizer'
+      className={combineClassnames('flex-row', className)}>
       <MainMenu
         showFull={appStore.isShowingFullUpload}
         className='flex-auto adjacent-mar-t-5' />
