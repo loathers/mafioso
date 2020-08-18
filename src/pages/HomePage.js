@@ -1,5 +1,11 @@
 import React from 'react';
+import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
+
+import {LOG_VIS_URL} from 'constants/PAGE_URLS';
+
+import appStore from 'store/appStore';
+import logStore from 'store/logStore';
 
 import LogUploader from 'sections/LogUploader';
 
@@ -10,6 +16,10 @@ function HomePage(props) {
   const {
     className,
   } = props;
+
+  if (logStore.hasCurrentEntries && appStore.isReady) {
+    return <Redirect to={LOG_VIS_URL}/>
+  }
 
   return (
     <div
