@@ -58,7 +58,6 @@ function LogVisualizerPage(props) {
       elementname='app-page-visualizer'
       className={combineClassnames('flex-row jcontent-center', className)}>
       <MainMenu
-        showFull={appStore.isShowingFullUpload}
         className='flex-auto adjacent-mar-t-5' />
 
       { logStore.hasParsedEntries &&

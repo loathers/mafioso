@@ -15,6 +15,7 @@ import LoaderComponent from 'components/LoaderComponent';
 import Footer from 'sections/Footer';
 import Navbar from 'sections/Navbar';
 
+import HomePage from 'pages/HomePage';
 import LogVisualizerPage from 'pages/LogVisualizerPage';
 
 export default observer(
@@ -38,6 +39,10 @@ function App() {
         {/* Body */}
         <Switch>
           <Route path='/'>
+            <HomePage className='adjacent-mar-t-5'/>
+          </Route>
+
+          <Route path='/vis'>
             <LogVisualizerPage
               isReady={appStore.isReady}
               className='adjacent-mar-t-5' />
