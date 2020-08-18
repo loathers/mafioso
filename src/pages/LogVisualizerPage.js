@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
 
 import appStore from 'store/appStore';
@@ -52,6 +53,10 @@ function LogVisualizerPage(props) {
       window.scrollTo({top: 0});
     }
   });
+
+  if (!logStore.hasParsedEntries) {
+    return <Redirect to='/'/>
+  }
 
   return (
     <div

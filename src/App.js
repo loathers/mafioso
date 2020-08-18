@@ -38,7 +38,7 @@ function App() {
 
         {/* Body */}
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
             <HomePage className='adjacent-mar-t-5'/>
           </Route>
 
