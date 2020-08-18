@@ -16,6 +16,7 @@ export default observer(
 function LogVisualizerPage(props) {
   const {
     className,
+    isReady,
   } = props;
 
   const onScroll = (evt) => {
@@ -55,7 +56,7 @@ function LogVisualizerPage(props) {
   return (
     <div
       elementname='app-page-visualizer'
-      className={combineClassnames('flex-row', className)}>
+      className={combineClassnames('flex-row jcontent-center', className)}>
       <MainMenu
         showFull={appStore.isShowingFullUpload}
         className='flex-auto adjacent-mar-t-5' />
@@ -64,7 +65,7 @@ function LogVisualizerPage(props) {
         <PageControlMenu />
       }
 
-      { logStore.hasParsedEntries &&
+      { logStore.hasParsedEntries && isReady &&
         <div elementname='app-content' className='flex-col-center flex-auto'>
           { logStore.isAscensionLog &&
             <HeaderDisplay

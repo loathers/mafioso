@@ -13,8 +13,6 @@ import LogVisualizerPage from 'pages/LogVisualizerPage';
 
 export default observer(
 function App() {
-
-
   return (
     <div
       id='app-main'
@@ -32,6 +30,7 @@ function App() {
 
       {/* Body */}
       <LogVisualizerPage
+        isReady={appStore.isReady}
         className='adjacent-mar-t-5' />
 
       {/* Bottom */}
