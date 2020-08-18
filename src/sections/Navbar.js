@@ -1,8 +1,9 @@
 import React from 'react';
-import {observer} from 'mobx-react';
+// import {observer} from 'mobx-react';
 import {Link} from "react-router-dom";
+import {withRouter} from "react-router";
 
-import {LOG_VIS_URL, WIKI_URL, DATABASE_URL} from 'constants/PAGE_URLS';
+import {LOG_VIS_URL, DATABASE_URL} from 'constants/PAGE_URLS';
 
 // import appStore from 'store/appStore';
 
@@ -12,10 +13,11 @@ import LogoComponent from 'components/LogoComponent';
 import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {ReactComponent} */
-export default observer(
+export default withRouter(
 function Navbar(props) {
   const {
     className,
+    location,
   } = props;
 
   return (
@@ -27,14 +29,8 @@ function Navbar(props) {
       <div className='jcontent-end flex-auto flex-row mar-l-6'>
         <NavbarLink
           to={LOG_VIS_URL}
-          isActive
+          isActive={location.pathname === LOG_VIS_URL}
           children='Visualizer'
-          className='adjacent-mar-l-3' />
-
-        <NavbarLink
-          disabled
-          to={WIKI_URL}
-          children='Wiki'
           className='adjacent-mar-l-3' />
 
         <NavbarLink

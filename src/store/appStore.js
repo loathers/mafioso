@@ -12,9 +12,6 @@ class AppStore {
   constructor() {
     this.appId = uuidv4();
 
-    /** @type {PageId} */
-    this.currentPage = 'visualizer';
-
     /** @type {Boolean} */
     this.isUsingCompactMode = observable.box(true);
     /** @type {Boolean} */
@@ -39,10 +36,6 @@ class AppStore {
   /** @type {Boolean} */
   get isShowingFullUpload() {
     return !logStore.hasFiles;
-  }
-  /** @type {Boolean} */
-  get isPageVisualizer() {
-    return this.currentPage === 'visualizer';
   }
   // -- data
   /** @type {Boolean} */
