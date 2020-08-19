@@ -16,10 +16,6 @@ export default function BarChartDisplay(props) {
   React.useEffect(() => {
     if (chartConfig && chartRef && chartRef.current !== null) {
       const chartCtx = chartRef.current.getContext('2d');
-      const gradient = chartCtx.createLinearGradient(0, 0, 0, 400);
-      gradient.addColorStop(0, 'rgba(151,187,205,0.7)');
-      gradient.addColorStop(1, 'rgba(151,187,205,0)');
-
       new Chart(chartCtx, chartConfig);
     }
   })

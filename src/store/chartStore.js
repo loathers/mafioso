@@ -34,13 +34,16 @@ class ChartStore {
           yAxes: [{
             ticks: {
               fontColor: '#ececec',
-            }
+            },
           }],
           xAxes: [{
             ticks: {
               fontColor: '#ececec',
               stepSize: 2,
-            }
+            },
+            gridLines: {
+              color: '#353535',
+            },
           }]
         }
       },
