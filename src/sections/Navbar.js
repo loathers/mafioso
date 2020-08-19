@@ -7,7 +7,6 @@ import {LOG_VIS_URL, CHARTS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 
-// import DarkButton from 'components/DarkButton';
 import LogoComponent from 'components/LogoComponent';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -39,7 +38,7 @@ function Navbar(props) {
         <NavbarLink
           to={CHARTS_URL}
           isActive={pageName === 'charts'}
-          // disabled={!appStore.isReady}
+          disabled={!appStore.isReady}
           children='Charts'
           className='adjacent-mar-l-3' />
       </div>

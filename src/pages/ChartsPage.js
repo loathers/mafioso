@@ -5,12 +5,11 @@ import {observer} from 'mobx-react';
 import {HOME_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
-import logStore from 'store/logStore';
+import chartStore from 'store/chartStore';
 
 import BarChartDisplay from 'components/BarChartDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
-import * as chartParserUtils from 'utilities/chartParserUtils';
 
 export default observer(
 function ChartsPage(props) {
@@ -21,34 +20,15 @@ function ChartsPage(props) {
   if (!appStore.isReady) {
     return <Redirect to={HOME_URL}/>
   }
-  const data = chartParserUtils.createLocationData(logStore.allEntries.slice());
-  const numDataPoints = data.labels.length;
-  const canvasHeight = numDataPoints * 14 + 50;
 
-  const locationChartConfig = {
-    type: 'horizontalBar',
-    data: data,
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            fontColor: '#ececec',
-          }
-        }],
-        xAxes: [{
-          ticks: {
-            fontColor: '#ececec',
-            stepSize: 2,
-          }
-        }]
-      }
-    },
+  if (!chartStore.isReady) {
+    return <div elementname='app-page-charts'>Not enough data to create charts.</div>
   }
+
+  // get the data set and set height based on it
+  const chartConfig = chartStore.locationChartData;
+  const numDataPoints = chartConfig.labels.length;
+  const canvasHeight = numDataPoints * 14 + 50;
 
   return (
     <div
@@ -56,7 +36,7 @@ function ChartsPage(props) {
       className={combineClassnames('flex-col', className)}>
       <BarChartDisplay
         style={{height: canvasHeight}}
-        chartConfig={locationChartConfig} />
+        chartConfig={chartConfig} />
     </div>
   )
 })
