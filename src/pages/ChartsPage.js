@@ -22,7 +22,7 @@ function ChartsPage(props) {
   }
 
   if (!chartStore.isReady) {
-    return <div elementname='app-page-charts'>Not enough data to create charts.</div>
+    return <div elementname='app-page-charts' className='fontsize-6 pad-6 flex-row-center'>Not enough data to create charts.</div>
   }
 
   // get the data set and set height based on it
