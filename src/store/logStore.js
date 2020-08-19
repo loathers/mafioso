@@ -7,6 +7,8 @@ import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY, PAGINATE_DELAY} from 'constant
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
+import chartStore from 'store/chartStore';
+
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import download from 'utilities/download';
@@ -217,6 +219,9 @@ class LogStore {
       categoriesVisible: this.displayOptions.categoriesVisible.slice(),
       filteredAttributes: this.displayOptions.filteredAttributes.slice(),
     });
+
+    //
+    chartStore.allEntries = [];
   }
   /**
    * find attributes that are specifically related to a full ascension log
@@ -325,6 +330,8 @@ class LogStore {
       const parsedData = await logParserUtils.parseLogTxt(this.rawText);
       const newData = this.condenseEntries(parsedData);
       this.allEntries.replace(newData);
+
+      chartStore.allEntries = newData;
 
       const additionalData = this.createConjectureData(newData);
       this.allEntries.replace(additionalData);
