@@ -1,4 +1,5 @@
-import {colorGradient} from 'utilities/colorUtils';
+import {createColorList} from 'utilities/colorUtils';
+
 /**
  * @param {Array<Entries>} entriesList
  * @return {[type]}
@@ -26,13 +27,7 @@ export function createLocationData(entriesList) {
   const locationKeys = Object.keys(locationMap);
   const locationValues = locationKeys.map((locationName) => locationMap[locationName]);
 
-  const colorA = {red: 237, green: 144, blue: 238 };
-  const colorB = {red: 124, green: 158, blue: 255 };
-  const colorC = {red: 139, green: 124, blue: 255 };
-  const colorList = locationKeys.map((a, idx) => {
-    const percent = (idx + 1) / locationKeys.length;
-    return colorGradient(percent, colorA, colorB, colorC);
-  });
+  const colorList = createColorList(locationKeys.length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
 
   return {
     labels: locationKeys,

@@ -34,6 +34,19 @@ function ChartsPage(props) {
       legend: {
         display: false,
       },
+      scales: {
+        yAxes: [{
+          ticks: {
+            fontColor: '#ececec',
+          }
+        }],
+        xAxes: [{
+          ticks: {
+            fontColor: '#ececec',
+            stepSize: 2,
+          }
+        }]
+      }
     },
   }
 

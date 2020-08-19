@@ -25,7 +25,7 @@ export default function BarChartDisplay(props) {
   })
 
   return (
-    <div style={style} className={combineClassnames('pad-3', className)}>
+    <div style={style} className={combineClassnames('pad-6', className)}>
       <canvas ref={chartRef} />
     </div>
   )
