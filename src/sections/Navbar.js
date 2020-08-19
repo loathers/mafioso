@@ -53,12 +53,12 @@ function NavbarLink(props) {
     ...otherProps
   } = props;
 
-  const activeClassname = isActive ? 'color-green-lighter' : 'color-white';
+  const activeClassname = isActive ? 'color-green-lighter' : (disabled ? 'color-grayer' : 'color-white');
 
-  if (disabled) {
+  if (disabled || isActive) {
     return <div
       children={props.children}
-      className={combineClassnames('pad-5 borradius-2 color-grayer', className)} />
+      className={combineClassnames('pad-5 borradius-2', activeClassname, className)} />
   }
 
   return (
