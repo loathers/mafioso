@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import {observer} from 'mobx-react';
 
-import {LOG_VIS_URL} from 'constants/PAGE_URLS';
+import {LOG_VIS_URL, CHARTS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -17,6 +17,7 @@ import Footer from 'sections/Footer';
 import Navbar from 'sections/Navbar';
 
 import HomePage from 'pages/HomePage';
+import ChartsPage from 'pages/ChartsPage';
 import LogVisualizerPage from 'pages/LogVisualizerPage';
 
 export default observer(
@@ -42,6 +43,10 @@ function App() {
           <Route path={LOG_VIS_URL}>
             <LogVisualizerPage
               className='adjacent-mar-t-5' />
+          </Route>
+
+          <Route path={CHARTS_URL}>
+            <ChartsPage className='adjacent-mar-t-5'/>
           </Route>
 
           <Route>

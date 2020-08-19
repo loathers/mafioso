@@ -55,7 +55,7 @@ function LogVisualizerPage(props) {
     }
   });
 
-  if (!logStore.hasParsedEntries) {
+  if (!appStore.isReady) {
     return <Redirect to={HOME_URL}/>
   }
 

@@ -5,7 +5,7 @@ import {withRouter} from "react-router";
 
 import {LOG_VIS_URL, CHARTS_URL} from 'constants/PAGE_URLS';
 
-// import appStore from 'store/appStore';
+import appStore from 'store/appStore';
 
 // import DarkButton from 'components/DarkButton';
 import LogoComponent from 'components/LogoComponent';
@@ -32,12 +32,14 @@ function Navbar(props) {
         <NavbarLink
           to={LOG_VIS_URL}
           isActive={pageName === 'visualizer'}
+          disabled={!appStore.isReady}
           children='Visualizer'
           className='adjacent-mar-l-3' />
 
         <NavbarLink
           to={CHARTS_URL}
           isActive={pageName === 'charts'}
+          disabled={!appStore.isReady}
           children='Charts'
           className='adjacent-mar-l-3' />
       </div>
