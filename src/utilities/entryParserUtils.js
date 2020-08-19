@@ -207,6 +207,12 @@ export function isCombatEncounter(entryString) {
  * @return {String | null}
  */
 export function parseLocationName(entryString) {
+  // for the typical tavern, I want to ignore all the individual squares
+  const typicalTavernMatches = regexUtils.getRegexMatch(entryString, REGEX.QUEST.TAVERN_CELLAR_LOCATION);
+  if (typicalTavernMatches !== null) {
+    return 'The Typical Tavern Cellar';
+  }
+
   const locationNameMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
   if (locationNameMatches !== null) {
     return locationNameMatches[0];

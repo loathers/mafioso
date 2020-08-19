@@ -274,6 +274,11 @@ export const ENTRY_DATA_MAP = {
     icon: PathSVG,
     locationName_alt: 'Crackpot Mystic',
   },
+  [ENTRY_TYPE.QUEST.TAVERN_CELLAR]: {
+    categories: [CATEGORY_ID.QUEST],
+    matcher: REGEX.QUEST.TAVERN_CELLAR_LOCATION,
+    icon: PathSVG,
+  },
   [ENTRY_TYPE.QUEST.LADY_SPOOKYRAVEN]: {
     categories: [CATEGORY_ID.QUEST],
     matcher: REGEX.QUEST.TALK_LADY_SPOOKYRAVEN_LINE,
