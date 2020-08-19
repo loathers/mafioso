@@ -282,7 +282,7 @@ export const REGEX = {
   },
   FAMILIAR: {
     SWITCH_TO_LINE: /^familiar.*/gim,
-    SWITCH_TO_RESULT: /(?<=^familiar ).*/gim,
+    SWITCH_TO_RESULT: /(?<=^familiar ).*(?= \()/gim,
 
     EQUIP_FAMILIAR_RESULT: /(?<=equip familiar ).*/gi,
   },

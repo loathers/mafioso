@@ -51,6 +51,40 @@ class ChartStore {
 
     return locationChartConfig;
   }
+  /** @type {Array} */
+  get familiarChartData() {
+    const data = chartParserUtils.createFamiliarData(this.allEntries.slice());
+
+    const locationChartConfig = {
+      type: 'horizontalBar',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: '#ececec',
+            },
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: '#ececec',
+              stepSize: 5,
+            },
+            gridLines: {
+              color: '#353535',
+            },
+          }]
+        }
+      },
+    }
+
+    return locationChartConfig;
+  }
 }
 /** export singleton */
 export default new ChartStore();

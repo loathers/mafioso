@@ -26,7 +26,7 @@ function ChartsPage(props) {
   }
 
   // get the data set and set height based on it
-  const chartConfig = chartStore.locationChartData;
+  const chartConfig = chartStore.familiarChartData;
   const numDataPoints = chartConfig.data.labels.length;
   const canvasHeight = numDataPoints * 15 + 40;
 

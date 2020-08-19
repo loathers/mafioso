@@ -37,3 +37,40 @@ export function createLocationData(entriesList) {
     }]
   }
 }
+/**
+ * @param {Array<Entries>} entriesList
+ * @return {[type]}
+ */
+export function createFamiliarData(entriesList) {
+  const familiarMap = {};
+
+  entriesList.forEach((entry) => {
+    if (!entry.hasFamiliarUsed) {
+      return;
+    }
+
+    const {familiarUsed} = entry.attributes;
+    if (familiarUsed === null || familiarUsed === undefined) {
+      return;
+    }
+
+    if (familiarMap[familiarUsed] === undefined) {
+      familiarMap[familiarUsed] = 1;
+    } else {
+      familiarMap[familiarUsed] += 1;
+    }
+  });
+
+  const keys = Object.keys(familiarMap);
+  const values = keys.map((familiarUsed) => familiarMap[familiarUsed]);
+
+  const colorList = createColorList(keys.length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
+
+  return {
+    labels: keys,
+    datasets: [{
+      backgroundColor: colorList,
+      data: values,
+    }]
+  }
+}
