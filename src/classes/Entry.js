@@ -245,6 +245,12 @@ export default class Entry {
   get isInBetweenTurns() {
     return this.attributes.isInBetweenTurns;
   }
+  /** @type {Boolean} */
+  get isAdventure() {
+    return (this.isCombatEncounter || this.isNonCombatEncounter)
+      && this.isFreeCombat
+      && !this.attributes.isInBetweenTurns;
+  }
   // -- stats
   /** @type {Boolean} */
   get hasAdventureChanges() {
