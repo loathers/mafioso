@@ -20,6 +20,8 @@ function Navbar(props) {
     location,
   } = props;
 
+  const pageName = location.pathname.split('/')[1];
+
   return (
     <div
       elementname='app-navbar'
@@ -29,7 +31,7 @@ function Navbar(props) {
       <div className='jcontent-end flex-auto flex-row mar-l-6'>
         <NavbarLink
           to={LOG_VIS_URL}
-          isActive={location.pathname === LOG_VIS_URL}
+          isActive={pageName === 'visualizer'}
           children='Visualizer'
           className='adjacent-mar-l-3' />
 

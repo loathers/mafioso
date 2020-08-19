@@ -10,6 +10,7 @@ import REGEX from 'constants/REGEXES';
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import download from 'utilities/download';
+import {hashCode} from 'utilities/hashUtils';
 
 /**
  * state and handler of the log data
@@ -80,6 +81,15 @@ class LogStore {
     this.isFetching = observable.box(false);
     /** @type {Boolean} */
     this.isLazyLoading = observable.box(false);
+  }
+  /** @type {Boolean} */
+  get logIdHash() {
+    if (this.ascensionAttributes.dateList.length <= 0) {
+      return 'nonascension';
+    }
+
+    const firstDate = this.ascensionAttributes.dateList[0];
+    return hashCode(`${firstDate}${this.characterName}${this.difficultyName}${this.pathName}`);
   }
   /** @type {Boolean} */
   get hasFiles() {

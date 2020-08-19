@@ -18,7 +18,7 @@ function HomePage(props) {
   } = props;
 
   if (logStore.hasCurrentEntries && appStore.isReady) {
-    return <Redirect to={LOG_VIS_URL}/>
+    return <Redirect to={`${LOG_VIS_URL}/${logStore.logIdHash}`}/>
   }
 
   return (

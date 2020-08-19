@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import {observer} from 'mobx-react';
 
-import {HOME_URL, LOG_VIS_URL} from 'constants/PAGE_URLS';
+import {LOG_VIS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -39,13 +39,13 @@ function App() {
 
         {/* Body */}
         <Switch>
-          <Route exact path={HOME_URL}>
-            <HomePage className='adjacent-mar-t-5'/>
-          </Route>
-
-          <Route path={LOG_VIS_URL}>
+          <Route path={`${LOG_VIS_URL}/:logHash`}>
             <LogVisualizerPage
               className='adjacent-mar-t-5' />
+          </Route>
+
+          <Route>
+            <HomePage className='adjacent-mar-t-5'/>
           </Route>
         </Switch>
 
