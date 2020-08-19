@@ -55,7 +55,7 @@ function LogVisualizerPage(props) {
     }
   });
 
-  if (!appStore.isReady) {
+  if (!logStore.hasParsedEntries) {
     return <Redirect to={HOME_URL}/>
   }
 
@@ -66,47 +66,43 @@ function LogVisualizerPage(props) {
       <MainMenu
         className='flex-auto adjacent-mar-t-5' />
 
-      { logStore.hasParsedEntries &&
-        <PageControlMenu />
-      }
+      <PageControlMenu />
 
-      { logStore.hasParsedEntries &&
-        <div elementname='app-content' className='flex-col-center flex-auto'>
-          { logStore.isAscensionLog &&
-            <EntryHeaderDisplay
-              topContent={logStore.difficultyName}
-              bottomContent={logStore.pathName}
-              className='adjacent-mar-t-5'
-            />
-          }
+      <div elementname='app-content' className='flex-col-center flex-auto'>
+        { logStore.isAscensionLog &&
+          <EntryHeaderDisplay
+            topContent={logStore.difficultyName}
+            bottomContent={logStore.pathName}
+            className='adjacent-mar-t-5'
+          />
+        }
 
-          { logStore.hasCurrentEntries &&
-            <LogEntryViewer
-              entriesList={logStore.currentEntries}
-              isUsingCompactMode={appStore.isUsingCompactMode.get()}
-              className='flex-auto adjacent-mar-t-5'
-            />
-          }
+        { logStore.hasCurrentEntries &&
+          <LogEntryViewer
+            entriesList={logStore.currentEntries}
+            isUsingCompactMode={appStore.isUsingCompactMode.get()}
+            className='flex-auto adjacent-mar-t-5'
+          />
+        }
 
-          { !logStore.hasCurrentEntries &&
-            <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
-              Huh, nothing here.
-            </div>
-          }
+        { !logStore.hasCurrentEntries &&
+          <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
+            Huh, nothing here.
+          </div>
+        }
 
-          { logStore.isLazyLoading.get() &&
-            <div
-              className='spinner flex-none adjacent-mar-t-5'
-              style={{
-                width: 30,
-                height: 30,
-                borderColor: 'white',
-                borderWidth: 5,
-              }}
-            />
-          }
-        </div>
-      }
+        { logStore.isLazyLoading.get() &&
+          <div
+            className='spinner flex-none adjacent-mar-t-5'
+            style={{
+              width: 30,
+              height: 30,
+              borderColor: 'white',
+              borderWidth: 5,
+            }}
+          />
+        }
+      </div>
     </div>
   )
 })
