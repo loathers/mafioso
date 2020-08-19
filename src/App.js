@@ -39,7 +39,7 @@ function App() {
 
         {/* Body */}
         <Switch>
-          <Route path={`${LOG_VIS_URL}/:logHash`}>
+          <Route path={LOG_VIS_URL}>
             <LogVisualizerPage
               className='adjacent-mar-t-5' />
           </Route>
