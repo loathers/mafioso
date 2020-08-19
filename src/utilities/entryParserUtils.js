@@ -208,9 +208,13 @@ export function isCombatEncounter(entryString) {
  */
 export function parseLocationName(entryString) {
   // for the typical tavern, I want to ignore all the individual squares
-  const typicalTavernMatches = regexUtils.getRegexMatch(entryString, REGEX.QUEST.TAVERN_CELLAR_LOCATION);
-  if (typicalTavernMatches !== null) {
+  if (regexUtils.getRegexMatch(entryString, REGEX.QUEST.TAVERN_CELLAR_LOCATION) !== null) {
     return 'The Typical Tavern Cellar';
+  }
+
+  // combine Daily Dungeon adventures as well
+  if (regexUtils.getRegexMatch(entryString, REGEX.QUEST.DAILY_DUNGEON_LOCATION) !== null) {
+    return 'The Daily Dungeon';
   }
 
   const locationNameMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);

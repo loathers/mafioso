@@ -190,6 +190,7 @@ export const REGEX = {
     VISIT_TOOT: /tutorial.*action=toot/i,
     OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
     TALK_CRACKPOT_MYSTIC_LINE: /^talking.*crackpot mystic.*(\r\n|\n)/i,
+    DAILY_DUNGEON_LOCATION: /The Daily Dungeon/i,
     TAVERN_CELLAR_LOCATION: /The Typical Tavern Cellar/i,
 
     TALK_LADY_SPOOKYRAVEN_LINE: /^talking.*Lady Spookyraven.*(\r\n|\n)/i,
