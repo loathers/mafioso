@@ -39,7 +39,7 @@ function Navbar(props) {
         <NavbarLink
           to={CHARTS_URL}
           isActive={pageName === 'charts'}
-          disabled={!appStore.isReady}
+          // disabled={!appStore.isReady}
           children='Charts'
           className='adjacent-mar-l-3' />
       </div>

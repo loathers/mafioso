@@ -7,6 +7,8 @@ import {HOME_URL} from 'constants/PAGE_URLS';
 import appStore from 'store/appStore';
 // import logStore from 'store/logStore';
 
+import BarChartDisplay from 'components/BarChartDisplay';
+
 import combineClassnames from 'utilities/combineClassnames';
 
 export default observer(
@@ -16,14 +18,14 @@ function ChartsPage(props) {
   } = props;
 
   if (!appStore.isReady) {
-    return <Redirect to={HOME_URL}/>
+    // return <Redirect to={HOME_URL}/>
   }
 
   return (
     <div
       elementname='app-page-charts'
       className={combineClassnames('flex-col', className)}>
-      soon
+      <BarChartDisplay />
     </div>
   )
 })
