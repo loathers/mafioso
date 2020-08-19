@@ -178,8 +178,8 @@ function EntryAdventureColumn(props) {
     entry,
   } = props;
 
-  const shouldHideTurnNum = !entry.isCombatEncounter && entry.turnNum <= 0;
-  const fontClassName = (!shouldHideTurnNum && !entry.isInBetweenTurns && entry.hasRawTurnNum) ? 'fontsize-5 f-bold color-white' : 'fontsize-5 color-gray';
+  const shouldHideTurnNum = !entry.isAdventure && entry.turnNum <= 0;
+  const fontClassName = (!shouldHideTurnNum && entry.isAdventure) ? 'fontsize-5 f-bold color-white' : 'fontsize-5 color-gray';
 
   return (
     <div

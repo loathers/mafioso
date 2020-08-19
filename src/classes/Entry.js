@@ -247,9 +247,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isAdventure() {
-    return (this.isCombatEncounter || this.isNonCombatEncounter)
-      && this.isFreeCombat
-      && !this.attributes.isInBetweenTurns;
+    return (this.isCombatEncounter || this.isNonCombatEncounter || this.isFreeCombat);
   }
   // -- stats
   /** @type {Boolean} */
@@ -536,6 +534,9 @@ export default class Entry {
       entryId: this.id,
       entryType: this.entryData.type,
       categories: this.entryData.categories,
+      isAdventure: this.isAdventure,
+      isCombatEncounter: this.isCombatEncounter,
+      isNonCombatEncounter: this.isNonCombatEncounter,
       ...this.attributes,
     }
   }
