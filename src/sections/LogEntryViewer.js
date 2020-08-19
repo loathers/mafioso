@@ -16,7 +16,6 @@ function LogEntryViewer(props) {
   const {
     className,
     entriesList = [],
-    isUsingCompactMode,
   } = props;
 
   return (
@@ -38,7 +37,7 @@ function LogEntryViewer(props) {
 
             <EntryDisplayContainer
               entry={entry}
-              isUsingCompactMode={isUsingCompactMode}
+              isDefaultCompact={appStore.isUsingCompactMode.get()}
               isDevMode={appStore.isDevMode.get()}
               className='visualizer-cell adjacent-mar-t-1' />
           </Fragment>

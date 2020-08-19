@@ -80,7 +80,6 @@ function LogVisualizerPage(props) {
         { logStore.hasCurrentEntries &&
           <LogEntryViewer
             entriesList={logStore.currentEntries}
-            isUsingCompactMode={appStore.isUsingCompactMode.get()}
             className='flex-auto adjacent-mar-t-5'
           />
         }
