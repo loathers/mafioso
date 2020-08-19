@@ -404,6 +404,9 @@ class LogStore {
     // keeps track of kol dates this run took
     const dateListEstimate = [];
 
+    // track what familiar user last swapped to
+    let trackedFamiliar = null;
+
     const conjecturedEntries = allEntries.map((entry, idx) => {
       // const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
       // const prevTurnNum = prevEntry && prevEntry.turnNum;
@@ -463,6 +466,15 @@ class LogStore {
             entry.attributes.additionalDisplay = `(${surpriseEncounter.encounterDisplay})`;
           }
         }
+      }
+
+      // -- see what familiar player is using
+      if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
+        trackedFamiliar = entry.findMatcher(REGEX.FAMILIAR.SWITCH_TO_RESULT);
+      }
+
+      if (entry.isCombatEncounter) {
+        entry.attributes.familiarUsed = trackedFamiliar;
       }
 
       // completed create conjecture data for entry

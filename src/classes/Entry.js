@@ -52,6 +52,8 @@ export default class Entry {
       choiceProgression: [],
       /** @type {Boolean} */
       isCombatEncounter: false,
+      /** @type {String} */
+      familiarUsed: null,
       /** @type {Array<String>} */
       acquiredItems: [],
       /** @type {Array<String>} */
@@ -166,6 +168,10 @@ export default class Entry {
     }
 
     return this.attributes.choiceProgression.length > 0;
+  }
+  /** @type {Boolean} */
+  get hasFamiliarUsed() {
+    return this.attributes.familiarUsed !== null;
   }
   /** @type {Boolean} */
   get hasAdditionalDisplay() {
@@ -375,6 +381,10 @@ export default class Entry {
 
     return this.attributes.additionalDisplay;
   }
+  /** @type {Boolean} */
+  get familiarUsed() {
+    return this.attributes.familiarUsed;
+  }
   /** @type {String} */
   get replacedEnemiesDisplay() {
     if (!this.hasReplacedEnemies) {
@@ -537,6 +547,7 @@ export default class Entry {
       isAdventure: this.isAdventure,
       isCombatEncounter: this.isCombatEncounter,
       isNonCombatEncounter: this.isNonCombatEncounter,
+      familiarUsed: this.familiarUsed,
       ...this.attributes,
     }
   }
