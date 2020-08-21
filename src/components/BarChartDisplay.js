@@ -12,12 +12,19 @@ export default function BarChartDisplay(props) {
   } = props;
 
   const chartRef = React.createRef();
+  const prevChartRef = React.useRef();
 
   // create the chart
   React.useEffect(() => {
-    if (chartConfig && chartRef && chartRef.current !== null) {
+    // remove old chart on change
+    if (prevChartRef.current !== undefined) {
+      prevChartRef.current.destroy();
+    }
+
+    // instantiate chart.js on canvas
+    if (chartConfig && chartRef.current !== null) {
       const chartCtx = chartRef.current.getContext('2d');
-      new Chart(chartCtx, chartConfig);
+      prevChartRef.current = new Chart(chartCtx, chartConfig);
     }
   })
 
