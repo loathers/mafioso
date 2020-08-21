@@ -1,6 +1,9 @@
 // import {observable} from 'mobx';
 
+import {horizontalBarOptions} from 'constants/chartOptions';
+
 import * as chartParserUtils from 'utilities/chartParserUtils';
+import {createColorList} from 'utilities/colorUtils';
 
 /**
  * state and handler of the log data
@@ -12,75 +15,33 @@ class ChartStore {
      * @type {ObservableArray<Entry>}
      */
     this.allEntries = [];
+    /** @type {ChartjsConfig | null} */
+    this.currentChartConfig = this.familiarChartData;
   }
   /** @type {Boolean} */
   get isReady() {
     return this.allEntries.length > 0;
   }
-  /** @type {Array} */
+  /** @type {ChartjsConfig} */
   get locationChartData() {
-    const data = chartParserUtils.createLocationData(this.allEntries.slice());
-
+    const colorListGenerator = (length) => createColorList(length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
+    const chartData = chartParserUtils.createLocationData(this.allEntries.slice(), colorListGenerator);
     const locationChartConfig = {
       type: 'horizontalBar',
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: '#ececec',
-            },
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: '#ececec',
-              stepSize: 2,
-            },
-            gridLines: {
-              color: '#353535',
-            },
-          }]
-        }
-      },
+      data: chartData,
+      options: horizontalBarOptions,
     }
 
     return locationChartConfig;
   }
-  /** @type {Array} */
+  /** @type {ChartjsConfig} */
   get familiarChartData() {
-    const data = chartParserUtils.createFamiliarData(this.allEntries.slice());
-
+    const colorListGenerator = (length) => createColorList(length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
+    const chartData = chartParserUtils.createFamiliarData(this.allEntries.slice(), colorListGenerator);
     const locationChartConfig = {
-      type: 'horizontalBar',
-      data: data,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false,
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: '#ececec',
-            },
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: '#ececec',
-              stepSize: 5,
-            },
-            gridLines: {
-              color: '#353535',
-            },
-          }]
-        }
-      },
+      type: 'bar',
+      data: chartData,
+      options: horizontalBarOptions,
     }
 
     return locationChartConfig;

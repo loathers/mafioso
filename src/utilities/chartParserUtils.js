@@ -1,10 +1,10 @@
-import {createColorList} from 'utilities/colorUtils';
 
 /**
  * @param {Array<Entries>} entriesList
+ * @param {Function|String} [colorGenerator]
  * @return {[type]}
  */
-export function createLocationData(entriesList) {
+export function createLocationData(entriesList, colorGenerator = 'lightblue') {
   const locationMap = {};
 
   entriesList.forEach((entry) => {
@@ -24,24 +24,24 @@ export function createLocationData(entriesList) {
     }
   });
 
-  const locationKeys = Object.keys(locationMap);
-  const locationValues = locationKeys.map((locationName) => locationMap[locationName]);
-
-  const colorList = createColorList(locationKeys.length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
+  const keys = Object.keys(locationMap);
+  const values = keys.map((locationName) => locationMap[locationName]);
+  const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
 
   return {
-    labels: locationKeys,
+    labels: keys,
     datasets: [{
       backgroundColor: colorList,
-      data: locationValues,
+      data: values,
     }]
   }
 }
 /**
  * @param {Array<Entries>} entriesList
+ * @param {Function|String} [colorGenerator]
  * @return {[type]}
  */
-export function createFamiliarData(entriesList) {
+export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
   const familiarMap = {};
 
   entriesList.forEach((entry) => {
@@ -63,8 +63,7 @@ export function createFamiliarData(entriesList) {
 
   const keys = Object.keys(familiarMap);
   const values = keys.map((familiarUsed) => familiarMap[familiarUsed]);
-
-  const colorList = createColorList(keys.length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
+  const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
 
   return {
     labels: keys,
