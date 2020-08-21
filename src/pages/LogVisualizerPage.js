@@ -9,7 +9,7 @@ import logStore from 'store/logStore';
 
 import EntryHeaderDisplay from 'components/EntryHeaderDisplay';
 
-import MainMenu from 'sections/MainMenu';
+import LogVisualizerMenu from 'sections/LogVisualizerMenu';
 import PageControlMenu from 'sections/PageControlMenu';
 import LogEntryViewer from 'sections/LogEntryViewer';
 
@@ -63,7 +63,7 @@ function LogVisualizerPage(props) {
     <div
       elementname='app-page-visualizer'
       className={combineClassnames('flex-row jcontent-center', className)}>
-      <MainMenu
+      <LogVisualizerMenu
         className='flex-auto adjacent-mar-t-5' />
 
       <PageControlMenu />

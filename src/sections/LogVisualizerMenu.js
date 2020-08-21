@@ -19,7 +19,7 @@ import combineClassnames from 'utilities/combineClassnames';
  * @returns {React.Component}
  */
 export default observer(
-function MainMenu(props) {
+function LogVisualizerMenu(props) {
   const {
     className,
     style,
