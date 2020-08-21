@@ -2,7 +2,7 @@ import React from 'react';
 
 import combineClassnames from 'utilities/combineClassnames';
 
-/**  @returns {React.Component} */
+/** @returns {React.Component} */
 export default function Button(props) {
   const {
     className,
@@ -15,7 +15,7 @@ export default function Button(props) {
   const pointerClassName = disabled ? '' : 'cursor-pointer';
 
   return (
-    <button 
+    <button
       {...otherProps}
       disabled={disabled}
       className={combineClassnames('bg-second hover:bg-second-lighter', borderClassName, colorClassName, pointerClassName, className)} />

@@ -57,7 +57,7 @@ function MainMenu(props) {
 
   return (
     <div
-      elementname='main-menu'
+      elementname='app-side-menu'
       style={style}
       className={combineClassnames('flex-col', className)}>
 

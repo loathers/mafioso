@@ -3,6 +3,7 @@ import Chart from 'chart.js';
 
 import combineClassnames from 'utilities/combineClassnames';
 
+/** @returns {React.Component} */
 export default function BarChartDisplay(props) {
   const {
     className,

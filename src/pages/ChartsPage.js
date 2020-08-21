@@ -8,9 +8,14 @@ import appStore from 'store/appStore';
 import chartStore from 'store/chartStore';
 
 import BarChartDisplay from 'components/BarChartDisplay';
+import Button from 'components/Button';
 
 import combineClassnames from 'utilities/combineClassnames';
 
+/**
+ * @param {Object} props
+ * @returns {React.Component}
+ */
 export default observer(
 function ChartsPage(props) {
   const {
@@ -31,10 +36,33 @@ function ChartsPage(props) {
   return (
     <div
       elementname='app-page-charts'
-      className={combineClassnames('flex-col', className)}>
+      className={combineClassnames('flex-row', className)}>
+
+      <ChartsPageMenu className='mar-r-2' />
+
       <BarChartDisplay
         style={chartConfig.containerStyle}
         chartConfig={chartConfig} />
     </div>
   )
 })
+/** @returns {React.Component} */
+function ChartsPageMenu(props) {
+  const {
+    className,
+  } = props;
+
+  return (
+    <div
+      elementname='app-side-menu'
+      className={combineClassnames('flex-col', className)}>
+      <Button className='pad-2 adjacent-mar-t-1'>
+        Locations
+      </Button>
+
+      <Button className='pad-2 adjacent-mar-t-1'>
+        Familiars
+      </Button>
+    </div>
+  )
+}

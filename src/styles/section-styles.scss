@@ -8,7 +8,8 @@
   padding-right: $APP_MARGIN;
 }
 
-[elementname='app-content'] {
+[elementname='app-content'],
+[elementname='app-page-charts'] {
   flex: auto;
   padding-left: $APP_MARGIN;
   // padding-right: $APP_MARGIN;
@@ -17,12 +18,13 @@
 
 @media (max-width: (map.get($BREAKPOINT_WIDTH_MAP, 'xl') + $MENU_WIDTH)) {
   [elementname='app-content'],
+  [elementname='app-page-charts'],
   [elementname='navigation-menu'] {
     margin-left: $MENU_WIDTH + $APP_MARGIN;
   }
 }
 
-[elementname='main-menu'] {
+[elementname='app-side-menu'] {
   flex: none;
   width: $MENU_WIDTH;
   left: $APP_MARGIN;
