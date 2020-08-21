@@ -1,6 +1,6 @@
 import {observable} from 'mobx';
 
-import {horizontalBarOptions, verticalBarOptions} from 'constants/chartOptions';
+import {horizontalBarOptions, verticalBarOptions, lineMeatTotalOptions} from 'constants/chartOptions';
 
 import * as chartParserUtils from 'utilities/chartParserUtils';
 import {createColorList_purplePastel} from 'utilities/colorUtils';
@@ -16,7 +16,7 @@ class ChartStore {
      */
     this.allEntries = [];
     /** @type {Observable<String>} */
-    this.currentChartType = observable.box('location');
+    this.currentChartType = observable.box('meatTotal');
   }
   /** @type {ChartjsConfig | null} */
   get currentChartConfig() {
@@ -26,6 +26,9 @@ class ChartStore {
 
       case 'familiar':
         return this.familiarChartData;
+
+      case 'meatTotal':
+        return this.meatTotalGainedChartData;
 
       default:
         return null;
@@ -66,6 +69,25 @@ class ChartStore {
       type: 'bar',
       data: chartData,
       options: verticalBarOptions,
+    }
+
+    return chartConfig;
+  }
+  /** @type {ChartjsConfig} */
+  get meatTotalGainedChartData() {
+    if (this.entriesLength <= 0) {
+      return null;
+    }
+
+    const chartData = chartParserUtils.createMeatTotalGainedData(this.allEntries.slice(), createColorList_purplePastel);
+    const chartConfig = {
+      containerStyle: {
+        width: chartData._size * 20 + 100,
+        height: 600,
+      },
+      type: 'line',
+      data: chartData,
+      options: lineMeatTotalOptions,
     }
 
     return chartConfig;

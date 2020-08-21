@@ -66,6 +66,12 @@ function ChartsMenu(props) {
         className='pad-2 adjacent-mar-t-1'>
         Familiars
       </Button>
+
+      <Button
+        onClick={() => chartStore.onSwitchCurrentChart('meatTotal')}
+        className='pad-2 adjacent-mar-t-1'>
+        Meat Total
+      </Button>
     </div>
   )
 }

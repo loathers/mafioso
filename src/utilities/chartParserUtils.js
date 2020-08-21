@@ -75,3 +75,54 @@ export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
     }]
   }
 }
+/**
+ * @param {Array<Entries>} entriesList
+ * @param {Function|String} [colorGenerator]
+ * @return {[type]}
+ */
+export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightblue') {
+  const allChanges = [];
+
+  entriesList.forEach((entry) => {
+    const meatChange = entry.attributes.meatChange;
+    const currentIdx = allChanges.length;
+
+    // since we're tracking totals, the current is equal to previous + whatever change in current entry
+    const prevIdx = currentIdx - 1;
+    const prevChange = prevIdx > 0 ? allChanges[prevIdx] : 0;
+    const currChange = prevChange + meatChange;
+
+    // a new (non free combat) adventure is a new item in the list
+    if (entry.isAdventure && !entry.isFreeCombat) {
+      allChanges.push(currChange);
+      return;
+    }
+
+    // if it is a free combat, just add whatever changes onto the previous item
+    if (entry.isFreeCombat) {
+      allChanges[prevIdx] = currChange;
+      return;
+    }
+
+    if (!entry.isAdventure) {
+      allChanges[prevIdx] = currChange;
+      return;
+    }
+  });
+
+  // console.log('allChanges', allChanges);
+  // const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(allChanges.length);
+
+  return {
+    _size: allChanges.length,
+    labels: allChanges.map((change, idx) => `${idx}`),
+    datasets: [{
+      label: 'Total Meat Gained',
+      borderColor: '#b15c5c',
+      borderWidth: 0.8,
+      pointBackgroundColor: '#b15c5c',
+      pointRadius: 0.5,
+      data: allChanges,
+    }]
+  }
+}
