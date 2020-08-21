@@ -1,6 +1,6 @@
 // import {observable} from 'mobx';
 
-import {horizontalBarOptions} from 'constants/chartOptions';
+import {horizontalBarOptions, verticalBarOptions} from 'constants/chartOptions';
 
 import * as chartParserUtils from 'utilities/chartParserUtils';
 import {createColorList_purplePastel} from 'utilities/colorUtils';
@@ -30,6 +30,9 @@ class ChartStore {
 
     const chartData = chartParserUtils.createLocationData(this.allEntries.slice(), createColorList_purplePastel);
     const chartConfig = {
+      containerStyle: {
+        height: chartData._size * 15 + 40,
+      },
       type: 'horizontalBar',
       data: chartData,
       options: horizontalBarOptions,
@@ -45,9 +48,13 @@ class ChartStore {
 
     const chartData = chartParserUtils.createFamiliarData(this.allEntries.slice(), createColorList_purplePastel);
     const chartConfig = {
+      containerStyle: {
+        width: chartData._size * 40 + 100,
+        height: 600,
+      },
       type: 'bar',
       data: chartData,
-      options: horizontalBarOptions,
+      options: verticalBarOptions,
     }
 
     return chartConfig;

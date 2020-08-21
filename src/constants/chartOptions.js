@@ -24,3 +24,26 @@ export const horizontalBarOptions = {
     }]
   }
 }
+export const verticalBarOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        fontColor: COLOR_WHITE,
+        stepSize: 5,
+      },
+      gridLines: {
+        color: COLOR_GRAY,
+      },
+    }],
+    xAxes: [{
+      ticks: {
+        fontColor: COLOR_WHITE,
+      },
+    }]
+  }
+}

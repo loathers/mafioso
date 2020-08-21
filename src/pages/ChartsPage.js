@@ -27,15 +27,13 @@ function ChartsPage(props) {
 
   // get the data set and set height based on it
   const chartConfig = chartStore.familiarChartData;
-  const numDataPoints = chartConfig.data.labels.length;
-  const canvasHeight = numDataPoints * 15 + 40;
 
   return (
     <div
       elementname='app-page-charts'
       className={combineClassnames('flex-col', className)}>
       <BarChartDisplay
-        style={{height: canvasHeight}}
+        style={chartConfig.containerStyle}
         chartConfig={chartConfig} />
     </div>
   )
