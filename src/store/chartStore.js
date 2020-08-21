@@ -3,10 +3,10 @@
 import {horizontalBarOptions} from 'constants/chartOptions';
 
 import * as chartParserUtils from 'utilities/chartParserUtils';
-import {createColorList} from 'utilities/colorUtils';
+import {createColorList_purplePastel} from 'utilities/colorUtils';
 
 /**
- * state and handler of the log data
+ * state and handler of the chart data
  */
 class ChartStore {
   constructor() {
@@ -24,27 +24,38 @@ class ChartStore {
   }
   /** @type {ChartjsConfig} */
   get locationChartData() {
-    const colorListGenerator = (length) => createColorList(length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
-    const chartData = chartParserUtils.createLocationData(this.allEntries.slice(), colorListGenerator);
-    const locationChartConfig = {
+    if (this.entryLength <= 0) {
+      return null;
+    }
+
+    const chartData = chartParserUtils.createLocationData(this.allEntries.slice(), createColorList_purplePastel);
+    const chartConfig = {
       type: 'horizontalBar',
       data: chartData,
       options: horizontalBarOptions,
     }
 
-    return locationChartConfig;
+    return chartConfig;
   }
   /** @type {ChartjsConfig} */
   get familiarChartData() {
-    const colorListGenerator = (length) => createColorList(length, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
-    const chartData = chartParserUtils.createFamiliarData(this.allEntries.slice(), colorListGenerator);
-    const locationChartConfig = {
+    if (this.entryLength <= 0) {
+      return null;
+    }
+
+    const chartData = chartParserUtils.createFamiliarData(this.allEntries.slice(), createColorList_purplePastel);
+    const chartConfig = {
       type: 'bar',
       data: chartData,
       options: horizontalBarOptions,
     }
 
-    return locationChartConfig;
+    return chartConfig;
+  }
+  // --
+  /** @type {Number} */
+  get entryLength() {
+    return this.allEntries.length;
   }
 }
 /** export singleton */

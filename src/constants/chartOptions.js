@@ -1,3 +1,6 @@
+const COLOR_WHITE = '#ececec';
+const COLOR_GRAY = '#353535';
+
 export const horizontalBarOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -7,16 +10,16 @@ export const horizontalBarOptions = {
   scales: {
     yAxes: [{
       ticks: {
-        fontColor: '#ececec',
+        fontColor: COLOR_WHITE,
       },
     }],
     xAxes: [{
       ticks: {
-        fontColor: '#ececec',
+        fontColor: COLOR_WHITE,
         stepSize: 2,
       },
       gridLines: {
-        color: '#353535',
+        color: COLOR_GRAY,
       },
     }]
   }

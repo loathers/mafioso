@@ -29,6 +29,7 @@ export function createLocationData(entriesList, colorGenerator = 'lightblue') {
   const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
 
   return {
+    _size: keys.length,
     labels: keys,
     datasets: [{
       backgroundColor: colorList,
@@ -66,6 +67,7 @@ export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
   const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
 
   return {
+    _size: keys.length,
     labels: keys,
     datasets: [{
       backgroundColor: colorList,
