@@ -27,7 +27,7 @@ function ChartsPage(props) {
   }
 
   const chartConfig = chartStore.currentChartConfig;
-  if (!chartStore.isReady || chartConfig === null) {
+  if (!chartStore.isReady || chartConfig === null || chartStore.currentChartType.get() === null) {
     return <div elementname='app-page-charts' className='fontsize-6 pad-6 flex-row-center'>Not enough data to create charts.</div>
   }
 

@@ -1,4 +1,4 @@
-// import {observable} from 'mobx';
+import {observable} from 'mobx';
 
 import {horizontalBarOptions, verticalBarOptions} from 'constants/chartOptions';
 
@@ -15,16 +15,12 @@ class ChartStore {
      * @type {ObservableArray<Entry>}
      */
     this.allEntries = [];
-    /** @type {String} */
-    this.currentChartType = 'location';
-  }
-  /** @type {Boolean} */
-  get isReady() {
-    return this.allEntries.length > 0;
+    /** @type {Observable<String>} */
+    this.currentChartType = observable.box('location');
   }
   /** @type {ChartjsConfig | null} */
   get currentChartConfig() {
-    switch(this.currentChartType) {
+    switch(this.currentChartType.get()) {
       case 'location':
         return this.locationChartData;
 
@@ -37,7 +33,7 @@ class ChartStore {
   }
   /** @type {ChartjsConfig} */
   get locationChartData() {
-    if (this.entryLength <= 0) {
+    if (this.entriesLength <= 0) {
       return null;
     }
 
@@ -46,6 +42,7 @@ class ChartStore {
       containerStyle: {
         height: chartData._size * 15 + 40,
         width: '100%',
+        margin: 20,
       },
       type: 'horizontalBar',
       data: chartData,
@@ -56,7 +53,7 @@ class ChartStore {
   }
   /** @type {ChartjsConfig} */
   get familiarChartData() {
-    if (this.entryLength <= 0) {
+    if (this.entriesLength <= 0) {
       return null;
     }
 
@@ -74,8 +71,12 @@ class ChartStore {
     return chartConfig;
   }
   // --
+  /** @type {Boolean} */
+  get isReady() {
+    return this.entriesLength > 0;
+  }
   /** @type {Number} */
-  get entryLength() {
+  get entriesLength() {
     return this.allEntries.length;
   }
   // --
@@ -83,7 +84,7 @@ class ChartStore {
    * @param {String} chartType
    */
   onSwitchCurrentChart(chartType) {
-    this.currentChartType = chartType;
+    this.currentChartType.set(chartType);
   }
 }
 /** export singleton */
