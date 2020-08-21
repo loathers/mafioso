@@ -15,12 +15,25 @@ class ChartStore {
      * @type {ObservableArray<Entry>}
      */
     this.allEntries = [];
-    /** @type {ChartjsConfig | null} */
-    this.currentChartConfig = this.familiarChartData;
+    /** @type {String} */
+    this.currentChartType = 'location';
   }
   /** @type {Boolean} */
   get isReady() {
     return this.allEntries.length > 0;
+  }
+  /** @type {ChartjsConfig | null} */
+  get currentChartConfig() {
+    switch(this.currentChartType) {
+      case 'location':
+        return this.locationChartData;
+
+      case 'familiar':
+        return this.familiarChartData;
+
+      default:
+        return null;
+    }
   }
   /** @type {ChartjsConfig} */
   get locationChartData() {
@@ -32,6 +45,7 @@ class ChartStore {
     const chartConfig = {
       containerStyle: {
         height: chartData._size * 15 + 40,
+        width: '100%',
       },
       type: 'horizontalBar',
       data: chartData,
@@ -63,6 +77,13 @@ class ChartStore {
   /** @type {Number} */
   get entryLength() {
     return this.allEntries.length;
+  }
+  // --
+  /**
+   * @param {String} chartType
+   */
+  onSwitchCurrentChart(chartType) {
+    this.currentChartType = chartType;
   }
 }
 /** export singleton */

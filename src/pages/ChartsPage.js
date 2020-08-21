@@ -26,28 +26,27 @@ function ChartsPage(props) {
     return <Redirect to={HOME_URL}/>
   }
 
-  if (!chartStore.isReady) {
+  const chartConfig = chartStore.currentChartConfig;
+  if (!chartStore.isReady || chartConfig === null) {
     return <div elementname='app-page-charts' className='fontsize-6 pad-6 flex-row-center'>Not enough data to create charts.</div>
   }
-
-  // get the data set and set height based on it
-  const chartConfig = chartStore.familiarChartData;
 
   return (
     <div
       elementname='app-page-charts'
       className={combineClassnames('flex-row', className)}>
 
-      <ChartsPageMenu className='mar-r-2' />
+      <ChartsMenu className='mar-r-2 flex-none' />
 
       <BarChartDisplay
         style={chartConfig.containerStyle}
-        chartConfig={chartConfig} />
+        chartConfig={chartConfig}
+        className='flex-auto' />
     </div>
   )
 })
 /** @returns {React.Component} */
-function ChartsPageMenu(props) {
+function ChartsMenu(props) {
   const {
     className,
   } = props;
@@ -56,11 +55,15 @@ function ChartsPageMenu(props) {
     <div
       elementname='app-side-menu'
       className={combineClassnames('flex-col', className)}>
-      <Button className='pad-2 adjacent-mar-t-1'>
+      <Button
+        onClick={() => chartStore.onSwitchCurrentChart('location')}
+        className='pad-2 adjacent-mar-t-1'>
         Locations
       </Button>
 
-      <Button className='pad-2 adjacent-mar-t-1'>
+      <Button
+        onClick={() => chartStore.onSwitchCurrentChart('familiar')}
+        className='pad-2 adjacent-mar-t-1'>
         Familiars
       </Button>
     </div>
