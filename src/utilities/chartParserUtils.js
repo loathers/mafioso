@@ -117,7 +117,7 @@ export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightbl
   // const colorList = allChanges.map((change) => change >= 0 ? 'rgb(177, 92, 92, 0.4)' : 'rgb(84, 204, 126, 0.4)');
 
   return {
-    _type: 'line',
+    _type: 'lineTotal',
     _size: allChanges.length,
     labels: allChanges.map((change, idx) => `${idx}`),
     datasets: [{
@@ -128,6 +128,55 @@ export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightbl
       pointBackgroundColor: '#b15c5c',
       pointRadius: 0.5,
       data: allChanges,
+    }]
+  }
+}
+/**
+ * @param {Array<Entries>} entriesList
+ * @param {String} attribute
+ * @param {Object} [options]
+ * @return {Object}
+ */
+export function createAttributeTimeline(entriesList, attribute, options = {}) {
+  const {isUsingTotals = false} = options;
+  const timelineList = [];
+
+  entriesList.forEach((entry) => {
+    const isAttributeTrue = Boolean(entry.findAttribute(attribute));
+    const attributeValue = isAttributeTrue ? 1 : 0;
+    const currentIdx = timelineList.length;
+
+    // the current is equal to previous + whatever change in current entry
+    const prevIdx = currentIdx - 1;
+    const prevValue = prevIdx > 0 ? timelineList[prevIdx] : 0;
+
+    // combine to track totals or individually?
+    const currValue = isUsingTotals ? (prevValue + attributeValue) : attributeValue;
+
+    // a new (non free combat) adventure is a new item in the list
+    if (entry.isAdventure && !entry.isFreeCombat) {
+      timelineList.push(currValue);
+      return;
+    }
+
+    // if it is a free combat, just add whatever changes onto the previous item
+    if (entry.isFreeCombat || !entry.isAdventure) {
+      timelineList[prevIdx] = currValue;
+      return;
+    }
+  });
+
+  return {
+    _type: 'bar',
+    _size: timelineList.length,
+    labels: timelineList.map((change, idx) => `${idx}`),
+    datasets: [{
+      label: attribute,
+      // borderColor: 'lightblue',
+      // borderWidth: 0.8,
+      backgroundColor: 'lightblue',
+      pointRadius: 0.5,
+      data: timelineList,
     }]
   }
 }

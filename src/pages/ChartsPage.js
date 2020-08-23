@@ -67,6 +67,18 @@ function ChartsMenu(props) {
       </Button>
 
       <Button
+        onClick={() => chartStore.onSwitchCurrentChart('banished')}
+        className='pad-2 adjacent-mar-t-1'>
+        Banished
+      </Button>
+
+      <Button
+        onClick={() => chartStore.onSwitchCurrentChart('replaced')}
+        className='pad-2 adjacent-mar-t-1'>
+        Replaced
+      </Button>
+
+      <Button
         onClick={() => chartStore.onSwitchCurrentChart('familiar')}
         className='pad-2 adjacent-mar-t-1'>
         Familiars

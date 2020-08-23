@@ -14,7 +14,7 @@ class ChartStore {
      */
     this.allEntries = [];
     /** @type {Observable<String>} */
-    this.currentChartType = observable.box('meatTotal');
+    this.currentChartType = observable.box('banished');
   }
   /** @type {ChartjsConfig | null} */
   get currentChartData() {
@@ -27,6 +27,12 @@ class ChartStore {
 
       case 'meatTotal':
         return this.meatTotalGainedChartData;
+
+      case 'banished':
+        return chartParserUtils.createAttributeTimeline(this.allEntries.slice(), 'isBanished');
+
+      case 'replaced':
+        return chartParserUtils.createAttributeTimeline(this.allEntries.slice(), 'isReplaced');
 
       default:
         return null;

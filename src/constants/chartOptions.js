@@ -1,5 +1,6 @@
 const COLOR_WHITE = '#ececec';
 const COLOR_GRAY = '#353535';
+const COLOR_DARK_GRAY = '#232222';
 
 export const horizontalBarOptions = {
   type: 'horizontalBar',
@@ -65,7 +66,7 @@ export const lineTotalOptions = {
         suggestedMin: -5000,
       },
       gridLines: {
-        color: '#232222',
+        color: COLOR_DARK_GRAY,
       },
     }],
     xAxes: [{
@@ -73,7 +74,33 @@ export const lineTotalOptions = {
         fontColor: COLOR_WHITE,
       },
       gridLines: {
-        color: '#232222',
+        color: COLOR_DARK_GRAY,
+      },
+    }]
+  }
+}
+export const lineOptions = {
+  type: 'line',
+  responsive: true,
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        fontColor: COLOR_WHITE,
+      },
+      gridLines: {
+        color: COLOR_DARK_GRAY,
+      },
+    }],
+    xAxes: [{
+      ticks: {
+        fontColor: COLOR_WHITE,
+      },
+      gridLines: {
+        color: COLOR_DARK_GRAY,
       },
     }]
   }

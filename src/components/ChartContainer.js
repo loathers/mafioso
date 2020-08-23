@@ -1,7 +1,12 @@
 import React from 'react';
 import Chart from 'chart.js';
 
-import {horizontalBarOptions, verticalBarOptions, lineTotalOptions} from 'constants/chartOptions';
+import {
+  horizontalBarOptions,
+  verticalBarOptions,
+  lineTotalOptions,
+  lineOptions,
+} from 'constants/chartOptions';
 import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {React.Component} */
@@ -54,6 +59,7 @@ function getContainerStyles(data, type) {
         margin: 20,
       }
 
+    case 'lineTotal':
     case 'line':
       return {
         // width: Math.min(data._size * 20 + 100, 800),
@@ -77,8 +83,11 @@ function getChartSettings(type) {
     case 'horizontalBar':
       return horizontalBarOptions;
 
-    case 'line':
+    case 'lineTotal':
       return lineTotalOptions;
+
+    case 'line':
+      return lineOptions;
 
     case 'bar':
     default:
