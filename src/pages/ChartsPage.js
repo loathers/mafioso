@@ -33,15 +33,20 @@ function ChartsPage(props) {
 
       <ChartsMenu className='mar-r-2 flex-none' />
 
-      { chartStore.canDisplayCurrentChart &&
-        <ChartContainer
-          chartData={chartStore.currentChartData}
-          className='' />
-      }
+      <div className='flex-col aitems-center flex-auto'>
+        <div className='fontsize-7 f-bold textalign-center'>{chartStore.currentChartType.get()}</div>
 
-      { !chartStore.canDisplayCurrentChart &&
-        <div className='flex-row-center pad-6'>There's not enough data to create this chart.</div>
-      }
+        { chartStore.canDisplayCurrentChart &&
+          <ChartContainer
+            chartData={chartStore.currentChartData}
+            style={{maxWidth: '70vw'}}
+            className='width-full' />
+        }
+
+        { !chartStore.canDisplayCurrentChart &&
+          <div className='flex-row-center pad-6'>There's not enough data to create this chart.</div>
+        }
+      </div>
     </div>
   )
 })

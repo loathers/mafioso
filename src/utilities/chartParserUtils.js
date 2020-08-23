@@ -114,6 +114,7 @@ export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightbl
 
   // console.log('allChanges', allChanges);
   // const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(allChanges.length);
+  // const colorList = allChanges.map((change) => change >= 0 ? 'rgb(177, 92, 92, 0.4)' : 'rgb(84, 204, 126, 0.4)');
 
   return {
     _type: 'line',
@@ -123,6 +124,7 @@ export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightbl
       label: 'Total Meat Gained',
       borderColor: '#b15c5c',
       borderWidth: 0.8,
+      // borderColor: colorList,
       pointBackgroundColor: '#b15c5c',
       pointRadius: 0.5,
       data: allChanges,

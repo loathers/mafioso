@@ -50,20 +50,20 @@ function getContainerStyles(data, type) {
     case 'horizontalBar':
       return {
         height: data._size * 15 + 40,
-        width: '100%',
+        // width: '100%',
         margin: 20,
       }
 
     case 'line':
       return {
-        width: data._size * 20 + 100,
+        // width: Math.min(data._size * 20 + 100, 800),
         height: 600,
       }
 
     case 'bar':
     default:
       return {
-        width: data._size * 40 + 100,
+        // width: Math.min(data._size * 40 + 100, 800),
         height: 600,
       }
   }
