@@ -66,8 +66,8 @@ class ChartStore {
     return this.allEntries.length;
   }
   /** @type {Number} */
-  get hasEnoughEntries() {
-    return this.allEntries.length > 2;
+  get canDisplayCurrentChart() {
+    return this.currentChartData && this.currentChartData._size > 0;
   }
   // --
   /**

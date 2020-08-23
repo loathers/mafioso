@@ -6,6 +6,10 @@ import tinygradient from 'tinygradient';
  * @returns {Array<Color>}
  */
 export function createColorList(steps, colors) {
+  if (steps < colors.length) {
+    return colors;
+  }
+
   const gradient = tinygradient(colors);
   const colorList = gradient.rgb(steps).map(tinycolor => tinycolor.toHexString());
   return colorList;
