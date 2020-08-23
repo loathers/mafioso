@@ -67,7 +67,9 @@ class ChartStore {
   }
   /** @type {Number} */
   get canDisplayCurrentChart() {
-    return this.currentChartData && this.currentChartData._size > 0;
+    return this.isReady
+      && this.currentChartType.get() !== null
+      && this.currentChartData && this.currentChartData._size > 0;
   }
   // --
   /**
