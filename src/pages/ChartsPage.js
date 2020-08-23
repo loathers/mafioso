@@ -7,7 +7,7 @@ import {HOME_URL} from 'constants/PAGE_URLS';
 import appStore from 'store/appStore';
 import chartStore from 'store/chartStore';
 
-import BarChartDisplay from 'components/BarChartDisplay';
+import ChartContainer from 'components/ChartContainer';
 import Button from 'components/Button';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -38,7 +38,7 @@ function ChartsPage(props) {
 
       <ChartsMenu className='mar-r-2 flex-none' />
 
-      <BarChartDisplay
+      <ChartContainer
         style={chartConfig.containerStyle}
         chartConfig={chartConfig}
         className='flex-auto' />
