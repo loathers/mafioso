@@ -1,7 +1,5 @@
 import {observable} from 'mobx';
 
-import {horizontalBarOptions, verticalBarOptions, lineMeatTotalOptions} from 'constants/chartOptions';
-
 import * as chartParserUtils from 'utilities/chartParserUtils';
 import {createColorList_purplePastel} from 'utilities/colorUtils';
 
@@ -19,7 +17,7 @@ class ChartStore {
     this.currentChartType = observable.box('meatTotal');
   }
   /** @type {ChartjsConfig | null} */
-  get currentChartConfig() {
+  get currentChartData() {
     switch(this.currentChartType.get()) {
       case 'location':
         return this.locationChartData;
@@ -40,19 +38,7 @@ class ChartStore {
       return null;
     }
 
-    const chartData = chartParserUtils.createLocationData(this.allEntries.slice(), createColorList_purplePastel);
-    const chartConfig = {
-      containerStyle: {
-        height: chartData._size * 15 + 40,
-        width: '100%',
-        margin: 20,
-      },
-      type: 'horizontalBar',
-      data: chartData,
-      options: horizontalBarOptions,
-    }
-
-    return chartConfig;
+    return chartParserUtils.createLocationData(this.allEntries.slice(), createColorList_purplePastel);
   }
   /** @type {ChartjsConfig} */
   get familiarChartData() {
@@ -60,18 +46,7 @@ class ChartStore {
       return null;
     }
 
-    const chartData = chartParserUtils.createFamiliarData(this.allEntries.slice(), createColorList_purplePastel);
-    const chartConfig = {
-      containerStyle: {
-        width: chartData._size * 40 + 100,
-        height: 600,
-      },
-      type: 'bar',
-      data: chartData,
-      options: verticalBarOptions,
-    }
-
-    return chartConfig;
+    return chartParserUtils.createFamiliarData(this.allEntries.slice(), createColorList_purplePastel);
   }
   /** @type {ChartjsConfig} */
   get meatTotalGainedChartData() {
@@ -79,18 +54,7 @@ class ChartStore {
       return null;
     }
 
-    const chartData = chartParserUtils.createMeatTotalGainedData(this.allEntries.slice(), createColorList_purplePastel);
-    const chartConfig = {
-      containerStyle: {
-        width: chartData._size * 20 + 100,
-        height: 600,
-      },
-      type: 'line',
-      data: chartData,
-      options: lineMeatTotalOptions,
-    }
-
-    return chartConfig;
+    return chartParserUtils.createMeatTotalGainedData(this.allEntries.slice(), createColorList_purplePastel);
   }
   // --
   /** @type {Boolean} */
@@ -100,6 +64,10 @@ class ChartStore {
   /** @type {Number} */
   get entriesLength() {
     return this.allEntries.length;
+  }
+  /** @type {Number} */
+  get hasEnoughEntries() {
+    return this.allEntries.length > 2;
   }
   // --
   /**

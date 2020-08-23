@@ -29,6 +29,7 @@ export function createLocationData(entriesList, colorGenerator = 'lightblue') {
   const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
 
   return {
+    _type: 'horizontalBar',
     _size: keys.length,
     labels: keys,
     datasets: [{
@@ -67,6 +68,7 @@ export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
   const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
 
   return {
+    _type: 'bar',
     _size: keys.length,
     labels: keys,
     datasets: [{
@@ -114,6 +116,7 @@ export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightbl
   // const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(allChanges.length);
 
   return {
+    _type: 'line',
     _size: allChanges.length,
     labels: allChanges.map((change, idx) => `${idx}`),
     datasets: [{

@@ -26,8 +26,8 @@ function ChartsPage(props) {
     return <Redirect to={HOME_URL}/>
   }
 
-  const chartConfig = chartStore.currentChartConfig;
-  if (!chartStore.isReady || chartConfig === null || chartStore.currentChartType.get() === null) {
+  const chartData = chartStore.currentChartData;
+  if (!chartStore.isReady || !chartStore.hasEnoughEntries || chartData === null || chartStore.currentChartType.get() === null) {
     return <div elementname='app-page-charts' className='fontsize-6 pad-6 flex-row-center'>Not enough data to create charts.</div>
   }
 
@@ -39,8 +39,7 @@ function ChartsPage(props) {
       <ChartsMenu className='mar-r-2 flex-none' />
 
       <ChartContainer
-        style={chartConfig.containerStyle}
-        chartConfig={chartConfig}
+        chartData={chartData}
         className='flex-auto' />
     </div>
   )

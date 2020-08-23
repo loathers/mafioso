@@ -2,6 +2,7 @@ const COLOR_WHITE = '#ececec';
 const COLOR_GRAY = '#353535';
 
 export const horizontalBarOptions = {
+  type: 'horizontalBar',
   responsive: true,
   maintainAspectRatio: false,
   legend: {
@@ -25,6 +26,7 @@ export const horizontalBarOptions = {
   }
 }
 export const verticalBarOptions = {
+  type: 'bar',
   responsive: true,
   maintainAspectRatio: false,
   legend: {
@@ -47,7 +49,8 @@ export const verticalBarOptions = {
     }]
   }
 }
-export const lineMeatTotalOptions = {
+export const lineTotalOptions = {
+  type: 'line',
   responsive: true,
   maintainAspectRatio: false,
   legend: {
