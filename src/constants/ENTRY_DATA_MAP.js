@@ -467,6 +467,13 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Mixed',
     encounterName_alt: REGEX.ITEMS.ACQUIRED_AN_ITEM_NAME,
   },
+  [ENTRY_TYPE.ITEMS.SMITH]: {
+    categories: [CATEGORY_ID.CRAFTING],
+    matcher: REGEX.ITEMS.SMITH_LINE,
+    icon: CraftSVG,
+    locationName_alt: 'Smithed',
+    encounterName_alt: REGEX.ITEMS.ACQUIRED_AN_ITEM_NAME,
+  },
   [ENTRY_TYPE.EFFECTS.SPELL_CAST]: {
     categories: [CATEGORY_ID.EFFECTS],
     matcher: REGEX.VALUE.SPELL_CAST_NAMES,

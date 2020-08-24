@@ -240,7 +240,7 @@ export const REGEX = {
     LOCATION_NAME: /(?<=\]\s).*/,
     SHOP_LOCATION_NAME: /(?<=each from\s).*/,
     ENCOUNTER_NAME: /(?<=Encounter:\s).*/,
-    NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!Encounter:)/,
+    NONCOMBAT_NAME: /(?<=\[\d+\]\s)(.*)(?!(Encounter:))/,
     VISIT_LOCATION_NAME: /(?<=^visiting ).*(?=( in))*/im,
     VISIT_ENCOUNTER_NAME: /(?<=^visiting( the| )).*?(?=( in|(\r\n|\n)))/im,
     TOOK_CHOICE_RESULT: /(?!.*(secret choice|get quest|unknown))(?<=^took choice.*: ).+/gmi,
@@ -347,12 +347,13 @@ export const REGEX = {
     ZAP_LINE: /^zap .*/gmi,
     ZAP_TARGET: /(?<=^zap ).*/gmi,
 
-    MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix) .*\d+.*/gmi,
+    MAKE_SOMETHING_LINE: /^(create|combine|craft|cook|mix|smith) .*\d+.*/gmi,
     COMBINE_LINE: /^combine .*/gmi,
     COOK_LINE: /^cook .*/gmi,
     CRAFT_LINE: /^craft .*/gmi,
     CREATE_LINE: /^create .*/gmi,
     MIX_LINE: /^mix .*/gmi,
+    SMITH_LINE: /smith.*\d.*\+ \d.*/gmi,
     CRAFTING_USED_LINE: /^crafting used .*(\r\n|\n)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,

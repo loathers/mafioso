@@ -288,7 +288,7 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
-        label: 'Voting',
+        label: 'Voting Monster',
         attributeName: 'isVoting',
         attributeValue: true,
         isHidden: false,
