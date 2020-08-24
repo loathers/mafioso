@@ -1,5 +1,7 @@
 import {observable} from 'mobx';
 
+import {CHART_TYPES} from 'constants/CHART_TYPES';
+
 import * as chartParserUtils from 'utilities/chartParserUtils';
 import {createColorList_purplePastel} from 'utilities/colorUtils';
 
@@ -13,19 +15,19 @@ class ChartStore {
      * @type {ObservableArray<Entry>}
      */
     this.allEntries = [];
-    /** @type {Observable<String>} */
-    this.currentChartType = observable.box('banished');
+    /** @type {Observable<ChartType>} */
+    this.currentChartType = observable.box(CHART_TYPES.LOCATION);
   }
   /** @type {ChartjsConfig | null} */
   get currentChartData() {
     switch(this.currentChartType.get()) {
-      case 'location':
+      case CHART_TYPES.LOCATION:
         return this.locationChartData;
 
-      case 'familiar':
+      case CHART_TYPES.FAMILIAR:
         return this.familiarChartData;
 
-      case 'meatTotal':
+      case CHART_TYPES.MEAT_TOTAL:
         return this.meatTotalGainedChartData;
 
       case 'banished':

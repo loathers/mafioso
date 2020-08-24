@@ -2,6 +2,7 @@ import React from 'react';
 import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
 
+import {CHART_TYPES} from 'constants/CHART_TYPES';
 import {HOME_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
@@ -61,33 +62,21 @@ function ChartsMenu(props) {
       elementname='app-side-menu'
       className={combineClassnames('flex-col', className)}>
       <Button
-        onClick={() => chartStore.onSwitchCurrentChart('location')}
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.LOCATION)}
         className='pad-2 adjacent-mar-t-1'>
         Locations
       </Button>
 
       <Button
-        onClick={() => chartStore.onSwitchCurrentChart('banished')}
-        className='pad-2 adjacent-mar-t-1'>
-        Banished
-      </Button>
-
-      <Button
-        onClick={() => chartStore.onSwitchCurrentChart('replaced')}
-        className='pad-2 adjacent-mar-t-1'>
-        Replaced
-      </Button>
-
-      <Button
-        onClick={() => chartStore.onSwitchCurrentChart('familiar')}
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.FAMILIAR)}
         className='pad-2 adjacent-mar-t-1'>
         Familiars
       </Button>
 
       <Button
-        onClick={() => chartStore.onSwitchCurrentChart('meatTotal')}
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.MEAT_TOTAL)}
         className='pad-2 adjacent-mar-t-1'>
-        Meat Total
+        Total Meat
       </Button>
     </div>
   )
