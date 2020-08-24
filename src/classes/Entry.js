@@ -519,6 +519,11 @@ export default class Entry {
   get hasMafiaThumbRing() {
     return this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION);
   }
+  /** @type {Boolean} */
+  get isVoting() {
+    return this.hasText(REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT)
+      || this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH;
+  }
   // -- utility
   /**
    * since there's getters and entry.attributes, this helps get it

@@ -217,3 +217,10 @@ export function parseDifficultyName(rawText) {
 export function parsePathName(rawText) {
   return regexUtils.findMatcher(rawText, REGEX.ASCENSION.PATH_NAME);
 }
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function parseVoteMonster(rawText) {
+  return regexUtils.findMatcher(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT);
+}

@@ -287,6 +287,13 @@ export const ATTRIBUTE_FILTERS = [
         isHidden: false,
         checked: false,
       },
+      {
+        label: 'Voting',
+        attributeName: 'isVoting',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
     ]
   },
   {
