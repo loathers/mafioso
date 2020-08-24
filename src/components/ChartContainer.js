@@ -20,9 +20,10 @@ export default function ChartContainer(props) {
   const chartRef = React.createRef();
   const prevChartRef = React.useRef();
 
+  const chartSettings = getChartSettings(chartData._type);
   const chartConfig = {
-    type: chartData._type,
-    options: getChartSettings(chartData._type),
+    options: chartSettings,
+    type: chartSettings.type,
     data: chartData,
   };
 
