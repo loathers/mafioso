@@ -43,6 +43,8 @@ class LogStore {
       pathName: undefined,
       /** @type {Array<String>} */
       dateList: [],
+      /** @type {Array<String>} */
+      voterMonsters: [],
     }
 
     /**

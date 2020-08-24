@@ -178,7 +178,7 @@ export const REGEX = {
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,
     DAILY_VOTE_TEXT: /Daily Loathing Ballot/i,
-    VOTE_MONSTER_COMBAT: /^Encounter: (government bureaucrat|terrible mutant|angry ghost|annoyed snake|slime blob)/gmi,
+    VOTE_MONSTER_COMBAT: /(?<=^Encounter: )(government bureaucrat|terrible mutant|angry ghost|annoyed snake|slime blob)/gmi,
   },
   // -- paths
   COMMUNITY_SERVICE: {

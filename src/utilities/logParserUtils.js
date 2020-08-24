@@ -97,6 +97,7 @@ export function parseAscensionAttributes(rawText) {
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: parseDifficultyName(rawText),
     pathName: parsePathName(rawText),
+    voterMonsters: parseVoteMonster(rawText),
   }
 }
 /**
@@ -222,5 +223,6 @@ export function parsePathName(rawText) {
  * @returns {String}
  */
 export function parseVoteMonster(rawText) {
-  return regexUtils.findMatcher(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT);
+  const allMonsters = regexUtils.getRegexMatch(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT)
+  return allMonsters.filter((monsterName, idx) => allMonsters.indexOf(monsterName) === idx);
 }
