@@ -520,6 +520,10 @@ export default class Entry {
     return this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION);
   }
   /** @type {Boolean} */
+  get hasRetrospecs() {
+    return this.hasText(REGEX.RETROSPECS.FOUND_ITEM);
+  }
+  /** @type {Boolean} */
   get isVoting() {
     return this.hasText(REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT)
       || this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH;

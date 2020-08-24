@@ -164,6 +164,9 @@ export const REGEX = {
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
     AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*(\r\n|\n)/gmi,
   },
+  RETROSPECS: {
+    FOUND_ITEM: /(?<=You look behind you and notice an item you missed earlier.*?you acquire an item: ).*?$/mis,
+  },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice.*(\r\n|\n){2,}setting soundtrack.*/gmi,
     RESULT: /(?<=^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice 1312.*: ).*/gmi,

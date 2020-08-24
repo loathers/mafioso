@@ -214,6 +214,13 @@ export const ATTRIBUTE_FILTERS = [
         isHidden: false,
         checked: false,
       },
+      {
+        label: 'Retrospection',
+        attributeName: 'hasRetrospecs',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
     ]
   },
   {
