@@ -80,6 +80,7 @@ function LogVisualizerPage(props) {
         { logStore.hasCurrentEntries &&
           <LogEntryViewer
             entriesList={logStore.currentEntries}
+            voterMonsters={logStore.ascensionAttributes.voterMonsters}
             className='flex-auto adjacent-mar-t-5'
           />
         }

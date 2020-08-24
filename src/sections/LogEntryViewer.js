@@ -16,6 +16,7 @@ function LogEntryViewer(props) {
   const {
     className,
     entriesList = [],
+    voterMonsters = [],
   } = props;
 
   return (
@@ -32,6 +33,7 @@ function LogEntryViewer(props) {
             { shouldShowDayDisplay &&
               <EntryHeaderDisplay
                 topContent={`Day ${currentDay}`}
+                subContent={voterMonsters[currentDay - 1]}
                 className='pad-3 adjacent-mar-t-1' />
             }
 

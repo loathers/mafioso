@@ -747,6 +747,14 @@ class LogStore {
     const lastPage = Math.ceil(this.validEntries.length / entriesPerPage) - 1;
     return Math.max(lastPage, 0);
   }
+  // -- misc utility
+  /**
+   * @param {Number} dayNum
+   * @return {String}
+   */
+  getVoterMonsterOnDay(dayNum) {
+    return this.ascensionAttributes.voterMonsters[dayNum - 1];
+  }
 }
 
 /** export singleton */
