@@ -51,7 +51,7 @@ function PageControlMenu(props) {
           <div className='flex-row flex-none aself-start adjacent-mar-t-5'>
             <PaginationComponent
               currNum={logStore.isUsingDayFilter ? logStore.currentDayNum : -1}
-              lastNum={logStore.dayCount}
+              lastNum={logStore.dayCount - 1}
               onChangePage={onClickChangeDay}
               label='Day:'
               disabled={!logStore.isReady}

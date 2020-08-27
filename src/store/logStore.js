@@ -139,7 +139,7 @@ class LogStore {
   }
   /** @type {Number} */
   get dayCount() {
-    return Math.max(this.ascensionAttributes.dateList.length - 1, 0);
+    return this.ascensionAttributes.dateList.length;
   }
   /** @type {Number} */
   get ascensionNum() {
