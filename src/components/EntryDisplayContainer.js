@@ -55,7 +55,7 @@ export default function EntryDisplayContainer(props) {
   const shouldShowAnnotations = currentAnnotations !== null && currentAnnotations !== undefined;
 
   const onToggleAnnotations = () => {
-    if (shouldShowAnnotations) {
+    if (shouldShowAnnotations) { // aka is currently showing
       entry.willRemoveAnnotation = true;
       updateAnnotations(null);
     } else {
@@ -428,7 +428,7 @@ function AnnotationContainer(props) {
           ref={inputRef}
           onChange={onChangeText}
           onBlur={onBlurInput}
-          value={editText}
+          value={editText || ''}
           type='text'
           style={{
             position: 'absolute',
