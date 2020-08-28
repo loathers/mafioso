@@ -201,6 +201,10 @@ export default class Entry {
   get hasEstimatedTurnNum() {
     return this.attributes.estimatedTurnNum !== undefined;
   }
+  /** @param {Number} */
+  set dayNum(num) {
+    this.attributes.dayNum = num;
+  }
   /** @type {Number} */
   get dayNum() {
     return this.attributes.dayNum;
@@ -246,6 +250,10 @@ export default class Entry {
     }
 
     return false;
+  }
+  /** @param {Boolean} */
+  set isInBetweenTurns(newValue) {
+    this.attributes.isInBetweenTurns = newValue;
   }
   /** @type {Boolean} */
   get isInBetweenTurns() {
@@ -350,6 +358,10 @@ export default class Entry {
   get encounterDisplay() {
     return this.parseDisplayMatcher(this.entryData.encounterName_alt, this.attributes.encounterName);
   }
+  /** @param {String} */
+  set additionalDisplay(newValue) {
+    this.attributes.additionalDisplay = newValue;
+  }
   /** @type {String} */
   get additionalDisplay() {
     // special text for Latte refill
@@ -380,6 +392,10 @@ export default class Entry {
     }
 
     return this.attributes.additionalDisplay;
+  }
+  /** @param {String} */
+  set familiarUsed(newValue) {
+    this.attributes.familiarUsed = newValue;
   }
   /** @type {Boolean} */
   get familiarUsed() {
