@@ -6,6 +6,7 @@ import {withRouter} from "react-router";
 import {LOG_VIS_URL, CHARTS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
+import logStore from 'store/logStore';
 
 import LogoComponent from 'components/LogoComponent';
 
@@ -23,6 +24,13 @@ function Navbar(props) {
 
   const pageName = location.pathname.split('/')[1];
 
+  const handleOnSend = () => {
+    const oReq = new XMLHttpRequest();
+    const url='http://localhost:8080/api/upload';
+    oReq.open('POST', url);
+    oReq.send(logStore.createLogFile());
+  }
+
   return (
     <div
       elementname='app-navbar'
@@ -33,6 +41,13 @@ function Navbar(props) {
         <LogUploader
           children={'Upload Log'}
           className='fontsize-4 adjacent-mar-l-3' />
+
+        <NavbarButton
+          onClick={handleOnSend}
+          disabled={!appStore.isReady}
+          children='Share'
+          componentType='button'
+          className='adjacent-mar-l-3' />
 
         <NavbarButton
           to={LOG_VIS_URL}
