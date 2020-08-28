@@ -3,6 +3,7 @@ import {observable} from 'mobx';
 import Batcher from 'classes/Batcher';
 
 import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY, PAGINATE_DELAY} from 'constants/DEFAULTS';
+import REGEX from 'constants/REGEXES';
 
 import * as logStoreHelper from 'helpers/logStoreHelper';
 
@@ -10,6 +11,7 @@ import chartStore from 'store/chartStore';
 
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
+import * as regexUtils from 'utilities/regexUtils';
 import {hashCode} from 'utilities/hashUtils';
 
 /**
@@ -93,11 +95,18 @@ class LogStore {
   /** @type {Boolean} */
   get logIdHash() {
     if (this.ascensionAttributes.dateList.length <= 0) {
-      return 'nonascension';
+      return '#nonascension';
     }
 
-    const firstDate = this.ascensionAttributes.dateList[0];
-    return hashCode(`${firstDate}${this.characterName}${this.difficultyName}${this.pathName}`);
+    const date = this.findMatcher(REGEX.SNAPSHOT.REAL_DATE);
+    if (date === null) {
+      console.error('Unable to create hash because there is no date in this log.');
+      return '#nodate';
+    }
+
+    const sessionDate = Date.parse(date);
+    const hashText = `${this.characterName}${sessionDate}${this.difficultyName}${this.pathName}`;
+    return hashCode(hashText);
   }
   /** @type {Boolean} */
   get hasFiles() {
@@ -580,6 +589,13 @@ class LogStore {
     return Math.max(lastPage, 0);
   }
   // -- misc utility
+  /**
+   * @param {Matcher} matcher
+   * @return {String|null}
+   */
+  findMatcher(matcher) {
+    return regexUtils.findMatcher(this.rawText, matcher);
+  }
   /**
    * @param {Number} dayNum
    * @return {String}

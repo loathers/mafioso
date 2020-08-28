@@ -420,6 +420,7 @@ export const REGEX = {
     CHOICE_PHP_LINE: /^choice\.php.*/gmi,
   },
   SNAPSHOT: {
+    REAL_DATE: /(January|February|March|April|May|June|July|August|September|OCtober|November|December).*(?= -)/gi,
     SNAPSHOT_DATE: /(?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     KOL_DATE: /(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
