@@ -13,7 +13,7 @@ class AppStore {
     this.appId = uuidv4();
 
     /** @type {Observable<Boolean>} */
-    this.isSharing = observable.box(false);
+    this.isPretendLoading = observable.box(false);
     /** @type {Observable<Boolean>} */
     this.isUsingCompactMode = observable.box(true);
     /** @type {Observable<Boolean>} */
@@ -29,7 +29,7 @@ class AppStore {
   // -- state
   /** @type {Boolean} */
   get isLoading() {
-    return this.isSharing.get() || logStore.isLoading;
+    return this.isPretendLoading.get() || logStore.isLoading;
   }
   /** @type {Boolean} */
   get isReady() {
@@ -81,8 +81,14 @@ class AppStore {
   }
   // --
   /** @alias */
-  downloadFullLog() {
+  async downloadFullLog() {
+    this.isPretendLoading.set(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
     logStore.downloadFullLog();
+
+    this.isPretendLoading.set(false);
   }
   /**
    * uploads the current log to server
@@ -90,15 +96,15 @@ class AppStore {
   async onShareLog() {
     if (!this.isReady) return;
 
-    this.isSharing.set(true);
+    this.isPretendLoading.set(true);
 
     const oReq = new XMLHttpRequest();
     const url = 'http://localhost:8080/api/upload';
     oReq.open('POST', url);
     oReq.send(logStore.createLogFile());
 
-    await new Promise((resolve) => setTimeout(resolve, 150));
-    this.isSharing.set(false);
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    this.isPretendLoading.set(false);
   }
 }
 /** export singleton */
