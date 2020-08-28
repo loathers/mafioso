@@ -92,5 +92,5 @@ function NavbarButton(props) {
 }
 
 function NavbarDivider(props) {
-  return <div className={combineClassnames('flex-row-center color-grayer adjacent-mar-l-3', props.className)}>·</div>
+  return <div className={combineClassnames('pevents-none flex-row-center color-grayer adjacent-mar-l-3', props.className)}>·</div>
 }

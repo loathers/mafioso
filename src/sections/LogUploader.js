@@ -34,21 +34,16 @@ export default function LogUploader(props) {
     children,
   } = props;
 
-  const [isOver, setIsOver] = React.useState(false);
-  const overClassName = isOver ? 'bor-1-green' : '';
-
   return (
     <form
       onDrop={(evt) => { onUpload(evt); }}
       onDragOver={e => { ignoreEvent(e); }}
-      onDragEnter={e => { ignoreEvent(e); setIsOver(true); }}
-      onDragLeave={e => { ignoreEvent(e); setIsOver(false); }}
       elementname='upload-component'
       componentstate={disabled ? 'disabled' : 'enabled'}
       style={style}
       className={combineClassnames('flex-col boxsizing-border', className)}>
       <label
-        className={combineClassnames('borradius-2 talign-center whitespace-pre-wrap pad-4 flex-auto', overClassName)}
+        className={combineClassnames('borradius-2 talign-center whitespace-pre-wrap pad-4 flex-auto')}
         htmlFor='log-uploader'>
         {children}
       </label>
