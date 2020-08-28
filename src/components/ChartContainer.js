@@ -45,6 +45,7 @@ export default function ChartContainer(props) {
 
   return (
     <div
+      elementname='chart-container'
       style={{...style, ...containerStyle}}
       className={combineClassnames('pad-6', className)}>
       <canvas ref={chartRef} />
