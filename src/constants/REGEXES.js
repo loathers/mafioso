@@ -190,6 +190,9 @@ export const REGEX = {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
     CHOICE_RESULT: /(?<=^took choice 1089\/\d+: ).*(?= \(\d+ adventures.*)/gmi,
   },
+  DISGUISES_DELIMIT: {
+    SWAP_MASK: /(?<=^Round.*casts ).*SWAP MASK.*(?=!)/mi,
+  },
   LOW_KEY_SUMMER: {
   },
   QUEST: {

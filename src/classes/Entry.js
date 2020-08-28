@@ -451,7 +451,12 @@ export default class Entry {
   // -- attribute getters
   /** @type {Boolean} */
   get isPathSpecific() {
-    return this.categories.includes(CATEGORY_ID.PATH);
+    return this.categories.includes(CATEGORY_ID.PATH)
+      || this.isPathDisguisesDelimit;
+  }
+  /** @type {Boolean} */
+  get isPathDisguisesDelimit() {
+    return this.hasText(REGEX.DISGUISES_DELIMIT.SWAP_MASK);
   }
   /** @type {Boolean} */
   get isClover() {

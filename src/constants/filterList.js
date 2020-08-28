@@ -61,7 +61,7 @@ export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Shopping',
     categoryId: CATEGORY_ID.TRANSACTIONS,
-    isHidden: true,
+    isHidden: false,
   },
   {
     label: 'Other',
