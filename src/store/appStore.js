@@ -29,7 +29,7 @@ class AppStore {
   // -- state
   /** @type {Boolean} */
   get isLoading() {
-    return logStore.isLoading || this.isSharing.get();
+    return this.isSharing.get() || logStore.isLoading;
   }
   /** @type {Boolean} */
   get isReady() {

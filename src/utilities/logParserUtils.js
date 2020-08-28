@@ -43,9 +43,13 @@ export async function parseLogTxt(rawText) {
       .replace(DIVIDING_NEWLINE_REGEX, '}{')
       .split('}{');
 
-    // create the Entry class for each entry text, which will then further parse their data
-    const BATCH_SIZE = calculateBatchSize(rawSize);
+    // prepare Batcher
+    const rawVal = Math.sqrt(rawSize);
+    const newBatchSize = Math.round(1000 - rawVal);
+    const BATCH_SIZE = Math.max(100, newBatchSize);
     const entryBatcher = new Batcher(rawEntries, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
+
+    // create the Entry class for each entry text, which will then further parse their data
     const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
     return allEntries;
 
@@ -167,17 +171,7 @@ export async function postParseCleanup(rawText) {
     return `<mafioso>\n${p1}\n${p2}\n</mafioso>\n`;
   });
 }
-/**
- * update batch size based on number of characters in the log
- *  this calculation is not very scientific
- *
- * @param {Number} rawSize
- */
-function calculateBatchSize(rawSize) {
-  const rawVal = Math.sqrt(rawSize);
-  const newBatchSize = Math.round(1000 - rawVal);
-  return Math.max(100, newBatchSize);
-}
+// -- parsing specific data
 /**
  * @param {String} rawText
  * @returns {Array<KolDate>}

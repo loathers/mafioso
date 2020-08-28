@@ -262,11 +262,9 @@ class LogStore {
       this.reset();
       this.srcFiles = files;
 
-      // sort files by kolmafia's date
-      const sortedFiles = fileParserUtils.sortBySessionDate(files);
-
       // get the text from all the files
-      this.srcRawTexts = await Promise.all(sortedFiles.map(this.readFile));
+      const sortedFiles = fileParserUtils.sortBySessionDate(files); // sort files by kolmafia's date
+      this.srcRawTexts = await Promise.all(sortedFiles.map(fileParserUtils.readFile));
       if (this.srcRawTexts.length <= 0) {
         console.error('It looks like none of those files were valid, mate.');
         this.isParsing.set(false);
@@ -298,28 +296,6 @@ class LogStore {
       console.error(e);
       this.isParsing.set(false);
     }
-  }
-  /**
-   * @async
-   * @param {File} file
-   * @returns {String}
-   */
-  readFile(file) {
-    return new Promise((resolve, reject) => {
-      if (file.type !== 'text/plain') {
-        reject('Uploaded a non-text file.');
-        return;
-      }
-
-      const fileReader = new FileReader();
-      fileReader.onload = (readerEvt) => {
-        const readResult = readerEvt.target.result;
-        console.log(`%c☌ ...file "${file.name}" read.`, 'color: #6464ff');
-        resolve(readResult);
-      }
-
-      fileReader.readAsText(file);
-    });
   }
   /**
    * handle cleaning up and setting all the data

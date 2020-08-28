@@ -1,5 +1,29 @@
 /**
- * @params {Files|Array<File>} 
+ * @async
+ * @param {File} file
+ * @returns {String}
+ */
+export function readFile(file) {
+  return new Promise((resolve, reject) => {
+    if (file.type !== 'text/plain') {
+      reject('Uploaded a non-text file.');
+      return;
+    }
+
+    const fileReader = new FileReader();
+    fileReader.onload = (readerEvt) => {
+      const readResult = readerEvt.target.result;
+      console.log(`%c☌ ...file "${file.name}" read.`, 'color: #6464ff');
+      resolve(readResult);
+    }
+
+    fileReader.readAsText(file);
+  });
+}
+
+// -- session date
+/**
+ * @params {Files|Array<File>}
  */
 export function sortBySessionDate(files) {
   return Array.from(files).sort((fileA, fileB) => {
