@@ -57,98 +57,128 @@ export function combineEntries(entriesList) {
  * there are some things we're going to guess about an entry
  *  - what day it is on
  *  - turn num, and adjusted if needed
+ *  - what familiar was used
  *
  * @param {Array<Entry>} allEntries
  * @returns {Array<Entry>}
  */
-export function createConjectureData(allEntries) {
+export function createEstimatedEntries(allEntries) {
   if (!logStore.isAscensionLog) {
     return allEntries;
   }
 
-  // keeps track of kol dates this run took
-  const dateListEstimate = [];
+  // all data that is being tracked
+  const estimates = {
+    dateList: [], // kol dates
+    prevEntry: null,
+    prevTurnNum: -1,
+    trackedFamiliar: null, // familiar that user last swapped to
+  }
 
-  // track what familiar user last swapped to
-  let trackedFamiliar = null;
-
+  // start
   const conjecturedEntries = allEntries.map((entry, idx) => {
-    // const prevEntry = idx > 1 ? allEntries[idx - 1] : undefined;
-    // const prevTurnNum = prevEntry && prevEntry.turnNum;
-
     // find the next entry that is not a free adventure
-    const nextEntry = logStore.findNextEntry(idx, {hasRawTurnNum: true, isFreeCombat: false});
-    const nextTurnNum = nextEntry && nextEntry.rawTurnNum;
+    const nextEntry = logStore.findNextEntry(idx, {isAdventure: true, isFreeCombat: false});
 
-    const myTurnNum = entry.turnNum;
+    // update turnNum
+    entry = handleEstimateTurnNum(entry, nextEntry);
 
-    // double check what mafia thinks this turn number is
-    if (entry.hasRawTurnNum) {
-      // if the next number is the same as current number, most likely this is a free adv (thanks CaptainScotch!)
-      if (nextTurnNum === myTurnNum) {
-        entry.attributes.isInBetweenTurns = true;
-        entry.turnNum = nextTurnNum - 1;
-      }
-
-      // freeing the king doesn't actually take a turn
-      if (entry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END) {
-        entry.attributes.isInBetweenTurns = true;
-        entry.turnNum = myTurnNum - 1;
-      }
-
-    // I don't have a number, so we'll assume this is before the next adventure
-    } else {
-      if (nextTurnNum) {
-        entry.turnNum = nextTurnNum - 1;
-      } else {
-        entry.turnNum = 0;
-      }
-    }
-
-    // use entries with the date in them as a possible point of a new day
-    // if (entry.entryType === ENTRY_TYPE.SNAPSHOT.DAY_INFO || entry.entryType === ENTRY_TYPE.SNAPSHOT.CHARACTER_INFO) {
+    // + use entries with the date in them as a point of reference
     const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
-    if (dateMatch && !dateListEstimate.includes(dateMatch)) {
-      dateListEstimate.push(dateMatch);
-    }
-    // }
-
-    // set this dayNum
-    entry.attributes.dayNum = dateListEstimate.length;
-
-    // lets see if we can get the noncombat that this sneakisol went to
-    if (entry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
-      if (entry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
-        const sneakisolNonCombat = logStore.findNextEntry(idx, {isNonCombatEncounter: true});
-        if (sneakisolNonCombat) {
-          entry.attributes.additionalDisplay = `(${sneakisolNonCombat.encounterDisplay})`;
-        }
-      }
-
-      if (entry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
-        const surpriseEncounter = logStore.findNextEntry(idx, {isSemirare: true});
-        if (surpriseEncounter) {
-          entry.attributes.additionalDisplay = `(${surpriseEncounter.encounterDisplay})`;
-        }
-      }
+    if (dateMatch !== null && !estimates.dateList.includes(dateMatch)) {
+      estimates.dateList.push(dateMatch);
     }
 
-    // -- see what familiar player is using
+    // set dayNum of entry
+    entry.dayNum = estimates.dateList.length;
+
+    // + update estimate if familar was swapped to
     if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
-      trackedFamiliar = entry.findMatcher(REGEX.FAMILIAR.SWITCH_TO_RESULT);
+      estimates.trackedFamiliar = entry.findMatcher(REGEX.FAMILIAR.SWITCH_TO_RESULT);
     }
 
+    // apply trackedFamiliar only if it is a combat
     if (entry.isCombatEncounter) {
-      entry.attributes.familiarUsed = trackedFamiliar;
+      entry.familiarUsed = estimates.trackedFamiliar;
     }
 
-    // completed create conjecture data for entry
+    // pill keeper
+    entry = handleEstimatePillKeeper(entry, idx);
+
+    // update estimates
+    estimates.prevEntry = entry;
+    estimates.prevTurnNum = entry.turnNum;
+
     return entry;
   });
 
   // done
-  logStore.ascensionAttributes.dateList = dateListEstimate || [];
+  logStore.ascensionAttributes.dateList = estimates.dateList || [];
   return conjecturedEntries;
+}
+/**
+ * double check what mafia thinks this turn number is
+ *
+ * @param {Entry} currEntry
+ * @param {Entry} nextEntry
+ * @returns {Entry}
+ */
+function handleEstimateTurnNum(currEntry, nextEntry) {
+  const nextTurnNum = nextEntry && nextEntry.rawTurnNum;
+  const myTurnNum = currEntry.turnNum;
+
+  // rawTurnNum means that mafia marked it as an adventure
+  if (currEntry.hasRawTurnNum) {
+    // if the next number is the same as current number, most likely this is a free adv (thanks CaptainScotch!)
+    if (nextTurnNum === myTurnNum) {
+      currEntry.isInBetweenTurns = true;
+      currEntry.turnNum = nextTurnNum - 1;
+    }
+
+    // freeing the king doesn't actually take a turn
+    if (currEntry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END) {
+      currEntry.isInBetweenTurns = true;
+      currEntry.turnNum = myTurnNum - 1;
+    }
+
+  // I don't have a number, so we'll assume this is before the next adventure
+  } else {
+    if (nextTurnNum) {
+      currEntry.turnNum = nextTurnNum - 1;
+    } else {
+      currEntry.turnNum = 0;
+    }
+  }
+
+  return currEntry;
+}
+/**
+ * find data for Pill Keeper uses
+ *
+ * @param {Entry} currEntry
+ * @param {Number} idx
+ * @returns {Entry}
+ */
+function handleEstimatePillKeeper(currEntry, idx) {
+  if (currEntry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
+    // see if we can get the noncombat that this sneakisol went to
+    if (currEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
+      const sneakisolNonCombat = logStore.findNextEntry(idx, {isNonCombatEncounter: true});
+      if (sneakisolNonCombat) {
+        currEntry.additionalDisplay = `(${sneakisolNonCombat.encounterDisplay})`;
+      }
+    }
+
+    // same for Sunday surprise semiare
+    if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
+      const surpriseEncounter = logStore.findNextEntry(idx, {isSemirare: true});
+      if (surpriseEncounter) {
+        currEntry.additionalDisplay = `(${surpriseEncounter.encounterDisplay})`;
+      }
+    }
+  }
+
+  return currEntry;
 }
 // -- utility
 /**

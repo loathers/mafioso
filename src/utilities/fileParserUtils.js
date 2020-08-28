@@ -20,7 +20,6 @@ export function readFile(file) {
     fileReader.readAsText(file);
   });
 }
-
 // -- session date
 /**
  * @params {Files|Array<File>}

@@ -331,7 +331,7 @@ class LogStore {
 
       chartStore.allEntries = newData;
 
-      const additionalData = this.createConjectureData(newData);
+      const additionalData = this.createEstimatedEntries(newData);
       this.allEntries.replace(additionalData);
       this.validEntries.replace([]);
 
@@ -591,8 +591,8 @@ class LogStore {
     return logStoreHelper.combineEntries(...args);
   }
   /** @alias */
-  createConjectureData(...args) {
-    return logStoreHelper.createConjectureData(...args);
+  createEstimatedEntries(...args) {
+    return logStoreHelper.createEstimatedEntries(...args);
   }
   /** @alias */
   downloadFullLog() {
