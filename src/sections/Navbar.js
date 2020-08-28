@@ -30,19 +30,21 @@ function Navbar(props) {
       <LogoComponent className='adjacent-mar-l-6' />
 
       <div className='jcontent-end flex-auto flex-row adjacent-mar-l-6'>
-      <LogUploader
-        children={'Upload Log'}
-        className='fontsize-4 adjacent-mar-l-3' />
+        <LogUploader
+          children={'Upload Log'}
+          className='fontsize-4 adjacent-mar-l-3' />
 
-        <NavbarLink
+        <NavbarButton
           to={LOG_VIS_URL}
+          componentType={Link}
           isActive={pageName === 'visualizer'}
           disabled={!appStore.isReady}
           children='Visualizer'
           className='adjacent-mar-l-3' />
 
-        <NavbarLink
+        <NavbarButton
           to={CHARTS_URL}
+          componentType={Link}
           isActive={pageName === 'charts'}
           disabled={!appStore.isReady}
           children='Charts'
@@ -52,8 +54,9 @@ function Navbar(props) {
   )
 })
 
-function NavbarLink(props) {
+function NavbarButton(props) {
   const {
+    componentType = 'div',
     className,
     disabled,
     isActive,
@@ -61,16 +64,11 @@ function NavbarLink(props) {
   } = props;
 
   const activeClassname = isActive ? 'color-green-lighter' : (disabled ? 'color-grayer' : 'color-white');
+  const componentClassName = combineClassnames('pad-5 borradius-2', activeClassname, className);
 
-  if (disabled || isActive) {
-    return <div
-      children={props.children}
-      className={combineClassnames('pad-5 borradius-2', activeClassname, className)} />
-  }
-
-  return (
-    <Link
-      {...otherProps}
-      className={combineClassnames('pad-5 borradius-2', activeClassname, className)} />
-  )
+  const finalComponentType = (disabled || isActive) ? 'div' : componentType;
+  return React.createElement(
+    finalComponentType,
+    {...otherProps, className: componentClassName},
+  );
 }
