@@ -9,8 +9,6 @@ import appStore from 'store/appStore';
 
 import LogUploader from 'sections/LogUploader';
 
-import combineClassnames from 'utilities/combineClassnames';
-
 export default observer(
 function HomePage(props) {
   if (appStore.isReady) {

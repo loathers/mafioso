@@ -27,7 +27,7 @@ class AppStore {
   // -- state
   /** @type {Boolean} */
   get isLoading() {
-    return logStore.isParsing.get() || logStore.isFetching.get();
+    return logStore.isParsing.get() || logStore.isFetching.get() || logStore.isLazyLoading.get();
   }
   /** @type {Boolean} */
   get isReady() {
