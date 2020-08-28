@@ -79,11 +79,11 @@ class LogStore {
     /** @type {Batcher} */
     this.logBatcher = undefined;
 
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
     this.isParsing = observable.box(false);
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
     this.isLazyLoading = observable.box(false);
   }
   /** @type {Boolean} */
@@ -101,7 +101,11 @@ class LogStore {
   }
   /** @type {Boolean} */
   get isReady() {
-    return !this.isParsing.get() && !this.isFetching.get() && !this.isLazyLoading.get() && this.hasParsedEntries;
+    return !this.isLoading && this.hasParsedEntries;
+  }
+  /** @type {Boolean} */
+  get isLoading() {
+    return this.isParsing.get() || this.isFetching.get() || this.isLazyLoading.get();
   }
   // -- log data
   /** @type {Boolean} */

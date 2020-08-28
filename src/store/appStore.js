@@ -12,14 +12,16 @@ class AppStore {
   constructor() {
     this.appId = uuidv4();
 
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
+    this.isSharing = observable.box(false);
+    /** @type {Observable<Boolean>} */
     this.isUsingCompactMode = observable.box(true);
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
     this.shouldScrollUp = observable.box(false);
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
     this.canToggleCompact = observable.box(true);
 
-    /** @type {Boolean} */
+    /** @type {Observable<Boolean>} */
     this.isDevMode = observable.box(false);
 
     this.initializeListeners();
@@ -27,11 +29,11 @@ class AppStore {
   // -- state
   /** @type {Boolean} */
   get isLoading() {
-    return logStore.isParsing.get() || logStore.isFetching.get() || logStore.isLazyLoading.get();
+    return logStore.isLoading || this.isSharing.get();
   }
   /** @type {Boolean} */
   get isReady() {
-    return logStore.isReady && !this.isLoading;
+    return !this.isLoading && logStore.isReady;
   }
   /** @type {Boolean} */
   get isShowingFullUpload() {
@@ -81,13 +83,18 @@ class AppStore {
   /**
    * uploads the current log to server
    */
-  onShareLog() {
+  async onShareLog() {
     if (!this.isReady) return;
 
+    this.isSharing.set(true);
+
     const oReq = new XMLHttpRequest();
-    const url='http://localhost:8080/api/upload';
+    const url = 'http://localhost:8080/api/upload';
     oReq.open('POST', url);
     oReq.send(logStore.createLogFile());
+
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    this.isSharing.set(false);
   }
 }
 /** export singleton */
