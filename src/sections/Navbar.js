@@ -6,6 +6,7 @@ import {withRouter} from "react-router";
 import {LOG_VIS_URL, CHARTS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
+import logStore from 'store/logStore';
 
 import LogoComponent from 'components/LogoComponent';
 
@@ -63,7 +64,7 @@ function Navbar(props) {
 
         <NavbarButton
           onClick={() => appStore.onShareLog()}
-          disabled={!appStore.isReady}
+          disabled={!appStore.isReady || !logStore.isAscensionLog}
           children='Share'
           componentType='button'
           className='adjacent-mar-l-3' />
@@ -87,7 +88,7 @@ function NavbarButton(props) {
   const finalComponentType = (disabled || isActive) ? 'div' : componentType;
   return React.createElement(
     finalComponentType,
-    {...otherProps, className: componentClassName},
+    {...otherProps, disabled: disabled, className: componentClassName},
   );
 }
 

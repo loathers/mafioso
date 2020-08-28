@@ -94,7 +94,7 @@ class AppStore {
    * uploads the current log to server
    */
   async onShareLog() {
-    if (!this.isReady) return;
+    if (!this.isReady || !logStore.isAscensionLog) return;
 
     this.isPretendLoading.set(true);
 
