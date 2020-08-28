@@ -277,7 +277,7 @@ class LogStore {
         this.isAscensionLog = true;
         this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
         this.setAscensionAttributes();
-        console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'color: blue; font-size: 14px');
+        console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'font-size: 14px');
 
       } else {
         this.rawText = await logParserUtils.cleanRawLog(allText);
@@ -326,7 +326,7 @@ class LogStore {
         throw new Error('No log to parse???');
       }
 
-      console.log('%cParsing your Session Log...', 'color: blue');
+      console.log('Parsing your Session Log...');
       this.isParsing.set(true);
 
       const parsedData = await logParserUtils.parseLogTxt(this.rawText);
@@ -342,7 +342,7 @@ class LogStore {
       const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
       this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
 
-      console.log(`✔️ %cFinished! Created ${this.allEntries.length} entries.`, 'color: blue');
+      console.log(`✔️ Finished! Created ${this.allEntries.length} entries.`);
       this.displayOptions.pageNum = 0;
       this.isParsing.set(false);
 
@@ -596,7 +596,7 @@ class LogStore {
 
     this.isFetching.set(true);
 
-    // console.log('⏳ %cFetching by filter...', 'color: blue');
+    // console.log('⏳ Fetching by filter...');
     const {
       dayNumFilter = this.displayOptions.dayNumFilter,
       categoriesVisible = this.displayOptions.categoriesVisible,
@@ -635,7 +635,7 @@ class LogStore {
 
     // filtering resulted in nothing
     if (validEntries.length <= 0) {
-      console.log(`⌛ %cNo results for filter.`, 'color: blue');
+      console.log(`⌛ No results for filter.`);
       if (isFinal) {
         console.warn('fetchByFilter.final is not handled.');
       }
@@ -672,7 +672,7 @@ class LogStore {
 
     const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
     const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
-    // console.log(`⏳ %cGetting page ${pageNum}... from ${startIdx} to ${endIdx}`, 'color: blue');
+    // console.log(`⏳ Getting page ${pageNum}... from ${startIdx} to ${endIdx}`);
 
     const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
