@@ -11,7 +11,7 @@ import chartStore from 'store/chartStore';
 
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
-import download from 'utilities/download';
+import download, {createBlob} from 'utilities/download';
 import {hashCode} from 'utilities/hashUtils';
 
 /**
@@ -525,7 +525,7 @@ class LogStore {
     })
   }
   /**
-   *
+   * downloads the current ascension log to user
    */
   downloadFullLog() {
     if (!this.isReady) {
@@ -541,6 +541,14 @@ class LogStore {
 
     const fileName = `${this.characterName}#${this.ascensionNum}-${this.pathLabel}`;
     download(rebuiltText, fileName, 'text/plain');
+  }
+  /**
+   * @returns {Blob}
+   */
+  createLogFile() {
+    const rebuiltText = this.allEntries.map((entry) => entry.export()).join('\n\n');
+    const fileBlob = createBlob(rebuiltText, 'text/plain');
+    return fileBlob;
   }
   // -- update current logs and fetch functions
    /**

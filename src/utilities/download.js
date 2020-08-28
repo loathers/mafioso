@@ -6,9 +6,17 @@
  * @param {String} contentType
  */
 export default function download(content, fileName, contentType) {
-  var a = document.createElement("a");
-  var file = new Blob([content], {type: contentType});
+  const file = createBlob(content, contentType);
+  const a = document.createElement("a");
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   a.click();
+}
+/**
+ * @param {*} content
+ * @param {String} contentType
+ * @returns {Blob}
+ */
+export function createBlob(content, contentType) {
+  return new Blob([content], {type: contentType});
 }
