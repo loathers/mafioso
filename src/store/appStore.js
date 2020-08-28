@@ -42,7 +42,7 @@ class AppStore {
   get currentEntries() {
     return logStore.currentEntries;
   }
-  // --
+  // -- preparation functions
   /**
    *
    */
@@ -62,7 +62,7 @@ class AppStore {
       }
     })
   }
-  // --
+  // -- state changers
   /**
    * @param {Boolean} [toState]
    */
@@ -76,6 +76,18 @@ class AppStore {
     } else {
       this.isUsingCompactMode.set(toState);
     }
+  }
+  // --
+  /**
+   * uploads the current log to server
+   */
+  onShareLog() {
+    if (!this.isReady) return;
+
+    const oReq = new XMLHttpRequest();
+    const url='http://localhost:8080/api/upload';
+    oReq.open('POST', url);
+    oReq.send(logStore.createLogFile());
   }
 }
 /** export singleton */
