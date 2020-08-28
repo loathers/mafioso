@@ -34,12 +34,7 @@ function Navbar(props) {
           children={'Upload Log'}
           className='fontsize-4 adjacent-mar-l-3' />
 
-        <NavbarButton
-          onClick={() => appStore.onShareLog()}
-          disabled={!appStore.isReady}
-          children='Share'
-          componentType='button'
-          className='adjacent-mar-l-3' />
+        <NavbarDivider className='pad-l-4' />
 
         <NavbarButton
           to={LOG_VIS_URL}
@@ -55,6 +50,22 @@ function Navbar(props) {
           isActive={pageName === 'charts'}
           disabled={!appStore.isReady}
           children='Charts'
+          className='adjacent-mar-l-3' />
+
+        <NavbarDivider />
+
+        <NavbarButton
+          onClick={() => appStore.downloadFullLog()}
+          disabled={!appStore.isReady}
+          children='Download'
+          componentType='button'
+          className='adjacent-mar-l-3' />
+
+        <NavbarButton
+          onClick={() => appStore.onShareLog()}
+          disabled={!appStore.isReady}
+          children='Share'
+          componentType='button'
           className='adjacent-mar-l-3' />
       </div>
     </div>
@@ -78,4 +89,8 @@ function NavbarButton(props) {
     finalComponentType,
     {...otherProps, className: componentClassName},
   );
+}
+
+function NavbarDivider(props) {
+  return <div className={combineClassnames('flex-row-center color-grayer adjacent-mar-l-3', props.className)}>·</div>
 }

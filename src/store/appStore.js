@@ -80,6 +80,10 @@ class AppStore {
     }
   }
   // --
+  /** @alias */
+  downloadFullLog() {
+    logStore.downloadFullLog();
+  }
   /**
    * uploads the current log to server
    */
