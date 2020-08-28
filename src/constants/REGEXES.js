@@ -328,8 +328,8 @@ export const REGEX = {
     MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
     MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
 
-    BUY_ITEM_AMOUNT: /(?<=buy\s)(\d*,*)*/gi,
-    BUY_ITEM_COST: /(?<=for\s)(\d*,*)*(?=\seach)/gi,
+    BUY_ITEM_AMOUNT: /(?<=buy\s)(\d+,*\d*)+/gi,
+    BUY_ITEM_COST: /(?<=for\s)(\d+,*\d*)+(?=\seach)/gi,
 
     AUTOSELL: /^autosell:.*/gmi,
     SELL_ITEM_AMOUNT: /(?<=^autosell: )(\d*,*)*/gmi,
