@@ -326,7 +326,7 @@ class LogStore {
       this.isParsing.set(true);
 
       const parsedData = await logParserUtils.parseLogTxt(this.rawText);
-      const newData = this.condenseEntries(parsedData);
+      const newData = this.combineEntries(parsedData);
       this.allEntries.replace(newData);
 
       chartStore.allEntries = newData;
@@ -587,8 +587,8 @@ class LogStore {
   }
   // -- logStoreHelper.js wrappers
   /** @alias */
-  condenseEntries(...args) {
-    return logStoreHelper.condenseEntries(...args);
+  combineEntries(...args) {
+    return logStoreHelper.combineEntries(...args);
   }
   /** @alias */
   createConjectureData(...args) {

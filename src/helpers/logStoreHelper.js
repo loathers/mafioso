@@ -8,24 +8,30 @@ import logStore from 'store/logStore';
 import download, {createBlob} from 'utilities/download';
 
 /**
- * currently the parameter passed isn't a shallow copy
- *  but it might be something to consider
+ * look at each entry and their neighbor in front and see if
+ *  they are valid to combine together
  *
  * @param {Array<Entry>} entriesList
  * @returns {Array<Entry>}
  */
-export function condenseEntries(entriesList) {
-  const originalLength = entriesList.length;
-  let condensedData = [];
+export function combineEntries(entriesList) {
+  let combinedEntriesList = [];
 
-  while (entriesList.length > 0) {
-    const currEntry = entriesList.shift();
-    if (entriesList.length <= 0) {
-      condensedData.push(currEntry);
+  const searchEntries = entriesList.slice();
+  const originalLength = entriesList.length;
+
+  // going to look at all the entries,
+  while (searchEntries.length > 0) {
+    const currEntry = searchEntries.shift();
+
+    // if this is the last entry, we are done
+    if (searchEntries.length <= 0) {
+      combinedEntriesList.push(currEntry);
       continue;
     }
 
-    const nextEntry = entriesList.shift();
+    // get the next entry and see if it can combine
+    const nextEntry = searchEntries.shift();
     if (currEntry.canCombineWith(nextEntry)) {
       const combinedEntry = new Entry({
         entryId: currEntry.id,
@@ -33,16 +39,19 @@ export function condenseEntries(entriesList) {
         rawText: currEntry.rawText.concat('\n\n').concat(nextEntry.rawText),
       });
 
-      entriesList.unshift(combinedEntry);
+      // put the newly created entry back to the front of the search
+      // just in case it can combine with the next one
+      searchEntries.unshift(combinedEntry);
       continue;
     }
 
-    entriesList.unshift(nextEntry);
-    condensedData.push(currEntry);
+    // did not combine, move on
+    searchEntries.unshift(nextEntry); // put the next entry back
+    combinedEntriesList.push(currEntry);
   }
 
-  console.log(`%cCondensed entries from ${originalLength} to ${condensedData.length}`, 'color: #6464ff');
-  return condensedData;
+  console.log(`%cCombined entries from ${originalLength} to ${combinedEntriesList.length}`, 'color: #6464ff');
+  return combinedEntriesList;
 }
 /**
  * there are some things we're going to guess about an entry
