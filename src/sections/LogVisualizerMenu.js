@@ -8,7 +8,6 @@ import logStore from 'store/logStore';
 
 import Button from 'components/Button';
 import SelectOptionsComponent from 'components/SelectOptionsComponent';
-import LogUploader from 'sections/LogUploader';
 
 import FiltersMenu from 'sections/FiltersMenu';
 
@@ -62,10 +61,6 @@ function LogVisualizerMenu(props) {
       className={combineClassnames('flex-col', className)}>
 
       <div className='flex-col flex-none adjacent-mar-t-5'>
-        <LogUploader
-          children={'Upload New'}
-          className='fontsize-5 width-full adjacent-mar-t-4' />
-
         <Button
           onClick={() => logStore.downloadFullLog()}
           disabled={!appStore.isReady}

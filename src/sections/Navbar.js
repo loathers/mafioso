@@ -9,6 +9,8 @@ import appStore from 'store/appStore';
 
 import LogoComponent from 'components/LogoComponent';
 
+import LogUploader from 'sections/LogUploader';
+
 import combineClassnames from 'utilities/combineClassnames';
 
 /** @returns {ReactComponent} */
@@ -25,9 +27,13 @@ function Navbar(props) {
     <div
       elementname='app-navbar'
       className={combineClassnames('zindex-7 pad-v-1 flex-row aitems-center', className)}>
-      <LogoComponent />
+      <LogoComponent className='adjacent-mar-l-6' />
 
-      <div className='jcontent-end flex-auto flex-row mar-l-6'>
+      <div className='jcontent-end flex-auto flex-row adjacent-mar-l-6'>
+      <LogUploader
+        children={'Upload Log'}
+        className='fontsize-4 adjacent-mar-l-3' />
+
         <NavbarLink
           to={LOG_VIS_URL}
           isActive={pageName === 'visualizer'}
