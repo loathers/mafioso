@@ -276,10 +276,12 @@ class LogStore {
       this.isParsing.set(true);
 
       this.reset();
-      this.srcFiles = files;
 
-      // get the text from all the files
-      const sortedFiles = fileParserUtils.sortBySessionDate(files); // sort files by kolmafia's date
+      // sort files by kolmafia's date
+      const sortedFiles = fileParserUtils.sortBySessionDate(files);
+      this.srcFiles = sortedFiles;
+
+      // get text from all files
       this.srcRawTexts = await Promise.all(sortedFiles.map(fileParserUtils.readFile));
       if (this.srcRawTexts.length <= 0) {
         console.error('It looks like none of those files were valid, mate.');

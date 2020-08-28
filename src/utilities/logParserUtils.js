@@ -14,8 +14,6 @@ import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
 
 import * as regexUtils from 'utilities/regexUtils';
 
-const logId = uuidv4();
-
 const MAX_CHAR_COUNT = 6000000;
 const MIN_CHAR_COUNT = 5;
 
@@ -67,7 +65,7 @@ export function findAscensionLog(rawText) {
   // because the snapshot date might be cut off from the rest of the ascension,
   //  capture it here ahead of time to be certain that we have it
   const snapshotDate = rawText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
-  const formattedDate = snapshotDate ? `<mafioso>\nLog Start: ${snapshotDate}\n<mafioso/>\n\n` : '';
+  const formattedDate = snapshotDate ? `<mafioso>\nLog Start: ${snapshotDate[0]}\n<mafioso/>\n\n` : '';
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
@@ -116,7 +114,7 @@ export function parseAscensionAttributes(rawText) {
 export function parseLogArray(logArray, startIdx) {
   return logArray.map((rawText, idx) => new Entry({
     entryIdx: startIdx + idx,
-    entryId: `${startIdx + idx}_${logId}`,
+    entryId: `${startIdx + idx}_${uuidv4()}`,
     rawText: rawText,
   }));
 }
