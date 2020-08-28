@@ -7,11 +7,12 @@ import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY, PAGINATE_DELAY} from 'constant
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
 
+import * as logStoreHelper from 'helpers/logStoreHelper';
+
 import chartStore from 'store/chartStore';
 
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
-import download, {createBlob} from 'utilities/download';
 import {hashCode} from 'utilities/hashUtils';
 
 /**
@@ -522,30 +523,8 @@ class LogStore {
       })
     })
   }
+  // -- fetch functions
   /**
-   * downloads the current ascension log to user
-   */
-  downloadFullLog() {
-    if (!this.isReady) return;
-
-    // if not an ascension log, download with generic name
-    if (!this.isAscensionLog) {
-      download(this.export(), 'mafioso_log', 'text/plain');
-      return;
-    }
-
-    const fileName = `${this.characterName}#${this.ascensionNum}-${this.pathLabel}`;
-    download(this.export(), fileName, 'text/plain');
-  }
-  /**
-   * @returns {Blob}
-   */
-  createLogFile() {
-    const fileBlob = createBlob(this.export(), 'text/plain');
-    return fileBlob;
-  }
-  // -- update current logs and fetch functions
-   /**
    * @param {Object} options
    * @return {Array<Entry>}
    */
@@ -742,6 +721,15 @@ class LogStore {
    */
   getVoterMonsterOnDay(dayNum) {
     return this.ascensionAttributes.voterMonsters[dayNum - 1];
+  }
+  // -- logStoreHelper.js wrappers
+  /** @alias */
+  downloadFullLog() {
+    logStoreHelper.downloadFullLog();
+  }
+  /** @alias */
+  createLogFile() {
+    return logStoreHelper.createLogFile();
   }
 }
 
