@@ -13,14 +13,8 @@ import LogVisualizerMenu from 'sections/LogVisualizerMenu';
 import PageControlMenu from 'sections/PageControlMenu';
 import LogEntryViewer from 'sections/LogEntryViewer';
 
-import combineClassnames from 'utilities/combineClassnames';
-
 export default observer(
 function LogVisualizerPage(props) {
-  const {
-    className,
-  } = props;
-
   const onScroll = (evt) => {
     const currY = window.scrollY;
     const totalY = window.document.body.clientHeight;
@@ -62,7 +56,7 @@ function LogVisualizerPage(props) {
   return (
     <div
       elementname='app-page-visualizer'
-      className={combineClassnames('flex-row jcontent-center', className)}>
+      className='flex-row jcontent-center'>
       <LogVisualizerMenu
         className='flex-auto adjacent-mar-t-5' />
 

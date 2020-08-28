@@ -13,10 +13,6 @@ import combineClassnames from 'utilities/combineClassnames';
 
 export default observer(
 function HomePage(props) {
-  const {
-    className,
-  } = props;
-
   if (appStore.isReady) {
     return <Redirect to={LOG_VIS_URL}/>
   }
@@ -24,7 +20,7 @@ function HomePage(props) {
   return (
     <div
       elementname='app-page-home'
-      className={combineClassnames('fontsize-4 flex-col', className)}>
+      className='fontsize-4 flex-col'>
 
       <LogUploader
         style={{height: '70vh', width: '100%'}}

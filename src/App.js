@@ -41,16 +41,15 @@ function App() {
         {/* Body */}
         <Switch>
           <Route path={LOG_VIS_URL}>
-            <LogVisualizerPage
-              className='adjacent-mar-t-5' />
+            <LogVisualizerPage />
           </Route>
 
           <Route path={CHARTS_URL}>
-            <ChartsPage className='adjacent-mar-t-5'/>
+            <ChartsPage />
           </Route>
 
           <Route>
-            <HomePage className='adjacent-mar-t-5'/>
+            <HomePage />
           </Route>
         </Switch>
 

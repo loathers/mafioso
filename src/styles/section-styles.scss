@@ -6,6 +6,9 @@
 
   padding-left: $APP_MARGIN;
   padding-right: $APP_MARGIN;
+
+  position: fixed;
+  top: 0;
 }
 
 [elementname='app-content'],
@@ -27,6 +30,7 @@
 [elementname='app-side-menu'] {
   flex: none;
   width: $MENU_WIDTH;
+  top: $NAVBAR_HEIGHT + $APP_MARGIN;
   left: $APP_MARGIN;
   position: fixed;
 }
