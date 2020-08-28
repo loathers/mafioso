@@ -86,6 +86,12 @@ class LogStore {
     /** @type {Observable<Boolean>} */
     this.isLazyLoading = observable.box(false);
   }
+  /**
+   * @returns {String}
+   */
+  export() {
+    return this.allEntries.map((entry) => entry.export()).join('\n\n');
+  }
   /** @type {Boolean} */
   get logIdHash() {
     if (this.ascensionAttributes.dateList.length <= 0) {
@@ -106,6 +112,18 @@ class LogStore {
   /** @type {Boolean} */
   get isLoading() {
     return this.isParsing.get() || this.isFetching.get() || this.isLazyLoading.get();
+  }
+  /** @type {Boolean} */
+  get canFetch() {
+    if (!this.hasParsedEntries) {
+      return false;
+    }
+
+    if (this.logBatcher === undefined) {
+      return false;
+    }
+
+    return true;
   }
   // -- log data
   /** @type {Boolean} */
@@ -508,26 +526,22 @@ class LogStore {
    * downloads the current ascension log to user
    */
   downloadFullLog() {
-    if (!this.isReady) {
-      return;
-    }
+    if (!this.isReady) return;
 
-    const rebuiltText = this.allEntries.map((entry) => entry.export()).join('\n\n');
-
+    // if not an ascension log, download with generic name
     if (!this.isAscensionLog) {
-      download(rebuiltText, 'mafioso_log', 'text/plain');
+      download(this.export(), 'mafioso_log', 'text/plain');
       return;
     }
 
     const fileName = `${this.characterName}#${this.ascensionNum}-${this.pathLabel}`;
-    download(rebuiltText, fileName, 'text/plain');
+    download(this.export(), fileName, 'text/plain');
   }
   /**
    * @returns {Blob}
    */
   createLogFile() {
-    const rebuiltText = this.allEntries.map((entry) => entry.export()).join('\n\n');
-    const fileBlob = createBlob(rebuiltText, 'text/plain');
+    const fileBlob = createBlob(this.export(), 'text/plain');
     return fileBlob;
   }
   // -- update current logs and fetch functions
@@ -536,7 +550,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchEntries(options = {}) {
-    if (!this.canFetch()) {
+    if (!this.canFetch) {
       return;
     }
 
@@ -578,7 +592,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchByFilter(options = {}, isFinal = false) {
-    if (!this.canFetch()) {
+    if (!this.canFetch) {
       return;
     }
 
@@ -644,7 +658,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchByPage(options = {}, isFinal = false) {
-    if (!this.canFetch()) {
+    if (!this.canFetch) {
       return;
     }
 
@@ -675,7 +689,7 @@ class LogStore {
    * @return {Array<Entry>}
    */
   async fetchEntriesAppended(options = {}) {
-    if (!this.canFetch()) {
+    if (!this.canFetch) {
       return;
     }
 
@@ -712,20 +726,6 @@ class LogStore {
 
     this.isFetching.set(false);
     this.isLazyLoading.set(false);
-  }
-  /**
-   * @returns {Boolean}
-   */
-  canFetch() {
-    if (!this.hasParsedEntries) {
-      return false;
-    }
-
-    if (this.logBatcher === undefined) {
-      return false;
-    }
-
-    return true;
   }
   /**
    * @param {Number} entriesPerPage
