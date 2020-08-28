@@ -92,16 +92,16 @@ class LogStore {
   export() {
     return this.allEntries.map((entry) => entry.export()).join('\n\n');
   }
-  /** @type {Boolean} */
+  /** @type {String} */
   get logIdHash() {
     if (this.ascensionAttributes.dateList.length <= 0) {
-      return '#nonascension';
+      return undefined;
     }
 
     const date = this.findMatcher(REGEX.SNAPSHOT.REAL_DATE);
     if (date === null) {
       console.error('Unable to create hash because there is no date in this log.');
-      return '#nodate';
+      return undefined;
     }
 
     const sessionDate = Date.parse(date);
