@@ -275,9 +275,9 @@ export const REGEX = {
     CHARACTER_NAME: /(?<=^name: ).*/mi,
     CLASS_NAME: /(?<=^class: ).*/mi,
 
-    ADV_CHANGE_LINE: /.*(gain|lose).*\d*adventure.*/gi,
-    ADV_GAINS: /(?<=gain )\d+(?= adventure)/gi,
-    ADV_LOSSES: /(?<=lose )\d+(?= adventure)/gi,
+    ADV_CHANGE_LINE: /.*you (gain|lose).*\d*adventure.*/gi,
+    ADV_GAINS: /(?<=you gain )\d+(?= adventure)/gi,
+    ADV_LOSSES: /(?<=you lose )\d+(?= adventure)/gi,
 
     HP_CHANGE: /.*(gain|lose).*\d*hit point.*/gi,
     HP_GAINS: /(?<=gain\s)\d+(?=\shit point)/gi,
