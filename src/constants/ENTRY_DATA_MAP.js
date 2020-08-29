@@ -219,7 +219,7 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.ITEMS.EAT_TARGET,
   },
   [ENTRY_TYPE.IOTM.PILL_KEEPER]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.DIET],
     matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
     icon: SpleenSVG,
     locationName_alt: 'Eight Days a Week Pill Keeper',
