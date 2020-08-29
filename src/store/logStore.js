@@ -171,6 +171,11 @@ class LogStore {
     return this.ascensionAttributes.dateList.length;
   }
   /** @type {Number} */
+  get turnCount() {
+    const lastEntry = this.allEntries[this.allEntries.length - 1];
+    return lastEntry.turnNum;
+  }
+  /** @type {Number} */
   get ascensionNum() {
     return this.ascensionAttributes.ascensionNum;
   }

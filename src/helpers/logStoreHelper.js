@@ -202,6 +202,13 @@ export function downloadFullLog() {
 export function createLogFile() {
   if (!logStore.isAscensionLog || logStore.logHash === undefined) return;
 
-  const preambleData = `NAME=${logStore.characterName}\nDIFFICULTY=${logStore.difficultyName}\nPATH=${logStore.pathName}\nHASH=${logStore.logHash}`;
+  const preambleData =
+    `NAME=${logStore.characterName}\n` +
+    `DIFFICULTY=${logStore.difficultyName}\n` +
+    `PATH=${logStore.pathName}\n` +
+    `DAYS=${logStore.dayCount}\n` +
+    `TURNS=${logStore.turnCount}\n` +
+    `HASH=${logStore.logHash}`
+  ;
   return createBlob(`${preambleData}\n${logStore.export()}`, 'text/plain');
 }
