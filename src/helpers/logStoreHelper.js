@@ -85,7 +85,7 @@ export function createEstimatedEntries(allEntries) {
 
     // + use entries with the date in them as a point of reference
     const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
-    if (dateMatch !== null && !estimates.dateList.includes(dateMatch)) {
+    if (dateMatch !== undefined && !estimates.dateList.includes(dateMatch)) {
       estimates.dateList.push(dateMatch);
     }
 
