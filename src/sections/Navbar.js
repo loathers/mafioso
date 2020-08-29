@@ -3,7 +3,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router";
 
-import {LOG_VIS_URL, CHARTS_URL} from 'constants/PAGE_URLS';
+import {LOG_VIS_URL, CHARTS_URL, DATABASE_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -51,6 +51,14 @@ function Navbar(props) {
           isActive={pageName === 'charts'}
           disabled={!appStore.isReady}
           children='Charts'
+          className='adjacent-mar-l-3' />
+
+        <NavbarButton
+          to={DATABASE_URL}
+          componentType={Link}
+          isActive={pageName === 'database'}
+          disabled={!appStore.isReady}
+          children='Database'
           className='adjacent-mar-l-3' />
 
         <NavbarDivider />

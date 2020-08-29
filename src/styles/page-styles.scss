@@ -1,6 +1,7 @@
-[elementname='app-page-home'],
 [elementname='app-page-visualizer'],
-[elementname='app-page-charts'] {
+[elementname='app-page-charts'],
+[elementname='app-page-database'],
+[elementname='app-page-home'] {
   margin-top: $NAVBAR_HEIGHT + $APP_MARGIN;
   padding-left: $APP_MARGIN;
   padding-right: $APP_MARGIN;
