@@ -164,8 +164,14 @@ export const REGEX = {
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
     AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*(\r\n|\n)/gmi,
   },
+  REAGNIMATED_GNOME: {
+    ADV_TRIGGERED_TEXT: /.*(scrubs the mildew out|bundles your recycling for you|teaches you how to power-nap|sharpens all your pencils|folds all your clean laundry|shows you how to shave a full minute|organizes your sock drawer|hauls all of your scrap lumber|does all that tedious campsite cleaning).*/gmi,
+  },
   RETROSPECS: {
     FOUND_ITEM: /(?<=You look behind you and notice an item you missed earlier.*?you acquire an item: ).*?$/mis,
+  },
+  RIFTLET: {
+    ADV_TRIGGERED_TEXT: /.*shimmers briefly, and you feel it getting earlier.*/gmi,
   },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice.*(\r\n|\n){2,}setting soundtrack.*/gmi,
@@ -174,6 +180,9 @@ export const REGEX = {
   },
   SNOJO: {
     VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
+  },
+  SQUAMOUS_GIBBERED: {
+    ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
   VAMPYRIC_CLOAK: {
     SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat)*/gi,
@@ -184,6 +193,9 @@ export const REGEX = {
 
     VOTE_MONSTER_COMBAT: /(?<=^Encounter: )(government bureaucrat|terrible mutant|angry ghost|annoyed snake|slime blob)/gmi,
     VOTE_MONSTER_UNIQUE: /(?:^took choice 1331.*?Encounter: )(government bureaucrat|terrible mutant|angry ghost|annoyed snake|slime blob)/gmis,
+  },
+  WILD_HARE: {
+    ADV_TRIGGERED_TEXT: /.*pulls an oversized pocketwatch out of his waistcoat and winds it.*/gmi,
   },
   // -- paths
   COMMUNITY_SERVICE: {

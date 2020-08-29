@@ -315,7 +315,7 @@ export const ATTRIBUTE_FILTERS = [
       },
       {
         label: 'Gained Adventure',
-        attributeName: 'hasAdventureGains',
+        attributeName: 'hasAdventureGainsNotFromDiet',
         attributeValue: true,
         isHidden: false,
         checked: false,
@@ -325,13 +325,6 @@ export const ATTRIBUTE_FILTERS = [
         attributeName: 'isNonCombatEncounter',
         attributeValue: true,
         isHidden: true,
-        checked: false,
-      },
-      {
-        label: 'Mafia Thumb Ring',
-        attributeName: 'hasMafiaThumbRing',
-        attributeValue: true,
-        isHidden: false,
         checked: false,
       },
       {

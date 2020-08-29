@@ -227,6 +227,14 @@ export default class Entry {
     return undefined;
   }
   /** @type {Boolean} */
+  get isDiet() {
+    return [
+      ENTRY_TYPE.CONSUMPTION.EAT,
+      ENTRY_TYPE.CONSUMPTION.DRINK,
+      ENTRY_TYPE.CONSUMPTION.CHEW,
+    ].includes(this.entryType);
+  }
+  /** @type {Boolean} */
   get isCombatEncounter() {
     return this.attributes.isCombatEncounter;
   }
@@ -313,6 +321,19 @@ export default class Entry {
   /** @type {Number} */
   get hasAdventureGains() {
     return this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0) > 0;
+  }
+  /** @type {Number} */
+  get hasAdventureGainsNotFromDiet() {
+    if (this.isDiet) {
+      return false;
+    }
+
+    return this.hasAdventureGains
+      || this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION)
+      || this.hasText(REGEX.REAGNIMATED_GNOME.ADV_TRIGGERED_TEXT)
+      || this.hasText(REGEX.RIFTLET.ADV_TRIGGERED_TEXT)
+      || this.hasText(REGEX.SQUAMOUS_GIBBERED.ADV_TRIGGERED_TEXT)
+      || this.hasText(REGEX.WILD_HARE.ADV_TRIGGERED_TEXT);
   }
   /** @type {Number} */
   get musSubstats() {
@@ -535,10 +556,6 @@ export default class Entry {
   /** @type {Boolean} */
   get hasDoctorsBag() {
     return this.hasText(REGEX.LIL_DOCTORS_BAG.USED_SKILL_LINE);
-  }
-  /** @type {Boolean} */
-  get hasMafiaThumbRing() {
-    return this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION);
   }
   /** @type {Boolean} */
   get hasRetrospecs() {
