@@ -93,7 +93,7 @@ class LogStore {
     return this.allEntries.map((entry) => entry.export()).join('\n\n');
   }
   /** @type {String} */
-  get logIdHash() {
+  get logHash() {
     if (this.ascensionAttributes.dateList.length <= 0) {
       return undefined;
     }

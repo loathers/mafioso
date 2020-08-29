@@ -1,6 +1,6 @@
 /**
  * @param {Matcher} matcher
- * @return {String|null}
+ * @return {String|undefined}
  */
 export function findMatcher(searchStr, matcher) {
   // search for result of regex
@@ -28,7 +28,7 @@ export function findMatcher(searchStr, matcher) {
 /**
  * (there are many different types of string matching methods
  *  I might want to do a lot of swapping around to test efficiency)
- * 
+ *
  * @param {String} searchStr
  * @param {String | Regex} matchRegex
  * @param {String} [regexFlags]
