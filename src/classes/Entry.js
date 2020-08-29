@@ -485,6 +485,11 @@ export default class Entry {
       return this.hasText(entity.matcher);
     });
   }
+  /** @type {Boolean} */
+  get hasSuccessfulSteal() {
+    return this.hasText(REGEX.COMBAT.SUCCESSFUL_STEAL_ITEM)
+      || this.hasText(REGEX.XO_SKELETON.SUCCESSFUL_XO_STEAL_ITEM);
+  }
   // -- attribute getters
   /** @type {Boolean} */
   get isPathSpecific() {

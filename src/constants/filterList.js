@@ -314,6 +314,13 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
+        label: 'Successful Stealing',
+        attributeName: 'hasSuccessfulSteal',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Gained Adventure',
         attributeName: 'hasAdventureGainsNotFromDiet',
         attributeValue: true,

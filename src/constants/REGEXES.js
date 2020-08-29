@@ -197,6 +197,10 @@ export const REGEX = {
   WILD_HARE: {
     ADV_TRIGGERED_TEXT: /.*pulls an oversized pocketwatch out of his waistcoat and winds it.*/gmi,
   },
+  XO_SKELETON: {
+    XO_COMBAT_SKILL: /.*casts.*HUGS AND KISSES/gmi,
+    SUCCESSFUL_XO_STEAL_ITEM: /(?<=.*casts.*HUGS AND KISSES.*(\r\n|\n)You acquire an item: ).*/gmi,
+  },
   // -- paths
   COMMUNITY_SERVICE: {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
@@ -322,6 +326,7 @@ export const REGEX = {
     ATTACK: /(?<=^Round.*\s)attacks(?=!)/gi,
     SKILL_NAME: /(?<=^Round.*casts\s).*(?=!)/gmi,
     TRY_TO_STEAL: /(?<=^Round .*)tries to steal.*(?=!)/gmi,
+    SUCCESSFUL_STEAL_ITEM: /(?<=.*tries to steal.*(\r\n|\n)You acquire an item: ).*/gmi,
 
     REPLACED_LINE: /^round.*becomes.*/gmi,
     REPLACED_NAME: /(?<=becomes ).*(?=!)/gi,
