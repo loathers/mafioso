@@ -386,12 +386,12 @@ export const REGEX = {
     ZAP_TARGET: /(?<=^zap ).*/gmi,
 
     MAKE_SOMETHING_LINE: /(create|combine|craft|cook|mix|smith) .*\d+.*/gmi,
-    COMBINE_LINE: /combine.*\d.*\+ \d.*/gmi,
-    COOK_LINE: /cook.*\d.*\+ \d.*/gmi,
-    CRAFT_LINE: /craft.*\d.*\+ \d.*/gmi,
-    CREATE_LINE: /create.*\d.*\+ \d.*/gmi,
-    MIX_LINE: /mix.*\d.*\+ \d.*/gmi,
-    SMITH_LINE: /smith.*\d.*\+ \d.*/gmi,
+    COMBINE_LINE: /combine.*\d.*/gmi,
+    COOK_LINE: /cook.*\d.*/gmi,
+    CRAFT_LINE: /craft.*\d.*/gmi,
+    CREATE_LINE: /create.*\d.*/gmi,
+    MIX_LINE: /mix.*\d.*/gmi,
+    SMITH_LINE: /smith.*\d.*/gmi,
     CRAFTING_USED_LINE: /crafting used .*(\r\n|\n)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
