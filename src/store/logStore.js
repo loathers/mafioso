@@ -2,8 +2,9 @@ import {observable} from 'mobx';
 
 import Batcher from 'classes/Batcher';
 
-import {DEFAULT_CATEGORIES_VISIBLE, FILTER_DELAY, PAGINATE_DELAY} from 'constants/DEFAULTS';
+import {FILTER_DELAY, PAGINATE_DELAY} from 'constants/DEFAULTS';
 import REGEX from 'constants/REGEXES';
+import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/filterList';
 
 import * as logStoreHelper from 'helpers/logStoreHelper';
 

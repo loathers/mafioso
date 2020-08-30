@@ -1,7 +1,7 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
-import {ENTRY_TYPE_FILTERS_SETTINGS, ATTRIBUTE_FILTERS} from 'constants/filterList';
+import {ENTRY_TYPE_FILTERS, ATTRIBUTE_FILTERS} from 'constants/filterList';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -25,16 +25,19 @@ function LogVisualizerMenu(props) {
   } = props;
 
   // visible entries
-  const [categoriesVisibleList, updateVisibleList] = React.useState(ENTRY_TYPE_FILTERS_SETTINGS);
+  const [categoriesVisibleList, updateVisibleList] = React.useState(ENTRY_TYPE_FILTERS);
 
   const onChangeVisibleEntries = (list) => {
     updateVisibleList(list);
   }
 
   const onApplyEntries = (list) => {
-    const checkedItems = list
-      .filter((item) => item.checked)
-      .map((item) => item.categoryId);
+    const checkedItems = list.reduce((checkedCategories, item) => {
+      if (!item.checked) return checkedCategories;
+
+      return checkedCategories.concat(item.categories);
+    }, []);
+
     logStore.fetchEntries({categoriesVisible: checkedItems});
     appStore.shouldScrollUp.set(true);
   }

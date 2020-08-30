@@ -1,6 +1,5 @@
 // import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import {CATEGORY_ID} from 'constants/CATEGORIES';
-import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/DEFAULTS';
 
 /**
  * visible
@@ -9,81 +8,77 @@ import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/DEFAULTS';
 export const ENTRY_TYPE_FILTERS = [
   {
     label: 'Mafioso Data',
-    categoryId: CATEGORY_ID.MAFIOSO,
+    categories: [CATEGORY_ID.MAFIOSO],
     isHidden: true,
     isDisabled: false,
+    checked: false,
   },
   {
     label: 'Uncategorized',
-    categoryId: CATEGORY_ID.UNCATEGORIZED,
+    categories: [CATEGORY_ID.UNCATEGORIZED],
     isHidden: true,
     isDisabled: false,
+    checked: false,
   },
   {
-    label: 'Ascension Info',
-    categoryId: CATEGORY_ID.ASCENSION_INFO,
+    label: 'Ascension/Quest Info',
+    categories: [CATEGORY_ID.ASCENSION_INFO, CATEGORY_ID.QUEST],
     isHidden: false,
+    checked: true,
   },
   {
-    label: 'Quest Related',
-    categoryId: CATEGORY_ID.QUEST,
+    label: 'Combats',
+    categories: [CATEGORY_ID.COMBAT],
     isHidden: false,
+    checked: true,
   },
   {
-    label: 'Combat',
-    categoryId: CATEGORY_ID.COMBAT,
+    label: 'NonCombats',
+    categories: [CATEGORY_ID.NONCOMBAT],
     isHidden: false,
+    checked: true,
   },
   {
-    label: 'NonCombat',
-    categoryId: CATEGORY_ID.NONCOMBAT,
+    label: 'Options',
+    categories: [CATEGORY_ID.OPTIONS],
     isHidden: false,
+    checked: true,
   },
   {
-    label: 'Diet',
-    categoryId: CATEGORY_ID.DIET,
+    label: 'Pulls/Diet',
+    categories: [CATEGORY_ID.PULLS, CATEGORY_ID.DIET],
     isHidden: false,
+    checked: true,
   },
   {
-    label: 'Pulls',
-    categoryId: CATEGORY_ID.PULLS,
+    label: 'Effects/Items',
+    categories: [CATEGORY_ID.EFFECTS, CATEGORY_ID.USE_ITEM],
     isHidden: false,
+    checked: false,
   },
   {
-    label: 'Use Item',
-    categoryId: CATEGORY_ID.USE_ITEM,
+    label: 'Crafting/Shopping',
+    categories: [CATEGORY_ID.CRAFTING, CATEGORY_ID.TRANSACTIONS],
     isHidden: false,
-  },
-  {
-    label: 'Buffs/Effects',
-    categoryId: CATEGORY_ID.EFFECTS,
-    isHidden: false,
-  },
-  {
-    label: 'Crafting',
-    categoryId: CATEGORY_ID.CRAFTING,
-    isHidden: false,
-  },
-  {
-    label: 'Shopping',
-    categoryId: CATEGORY_ID.TRANSACTIONS,
-    isHidden: false,
+    checked: false,
   },
   {
     label: 'Other',
-    categoryId: CATEGORY_ID.OTHER,
+    categories: [CATEGORY_ID.FAMILIARS, CATEGORY_ID.EQUIPMENT, CATEGORY_ID.VISIT, CATEGORY_ID.OTHER],
     isHidden: false,
+    checked: false,
   },
 ];
 /**
  * @type {Array}
  */
-export const ENTRY_TYPE_FILTERS_SETTINGS = ENTRY_TYPE_FILTERS.map((filterData) => {
-  return {
-    ...filterData,
-    checked: DEFAULT_CATEGORIES_VISIBLE.includes(filterData.categoryId),
+export const DEFAULT_CATEGORIES_VISIBLE = ENTRY_TYPE_FILTERS.reduce((visibleCategories, filterData) => {
+  if (filterData.isHidden || filterData.isDisabled) {
+    return visibleCategories;
   }
-});
+
+  return visibleCategories.concat(filterData.categories);
+}, []);
 /**
  * [ATTRIBUTE_FILTERS description]
  * @type {Array}
