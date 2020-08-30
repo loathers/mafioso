@@ -263,6 +263,14 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Your Witchess Set',
     encounterName_alt: REGEX.WITCHESS.COMBAT_ENCOUNTER_TARGET,
   },
+  [ENTRY_TYPE.IOTM.WITCHESS.BUFF]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
+    matcher: REGEX.WITCHESS.DAILY_CHALLENGE_BUFF,
+    icon: SpellsSVG,
+    showAdditionalDisplay: false,
+    locationName_alt: 'Your Witchess Set',
+    encounterName_alt: 'Daily Challenge',
+  },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
     categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.CHOICEADV],
