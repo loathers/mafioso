@@ -77,7 +77,7 @@ export default function EntryDisplayContainer(props) {
       <div className={combineClassnames(entry.isAnnotationOnly ? 'display-none' : 'flex-row')}>
         <Button
           onClick={() => toggleSelected(!isSelected)}
-          className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isShowRightColumn ? 'borradius-r-2' : '')} >
+          className={combineClassnames('borradius-l-2 pad-2 overflow-hidden flex-row flex-auto', !isShowRightColumn ? 'borradius-r-2' : '')}>
           {/* adventure num column */}
           <EntryAdventureColumn
             entry={entry}
@@ -92,6 +92,7 @@ export default function EntryDisplayContainer(props) {
           { !isShowRaw &&
             <div className='flex-col whitespace-pre-wrap flex-auto adjacent-mar-l-4'>
               <EntryHeaderContainer
+                isCombatDetailVisible={!isShowRaw && isShowCompact}
                 entry={entry}
                 className='flex-none adjacent-mar-t-2' />
 
@@ -109,25 +110,7 @@ export default function EntryDisplayContainer(props) {
               <CombatSequenceDisplay
                 entry={entry}
                 className='adjacent-mar-t-4' />
-
-              {/* familiar */}
-              <div className='flex-row-center adjacent-mar-t-4'>
-                <FamiliarSVG
-                  entry={entry}
-                  className='flex-none adjacent-mar-l-2'
-                  style={{width: 12, height: 12,
-                    opacity: 0.7,
-                  }} />
-                <div className='fontsize-3 color-gray flex-none adjacent-mar-l-2'>{entry.familiarUsed}</div>
-              </div>
             </div>
-          }
-
-          { entry.hasCombatActions && !isShowRaw && isShowCompact &&
-            <CombatResultDisplayHandler
-              entry={entry}
-              isShowCompact={isShowCompact}
-              className='aitems-end adjacent-mar-l-4' />
           }
 
           {/* debug stuff */}
@@ -252,6 +235,7 @@ function EntryHeaderContainer(props) {
   const {
     className,
     entry,
+    isCombatDetailVisible,
   } = props;
 
   if (!entry.hasEntryHeader) {
@@ -259,16 +243,19 @@ function EntryHeaderContainer(props) {
   }
 
   return (
-    <div className={combineClassnames('flex-col adjacent-mar-t-2', className)}>
-      { entry.locationDisplay &&
-        <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{entry.locationDisplay}</div>
-      }
+    <div className={combineClassnames('flex-row adjacent-mar-t-2', className)}>
+      {/* left side of header */}
+      <div className='flex-col flex-auto adjacent-mar-l-3'>
+        { entry.locationDisplay &&
+          <div className='fontsize-2 color-gray flex-auto adjacent-mar-t-1'>{entry.locationDisplay}</div>
+        }
 
-      { entry.encounterDisplay &&
         <div className='fontsize-5 overflow-hidden flex-row flex-none adjacent-mar-t-1'>
-          <div className='f-bold flex-none adjacent-mar-l-5'>
-            {entry.encounterDisplay}
-          </div>
+          { entry.encounterDisplay &&
+            <div className='f-bold flex-none adjacent-mar-l-5'>
+              {entry.encounterDisplay}
+            </div>
+          }
 
           { entry.hasReplacedEnemies &&
             <div
@@ -285,8 +272,29 @@ function EntryHeaderContainer(props) {
             </div>
           }
         </div>
-      }
+      </div>
 
+      {/* right side of header */}
+      <div className='flex-col flex-none adjacent-mar-l-3'>
+        {/* familiar */}
+        { entry.hasFamiliarUsed &&
+          <div className='flex-row flex-none adjacent-mar-t-1'>
+            <FamiliarSVG
+              entry={entry}
+              className='flex-none adjacent-mar-l-2'
+              style={{width: 12, height: 12, opacity: 0.7}} />
+            <div className='fontsize-2 color-gray flex-none adjacent-mar-l-2'>{entry.familiarUsed}</div>
+          </div>
+        }
+
+        {/** at a glance combat detail */}
+        { entry.hasCombatActions && isCombatDetailVisible &&
+          <CombatResultDisplayHandler
+            entry={entry}
+            isShowCompact={isCombatDetailVisible}
+            className='flex-auto aself-end aitems-end adjacent-mar-t-1' />
+        }
+      </div>
     </div>
   )
 }
