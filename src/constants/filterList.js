@@ -8,6 +8,12 @@ import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/DEFAULTS';
  */
 export const ENTRY_TYPE_FILTERS = [
   {
+    label: 'Mafioso Data',
+    categoryId: CATEGORY_ID.MAFIOSO,
+    isHidden: true,
+    isDisabled: false,
+  },
+  {
     label: 'Uncategorized',
     categoryId: CATEGORY_ID.UNCATEGORIZED,
     isHidden: true,

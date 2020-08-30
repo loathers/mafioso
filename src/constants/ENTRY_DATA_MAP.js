@@ -58,7 +58,7 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 export const ENTRY_DATA_MAP = {
   // -- mafioso
   [ENTRY_TYPE.MAFIOSO.GENERATED_BLOCK]: {
-    categories: [CATEGORY_ID.UNCATEGORIZED],
+    categories: [CATEGORY_ID.MAFIOSO],
     matcher: REGEX.MAFIOSO.GENERATED_BLOCK,
     icon: MafiosoSVG,
     locationName_alt: 'Mafioso Data',
