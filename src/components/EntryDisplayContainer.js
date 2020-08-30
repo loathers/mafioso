@@ -5,7 +5,7 @@ import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
 import { ReactComponent as ManaSVG } from 'images/potion-ball.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
-import { ReactComponent as StarFormationSVG } from 'images/star-formation.svg';
+import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
 import {ReactComponent as EditSVG} from 'images/scroll-quill.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
@@ -225,7 +225,7 @@ function EntryIconColumn(props) {
         }} />
 
       { isLevelUp &&
-        <StarFormationSVG
+        <LevelUpSVG
           className='flex-none adjacent-mar-t-2'
           style={{width: 25, height: 25,
             opacity: 0.8,

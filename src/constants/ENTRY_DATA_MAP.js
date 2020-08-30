@@ -22,6 +22,7 @@ import {ReactComponent as EquipmentSVG} from 'images/battle-gear.svg';
 import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as ItemBagSVG} from 'images/swap-bag.svg';
+import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as PathSVG} from 'images/flag-objective.svg';
 import {ReactComponent as ShopSVG} from 'images/shop.svg';
@@ -581,11 +582,18 @@ export const ENTRY_DATA_MAP = {
     icon: ItemBagSVG,
     locationName_alt: ['Use {1}', REGEX.ITEMS.USE_ITEM_TARGET],
   },
-  [ENTRY_TYPE.ITEMS.ZAP]: {
-    categories: [CATEGORY_ID.USE_ITEM],
-    matcher: REGEX.ITEMS.ZAP_LINE,
-    icon: ItemBagSVG,
-    locationName_alt: ['Zap {1}', REGEX.ITEMS.ZAP_TARGET],
+  [ENTRY_TYPE.GUILD.LEARN_SKILL]: {
+    categories: [CATEGORY_ID.TRANSACTIONS],
+    matcher: REGEX.GUILD.LEARN_SKILL_TARGET,
+    icon: LevelUpSVG,
+    locationName_alt: 'Learned a new skill!',
+    encounterName_alt: REGEX.GUILD.LEARN_SKILL_TARGET,
+    content_alt: null,
+  },
+  [ENTRY_TYPE.VISITING]: {
+    categories: [CATEGORY_ID.VISIT, CATEGORY_ID.OTHER],
+    matcher: [REGEX.LINE.TALKING, REGEX.LINE.VISITING],
+    icon: ShopSVG,
   },
   [ENTRY_TYPE.AUTOSELL]: {
     categories: [CATEGORY_ID.TRANSACTIONS],

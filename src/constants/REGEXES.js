@@ -359,25 +359,6 @@ export const REGEX = {
 
     AFTER_BATTLE_RESULT: /(?<=^After battle: ).*/gmi,
   },
-  TRANSACTIONS: {
-    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
-    MEAT_CHANGED_LINE: /.*(gain|lose|spent).*meat.*/gmi,
-    BUY_AND_ACQUIRE: /buy.*(\r\n|\n)you acquire.*/gmi,
-    SHOPPING: /.*buy.*for.*from.*/gmi,
-    MEAT_SPENT: /.*spent.*meat.*/gi,
-
-    TRADING_LINE: /^(trading|trade).*/gmi,
-
-    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
-    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
-
-    BUY_ITEM_AMOUNT: /(?<=buy\s)(\d+,*\d*)+/gi,
-    BUY_ITEM_COST: /(?<=for\s)(\d+,*\d*)+(?=\seach)/gi,
-
-    AUTOSELL: /^autosell:.*/gmi,
-    SELL_ITEM_AMOUNT: /(?<=^autosell: )(\d*,*)*/gmi,
-    SELL_ITEM_TARGET: /(?<=^autosell: (\d*,*)* ).*/gmi,
-  },
   ITEMS: {
     ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
     ACQUIRED_AN_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
@@ -427,6 +408,28 @@ export const REGEX = {
 
     USE_CHEWING_GUM_LINE: /^use \d+ chewing gum on a string.*(\r\n|\n)/gmi,
   },
+  GUILD: {
+    LEARN_SKILL_TARGET: /(?<=guild.php.*buyskill.*(\r\n|\n)you learned a new skill: ).*/gmi,
+  },
+  TRANSACTIONS: {
+    ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
+    MEAT_CHANGED_LINE: /.*(gain|lose|spent).*meat.*/gmi,
+    BUY_AND_ACQUIRE: /buy.*(\r\n|\n)you acquire.*/gmi,
+    SHOPPING: /.*buy.*for.*from.*/gmi,
+    MEAT_SPENT: /.*spent.*meat.*/gi,
+
+    TRADING_LINE: /^(trading|trade).*/gmi,
+
+    MEAT_GAIN_AMOUNT: /(?<=You gain )(\d*,*)*(?= meat)/gi,
+    MEAT_LOSS_AMOUNT: /(?<=You lose )(\d*,*)*(?= meat)/gi,
+
+    BUY_ITEM_AMOUNT: /(?<=buy\s)(\d+,*\d*)+/gi,
+    BUY_ITEM_COST: /(?<=for\s)(\d+,*\d*)+(?=\seach)/gi,
+
+    AUTOSELL: /^autosell:.*/gmi,
+    SELL_ITEM_AMOUNT: /(?<=^autosell: )(\d*,*)*/gmi,
+    SELL_ITEM_TARGET: /(?<=^autosell: (\d*,*)* ).*/gmi,
+  },
   EFFECTS: {
     ACQUIRED_EFFECT_LINE: /.*acquire an (effect|intrinsic):.*/gmi,
     EFFECT_NAME: /(?<=acquire an (effect|intrinsic): ).*?(?=( \(|$))/mi,
@@ -469,7 +472,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
