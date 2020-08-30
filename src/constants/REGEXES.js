@@ -133,6 +133,9 @@ export const REGEX = {
   LIL_DOCTORS_BAG: {
     USED_SKILL_LINE: /casts.*(Otoscope|Reflex Hammer|Chest X-Ray).*/gi,
   },
+  MADAME_ZATARA_FORTUNE_TELLER: {
+    CONSULTED_EFFECTED_NAME: /(?<=took choice 1278.*consult with zatara(\r\n|\n).*(\r\n|\n)+You acquire an effect: ).*(?= \()/gmi,
+  },
   MELODRAMEDARY: {
     SPIT_ON_SOMETHING_LINE: /(?<=^Round ).*spit on.*/gim,
     SPIT_ON_THEM_LINE: /(?<=^Round ).*spit on them.*/gim,
