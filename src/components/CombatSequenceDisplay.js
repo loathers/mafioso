@@ -23,7 +23,7 @@ export default function CombatSequenceDisplay(props) {
   return (
     <div
       style={{width: 170}}
-      className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes aitems-center adjacent-mar-t-3', className)}>
+      className={combineClassnames('pad-v-2 pad-h-5 boxsizing-border flexwrap-yes flex-col aitems-center adjacent-mar-t-3', className)}>
       { hasInitiative &&
         <Fragment>
           <div className='flex-row-center fontsize-1 mar-1'>Initiative!</div>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import { ReactComponent as AdventureSVG } from 'images/sands-of-time.svg';
+import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
 import { ReactComponent as ManaSVG } from 'images/potion-ball.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
@@ -102,11 +103,24 @@ export default function EntryDisplayContainer(props) {
             </div>
           }
 
-          {/* combat */}
           { entry.hasCombatActions && !isShowRaw && !isShowCompact &&
-            <CombatSequenceDisplay
-              entry={entry}
-              className='bor-l-1-third flex-col adjacent-mar-l-4 flex-none' />
+            <div className='bor-l-1-third flex-col adjacent-mar-l-4 flex-none'>
+              {/* combat */}
+              <CombatSequenceDisplay
+                entry={entry}
+                className='adjacent-mar-t-4' />
+
+              {/* familiar */}
+              <div className='flex-row-center adjacent-mar-t-4'>
+                <FamiliarSVG
+                  entry={entry}
+                  className='flex-none adjacent-mar-l-2'
+                  style={{width: 12, height: 12,
+                    opacity: 0.7,
+                  }} />
+                <div className='fontsize-3 color-gray flex-none adjacent-mar-l-2'>{entry.familiarUsed}</div>
+              </div>
+            </div>
           }
 
           { entry.hasCombatActions && !isShowRaw && isShowCompact &&
