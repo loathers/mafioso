@@ -23,6 +23,7 @@ import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
 import {ReactComponent as InfoSVG} from 'images/info.svg';
 import {ReactComponent as ItemBagSVG} from 'images/swap-bag.svg';
 import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
+import {ReactComponent as MafiosoSVG} from 'images/gun-rose.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as PathSVG} from 'images/flag-objective.svg';
 import {ReactComponent as ShopSVG} from 'images/shop.svg';
@@ -55,6 +56,13 @@ import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
  * @property {Matcher} [EntryData.content_alt]           - same, but for the body
  */
 export const ENTRY_DATA_MAP = {
+  // -- mafioso
+  [ENTRY_TYPE.MAFIOSO.GENERATED_BLOCK]: {
+    categories: [CATEGORY_ID.UNCATEGORIZED],
+    matcher: REGEX.MAFIOSO.GENERATED_BLOCK,
+    icon: MafiosoSVG,
+    locationName_alt: 'Mafioso Data',
+  },
   // -- ascension relevant
   [ENTRY_TYPE.SNAPSHOT.VALHALLA]: {
     categories: [CATEGORY_ID.ASCENSION_INFO],

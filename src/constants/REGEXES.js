@@ -9,6 +9,8 @@ export const REGEX = {
     LOG_COMMENTS: /(^\/\/.*)+/gm,
     LOG_COMMENTS_NEWLINE: /(^\/\/.*(\r\n|\n))+(?=\/\/)*/gm,
     LOG_COMMENTS_ONLY: /(^\/\/.*$)+(?!(\r\n|\n).)/gm,
+
+    GENERATED_BLOCK: /<mafioso>.*<\/mafioso>/gs,
   },
   ASCENSION: {
     VALHALLA_COMPLETE: /welcome to valhalla.*?(freeing king ralph|freeing the king).*?/is,
@@ -475,7 +477,7 @@ export const REGEX = {
   // -- misc
   PREREMOVE: {
     ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
