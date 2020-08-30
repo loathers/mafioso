@@ -239,6 +239,14 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.PIRATEREALM.LOCATION,
     icon: NoncombatSVG,
   },
+  [ENTRY_TYPE.IOTM.POOL_TABLE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
+    matcher: REGEX.POOL_TABLE.PLAY_POOL_EFFECT,
+    icon: SpellsSVG,
+    locationName_alt: 'A Pool Table (VIP Lounge)',
+    encounterName_alt: ['{1}-like', REGEX.POOL_TABLE.PLAY_POOL_CHOICE],
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.SONGBOOM_BOOMBOX.RESULT,

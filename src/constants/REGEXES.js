@@ -169,6 +169,10 @@ export const REGEX = {
     SKILL_USE_LINE: /.*(lecture on|deliver your thesis).*/gi,
     AFTER_COMBAT_TEXT: /^After battle:.*(WHEEEEEE|DANCE OF THE UNIVERSE|DANCING OF SCIENCE|dumps some excess electricity|receive a jolt from the battery|quantum-shifts you to a nearby universe).*(\r\n|\n)/gmi,
   },
+  POOL_TABLE: {
+    PLAY_POOL_CHOICE: /(?<=pool )(aggressive|strategic|stylish)/gi,
+    PLAY_POOL_EFFECT: /(?<=pool (aggressive|strategic|stylish)(\r\n|\n).*: ).*/gi,
+  },
   REAGNIMATED_GNOME: {
     ADV_TRIGGERED_TEXT: /.*(scrubs the mildew out|bundles your recycling for you|teaches you how to power-nap|sharpens all your pencils|folds all your clean laundry|shows you how to shave a full minute|organizes your sock drawer|hauls all of your scrap lumber|does all that tedious campsite cleaning).*/gmi,
   },
