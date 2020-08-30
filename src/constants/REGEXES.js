@@ -68,6 +68,10 @@ export const REGEX = {
   DECK_OF_EVERY_CARD: {
     TEXT: /Deck of Every Card/im,
   },
+  DETECTIVE_SCHOOL: {
+    VISITING_TEXT: /visiting the 11th precinct headquarters(.*(\r\n|\n))+took choice 1193.*/gim,
+    INVESTIGATION_TEXT: /(^wham.php.*(\r\n|\n))+.*/gim,
+  },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
     INGREDIENTS_ONLY: /(?<=^pizza\s).*/m,

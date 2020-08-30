@@ -142,6 +142,15 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.DECK_OF_EVERY_CARD.TEXT,
     icon: InfoSVG,
   },
+  [ENTRY_TYPE.IOTM.DETECTIVE_SCHOOL]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    matcher: [REGEX.DETECTIVE_SCHOOL.VISITING_TEXT, REGEX.DETECTIVE_SCHOOL.INVESTIGATION_TEXT],
+    icon: InfoSVG,
+    showAdditionalDisplay: false,
+    locationName_alt: '11th Precinct Headquarters',
+    encounterName_alt: 'Detective Stuff',
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
     matcher: REGEX.DIABOLIC_PIZZA.INGREDIENTS_LINE,
