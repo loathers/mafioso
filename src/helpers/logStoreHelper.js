@@ -165,36 +165,58 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
 function handleForcedAdventure(currEntry, idx) {
   // Pill Keeper - Sunday surprise semiare
   if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
-    const surpriseEncounterEntry = logStore.findNextEntry(idx, {isSemirare: true});
-    if (surpriseEncounterEntry) {
-      currEntry.additionalDisplay = `"${surpriseEncounterEntry.encounterDisplay}"`;
-      surpriseEncounterEntry.isForcedAdventure = true;
+    const surpriseEntry = logStore.findNextEntry(idx, {isSemirare: true});
+    if (surpriseEntry) {
+      currEntry.additionalDisplay = `"${surpriseEntry.Display}"`;
+      surpriseEntry.isForcedAdventure = true;
     }
   }
 
   // Pill Keeper - Sneakisol noncombat
   if (currEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
-    const sneakisolNonCombatEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
-    if (sneakisolNonCombatEntry) {
-      currEntry.additionalDisplay = `"${sneakisolNonCombatEntry.encounterDisplay}"`;
-      sneakisolNonCombatEntry.isForcedAdventure = true;
+    const sneakisolEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
+    if (sneakisolEntry) {
+      currEntry.additionalDisplay = `"${sneakisolEntry.encounterDisplay}"`;
+      sneakisolEntry.isForcedAdventure = true;
     }
   }
 
   // Stench Jelly noncombat
   if (currEntry.hasText(REGEX.SPACE_JELLYFISH.CHEW_JELLY_TARGET)) {
-    const allJellyNoncombats = []; // since there can be more than one, keep track until the end
+    const allJellyEncounterNames = []; // since there can be more than one, keep track until the end
 
     const chewAmount = currEntry.findMatchers(REGEX.SPACE_JELLYFISH.CHEW_JELLY_AMOUNT) || 1;
     for (let sj=0; sj<chewAmount; sj++) {
-      const stenchJellyNoncombat = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
-      if (stenchJellyNoncombat) {
-        allJellyNoncombats.push(`"${stenchJellyNoncombat.encounterDisplay}"`);
-        stenchJellyNoncombat.isForcedAdventure = true;
+      const stenchEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
+      if (stenchEntry) {
+        allJellyEncounterNames.push(`"${stenchEntry.encounterDisplay}"`);
+        stenchEntry.isForcedAdventure = true;
       }
     }
 
-    currEntry.additionalDisplay = `${allJellyNoncombats.join('  &  ')}`;
+    currEntry.additionalDisplay = `${allJellyEncounterNames.join('  &  ')}`;
+  }
+
+  // forced friends
+  if (currEntry.hasText(REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_FRIENDS)) {
+    for (let sj=0; sj<3; sj++) {
+      const friendEntry = logStore.findNextEntry(idx, {
+        locationDisplay: currEntry.locationDisplay,
+        isCombatEncounter: true,
+        isForcedAdventure: false,
+      });
+
+      // not found?
+      if (friendEntry === undefined) break;
+
+      // mark it as forced
+      friendEntry.isForcedAdventure = true;
+
+      // if you used force again here, stop looking for any more
+      if (friendEntry.hasText(REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_FRIENDS)) {
+        break;
+      }
+    }
   }
 
   return currEntry;
