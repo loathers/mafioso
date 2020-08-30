@@ -208,6 +208,10 @@ export const REGEX = {
   WILD_HARE: {
     ADV_TRIGGERED_TEXT: /.*pulls an oversized pocketwatch out of his waistcoat and winds it.*/gmi,
   },
+  WITCHESS: {
+    COMBAT_ENCOUNTER_TARGET: /(?<=took choice 1182.*play against the witchess pieces.*(\r\n|\n)Encounter: ).*/gmi,
+    DAILY_CHALLENGE_BUFF: /(?<=took choice 1183.*Daily Challenge(.*(\r\n|\n))*.*)Puzzle Champ.*/gmi,
+  },
   XO_SKELETON: {
     XO_COMBAT_SKILL: /.*casts.*HUGS AND KISSES/gmi,
     SUCCESSFUL_XO_STEAL_ITEM: /(?<=.*casts.*HUGS AND KISSES.*(\r\n|\n)You acquire an item: ).*/gmi,

@@ -255,6 +255,14 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Voting Booth',
     encounterName_alt: 'Daily Loathing Ballot',
   },
+  [ENTRY_TYPE.IOTM.WITCHESS.COMBAT]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
+    matcher: REGEX.WITCHESS.COMBAT_ENCOUNTER_TARGET,
+    icon: CombatSVG,
+    showAdditionalDisplay: false,
+    locationName_alt: 'Your Witchess Set',
+    encounterName_alt: REGEX.WITCHESS.COMBAT_ENCOUNTER_TARGET,
+  },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
     categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.CHOICEADV],
