@@ -73,11 +73,11 @@ export const ENTRY_TYPE_FILTERS = [
  * @type {Array}
  */
 export const DEFAULT_CATEGORIES_VISIBLE = ENTRY_TYPE_FILTERS.reduce((visibleCategories, filterData) => {
-  if (filterData.isHidden || filterData.isDisabled) {
-    return visibleCategories;
+  if (filterData.checked) {
+    return visibleCategories.concat(filterData.categories);
   }
 
-  return visibleCategories.concat(filterData.categories);
+  return visibleCategories;
 }, []);
 /**
  * [ATTRIBUTE_FILTERS description]

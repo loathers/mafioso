@@ -26,6 +26,7 @@ import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
 import {ReactComponent as MafiosoSVG} from 'images/gun-rose.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as PathSVG} from 'images/flag-objective.svg';
+import {ReactComponent as OptionsSVG} from 'images/round-knob.svg';
 import {ReactComponent as ShopSVG} from 'images/shop.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
 import {ReactComponent as SpleenSVG} from 'images/pill.svg';
@@ -89,24 +90,24 @@ export const ENTRY_DATA_MAP = {
   },
   // -- iotm
   [ENTRY_TYPE.IOTM.BASTILLE_BATTALION]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.BASTILLE_BATTALION.TEXT,
-    icon: NoncombatSVG,
+    icon: OptionsSVG,
     showAdditionalDisplay: false,
     locationName_alt: 'Bastille Battalion control rig',
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.BEACH_COMB.BEACH_HEAD]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.BEACH_COMB.COMBING_LINE,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     locationName_alt: 'Beach Comb',
     encounterName_alt: REGEX.BEACH_COMB.COMBING_ACTION,
   },
   [ENTRY_TYPE.IOTM.BEACH_COMB.WANDERING]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.BEACH_COMB.COMB_THE_BEACH_LINE,
-    icon: NoncombatSVG,
+    icon: OptionsSVG,
     locationName_alt: 'Beach Comb',
     encounterName_alt: 'Comb the Beach',
     content_alt: null,
@@ -128,7 +129,7 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.CAT_BURGLAR]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.FAMILIARS],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.FAMILIARS, CATEGORY_ID.OPTIONS],
     matcher: REGEX.CAT_BURGLAR.HEISTED,
     icon: FamiliarSVG,
     locationName_alt: 'Cat Burglar',
@@ -136,25 +137,25 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.CONSPIRACY_ISLAND]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.CONSPIRACY_ISLAND.TEXT,
     icon: InfoSVG,
     locationName_alt: 'Conspiracy Island',
   },
   [ENTRY_TYPE.IOTM.BOXING_DAYCARE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.BOXING_DAYCARE.NONCOMBAT,
-    icon: NoncombatSVG,
+    icon: OptionsSVG,
   },
   [ENTRY_TYPE.IOTM.DECK_OF_EVERY_CARD]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.DECK_OF_EVERY_CARD.TEXT,
-    icon: InfoSVG,
+    icon: OptionsSVG,
   },
   [ENTRY_TYPE.IOTM.DETECTIVE_SCHOOL]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: [REGEX.DETECTIVE_SCHOOL.VISITING_TEXT, REGEX.DETECTIVE_SCHOOL.INVESTIGATION_TEXT],
-    icon: InfoSVG,
+    icon: OptionsSVG,
     showAdditionalDisplay: false,
     locationName_alt: '11th Precinct Headquarters',
     encounterName_alt: 'Detective Stuff',
@@ -175,16 +176,16 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Diabolic Pizza',
   },
   [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE,
-    icon: NoncombatSVG,
+    icon: OptionsSVG,
     locationName_alt: 'Your Campsite Away From Your Campsite',
     encounterName_alt: 'Gaze at the Stars',
   },
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_TEXT,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     locationName_alt: 'May the Fourth Cosplay Saber',
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     // content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
@@ -195,36 +196,36 @@ export const ENTRY_DATA_MAP = {
     icon: CombatSVG,
   },
   [ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT, CATEGORY_ID.OPTIONS],
     matcher: REGEX.GOD_LOBSTER.BOON,
     icon: NoncombatSVG,
   },
   [ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.HEWN_MOON_RUNE_SPOON.TUNE_MOON_LINE,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     locationName_alt: 'Hewn Moon Rune Spoon Tune',
     encounterName_alt: ['☪ {1}', REGEX.HEWN_MOON_RUNE_SPOON.TUNE_MOON_RESULT],
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.LATTE_LOVERS_MEMBERS_MUG.REFILL]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     locationName_alt: 'Latte Lovers Member\'s Mug Refill',
     encounterName_alt: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS,
     content_alt: null,
   },
   [ENTRY_TYPE.IOTM.MADAME_ZATARA_FORTUNE_TELLER]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS, CATEGORY_ID.VISIT, REGEX.QUEST.OPEN_TOOT_LETTER],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS, CATEGORY_ID.OPTIONS],
     matcher: REGEX.MADAME_ZATARA_FORTUNE_TELLER.CONSULTED_EFFECTED_NAME,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     showAdditionalDisplay: false,
     locationName_alt: 'Madame Zatara\'s Relationship Fortune Teller',
     encounterName_alt: REGEX.MADAME_ZATARA_FORTUNE_TELLER.CONSULTED_EFFECTED_NAME,
   },
   [ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: [REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE, REGEX.JANUARYS_GARBAGE_TOTE.USE_RESULT],
     icon: EquipmentSVG,
     showAdditionalDisplay: false,
@@ -245,7 +246,7 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.ITEMS.EAT_TARGET,
   },
   [ENTRY_TYPE.IOTM.PILL_KEEPER]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.DIET],
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS, CATEGORY_ID.DIET],
     matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
     icon: SpleenSVG,
     locationName_alt: 'Eight Days a Week Pill Keeper',
@@ -260,7 +261,7 @@ export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.IOTM.POOL_TABLE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
     matcher: REGEX.POOL_TABLE.PLAY_POOL_EFFECT,
-    icon: SpellsSVG,
+    icon: OptionsSVG,
     locationName_alt: 'A Pool Table (VIP Lounge)',
     encounterName_alt: ['{1}-like', REGEX.POOL_TABLE.PLAY_POOL_CHOICE],
     content_alt: null,
@@ -268,7 +269,7 @@ export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.IOTM.SONGBOOM_BOOMBOX]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.SONGBOOM_BOOMBOX.RESULT,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     showAdditionalDisplay: false,
     locationName_alt: 'SongBoom™ BoomBox',
     encounterName_alt: ['♫ {1} ♫', REGEX.SONGBOOM_BOOMBOX.RESULT],
@@ -277,7 +278,7 @@ export const ENTRY_DATA_MAP = {
   [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT,
-    icon: InfoSVG,
+    icon: OptionsSVG,
     locationName_alt: 'Voting Booth',
     encounterName_alt: 'Daily Loathing Ballot',
   },
@@ -299,7 +300,7 @@ export const ENTRY_DATA_MAP = {
   },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
-    categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.CHOICEADV],
+    categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.COMMUNITY_SERVICE.CHOICE_LINE,
     icon: PathSVG,
     locationName_alt: 'Community Service',
@@ -325,12 +326,12 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Crackpot Mystic',
   },
   [ENTRY_TYPE.QUEST.DAILY_DUNGEON]: {
-    categories: [CATEGORY_ID.QUEST],
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.QUEST.DAILY_DUNGEON_LOCATION,
     icon: PathSVG,
   },
   [ENTRY_TYPE.QUEST.TAVERN_CELLAR]: {
-    categories: [CATEGORY_ID.QUEST],
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.QUEST.TAVERN_CELLAR_LOCATION,
     icon: PathSVG,
   },
@@ -399,7 +400,7 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.QUEST.HIGHLAND_LORD]: {
-    categories: [CATEGORY_ID.QUEST],
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: HIGHLAND_LORD_ENCOUNTERS,
     icon: PathSVG,
   },
@@ -424,7 +425,7 @@ export const ENTRY_DATA_MAP = {
     icon: NoncombatSVG,
   },
   [ENTRY_TYPE.QUEST.TOWER_DOOR]: {
-    categories: [CATEGORY_ID.QUEST],
+    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.OPTIONS],
     matcher: REGEX.QUEST.TOWER_DOOR_TEXT,
     icon: PathSVG,
     encounterName_alt: 'The Naughty Sorceress\' Tower Door',
@@ -453,7 +454,7 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Wand of Anagram',
   },
   [ENTRY_TYPE.QUEST.MAKE_MCCLUSKY_FILE]: {
-    categories: [CATEGORY_ID.QUEST, CATEGORY_ID.CRAFTING, CATEGORY_ID.USE_ITEM],
+    categories: [CATEGORY_ID.CRAFTING, CATEGORY_ID.USE_ITEM],
     matcher: REGEX.QUEST.MAKE_MCCLUSKY_FILE,
     icon: PathSVG,
     locationName_alt: 'Created',
@@ -548,7 +549,7 @@ export const ENTRY_DATA_MAP = {
     icon: NoncombatSVG,
   },
   [ENTRY_TYPE.FAMILIAR]: {
-    categories: [CATEGORY_ID.FAMILIARS, CATEGORY_ID.OTHER],
+    categories: [CATEGORY_ID.FAMILIARS],
     matcher: REGEX.FAMILIAR.SWITCH_TO_LINE,
     icon: FamiliarSVG,
     locationName_alt: 'Change Familiar',
@@ -563,21 +564,21 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Pull from Hagnk\'s',
   },
   [ENTRY_TYPE.ITEMS.EQUIP_PLAYER]: {
-    categories: [CATEGORY_ID.EQUIPMENT, CATEGORY_ID.OTHER],
+    categories: [CATEGORY_ID.EQUIPMENT],
     matcher: REGEX.ITEMS.EQUIP_PLAYER_TARGETS,
     icon: EquipmentSVG,
     locationName_alt: 'Equip',
     encounterName_alt: REGEX.ITEMS.EQUIP_PLAYER_TARGETS,
   },
   [ENTRY_TYPE.ITEMS.UNEQUIP_PLAYER]: {
-    categories: [CATEGORY_ID.EQUIPMENT, CATEGORY_ID.OTHER],
+    categories: [CATEGORY_ID.EQUIPMENT],
     matcher: REGEX.ITEMS.UNEQUIP_PLAYER_TARGETS,
     icon: EquipmentSVG,
     locationName_alt: 'Unequip',
     encounterName_alt: REGEX.ITEMS.UNEQUIP_PLAYER_TARGETS,
   },
   [ENTRY_TYPE.ITEMS.EQUIP_FAMILIAR]: {
-    categories: [CATEGORY_ID.FAMILIAR, CATEGORY_ID.OTHER],
+    categories: [CATEGORY_ID.FAMILIAR],
     matcher: REGEX.FAMILIAR.EQUIP_FAMILIAR_RESULT,
     icon: FamiliarSVG,
     locationName_alt: 'Equip Familiar',
@@ -606,7 +607,7 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.VISITING]: {
-    categories: [CATEGORY_ID.VISIT, CATEGORY_ID.OTHER],
+    categories: [CATEGORY_ID.VISIT],
     matcher: [REGEX.LINE.TALKING, REGEX.LINE.VISITING],
     icon: ShopSVG,
   },
@@ -623,11 +624,10 @@ export const ENTRY_DATA_MAP = {
     icon: ShopSVG,
   },
   [ENTRY_TYPE.VISITING]: {
-    categories: [CATEGORY_ID.VISIT, CATEGORY_ID.OTHER],
+    categories: [CATEGORY_ID.VISIT],
     matcher: [REGEX.LINE.TALKING, REGEX.LINE.VISITING],
     icon: ShopSVG,
   },
-  // --
   [ENTRY_TYPE.CLAN_VISIT]: {
     categories: [CATEGORY_ID.OTHER],
     matcher: REGEX.LINE.CLAN_VISIT,
