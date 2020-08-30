@@ -187,6 +187,12 @@ function EntryAdventureColumn(props) {
         {!shouldHideTurnNum ? entry.turnNum : '-'}
       </div>
 
+      { entry.isForcedAdventure &&
+        <div className='talign-right fontsize-2 adjacent-mar-t-2'>
+          forced
+        </div>
+      }
+
       { entry.isFreeCombat &&
         <div className='talign-right fontsize-2 adjacent-mar-t-2'>
           free

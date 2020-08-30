@@ -141,6 +141,13 @@ export const ATTRIBUTE_FILTERS = [
         isHidden: false,
         checked: false,
       },
+      {
+        label: 'Forced Adventure',
+        attributeName: 'isForcedAdventure',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
     ]
   },
   {
