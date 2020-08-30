@@ -103,8 +103,8 @@ export function createEstimatedEntries(allEntries) {
       entry.familiarUsed = estimates.trackedFamiliar;
     }
 
-    // pill keeper
-    entry = handleEstimatePillKeeper(entry, idx);
+    // forced adventures mean they were guaranteed
+    entry = handleForcedAdventure(entry, idx);
 
     // update estimates
     estimates.prevEntry = entry;
@@ -154,29 +154,47 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
   return currEntry;
 }
 /**
- * find data for Pill Keeper uses
+ * find and update data for any adventures that were forced to happen
+ * - pill keeper
+ * - stench jelly
  *
  * @param {Entry} currEntry
  * @param {Number} idx
  * @returns {Entry}
  */
-function handleEstimatePillKeeper(currEntry, idx) {
-  if (currEntry.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
-    // see if we can get the noncombat that this sneakisol went to
-    if (currEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
-      const sneakisolNonCombat = logStore.findNextEntry(idx, {isNonCombatEncounter: true});
-      if (sneakisolNonCombat) {
-        currEntry.additionalDisplay = `(${sneakisolNonCombat.encounterDisplay})`;
+function handleForcedAdventure(currEntry, idx) {
+  // Pill Keeper - Sunday surprise semiare
+  if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
+    const surpriseEncounterEntry = logStore.findNextEntry(idx, {isSemirare: true});
+    if (surpriseEncounterEntry) {
+      currEntry.additionalDisplay = `"${surpriseEncounterEntry.encounterDisplay}"`;
+      surpriseEncounterEntry.isForcedAdventure = true;
+    }
+  }
+
+  // Pill Keeper - Sneakisol noncombat
+  if (currEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
+    const sneakisolNonCombatEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
+    if (sneakisolNonCombatEntry) {
+      currEntry.additionalDisplay = `"${sneakisolNonCombatEntry.encounterDisplay}"`;
+      sneakisolNonCombatEntry.isForcedAdventure = true;
+    }
+  }
+
+  // Stench Jelly noncombat
+  if (currEntry.hasText(REGEX.SPACE_JELLYFISH.CHEW_JELLY_TARGET)) {
+    const allJellyNoncombats = []; // since there can be more than one, keep track until the end
+
+    const chewAmount = currEntry.findMatchers(REGEX.SPACE_JELLYFISH.CHEW_JELLY_AMOUNT) || 1;
+    for (let sj=0; sj<chewAmount; sj++) {
+      const stenchJellyNoncombat = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
+      if (stenchJellyNoncombat) {
+        allJellyNoncombats.push(`"${stenchJellyNoncombat.encounterDisplay}"`);
+        stenchJellyNoncombat.isForcedAdventure = true;
       }
     }
 
-    // same for Sunday surprise semiare
-    if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
-      const surpriseEncounter = logStore.findNextEntry(idx, {isSemirare: true});
-      if (surpriseEncounter) {
-        currEntry.additionalDisplay = `(${surpriseEncounter.encounterDisplay})`;
-      }
-    }
+    currEntry.additionalDisplay = `${allJellyNoncombats.join('  &  ')}`;
   }
 
   return currEntry;

@@ -184,11 +184,17 @@ export const REGEX = {
   SNOJO: {
     VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
   },
+  SPACE_JELLYFISH: {
+    EXTRACT_JELLY_SKILL: /casts.*extract jelly.*/gi,
+
+    CHEW_JELLY_AMOUNT: /(?<=chew )\d+(?= (hot|cold|sleaze|spooky|stench) jelly)/gi,
+    CHEW_JELLY_TARGET: /(?<=chew \d+ )(hot|cold|sleaze|spooky|stench) jelly/gi,
+  },
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
   VAMPYRIC_CLOAK: {
-    SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat)*/gi,
+    SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat).*/gi,
   },
   VOTING_BOOTH: {
     GROUPING: /visiting the voting booth.*?daily loathing ballot/gis,

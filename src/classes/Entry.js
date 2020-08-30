@@ -52,6 +52,9 @@ export default class Entry {
       choiceProgression: [],
       /** @type {Boolean} */
       isCombatEncounter: false,
+      /** @type {Boolean} */
+      isForcedAdventure: false,
+
       /** @type {String} */
       familiarUsed: null,
       /** @type {Array<String>} */
@@ -258,6 +261,14 @@ export default class Entry {
     }
 
     return false;
+  }
+  /** @param {Boolean} */
+  set isForcedAdventure(newValue) {
+    return this.attributes.isForcedAdventure = newValue;
+  }
+  /** @type {Boolean} */
+  get isForcedAdventure() {
+    return this.attributes.isForcedAdventure;
   }
   /** @param {Boolean} */
   set isInBetweenTurns(newValue) {
@@ -632,20 +643,19 @@ export default class Entry {
     return regexUtils.hasString(this.entryString, txt);
   }
   /**
-   * gets the (first) matched text from `entryString`
-   * @param {String | Regex} txt
-   * @return {String}
-   */
-  findText(txt) {
-    const matchedText = regexUtils.getRegexMatch(this.entryString, txt) || [];
-    return matchedText[0] || '';
-  }
-  /**
    * @param {Matcher} matcher
-   * @return {String|null}
+   * @return {String|undefined}
    */
   findMatcher(matcher) {
     return regexUtils.findMatcher(this.entryString, matcher);
+  }
+  /**
+   * finds multiple matches for findMatcher()
+   * @param {Matcher} matcher
+   * @return {Array<String>}
+   */
+  findMatchers(matcher) {
+    return regexUtils.getRegexMatch(this.entryString, matcher) || [];
   }
   /**
    * @param {Matcher} matcher
