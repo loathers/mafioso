@@ -28,6 +28,10 @@ class AppStore {
   }
   // -- state
   /** @type {Boolean} */
+  get isDevEnv() {
+    return process.env['NODE_ENV'] === 'development' || this.isDevMode.get();
+  }
+  /** @type {Boolean} */
   get isLoading() {
     return this.isPretendLoading.get() || logStore.isLoading;
   }

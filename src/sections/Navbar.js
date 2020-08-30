@@ -14,6 +14,9 @@ import LogUploader from 'sections/LogUploader';
 
 import combineClassnames from 'utilities/combineClassnames';
 
+const enableCharts = process.env['REACT_APP_ENABLE_CHARTS'] === 'true';
+const enableDatabase = process.env['REACT_APP_ENABLE_SHARE'] === 'true';
+
 /** @returns {ReactComponent} */
 export default withRouter(
 function Navbar(props) {
@@ -45,21 +48,25 @@ function Navbar(props) {
           children='Visualizer'
           className='adjacent-mar-l-3' />
 
-        <NavbarButton
-          to={CHARTS_URL}
-          componentType={Link}
-          isActive={pageName === 'charts'}
-          disabled={!appStore.isReady}
-          children='Charts'
-          className='adjacent-mar-l-3' />
+        { (appStore.isDevEnv || enableCharts) &&
+          <NavbarButton
+            to={CHARTS_URL}
+            componentType={Link}
+            isActive={pageName === 'charts'}
+            disabled={!appStore.isReady}
+            children='Charts'
+            className='adjacent-mar-l-3' />
+        }
 
-        <NavbarButton
-          to={DATABASE_URL}
-          componentType={Link}
-          isActive={pageName === 'database'}
-          disabled={!appStore.isReady}
-          children='Database'
-          className='adjacent-mar-l-3' />
+        { (appStore.isDevEnv || enableDatabase) &&
+          <NavbarButton
+            to={DATABASE_URL}
+            componentType={Link}
+            isActive={pageName === 'database'}
+            disabled={!appStore.isReady}
+            children='Database'
+            className='adjacent-mar-l-3' />
+        }
 
         <NavbarDivider />
 
@@ -70,12 +77,14 @@ function Navbar(props) {
           componentType='button'
           className='adjacent-mar-l-3' />
 
-        <NavbarButton
-          onClick={() => appStore.onShareLog()}
-          disabled={!appStore.isReady || !logStore.isAscensionLog}
-          children='Share'
-          componentType='button'
-          className='adjacent-mar-l-3' />
+        { (appStore.isDevEnv || enableDatabase) &&
+          <NavbarButton
+            onClick={() => appStore.onShareLog()}
+            disabled={!appStore.isReady || !logStore.isAscensionLog}
+            children='Share'
+            componentType='button'
+            className='adjacent-mar-l-3' />
+        }
       </div>
     </div>
   )
