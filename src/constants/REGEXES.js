@@ -366,6 +366,8 @@ export const REGEX = {
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
+    UNKNOWN_ACQUIRED_ITEM: /^((you acquire an item.*|you acquire .*\(\d+\))(\r\n|\n)*)+/gi,
+
     USE_ITEM_LINE: /^use \d+ .*/gmi,
     USE_ITEM_LINE_FIRST_ONLY: /^use \d+ .*/i,
     USE_ITEM_AMOUNT: /(?<=^use )\d+/gmi,

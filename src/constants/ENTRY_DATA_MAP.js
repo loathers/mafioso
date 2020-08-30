@@ -576,6 +576,13 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.FAMILIAR.EQUIP_FAMILIAR_RESULT,
     content_alt: null,
   },
+  [ENTRY_TYPE.ITEMS.UNKNOWN_ACQUIRED_ITEM]: {
+    categories: [CATEGORY_ID.TRANSACTIONS, CATEGORY_ID.OTHER],
+    matcher: REGEX.ITEMS.UNKNOWN_ACQUIRED_ITEM,
+    icon: ItemBagSVG,
+    locationName_alt: 'acquired a bunch of items somehow',
+    encounterName_alt: null,
+  },
   [ENTRY_TYPE.ITEMS.USE_ITEM]: {
     categories: [CATEGORY_ID.USE_ITEM],
     matcher: REGEX.ITEMS.USE_ITEM_LINE,
