@@ -309,7 +309,7 @@ export const REGEX = {
     SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
   },
   FAMILIAR: {
-    SWITCH_TO_LINE: /^familiar.*/gim,
+    SWITCH_TO_LINE: /^familiar .*/gim,
     SWITCH_TO_RESULT: /(?<=^familiar ).*(?= \()/gim,
 
     EQUIP_FAMILIAR_RESULT: /(?<=equip familiar ).*/gi,

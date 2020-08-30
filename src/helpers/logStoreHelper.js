@@ -94,11 +94,12 @@ export function createEstimatedEntries(allEntries) {
 
     // + update estimate if familar was swapped to
     if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
-      estimates.trackedFamiliar = entry.findMatcher(REGEX.FAMILIAR.SWITCH_TO_RESULT);
+      const switchedToFamiliar = entry.findMatcher(REGEX.FAMILIAR.SWITCH_TO_RESULT);
+      estimates.trackedFamiliar = switchedToFamiliar || null;
     }
 
     // apply trackedFamiliar only if it is a combat
-    if (entry.isCombatEncounter) {
+    if (entry.isAdventure) {
       entry.familiarUsed = estimates.trackedFamiliar;
     }
 
