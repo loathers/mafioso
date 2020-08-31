@@ -86,6 +86,7 @@ export const REGEX = {
   DISTANCE_WOODS_GETAWAY: {
     GAZING_LINE: /(^gazing).*/gi,
     USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
+    REST_TEXT: /Rest in your campaway tent/gmi,
   },
   FAX_MACHINE: {
     PHOTOCOPY_ENCOUNTER_TEXT: /(?<=\[\d+\] )photocopied monster/gi,

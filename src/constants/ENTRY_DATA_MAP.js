@@ -189,12 +189,20 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Eat - 3 fullness',
     encounterName_alt: 'Diabolic Pizza',
   },
-  [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY]: {
+  [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY.GAZE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.DISTANCE_WOODS_GETAWAY.GAZING_LINE,
     icon: OptionsSVG,
-    locationName_alt: 'Your Campsite Away From Your Campsite',
+    locationName: 'Your Campsite Away From Your Campsite',
     encounterName_alt: 'Gaze at the Stars',
+  },
+  [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY.REST]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.DISTANCE_WOODS_GETAWAY.REST_TEXT,
+    icon: OptionsSVG,
+    locationName: 'Your Campsite Away From Your Campsite',
+    locationName_alt: 'Campaway Tent',
+    encounterName_alt: 'Resting',
   },
   [ENTRY_TYPE.IOTM.FAX_MACHINE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
