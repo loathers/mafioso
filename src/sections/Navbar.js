@@ -51,8 +51,8 @@ function _UpperNavbar(props) {
     <div className={combineClassnames('flex-row aitems-center', className)}>
       <LogoComponent className='adjacent-mar-l-6' />
 
-      { appStore.isReady && logStore.isAscensionLog &&
-        <LogStarDescription className='flex-none adjacent-mar-l-6' />
+      { logStore.hasParsedEntries && logStore.isAscensionLog &&
+        <LogOwnerDescription className='flex-none adjacent-mar-l-6' />
       }
 
       <div className='jcontent-end flex-auto flex-row adjacent-mar-l-6'>
@@ -112,9 +112,10 @@ function _UpperNavbar(props) {
   )
 })
 /** @returns {ReactComponent} */
-const LogStarDescription = observer(
-function _LogStarDescription(props) {
+const LogOwnerDescription = observer(
+function _LogOwnerDescription(props) {
   const {className} = props;
+
   return (
     <div className={combineClassnames('fontsize-3 overflow-hidden flex-row', className)}>
       <span className='adjacent-mar-l-2'>starring</span>
@@ -122,9 +123,30 @@ function _LogStarDescription(props) {
       <span className='adjacent-mar-l-2'>{`the ${logStore.className}`}</span>
       <span className='adjacent-mar-l-2'>in</span>
       <span className='f-bold adjacent-mar-l-2'>{`${logStore.difficultyName} ${logStore.pathName}`}</span>
+      <span className='f-italic f-thin adjacent-mar-l-2'>{`"${generateTagline()}"`}</span>
     </div>
   )
-})
+});
+const taglines = [
+  "Click here for the top 10 secret strats!",
+  "Will there be crabsicles?",
+  "It isn't over 'til Aenimus sings!",
+  "Didn't have enough oranges this run.",
+  "Rolled a nat 20 this run!",
+  "Did it with lofi hip hop beats to relax/study to in the background.",
+  "I'm very proud of this one!",
+  "Found an Ultrarare in this run!",
+  "YOU'RE BREATHTAKING!",
+  "I think Ezandora made this happen.",
+  "Did a great job by wearing a mask the entire run.",
+];
+/**
+ * @returns {String}
+ */
+function generateTagline() {
+  const randomNumba = Math.floor(Math.random() * taglines.length);
+  return taglines[randomNumba];
+}
 /** @returns {ReactComponent} */
 function NavbarButton(props) {
   const {
