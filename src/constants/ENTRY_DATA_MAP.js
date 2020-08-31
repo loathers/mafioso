@@ -136,6 +136,13 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'A Heist!',
     content_alt: null,
   },
+  [ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.REST]: {
+    categories: [CATEGORY_ID.OPTIONS, CATEGORY_ID.OTHER],
+    matcher: REGEX.CHATEAU_MANTEGNA.REST_TEXT,
+    icon: OptionsSVG,
+    locationName: 'Chateau Mantegna',
+    encounterName_alt: 'Resting',
+  },
   [ENTRY_TYPE.IOTM.CONSPIRACY_ISLAND]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.CONSPIRACY_ISLAND.TEXT,

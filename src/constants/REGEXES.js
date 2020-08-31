@@ -62,6 +62,9 @@ export const REGEX = {
     HEISTED: /.*(choice 1320\/1).*/gi,
     NEVERMIND_LINE: /.*choice 1320\/2.*(\r\n|\n)/gi,
   },
+  CHATEAU_MANTEGNA: {
+    REST_TEXT: /rest in your bed in the chateau/gi,
+  },
   CONSPIRACY_ISLAND: {
     TEXT: /.*Conspiracy Island.*/gi,
     CONTROL_PANEL_LINE: /Took choice 986.*/gi,
