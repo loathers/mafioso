@@ -489,7 +489,8 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isWished() {
-    return this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE;
+    return this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE
+      || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT;
   }
   /** @type {Boolean} */
   get hasReplacedEnemies() {

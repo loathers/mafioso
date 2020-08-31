@@ -103,6 +103,9 @@ export const REGEX = {
   FORTUNE_TELLER: {
     CONSULT_TEXT: /(.*choice 1278.*: ).*/gi,
   },
+  GENIE_BOTTLE: {
+    WISH_FIGHT_ENCOUNTER_TEXT: /(?<=\[\d+\] )genie summoned monster/gi,
+  },
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,
     BOON: /Encounter: Granted a Boon/i,

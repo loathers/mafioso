@@ -209,6 +209,11 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: 'Upgrade Your May the Fourth Cosplay Saber',
     // content_alt: ['[ {1} ]', REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_CHOICE],
   },
+  [ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
+    matcher: REGEX.GENIE_BOTTLE.WISH_FIGHT_ENCOUNTER_TEXT,
+    icon: CombatSVG,
+  },
   [ENTRY_TYPE.IOTM.GOD_LOBSTER.COMBAT]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
     matcher: REGEX.GOD_LOBSTER.COMBAT,
