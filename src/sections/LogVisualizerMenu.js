@@ -63,32 +63,6 @@ function LogVisualizerMenu(props) {
       style={style}
       className={combineClassnames('flex-col', className)}>
 
-      <div className='flex-col flex-none adjacent-mar-t-5'>
-        <Button
-          onClick={() => logStore.downloadFullLog()}
-          disabled={!appStore.isReady}
-          className='borradius-1 flex-col pad-3 adjacent-mar-t-4'>
-          <div className='fontsize-5 adjacent-mar-t-4'>Download Log</div>
-
-          { (logStore.hasAscensionNum || logStore.hasCharacterName) &&
-            <div className='adjacent-mar-t-4'>
-              {/** info */}
-              { logStore.hasAscensionNum &&
-                <h2 className='fontsize-3 adjacent-mar-t-1'>
-                  {`Ascension #${logStore.ascensionNum}`}
-                </h2>
-              }
-
-              { logStore.hasCharacterName &&
-                <h2 className='color-gray fontsize-2 adjacent-mar-t-1'>
-                  {`${logStore.characterName} - ${logStore.ascensionAttributes.className}`}
-                </h2>
-              }
-            </div>
-          }
-        </Button>
-      </div>
-
       {/* change visible entries */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <FiltersMenu
