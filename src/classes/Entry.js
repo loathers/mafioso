@@ -488,7 +488,7 @@ export default class Entry {
     return Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0;
   }
   /** @type {Boolean} */
-  get isWished() {
+  get isSummoned() {
     return this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE
       || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT;
   }

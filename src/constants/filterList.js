@@ -148,8 +148,8 @@ export const ATTRIBUTE_FILTERS = [
     label: 'Resource Usage',
     optionGroup: [
       {
-        label: 'Wished',
-        attributeName: 'isWished',
+        label: 'Summoned',
+        attributeName: 'isSummoned',
         attributeValue: true,
         isHidden: false,
         checked: false,
