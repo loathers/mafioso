@@ -196,6 +196,11 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Your Campsite Away From Your Campsite',
     encounterName_alt: 'Gaze at the Stars',
   },
+  [ENTRY_TYPE.IOTM.FAX_MACHINE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
+    matcher: REGEX.FAX_MACHINE.PHOTOCOPY_ENCOUNTER_TEXT,
+    icon: CombatSVG,
+  },
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE_TEXT,

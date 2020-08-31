@@ -87,6 +87,9 @@ export const REGEX = {
     GAZING_LINE: /(^gazing).*/gi,
     USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
   },
+  FAX_MACHINE: {
+    PHOTOCOPY_ENCOUNTER_TEXT: /(?<=\[\d+\] )photocopied monster/gi,
+  },
   FOURTH_OF_MAY_COSPLAY_SABER: {
     UPGRADE_TEXT: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
     UPGRADE_CHOICE: /(?<=^Took choice 1386.*: ).*/gmi,

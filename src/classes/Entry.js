@@ -488,6 +488,10 @@ export default class Entry {
     return Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0;
   }
   /** @type {Boolean} */
+  get isWished() {
+    return this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE;
+  }
+  /** @type {Boolean} */
   get hasReplacedEnemies() {
     return Boolean(this.attributes.replacedEnemies) && this.attributes.replacedEnemies.length > 0;
   }
