@@ -127,6 +127,8 @@ export default class Entry {
     this.attributes = {
       ...this.attributes,
       ...parsedAttributes,
+      locationName: this.entryData.locationName || parsedAttributes.locationName,
+      encounterName: this.entryData.encounterName || parsedAttributes.encounterName,
     };
   }
   /** @type {EntryType} */

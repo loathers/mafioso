@@ -262,7 +262,7 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS],
     matcher: REGEX.POOL_TABLE.PLAY_POOL_EFFECT,
     icon: OptionsSVG,
-    locationName_alt: 'A Pool Table (VIP Lounge)',
+    locationName: 'A Pool Table (VIP Lounge)',
     encounterName_alt: ['{1}-like', REGEX.POOL_TABLE.PLAY_POOL_CHOICE],
     content_alt: null,
   },
@@ -275,11 +275,17 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: ['♫ {1} ♫', REGEX.SONGBOOM_BOOMBOX.RESULT],
     content_alt: null,
   },
+  [ENTRY_TYPE.IOTM.SNOJO]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
+    matcher: REGEX.SNOJO.SNOWMAN_COMBAT,
+    icon: CombatSVG,
+    locationName: 'The Snojo',
+  },
   [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT,
     icon: OptionsSVG,
-    locationName_alt: 'Voting Booth',
+    locationName: 'Voting Booth',
     encounterName_alt: 'Daily Loathing Ballot',
   },
   [ENTRY_TYPE.IOTM.WITCHESS.COMBAT]: {
@@ -287,7 +293,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.WITCHESS.COMBAT_ENCOUNTER_TARGET,
     icon: CombatSVG,
     showAdditionalDisplay: false,
-    locationName_alt: 'Your Witchess Set',
+    locationName: 'Your Witchess Set',
     encounterName_alt: REGEX.WITCHESS.COMBAT_ENCOUNTER_TARGET,
   },
   [ENTRY_TYPE.IOTM.WITCHESS.BUFF]: {
@@ -295,7 +301,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.WITCHESS.DAILY_CHALLENGE_BUFF,
     icon: SpellsSVG,
     showAdditionalDisplay: false,
-    locationName_alt: 'Your Witchess Set',
+    locationName: 'Your Witchess Set',
     encounterName_alt: 'Daily Challenge',
   },
   // --

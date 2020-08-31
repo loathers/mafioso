@@ -195,6 +195,7 @@ export const REGEX = {
   },
   SNOJO: {
     VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
+    SNOWMAN_COMBAT: /.*The X-32-F Combat Training Snowman.*/gi,
   },
   SPACE_JELLYFISH: {
     EXTRACT_JELLY_SKILL: /casts.*extract jelly.*/gi,
