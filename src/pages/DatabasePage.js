@@ -24,7 +24,7 @@ function DatabasePage(props) {
       {databaseStore.databaseList.map((rowData, idx) => (
         <DatabaseRow
           key={`database-list-row-${idx}-key`}
-          children={rowData} />
+          data={rowData} />
       ))}
 
     </div>
@@ -32,9 +32,22 @@ function DatabasePage(props) {
 })
 
 function DatabaseRow(props) {
+  const {
+    data: {
+      charName,
+      pathName,
+      difficultyName,
+      dayCount,
+      turnCount,
+    },
+  } = props;
+
   return (
-    <div className='adjacent-mar-t-2'>
-      {props.children}
+    <div className='bor-1-second-darker borradius-2 bg-second hover:bg-second-lighter pad-2 flex-row adjacent-mar-t-1'>
+      <span className='f-bold adjacent-mar-l-2'>{charName}</span>
+      <span className='adjacent-mar-l-2'>in</span>
+      <span className='f-bold adjacent-mar-l-2'>{`${difficultyName} ${pathName}`}</span>
+      <div className='flex-none adjacent-mar-l-2'>{`(${dayCount} days / ${turnCount} turns)`}</div>
     </div>
   )
 }
