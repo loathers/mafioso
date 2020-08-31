@@ -1,5 +1,5 @@
 import React from 'react';
-// import {observer} from 'mobx-react';
+import {observer} from 'mobx-react';
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router";
 
@@ -30,8 +30,30 @@ function Navbar(props) {
   return (
     <div
       elementname='app-navbar'
-      className={combineClassnames('zindex-7 pad-v-1 flex-row aitems-center', className)}>
+      className={combineClassnames('zindex-7 pad-v-3 flex-col jcontent-center', className)}>
+
+      <UpperNavbar
+        pageName={pageName}
+        className='flex-none adjacent-mar-t-1' />
+
+    </div>
+  )
+})
+/** @returns {ReactComponent} */
+const UpperNavbar = observer(
+function _UpperNavbar(props) {
+  const {
+    className,
+    pageName,
+  } = props;
+
+  return (
+    <div className={combineClassnames('flex-row aitems-center', className)}>
       <LogoComponent className='adjacent-mar-l-6' />
+
+      { appStore.isReady && logStore.isAscensionLog &&
+        <LogStarDescription className='flex-none adjacent-mar-l-6' />
+      }
 
       <div className='jcontent-end flex-auto flex-row adjacent-mar-l-6'>
         <LogUploader
@@ -89,7 +111,21 @@ function Navbar(props) {
     </div>
   )
 })
-
+/** @returns {ReactComponent} */
+const LogStarDescription = observer(
+function _LogStarDescription(props) {
+  const {className} = props;
+  return (
+    <div className={combineClassnames('fontsize-3 overflow-hidden flex-row', className)}>
+      <span className='adjacent-mar-l-2'>starring</span>
+      <span className='f-bold adjacent-mar-l-2'>{logStore.characterName}</span>
+      <span className='adjacent-mar-l-2'>{`the ${logStore.className}`}</span>
+      <span className='adjacent-mar-l-2'>in</span>
+      <span className='f-bold adjacent-mar-l-2'>{`${logStore.difficultyName} ${logStore.pathName}`}</span>
+    </div>
+  )
+})
+/** @returns {ReactComponent} */
 function NavbarButton(props) {
   const {
     componentType = 'div',
@@ -108,7 +144,7 @@ function NavbarButton(props) {
     {...otherProps, disabled: disabled, className: componentClassName},
   );
 }
-
+/** @returns {ReactComponent} */
 function NavbarDivider(props) {
   return <div className={combineClassnames('pevents-none flex-row-center color-grayer adjacent-mar-l-3', props.className)}>·</div>
 }
