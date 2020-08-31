@@ -92,7 +92,7 @@ function LogVisualizerMenu(props) {
       {/* change visible entries */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <FiltersMenu
-          label={`Visible Categories (${logStore.validEntriesCount})`}
+          label='Visible Categories'
           defaultList={categoriesVisibleList}
           onChange={onChangeVisibleEntries}
           inputType='checkbox'
@@ -113,6 +113,7 @@ function LogVisualizerMenu(props) {
           onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
           selected={selectedAttribute}
           list={ATTRIBUTE_FILTERS}
+          size={18}
           disabled={!appStore.isReady}
           id='attribute-filter-selector'
           className='flex-none adjacent-mar-t-2' />
