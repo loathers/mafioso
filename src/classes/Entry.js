@@ -573,6 +573,11 @@ export default class Entry {
     return this.attributes.diabolicPizzaIngredients.length > 0;
   }
   /** @type {Boolean} */
+  get isGenieWish() {
+    return this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.EFFECT
+      || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT;
+  }
+  /** @type {Boolean} */
   get hasVampyricCloake() {
     return this.hasText(REGEX.VAMPYRIC_CLOAK.SKILL_RESULT);
   }

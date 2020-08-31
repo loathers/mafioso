@@ -105,6 +105,7 @@ export const REGEX = {
   },
   GENIE_BOTTLE: {
     WISH_FIGHT_ENCOUNTER_TEXT: /(?<=\[\d+\] )genie summoned monster/gi,
+    WISH_EFFECT_TARGET: /(?<=took choice 1267(.*(\r\n|\n))+you acquire an effect: ).*(?= \()/gmi,
   },
   GOD_LOBSTER: {
     COMBAT: /Encounter: the god lobster/i,

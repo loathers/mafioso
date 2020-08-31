@@ -312,6 +312,18 @@ export const ATTRIBUTE_FILTERS = [
     ]
   },
   {
+    label: '2017 Items of the Month',
+    optionGroup: [
+      {
+        label: 'Genie Wishes',
+        attributeName: 'isGenieWish',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+    ]
+  },
+  {
     label: 'Fun Filters',
     optionGroup: [
       {
