@@ -43,6 +43,10 @@
   background: map.get($COLOR_MAP, "first");
 }
 
+[elementname='app-section-database-list'] {
+  max-width: 1000px;
+}
+
 [elementname='app-footer'] {
   left: $APP_MARGIN;
   bottom: $APP_MARGIN;
