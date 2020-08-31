@@ -20,7 +20,7 @@ function PageControlMenu(props) {
 
   const onClickChangeDay = (nextDayNum) => {
     if (nextDayNum !== logStore.currentDayNum) {
-      logStore.fetchEntries({dayNumFilter: nextDayNum});
+      logStore.fetchEntries({dayNumFilter: nextDayNum, pageNum: 0});
       appStore.shouldScrollUp.set(true);
     }
   }
