@@ -14,7 +14,7 @@ import {CATEGORY_ID} from 'constants/CATEGORIES';
 import {REGEX} from 'constants/REGEXES';
 
 import {ReactComponent as AscendSVG} from 'images/holy-grail.svg';
-import {ReactComponent as CraftSVG} from 'images/anvil-impact.svg';
+import {ReactComponent as CraftSVG} from 'images/anvil.svg';
 import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
 import {ReactComponent as DrinkSVG} from 'images/martini.svg';
 import {ReactComponent as EatSVG} from 'images/meal.svg';
@@ -26,7 +26,7 @@ import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
 import {ReactComponent as MafiosoSVG} from 'images/gun-rose.svg';
 import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
 import {ReactComponent as PathSVG} from 'images/flag-objective.svg';
-import {ReactComponent as OptionsSVG} from 'images/round-knob.svg';
+import {ReactComponent as OptionsSVG} from 'images/freemasonry.svg';
 import {ReactComponent as ShopSVG} from 'images/shop.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
 import {ReactComponent as SpleenSVG} from 'images/pill.svg';
@@ -135,6 +135,13 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Cat Burglar',
     encounterName_alt: 'A Heist!',
     content_alt: null,
+  },
+  [ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.DESK]: {
+    categories: [CATEGORY_ID.OPTIONS, CATEGORY_ID.OTHER],
+    matcher: REGEX.CHATEAU_MANTEGNA.CHECK_DESK_TEXT,
+    icon: OptionsSVG,
+    locationName: 'Chateau Mantegna',
+    encounterName_alt: 'Desking',
   },
   [ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.REST]: {
     categories: [CATEGORY_ID.OPTIONS, CATEGORY_ID.OTHER],
