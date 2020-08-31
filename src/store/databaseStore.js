@@ -28,8 +28,12 @@ class AppStore {
   async fetch() {
     this.isFetching.set(true);
 
-    const listResult = await this.handleFetch();
-    this.databaseList.replace(listResult);
+    try {
+      const listResult = await this.handleFetch();
+      this.databaseList.replace(listResult);
+    } catch (err) {
+      console.error(err);
+    }
 
     this.isFetching.set(false); // update state regardless of result
   }
@@ -45,12 +49,23 @@ class AppStore {
         const rawResponse = oReq.responseText;
         if (!rawResponse) return reject('Server did not send any data.');
 
-        const databaseList = rawResponse.split('\n');
+        const databaseList = JSON.parse(rawResponse);
         resolve(databaseList);
       });
 
       oReq.open('GET', `${SERVER_HOST}/api/getSharedLogs`);
       oReq.send();
+    });
+  }
+  // -- list
+  /**
+   * @param {Object} [options]
+   * @returns {Array<DatabaseEntry>}
+   */
+  filterList(options = {}) {
+    const optionKeys = Object.keys(options);
+    return this.databaseList.filter((databaseEntry) => {
+      return !optionKeys.some((optionName) => databaseEntry[optionName] !== options[optionName])
     });
   }
 }
