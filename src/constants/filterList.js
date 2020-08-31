@@ -136,13 +136,6 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
-        label: 'Leveled Up',
-        attributeName: 'isLevelUp',
-        attributeValue: true,
-        isHidden: false,
-        checked: false,
-      },
-      {
         label: 'Forced Adventure',
         attributeName: 'isForcedAdventure',
         attributeValue: true,
@@ -336,10 +329,10 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
-        label: 'NonCombat',
-        attributeName: 'isNonCombatEncounter',
+        label: 'Leveled Up',
+        attributeName: 'isLevelUp',
         attributeValue: true,
-        isHidden: true,
+        isHidden: false,
         checked: false,
       },
       {

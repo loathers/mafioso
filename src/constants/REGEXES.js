@@ -369,7 +369,7 @@ export const REGEX = {
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
-    UNKNOWN_ACQUIRED_ITEM: /^((you acquire an item.*|you acquire .*\(\d+\))(\r\n|\n)*)+/gi,
+    UNKNOWN_ACQUIRED_ITEM: /(?!.*(effect|intrinsic).*)^((you acquire an item.*|you acquire .*\(\d+\))(\r\n|\n)*)+/gi,
 
     USE_ITEM_LINE: /^use \d+ .*/gmi,
     USE_ITEM_LINE_FIRST_ONLY: /^use \d+ .*/i,
@@ -386,6 +386,7 @@ export const REGEX = {
     CREATE_LINE: /create.*\d.*/gmi,
     MIX_LINE: /mix.*\d.*/gmi,
     SMITH_LINE: /smith.*\d.*/gmi,
+    TRADE_LINE: /(trade|trading).*\d.*/gmi,
     CRAFTING_USED_LINE: /crafting used .*(\r\n|\n)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
