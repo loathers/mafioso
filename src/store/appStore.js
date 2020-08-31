@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import keycodes from 'constants/keycodes';
 
+import databaseStore from 'store/databaseStore';
 import logStore from 'store/logStore';
 
 /**
@@ -33,7 +34,7 @@ class AppStore {
   }
   /** @type {Boolean} */
   get isLoading() {
-    return this.isPretendLoading.get() || logStore.isLoading;
+    return this.isPretendLoading.get() || logStore.isLoading || databaseStore.isLoading;
   }
   /** @type {Boolean} */
   get isReady() {

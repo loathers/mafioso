@@ -85,7 +85,7 @@ function _UpperNavbar(props) {
             to={DATABASE_URL}
             componentType={Link}
             isActive={pageName === 'database'}
-            disabled={!appStore.isReady}
+            // disabled={!appStore.isReady}
             children='Database'
             className='adjacent-mar-l-3' />
         }

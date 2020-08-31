@@ -1,5 +1,6 @@
 import {observable} from 'mobx';
 
+const SERVER_HOST = process.env['REACT_APP_SERVER_HOST'];
 /**
  * state and handler of the log data
  */
@@ -8,8 +9,8 @@ class AppStore {
     /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
 
-    /** @type {Array<Text>} */
-    this.databaseList = [];
+    /** @type {Observable<Array<Text>>} */
+    this.databaseList = observable([]);
   }
   // -- state
   /** @type {Boolean} */
@@ -24,20 +25,33 @@ class AppStore {
   /**
    *
    */
-  fetch() {
+  async fetch() {
     this.isFetching.set(true);
 
-    const oReq = new XMLHttpRequest();
-    oReq.addEventListener('load', (data) => {
-      console.log('request finish', data);
-      this.databaseList = data;
-      this.isFetching.set(false);
+    const listResult = await this.handleFetch();
+    this.databaseList.replace(listResult);
+
+    this.isFetching.set(false); // update state regardless of result
+  }
+  /**
+   * requests database list
+   * @async
+   */
+  handleFetch() {
+    return new Promise((resolve, reject) => {
+      const oReq = new XMLHttpRequest();
+      oReq.addEventListener('error', (evt) => reject(evt));
+      oReq.addEventListener('load', (evt) => {
+        const rawResponse = oReq.responseText;
+        if (!rawResponse) return reject('Server did not send any data.');
+
+        const databaseList = rawResponse.split('\n');
+        resolve(databaseList);
+      });
+
+      oReq.open('GET', `${SERVER_HOST}/api/getSharedLogs`);
+      oReq.send();
     });
-
-    const url = 'http://localhost:8080/api/getSharedLogs';
-    oReq.open('GET', url);
-    oReq.send();
-
   }
 }
 /** export singleton */
