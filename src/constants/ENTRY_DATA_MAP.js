@@ -317,6 +317,11 @@ export const ENTRY_DATA_MAP = {
     matcher: LOW_KEY_SUMMER_ENCOUNTERS,
     icon: PathSVG,
   },
+  [ENTRY_TYPE.PATH.THE_SOURCE.SOURCE_AGENT_ENCOUNTER]: {
+    categories: [CATEGORY_ID.PATH, CATEGORY_ID.COMBAT],
+    matcher: REGEX.THE_SOURCE.SOURCE_AGENT_ENCOUNTER,
+    icon: CombatSVG,
+  },
   // --
   [ENTRY_TYPE.QUEST.TOOT_ORIOLE]: {
     categories: [CATEGORY_ID.QUEST],

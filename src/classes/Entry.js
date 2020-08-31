@@ -584,6 +584,11 @@ export default class Entry {
     return this.hasText(REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT)
       || this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH;
   }
+  /** @type {Boolean} */
+  get hasPortscanEncounter() {
+    return this.hasText(REGEX.SOURCE_TERMINAL.GOVERNMENT_AGENT_ENCOUNTER)
+      || this.entryType === ENTRY_TYPE.PATH.THE_SOURCE.SOURCE_AGENT_ENCOUNTER;
+  }
   // -- utility
   /**
    * since there's getters and entry.attributes, this helps get it

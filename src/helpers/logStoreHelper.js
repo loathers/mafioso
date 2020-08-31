@@ -219,6 +219,18 @@ function handleForcedAdventure(currEntry, idx) {
     }
   }
 
+  // Portscan - out of The Source
+  if (currEntry.hasText(REGEX.SOURCE_TERMINAL.CAST_PORTSCAN)) {
+    const portscanEntry = logStore.findNextEntry(idx, {
+      isCombatEncounter: true,
+      isForcedAdventure: false,
+      hasPortscanEncounter: true,
+    });
+    if (portscanEntry) {
+      portscanEntry.isForcedAdventure = true;
+    }
+  }
+
   return currEntry;
 }
 // -- utility

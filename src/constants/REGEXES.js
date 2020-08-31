@@ -188,14 +188,20 @@ export const REGEX = {
   RIFTLET: {
     ADV_TRIGGERED_TEXT: /.*shimmers briefly, and you feel it getting earlier.*/gmi,
   },
+  SNOJO: {
+    VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
+    SNOWMAN_COMBAT: /.*The X-32-F Combat Training Snowman.*/gi,
+  },
   SONGBOOM_BOOMBOX: {
     GROUPING: /^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice.*(\r\n|\n){2,}setting soundtrack.*/gmi,
     RESULT: /(?<=^use.*songboom.*boombox(\r\n|\n).*soundtrack.*(\r\n|\n).*took choice 1312.*: ).*/gmi,
     SING_ALONG: /(?<=^round \d+:.*)(SING ALONG)/gmi,
   },
-  SNOJO: {
-    VISIT_CONTROL_LINE: /Visiting Snojo Control Console/gi,
-    SNOWMAN_COMBAT: /.*The X-32-F Combat Training Snowman.*/gi,
+  SOURCE_TERMINAL: {
+    CAST_PORTSCAN: /.*casts.*Portscan.*/gmi,
+    PORTSCAN_FOR_SOURCE_AGENT: /.*You scan nearby ports until you locate a Source Agent.*send him a GIF.*/gmi,
+    PORTSCAN_FOR_GOVERNMENT_AGENT: /You scan nearby ports but don't find anything interesting.*you hear sirens in the distance/gmi,
+    GOVERNMENT_AGENT_ENCOUNTER: /Encounter: Government Agent.*/gmi,
   },
   SPACE_JELLYFISH: {
     EXTRACT_JELLY_SKILL: /casts.*extract jelly.*/gi,
@@ -236,6 +242,9 @@ export const REGEX = {
     SWAP_MASK: /(?<=^Round.*casts ).*SWAP MASK.*(?=!)/mi,
   },
   LOW_KEY_SUMMER: {
+  },
+  THE_SOURCE: {
+    SOURCE_AGENT_ENCOUNTER: /A sunglasses-clad man in a flawless black suit stands before you/gi,
   },
   QUEST: {
     VISIT_TOOT: /tutorial.*action=toot/i,
