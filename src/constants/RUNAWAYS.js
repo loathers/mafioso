@@ -5,12 +5,20 @@ import ENTITY_TYPE from 'constants/ENTITY_TYPE';
  *
  * todo: Unleash Nanites, Frumious Bandersnatch, Greatest American Pants, navel ring of navel gazing,
  *  Pair of Stomping Boots, Summon Mayfly Swarm
- * 
+ *
  * @typedef {Entity} RunAways
  */
 export const RUNAWAYS_MAP = {
   'Run Away': {
     matcher: /you.*run away.*like a little coward.*/i,
+    entityType: ENTITY_TYPE.COMBAT_SKILL,
+  },
+  'Stomping Boots Runaway': {
+    matcher: /.*kicks you in the butt to speed your escape.*/i,
+    entityType: ENTITY_TYPE.FAMILIAR,
+  },
+  'Return': {
+    matcher: /(uses|casts).*Return!/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
   'green smoke bomb': {

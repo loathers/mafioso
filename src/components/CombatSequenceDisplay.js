@@ -98,7 +98,7 @@ export function CombatResultDisplayHandler(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('flex-col', className)}>
+    <div className={combineClassnames('flex-col-center', className)}>
       { !isShowCompact && entry.isVictory && !entry.isBanished &&
         <CombatResultDisplay
           content='Victory'
@@ -118,15 +118,21 @@ export function CombatResultDisplayHandler(props) {
           IconComponent={BanishSVG} />
       }
 
-      { entry.hasRunaway && !entry.isVictory &&
-        <CombatResultDisplay
-          content='Ran Away!'
-          shouldShowIcon={!isShowCompact}
-          IconComponent={RunawaySVG} />
+      { entry.hasRunaway && !isShowCompact &&
+        <div className='flex-col mar-1'>
+          <CombatResultDisplay
+            content='Ran Away!'
+            shouldShowIcon={!isShowCompact}
+            IconComponent={RunawaySVG} />
+
+          { entry.isFreeCombat &&
+            <div className='fontsize-1 mar-1'>(for free)</div>
+          }
+        </div>
       }
 
-      { entry.hasRunaway && !entry.isVictory && entry.isFreeCombat &&
-        <div className='fontsize-1 mar-1'>(for free)</div>
+      { entry.hasRunaway && isShowCompact &&
+        <div className='fontsize-3 mar-1'>Ran Away!</div>
       }
 
       { entry.isCopied &&
