@@ -220,6 +220,7 @@ export const REGEX = {
 
     CHEW_JELLY_AMOUNT: /(?<=chew )\d+(?= (hot|cold|sleaze|spooky|stench) jelly)/gi,
     CHEW_JELLY_TARGET: /(?<=chew \d+ )(hot|cold|sleaze|spooky|stench) jelly/gi,
+    ACQUIRED_STENCH_JELLIED_EFFECT: /you acquire an effect: stench jellied/gi,
   },
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,

@@ -163,7 +163,7 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
  * @returns {Entry}
  */
 function handleForcedAdventure(currEntry, idx) {
-  // Pill Keeper - Sunday surprise semiare
+  // Pill Keeper - Sunday surprise semiare activated
   if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
     const surpriseEntry = logStore.findNextEntry(idx, {isSemirare: true});
     if (surpriseEntry) {
@@ -172,7 +172,7 @@ function handleForcedAdventure(currEntry, idx) {
     }
   }
 
-  // Pill Keeper - Sneakisol noncombat
+  // Pill Keeper - Sneakisol activated
   if (currEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
     const sneakisolEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
     if (sneakisolEntry) {
@@ -181,20 +181,20 @@ function handleForcedAdventure(currEntry, idx) {
     }
   }
 
-  // Stench Jelly noncombat
-  if (currEntry.hasText(REGEX.SPACE_JELLYFISH.CHEW_JELLY_TARGET)) {
-    const allJellyEncounterNames = []; // since there can be more than one, keep track until the end
+  // Stench Jellied activated
+  if (currEntry.hasText(REGEX.SPACE_JELLYFISH.ACQUIRED_STENCH_JELLIED_EFFECT)) {
+    const stenchedNoncombatEntry = []; // since there can be more than one, keep track until the end
 
-    const chewAmount = currEntry.findMatchers(REGEX.SPACE_JELLYFISH.CHEW_JELLY_AMOUNT) || 1;
-    for (let sj=0; sj<chewAmount; sj++) {
+    const acquiredList = currEntry.findMatchers(REGEX.SPACE_JELLYFISH.ACQUIRED_STENCH_JELLIED_EFFECT) || ['once'];
+    for (let sj=0; sj<acquiredList.length; sj++) {
       const stenchEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
       if (stenchEntry) {
-        allJellyEncounterNames.push(`"${stenchEntry.encounterDisplay}"`);
+        stenchedNoncombatEntry.push(`"${stenchEntry.encounterDisplay}"`);
         stenchEntry.isForcedAdventure = true;
       }
     }
 
-    currEntry.additionalDisplay = `${allJellyEncounterNames.join('  &  ')}`;
+    currEntry.additionalDisplay = `${stenchedNoncombatEntry.join('  &  ')}`;
   }
 
   // forced friends
