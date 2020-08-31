@@ -78,7 +78,7 @@ export function createEstimatedEntries(allEntries) {
   // start
   const conjecturedEntries = allEntries.map((entry, idx) => {
     // find the next entry that is not a free adventure
-    const nextEntry = logStore.findNextEntry(idx, {isAdventure: true, isFreeCombat: false});
+    const nextEntry = logStore.findNextEntry(idx, {isAdventure: true});
 
     // update turnNum
     entry = handleEstimateTurnNum(entry, nextEntry);
