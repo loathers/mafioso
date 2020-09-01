@@ -25,11 +25,11 @@ class AppStore {
   /**
    *
    */
-  async fetch() {
+  async fetchSharedLogs() {
     this.isFetching.set(true);
 
     try {
-      const listResult = await this.handleFetch();
+      const listResult = await this.handleFetchSharedLogs();
       this.databaseList.replace(listResult);
     } catch (err) {
       console.error(err);
@@ -41,7 +41,7 @@ class AppStore {
    * requests database list
    * @async
    */
-  handleFetch() {
+  handleFetchSharedLogs() {
     return new Promise((resolve, reject) => {
       const oReq = new XMLHttpRequest();
       oReq.addEventListener('error', (evt) => reject(evt));
@@ -56,6 +56,34 @@ class AppStore {
       oReq.open('GET', `${SERVER_HOST}/api/getSharedLogs`);
       oReq.send();
     });
+  }
+  /**
+   * requests an entry
+   * @param {DatabaseEntry} databaseEntry
+   */
+  async fetchLog(databaseEntry) {
+    this.isFetching.set(true);
+
+    const fetchRequest = new Promise((resolve, reject) => {
+      const oReq = new XMLHttpRequest();
+      oReq.addEventListener('error', (evt) => reject(evt));
+      oReq.addEventListener('load', (evt) => {
+        const rawResponse = oReq.responseText;
+        if (!rawResponse) return reject('Server did not send any data.');
+
+        resolve(rawResponse);
+      });
+
+      oReq.open('GET', `${SERVER_HOST}/api/getLog/${databaseEntry.logHash}`);
+      oReq.send();
+    });
+
+    // update state regardless of result
+    fetchRequest.finally(() => {
+      this.isFetching.set(false);
+    })
+
+    return fetchRequest;
   }
   // -- list
   /**

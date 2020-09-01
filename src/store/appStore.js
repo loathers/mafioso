@@ -111,6 +111,23 @@ class AppStore {
     await new Promise((resolve) => setTimeout(resolve, 300));
     this.isPretendLoading.set(false);
   }
+  /**
+   * @param {DatabaseEntry} databaseEntry
+   */
+  async onViewSharedLog(databaseEntry) {
+    this.isPretendLoading.set(true);
+
+    try {
+      const fetchedLogText = await databaseStore.fetchLog(databaseEntry);
+      console.log('fetchedLogText', fetchedLogText && fetchedLogText.slice(0, 1000));
+
+    } catch (err) {
+      console.error(err);
+    }
+
+    // await new Promise((resolve) => setTimeout(resolve, 300));
+    this.isPretendLoading.set(false);
+  }
 }
 /** export singleton */
 export default new AppStore();

@@ -13,15 +13,16 @@ function DatabasePage(props) {
     // no need to fetch if we have the data already or if app is not ready
     if (databaseStore.isReady || appStore.isLoading) return;
 
-    databaseStore.fetch();
+    databaseStore.fetchSharedLogs();
   });
 
   return (
     <div
       elementname='app-page-database'
-      className='fontsize-4 flex-col'>
+      className='fontsize-4 flex-col aitems-center'>
 
       <DatabaseListDisplay
+        onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
         list={databaseStore.databaseList}
         className='' />
 

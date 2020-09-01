@@ -8,6 +8,7 @@ function DatabaseListDisplay(props) {
   const {
     className,
     list,
+    onClickView,
   } = props;
 
   return (
@@ -17,6 +18,7 @@ function DatabaseListDisplay(props) {
 
       { list.map((rowData, idx) => (
         <DatabaseRow
+          onClickView={onClickView}
           key={`database-list-row-${idx}-key`}
           data={rowData} />
       ))}
@@ -34,11 +36,16 @@ function DatabaseListDisplay(props) {
 function DatabaseRow(props) {
   const {
     data,
+    onClickView,
   } = props;
 
   return (
     <div className='bor-1-second-darker borradius-2 bg-second pad-1 flex-row adjacent-mar-t-1'>
-      <button className='pad-2 pad-h-4 borradius-2 bg-second hover:bg-second-lighter adjacent-mar-l-4'>View</button>
+      <button
+        onClick={() => onClickView(data)}
+        className='pad-2 pad-h-4 borradius-2 bg-second hover:bg-second-lighter adjacent-mar-l-4'>
+        View
+      </button>
       <RowDisplay
         data={data}
         className='adjacent-mar-l-4'/>
