@@ -15,6 +15,7 @@ function DatabaseListDisplay(props) {
     list,
     hasEditOptions,
     onClickView,
+    onClickStatusToggle,
     className,
   } = props;
 
@@ -27,6 +28,7 @@ function DatabaseListDisplay(props) {
         <DatabaseRow
           hasEditOptions={hasEditOptions}
           onClickView={onClickView}
+          onClickStatusToggle={onClickStatusToggle}
           key={`database-list-row-${idx}-key`}
           data={rowData} />
       ))}
@@ -45,6 +47,7 @@ function DatabaseRow(props) {
   const {
     data,
     onClickView,
+    onClickStatusToggle,
     hasEditOptions,
   } = props;
 
@@ -60,7 +63,7 @@ function DatabaseRow(props) {
       { hasEditOptions &&
         <div className='flex-row adjacent-mar-l-4'>
           <RowButton
-            onClick={() => {}}
+            onClick={() => onClickStatusToggle(data)}
             className='color-gray fontsize-3 pad-v-3 pad-h-4 flex-row-center adjacent-mar-l-4'>
             { isActive &&
               <ActiveSVG

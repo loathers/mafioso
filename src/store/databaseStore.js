@@ -6,6 +6,7 @@ const SERVER_HOST = process.env['REACT_APP_SERVER_HOST'];
 const SHARE_ENDPOINT = `${SERVER_HOST}/api/share`;
 const FETCH_LOGS_ENDPOINT = `${SERVER_HOST}/api/logs`;
 const GET_LOG_ENDPOINT = `${SERVER_HOST}/api/log`;
+const UPDATE_LOG_ENDPOINT = `${SERVER_HOST}/api/update`;
 /**
  * state and handler of the log data
  */
@@ -110,6 +111,34 @@ class AppStore {
     fetchRequest.finally(() => this.isFetching.set(false));
 
     return fetchRequest;
+  }
+  /**
+   * @async
+   * @param {Object} logData
+   */
+  onUpdateLog(logData) {
+    this.isFetching.set(true);
+
+    const request = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.addEventListener('loadend', () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200 || xhr.status === 0) {
+            resolve();
+          } else {
+            reject(`${xhr.statusText}: ${xhr.responseText}`);
+          }
+        }
+      });
+
+      const paramString = formatUrlParams({status: logData.status});
+      xhr.open('POST', `${UPDATE_LOG_ENDPOINT}/${logData.logHash}/${paramString}`);
+      xhr.send();
+    });
+
+    request.finally(() => this.isFetching.set(false));
+
+    return request;
   }
   // -- list
   /**

@@ -2,7 +2,7 @@ import React from 'react';
 import {observer} from 'mobx-react';
 
 import appStore from 'store/appStore';
-import databaseStore from 'store/databaseStore';
+// import databaseStore from 'store/databaseStore';
 
 import Button from 'components/Button';
 import SelectOptionsComponent from 'components/SelectOptionsComponent';

@@ -24,6 +24,12 @@ function DatabasePage(props) {
     }
   });
 
+  const onClickStatusToggle = (databaseEntry) => {
+    const isActive = databaseEntry.status === DATABASE_ENTRY_STATUS.ACTIVE;
+    databaseEntry.status = isActive ? DATABASE_ENTRY_STATUS.INACTIVE : DATABASE_ENTRY_STATUS.ACTIVE;
+    databaseStore.onUpdateLog(databaseEntry);
+  }
+
   return (
     <div
       elementname='app-page-database'
@@ -35,6 +41,7 @@ function DatabasePage(props) {
       <DatabaseListDisplay
         hasEditOptions={appStore.isDevEnv}
         onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
+        onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
         list={databaseStore.databaseList}
         className='' />
 
