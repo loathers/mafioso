@@ -47,15 +47,21 @@ function _UpperNavbar(props) {
     pageName,
   } = props;
 
+  const showDescription = logStore.hasParsedEntries && logStore.isAscensionLog;
+
   return (
     <div className={combineClassnames('flex-row aitems-center', className)}>
-      <LogoComponent className='adjacent-mar-l-6' />
+      <LogoComponent className='flex-none adjacent-mar-l-6' />
 
-      { logStore.hasParsedEntries && logStore.isAscensionLog &&
-        <LogOwnerDescription className='flex-none adjacent-mar-l-6' />
+      { showDescription &&
+        <LogOwnerDescription className='overflow-hidden whitespace-nowrap flex-auto adjacent-mar-l-6' />
       }
 
-      <div className='jcontent-end flex-auto flex-row adjacent-mar-l-6'>
+      { !showDescription &&
+        <div className='flex-auto adjacent-mar-l-6' />
+      }
+
+      <div className='jcontent-end aself-end flex-none flex-row adjacent-mar-l-6'>
         <LogUploader
           children={'Upload Log'}
           className='fontsize-4 adjacent-mar-l-3' />
@@ -117,13 +123,17 @@ function _LogOwnerDescription(props) {
   const {className} = props;
 
   return (
-    <div className={combineClassnames('fontsize-3 overflow-hidden flex-row', className)}>
-      <span className='adjacent-mar-l-2'>starring</span>
-      <span className='f-bold adjacent-mar-l-2'>{logStore.characterName}</span>
-      <span className='adjacent-mar-l-2'>{`the ${logStore.className}`}</span>
-      <span className='adjacent-mar-l-2'>in</span>
-      <span className='f-bold adjacent-mar-l-2'>{`${logStore.difficultyName} ${logStore.pathName}`}</span>
-      <span className='f-italic f-thin adjacent-mar-l-2'>{`"${generateTagline()}"`}</span>
+    <div className={combineClassnames('fontsize-3 flexwrap-yes overflow-hidden flex-col', className)}>
+      <div className='flex-row'>
+        <span className='adjacent-mar-l-2'>starring</span>
+        <span className='f-bold adjacent-mar-l-2'>{logStore.characterName}</span>
+        <span className='adjacent-mar-l-2'>{`the ${logStore.className}`}</span>
+      </div>
+      <div className='flex-row'>
+        <span className='adjacent-mar-l-2'>in</span>
+        <span className='f-bold adjacent-mar-l-2'>{`${logStore.difficultyName} ${logStore.pathName}`}</span>
+        <span className='f-italic f-thin adjacent-mar-l-2'>{`"${generateTagline()}"`}</span>
+      </div>
     </div>
   )
 });
