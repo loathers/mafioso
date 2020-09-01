@@ -14,6 +14,8 @@ class AppStore {
   constructor() {
     /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
+    /** @type {String} */
+    this.role = process.env['REACT_APP_ROLE'];
 
     /** @type {Observable<Array<Text>>} */
     this.databaseList = observable([]);
@@ -131,7 +133,7 @@ class AppStore {
         }
       });
 
-      const paramString = formatUrlParams({status: logData.status});
+      const paramString = formatUrlParams({status: logData.status, role: this.role});
       xhr.open('POST', `${UPDATE_LOG_ENDPOINT}/${logData.logHash}/${paramString}`);
       xhr.send();
     });
