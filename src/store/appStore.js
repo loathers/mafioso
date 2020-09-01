@@ -119,7 +119,7 @@ class AppStore {
 
     try {
       const fetchedLogText = await databaseStore.fetchLog(databaseEntry);
-      console.log('fetchedLogText', fetchedLogText && fetchedLogText.slice(0, 1000));
+      logStore.importLog(fetchedLogText);
 
     } catch (err) {
       console.error(err);

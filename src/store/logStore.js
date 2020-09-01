@@ -279,6 +279,25 @@ class LogStore {
     return this.ascensionAttributes;
   }
   /**
+   * directly giving a full log
+   * @param {String} logText
+   */
+  async importLog(logText) {
+    this.isParsing.set(true);
+
+    try {
+      this.reset();
+
+      await this.prepareLog(logText);
+
+      this.parse();
+
+    } catch (e) {
+      console.error(e);
+      this.isParsing.set(false);
+    }
+  }
+  /**
    * @param {FileList} files
    */
   async handleUpload(files) {
@@ -304,23 +323,9 @@ class LogStore {
         return;
       }
 
-      // try to find out if there is a full ascension log,
-      //  otherwise just use the first text we have
+      // combine all the text from the files and clean it up
       const allText = this.srcRawTexts.join('\n\n');
-      const fullAscensionText = logParserUtils.findAscensionLog(allText);
-      if (fullAscensionText !== null) {
-        this.isAscensionLog = true;
-        this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
-        this.setAscensionAttributes();
-        console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'font-size: 14px');
-
-      } else {
-        this.rawText = await logParserUtils.cleanRawLog(allText);
-        console.warn('No Ascension specific log was found.');
-      }
-
-      // clean up once more...
-      this.rawText = await logParserUtils.postParseCleanup(this.rawText);
+      await this.prepareLog(allText);
 
       // raw data gotten, now parse it to create individual entries
       this.parse();
@@ -329,6 +334,30 @@ class LogStore {
       console.error(e);
       this.isParsing.set(false);
     }
+  }
+  /**
+   * the full log is cleaned and all we need to do is clean it
+   *  and glean any ascension attributes before parsing it
+   * @param {String} logText
+   */
+  async prepareLog(logText) {
+    // try to find out if there is a full ascension log,
+    //  otherwise just use the first text we have
+    const fullAscensionText = logParserUtils.findAscensionLog(logText);
+    if (fullAscensionText !== null) {
+      this.isAscensionLog = true;
+      this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
+      this.setAscensionAttributes();
+      console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'font-size: 14px');
+
+    } else {
+      this.rawText = await logParserUtils.cleanRawLog(logText);
+      console.warn('No Ascension specific log was found.');
+    }
+
+    // clean up once more...
+    this.rawText = await logParserUtils.postParseCleanup(this.rawText);
+    return this.rawText;
   }
   /**
    * handle cleaning up and setting all the data
