@@ -173,8 +173,15 @@ class LogStore {
   }
   /** @type {Number} */
   get turnCount() {
-    const lastEntry = this.allEntries[this.allEntries.length - 1];
-    return lastEntry.turnNum;
+    if (!this.isAscensionLog) return 0;
+
+    const checkEntries = this.allEntries.slice();
+    let poppedEntry = checkEntries.pop();
+    while (typeof poppedEntry.turnNum !== 'number' && checkEntries.length > 0) {
+      poppedEntry = checkEntries.pop();
+    }
+
+    return poppedEntry.turnNum;
   }
   /** @type {Number} */
   get ascensionNum() {
