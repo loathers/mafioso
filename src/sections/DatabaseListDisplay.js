@@ -7,8 +7,6 @@ import {ReactComponent as OpenSVG} from 'images/archive.svg';
 import {ReactComponent as ActiveSVG} from 'images/eye.svg';
 import {ReactComponent as InactiveSVG} from 'images/eye-off.svg';
 
-import Button from 'components/Button';
-
 import combineClassnames from 'utilities/combineClassnames';
 
 export default observer(
@@ -53,36 +51,27 @@ function DatabaseRow(props) {
   const isActive = data.status === DATABASE_ENTRY_STATUS.ACTIVE;
 
   return (
-    <div className='bor-1-second-darker borradius-2 bg-second pad-1 pad-h-4 flex-row aitems-center jcontent-start adjacent-mar-t-1'>
-
-      <RowButton
-        onClick={() => onClickView(data)}
-        className='color-gray fontsize-3 pad-v-3 pad-h-4 flex-row-center adjacent-mar-l-4'>
-        <OpenSVG
-          className='flex-none adjacent-mar-l-4'
-          style={{width: 15, height: 15, opacity: 0.7}} />
-        <span className='adjacent-mar-l-4'>View</span>
-      </RowButton>
-
+    <div className='borradius-2 flex-row aitems-center jcontent-start adjacent-mar-t-1'>
       <RowDisplay
+        onClick={() => onClickView(data)}
         data={data}
-        className='adjacent-mar-l-4'/>
+        className='bg-second pad-3 adjacent-mar-l-4'/>
 
       { hasEditOptions &&
-        <div className='flex-row'>
+        <div className='flex-row adjacent-mar-l-4'>
           <RowButton
             onClick={() => {}}
             className='color-gray fontsize-3 pad-v-3 pad-h-4 flex-row-center adjacent-mar-l-4'>
             { isActive &&
               <ActiveSVG
                 className='flex-none adjacent-mar-l-4'
-                style={{width: 15, height: 15}} />
+                style={{width: 14, height: 14}} />
             }
 
             { !isActive &&
               <InactiveSVG
                 className='flex-none adjacent-mar-l-4'
-                style={{width: 15, height: 15}} />
+                style={{width: 14, height: 14}} />
             }
           </RowButton>
         </div>
@@ -94,18 +83,25 @@ function DatabaseRow(props) {
 function RowButton(props) {
   const {
     className,
+    disabled,
     ...otherProps
   } = props;
 
+  const borderClassName = disabled ? 'bor-2-second-darkest' : 'bor-2-second-darker';
+  const colorClassName = disabled ? 'color-grayer' : 'color-white';
+  const pointerClassName = disabled ? '' : 'cursor-pointer';
+
   return (
-    <Button
+    <button
       {...otherProps}
-      className={combineClassnames('pad-2 pad-h-4', className)} />
+      disabled={disabled}
+      className={combineClassnames('borradius-2 bg-second hover:bg-second-lighter', borderClassName, colorClassName, pointerClassName, className)} />
   )
 }
 /** @returns {ReactComponent} */
 function RowDisplay(props) {
   const {
+    onClick,
     className,
     data: {
       characterName,
@@ -117,12 +113,18 @@ function RowDisplay(props) {
   } = props;
 
   return (
-    <div className={combineClassnames('borradius-2 bg-second hover:bg-second-lighter pad-2 flex-row flex-auto adjacent-mar-t-1', className)}>
+    <RowButton
+      onClick={onClick}
+      className={combineClassnames('borradius-2 bg-second hover:bg-second-lighter pad-2 flex-row flex-auto adjacent-mar-t-1', className)}>
+      <OpenSVG
+        className='flex-none mar-r-3 adjacent-mar-l-2'
+        style={{width: 14, height: 14, opacity: 0.7}} />
+
       <span className='f-bold adjacent-mar-l-2'>{characterName}</span>
       <span className='adjacent-mar-l-2'>in</span>
       <span className='f-bold adjacent-mar-l-2'>{`${difficultyName} ${pathName}`}</span>
 
       <span className='color-gray flex-auto talign-right adjacent-mar-l-2'>{`(${dayCount} days / ${turnCount} turns)`}</span>
-    </div>
+    </RowButton>
   )
 }
