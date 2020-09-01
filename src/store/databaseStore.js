@@ -1,9 +1,11 @@
 import {observable} from 'mobx';
 
+// import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
+
 const SERVER_HOST = process.env['REACT_APP_SERVER_HOST'];
 const SHARE_ENDPOINT = `${SERVER_HOST}/api/share`;
-const ACTIVE_LOGS_ENDPOINT = `${SERVER_HOST}/api/active-logs`;
-const LOG_ENDPOINT = `${SERVER_HOST}/api/log`;
+const FETCH_LOGS_ENDPOINT = `${SERVER_HOST}/api/logs`;
+const GET_LOG_ENDPOINT = `${SERVER_HOST}/api/log`;
 /**
  * state and handler of the log data
  */
@@ -28,8 +30,10 @@ class AppStore {
   /**
    * gets all logs that are enabled to be visible
    * @async
+   * @param {Object} [params]
+   * @property {String} [params.status]
    */
-  fetchActiveLogs() {
+  fetchLogList(params = {}) {
     this.isFetching.set(true);
 
     const fetchRequest = new Promise((resolve, reject) => {
@@ -41,7 +45,8 @@ class AppStore {
         resolve(JSON.parse(rawResponse));
       });
 
-      xhr.open('GET', ACTIVE_LOGS_ENDPOINT);
+      const paramString = formatUrlParams(params);
+      xhr.open('GET', `${FETCH_LOGS_ENDPOINT}/${paramString}`);
       xhr.send();
     });
 
@@ -69,7 +74,7 @@ class AppStore {
         resolve(rawResponse);
       });
 
-      xhr.open('GET', `${LOG_ENDPOINT}/${databaseEntry.logHash}`);
+      xhr.open('GET', `${GET_LOG_ENDPOINT}/${databaseEntry.logHash}`);
       xhr.send();
     });
 
@@ -117,6 +122,18 @@ class AppStore {
       return !optionKeys.some((optionName) => databaseEntry[optionName] !== options[optionName])
     });
   }
+}
+/**
+ * @param {Object} params
+ * @returns {String}
+ */
+function formatUrlParams(params){
+  return "?" +
+    Object.keys(params)
+      .map(function(key){
+        return key+"="+encodeURIComponent(params[key])
+      })
+      .join("&")
 }
 /** export singleton */
 export default new AppStore();

@@ -1,6 +1,8 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
+import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
+
 import appStore from 'store/appStore';
 import databaseStore from 'store/databaseStore';
 
@@ -14,7 +16,12 @@ function DatabasePage(props) {
     // no need to fetch if we have the data already or if app is not ready
     if (databaseStore.isReady || appStore.isLoading) return;
 
-    databaseStore.fetchActiveLogs();
+    if (appStore.isDevEnv) {
+      databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.ANY});
+
+    } else {
+      databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.ACTIVE});
+    }
   });
 
   return (
@@ -26,6 +33,7 @@ function DatabasePage(props) {
         className='flex-auto' />
 
       <DatabaseListDisplay
+        hasEditOptions={appStore.isDevEnv}
         onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
         list={databaseStore.databaseList}
         className='' />
