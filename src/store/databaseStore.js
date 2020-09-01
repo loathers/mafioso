@@ -80,9 +80,9 @@ class AppStore {
   /**
    * requests an entry
    * @async
-   * @param {String} logText
+   * @param {Object} payload
    */
-  shareLog(logText) {
+  shareLog(payload) {
     this.isFetching.set(true);
 
     const fetchRequest = new Promise((resolve, reject) => {
@@ -98,7 +98,7 @@ class AppStore {
       }
 
       xhr.open('POST', SHARE_ENDPOINT);
-      xhr.send(logText);
+      xhr.send(JSON.stringify(payload));
     });
 
     fetchRequest.finally(() => this.isFetching.set(false));

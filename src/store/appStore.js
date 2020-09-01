@@ -110,7 +110,7 @@ class AppStore {
     this.isPretendLoading.set(true);
 
     try {
-      await databaseStore.shareLog(logStore.createLogFile());
+      await databaseStore.shareLog(logStore.createLogPayload());
 
     } catch (err) {
       this.isPretendLoading.set(false);

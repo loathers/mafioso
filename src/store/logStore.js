@@ -652,8 +652,8 @@ class LogStore {
     logStoreHelper.downloadFullLog();
   }
   /** @alias */
-  createLogFile() {
-    return logStoreHelper.createLogFile();
+  createLogPayload() {
+    return logStoreHelper.createLogPayload();
   }
 }
 

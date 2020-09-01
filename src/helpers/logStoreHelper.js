@@ -5,7 +5,7 @@ import Entry from 'classes/Entry';
 
 import logStore from 'store/logStore';
 
-import download, {createBlob} from 'utilities/download';
+import download from 'utilities/download';
 
 /**
  * look at each entry and their neighbor in front and see if
@@ -250,18 +250,18 @@ export function downloadFullLog() {
   download(logStore.export(), fileName, 'text/plain');
 }
 /**
- * @returns {Blob}
+ * @returns {Object}
  */
-export function createLogFile() {
+export function createLogPayload() {
   if (!logStore.isAscensionLog || logStore.logHash === undefined) return;
 
-  const preambleData =
-    `NAME=${logStore.characterName}\n` +
-    `DIFFICULTY=${logStore.difficultyName}\n` +
-    `PATH=${logStore.pathName}\n` +
-    `DAYS=${logStore.dayCount}\n` +
-    `TURNS=${logStore.turnCount}\n` +
-    `HASH=${logStore.logHash}`
-  ;
-  return createBlob(`${preambleData}\n${logStore.export()}`, 'text/plain');
+  return {
+    logHash: logStore.logHash,
+    characterName: logStore.characterName,
+    difficultyName: logStore.difficultyName,
+    pathName: logStore.pathName,
+    dayCount: logStore.dayCount,
+    turnCount: logStore.turnCount,
+    logText: logStore.export(),
+  }
 }
