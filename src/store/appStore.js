@@ -24,6 +24,8 @@ class AppStore {
 
     /** @type {Observable<Boolean>} */
     this.isDevMode = observable.box(false);
+    /** @type {String} */
+    this.appRole = process.env['REACT_APP_ROLE'];
 
     this.initializeListeners();
   }

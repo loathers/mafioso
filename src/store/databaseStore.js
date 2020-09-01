@@ -34,7 +34,7 @@ class AppStore {
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.addEventListener('load', (evt) => {
+      xhr.addEventListener('loadend', () => {
         const rawResponse = xhr.responseText;
         if (!rawResponse) return reject('Server did not send any data.');
 
@@ -47,7 +47,7 @@ class AppStore {
 
     // if successful, update cached list
     fetchRequest
-      .then((list) => this.databaseList.replace(list))
+      .then((list) => list ? this.databaseList.replace(list) : [])
       .finally(() => this.isFetching.set(false)); // update state regardless of result
 
     return fetchRequest;
@@ -62,7 +62,7 @@ class AppStore {
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.addEventListener('load', (evt) => {
+      xhr.addEventListener('loadend', (evt) => {
         const rawResponse = xhr.responseText;
         if (!rawResponse) return reject('Server did not send any data.');
 
@@ -87,7 +87,8 @@ class AppStore {
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = () => {
+      // xhr.onreadystatechange = () => this.onRequestEnd(xhr, resolve, reject);
+      xhr.addEventListener('loadend', () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200 || xhr.status === 0) {
             resolve();
@@ -95,7 +96,7 @@ class AppStore {
             reject(`${xhr.statusText}: ${xhr.responseText}`);
           }
         }
-      }
+      });
 
       xhr.open('POST', SHARE_ENDPOINT);
       xhr.send(JSON.stringify(payload));
