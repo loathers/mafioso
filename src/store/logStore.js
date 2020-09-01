@@ -28,8 +28,6 @@ class LogStore {
     /** @type {String} */
     this.rawText = undefined;
 
-    /** @type {Boolean} */
-    this.isAscensionLog = false;
     /** @type {AscensionAttributes} */
     this.ascensionAttributes = {
       /** @type {String} */
@@ -134,6 +132,12 @@ class LogStore {
     return true;
   }
   // -- log data
+  /** @type {Boolean} */
+  get isAscensionLog() {
+    return this.dayCount >= 1
+      && this.difficultyName !== undefined
+      && this.pathName !== undefined;
+  }
   /** @type {Boolean} */
   get hasRawText() {
     return this.rawText !== undefined;
@@ -246,7 +250,6 @@ class LogStore {
     this.allEntries.clear();
     this.validEntries.clear();
 
-    this.isAscensionLog = false;
     this.ascensionAttributes = {
       characterName: undefined,
       className: undefined,
@@ -272,10 +275,6 @@ class LogStore {
    * @returns {AscensionAttributes}
    */
   setAscensionAttributes() {
-    if (!this.isAscensionLog) {
-      console.warn('We are parsing for Ascension but it is not determined to be an ascension log');
-    }
-
     if (this.hasRawText) {
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
@@ -352,7 +351,6 @@ class LogStore {
     //  otherwise just use the first text we have
     const fullAscensionText = logParserUtils.findAscensionLog(logText);
     if (fullAscensionText !== null) {
-      this.isAscensionLog = true;
       this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
       this.setAscensionAttributes();
       console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'font-size: 14px');

@@ -63,7 +63,7 @@ function LogVisualizerPage(props) {
       <PageControlMenu />
 
       <div elementname='app-content' className='flex-col-center flex-auto'>
-        { logStore.isAscensionLog &&
+        { logStore.difficultyName && logStore.pathName &&
           <EntryHeaderDisplay
             topContent={logStore.difficultyName}
             bottomContent={logStore.pathName}

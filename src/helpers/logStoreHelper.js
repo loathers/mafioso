@@ -63,10 +63,6 @@ export function combineEntries(entriesList) {
  * @returns {Array<Entry>}
  */
 export function createEstimatedEntries(allEntries) {
-  if (!logStore.isAscensionLog) {
-    return allEntries;
-  }
-
   // all data that is being tracked
   const estimates = {
     dateList: [], // kol dates
