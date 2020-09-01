@@ -1,6 +1,9 @@
 import {observable} from 'mobx';
 
 const SERVER_HOST = process.env['REACT_APP_SERVER_HOST'];
+const SHARE_ENDPOINT = `${SERVER_HOST}/api/share`;
+const ACTIVE_LOGS_ENDPOINT = `${SERVER_HOST}/api/active-logs`;
+const LOG_ENDPOINT = `${SERVER_HOST}/api/log`;
 /**
  * state and handler of the log data
  */
@@ -21,47 +24,41 @@ class AppStore {
   get isReady() {
     return !this.isLoading && this.databaseList.length > 0;
   }
-  // -- connection
+  // -- db
   /**
-   *
-   */
-  async fetchSharedLogs() {
-    this.isFetching.set(true);
-
-    try {
-      const listResult = await this.handleFetchSharedLogs();
-      this.databaseList.replace(listResult);
-    } catch (err) {
-      console.error(err);
-    }
-
-    this.isFetching.set(false); // update state regardless of result
-  }
-  /**
-   * requests database list
+   * gets all logs that are enabled to be visible
    * @async
    */
-  handleFetchSharedLogs() {
-    return new Promise((resolve, reject) => {
+  fetchActiveLogs() {
+    this.isFetching.set(true);
+
+    const fetchRequest = new Promise((resolve, reject) => {
       const oReq = new XMLHttpRequest();
       oReq.addEventListener('error', (evt) => reject(evt));
       oReq.addEventListener('load', (evt) => {
         const rawResponse = oReq.responseText;
         if (!rawResponse) return reject('Server did not send any data.');
 
-        const databaseList = JSON.parse(rawResponse);
-        resolve(databaseList);
+        resolve(JSON.parse(rawResponse));
       });
 
-      oReq.open('GET', `${SERVER_HOST}/api/getSharedLogs`);
+      oReq.open('GET', ACTIVE_LOGS_ENDPOINT);
       oReq.send();
     });
+
+    // if successful, update cached list
+    fetchRequest
+      .then((list) => this.databaseList.replace(list))
+      .finally(() => this.isFetching.set(false)); // update state regardless of result
+
+    return fetchRequest;
   }
   /**
    * requests an entry
+   * @async
    * @param {DatabaseEntry} databaseEntry
    */
-  async fetchLog(databaseEntry) {
+  fetchLog(databaseEntry) {
     this.isFetching.set(true);
 
     const fetchRequest = new Promise((resolve, reject) => {
@@ -74,14 +71,29 @@ class AppStore {
         resolve(rawResponse);
       });
 
-      oReq.open('GET', `${SERVER_HOST}/api/getLog/${databaseEntry.logHash}`);
+      oReq.open('GET', `${LOG_ENDPOINT}/${databaseEntry.logHash}`);
       oReq.send();
     });
 
-    // update state regardless of result
-    fetchRequest.finally(() => {
-      this.isFetching.set(false);
-    })
+    fetchRequest.finally(() => this.isFetching.set(false));
+
+    return fetchRequest;
+  }
+  /**
+   * requests an entry
+   * @async
+   * @param {String} logText
+   */
+  shareLog(logText) {
+    this.isFetching.set(true);
+
+    const fetchRequest = new Promise((resolve) => {
+      const oReq = new XMLHttpRequest();
+      oReq.open('POST', SHARE_ENDPOINT);
+      oReq.send(logText);
+    });
+
+    fetchRequest.finally(() => this.isFetching.set(false));
 
     return fetchRequest;
   }

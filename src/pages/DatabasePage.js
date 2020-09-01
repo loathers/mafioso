@@ -13,7 +13,7 @@ function DatabasePage(props) {
     // no need to fetch if we have the data already or if app is not ready
     if (databaseStore.isReady || appStore.isLoading) return;
 
-    databaseStore.fetchSharedLogs();
+    databaseStore.fetchActiveLogs();
   });
 
   return (

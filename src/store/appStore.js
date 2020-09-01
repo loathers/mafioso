@@ -85,13 +85,20 @@ class AppStore {
     }
   }
   // --
-  /** @alias */
+  /**
+   * largely a wrapper for the actual download in logStore
+   */
   async downloadFullLog() {
     this.isPretendLoading.set(true);
-
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    logStore.downloadFullLog();
+    try {
+      logStore.downloadFullLog();
+
+    } catch (err) {
+      this.isPretendLoading.set(false);
+      console.error(err);
+    }
 
     this.isPretendLoading.set(false);
   }
@@ -103,10 +110,13 @@ class AppStore {
 
     this.isPretendLoading.set(true);
 
-    const oReq = new XMLHttpRequest();
-    const url = 'http://localhost:8080/api/upload';
-    oReq.open('POST', url);
-    oReq.send(logStore.createLogFile());
+    try {
+      await databaseStore.shareLog(logStore.createLogFile());
+
+    } catch (err) {
+      this.isPretendLoading.set(false);
+      console.error(err);
+    }
 
     await new Promise((resolve) => setTimeout(resolve, 300));
     this.isPretendLoading.set(false);
@@ -122,10 +132,10 @@ class AppStore {
       logStore.importLog(fetchedLogText);
 
     } catch (err) {
+      this.isPretendLoading.set(false);
       console.error(err);
     }
 
-    // await new Promise((resolve) => setTimeout(resolve, 300));
     this.isPretendLoading.set(false);
   }
 }
