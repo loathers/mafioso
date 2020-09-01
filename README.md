@@ -36,7 +36,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Many of the App Icons were gotten from [Game-icons.net](https://game-icons.net/).
 
-Some from [Simple Icons](https://github.com/simple-icons/simple-icons), thanks open source!
+Some from [Feather Icons](https://feathericons.com/), thanks open source!
 
 ## Contributing
 Please feel free to fork or contribute pull requests.
