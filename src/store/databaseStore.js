@@ -33,17 +33,16 @@ class AppStore {
     this.isFetching.set(true);
 
     const fetchRequest = new Promise((resolve, reject) => {
-      const oReq = new XMLHttpRequest();
-      oReq.addEventListener('error', (evt) => reject(evt));
-      oReq.addEventListener('load', (evt) => {
-        const rawResponse = oReq.responseText;
+      const xhr = new XMLHttpRequest();
+      xhr.addEventListener('load', (evt) => {
+        const rawResponse = xhr.responseText;
         if (!rawResponse) return reject('Server did not send any data.');
 
         resolve(JSON.parse(rawResponse));
       });
 
-      oReq.open('GET', ACTIVE_LOGS_ENDPOINT);
-      oReq.send();
+      xhr.open('GET', ACTIVE_LOGS_ENDPOINT);
+      xhr.send();
     });
 
     // if successful, update cached list
@@ -62,17 +61,16 @@ class AppStore {
     this.isFetching.set(true);
 
     const fetchRequest = new Promise((resolve, reject) => {
-      const oReq = new XMLHttpRequest();
-      oReq.addEventListener('error', (evt) => reject(evt));
-      oReq.addEventListener('load', (evt) => {
-        const rawResponse = oReq.responseText;
+      const xhr = new XMLHttpRequest();
+      xhr.addEventListener('load', (evt) => {
+        const rawResponse = xhr.responseText;
         if (!rawResponse) return reject('Server did not send any data.');
 
         resolve(rawResponse);
       });
 
-      oReq.open('GET', `${LOG_ENDPOINT}/${databaseEntry.logHash}`);
-      oReq.send();
+      xhr.open('GET', `${LOG_ENDPOINT}/${databaseEntry.logHash}`);
+      xhr.send();
     });
 
     fetchRequest.finally(() => this.isFetching.set(false));
@@ -87,10 +85,20 @@ class AppStore {
   shareLog(logText) {
     this.isFetching.set(true);
 
-    const fetchRequest = new Promise((resolve) => {
-      const oReq = new XMLHttpRequest();
-      oReq.open('POST', SHARE_ENDPOINT);
-      oReq.send(logText);
+    const fetchRequest = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200 || xhr.status === 0) {
+            resolve();
+          } else {
+            reject(`${xhr.statusText}: ${xhr.responseText}`);
+          }
+        }
+      }
+
+      xhr.open('POST', SHARE_ENDPOINT);
+      xhr.send(logText);
     });
 
     fetchRequest.finally(() => this.isFetching.set(false));

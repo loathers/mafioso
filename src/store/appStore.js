@@ -97,7 +97,6 @@ class AppStore {
 
     } catch (err) {
       this.isPretendLoading.set(false);
-      console.error(err);
     }
 
     this.isPretendLoading.set(false);
@@ -115,7 +114,6 @@ class AppStore {
 
     } catch (err) {
       this.isPretendLoading.set(false);
-      console.error(err);
     }
 
     await new Promise((resolve) => setTimeout(resolve, 300));
@@ -133,7 +131,6 @@ class AppStore {
 
     } catch (err) {
       this.isPretendLoading.set(false);
-      console.error(err);
     }
 
     this.isPretendLoading.set(false);
