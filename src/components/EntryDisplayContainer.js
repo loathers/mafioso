@@ -286,7 +286,6 @@ function EntryHeaderContainer(props) {
         { entry.hasFamiliarUsed &&
           <div className='flex-row flex-none adjacent-mar-t-1'>
             <FamiliarSVG
-              entry={entry}
               className='flex-none adjacent-mar-l-2'
               style={{width: 12, height: 12, opacity: 0.7}} />
             <div className='fontsize-2 color-gray flex-none adjacent-mar-l-2'>{entry.familiarUsed}</div>

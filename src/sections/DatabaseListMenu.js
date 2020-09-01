@@ -31,7 +31,6 @@ const DIFFICULTY_FILTERS = [
     checked: false,
   },
 ]
-
 /**
  * @param {Object} props
  * @returns {React.Component}
