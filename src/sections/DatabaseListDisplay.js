@@ -1,7 +1,11 @@
 import React from 'react';
 import {observer} from 'mobx-react';
 
-import {ReactComponent as OpenSVG} from 'images/scroll-unfurled.svg';
+import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
+
+import {ReactComponent as OpenSVG} from 'images/archive.svg';
+import {ReactComponent as ActiveSVG} from 'images/eye.svg';
+import {ReactComponent as InactiveSVG} from 'images/eye-off.svg';
 
 import Button from 'components/Button';
 
@@ -46,16 +50,18 @@ function DatabaseRow(props) {
     hasEditOptions,
   } = props;
 
+  const isActive = data.status === DATABASE_ENTRY_STATUS.ACTIVE;
+
   return (
     <div className='bor-1-second-darker borradius-2 bg-second pad-1 pad-h-4 flex-row aitems-center jcontent-start adjacent-mar-t-1'>
-      <OpenSVG
-        className='flex-none adjacent-mar-l-4'
-        style={{width: 15, height: 15, opacity: 0.7}} />
 
       <RowButton
         onClick={() => onClickView(data)}
         className='color-gray fontsize-3 pad-v-3 pad-h-4 flex-row-center adjacent-mar-l-4'>
-        <span className='adjacent-mar-l-2'>View</span>
+        <OpenSVG
+          className='flex-none adjacent-mar-l-4'
+          style={{width: 15, height: 15, opacity: 0.7}} />
+        <span className='adjacent-mar-l-4'>View</span>
       </RowButton>
 
       <RowDisplay
@@ -64,6 +70,21 @@ function DatabaseRow(props) {
 
       { hasEditOptions &&
         <div className='flex-row'>
+          <RowButton
+            onClick={() => {}}
+            className='color-gray fontsize-3 pad-v-3 pad-h-4 flex-row-center adjacent-mar-l-4'>
+            { isActive &&
+              <ActiveSVG
+                className='flex-none adjacent-mar-l-4'
+                style={{width: 15, height: 15}} />
+            }
+
+            { !isActive &&
+              <InactiveSVG
+                className='flex-none adjacent-mar-l-4'
+                style={{width: 15, height: 15}} />
+            }
+          </RowButton>
         </div>
       }
     </div>
