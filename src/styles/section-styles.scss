@@ -12,7 +12,8 @@
 }
 
 [elementname='app-content'],
-[elementname='chart-container'] {
+[elementname='chart-container'],
+[elementname='app-section-database-list'] {
   flex: auto;
   padding-left: $APP_MARGIN;
   // padding-right: $APP_MARGIN;

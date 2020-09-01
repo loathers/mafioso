@@ -5,6 +5,7 @@ import appStore from 'store/appStore';
 import databaseStore from 'store/databaseStore';
 
 import DatabaseListDisplay from 'sections/DatabaseListDisplay';
+import DatabaseListMenu from 'sections/DatabaseListMenu';
 
 export default observer(
 function DatabasePage(props) {
@@ -20,6 +21,9 @@ function DatabasePage(props) {
     <div
       elementname='app-page-database'
       className='fontsize-4 flex-col aitems-center'>
+
+      <DatabaseListMenu
+        className='flex-auto' />
 
       <DatabaseListDisplay
         onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
