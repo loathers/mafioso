@@ -77,7 +77,7 @@ class AppStore {
         resolve(rawResponse);
       });
 
-      xhr.open('GET', `${GET_LOG_ENDPOINT}/${databaseEntry.logHash}`);
+      xhr.open('GET', `${GET_LOG_ENDPOINT}/${databaseEntry.hashcode}`);
       xhr.send();
     });
 
@@ -134,7 +134,7 @@ class AppStore {
       });
 
       const paramString = formatUrlParams({status: logData.status, role: this.role});
-      xhr.open('POST', `${UPDATE_LOG_ENDPOINT}/${logData.logHash}/${paramString}`);
+      xhr.open('POST', `${UPDATE_LOG_ENDPOINT}/${logData.hashcode}/${paramString}`);
       xhr.send();
     });
 

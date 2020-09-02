@@ -263,10 +263,10 @@ export function downloadFullLog() {
  * @returns {Object}
  */
 export function createLogPayload() {
-  if (!logStore.isAscensionLog || logStore.logHash === undefined) return;
+  if (!logStore.isAscensionLog || logStore.hashcode === undefined) return;
 
   return {
-    logHash: String(logStore.logHash),
+    hashcode: String(logStore.hashcode),
     characterName: logStore.characterName,
     difficultyName: logStore.difficultyName,
     pathName: logStore.pathName,

@@ -129,7 +129,7 @@ class LogStore {
     return this.ascensionAttributes;
   }
   /** @type {String} */
-  get logHash() {
+  get hashcode() {
     if (this.sessionDate === undefined) return undefined;
 
     return encode(this.fileName);
