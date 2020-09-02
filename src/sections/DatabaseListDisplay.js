@@ -6,6 +6,7 @@ import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
 import {ReactComponent as OpenSVG} from 'images/archive.svg';
 import {ReactComponent as ActiveSVG} from 'images/eye.svg';
 import {ReactComponent as InactiveSVG} from 'images/eye-off.svg';
+import {ReactComponent as DeleteSVG} from 'images/trash-can.svg';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -16,6 +17,7 @@ function DatabaseListDisplay(props) {
     hasEditOptions,
     onClickView,
     onClickStatusToggle,
+    onClickDelete,
     className,
   } = props;
 
@@ -29,6 +31,7 @@ function DatabaseListDisplay(props) {
           hasEditOptions={hasEditOptions}
           onClickView={onClickView}
           onClickStatusToggle={onClickStatusToggle}
+          onClickDelete={onClickDelete}
           key={`database-list-row-${idx}-key`}
           data={rowData} />
       ))}
@@ -48,6 +51,7 @@ function DatabaseRow(props) {
     data,
     onClickView,
     onClickStatusToggle,
+    onClickDelete,
     hasEditOptions,
   } = props;
 
@@ -76,6 +80,14 @@ function DatabaseRow(props) {
                 className='flex-none adjacent-mar-l-4'
                 style={{width: 14, height: 14}} />
             }
+          </RowButton>
+
+          <RowButton
+            onClick={() => onClickDelete(data)}
+            className='color-gray fontsize-3 pad-v-3 pad-h-4 flex-row-center adjacent-mar-l-4'>
+            <DeleteSVG
+              className='flex-none adjacent-mar-l-4'
+              style={{width: 14, height: 14, opacity: 0.7}} />
           </RowButton>
         </div>
       }

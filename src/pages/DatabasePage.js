@@ -30,6 +30,11 @@ function DatabasePage(props) {
     databaseStore.onUpdateLog(databaseEntry);
   }
 
+  const onClickDelete = (databaseEntry) => {
+    databaseEntry.status = DATABASE_ENTRY_STATUS.DISABLED;
+    databaseStore.onUpdateLog(databaseEntry);
+  }
+
   return (
     <div
       elementname='app-page-database'
@@ -43,6 +48,7 @@ function DatabasePage(props) {
           hasEditOptions={appStore.isDevEnv}
           onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
           onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
+          onClickDelete={(databaseEntry) => onClickDelete(databaseEntry)}
           currentList={databaseStore.currentList}
           className='' />
       }
