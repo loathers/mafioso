@@ -38,12 +38,20 @@ function DatabasePage(props) {
       <DatabaseListMenu
         className='flex-auto' />
 
-      <DatabaseListDisplay
-        hasEditOptions={appStore.isDevEnv}
-        onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
-        onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
-        list={databaseStore.currentList}
-        className='' />
+      { databaseStore.hasData &&
+        <DatabaseListDisplay
+          hasEditOptions={appStore.isDevEnv}
+          onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
+          onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
+          currentList={databaseStore.currentList}
+          className='' />
+      }
+
+      { !databaseStore.hasData &&
+        <div className='flex-row-center fontsize-6 color-white flex-auto'>
+          Database unavailable
+        </div>
+      }
 
     </div>
   )

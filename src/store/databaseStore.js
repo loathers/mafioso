@@ -38,6 +38,10 @@ class AppStore {
   get isReady() {
     return !this.isLoading && this.databaseList.length > 0;
   }
+  /** @type {Boolean} */
+  get hasData() {
+    return this.databaseList.length > 0;
+  }
   // -- db
   /**
    *

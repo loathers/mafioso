@@ -12,7 +12,7 @@ import combineClassnames from 'utilities/combineClassnames';
 export default observer(
 function DatabaseListDisplay(props) {
   const {
-    list,
+    currentList,
     hasEditOptions,
     onClickView,
     onClickStatusToggle,
@@ -24,7 +24,7 @@ function DatabaseListDisplay(props) {
       elementname='app-section-database-list'
       className={combineClassnames('fontsize-4 flex-col', className)}>
 
-      { list.map((rowData, idx) => (
+      { currentList.map((rowData, idx) => (
         <DatabaseRow
           hasEditOptions={hasEditOptions}
           onClickView={onClickView}
@@ -33,9 +33,9 @@ function DatabaseListDisplay(props) {
           data={rowData} />
       ))}
 
-      { list.length <= 0 &&
+      { currentList.length <= 0 &&
         <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
-          Database unavailable
+          Couldn't find anything with these filters.
         </div>
       }
 

@@ -67,7 +67,7 @@ function LogVisualizerMenu(props) {
 
         <Button
           disabled={!databaseStore.isReady}
-          onClick={() => updateSelectedPath('none')}
+          onClick={() => updateSelectedPath('None')}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
           Clear
         </Button>
