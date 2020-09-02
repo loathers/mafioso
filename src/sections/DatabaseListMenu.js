@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {observer} from 'mobx-react';
 
 import {DIFFICULTY_FILTERS, PATH_FILTERS} from 'constants/DATABASE_FILTERS';
@@ -7,6 +7,7 @@ import {DIFFICULTY_FILTERS, PATH_FILTERS} from 'constants/DATABASE_FILTERS';
 import databaseStore from 'store/databaseStore';
 
 import Button from 'components/Button';
+import FiltersMenu from 'sections/FiltersMenu';
 import SelectOptionsComponent from 'components/SelectOptionsComponent';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -22,7 +23,8 @@ function LogVisualizerMenu(props) {
     style,
   } = props;
 
-  const [selectedDifficulty, updateSelectedDifficulty] = React.useState();
+  const [selectedDifficulty, updateSelectedDifficulty] = useState();
+  const [selectedPath, updateSelectedPath] = useState();
 
   return (
     <div
@@ -30,12 +32,20 @@ function LogVisualizerMenu(props) {
       style={style}
       className={combineClassnames('flex-col', className)}>
 
+      <FiltersMenu
+        label='Difficulty'
+        disabled={!databaseStore.isReady}
+        defaultList={DIFFICULTY_FILTERS}
+        onChange={updateSelectedDifficulty}
+        inputType='radio'
+        className='adjacent-mar-t-5'/>
+
       {/* filter by attribute */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <SelectOptionsComponent
-          label='Filters'
-          onChange={(evt) => updateSelectedDifficulty(evt.target.value)}
-          selected={selectedDifficulty}
+          label='Path'
+          onChange={(evt) => updateSelectedPath(evt.target.value)}
+          selected={selectedPath}
           list={PATH_FILTERS}
           size={10}
           disabled={!databaseStore.isReady}
@@ -44,7 +54,7 @@ function LogVisualizerMenu(props) {
 
         <Button
           disabled={!databaseStore.isReady}
-          onClick={() => updateSelectedDifficulty('none')}
+          onClick={() => updateSelectedPath('none')}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
           Clear
         </Button>

@@ -15,8 +15,9 @@ function FiltersMenu(props) {
     label,
     inputType = 'checkbox',
     defaultList,
-    className,
+    disabled,
     onChange = () => {},
+    className,
   } = props;
 
   const [filterList, updateList] = React.useState(defaultList);
@@ -59,7 +60,7 @@ function FiltersMenu(props) {
       <div className='flex-col adjacent-mar-t-3'>
         { filterList.map((filterOption, idx) => (
           <FilterInput
-            appDisabled={!appStore.isReady}
+            appDisabled={disabled}
             forceEnabled={forceEnabled}
             onChange={() => toggledChecked(idx)}
             optionData={filterOption}
@@ -73,19 +74,22 @@ function FiltersMenu(props) {
       <div className='flex-row fontsize-1 flex-none adjacent-mar-t-3'>
         { inputType !== 'radio' &&
           <React.Fragment>
-          <button
-            onClick={onClickSelectAll}
-            className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
-            All
-          </button>
-          <div className='flex-none adjacent-mar-l-2'>/</div>
+            <button
+              onClick={onClickSelectAll}
+              className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
+              All
+            </button>
+
+            <div className='flex-none adjacent-mar-l-2'>/</div>
+
+            <button
+              onClick={onClickSelectNone}
+              className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
+              None
+            </button>
           </React.Fragment>
         }
-        <button
-          onClick={onClickSelectNone}
-          className='cursor-pointer pad-h-1 flex-none adjacent-mar-l-2'>
-          None
-        </button>
+
       </div>
     </div>
   )

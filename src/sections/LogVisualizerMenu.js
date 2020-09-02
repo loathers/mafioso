@@ -67,6 +67,7 @@ function LogVisualizerMenu(props) {
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <FiltersMenu
           label='Visible Categories'
+          disabled={!appStore.isReady}
           defaultList={categoriesVisibleList}
           onChange={onChangeVisibleEntries}
           inputType='checkbox'

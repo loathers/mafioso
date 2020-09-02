@@ -1,22 +1,26 @@
 export const DIFFICULTY_FILTERS = [
   {
     label: 'None',
-    isHidden: true,
-    checked: false,
+    isHidden: false,
+    isDisabled: false,
+    checked: true,
   },
   {
     label: 'Hardcore',
     isHidden: false,
+    isDisabled: false,
     checked: false,
   },
   {
     label: 'Normal',
     isHidden: false,
+    isDisabled: false,
     checked: false,
   },
   {
     label: 'Casual',
     isHidden: false,
+    isDisabled: false,
     checked: false,
   },
 ];
