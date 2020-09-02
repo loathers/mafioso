@@ -32,6 +32,7 @@ function LogVisualizerMenu(props) {
       style={style}
       className={combineClassnames('flex-col', className)}>
 
+      {/* filter by Difficulty */}
       <FiltersMenu
         label='Difficulty'
         disabled={!databaseStore.isReady}
@@ -40,7 +41,7 @@ function LogVisualizerMenu(props) {
         inputType='radio'
         className='adjacent-mar-t-5'/>
 
-      {/* filter by attribute */}
+      {/* filter by Path */}
       <div className='flex-col flex-none adjacent-mar-t-5'>
         <SelectOptionsComponent
           label='Path'
