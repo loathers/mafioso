@@ -105,12 +105,22 @@ class AppStore {
    * uploads the current log to server
    */
   async onShareLog() {
-    if (!this.isReady || !logStore.isAscensionLog) return;
+    if (!this.isReady || !logStore.isAscensionLog || !logStore.hasHashcode) return;
 
     this.isPretendLoading.set(true);
 
     try {
-      await databaseStore.shareLog(logStore.createLogPayload());
+      const payload = {
+        hashcode: logStore.hashcode,
+        characterName: logStore.characterName,
+        difficultyName: logStore.difficultyName,
+        pathName: logStore.pathName,
+        dayCount: logStore.dayCount,
+        turnCount: logStore.turnCount,
+        logText: logStore.export(),
+      }
+
+      await databaseStore.shareLog(payload);
 
     } catch (err) {
       this.isPretendLoading.set(false);

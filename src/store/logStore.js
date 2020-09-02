@@ -4,7 +4,6 @@ import {encode} from 'base-64';
 import Batcher from 'classes/Batcher';
 
 import {FILTER_DELAY, PAGINATE_DELAY} from 'constants/DEFAULTS';
-import REGEX from 'constants/REGEXES';
 import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/filterList';
 
 import * as logStoreHelper from 'helpers/logStoreHelper';
@@ -133,6 +132,10 @@ class LogStore {
     if (this.sessionDate === undefined) return undefined;
 
     return encode(this.fileName);
+  }
+  /** @type {Boolean} */
+  get hasHashcode() {
+    return this.hashcode !== undefined;
   }
   /** @type {Boolean} */
   get hasFiles() {
@@ -663,10 +666,6 @@ class LogStore {
   /** @alias */
   downloadFullLog() {
     logStoreHelper.downloadFullLog();
-  }
-  /** @alias */
-  createLogPayload() {
-    return logStoreHelper.createLogPayload();
   }
 }
 

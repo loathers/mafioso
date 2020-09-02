@@ -259,19 +259,3 @@ export function downloadFullLog() {
   if (!logStore.isReady) return;
   download(logStore.export(), logStore.fileName, 'text/plain');
 }
-/**
- * @returns {Object}
- */
-export function createLogPayload() {
-  if (!logStore.isAscensionLog || logStore.hashcode === undefined) return;
-
-  return {
-    hashcode: String(logStore.hashcode),
-    characterName: logStore.characterName,
-    difficultyName: logStore.difficultyName,
-    pathName: logStore.pathName,
-    dayCount: logStore.dayCount,
-    turnCount: logStore.turnCount,
-    logText: logStore.export(),
-  }
-}
