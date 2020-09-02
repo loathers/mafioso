@@ -27,6 +27,8 @@ class LogStore {
     this.srcRawTexts = [];
     /** @type {String} */
     this.rawText = undefined;
+    /** @type {String} */
+    this.sessionDate = undefined;
 
     /** @type {AscensionAttributes} */
     this.ascensionAttributes = {
@@ -86,10 +88,48 @@ class LogStore {
     this.isLazyLoading = observable.box(false);
   }
   /**
-   * @returns {String}
+   * clear stored data
    */
-  export() {
-    return this.allEntries.map((entry) => entry.export()).join('\n\n');
+  reset() {
+    this.srcFiles = [];
+    this.srcRawTexts = [];
+    this.allEntries.clear();
+    this.validEntries.clear();
+    this.sessionDate = undefined;
+
+    this.ascensionAttributes = {
+      characterName: undefined,
+      className: undefined,
+      ascensionNum: undefined,
+      difficultyName: undefined,
+      pathName: undefined,
+      dateList: [],
+    };
+
+    this.displayOptions = observable({
+      dayNumFilter: 'all',
+      pageNum: 0,
+      entriesPerPage: 100,
+      categoriesVisible: this.displayOptions.categoriesVisible.slice(),
+      filteredAttributes: this.displayOptions.filteredAttributes.slice(),
+    });
+
+    //
+    chartStore.allEntries = [];
+  }
+  /**
+   * find attributes that are specifically related to a full ascension log
+   * @returns {AscensionAttributes}
+   */
+  setAscensionAttributes() {
+    if (this.hasRawText) {
+      this.ascensionAttributes = {
+        ...this.ascensionAttributes,
+        ...logParserUtils.parseAscensionAttributes(this.rawText),
+      };
+    }
+
+    return this.ascensionAttributes;
   }
   /** @type {String} */
   get logHash() {
@@ -132,6 +172,14 @@ class LogStore {
     return true;
   }
   // -- log data
+  /** @type {String} */
+  get fileName() {
+    return `${this.characterName}-${this.pathLabel}-${this.sessionDate}`;
+  }
+  /** @type {String} */
+  get pathLabel() {
+    return logParserUtils.createPathLabel(this.rawText);
+  }
   /** @type {Boolean} */
   get isAscensionLog() {
     return this.dayCount >= 1
@@ -199,10 +247,6 @@ class LogStore {
   get pathName() {
     return this.ascensionAttributes.pathName;
   }
-  /** @type {String} */
-  get pathLabel() {
-    return logParserUtils.createPathLabel(this.rawText);
-  }
   /** @type {Boolean} */
   get hasAscensionNum() {
     return this.ascensionNum !== undefined;
@@ -242,68 +286,6 @@ class LogStore {
   }
   // -- uploading
   /**
-   * clear stored data
-   */
-  reset() {
-    this.srcFiles = [];
-    this.srcRawTexts = [];
-    this.allEntries.clear();
-    this.validEntries.clear();
-
-    this.ascensionAttributes = {
-      characterName: undefined,
-      className: undefined,
-      ascensionNum: undefined,
-      difficultyName: undefined,
-      pathName: undefined,
-      dateList: [],
-    };
-
-    this.displayOptions = observable({
-      dayNumFilter: 'all',
-      pageNum: 0,
-      entriesPerPage: 100,
-      categoriesVisible: this.displayOptions.categoriesVisible.slice(),
-      filteredAttributes: this.displayOptions.filteredAttributes.slice(),
-    });
-
-    //
-    chartStore.allEntries = [];
-  }
-  /**
-   * find attributes that are specifically related to a full ascension log
-   * @returns {AscensionAttributes}
-   */
-  setAscensionAttributes() {
-    if (this.hasRawText) {
-      this.ascensionAttributes = {
-        ...this.ascensionAttributes,
-        ...logParserUtils.parseAscensionAttributes(this.rawText),
-      };
-    }
-
-    return this.ascensionAttributes;
-  }
-  /**
-   * directly giving a full log
-   * @param {String} logText
-   */
-  async importLog(logText) {
-    this.isParsing.set(true);
-
-    try {
-      this.reset();
-
-      await this.prepareLog(logText);
-
-      this.parse();
-
-    } catch (e) {
-      console.error(e);
-      this.isParsing.set(false);
-    }
-  }
-  /**
    * @param {FileList} files
    */
   async handleUpload(files) {
@@ -333,7 +315,30 @@ class LogStore {
       const allText = this.srcRawTexts.join('\n\n');
       await this.prepareLog(allText);
 
+      //
+      this.sessionDate = fileParserUtils.getDateFromSessionFile(sortedFiles[0]);
+      console.log('this.sessionDate', this.sessionDate);
+
       // raw data gotten, now parse it to create individual entries
+      this.parse();
+
+    } catch (e) {
+      console.error(e);
+      this.isParsing.set(false);
+    }
+  }
+  /**
+   * directly giving a full log
+   * @param {String} logText
+   */
+  async importLog(logText) {
+    this.isParsing.set(true);
+
+    try {
+      this.reset();
+
+      await this.prepareLog(logText);
+
       this.parse();
 
     } catch (e) {
@@ -399,43 +404,6 @@ class LogStore {
       console.error(e);
       throw e;
     }
-  }
-  /**
-   * starting from allEntries[startIdx],
-   *  looks for the next entry that matches given `attributesFilter`
-   *
-   * @param {Number} startIdx
-   * @param {Object} [attributesFilter]
-   * @returns {Entry}
-   */
-  findNextEntry(startIdx, attributesFilter) {
-    if (this.allEntries.length <= 0) {
-      return undefined;
-    }
-
-    // not a valid index
-    if (!this.allEntries[startIdx]) {
-      return undefined;
-    }
-
-    // there is nothing next
-    if (startIdx + 1 > this.allEntries.length - 1) {
-      return undefined;
-    }
-
-    // no attributesFilter is simple
-    if (attributesFilter === undefined) {
-      return this.allEntries[startIdx + 1];
-    }
-
-    const checkEntries = this.allEntries.slice(startIdx + 1, this.allEntries.length);
-    return checkEntries.find((entry) => {
-      const checkAttributeNames = Object.keys(attributesFilter);
-      return !checkAttributeNames.some((attributeName) => {
-        const entryAttributeValue = entry.findAttribute(attributeName);
-        return entryAttributeValue !== attributesFilter[attributeName];
-      })
-    })
   }
   // -- fetch functions
   /**
@@ -630,11 +598,54 @@ class LogStore {
   }
   // -- misc utility
   /**
+   * @returns {String}
+   */
+  export() {
+    return this.allEntries.map((entry) => entry.export()).join('\n\n');
+  }
+  /**
    * @param {Matcher} matcher
    * @return {String|null}
    */
   findMatcher(matcher) {
     return regexUtils.findMatcher(this.rawText, matcher);
+  }
+  /**
+   * starting from allEntries[startIdx],
+   *  looks for the next entry that matches given `attributesFilter`
+   *
+   * @param {Number} startIdx
+   * @param {Object} [attributesFilter]
+   * @returns {Entry}
+   */
+  findNextEntry(startIdx, attributesFilter) {
+    if (this.allEntries.length <= 0) {
+      return undefined;
+    }
+
+    // not a valid index
+    if (!this.allEntries[startIdx]) {
+      return undefined;
+    }
+
+    // there is nothing next
+    if (startIdx + 1 > this.allEntries.length - 1) {
+      return undefined;
+    }
+
+    // no attributesFilter is simple
+    if (attributesFilter === undefined) {
+      return this.allEntries[startIdx + 1];
+    }
+
+    const checkEntries = this.allEntries.slice(startIdx + 1, this.allEntries.length);
+    return checkEntries.find((entry) => {
+      const checkAttributeNames = Object.keys(attributesFilter);
+      return !checkAttributeNames.some((attributeName) => {
+        const entryAttributeValue = entry.findAttribute(attributeName);
+        return entryAttributeValue !== attributesFilter[attributeName];
+      })
+    })
   }
   /**
    * @param {Number} dayNum

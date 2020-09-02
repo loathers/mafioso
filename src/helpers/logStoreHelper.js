@@ -252,7 +252,7 @@ export function createLogPayload() {
   if (!logStore.isAscensionLog || logStore.logHash === undefined) return;
 
   return {
-    logHash: logStore.logHash,
+    logHash: String(logStore.logHash),
     characterName: logStore.characterName,
     difficultyName: logStore.difficultyName,
     pathName: logStore.pathName,
