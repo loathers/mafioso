@@ -24,9 +24,9 @@ class AppStore {
     /** @type {Object} */
     this.filterOptions = {
       /** @type {String} */
-      difficulty: 'None',
+      difficultyName: 'None',
       /** @type {String} */
-      path: 'None',
+      pathName: 'None',
     }
   }
   // -- state
@@ -174,7 +174,14 @@ class AppStore {
   filterList(options = {}) {
     const optionKeys = Object.keys(options);
     return this.databaseList.filter((databaseEntry) => {
-      return !optionKeys.some((optionName) => databaseEntry[optionName] !== options[optionName])
+      return !optionKeys.some((optionName) => {
+        // "None" means not using filter
+        if (options[optionName] === 'None') {
+          return false;
+        };
+
+        return databaseEntry[optionName] !== options[optionName];
+      })
     });
   }
   /**

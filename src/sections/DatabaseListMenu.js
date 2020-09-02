@@ -24,18 +24,20 @@ function LogVisualizerMenu(props) {
   } = props;
 
   const [menuOptions, updateMenuOptions] = useState({
-    difficulty: 'None',
-    path: 'None',
+    difficultyName: 'None',
+    pathName: 'None',
   });
 
   const updateSelectedDifficulty = (newDifficulty) => {
-    updateMenuOptions({...menuOptions, difficulty: newDifficulty});
-    databaseStore.applyFilter(menuOptions);
+    const newOptions = {...menuOptions, difficultyName: newDifficulty};
+    updateMenuOptions(newOptions);
+    databaseStore.applyFilter(newOptions);
   };
 
   const updateSelectedPath = (newPath) => {
-    updateMenuOptions({...menuOptions, path: newPath});
-    databaseStore.applyFilter(menuOptions);
+    const newOptions = {...menuOptions, pathName: newPath};
+    updateMenuOptions(newOptions);
+    databaseStore.applyFilter(newOptions);
   };
 
   return (
@@ -58,7 +60,7 @@ function LogVisualizerMenu(props) {
         <SelectOptionsComponent
           label='Path'
           onChange={(evt) => updateSelectedPath(evt.target.value)}
-          selected={menuOptions.path}
+          selected={menuOptions.pathName}
           list={PATH_FILTERS}
           size={10}
           disabled={!databaseStore.isReady}
