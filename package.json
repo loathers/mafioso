@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.2",
+    "base-64": "^0.1.0",
     "chart.js": "^2.9.3",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",

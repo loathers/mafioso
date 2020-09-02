@@ -257,13 +257,6 @@ export function getSessionDateString() {
  */
 export function downloadFullLog() {
   if (!logStore.isReady) return;
-
-  // if not an ascension log, download with generic name
-  if (!logStore.isAscensionLog) {
-    download(logStore.export(), 'mafioso_log', 'text/plain');
-    return;
-  }
-
   download(logStore.export(), logStore.fileName, 'text/plain');
 }
 /**

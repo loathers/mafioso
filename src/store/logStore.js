@@ -1,4 +1,5 @@
 import {observable} from 'mobx';
+import {encode} from 'base-64';
 
 import Batcher from 'classes/Batcher';
 
@@ -13,7 +14,6 @@ import chartStore from 'store/chartStore';
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import * as regexUtils from 'utilities/regexUtils';
-import {hashCode} from 'utilities/hashUtils';
 
 /**
  * state and handler of the log data
@@ -130,19 +130,9 @@ class LogStore {
   }
   /** @type {String} */
   get logHash() {
-    if (this.ascensionAttributes.dateList.length <= 0) {
-      return undefined;
-    }
+    if (this.sessionDate === undefined) return undefined;
 
-    const date = this.findMatcher(REGEX.SNAPSHOT.REAL_DATE);
-    if (date === null) {
-      console.error('Unable to create hash because there is no date in this log.');
-      return undefined;
-    }
-
-    const sessionDate = Date.parse(date);
-    const hashText = `${this.characterName}${sessionDate}${this.difficultyName}${this.pathName}`;
-    return hashCode(hashText);
+    return encode(this.fileName);
   }
   /** @type {Boolean} */
   get hasFiles() {
@@ -171,7 +161,17 @@ class LogStore {
   // -- log data
   /** @type {String} */
   get fileName() {
-    return `${this.characterName.replace(' ', '_')}-${this.pathLabel}-${this.sessionDate}`;
+    const characterLabel = this.characterName.replace(' ', '_');
+
+    if (this.isAscensionLog) {
+      return `${characterLabel}-${this.pathLabel}-${this.sessionDate}-mafioso.txt`;
+    }
+
+    if (this.sessionDate === undefined) {
+      return `${characterLabel}-mafioso.txt`
+    }
+
+    return `${characterLabel}-${this.sessionDate}-mafioso.txt`
   }
   /** @type {String} */
   get sessionDate() {
