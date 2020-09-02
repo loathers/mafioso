@@ -24,13 +24,13 @@ function LogVisualizerMenu(props) {
   } = props;
 
   const [menuOptions, updateMenuOptions] = useState({
-    difficultyName: 'None',
-    pathName: 'None',
+    difficultyName: 'Any',
+    pathName: 'Any',
   });
 
   const onChangeDifficultyList = (newList) => {
     const selectedOption = newList.find((option) => option.checked);
-    const newDifficulty = (selectedOption && selectedOption.label) || 'None';
+    const newDifficulty = (selectedOption && selectedOption.label) || 'Any';
     const newOptions = {...menuOptions, difficultyName: newDifficulty};
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
@@ -71,7 +71,7 @@ function LogVisualizerMenu(props) {
 
         <Button
           disabled={!databaseStore.isReady}
-          onClick={() => updateSelectedPath('None')}
+          onClick={() => updateSelectedPath('Any')}
           className='borradius-1 fontsize-3 pad-3 adjacent-mar-t-2'>
           Clear
         </Button>

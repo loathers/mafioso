@@ -1,6 +1,6 @@
 export const DIFFICULTY_FILTERS = [
   {
-    label: 'None',
+    label: 'Any',
     isHidden: false,
     isDisabled: false,
     checked: true,
@@ -27,7 +27,7 @@ export const DIFFICULTY_FILTERS = [
 
 export const PATH_FILTERS = [
   {
-    label: 'None',
+    label: 'Any',
     isHidden: true,
     checked: false,
   },
