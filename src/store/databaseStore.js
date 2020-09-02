@@ -7,6 +7,7 @@ const SHARE_ENDPOINT = `${SERVER_HOST}/api/share`;
 const FETCH_LOGS_ENDPOINT = `${SERVER_HOST}/api/logs`;
 const GET_LOG_ENDPOINT = `${SERVER_HOST}/api/log`;
 const UPDATE_LOG_ENDPOINT = `${SERVER_HOST}/api/update`;
+
 /**
  * state and handler of the log data
  */
@@ -15,7 +16,7 @@ class AppStore {
     /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
     /** @type {String} */
-    this.role = process.env['REACT_APP_ROLE'];
+    this.role = process.env['REACT_APP_ROLE'] || (window.mafioso && window.mafioso.role);
 
     /** @type {Observable<Array<Text>>} */
     this.databaseList = observable([]);
