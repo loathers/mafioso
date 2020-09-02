@@ -28,6 +28,13 @@ class AppStore {
       /** @type {String} */
       pathName: 'Any',
     }
+    /** @type {Object} */
+    this.sortOptions = {
+      /** @type {String} */
+      daySort: 'ASC',
+      /** @type {String} */
+      turnSort: 'ASC',
+    }
   }
   // -- state
   /** @type {Boolean} */
@@ -169,36 +176,74 @@ class AppStore {
   }
   // -- list
   /**
-   * @param {Object} [options]
+   * @param {Object} [filterOptions]
    * @returns {Array<DatabaseEntry>}
    */
-  async filterList(options = {}) {
+  async filterList(filterOptions = {}) {
     this.isFetching.set(true);
 
-    const filterOptions = {
+    const fullOptions = {
       ...this.filterOptions,
-      ...options,
+      ...filterOptions,
     };
 
-    const optionKeys = Object.keys(filterOptions);
+    const optionKeys = Object.keys(fullOptions);
     const filteredList = this.databaseList.filter((databaseEntry) => {
       return !optionKeys.some((optionName) => {
-        if (filterOptions[optionName] === 'Any') {
+        if (fullOptions[optionName] === 'Any') {
           return false;
         };
 
-        return databaseEntry[optionName] !== filterOptions[optionName];
+        return databaseEntry[optionName] !== fullOptions[optionName];
       })
     });
+
+    // after filtering, sort
+    const sortedList = this.sortList(filteredList);
 
     // delay
     await new Promise((resolve) => setTimeout(resolve, 100));
     this.isFetching.set(false);
 
     // done, update options and current list
-    this.filterOptions = filterOptions;
-    this.currentList.replace(filteredList);
-    return filteredList;
+    this.filterOptions = fullOptions;
+    this.currentList.replace(sortedList);
+    return sortedList;
+  }
+  /**
+   * (does not alter currentList)
+   * @param {Array} list
+   * @param {Object} [options]
+   * @returns {Array<DatabaseEntry>}
+   */
+  sortList(list, options = {}) {
+    const {
+      daySort = this.sortOptions.daySort,
+      turnSort = this.sortOptions.turnSort,
+    } = options;
+
+    const sortedList = list.sort((entryA, entryB) => {
+      const isSameDay = entryA.dayCount === entryB.dayCount;
+      if (!isSameDay) {
+        if (daySort === 'DESC') {
+          return entryA.dayCount < entryB.dayCount ? 1 : -1;
+        } else if (daySort === 'ASC') {
+          return entryA.dayCount > entryB.dayCount ? 1 : -1;
+        }
+      } else {
+        if (turnSort === 'DESC') {
+          return entryA.turnCount < entryB.turnCount ? 1 : -1;
+        } else if (turnSort === 'ASC') {
+          return entryA.turnCount > entryB.turnCount ? 1 : -1;
+        }
+      }
+
+      return 0;
+    });
+
+    // done, update options
+    this.sortOptions = {daySort, turnSort};
+    return sortedList;
   }
 }
 /**
