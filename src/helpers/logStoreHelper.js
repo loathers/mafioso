@@ -5,6 +5,7 @@ import Entry from 'classes/Entry';
 
 import logStore from 'store/logStore';
 
+import * as fileParserUtils from 'utilities/fileParserUtils';
 import download from 'utilities/download';
 
 /**
@@ -229,6 +230,27 @@ function handleForcedAdventure(currEntry, idx) {
 
   return currEntry;
 }
+/**
+ * @returns {String}
+ */
+export function getSessionDateString() {
+  if (!logStore.isReady) return;
+
+  const firstFile = logStore.srcFiles[0];
+  const fileSessionDate = fileParserUtils.getDateFromSessionFile(firstFile);
+  if (fileSessionDate) {
+    return fileParserUtils.convertDateToString(fileSessionDate);
+  }
+
+  const realDateText = logStore.findMatcher(REGEX.SNAPSHOT.REAL_DATE);
+  if (realDateText) {
+    const realDate = new Date(realDateText);
+    return fileParserUtils.convertDateToString(realDate);
+  }
+
+  return undefined;
+}
+
 // -- utility
 /**
  * downloads the current ascension log to user
@@ -242,8 +264,7 @@ export function downloadFullLog() {
     return;
   }
 
-  const fileName = `${logStore.characterName}#${logStore.ascensionNum}-${logStore.pathLabel}`;
-  download(logStore.export(), fileName, 'text/plain');
+  download(logStore.export(), logStore.fileName, 'text/plain');
 }
 /**
  * @returns {Object}

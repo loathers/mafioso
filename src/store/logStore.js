@@ -27,8 +27,6 @@ class LogStore {
     this.srcRawTexts = [];
     /** @type {String} */
     this.rawText = undefined;
-    /** @type {String} */
-    this.sessionDate = undefined;
 
     /** @type {AscensionAttributes} */
     this.ascensionAttributes = {
@@ -95,7 +93,6 @@ class LogStore {
     this.srcRawTexts = [];
     this.allEntries.clear();
     this.validEntries.clear();
-    this.sessionDate = undefined;
 
     this.ascensionAttributes = {
       characterName: undefined,
@@ -174,7 +171,11 @@ class LogStore {
   // -- log data
   /** @type {String} */
   get fileName() {
-    return `${this.characterName}-${this.pathLabel}-${this.sessionDate}`;
+    return `${this.characterName.replace(' ', '_')}-${this.pathLabel}-${this.sessionDate}`;
+  }
+  /** @type {String} */
+  get sessionDate() {
+    return logStoreHelper.getSessionDateString();
   }
   /** @type {String} */
   get pathLabel() {
@@ -314,10 +315,6 @@ class LogStore {
       // combine all the text from the files and clean it up
       const allText = this.srcRawTexts.join('\n\n');
       await this.prepareLog(allText);
-
-      //
-      this.sessionDate = fileParserUtils.getDateFromSessionFile(sortedFiles[0]);
-      console.log('this.sessionDate', this.sessionDate);
 
       // raw data gotten, now parse it to create individual entries
       this.parse();
