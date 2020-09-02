@@ -79,6 +79,7 @@ class AppStore {
       .then((list) => {
         this.databaseList.replace(list);
         this.currentList.replace(list);
+        this.filterList();
       })
       .finally(() => this.isFetching.set(false)); // update state regardless of result
 
@@ -171,31 +172,34 @@ class AppStore {
    * @param {Object} [options]
    * @returns {Array<DatabaseEntry>}
    */
-  filterList(options = {}) {
-    const optionKeys = Object.keys(options);
-    return this.databaseList.filter((databaseEntry) => {
-      return !optionKeys.some((optionName) => {
-        // "None" means not using filter
-        if (options[optionName] === 'None') {
-          return false;
-        };
+  async filterList(options = {}) {
+    this.isFetching.set(true);
 
-        return databaseEntry[optionName] !== options[optionName];
-      })
-    });
-  }
-  /**
-   * @param {Object} [options]
-   * @returns {Array<DatabaseEntry>}
-   */
-  applyFilter(options = {}) {
-    this.filterOptions = {
+    const filterOptions = {
       ...this.filterOptions,
       ...options,
     };
 
-    const filteredList = this.filterList(this.filterOptions);
+    const optionKeys = Object.keys(filterOptions);
+    const filteredList = this.databaseList.filter((databaseEntry) => {
+      return !optionKeys.some((optionName) => {
+        // "None" means not using filter
+        if (filterOptions[optionName] === 'None') {
+          return false;
+        };
+
+        return databaseEntry[optionName] !== filterOptions[optionName];
+      })
+    });
+
+    // delay
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    this.isFetching.set(false);
+
+    // done, update options and current list
+    this.filterOptions = filterOptions;
     this.currentList.replace(filteredList);
+    return filteredList;
   }
 }
 /**

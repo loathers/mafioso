@@ -31,13 +31,13 @@ function LogVisualizerMenu(props) {
   const updateSelectedDifficulty = (newDifficulty) => {
     const newOptions = {...menuOptions, difficultyName: newDifficulty};
     updateMenuOptions(newOptions);
-    databaseStore.applyFilter(newOptions);
+    databaseStore.filterList(newOptions);
   };
 
   const updateSelectedPath = (newPath) => {
     const newOptions = {...menuOptions, pathName: newPath};
     updateMenuOptions(newOptions);
-    databaseStore.applyFilter(newOptions);
+    databaseStore.filterList(newOptions);
   };
 
   return (
