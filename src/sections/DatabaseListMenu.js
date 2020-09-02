@@ -28,11 +28,13 @@ function LogVisualizerMenu(props) {
     pathName: 'None',
   });
 
-  const updateSelectedDifficulty = (newDifficulty) => {
+  const onChangeDifficultyList = (newList) => {
+    const selectedOption = newList.find((option) => option.checked);
+    const newDifficulty = (selectedOption && selectedOption.label) || 'None';
     const newOptions = {...menuOptions, difficultyName: newDifficulty};
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
-  };
+  }
 
   const updateSelectedPath = (newPath) => {
     const newOptions = {...menuOptions, pathName: newPath};
@@ -51,7 +53,7 @@ function LogVisualizerMenu(props) {
         label='Difficulty'
         disabled={!databaseStore.isReady}
         defaultList={DIFFICULTY_FILTERS}
-        onChange={updateSelectedDifficulty}
+        onChange={onChangeDifficultyList}
         inputType='radio'
         className='adjacent-mar-t-5'/>
 

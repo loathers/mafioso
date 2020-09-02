@@ -12,7 +12,7 @@ export const DIFFICULTY_FILTERS = [
     checked: false,
   },
   {
-    label: 'Normal',
+    label: 'Softcore',
     isHidden: false,
     isDisabled: false,
     checked: false,
