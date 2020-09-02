@@ -250,7 +250,6 @@ export function getSessionDateString() {
 
   return undefined;
 }
-
 // -- utility
 /**
  * downloads the current ascension log to user
