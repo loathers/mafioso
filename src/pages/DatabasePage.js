@@ -42,7 +42,7 @@ function DatabasePage(props) {
         hasEditOptions={appStore.isDevEnv}
         onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
         onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
-        list={databaseStore.databaseList}
+        list={databaseStore.currentList}
         className='' />
 
     </div>

@@ -19,6 +19,15 @@ class AppStore {
 
     /** @type {Observable<Array<Text>>} */
     this.databaseList = observable([]);
+    /** @type {Observable<Array<Text>>} */
+    this.currentList = observable([]);
+    /** @type {Object} */
+    this.filterOptions = {
+      /** @type {String} */
+      difficulty: 'None',
+      /** @type {String} */
+      path: 'None',
+    }
   }
   // -- state
   /** @type {Boolean} */
@@ -31,6 +40,13 @@ class AppStore {
   }
   // -- db
   /**
+   *
+   */
+  reset() {
+    this.databaseList.replace([]);
+    this.currentList.replace([]);
+  }
+  /**
    * gets all logs that are enabled to be visible
    * @async
    * @param {Object} [params]
@@ -38,6 +54,7 @@ class AppStore {
    */
   fetchLogList(params = {}) {
     this.isFetching.set(true);
+    this.reset();
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -55,7 +72,10 @@ class AppStore {
 
     // if successful, update cached list
     fetchRequest
-      .then((list) => list ? this.databaseList.replace(list) : [])
+      .then((list) => {
+        this.databaseList.replace(list);
+        this.currentList.replace(list);
+      })
       .finally(() => this.isFetching.set(false)); // update state regardless of result
 
     return fetchRequest;
@@ -153,18 +173,30 @@ class AppStore {
       return !optionKeys.some((optionName) => databaseEntry[optionName] !== options[optionName])
     });
   }
+  /**
+   * @param {Object} [options]
+   * @returns {Array<DatabaseEntry>}
+   */
+  applyFilter(options = {}) {
+    this.filterOptions = {
+      ...this.filterOptions,
+      ...options,
+    };
+
+    const filteredList = this.filterList(this.filterOptions);
+    this.currentList.replace(filteredList);
+  }
 }
 /**
  * @param {Object} params
  * @returns {String}
  */
 function formatUrlParams(params){
-  return "?" +
-    Object.keys(params)
-      .map(function(key){
-        return key+"="+encodeURIComponent(params[key])
-      })
-      .join("&")
+  return "?" + Object.keys(params)
+                .map(function(key){
+                  return key+"="+encodeURIComponent(params[key])
+                })
+                .join("&");
 }
 /** export singleton */
 export default new AppStore();
