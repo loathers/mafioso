@@ -148,22 +148,6 @@ export function createEntryBody(entryString) {
 }
 /**
  * @param {String} entryString
- * @return {AscensionDifficulty | undefined}
- */
-export function parseAscensionDifficulty(ascensionString) {
-  const difficultyMatch = regexUtils.getRegexMatch(ascensionString, REGEX.ASCENSION.DIFFICULTY_NAME) || [];
-  return difficultyMatch[0];
-}
-/**
- * @param {String} entryString
- * @return {AscensionDifficulty | undefined}
- */
-export function parseAscensionPath(ascensionString) {
-  const pathMatch = regexUtils.getRegexMatch(ascensionString, REGEX.ASCENSION.PATH_NAME) || [];
-  return pathMatch[0];
-}
-/**
- * @param {String} entryString
  * @return {String}
  */
 export function parseMafiosoAnnotations(entryString) {

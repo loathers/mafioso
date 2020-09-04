@@ -95,15 +95,15 @@ export function findAscensionLog(rawText) {
  */
 export function parseAscensionAttributes(rawText) {
   const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || [];
-  const classNameMatch = rawText.match(REGEX.CHARACTER.CLASS_NAME) || [];
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
+  const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
 
   return {
     characterName: characterNameMatch[0] || '?name',
-    className: classNameMatch[0] || '?class',
+    className: ascensionDetails[3] || '?class',
     ascensionNum: ascensionNumMatch[0] || undefined,
-    difficultyName: parseDifficultyName(rawText),
-    pathName: parsePathName(rawText),
+    difficultyName: ascensionDetails[1],
+    pathName: ascensionDetails[2],
     voterMonsters: parseVoteMonster(rawText),
   }
 }
@@ -164,11 +164,6 @@ export async function cleanRawLog(rawText) {
 export async function postParseCleanup(rawText) {
   rawText = rawText.replace(REGEX.ASCENSION.KARMA_TEXT, '<3');
 
-  // replace text under "Beginning New Ascension"
-  const ascensionDetailGroup = regexUtils.findMatcher(rawText, REGEX.ASCENSION.ASCENSION_DETAIL_GROUP);
-  const ascensionDetailReplacement = ascensionDetailGroup ? `<mafioso>\n${ascensionDetailGroup}</mafioso>` : '';
-  rawText = rawText.replace(REGEX.SNAPSHOT.BEGIN_ASCENSION_SNAPSHOT, ascensionDetailReplacement);
-
   // replace all the stuff under "Player Snapshot"
   return rawText.replace(REGEX.SNAPSHOT.WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP, (match, p1, p2) => {
     return `<mafioso>\n${p1}\n${p2}\n</mafioso>\n`;
@@ -206,14 +201,16 @@ export function createPathLabel(rawText) {
  * @returns {String}
  */
 export function parseDifficultyName(rawText) {
-  return regexUtils.findMatcher(rawText, REGEX.ASCENSION.DIFFICULTY_NAME);
+  const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
+  return ascensionDetails[1];
 }
 /**
  * @param {Text} rawText
  * @returns {String}
  */
 export function parsePathName(rawText) {
-  return regexUtils.findMatcher(rawText, REGEX.ASCENSION.PATH_NAME);
+  const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
+  return ascensionDetails[2];
 }
 /**
  * @param {Text} rawText

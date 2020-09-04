@@ -24,10 +24,8 @@ export const REGEX = {
     KARMA_TEXT: /(\d+(?= karma| banked karma)|(?<=balance = )\d+|(?<=balance is )\d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
-    ASCENSION_DETAIL_GROUP: /^Ascension #\d+(.*(\r\n|\n)){3}/mi,
+    ASCENSION_DETAIL_GROUP: /(?<=Ascension #\d+:(?:\r\n|\n))(hardcore|softcore|normal|casual) (.*) (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer|zombie Master|plumber|avatar of boris|avatar of jarlsberg|avatar of sneaky pete|ed the undying|gelatinous noob|plumber|vampyre|cow puncher|beanslinger|snake oiler)/i,
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
-    PATH_NAME: /(?<=Ascension #\d+:(\r\n|\n)(hardcore|softcore|normal|casual) ).*(?= (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer))/gmi,
-    DIFFICULTY_NAME: /(?<=Ascension #\d+:(\r\n|\n))(hardcore|softcore|normal|casual)/gmi,
 
     // VALHALLA: /welcome to valhalla/is,
     KING_FREED: /freeing king ralph.*?(?=(\s|))/i,
