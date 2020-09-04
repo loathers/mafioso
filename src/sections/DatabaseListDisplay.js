@@ -3,10 +3,11 @@ import {observer} from 'mobx-react';
 
 import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
 
-import {ReactComponent as OpenSVG} from 'images/archive.svg';
 import {ReactComponent as ActiveSVG} from 'images/eye.svg';
 import {ReactComponent as InactiveSVG} from 'images/eye-off.svg';
 import {ReactComponent as DeleteSVG} from 'images/trash-can.svg';
+
+import ChallengePathIcon from 'components/ChallengePathIcon';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -131,7 +132,8 @@ function RowDisplay(props) {
     <RowButton
       onClick={onClick}
       className={combineClassnames('borradius-2 bg-second hover:bg-second-lighter pad-2 flex-row flex-auto adjacent-mar-t-1', className)}>
-      <OpenSVG
+      <ChallengePathIcon
+        pathName={pathName}
         className='flex-none mar-r-3 adjacent-mar-l-2'
         style={{width: 14, height: 14, opacity: 0.7}} />
 
