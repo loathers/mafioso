@@ -67,6 +67,11 @@ export function findAscensionLog(rawText) {
   const snapshotDate = rawText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
   const formattedDate = snapshotDate ? `<mafioso>\nLog Start: ${snapshotDate[0]}\n<mafioso/>\n\n` : '';
 
+  const scotchLogStart = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
+  if (scotchLogStart) {
+    return scotchLogStart[0];
+  }
+
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
     return formattedDate + fromValhallaToFreeKing[0];

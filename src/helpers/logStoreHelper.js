@@ -81,7 +81,7 @@ export function createEstimatedEntries(allEntries) {
     entry = handleEstimateTurnNum(entry, nextEntry);
 
     // + use entries with the date in them as a point of reference
-    const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
+    const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.SCOTCH_LOG_DATE) || entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
     if (dateMatch !== undefined && !estimates.dateList.includes(dateMatch)) {
       estimates.dateList.push(dateMatch);
     }

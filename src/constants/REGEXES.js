@@ -16,6 +16,7 @@ export const REGEX = {
     VALHALLA_COMPLETE: /welcome to valhalla.*?(freeing king ralph|freeing the king).*?/is,
     THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?/is,
     REGULAR_COMPLETE: /Beginning New Ascension.*?(freeing king ralph|freeing the king).*?/is,
+    SCOTCH_LOG_ASCENSION: /(%%%%%%%%% START OF DAY #1).*?(freeing king ralph|freeing the king).*?/is,
 
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,
@@ -493,6 +494,7 @@ export const REGEX = {
   SNAPSHOT: {
     REAL_DATE: /(January|February|March|April|May|June|July|August|September|OCtober|November|December).*(?= -)/gi,
     SNAPSHOT_DATE: /(?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
+    SCOTCH_LOG_DATE: /(?<=START OF DAY #)\d+/gi,
     KOL_DATE: /(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
     PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
