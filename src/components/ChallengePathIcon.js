@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {ReactComponent as ArchiveSVG} from 'images/archive.svg';
+import {ReactComponent as GreyGooIcon} from 'images/GreyGoo-icon.svg';
 import {ReactComponent as LKSicon} from 'images/LKS-icon.svg';
 
 // import combineClassnames from 'utilities/combineClassnames';
@@ -8,7 +9,9 @@ import {ReactComponent as LKSicon} from 'images/LKS-icon.svg';
 function getIconComponent(pathName) {
   switch (pathName) {
     case 'Standard':
-      return ArchiveSVG;
+      return GreyGooIcon;
+    case 'Grey Goo':
+      return GreyGooIcon;
     case 'Low Key Summer':
       return LKSicon;
     case 'Path of the Plumber':
