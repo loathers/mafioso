@@ -53,7 +53,7 @@ export function getDateFromSessionFile(file) {
 export function getNameFromSessionFile(file) {
   const nameParts = file.name.split('_');
   nameParts.pop();
-  return nameParts.join('-');
+  return nameParts.join('_');
 }
 /**
  * vaguely copied from https://stackoverflow.com/a/6979777

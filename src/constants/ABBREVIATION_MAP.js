@@ -14,6 +14,7 @@ export const DIFFICULTY_MAP = {
  */
 export const PATH_MAP = {
   'Standard': 'STD',
+  'Grey Goo': 'GOO',
   'Low Key Summer': 'LKS',
   'Path of the Plumber': 'PLUMB',
   'Kingdom of Exploathing': 'EXPLO',
