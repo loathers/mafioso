@@ -217,7 +217,8 @@ class LogStore {
   // -- ascension attributes
   /** @type {String} */
   get characterName() {
-    return this.ascensionAttributes.characterName;
+    const nameFromFile = fileParserUtils.getNameFromSessionFile(logStore.srcFiles[0]);
+    return nameFromFile || this.ascensionAttributes.characterName;
   }
   /** @type {String} */
   get className() {

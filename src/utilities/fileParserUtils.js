@@ -1,4 +1,5 @@
 const SESSION_DATE_REGEX = /(\d{4})(0?[1-9]|1[012])(0?[1-9]|[12][0-9]|3[01])(?!\d)/;
+const SESSION_NAME_REGEX = /^.*?(?=_\d)/;
 
 /**
  * @async
@@ -51,9 +52,9 @@ export function getDateFromSessionFile(file) {
  * @returns {String}
  */
 export function getNameFromSessionFile(file) {
-  const nameParts = file.name.split('_');
-  nameParts.pop();
-  return nameParts.join('_');
+  const fileName = file.name;
+  const matches = fileName.match(SESSION_NAME_REGEX) || [];
+  return matches[0];
 }
 /**
  * vaguely copied from https://stackoverflow.com/a/6979777

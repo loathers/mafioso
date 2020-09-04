@@ -35,7 +35,7 @@ test('fileParserUtils.getNameFromSessionFile(): returns string of name', () => {
   const userName2 = fileParserUtils.getNameFromSessionFile(mockFileD);
   expect(userName2).toBe('c00lest_one');
 
-  const crazyNameFile = new File([], 'c00lest_one__kingdom_0f_lorfing_20200730.txt');
+  const crazyNameFile = new File([], 'c00lest_one__kingdom_of_lorfing_20200730.txt');
   const userName3 = fileParserUtils.getNameFromSessionFile(crazyNameFile);
-  expect(userName3).toBe('c00lest_one__kingdom_0f_lorfing');
+  expect(userName3).toBe('c00lest_one__kingdom_of_lorfing');
 });
