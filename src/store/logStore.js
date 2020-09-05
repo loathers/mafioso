@@ -10,6 +10,8 @@ import * as logStoreHelper from 'helpers/logStoreHelper';
 
 import chartStore from 'store/chartStore';
 
+import ToastController from 'sections/ToastController';
+
 import * as fileParserUtils from 'utilities/fileParserUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import * as regexUtils from 'utilities/regexUtils';
@@ -296,7 +298,8 @@ class LogStore {
   async handleUpload(files) {
     try {
       if (files.length > 10) {
-        throw new Error('Uploading way too many files.');
+        ToastController.show({content: 'You uploaded too many files.'});
+        throw new Error('You uploaded too many files.');
       }
 
       console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
@@ -311,7 +314,7 @@ class LogStore {
       // get text from all files
       this.srcRawTexts = await Promise.all(sortedFiles.map(fileParserUtils.readFile));
       if (this.srcRawTexts.length <= 0) {
-        console.error('It looks like none of those files were valid, mate.');
+        ToastController.show({content: 'It looks like none of those files were valid, mate.'});
         this.isParsing.set(false);
         return;
       }

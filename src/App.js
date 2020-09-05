@@ -12,7 +12,7 @@ import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import LoaderComponent from 'components/LoaderComponent';
-import Toaster from 'components/Toaster';
+import {ToasterComponent} from 'sections/ToastController';
 
 import Footer from 'sections/Footer';
 import Navbar from 'sections/Navbar';
@@ -36,8 +36,7 @@ function App() {
           <LoaderComponent />
         }
 
-        <Toaster
-          children={'Toast!'} />
+        <ToasterComponent />
 
         {/* Top */}
         <Navbar
