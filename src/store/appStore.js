@@ -132,14 +132,15 @@ class AppStore {
     this.isPretendLoading.set(false);
   }
   /**
-   * @param {DatabaseEntry} databaseEntry
+   * @param {String} hashcode
    */
-  async onViewSharedLog(databaseEntry) {
+  async onViewSharedLog(hashcode) {
     this.isPretendLoading.set(true);
 
     try {
-      const fetchedLogText = await databaseStore.fetchLog(databaseEntry);
-      await logStore.importLog(fetchedLogText, databaseEntry);
+      const fetchedLogData = await databaseStore.fetchLog(hashcode);
+      const {logText, databaseEntry} = fetchedLogData;
+      await logStore.importLog(logText, databaseEntry);
       ToastController.show({title: 'Log successfully imported!', content: 'Take a look at the visualizer.'});
 
     } catch (err) {

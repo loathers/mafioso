@@ -46,7 +46,7 @@ function DatabasePage(props) {
       { databaseStore.hasData &&
         <DatabaseListDisplay
           hasEditOptions={appStore.isDevEnv}
-          onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry)}
+          onClickView={(databaseEntry) => appStore.onViewSharedLog(databaseEntry.hashcode)}
           onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
           onClickDelete={(databaseEntry) => onClickDelete(databaseEntry)}
           currentList={databaseStore.currentList}

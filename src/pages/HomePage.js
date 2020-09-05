@@ -5,14 +5,14 @@ import {observer} from 'mobx-react';
 import {LOG_VIS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
-// import logStore from 'store/logStore';
+import logStore from 'store/logStore';
 
 import LogUploader from 'sections/LogUploader';
 
 export default observer(
 function HomePage(props) {
   if (appStore.isReady) {
-    return <Redirect to={LOG_VIS_URL}/>
+    return <Redirect to={`${LOG_VIS_URL}/${logStore.hashcode}`}/>
   }
 
   return (

@@ -69,7 +69,7 @@ function _UpperNavbar(props) {
         <NavbarDivider className='pad-l-4' />
 
         <NavbarButton
-          to={LOG_VIS_URL}
+          to={`${LOG_VIS_URL}/${logStore.hashcode}`}
           componentType={Link}
           isActive={pageName === 'visualizer'}
           disabled={!appStore.isReady}

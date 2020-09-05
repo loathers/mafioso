@@ -45,7 +45,7 @@ function App() {
 
         {/* Body */}
         <Switch>
-          <Route path={LOG_VIS_URL}>
+          <Route path={`${LOG_VIS_URL}/:hashcode`}>
             <LogVisualizerPage />
           </Route>
 

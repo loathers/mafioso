@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Redirect} from "react-router-dom";
+import {Redirect, useParams} from 'react-router-dom';
 import {observer} from 'mobx-react';
 
 import {HOME_URL} from 'constants/PAGE_URLS';
@@ -49,7 +49,20 @@ function LogVisualizerPage(props) {
     }
   });
 
-  if (!logStore.hasParsedEntries) {
+  // if using a direct url of a log, we can fetch it immediately
+  const {hashcode} = useParams();
+  useEffect(() => {
+    async function fetchData() {
+      if (hashcode && !logStore.hasParsedEntries) {
+        await appStore.onViewSharedLog(hashcode);
+      }
+    }
+
+    fetchData();
+  }, [hashcode]);
+
+  // if not fetching and unable to fetch
+  if (!hashcode && !logStore.hasParsedEntries && !appStore.isLoading) {
     return <Redirect to={HOME_URL}/>
   }
 

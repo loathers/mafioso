@@ -101,9 +101,9 @@ class AppStore {
   /**
    * requests an entry
    * @async
-   * @param {DatabaseEntry} databaseEntry
+   * @param {String} hashcode
    */
-  fetchLog(databaseEntry) {
+  fetchLog(hashcode) {
     this.isFetching.set(true);
 
     const fetchRequest = new Promise((resolve, reject) => {
@@ -116,10 +116,10 @@ class AppStore {
           return reject(error);
         }
 
-        resolve(rawResponse);
+        resolve(JSON.parse(rawResponse));
       });
 
-      xhr.open('GET', `${GET_LOG_ENDPOINT}/${databaseEntry.hashcode}`);
+      xhr.open('GET', `${GET_LOG_ENDPOINT}/${hashcode}`);
       xhr.send();
     });
 
