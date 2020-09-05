@@ -76,7 +76,7 @@ class AppStore {
         const rawResponse = xhr.responseText;
         if (!rawResponse) {
           const error = 'Unable to reach server.';
-          ToastController.show({title: 'Error', content: error});
+          ToastController.error({title: 'Server Error', content: error});
           return reject(error);
         }
         resolve(JSON.parse(rawResponse));
@@ -112,7 +112,7 @@ class AppStore {
         const rawResponse = xhr.responseText;
         if (!rawResponse) {
           const error = 'Server did not send any data.';
-          ToastController.show({title: 'Error', content: error});
+          ToastController.error({title: 'Server Error', content: error});
           return reject(error);
         }
 
@@ -143,7 +143,7 @@ class AppStore {
           if (xhr.status === 200) {
             resolve();
           } else {
-            ToastController.show({title: 'Share Error', content: xhr.responseText});
+            ToastController.error({title: 'Share Error', content: xhr.responseText});
             reject(xhr.responseText);
           }
         }
@@ -154,7 +154,7 @@ class AppStore {
     });
 
     fetchRequest
-      .then(() => ToastController.show({title: 'Successfuly shared!', content: 'Thanks! Give it a bit of time before it shows up.'}))
+      .then(() => ToastController.success({title: 'Successfuly shared!', content: 'Thanks! Give it a bit of time before it shows up.'}))
       .finally(() => this.isFetching.set(false));
 
     return fetchRequest;
@@ -175,7 +175,7 @@ class AppStore {
             resolve();
 
           } else {
-            ToastController.show({title: 'Update Error', content: xhr.responseText});
+            ToastController.error({title: 'Update Error', content: xhr.responseText});
             reject(xhr.responseText);
           }
         }

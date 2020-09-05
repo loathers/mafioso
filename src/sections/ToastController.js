@@ -16,6 +16,8 @@ class ToastController {
       title: null,
       /** @type {*} */
       content: null,
+      /** @type {String} */
+      type: '',
     };
   }
   /**
@@ -43,6 +45,24 @@ class ToastController {
     this.toasterData = props;
     this.toggleActive(true);
   }
+  /**
+   * @param {Object} props
+   */
+  success(props = {}) {
+    this.show({...props, type: 'SUCCESS'})
+  }
+  /**
+   * @param {Object} props
+   */
+  warn(props = {}) {
+    this.show({...props, type: 'WARN'})
+  }
+  /**
+   * @param {Object} props
+   */
+  error(props = {}) {
+    this.show({...props, type: 'ERROR'})
+  }
 }
 const toastController = new ToastController();
 export default toastController;
@@ -55,21 +75,34 @@ function _ToasterComponent(props) {
   } = props;
 
   const activeClassname = toastController.isActive.get() && 'active';
-  const {title, content} = toastController.toasterData;
+  const {title, content, type} = toastController.toasterData;
+
+  const typeClassnameMap = {
+    'SUCCESS': 'bg-green',
+    'WARN': 'bg-yellow',
+    'ERROR': 'bg-red',
+  };
+  const typeColor = typeClassnameMap[type] || 'bg-fifth-lighter';
 
   return (
     <div
       {...otherProps}
       elementname='app-toaster'
-      className={combineClassnames('bg-fifth pad-v-3 pad-h-4 boxshadow-dark flex-col', activeClassname, className)}
+      className={combineClassnames('bg-fifth boxshadow-dark flex-row', activeClassname, className)}
     >
-      { title &&
-        <div className='flex-none fontsize-5 f-bold adjacent-mar-t-2'>{title}</div>
-      }
+      <div
+        style={{width: 5}}
+        className={combineClassnames('flex-none adjacent-mar-t-2', typeColor)} />
 
-      { content &&
-        <div className='flex-auto fontsize-3 adjacent-mar-t-2'>{content}</div>
-      }
+      <div className='pad-v-3 pad-h-4 flex-col flex-grow adjacent-mar-l-2'>
+        { title &&
+          <div className='flex-none fontsize-5 f-bold adjacent-mar-t-2'>{title}</div>
+        }
+
+        { content &&
+          <div className='flex-auto fontsize-3 adjacent-mar-t-2'>{content}</div>
+        }
+      </div>
     </div>
   )
 });

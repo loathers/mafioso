@@ -331,10 +331,10 @@ class LogStore {
       // raw data gotten, now parse it to create individual entries
       await this.parse();
 
-      ToastController.show({title: 'Success!', content: `Ascension #${this.ascensionNum}, huh. So cool!`});
+      ToastController.success({title: 'Success!', content: `Ascension #${this.ascensionNum}, huh. So cool!`});
 
     } catch (err) {
-      ToastController.show({title: 'Upload Failed', content: err.message});
+      ToastController.error({title: 'Upload Failed', content: err.message});
       this.isParsing.set(false);
     }
   }
@@ -362,7 +362,7 @@ class LogStore {
       this.isParsing.set(false);
 
     } catch (err) {
-      ToastController.show({title: 'Import Failed', content: err.message});
+      ToastController.error({title: 'Import Failed', content: err.message});
       this.isParsing.set(false);
     }
   }
