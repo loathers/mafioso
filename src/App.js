@@ -12,6 +12,7 @@ import appStore from 'store/appStore';
 import logStore from 'store/logStore';
 
 import LoaderComponent from 'components/LoaderComponent';
+import Toaster from 'components/Toaster';
 
 import Footer from 'sections/Footer';
 import Navbar from 'sections/Navbar';
@@ -34,6 +35,9 @@ function App() {
         { appStore.isLoading && !logStore.isLazyLoading.get() &&
           <LoaderComponent />
         }
+
+        <Toaster
+          children={'Toast!'} />
 
         {/* Top */}
         <Navbar

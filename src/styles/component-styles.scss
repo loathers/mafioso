@@ -1,3 +1,19 @@
+[elementname='app-toaster'] {
+  position: fixed;
+  top: $NAVBAR_HEIGHT + $APP_MARGIN;
+  right: $APP_MARGIN;
+
+  width: 200px;
+  height: auto;
+  transition: transform 300ms;
+
+  &.active {
+    transform: translateX(0%);
+  }
+  &:not(.active) {
+    transform: translateX(110%);
+  }
+}
 [elementname='upload-component'] {
   label {
     border-width: 1px;
