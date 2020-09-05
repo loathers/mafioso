@@ -139,7 +139,7 @@ class AppStore {
 
     try {
       const fetchedLogText = await databaseStore.fetchLog(databaseEntry);
-      await logStore.importLog(fetchedLogText);
+      await logStore.importLog(fetchedLogText, databaseEntry);
       ToastController.show({title: 'Log successfully imported!', content: 'Take a look at the visualizer.'});
 
     } catch (err) {

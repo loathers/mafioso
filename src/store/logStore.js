@@ -220,7 +220,7 @@ class LogStore {
   /** @type {String} */
   get characterName() {
     const nameFromFile = fileParserUtils.getNameFromSessionFile(logStore.srcFiles[0]);
-    return nameFromFile || this.ascensionAttributes.characterName;
+    return this.ascensionAttributes.characterName || nameFromFile;
   }
   /** @type {String} */
   get className() {
@@ -334,15 +334,24 @@ class LogStore {
   /**
    * directly giving a full log
    * @param {String} logText
+   * @param {Object} databaseEntry
    */
-  async importLog(logText) {
+  async importLog(logText, databaseEntry) {
     this.isParsing.set(true);
 
     try {
       this.reset();
 
       await this.prepareLog(logText);
+
+      this.ascensionAttributes = {
+        ...this.ascensionAttributes,
+        ...databaseEntry,
+      };
+
       await this.parse();
+
+      this.isParsing.set(false);
 
     } catch (e) {
       console.error(e);

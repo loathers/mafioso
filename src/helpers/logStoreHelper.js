@@ -237,6 +237,8 @@ export function getSessionDateString() {
   if (!logStore.isReady) return;
 
   const firstFile = logStore.srcFiles[0];
+  if (firstFile === undefined) return; // shared files do not have `srcFiles`
+
   const fileSessionDate = fileParserUtils.getDateFromSessionFile(firstFile);
   if (fileSessionDate) {
     return fileParserUtils.convertDateToString(fileSessionDate);
