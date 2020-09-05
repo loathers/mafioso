@@ -52,6 +52,8 @@ export function getDateFromSessionFile(file) {
  * @returns {String}
  */
 export function getNameFromSessionFile(file) {
+  if (!file) return '?name';
+
   const fileName = file.name;
   const matches = fileName.match(SESSION_NAME_REGEX) || [];
   return matches[0];

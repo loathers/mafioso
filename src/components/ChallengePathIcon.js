@@ -9,7 +9,7 @@ import {ReactComponent as LKSicon} from 'images/LKS-icon.svg';
 function getIconComponent(pathName) {
   switch (pathName) {
     case 'Standard':
-      return GreyGooIcon;
+      return ArchiveSVG;
     case 'Grey Goo':
       return GreyGooIcon;
     case 'Low Key Summer':
