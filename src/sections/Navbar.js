@@ -108,7 +108,7 @@ function _UpperNavbar(props) {
         { (appStore.isDevEnv || enableDatabase) &&
           <NavbarButton
             onClick={() => appStore.onShareLog()}
-            disabled={!appStore.isReady || !logStore.isAscensionLog}
+            disabled={appStore.isShareDisabled}
             children='Share'
             componentType='button'
             className='adjacent-mar-l-3' />

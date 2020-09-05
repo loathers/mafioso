@@ -14,6 +14,9 @@ class AppStore {
   constructor() {
     this.appId = uuidv4();
 
+    /** @type {Boolean} */
+    this.hasAttemptedShare = false;
+
     /** @type {Observable<Boolean>} */
     this.isPretendLoading = observable.box(false);
     /** @type {Observable<Boolean>} */
@@ -44,6 +47,10 @@ class AppStore {
   /** @type {Boolean} */
   get isShowingFullUpload() {
     return !logStore.hasFiles;
+  }
+  /** @type {Boolean} */
+  get isShareDisabled() {
+    return !this.isReady || this.hasAttemptedShare || logStore.isImportedLog || !logStore.isAscensionLog;
   }
   // -- data
   /** @type {Boolean} */
@@ -109,6 +116,7 @@ class AppStore {
   async onShareLog() {
     if (!this.isReady || !logStore.isAscensionLog || !logStore.hasHashcode) return;
 
+    this.hasAttemptedShare = true;
     this.isPretendLoading.set(true);
 
     try {

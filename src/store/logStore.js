@@ -170,6 +170,10 @@ class LogStore {
 
     return true;
   }
+  /** @type {Boolean} */
+  get isImportedLog() {
+    return this.importedHashcode !== undefined;
+  }
   // -- log data
   /** @type {String} */
   get fileName() {
