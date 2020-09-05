@@ -1,9 +1,10 @@
 [elementname='app-toaster'] {
   position: fixed;
-  top: $NAVBAR_HEIGHT + $APP_MARGIN;
-  right: $APP_MARGIN;
+  top: $NAVBAR_HEIGHT;
+  // right: $APP_MARGIN;
+  right: 0;
 
-  width: 200px;
+  // width: 200px;
   height: auto;
   transition: transform 300ms;
 

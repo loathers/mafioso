@@ -22,14 +22,14 @@ class ToastController {
    * @param {Boolean} nextActive
    */
   toggleActive(nextActive = true) {
-    if (this.currTimeout) {
-      clearTimeout(this.currTimeout);
-    }
-
     this.isActive.set(nextActive);
 
     // if making active, toggle it off after a delay
     if (nextActive) {
+      if (this.currTimeout) {
+        clearTimeout(this.currTimeout);
+      }
+
       this.currTimeout = setTimeout(() => {
         this.isActive.set(false);
       }, 4000);
@@ -39,6 +39,7 @@ class ToastController {
    * @param {Object} props
    */
   show(props = {}) {
+    this.toggleActive(false);
     this.toasterData = props;
     this.toggleActive(true);
   }
@@ -60,7 +61,7 @@ function _ToasterComponent(props) {
     <div
       {...otherProps}
       elementname='app-toaster'
-      className={combineClassnames('bg-fifth pad-v-3 pad-h-4 borradius-4 flex-col', activeClassname, className)}
+      className={combineClassnames('bg-fifth pad-v-3 pad-h-4 boxshadow-dark flex-col', activeClassname, className)}
     >
       { title &&
         <div className='flex-none fsize-5 f-bold adjacent-mar-t-2'>{title}</div>

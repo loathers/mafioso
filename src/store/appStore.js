@@ -122,7 +122,6 @@ class AppStore {
       }
 
       await databaseStore.shareLog(payload);
-      ToastController.show({title: 'Log shared!', content: 'Thanks! Give it a bit of time before it shows up.'});
 
     } catch (err) {
       this.isPretendLoading.set(false);

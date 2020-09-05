@@ -143,9 +143,8 @@ class AppStore {
           if (xhr.status === 200) {
             resolve();
           } else {
-            const error = xhr.responseText === '' ? `${xhr.statusText}: ${xhr.responseText}` : '';
-            ToastController.show({title: 'Error', content: error});
-            reject(error);
+            ToastController.show({title: 'Error', content: xhr.responseText});
+            reject(xhr.responseText);
           }
         }
       });
@@ -154,7 +153,9 @@ class AppStore {
       xhr.send(JSON.stringify(payload));
     });
 
-    fetchRequest.finally(() => this.isFetching.set(false));
+    fetchRequest
+      .then(() => ToastController.show({title: 'Log shared!', content: 'Thanks! Give it a bit of time before it shows up.'}))
+      .finally(() => this.isFetching.set(false));
 
     return fetchRequest;
   }
@@ -174,9 +175,8 @@ class AppStore {
             resolve();
 
           } else {
-            const error = xhr.responseText === '' ? `${xhr.statusText}: ${xhr.responseText}` : '';
-            ToastController.show({title: 'Error', content: error});
-            reject(error);
+            ToastController.show({title: 'Error', content: xhr.responseText});
+            reject(xhr.responseText);
           }
         }
       });
