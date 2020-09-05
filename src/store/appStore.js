@@ -97,6 +97,7 @@ class AppStore {
       logStore.downloadFullLog();
 
     } catch (err) {
+      ToastController.show({title: 'Download Failed', content: err.message});
       this.isPretendLoading.set(false);
     }
 
@@ -143,6 +144,7 @@ class AppStore {
       ToastController.show({title: 'Log successfully imported!', content: 'Take a look at the visualizer.'});
 
     } catch (err) {
+      // ToastController.show({title: 'Import Failed', content: err.message});
       this.isPretendLoading.set(false);
     }
 

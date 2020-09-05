@@ -143,7 +143,7 @@ class AppStore {
           if (xhr.status === 200) {
             resolve();
           } else {
-            ToastController.show({title: 'Error', content: xhr.responseText});
+            ToastController.show({title: 'Share Error', content: xhr.responseText});
             reject(xhr.responseText);
           }
         }
@@ -154,7 +154,7 @@ class AppStore {
     });
 
     fetchRequest
-      .then(() => ToastController.show({title: 'Log shared!', content: 'Thanks! Give it a bit of time before it shows up.'}))
+      .then(() => ToastController.show({title: 'Successfuly shared!', content: 'Thanks! Give it a bit of time before it shows up.'}))
       .finally(() => this.isFetching.set(false));
 
     return fetchRequest;
@@ -175,7 +175,7 @@ class AppStore {
             resolve();
 
           } else {
-            ToastController.show({title: 'Error', content: xhr.responseText});
+            ToastController.show({title: 'Update Error', content: xhr.responseText});
             reject(xhr.responseText);
           }
         }

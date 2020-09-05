@@ -305,8 +305,7 @@ class LogStore {
   async handleUpload(files) {
     try {
       if (files.length > 10) {
-        ToastController.show({content: 'You uploaded too many files.'});
-        throw new Error('You uploaded too many files.');
+        throw new Error('That is too many files.');
       }
 
       console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
@@ -321,9 +320,8 @@ class LogStore {
       // get text from all files
       this.srcRawTexts = await Promise.all(sortedFiles.map(fileParserUtils.readFile));
       if (this.srcRawTexts.length <= 0) {
-        ToastController.show({content: 'It looks like none of those files were valid, mate.'});
         this.isParsing.set(false);
-        return;
+        throw new Error('Some of those files may not be valid.');
       }
 
       // combine all the text from the files and clean it up
@@ -331,10 +329,12 @@ class LogStore {
       await this.prepareLog(allText);
 
       // raw data gotten, now parse it to create individual entries
-      this.parse();
+      await this.parse();
 
-    } catch (e) {
-      console.error(e);
+      ToastController.show({title: 'Success!', content: `Ascension #${this.ascensionNum}, huh. So cool!`});
+
+    } catch (err) {
+      ToastController.show({title: 'Upload Failed', content: err.message});
       this.isParsing.set(false);
     }
   }
@@ -361,8 +361,8 @@ class LogStore {
 
       this.isParsing.set(false);
 
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      ToastController.show({title: 'Import Failed', content: err.message});
       this.isParsing.set(false);
     }
   }
@@ -393,37 +393,30 @@ class LogStore {
    * handle cleaning up and setting all the data
    */
   async parse() {
-    try {
-      if (!this.hasRawText) {
-        throw new Error('No log to parse???');
-      }
-
-      console.log('Parsing your Session Log...');
-      this.isParsing.set(true);
-
-      const parsedData = await logParserUtils.parseLogTxt(this.rawText);
-      const newData = this.combineEntries(parsedData);
-      this.allEntries.replace(newData);
-
-      chartStore.allEntries = newData;
-
-      const additionalData = this.createEstimatedEntries(newData);
-      this.allEntries.replace(additionalData);
-      this.validEntries.replace([]);
-
-      const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
-      this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
-
-      console.log(`✔️ Finished! Created ${this.allEntries.length} entries.`);
-      this.displayOptions.pageNum = 0;
-      this.isParsing.set(false);
-
-      this.fetchEntries();
-
-    } catch (e) {
-      console.error(e);
-      throw e;
+    if (!this.hasRawText) {
+      throw new Error('There is no log to parse.');
     }
+
+    this.isParsing.set(true);
+
+    const parsedData = await logParserUtils.parseLogTxt(this.rawText);
+    const newData = this.combineEntries(parsedData);
+    this.allEntries.replace(newData);
+
+    chartStore.allEntries = newData;
+
+    const additionalData = this.createEstimatedEntries(newData);
+    this.allEntries.replace(additionalData);
+    this.validEntries.replace([]);
+
+    const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
+    this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
+
+    console.log(`✔️ Finished! Created ${this.allEntries.length} entries.`);
+    this.displayOptions.pageNum = 0;
+    this.isParsing.set(false);
+
+    await this.fetchEntries();
   }
   // -- fetch functions
   /**
@@ -555,14 +548,13 @@ class LogStore {
 
     const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
     const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
-    // console.log(`⏳ Getting page ${pageNum}... from ${startIdx} to ${endIdx}`);
-
     const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
     // done
     if (isFinal) {
       this.onFetchDone(options, pagedEntries);
     }
+
     return pagedEntries;
   }
   /**

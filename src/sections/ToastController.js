@@ -64,11 +64,11 @@ function _ToasterComponent(props) {
       className={combineClassnames('bg-fifth pad-v-3 pad-h-4 boxshadow-dark flex-col', activeClassname, className)}
     >
       { title &&
-        <div className='flex-none fsize-5 f-bold adjacent-mar-t-2'>{title}</div>
+        <div className='flex-none fontsize-5 f-bold adjacent-mar-t-2'>{title}</div>
       }
 
       { content &&
-        <div className='flex-auto adjacent-mar-t-2'>{content}</div>
+        <div className='flex-auto fontsize-3 adjacent-mar-t-2'>{content}</div>
       }
     </div>
   )

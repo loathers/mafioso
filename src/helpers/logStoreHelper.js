@@ -257,6 +257,6 @@ export function getSessionDateString() {
  * downloads the current ascension log to user
  */
 export function downloadFullLog() {
-  if (!logStore.isReady) return;
+  if (!logStore.isReady) throw new Error('Log is not ready to be downloaded.');
   download(logStore.export(), logStore.fileName, 'text/plain');
 }
