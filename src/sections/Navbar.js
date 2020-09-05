@@ -164,6 +164,7 @@ function NavbarButton(props) {
     className,
     disabled,
     isActive,
+    onClick,
     ...otherProps
   } = props;
 
@@ -173,7 +174,11 @@ function NavbarButton(props) {
   const finalComponentType = (disabled || isActive) ? 'div' : componentType;
   return React.createElement(
     finalComponentType,
-    {...otherProps, disabled: disabled, className: componentClassName},
+    { ...otherProps,
+      onClick: (disabled || isActive) ? undefined : onClick,
+      disabled: disabled,
+      className: componentClassName,
+    },
   );
 }
 /** @returns {ReactComponent} */
