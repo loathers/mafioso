@@ -1,5 +1,7 @@
 import {observable} from 'mobx';
 
+import ToastController from 'sections/ToastController';
+
 // import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
 
 const SERVER_HOST = process.env['REACT_APP_SERVER_HOST'];
@@ -72,8 +74,11 @@ class AppStore {
       const xhr = new XMLHttpRequest();
       xhr.addEventListener('loadend', () => {
         const rawResponse = xhr.responseText;
-        if (!rawResponse) return reject('Server did not send any data.');
-
+        if (!rawResponse) {
+          const error = 'Unable to reach server.';
+          ToastController.show({title: 'Error', content: error});
+          return reject(error);
+        }
         resolve(JSON.parse(rawResponse));
       });
 
@@ -105,7 +110,11 @@ class AppStore {
       const xhr = new XMLHttpRequest();
       xhr.addEventListener('loadend', (evt) => {
         const rawResponse = xhr.responseText;
-        if (!rawResponse) return reject('Server did not send any data.');
+        if (!rawResponse) {
+          const error = 'Server did not send any data.';
+          ToastController.show({title: 'Error', content: error});
+          return reject(error);
+        }
 
         resolve(rawResponse);
       });
@@ -131,10 +140,12 @@ class AppStore {
       // xhr.onreadystatechange = () => this.onRequestEnd(xhr, resolve, reject);
       xhr.addEventListener('loadend', () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200 || xhr.status === 0) {
+          if (xhr.status === 200) {
             resolve();
           } else {
-            reject(`${xhr.statusText}: ${xhr.responseText}`);
+            const error = xhr.responseText === '' ? `${xhr.statusText}: ${xhr.responseText}` : '';
+            ToastController.show({title: 'Error', content: error});
+            reject(error);
           }
         }
       });
@@ -158,10 +169,14 @@ class AppStore {
       const xhr = new XMLHttpRequest();
       xhr.addEventListener('loadend', () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200 || xhr.status === 0) {
+          if (xhr.status === 200) {
+            ToastController.show({content: 'Successfully Updated'});
             resolve();
+
           } else {
-            reject(`${xhr.statusText}: ${xhr.responseText}`);
+            const error = xhr.responseText === '' ? `${xhr.statusText}: ${xhr.responseText}` : '';
+            ToastController.show({title: 'Error', content: error});
+            reject(error);
           }
         }
       });

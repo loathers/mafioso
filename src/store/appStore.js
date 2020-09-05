@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import keycodes from 'constants/keycodes';
 
+import ToastController from 'sections/ToastController';
 import databaseStore from 'store/databaseStore';
 import logStore from 'store/logStore';
 
@@ -121,6 +122,7 @@ class AppStore {
       }
 
       await databaseStore.shareLog(payload);
+      ToastController.show({title: 'Log shared!', content: 'Thanks! Give it a bit of time before it shows up.'});
 
     } catch (err) {
       this.isPretendLoading.set(false);
@@ -137,7 +139,8 @@ class AppStore {
 
     try {
       const fetchedLogText = await databaseStore.fetchLog(databaseEntry);
-      logStore.importLog(fetchedLogText);
+      await logStore.importLog(fetchedLogText);
+      ToastController.show({title: 'Log successfully imported!', content: 'Take a look at the visualizer.'});
 
     } catch (err) {
       this.isPretendLoading.set(false);

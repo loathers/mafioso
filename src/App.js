@@ -36,7 +36,8 @@ function App() {
           <LoaderComponent />
         }
 
-        <ToasterComponent />
+        <ToasterComponent
+          className='zindex-6'/>
 
         {/* Top */}
         <Navbar

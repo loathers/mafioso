@@ -342,8 +342,7 @@ class LogStore {
       this.reset();
 
       await this.prepareLog(logText);
-
-      this.parse();
+      await this.parse();
 
     } catch (e) {
       console.error(e);

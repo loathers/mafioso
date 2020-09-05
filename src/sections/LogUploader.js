@@ -1,4 +1,5 @@
 import React from 'react';
+
 import logStore from 'store/logStore';
 
 import combineClassnames from 'utilities/combineClassnames';
