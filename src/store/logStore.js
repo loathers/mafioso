@@ -27,6 +27,8 @@ class LogStore {
     /** @type {Array<String>} */
     this.srcRawTexts = [];
     /** @type {String} */
+    this.importedHashcode = undefined;
+    /** @type {String} */
     this.rawText = undefined;
 
     /** @type {AscensionAttributes} */
@@ -92,6 +94,7 @@ class LogStore {
   reset() {
     this.srcFiles = [];
     this.srcRawTexts = [];
+    this.importedHashcode = undefined;
     this.allEntries.clear();
     this.validEntries.clear();
 
@@ -131,6 +134,10 @@ class LogStore {
   }
   /** @type {String} */
   get hashcode() {
+    if (this.importedHashcode) {
+      return this.importedHashcode;
+    }
+
     if (this.sessionDate === undefined) return undefined;
 
     return encode(this.fileName);
@@ -344,6 +351,7 @@ class LogStore {
 
       await this.prepareLog(logText);
 
+      this.importedHashcode = databaseEntry.hashcode;
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...databaseEntry,
