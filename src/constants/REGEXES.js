@@ -64,6 +64,7 @@ export const REGEX = {
   CHATEAU_MANTEGNA: {
     REST_TEXT: /rest in your bed in the chateau/gi,
     CHECK_DESK_TEXT: /Collecting.*(continental juice bar|fancy stationery set|Swiss piggy bank)/gi,
+    PAINTING_ENCOUNTER: /(?<=\[\d+\] Chateau Painting.*?(Encounter: )).*?$/gmis,
   },
   CONSPIRACY_ISLAND: {
     TEXT: /.*Conspiracy Island.*/gi,

@@ -270,7 +270,8 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isForcedAdventure() {
-    return this.attributes.isForcedAdventure;
+    return this.attributes.isForcedAdventure
+      || this.entryType === ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING;
   }
   /** @param {Boolean} */
   set isInBetweenTurns(newValue) {
@@ -627,6 +628,7 @@ export default class Entry {
       isAdventure: this.isAdventure,
       isCombatEncounter: this.isCombatEncounter,
       isNonCombatEncounter: this.isNonCombatEncounter,
+      isForcedAdventure: this.isForcedAdventure,
       familiarUsed: this.familiarUsed,
       ...this.attributes,
     }
