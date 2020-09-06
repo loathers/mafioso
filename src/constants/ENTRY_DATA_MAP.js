@@ -178,7 +178,7 @@ export const ENTRY_DATA_MAP = {
     matcher: [REGEX.DETECTIVE_SCHOOL.VISITING_TEXT, REGEX.DETECTIVE_SCHOOL.INVESTIGATION_TEXT],
     icon: OptionsSVG,
     showAdditionalDisplay: false,
-    locationName_alt: '11th Precinct Headquarters',
+    locationName: '11th Precinct Headquarters',
     encounterName_alt: 'Doing Detective Stuff',
     content_alt: null,
   },
@@ -187,7 +187,7 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.DETECTIVE_SCHOOL.TRADING_COPDOLLARS_LINE,
     icon: ShopSVG,
     showAdditionalDisplay: false,
-    locationName_alt: '11th Precinct Headquarters',
+    locationName: '11th Precinct Headquarters',
     encounterName_alt: 'Buying Detective Stuff',
   },
   [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE]: {
@@ -223,6 +223,15 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
     matcher: REGEX.FAX_MACHINE.PHOTOCOPY_ENCOUNTER_TEXT,
     icon: CombatSVG,
+  },
+  [ENTRY_TYPE.IOTM.FLOUNDRY]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.FLOUNDRY.ACQUIRED_ITEM_RESULT,
+    icon: OptionsSVG,
+    showAdditionalDisplay: false,
+    locationName: 'Clan Floundry',
+    encounterName_alt: REGEX.FLOUNDRY.ACQUIRED_ITEM_RESULT,
+    content_alt: null,
   },
   [ENTRY_TYPE.IOTM.FOURTH_OF_MAY_COSPLAY_SABER.UPGRADE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.USE_ITEM, CATEGORY_ID.OPTIONS],

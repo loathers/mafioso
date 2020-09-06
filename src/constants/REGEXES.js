@@ -93,6 +93,9 @@ export const REGEX = {
   FAX_MACHINE: {
     PHOTOCOPY_ENCOUNTER_TEXT: /(?<=\[\d+\] )photocopied monster/gi,
   },
+  FLOUNDRY: {
+    ACQUIRED_ITEM_RESULT: /(?<=clan_viplounge.php.*preaction=buyfloundryitem.*(\r\n|\n)you acquire an item: ).*/gi,
+  },
   FOURTH_OF_MAY_COSPLAY_SABER: {
     UPGRADE_TEXT: /^encounter.*may the fourth cosplay saber.*$(\r\n|\n).*choice 1386\/\d.*$/gmi,
     UPGRADE_CHOICE: /(?<=^Took choice 1386.*: ).*/gmi,
