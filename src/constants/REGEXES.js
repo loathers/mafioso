@@ -154,7 +154,7 @@ export const REGEX = {
     USED_SKILL_LINE: /casts.*(Otoscope|Reflex Hammer|Chest X-Ray).*/gi,
   },
   LTNT_TELEGRAM: {
-    GET_BOOTS_TEXT: /place.php.*whichplace=town_right.*action=townright_ltt(.*(\r\n|\n))+you acquire an item: your cowboy boots.*/gi,
+    GET_BOOTS_TEXT: /place.php.*whichplace=town_right.*action=townright_ltt.*(\r\n|\n)you acquire an item: your cowboy boots.*/gi,
   },
   MADAME_ZATARA_FORTUNE_TELLER: {
     CONSULTED_EFFECTED_NAME: /(?<=took choice 1278.*consult with zatara(\r\n|\n).*(\r\n|\n)+You acquire an effect: ).*(?= \()/gmi,
@@ -248,6 +248,9 @@ export const REGEX = {
   XO_SKELETON: {
     XO_COMBAT_SKILL: /.*casts.*HUGS AND KISSES/gmi,
     SUCCESSFUL_XO_STEAL_ITEM: /(?<=.*casts.*HUGS AND KISSES.*(\r\n|\n)You acquire an item: ).*/gmi,
+  },
+  GENERIC_GARDEN: {
+    GARDEN_HARVEST_RESULT: /(?<=^harvesting your garden.*(\r\n|\n)you acquire an item: ).*/gmi,
   },
   // -- paths
   COMMUNITY_SERVICE: {
