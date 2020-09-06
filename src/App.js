@@ -45,25 +45,19 @@ function App() {
 
         {/* Body */}
         <Switch>
-          {/*<Route path={`${LOG_VIS_URL}/:hashcode`}>
-            <LogVisualizerPage />
-          </Route>*/}
+          <Route
+            component={LogVisualizerPage}
+            path={`${LOG_VIS_URL}/:hashcode`} />
 
           <Route
-            path={`${LOG_VIS_URL}/:hashcode`}
-            component={LogVisualizerPage} />
+            component={ChartsPage}
+            path={CHARTS_URL} />
 
-          <Route path={CHARTS_URL}>
-            <ChartsPage />
-          </Route>
+          <Route
+            component={DatabasePage}
+            path={DATABASE_URL} />
 
-          <Route path={DATABASE_URL}>
-            <DatabasePage />
-          </Route>
-
-          <Route>
-            <HomePage />
-          </Route>
+          <Route component={HomePage} />
         </Switch>
 
         {/* Bottom */}
