@@ -50,11 +50,15 @@ function LogVisualizerPage(props) {
   });
 
   // if using a direct url of a log, we can fetch it immediately
+  const [isLoading, updateLoading] = React.useState(true);
   const {hashcode} = useParams();
   useEffect(() => {
-    async function fetchData() {
-      if (hashcode !== undefined && logStore.isImportedLog && !logStore.hasParsedEntries) {
-        await appStore.onViewSharedLog(hashcode);
+    function fetchData() {
+      if (hashcode !== undefined && !logStore.hasParsedEntries) {
+        appStore.onViewSharedLog(hashcode)
+          .finally(() => updateLoading(false));
+      } else {
+        updateLoading(false);
       }
     }
 
@@ -62,7 +66,7 @@ function LogVisualizerPage(props) {
   }, [hashcode]);
 
   // if not fetching and unable to fetch
-  if (!hashcode && !logStore.hasParsedEntries && !appStore.isLoading) {
+  if (!isLoading && !logStore.hasParsedEntries && !appStore.isLoading) {
     return <Redirect to={HOME_URL}/>
   }
 
