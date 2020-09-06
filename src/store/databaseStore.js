@@ -119,7 +119,7 @@ class AppStore {
           if (xhr.status === 200) {
             resolve(JSON.parse(xhr.responseText));
           } else {
-            const error = 'Server did not send any data.';
+            const error = xhr.responseText || 'Server did not send any data.';
             ToastController.error({title: 'Server Error', content: error});
             reject(error);
           }
