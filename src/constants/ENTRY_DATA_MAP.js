@@ -301,6 +301,14 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Eat - 0 fullness',
     encounterName_alt: REGEX.ITEMS.EAT_TARGET,
   },
+  [ENTRY_TYPE.IOTM.OLYMPIC_SIZED_SWIMMING_POOL]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.OLYMPIC_SIZED_SWIMMING_POOL.POOL_USE_RESULT,
+    icon: OptionsSVG,
+    showAdditionalDisplay: false,
+    locationName: 'An Olympic-Sized Swimming Pool',
+    encounterName_alt: REGEX.OLYMPIC_SIZED_SWIMMING_POOL.POOL_USE_RESULT,
+  },
   [ENTRY_TYPE.IOTM.PILL_KEEPER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS, CATEGORY_ID.DIET],
     matcher: REGEX.PILL_KEEPER.CHOICE_LINE,
@@ -680,6 +688,7 @@ export const ENTRY_DATA_MAP = {
     icon: ItemBagSVG,
     locationName_alt: ['Use {1}', REGEX.ITEMS.USE_ITEM_TARGET],
   },
+  // --
   [ENTRY_TYPE.GUILD.LEARN_SKILL]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
     matcher: REGEX.GUILD.LEARN_SKILL_TARGET,

@@ -167,6 +167,9 @@ export const REGEX = {
   NEVERENDING_PARTY: {
     INTRO_CHOICE_GROUP: /.*neverending party.*(\r\n|\n).*took choice 1322.*(\r\n|\n).*(whichchoice=1322.*)?(\r\n|\n)/gim,
   },
+  OLYMPIC_SIZED_SWIMMING_POOL: {
+    POOL_USE_RESULT: /(?<=^swimming pool.*(\r\n|\n)you acquire an effect: ).*(?=\()/gmi,
+  },
   PILL_KEEPER: {
     CHOICE_LINE: /Took choice 1395.*/gi,
     CHOICE_RESULT: /(?<=choice 1395\/\d+: ).*/gi,
@@ -442,6 +445,8 @@ export const REGEX = {
 
     USE_CHEWING_GUM_LINE: /^use \d+ chewing gum on a string.*(\r\n|\n)/gmi,
   },
+  CLAN: {
+  },
   GUILD: {
     LEARN_SKILL_TARGET: /(?<=guild.php.*buyskill.*(\r\n|\n)you learned a new skill: ).*/gmi,
   },
@@ -507,14 +512,13 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximizer|museum|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|shower|swimming pool|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     RAFFLE_TEXT: /.*You acquire raffle ticket.*/gi,
     USELESS_LEAFLET_LINE: /(?!.*(plover|open chest|look in hole|take ring))^(leaflet|\(you see a).*(\r\n|\n)/gim,
-    SWIMMING_POOL: /.*swimming pool.*(\r\n|\n)/gim,
 
     LOSE_EFFECT_LINE: /^you lose.*effect.*(\r\n|\n)/gim,
     FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,
