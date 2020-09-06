@@ -110,7 +110,7 @@ class LogStore {
     this.displayOptions = observable({
       dayNumFilter: 'all',
       pageNum: 0,
-      entriesPerPage: 100,
+      entriesPerPage: 110,
       categoriesVisible: this.displayOptions.categoriesVisible.slice(),
       filteredAttributes: this.displayOptions.filteredAttributes.slice(),
     });
@@ -477,13 +477,14 @@ class LogStore {
     // can only continue to fetch by page if filter created entries
     if (this.validEntries.length > 0) {
       const pagedEntries = await this.fetchByPage(fullOptions, false);
-      this.currentEntries.replace(pagedEntries);
+      // this.currentEntries.replace(pagedEntries);
+      this.onFetchDone(fullOptions, pagedEntries);
     } else {
-      this.currentEntries.replace([]);
+      // this.currentEntries.replace([]);
+      this.onFetchDone(fullOptions, []);
     }
 
     // done
-    this.onFetchDone(fullOptions);
     return this.currentEntries;
   }
   /**

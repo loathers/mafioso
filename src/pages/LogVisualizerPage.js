@@ -27,7 +27,6 @@ function LogVisualizerPage(props) {
 
         logStore.fetchEntriesAppended({
           pageNum: logStore.currentPageNum + 1,
-          entriesPerPage: 50,
         });
       }
     }
