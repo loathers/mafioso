@@ -5,8 +5,6 @@ import {observer} from 'mobx-react';
 import appStore from 'store/appStore';
 // import logStore from 'store/logStore';
 
-import LogUploader from 'sections/LogUploader';
-
 export default observer(
 function HomePage(props) {
   if (appStore.isReady) {
@@ -16,21 +14,26 @@ function HomePage(props) {
   return (
     <div
       elementname='app-page-home'
-      className='fontsize-4 flex-col'>
+      className='borradius-3 bor-1-white mar-7 pad-7 fontsize-6 flex-col-center'>
 
-      <LogUploader
-        style={{height: '70vh', width: '100%'}}
-        className='height-full width-full flex-auto adjacent-mar-t-4' >
-        <div className='flex-col-center height-full'>
-          <div style={{lineHeight: '30px'}} className='flex-col-center fontsize-8 flex-auto'>
-            {'Buongiorno!\n\nClick here or drag and drop to upload your Kolmafia session logs.\nYou can upload multiple files and Mafioso here will try to find a full ascension to display for you.'}
-          </div>
-
-          <div className='flex-none fontsize-4'>
-            {'Thanks for using Mafioso beta!\n\nIf you get an error or have any requests, make a report on Github.\nPlease know that no data is collected and uploaded files are never sent anywhere.'}
-          </div>
+      <div style={{maxWidth: 500}} className='flex-col whitespace-pre-wrap height-full'>
+        <div className='fontsize-9 talign-center adjacent-mar-t-9'>Buongiorno!</div>
+        <div className='talign-center adjacent-mar-t-9'>
+          {'Click the "Upload Log" button to upload your Kolmafia session logs.\nYou can upload multiple files and Mafioso will try to find a full ascension.'}
         </div>
-      </LogUploader>
+
+        <div className='talign-center adjacent-mar-t-9'>
+          Better yet, check out
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://github.com/docrostov/ScotchLog'
+            className='color-lightblue mar-h-2'>
+            Captain Scotch's log parser
+          </a>
+          which makes it even easier to find your ascension log to upload here!
+        </div>
+      </div>
     </div>
   )
 })
