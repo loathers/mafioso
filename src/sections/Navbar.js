@@ -71,7 +71,7 @@ function _UpperNavbar(props) {
         <NavbarButton
           to={appStore.visualizerUrl}
           componentType={Link}
-          isActive={pageName === 'visualizer'}
+          isActive={pageName === 'view'}
           disabled={!appStore.isReady}
           children='Visualizer'
           className='adjacent-mar-l-3' />
