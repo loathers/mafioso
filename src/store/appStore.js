@@ -2,6 +2,7 @@ import {observable} from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 import keycodes from 'constants/keycodes';
+import {LOG_VIS_URL} from 'constants/PAGE_URLS';
 
 import ToastController from 'sections/ToastController';
 import databaseStore from 'store/databaseStore';
@@ -53,7 +54,11 @@ class AppStore {
     return !this.isReady || this.hasAttemptedShare || logStore.isImportedLog || !logStore.isAscensionLog;
   }
   // -- data
-  /** @type {Boolean} */
+  /** @type {String} */
+  get visualizerUrl() {
+    return logStore.isImportedLog ? `${LOG_VIS_URL}/${logStore.hashcode}` : `${LOG_VIS_URL}/uploaded`;
+  }
+  /** @type {Array<Entry>} */
   get currentEntries() {
     return logStore.currentEntries;
   }

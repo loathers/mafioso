@@ -53,7 +53,7 @@ function LogVisualizerPage(props) {
   const {hashcode} = useParams();
   useEffect(() => {
     async function fetchData() {
-      if (hashcode && !logStore.hasParsedEntries) {
+      if (hashcode !== undefined && logStore.isImportedLog && !logStore.hasParsedEntries) {
         await appStore.onViewSharedLog(hashcode);
       }
     }

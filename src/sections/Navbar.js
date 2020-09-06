@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router";
 
-import {LOG_VIS_URL, CHARTS_URL, DATABASE_URL} from 'constants/PAGE_URLS';
+import {CHARTS_URL, DATABASE_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -69,7 +69,7 @@ function _UpperNavbar(props) {
         <NavbarDivider className='pad-l-4' />
 
         <NavbarButton
-          to={`${LOG_VIS_URL}/${logStore.hashcode}`}
+          to={appStore.visualizerUrl}
           componentType={Link}
           isActive={pageName === 'visualizer'}
           disabled={!appStore.isReady}
