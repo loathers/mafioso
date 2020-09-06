@@ -153,6 +153,9 @@ export const REGEX = {
   LIL_DOCTORS_BAG: {
     USED_SKILL_LINE: /casts.*(Otoscope|Reflex Hammer|Chest X-Ray).*/gi,
   },
+  LTNT_TELEGRAM: {
+    GET_BOOTS_TEXT: /place.php.*whichplace=town_right.*action=townright_ltt(.*(\r\n|\n))+you acquire an item: your cowboy boots.*/gi,
+  },
   MADAME_ZATARA_FORTUNE_TELLER: {
     CONSULTED_EFFECTED_NAME: /(?<=took choice 1278.*consult with zatara(\r\n|\n).*(\r\n|\n)+You acquire an effect: ).*(?= \()/gmi,
   },
@@ -501,7 +504,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximizer|museum|shower|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,

@@ -263,6 +263,15 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_INGREDIENTS,
     content_alt: null,
   },
+  [ENTRY_TYPE.IOTM.LTNT_TELEGRAM]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.LTNT_TELEGRAM.GET_BOOTS_TEXT,
+    icon: OptionsSVG,
+    showAdditionalDisplay: null,
+    locationName: 'LT&T Office',
+    encounterName_alt: 'Your Cowboy Boots',
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.MADAME_ZATARA_FORTUNE_TELLER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.EFFECTS, CATEGORY_ID.OPTIONS],
     matcher: REGEX.MADAME_ZATARA_FORTUNE_TELLER.CONSULTED_EFFECTED_NAME,
