@@ -65,10 +65,15 @@ function LogVisualizerPage(props) {
     fetchData();
   }, [hashcode]);
 
-  // if user uploaded a log while viewing an imported log, update the url to /uploaded
   useEffect(() => {
+    // if user uploaded a log while viewing an imported log, update the url to /uploaded
     if (!logStore.isImportedLog && props.location.pathname !== `${LOG_VIS_URL}/uploaded`) {
       props.history.push(`${LOG_VIS_URL}/uploaded`);
+    }
+
+    // similarly, if log is now shareable, we can redirect from /uploaded to /hash
+    if (logStore.isShareableLog && props.location.pathname === `${LOG_VIS_URL}/uploaded`) {
+      props.history.push(`${LOG_VIS_URL}/${logStore.hashcode}`);
     }
   })
 

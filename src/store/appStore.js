@@ -137,6 +137,9 @@ class AppStore {
 
       await databaseStore.shareLog(payload);
 
+      // this marks the log as shared & shareable
+      logStore.sharedHashcode = logStore.hashcode;
+
     } catch (err) {
       this.isPretendLoading.set(false);
     }

@@ -27,7 +27,7 @@ class LogStore {
     /** @type {Array<String>} */
     this.srcRawTexts = [];
     /** @type {String} */
-    this.importedHashcode = undefined;
+    this.sharedHashcode = undefined;
     /** @type {String} */
     this.rawText = undefined;
 
@@ -94,7 +94,7 @@ class LogStore {
   reset() {
     this.srcFiles = [];
     this.srcRawTexts = [];
-    this.importedHashcode = undefined;
+    this.sharedHashcode = undefined;
     this.allEntries.clear();
     this.validEntries.clear();
 
@@ -134,8 +134,8 @@ class LogStore {
   }
   /** @type {String} */
   get hashcode() {
-    if (this.importedHashcode) {
-      return this.importedHashcode;
+    if (this.sharedHashcode) {
+      return this.sharedHashcode;
     }
 
     if (this.sessionDate === undefined) return undefined;
@@ -172,7 +172,11 @@ class LogStore {
   }
   /** @type {Boolean} */
   get isImportedLog() {
-    return this.importedHashcode !== undefined;
+    return this.sharedHashcode !== undefined;
+  }
+  /** @type {Boolean} */
+  get isShareableLog() {
+    return this.sharedHashcode !== undefined;
   }
   // -- log data
   /** @type {String} */
@@ -373,7 +377,7 @@ class LogStore {
 
       await this.prepareLog(logText);
 
-      this.importedHashcode = databaseEntry.hashcode;
+      this.sharedHashcode = databaseEntry.hashcode;
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...databaseEntry,
