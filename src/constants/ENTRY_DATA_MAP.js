@@ -376,6 +376,14 @@ export const ENTRY_DATA_MAP = {
     locationName: 'Your Garden',
     encounterName_alt: ['Harvested {1}', REGEX.GENERIC_GARDEN.GARDEN_HARVEST_RESULT],
   },
+  [ENTRY_TYPE.MERCH_TABLE.POTTED_TEA_TREE]: {
+    categories: [CATEGORY_ID.OPTIONS],
+    matcher: REGEX.POTTED_TEA_TREE.SHAKE_ACTION,
+    icon: OptionsSVG,
+    showAdditionalDisplay: false,
+    locationName: 'A Tea Tree',
+    encounterName: 'Shake the tree',
+  },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
     categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],

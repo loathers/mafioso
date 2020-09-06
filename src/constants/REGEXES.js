@@ -255,6 +255,13 @@ export const REGEX = {
   GENERIC_GARDEN: {
     GARDEN_HARVEST_RESULT: /(?<=^harvesting your garden.*(\r\n|\n)you acquire an item: ).*/gmi,
   },
+  // -- merch table
+  POTTED_TEA_TREE: {
+    ACTION_LINE: /^teatree.*/gmi,
+    ACTION_NAME: /(?<=^teatree ).*/gmi,
+    SHAKE_ACTION: /^teatree shake.*/gmi,
+    SHAKE_RESULTS: /(?<=^teatree.*you acquire an item: ).*?$/gmis,
+  },
   // -- paths
   COMMUNITY_SERVICE: {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
