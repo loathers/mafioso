@@ -73,13 +73,19 @@ class AppStore {
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.addEventListener('loadend', () => {
-        const rawResponse = xhr.responseText;
-        if (!rawResponse) {
-          const error = 'Unable to reach server.';
-          ToastController.error({title: 'Server Error', content: error});
-          return reject(error);
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            if (xhr.responseText) {
+              resolve(JSON.parse(xhr.responseText));
+            } else {
+              resolve();
+            }
+          } else {
+            const error = 'Unable to reach server.';
+            ToastController.error({title: 'Server Error', content: error});
+            reject(error);
+          }
         }
-        resolve(JSON.parse(rawResponse));
       });
 
       const paramString = formatUrlParams(params);
@@ -109,14 +115,15 @@ class AppStore {
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.addEventListener('loadend', (evt) => {
-        const rawResponse = xhr.responseText;
-        if (!rawResponse) {
-          const error = 'Server did not send any data.';
-          ToastController.error({title: 'Server Error', content: error});
-          return reject(error);
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            resolve(JSON.parse(xhr.responseText));
+          } else {
+            const error = 'Server did not send any data.';
+            ToastController.error({title: 'Server Error', content: error});
+            reject(error);
+          }
         }
-
-        resolve(JSON.parse(rawResponse));
       });
 
       xhr.open('GET', `${GET_LOG_ENDPOINT}/${hashcode}`);
