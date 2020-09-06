@@ -18,11 +18,33 @@ function HomePage(props) {
 
       <div style={{maxWidth: 500}} className='flex-col whitespace-pre-wrap height-full'>
         <div className='fontsize-9 talign-center adjacent-mar-t-9'>Buongiorno!</div>
-        <div className='talign-center adjacent-mar-t-9'>
-          {'Click the "Upload Log" button to upload your Kolmafia session logs.\nYou can upload multiple files and Mafioso will try to find a full ascension.'}
+
+        <div className='adjacent-mar-t-9'>
+          This app is created as a supplement (for a tool) for the game
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://www.kingdomofloathing.com/'
+            className='color-lightblue mar-h-2'>
+            Kingdom of Loathing.
+          </a>
+          It's meant to help see what you - and others - have done in an Ascension in a more visual way.
         </div>
 
-        <div className='talign-center adjacent-mar-t-9'>
+        <div className='adjacent-mar-t-9'>
+          Start by clicking the "Upload Log" button to upload your
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='http://kolmafia.sourceforge.net/'
+            className='color-lightblue mar-h-2'>
+            Kolmafia
+          </a>
+          session logs. You can upload multiple files and Mafioso will try to find a full ascension.
+        </div>
+
+
+        <div className='adjacent-mar-t-9'>
           Better yet, check out
           <a
             target='_blank'
@@ -32,6 +54,11 @@ function HomePage(props) {
             Captain Scotch's log parser
           </a>
           which makes it even easier to find your ascension log to upload here!
+        </div>
+
+        <div className='adjacent-mar-t-9'>
+          New: a shared log database! Check out the "Database" tab to see what others are doing -
+          or upload your own and share it!
         </div>
       </div>
     </div>
