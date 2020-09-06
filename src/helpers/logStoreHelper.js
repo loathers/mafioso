@@ -67,6 +67,7 @@ export function createEstimatedEntries(allEntries) {
   // all data that is being tracked
   const estimates = {
     dateList: [], // kol dates
+    scotchDayList: [], // scotchlog day nums
     prevEntry: null,
     prevTurnNum: -1,
     trackedFamiliar: null, // familiar that user last swapped to
@@ -81,13 +82,18 @@ export function createEstimatedEntries(allEntries) {
     entry = handleEstimateTurnNum(entry, nextEntry);
 
     // + use entries with the date in them as a point of reference
-    const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.SCOTCH_LOG_DATE) || entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
+    const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
     if (dateMatch !== undefined && !estimates.dateList.includes(dateMatch)) {
       estimates.dateList.push(dateMatch);
     }
+    // separately track scotch's DAY START #
+    const dayMatch = entry.findMatcher(REGEX.SNAPSHOT.SCOTCH_LOG_DATE);
+    if (dayMatch !== undefined && !estimates.scotchDayList.includes(dayMatch)) {
+      estimates.scotchDayList.push(dayMatch);
+    }
 
     // set dayNum of entry
-    entry.dayNum = estimates.dateList.length;
+    entry.dayNum = estimates.dateList.length > 0 ? estimates.dateList.length : estimates.scotchDayList.length;
 
     // + update estimate if familar was swapped to
     if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
@@ -111,7 +117,7 @@ export function createEstimatedEntries(allEntries) {
   });
 
   // done
-  logStore.ascensionAttributes.dateList = estimates.dateList || [];
+  logStore.ascensionAttributes.dateList = estimates.dateList.length > 0 ? estimates.dateList : estimates.scotchDayList;
   return conjecturedEntries;
 }
 /**
