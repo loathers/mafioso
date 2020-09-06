@@ -11,18 +11,21 @@ import DatabaseListMenu from 'sections/DatabaseListMenu';
 
 export default observer(
 function DatabasePage(props) {
+  // set state to only attempt to fetch once
+  const [hasFetched, updateHasFetched] = React.useState(false);
 
   React.useEffect(() => {
     // no need to fetch if we have the data already or if app is not ready
-    if (databaseStore.isReady || appStore.isLoading) return;
+    if (databaseStore.isReady || appStore.isLoading || hasFetched) return;
 
+    updateHasFetched(true);
     if (appStore.isDevEnv) {
       databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.ANY});
 
     } else {
       databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.ACTIVE});
     }
-  });
+  }, [hasFetched]);
 
   const onClickStatusToggle = (databaseEntry) => {
     const isActive = databaseEntry.status === DATABASE_ENTRY_STATUS.ACTIVE;
