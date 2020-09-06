@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Redirect, useParams} from 'react-router-dom';
 import {observer} from 'mobx-react';
 
-import {HOME_URL} from 'constants/PAGE_URLS';
+import {HOME_URL, LOG_VIS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -15,6 +15,7 @@ import LogEntryViewer from 'sections/LogEntryViewer';
 
 export default observer(
 function LogVisualizerPage(props) {
+  // set a listener to fetch more entries as user is scrolling
   const onScroll = (evt) => {
     const currY = window.scrollY;
     const totalY = window.document.body.clientHeight;
@@ -31,7 +32,6 @@ function LogVisualizerPage(props) {
       }
     }
   }
-
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
     return () => {
@@ -49,12 +49,12 @@ function LogVisualizerPage(props) {
     }
   });
 
-  // if using a direct url of a log, we can fetch it immediately
+  // if using a direct url of a valid log hash, we can fetch it immediately
   const [isLoading, updateLoading] = React.useState(true);
   const {hashcode} = useParams();
   useEffect(() => {
     function fetchData() {
-      if (hashcode !== undefined && !logStore.hasParsedEntries) {
+      if (hashcode !== undefined && hashcode !== 'uploaded' && !logStore.hasParsedEntries) {
         appStore.onViewSharedLog(hashcode)
           .finally(() => updateLoading(false));
       } else {
@@ -65,8 +65,16 @@ function LogVisualizerPage(props) {
     fetchData();
   }, [hashcode]);
 
-  // if not fetching and unable to fetch
-  if (!isLoading && !logStore.hasParsedEntries && !appStore.isLoading) {
+  // if user uploaded a log while viewing an imported log, update the url to /uploaded
+  useEffect(() => {
+    if (!logStore.isImportedLog && props.location.pathname !== `${LOG_VIS_URL}/uploaded`) {
+      props.history.push(`${LOG_VIS_URL}/uploaded`);
+    }
+  })
+
+  // done loading but got nothing
+  const isFinishedLoading = !isLoading && !appStore.isLoading;
+  if (isFinishedLoading && !logStore.hasParsedEntries) {
     return <Redirect to={HOME_URL}/>
   }
 
