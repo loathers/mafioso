@@ -173,14 +173,22 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.DECK_OF_EVERY_CARD.TEXT,
     icon: OptionsSVG,
   },
-  [ENTRY_TYPE.IOTM.DETECTIVE_SCHOOL]: {
+  [ENTRY_TYPE.IOTM.DETECTIVE_SCHOOL.INVESTIGATE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: [REGEX.DETECTIVE_SCHOOL.VISITING_TEXT, REGEX.DETECTIVE_SCHOOL.INVESTIGATION_TEXT],
     icon: OptionsSVG,
     showAdditionalDisplay: false,
     locationName_alt: '11th Precinct Headquarters',
-    encounterName_alt: 'Detective Stuff',
+    encounterName_alt: 'Doing Detective Stuff',
     content_alt: null,
+  },
+  [ENTRY_TYPE.IOTM.DETECTIVE_SCHOOL.TRADE]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS, CATEGORY_ID.TRANSACTIONS],
+    matcher: REGEX.DETECTIVE_SCHOOL.TRADING_COPDOLLARS_LINE,
+    icon: ShopSVG,
+    showAdditionalDisplay: false,
+    locationName_alt: '11th Precinct Headquarters',
+    encounterName_alt: 'Buying Detective Stuff',
   },
   [ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.CRAFTING],

@@ -77,6 +77,8 @@ export const REGEX = {
   DETECTIVE_SCHOOL: {
     VISITING_TEXT: /visiting the 11th precinct headquarters(.*(\r\n|\n))+took choice 1193.*/gim,
     INVESTIGATION_TEXT: /(^wham.php.*(\r\n|\n))+.*/gim,
+
+    TRADING_COPDOLLARS_LINE: /trading \d+ cop dollars .* \d+ .*/gim,
   },
   DIABOLIC_PIZZA: {
     INGREDIENTS_LINE: /^pizza.*/m,
