@@ -149,7 +149,7 @@ class AppStore {
       const fetchedLogData = await databaseStore.fetchLog(hashcode);
       const {logText, databaseEntry} = fetchedLogData;
       await logStore.importLog(logText, databaseEntry);
-      ToastController.success({title: 'Log successfully imported!', content: 'Take a look at the visualizer.'});
+      ToastController.success({title: 'Log successfully imported!', content: 'Trying to boost some ideas\nfrom the competition, huh?\nGood idea.'});
 
     } catch (err) {
       // ToastController.show({title: 'Import Failed', content: err.message});

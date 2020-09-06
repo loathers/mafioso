@@ -304,6 +304,20 @@ class LogStore {
   }
   // -- uploading
   /**
+   *
+   */
+  onUploadDone() {
+    let toastMessage = '';
+
+    if (this.hasAscensionNum) {
+      toastMessage = `Ascension #${this.ascensionNum}!\nKeep it up and you might get promoted to capodecina.`;
+    } else {
+      toastMessage = 'Ey boss, your logs are ready.';
+    }
+
+    ToastController.success({title: 'Success!', content: toastMessage});
+  }
+  /**
    * @param {FileList} files
    */
   async handleUpload(files) {
@@ -335,7 +349,7 @@ class LogStore {
       // raw data gotten, now parse it to create individual entries
       await this.parse();
 
-      ToastController.success({title: 'Success!', content: `Ascension #${this.ascensionNum}, huh. So cool!`});
+      this.onUploadDone();
 
     } catch (err) {
       ToastController.error({title: 'Upload Failed', content: err.message});

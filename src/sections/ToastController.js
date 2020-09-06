@@ -88,7 +88,7 @@ function _ToasterComponent(props) {
     <div
       {...otherProps}
       elementname='app-toaster'
-      className={combineClassnames('bg-fifth boxshadow-dark flex-row', activeClassname, className)}
+      className={combineClassnames('bg-fifth whitespace-pre-wrap boxshadow-dark flex-row', activeClassname, className)}
     >
       <div
         style={{width: 5}}
