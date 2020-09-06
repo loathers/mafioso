@@ -177,6 +177,10 @@ class LogStore {
   // -- log data
   /** @type {String} */
   get fileName() {
+    if (!this.hasCharacterName) {
+      return 'unknown-mafioso-file.txt';
+    }
+
     const characterLabel = this.characterName.replace(' ', '_');
 
     if (this.isAscensionLog) {
@@ -310,9 +314,9 @@ class LogStore {
     let toastMessage = '';
 
     if (this.hasAscensionNum) {
-      toastMessage = `Ascension #${this.ascensionNum}!\nKeep it up and you might get promoted to capodecina.`;
+      toastMessage = `Ascension #${this.ascensionNum}!\nAnother one for the books.`;
     } else {
-      toastMessage = 'Ey boss, your logs are ready.';
+      toastMessage = 'Ey capo, your logs are ready.';
     }
 
     ToastController.success({title: 'Success!', content: toastMessage});
