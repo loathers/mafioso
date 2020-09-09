@@ -18,7 +18,7 @@ class AppStore {
     /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
     /** @type {String} */
-    this.role = process.env['REACT_APP_ROLE'] || (window.mafioso && window.mafioso.role);
+    this.role = process.env['REACT_APP_ROLE'] || window.sessionStorage.getItem('mafioso-role');
 
     /** @type {Observable<Array<Text>>} */
     this.databaseList = observable([]);
