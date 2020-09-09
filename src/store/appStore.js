@@ -51,6 +51,10 @@ class AppStore {
   }
   /** @type {Boolean} */
   get isShareDisabled() {
+    if (this.isDevMode.get()) {
+      return !this.isReady || logStore.isImportedLog;
+    }
+
     return !this.isReady || this.hasAttemptedShare || logStore.isImportedLog || !logStore.isAscensionLog;
   }
   // -- data
@@ -119,7 +123,7 @@ class AppStore {
    * uploads the current log to server
    */
   async onShareLog() {
-    if (!this.isReady || !logStore.isAscensionLog || !logStore.hasHashcode) return;
+    if (this.isShareDisabled) return;
 
     this.hasAttemptedShare = true;
     this.isPretendLoading.set(true);

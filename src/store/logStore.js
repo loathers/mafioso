@@ -208,7 +208,8 @@ class LogStore {
   /** @type {Boolean} */
   get isAscensionLog() {
     return this.difficultyName !== undefined
-      && this.pathName !== undefined;
+      && this.pathName !== undefined
+      && this.dayCount >= 1;
   }
   /** @type {Boolean} */
   get hasRawText() {
