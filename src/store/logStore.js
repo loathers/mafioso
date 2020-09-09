@@ -238,7 +238,7 @@ class LogStore {
   /** @type {String} */
   get characterName() {
     const nameFromFile = fileParserUtils.getNameFromSessionFile(logStore.srcFiles[0]);
-    return nameFromFile || this.ascensionAttributes.characterName;
+    return this.ascensionAttributes.characterName || nameFromFile;
   }
   /** @type {String} */
   get className() {
