@@ -207,8 +207,7 @@ class LogStore {
   }
   /** @type {Boolean} */
   get isAscensionLog() {
-    return this.dayCount >= 1
-      && this.difficultyName !== undefined
+    return this.difficultyName !== undefined
       && this.pathName !== undefined;
   }
   /** @type {Boolean} */
