@@ -46,6 +46,7 @@ export const PATH_MAP = {
   'Trendy': 'TREND',
   'Way of the Surprising Fist': 'FIST',
   'Bees Hate You': 'BEES',
+  'Bad Moon': 'BM',
   'Oxygenarian': 'OXY',
   'Boozetafarian': 'BOOZY',
   'Teetotaler': 'TEET',
