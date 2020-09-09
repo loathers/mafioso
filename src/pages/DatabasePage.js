@@ -20,7 +20,7 @@ function DatabasePage(props) {
 
     updateHasFetched(true);
     if (appStore.isDevEnv) {
-      databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.ANY});
+      databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.MOST});
 
     } else {
       databaseStore.fetchLogList({status: DATABASE_ENTRY_STATUS.ACTIVE});
