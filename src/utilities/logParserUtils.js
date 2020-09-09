@@ -97,13 +97,14 @@ export function parseAscensionAttributes(rawText) {
   const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || rawText.match(REGEX.CHARACTER.CHARACTER_NAME_FROM_COMBAT) || [];
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
+  const isBadMoon = rawText.match(REGEX.ASCENSION.ASCENSION_BAD_MOON) !== null;
 
   return {
     characterName: characterNameMatch[0],
     className: ascensionDetails[3],
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
-    pathName: ascensionDetails[2],
+    pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
     voterMonsters: parseVoteMonster(rawText),
   }
 }

@@ -26,6 +26,7 @@ export const REGEX = {
 
     ASCENSION_DETAIL_GROUP: /(?<=Ascension #\d+:(?:\r\n|\n))(hardcore|softcore|normal|casual) (.*) (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer|zombie Master|plumber|avatar of boris|avatar of jarlsberg|avatar of sneaky pete|ed the undying|gelatinous noob|plumber|vampyre|cow puncher|beanslinger|snake oiler)/i,
     ASCENSION_NUMBER: /(?<=Ascension #)\d+/,
+    ASCENSION_BAD_MOON: /(?<=Ascension #(.+(\r\n|\n))+)Bad Moon/,
 
     // VALHALLA: /welcome to valhalla/is,
     KING_FREED: /freeing king ralph.*?(?=(\s|))/i,
