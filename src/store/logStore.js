@@ -182,20 +182,20 @@ class LogStore {
   /** @type {String} */
   get fileName() {
     if (!this.hasCharacterName) {
-      return 'unknown-mafioso-file.txt';
+      return 'unknown_mafioso_file.txt';
     }
 
     const characterLabel = this.characterName.replace(' ', '_');
 
     if (this.isAscensionLog) {
-      return `${characterLabel}-${this.pathLabel}-${this.sessionDate}-mafioso.txt`;
+      return `${characterLabel}_${this.pathLabel}_${this.sessionDate}_mafioso.txt`;
     }
 
     if (this.sessionDate === undefined) {
-      return `${characterLabel}-mafioso.txt`
+      return `${characterLabel}_mafioso.txt`
     }
 
-    return `${characterLabel}-${this.sessionDate}-mafioso.txt`
+    return `${characterLabel}_${this.sessionDate}_mafioso.txt`
   }
   /** @type {String} */
   get sessionDate() {
