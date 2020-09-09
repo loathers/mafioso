@@ -251,8 +251,6 @@ class LogStore {
   }
   /** @type {Number} */
   get turnCount() {
-    if (!this.isAscensionLog) return 0;
-
     const checkEntries = this.allEntries.slice();
     let poppedEntry = checkEntries.pop();
     while (typeof poppedEntry.turnNum !== 'number' && checkEntries.length > 0) {
