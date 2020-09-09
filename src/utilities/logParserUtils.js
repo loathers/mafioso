@@ -99,8 +99,8 @@ export function parseAscensionAttributes(rawText) {
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
 
   return {
-    characterName: characterNameMatch[0] || '?name',
-    className: ascensionDetails[3] || '?class',
+    characterName: characterNameMatch[0],
+    className: ascensionDetails[3],
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
     pathName: ascensionDetails[2],
