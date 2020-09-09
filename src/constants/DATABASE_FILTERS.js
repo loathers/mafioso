@@ -90,6 +90,11 @@ export const PATH_FILTERS = [
     label: 'Evergreen Paths',
     optionGroup: [
       {
+        label: 'Bad Moon',
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Oxygenarian',
         isHidden: false,
         checked: false,
