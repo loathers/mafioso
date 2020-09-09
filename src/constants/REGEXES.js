@@ -342,6 +342,7 @@ export const REGEX = {
   // -- character
   CHARACTER: {
     CHARACTER_NAME: /(?<=^name: ).*/mi,
+    CHARACTER_NAME_FROM_COMBAT: /(?<=^Round \d: ).*(?= casts)/mi,
     CLASS_NAME: /(?<=^class: ).*/mi,
 
     ADV_CHANGE_LINE: /.*you (gain|lose).*\d*adventure.*/gi,

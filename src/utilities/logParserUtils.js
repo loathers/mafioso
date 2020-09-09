@@ -94,7 +94,7 @@ export function findAscensionLog(rawText) {
  * @returns {AscensionAttributes}
  */
 export function parseAscensionAttributes(rawText) {
-  const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || [];
+  const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || rawText.match(REGEX.CHARACTER.CHARACTER_NAME_FROM_COMBAT) || [];
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
 
