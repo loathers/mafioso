@@ -192,7 +192,7 @@ class LogStore {
     }
 
     if (this.sessionDate === undefined) {
-      return `${characterLabel}_mafioso.txt`
+      return `${characterLabel}_parsed_mafioso.txt`
     }
 
     return `${characterLabel}_${this.sessionDate}_mafioso.txt`
