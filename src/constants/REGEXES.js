@@ -520,10 +520,10 @@ export const REGEX = {
     CHOICE_PHP_LINE: /^choice\.php.*/gmi,
   },
   SNAPSHOT: {
-    REAL_DATE: /(January|February|March|April|May|June|July|August|September|OCtober|November|December).*(?= -)/gi,
-    SNAPSHOT_DATE: /(?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
+    REAL_DATE: /(January|February|March|April|May|June|July|August|September|October|November|December).*(?= -)/gi,
+    SNAPSHOT_DATE: /(?:January|February|March|April|May|June|July|August|September|October|November|December).*(Jarlsuary|Frankuary|Frankruary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     SCOTCH_LOG_DATE: /(?<=START OF DAY #)\d+/gi,
-    KOL_DATE: /(Jarlsuary|Frankuary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
+    KOL_DATE: /(Jarlsuary|Frankuary|Frankruary|Starch|April|Martinus|Bill|Bor|Petember|Carlvember|Porktober|Boozember|Dougtember) \d+/gi,
     BEGIN_ASCENSION_SNAPSHOT: /((=-){22}=)(\r\n|\n)beginning new ascension(\s)*(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
     PLAYER_SNAPSHOT: /((=-){22}=)(\r\n|\n)( *)player snapshot(\r\n|\n)((=-){22}=).*?((=-){22}=)/gmis,
     WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP: /(?:(?:=-){22}=)(?:\r\n|\n)(?: *)player snapshot(?:\r\n|\n)(?:(?:=-){22}=).*?((?:January|February|March|April|May|June|July|August|September|OCtober|November|December).*?(?=\r\n|\n)).*?(name:.*?class:.*?(?=\r\n|\n)).*?(?:(?:=-){22}=)/gmis,
