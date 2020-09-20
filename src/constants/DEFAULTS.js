@@ -70,6 +70,7 @@ export const PREGROUP_REGEX_LIST = [
   // REGEX.GOD_LOBSTER.GROUPING,
   // REGEX.VOTING_BOOTH.GROUPING,
   REGEX.QUEST.TOWER_DOOR_TEXT,
+  REGEX.COMMUNITY_SERVICE.FINAL_SERVICE_CHOICE,
 ];
 // -- individual entry level
 // text we will remove from the display text,

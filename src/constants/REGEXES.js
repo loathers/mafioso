@@ -272,6 +272,8 @@ export const REGEX = {
   COMMUNITY_SERVICE: {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
     CHOICE_RESULT: /(?<=^took choice 1089\/\d+: ).*(?= \(\d+ adventures.*)/gmi,
+
+    FINAL_SERVICE_CHOICE: /(?<=^took choice 1089\/30: ).*You acquire an item: Thwaitgold/gmis,
   },
   DISGUISES_DELIMIT: {
     SWAP_MASK: /(?<=^Round.*casts ).*SWAP MASK.*(?=!)/mi,
