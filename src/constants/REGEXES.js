@@ -13,9 +13,9 @@ export const REGEX = {
     GENERATED_BLOCK: /<mafioso>.*<\/mafioso>/gs,
   },
   ASCENSION: {
-    VALHALLA_COMPLETE: /welcome to valhalla.*?(freeing king ralph|freeing the king).*?/is,
-    THWAITGOLD_COMPLETE: /welcome to valhalla.*?You acquire an item: Thwaitgold.*?/is,
+    VALHALLA_COMPLETE: /(Beginning New Ascension|welcome to valhalla).*?(freeing king ralph|freeing the king).*?/is,
     REGULAR_COMPLETE: /Beginning New Ascension.*?(freeing king ralph|freeing the king).*?/is,
+    THWAITGOLD_COMPLETE: /(Beginning New Ascension|welcome to valhalla).*?You acquire an item: Thwaitgold.*?/is,
     SCOTCH_LOG_ASCENSION: /(%%%%%%%%% START OF DAY #1).*?(freeing king ralph|freeing the king).*?/is,
 
     VALHALLA_TEXT: /welcome to valhalla/im,
