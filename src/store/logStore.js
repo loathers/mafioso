@@ -187,11 +187,15 @@ class LogStore {
 
     const characterLabel = this.characterName.replace(' ', '_');
 
-    if (this.isAscensionLog) {
+    if (this.isAscensionLog && this.hasSessionDate) {
       return `${characterLabel}_${this.pathLabel}_${this.sessionDate}_mafioso.txt`;
     }
 
-    if (this.sessionDate === undefined) {
+    if (this.isAscensionLog && !this.hasSessionDate) {
+      return `${characterLabel}_${this.pathLabel}_mafioso.txt`;
+    }
+
+    if (!this.hasSessionDate) {
       return `${characterLabel}_parsed_mafioso.txt`
     }
 
@@ -204,6 +208,10 @@ class LogStore {
   /** @type {String} */
   get pathLabel() {
     return logParserUtils.createPathLabel(this.rawText);
+  }
+  /** @type {Boolean} */
+  get hasSessionDate() {
+    return this.sessionDate !== undefined;
   }
   /** @type {Boolean} */
   get isAscensionLog() {
