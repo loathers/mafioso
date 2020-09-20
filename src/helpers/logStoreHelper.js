@@ -81,6 +81,14 @@ export function createEstimatedEntries(allEntries) {
     // update turnNum
     entry = handleEstimateTurnNum(entry, nextEntry);
 
+    // sometimes the last few entries don't have any turns tracked by mafia
+    // so we'll just set it equal to our last known turnNum
+    if (nextEntry === undefined && estimates.prevTurnNum > 0 && entry.turnNum <= estimates.prevTurnNum) {
+      // just in case it also costs adventures, add it in
+      const extraAdventureChanges = entry.adventureChangeValue < 0 ? Math.abs(entry.adventureChangeValue) : 0;
+      entry.turnNum = estimates.prevTurnNum + extraAdventureChanges;
+    }
+
     // + use entries with the date in them as a point of reference
     const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
     if (dateMatch !== undefined && !estimates.dateList.includes(dateMatch)) {

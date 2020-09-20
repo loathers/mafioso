@@ -324,6 +324,10 @@ export default class Entry {
     return this.attributes.manaChanges.length > 0;
   }
   /** @type {Number} */
+  get adventureChangeValue() {
+    return this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0);
+  }
+  /** @type {Number} */
   get adventureDisplay() {
     const advChanged = this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0);
     if (advChanged > 0) {
@@ -599,6 +603,11 @@ export default class Entry {
   get hasPortscanEncounter() {
     return this.hasText(REGEX.SOURCE_TERMINAL.GOVERNMENT_AGENT_ENCOUNTER)
       || this.entryType === ENTRY_TYPE.PATH.THE_SOURCE.SOURCE_AGENT_ENCOUNTER;
+  }
+  /** @type {Boolean} */
+  get isCommunityService() {
+    return this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.SERVICE
+      || this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE;
   }
   // -- utility
   /**
