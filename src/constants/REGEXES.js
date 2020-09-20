@@ -273,6 +273,8 @@ export const REGEX = {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
     CHOICE_RESULT: /(?<=^took choice 1089\/\d+: ).*(?= \(\d+ adventures.*)/gmi,
 
+    SPLITTABLE_CHOICE_LINES: /(?<=.)(\r\n|\n)(?=Took choice 1089\/\d+)/gmi,
+
     FINAL_SERVICE_CHOICE: /(?<=^took choice 1089\/30: ).*You acquire an item: Thwaitgold/gmis,
   },
   DISGUISES_DELIMIT: {

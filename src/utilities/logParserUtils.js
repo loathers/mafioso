@@ -6,6 +6,7 @@ import Entry from 'classes/Entry';
 import {
   PREREMOVE_REGEX_LIST,
   PREGROUP_REGEX_LIST,
+  SPLIT_REGEX_LIST,
   FULL_PARSE_DELAY,
   CLEAN_RAW_DELAY,
 } from 'constants/DEFAULTS';
@@ -31,8 +32,9 @@ export async function parseLogTxt(rawText) {
     }
     console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
 
-    // combine some text ahead of time
-    const preparsedLog = pregroupRawLog(rawText);
+    // first combine some text ahead of time
+    // then split some text
+    const preparsedLog = presplitRawLog(pregroupRawLog(rawText));
 
     // split up each entry by wherever there are two new lines
     //  for some reason it doesn't properly split with two new lines
@@ -139,6 +141,16 @@ export function pregroupRawLog(rawText) {
     }
 
     return accumulatedText;
+  }, rawText);
+}
+/**
+ * split some entries ahead of time
+ * @param {String} rawText
+ * @return {String}
+ */
+export function presplitRawLog(rawText) {
+  return SPLIT_REGEX_LIST.reduce((accumulatedText, regex) => {
+    return accumulatedText.replace(regex, '\n\n');
   }, rawText);
 }
 /**
