@@ -402,7 +402,16 @@ export const ENTRY_DATA_MAP = {
     encounterName: 'Shake the tree',
   },
   // --
-  [ENTRY_TYPE.PATH.COMMUNITY_SERVICE_CHOICE]: {
+  [ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE]: {
+    categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.COMMUNITY_SERVICE.FINAL_SERVICE_CHOICE,
+    icon: PathSVG,
+    showAdditionalDisplay: false,
+    locationName_alt: 'Community Service',
+    encounterName_alt: 'Final Service',
+    content_alt: null,
+  },
+  [ENTRY_TYPE.PATH.COMMUNITY_SERVICE.SERVICE]: {
     categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.COMMUNITY_SERVICE.CHOICE_LINE,
     icon: PathSVG,
