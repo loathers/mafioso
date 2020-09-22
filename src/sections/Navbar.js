@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router";
 
-import {CHARTS_URL, DATABASE_URL} from 'constants/PAGE_URLS';
+import {CHARTS_URL, DATABASE_URL, STATS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -16,6 +16,7 @@ import combineClassnames from 'utilities/combineClassnames';
 
 const enableCharts = process.env['REACT_APP_ENABLE_CHARTS'] === 'true';
 const enableDatabase = process.env['REACT_APP_ENABLE_SHARE'] === 'true';
+const enableStats = process.env['REACT_APP_ENABLE_STATS'] === 'true';
 
 /** @returns {ReactComponent} */
 export default withRouter(
@@ -91,8 +92,17 @@ function _UpperNavbar(props) {
             to={DATABASE_URL}
             componentType={Link}
             isActive={pageName === 'database'}
-            // disabled={!appStore.isReady}
             children='Database'
+            className='adjacent-mar-l-3' />
+        }
+
+        { (appStore.isDevEnv || enableStats) &&
+          <NavbarButton
+            to={STATS_URL}
+            componentType={Link}
+            isActive={pageName === 'stats'}
+            disabled={!appStore.isReady}
+            children='Stats'
             className='adjacent-mar-l-3' />
         }
 

@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import {observer} from 'mobx-react';
 
-import {LOG_VIS_URL, CHARTS_URL, DATABASE_URL} from 'constants/PAGE_URLS';
+import {LOG_VIS_URL, CHARTS_URL, DATABASE_URL, STATS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import logStore from 'store/logStore';
@@ -20,6 +20,7 @@ import Navbar from 'sections/Navbar';
 import HomePage from 'pages/HomePage';
 import ChartsPage from 'pages/ChartsPage';
 import DatabasePage from 'pages/DatabasePage';
+import StatsPage from 'pages/StatsPage';
 import LogVisualizerPage from 'pages/LogVisualizerPage';
 
 export default observer(
@@ -56,6 +57,10 @@ function App() {
           <Route
             component={DatabasePage}
             path={DATABASE_URL} />
+
+          <Route
+            component={StatsPage}
+            path={STATS_URL} />
 
           <Route component={HomePage} />
         </Switch>
