@@ -54,7 +54,6 @@ function StatDayBlock(props) {
 
   const {
     dayNum,
-    voterMonster,
   } = data;
 
   console.log('StatDayBlock', data);
@@ -66,7 +65,8 @@ function StatDayBlock(props) {
         topContent={`Day ${dayNum}`}
         className='pad-3 adjacent-mar-t-1' />
 
-      <StatRow label='Voter Monster' content={voterMonster} />
+      <StatRow label='Voter Monster' content={data.voterMonster} />
+      <StatRow label='Painting Monster' content={data.paintingMonster} />
     </div>
   )
 }
@@ -77,6 +77,10 @@ function StatRow(props) {
     label,
     content,
   } = props;
+
+  if (content === undefined || content === null) {
+    return null;
+  }
 
   return (
     <div className={combineClassnames('flex-row', className)}>

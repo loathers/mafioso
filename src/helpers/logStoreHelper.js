@@ -279,13 +279,27 @@ export function downloadFullLog() {
  * @returns {Array}
  */
 export function createStats() {
-  const statsData = [];
+  const statsData = []; // final collation of data
+
   const statDayCount = Math.max(logStore.dayCount, 1);
   for (let i=0; i<statDayCount; i++) {
-    statsData.push({
-      dayNum: i + 1,
-      voterMonster: logStore.ascensionAttributes.voterMonsters[i],
-    });
+    const dayNum = i + 1;
+
+    // this is what will be returned
+    const currentData = {
+      dayNum: dayNum,
+    };
+
+    if (logStore.ascensionAttributes.voterMonsters.length > 0) {
+      currentData['voterMonster'] = logStore.getVoterMonsterOnDay(dayNum);
+    }
+
+    const paintingMonsterEntry = logStore.findNextEntry(0, {dayNum: dayNum, entryType: ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING});
+    if (paintingMonsterEntry) {
+      currentData['paintingMonster'] = paintingMonsterEntry.attributes.encounterName;
+    }
+
+    statsData.push(currentData);
   }
 
   return statsData;
