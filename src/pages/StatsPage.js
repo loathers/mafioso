@@ -5,10 +5,12 @@ import {observer} from 'mobx-react';
 import {HOME_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
-// import chartStore from 'store/chartStore';
+// import logStore from 'store/logStore';
+import * as logStoreHelper from 'helpers/logStoreHelper';
 
 // import ChartContainer from 'components/ChartContainer';
 // import Button from 'components/Button';
+import EntryHeaderDisplay from 'components/EntryHeaderDisplay';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -26,11 +28,60 @@ function StatsPage(props) {
     return <Redirect to={HOME_URL}/>
   }
 
+  const statsData = logStoreHelper.createStats();
   return (
     <div
       elementname='app-page-charts'
-      className={combineClassnames('flex-row', className)}>
+      className={combineClassnames('flex-col', className)}>
       Stats Page
+
+      { statsData.map((data) => (
+        <StatDayBlock
+          data={data}
+          key={`stat-day-block-${data.dayNum}-key`}
+          className='adjacent-mar-t-2' />
+      ))
+      }
     </div>
   )
 })
+/** @returns {React.Component} */
+function StatDayBlock(props) {
+  const {
+    className,
+    data,
+  } = props;
+
+  const {
+    dayNum,
+    voterMonster,
+  } = data;
+
+  console.log('StatDayBlock', data);
+
+  return (
+    <div
+      className={combineClassnames('flex-col', className)}>
+      <EntryHeaderDisplay
+        topContent={`Day ${dayNum}`}
+        className='pad-3 adjacent-mar-t-1' />
+
+      <StatRow label='Voter Monster' content={voterMonster} />
+    </div>
+  )
+}
+/** @returns {React.Component} */
+function StatRow(props) {
+  const {
+    className,
+    label,
+    content,
+  } = props;
+
+  return (
+    <div className={combineClassnames('flex-row', className)}>
+      <span className='adjacent-mar-l-3'>{`${label}:`}</span>
+      <span className='f-bold adjacent-mar-l-3'>{content}</span>
+    </div>
+  );
+}

@@ -274,3 +274,19 @@ export function downloadFullLog() {
   if (!logStore.isReady) throw new Error('Log is not ready to be downloaded.');
   download(logStore.export(), logStore.fileName, 'text/plain');
 }
+/**
+ * creates data for StatsPage
+ * @returns {Array}
+ */
+export function createStats() {
+  const statsData = [];
+  const statDayCount = Math.max(logStore.dayCount, 1);
+  for (let i=0; i<statDayCount; i++) {
+    statsData.push({
+      dayNum: i + 1,
+      voterMonster: logStore.ascensionAttributes.voterMonsters[i],
+    });
+  }
+
+  return statsData;
+}
