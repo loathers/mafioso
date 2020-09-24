@@ -148,7 +148,7 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
     }
 
     // freeing the king doesn't actually take a turn
-    if (currEntry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END) {
+    if (currEntry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END || currEntry.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE) {
       currEntry.isInBetweenTurns = true;
       currEntry.turnNum = myTurnNum - 1;
     }
