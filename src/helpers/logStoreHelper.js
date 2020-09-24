@@ -101,7 +101,7 @@ export function createEstimatedEntries(allEntries) {
     }
 
     // set dayNum of entry
-    entry.dayNum = estimates.dateList.length > 0 ? estimates.dateList.length : estimates.scotchDayList.length;
+    entry.dayNum = (estimates.dateList.length > estimates.scotchDayList.length) ? estimates.dateList.length : estimates.scotchDayList.length;
 
     // + update estimate if familar was swapped to
     if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
@@ -125,7 +125,7 @@ export function createEstimatedEntries(allEntries) {
   });
 
   // done
-  logStore.ascensionAttributes.dateList = estimates.dateList.length > 0 ? estimates.dateList : estimates.scotchDayList;
+  logStore.ascensionAttributes.dateList = (estimates.dateList.length > estimates.scotchDayList.length) ? estimates.dateList : estimates.scotchDayList;
   return conjecturedEntries;
 }
 /**

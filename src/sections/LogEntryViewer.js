@@ -26,7 +26,7 @@ function LogEntryViewer(props) {
         const currentDay = entry.attributes.dayNum;
         const previousEntry = idx >= 1 && entriesList[idx-1];
         const previousDay = previousEntry && previousEntry.attributes.dayNum;
-        const shouldShowDayDisplay = previousDay !== undefined ? previousDay < currentDay : false;
+        const shouldShowDayDisplay = previousDay !== undefined ? (previousDay < currentDay) : false;
 
         return (
           <Fragment key={`entry-display-${entry.id}-${idx}-key`}>
