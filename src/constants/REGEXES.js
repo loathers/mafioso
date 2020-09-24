@@ -543,6 +543,8 @@ export const REGEX = {
     UNEQUIP: /^unequip.*(\r\n|\n)/gim,
     MCD_CHANGE: /^mcd.*(\r\n|\n)/gim,
     TELESCOPE: /^telescope.*(\r\n|\n)/gim,
+
+    UNKNOWN_SERVICE_LINE: /^Took choice 1089\/\d+: unknown.*(\r\n|\n)/gim,
   },
 };
 
