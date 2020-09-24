@@ -1,4 +1,5 @@
 import {CATEGORY_ID} from 'constants/CATEGORIES';
+import {COMMUNITY_SERVICES_LIST} from 'constants/COMMUNITY_SERVICES_MAP';
 import {COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
 import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
 import {INSTAKILLS, INSTAKILLS_MAP} from 'constants/INSTAKILLS'
@@ -395,6 +396,14 @@ export default class Entry {
   }
   /** @type {String} */
   get encounterDisplay() {
+    // show the actual service name for CS
+    if (this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.SERVICE) {
+      const serviceTask = COMMUNITY_SERVICES_LIST.find((taskData) => this.hasText(taskData.matcher));
+      if (serviceTask) {
+        return serviceTask.label;
+      }
+    }
+
     return this.parseDisplayMatcher(this.entryData.encounterName_alt, this.attributes.encounterName);
   }
   /** @param {String} */

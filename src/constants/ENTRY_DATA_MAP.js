@@ -415,6 +415,7 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.PATH, CATEGORY_ID.QUEST, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.COMMUNITY_SERVICE.CHOICE_LINE,
     icon: PathSVG,
+    showAdditionalDisplay: false,
     locationName_alt: 'Community Service',
     encounterName_alt: REGEX.COMMUNITY_SERVICE.CHOICE_RESULT,
   },
