@@ -242,6 +242,6 @@ export function parsePathName(rawText) {
  * @returns {String}
  */
 export function parseVoteMonster(rawText) {
-  const allMonsters = regexUtils.getRegexMatch(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_UNIQUE);
+  const allMonsters = regexUtils.getRegexMatch(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_UNIQUE) || [];
   return allMonsters.map((votingText) => regexUtils.findMatcher(votingText, REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT));
 }

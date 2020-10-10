@@ -366,6 +366,7 @@ class LogStore {
       this.onUploadDone();
 
     } catch (err) {
+      console.error(err);
       ToastController.error({title: 'Upload Failed', content: err.message});
       this.isParsing.set(false);
     }
