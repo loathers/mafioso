@@ -373,7 +373,7 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.SPINMASTER_LATHE.LATHE_MAKE_RESULT,
     icon: OptionsSVG,
-    locationName: 'Spinmaster Lathe',
+    locationName: 'SpinMaster Lathe',
     encounterName_alt: REGEX.SPINMASTER_LATHE.LATHE_MAKE_RESULT,
     content_alt: null,
   },
