@@ -294,6 +294,10 @@ export function createStats() {
       currentData['voterMonster'] = logStore.getVoterMonsterOnDay(dayNum);
     }
 
+    if (logStore.ascensionAttributes.cargoPockets.length > 0) {
+      currentData['cargoPocket'] = logStore.getCargoPocketOnDay(dayNum);
+    }
+
     const paintingMonsterEntry = logStore.findNextEntry(0, {dayNum: dayNum, entryType: ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING});
     if (paintingMonsterEntry) {
       currentData['paintingMonster'] = paintingMonsterEntry.attributes.encounterName;

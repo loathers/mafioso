@@ -47,6 +47,8 @@ class LogStore {
       dateList: [],
       /** @type {Array<String>} */
       voterMonsters: [],
+      /** @type {Array<String>} */
+      cargoPockets: [],
     }
 
     /**
@@ -127,7 +129,14 @@ class LogStore {
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...logParserUtils.parseAscensionAttributes(this.rawText),
+        ...logParserUtils.parseDailyAttributes(this.rawText),
       };
+
+    } else {
+      this.ascensionAttributes = {
+        ...this.ascensionAttributes,
+        ...logParserUtils.parseDailyAttributes(this.rawText),
+      }
     }
 
     return this.ascensionAttributes;
@@ -415,6 +424,11 @@ class LogStore {
 
     } else {
       this.rawText = await logParserUtils.cleanRawLog(logText);
+      this.ascensionAttributes = {
+        ...this.ascensionAttributes,
+        ...logParserUtils.parseDailyAttributes(this.rawText),
+      };
+
       console.warn('No Ascension specific log was found.');
     }
 
@@ -699,6 +713,13 @@ class LogStore {
    */
   getVoterMonsterOnDay(dayNum) {
     return this.ascensionAttributes.voterMonsters[dayNum - 1];
+  }
+  /**
+   * @param {Number} dayNum
+   * @return {String}
+   */
+  getCargoPocketOnDay(dayNum) {
+    return this.ascensionAttributes.cargoPockets[dayNum - 1];
   }
   // -- logStoreHelper.js wrappers
   /** @alias */

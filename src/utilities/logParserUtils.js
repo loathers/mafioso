@@ -107,7 +107,16 @@ export function parseAscensionAttributes(rawText) {
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
     pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
+  }
+}
+/**
+ * @param {String} rawText
+ * @returns {AscensionAttributes}
+ */
+export function parseDailyAttributes(rawText) {
+  return {
     voterMonsters: parseVoteMonster(rawText),
+    cargoPockets: parseCargoPockets(rawText),
   }
 }
 /**
@@ -244,4 +253,12 @@ export function parsePathName(rawText) {
 export function parseVoteMonster(rawText) {
   const allMonsters = regexUtils.getRegexMatch(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_UNIQUE) || [];
   return allMonsters.map((votingText) => regexUtils.findMatcher(votingText, REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT));
+}
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function parseCargoPockets(rawText) {
+  const allResults = regexUtils.getRegexMatch(rawText, REGEX.CARGO_CULTIST_SHORTS.PICK_POCKET_RESULT) || [];
+  return allResults;
 }
