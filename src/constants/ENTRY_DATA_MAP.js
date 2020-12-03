@@ -369,6 +369,14 @@ export const ENTRY_DATA_MAP = {
     icon: CombatSVG,
     locationName: 'The Snojo',
   },
+  [ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.SPINMASTER_LATHE.LATHE_MAKE_RESULT,
+    icon: OptionsSVG,
+    locationName: 'Spinmaster Lathe',
+    encounterName_alt: REGEX.SPINMASTER_LATHE.LATHE_MAKE_RESULT,
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT,

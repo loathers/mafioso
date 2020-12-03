@@ -240,6 +240,10 @@ export const REGEX = {
     CHEW_JELLY_TARGET: /(?<=chew \d+ )(hot|cold|sleaze|spooky|stench) jelly/gi,
     ACQUIRED_STENCH_JELLIED_EFFECT: /you acquire an effect: stench jellied/gi,
   },
+  SPINMASTER_LATHE: {
+    LATHE_MAKE_GROUPING: /visiting your spinmaster.*(\r\n|\n){2,}trading.*/gmi,
+    LATHE_MAKE_RESULT: /(?<=visiting your spinmaster.*(\r\n|\n)trading.*for.*(\r\n|\n)you acquire an item: ).*/gmi,
+  },
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
@@ -512,7 +516,7 @@ export const REGEX = {
     SAME_AFTER_BATTLE: /(^After battle:).*(\r\n|\n).*(\r\n|\n){2,}(?!\.)/gmi,
     PVP_ATTACK: /(^attack).*?pvp fight/gmis,
 
-    MCLUSKY_FILE_AND_USE_BINDER: /.*acquire.*mcclusky file.*(\r\n|\n).*boring bind clip.*/mi,
+    MCLUSKY_FILE_AND_USE_BINDER: /.*acquire.*mcclusky file.*(\r\n|\n).*boring binder clip.*/mi,
   },
   // -- kolmafia
   KOLMAFIA: {
