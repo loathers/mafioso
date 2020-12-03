@@ -61,6 +61,7 @@ export const REGEX = {
     INSPECTING_POCKETS_LINE: /^Inspecting Cargo Cultist Shorts.*/gmi,
     PICK_POCKET_LINE: /^picking pocket \d+/gmi,
     PICK_POCKET_NUMBER: /(?<=^picking pocket )\d+/gmi,
+    PICK_POCKET_RESULT: /(?<=^Inspecting Cargo Cultist Shorts(\r\n|\n)picking pocket \d+(\r\n|\n)you acquire an item: ).*/gmi,
   },
   CAT_BURGLAR: {
     USELESS_HEIST_GROUP: /main\.php.*heist=1(\r\n|\n).*(1320\/2).*(\r\n|\n).*$/gi,
