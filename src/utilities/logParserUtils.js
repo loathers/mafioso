@@ -34,7 +34,7 @@ export async function parseLogTxt(rawText) {
 
     // first combine some text ahead of time
     // then split some text
-    const preparsedLog = presplitRawLog(pregroupRawLog(rawText));
+    const preparsedLog = presplitRawLog(rawText);
 
     // split up each entry by wherever there are two new lines
     //  for some reason it doesn't properly split with two new lines

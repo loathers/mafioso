@@ -414,16 +414,18 @@ export class LogStore {
    * @param {String} logText
    */
   async prepareLog(logText) {
+    const groupedLogText = logParserUtils.pregroupRawLog(logText);
+
     // try to find out if there is a full ascension log,
     //  otherwise just use the first text we have
-    const fullAscensionText = logParserUtils.findAscensionLog(logText);
+    const fullAscensionText = logParserUtils.findAscensionLog(groupedLogText);
     if (fullAscensionText !== null) {
       this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
       this.setAscensionAttributes();
       console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'font-size: 14px');
 
     } else {
-      this.rawText = await logParserUtils.cleanRawLog(logText);
+      this.rawText = await logParserUtils.cleanRawLog(groupedLogText);
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...logParserUtils.parseDailyAttributes(this.rawText),
