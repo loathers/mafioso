@@ -19,7 +19,7 @@ import * as regexUtils from 'utilities/regexUtils';
 /**
  * state and handler of the log data
  */
-class LogStore {
+export class LogStore {
   /** @default */
   constructor() {
     /** @type {Array<File>} */
