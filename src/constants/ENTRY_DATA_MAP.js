@@ -128,6 +128,13 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.BIRD_A_DAY.ANY_RESULT,
     content_alt: null,
   },
+  [ENTRY_TYPE.IOTM.CARGO_CULTIST_SHORTS.ITEM_POCKET]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.CARGO_CULTIST_SHORTS.PICK_POCKET_LINE,
+    icon: OptionsSVG,
+    locationName_alt: 'Cargo Cultist Shorts',
+    encounterName_alt: ['Opened Pocket {1}', REGEX.CARGO_CULTIST_SHORTS.PICK_POCKET_NUMBER],
+  },
   [ENTRY_TYPE.IOTM.CAT_BURGLAR]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.FAMILIARS, CATEGORY_ID.OPTIONS],
     matcher: REGEX.CAT_BURGLAR.HEISTED,

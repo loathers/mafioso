@@ -57,6 +57,11 @@ export const REGEX = {
     VISIT_TEXT: /visiting the boxing daycare.*/gi,
     NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
   },
+  CARGO_CULTIST_SHORTS: {
+    INSPECTING_POCKETS_LINE: /^Inspecting Cargo Cultist Shorts.*/gmi,
+    PICK_POCKET_LINE: /^picking pocket \d+/gmi,
+    PICK_POCKET_NUMBER: /(?<=^picking pocket )\d+/gmi,
+  },
   CAT_BURGLAR: {
     USELESS_HEIST_GROUP: /main\.php.*heist=1(\r\n|\n).*(1320\/2).*(\r\n|\n).*$/gi,
     HEISTED: /.*(choice 1320\/1).*/gi,
