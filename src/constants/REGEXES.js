@@ -247,6 +247,9 @@ export const REGEX = {
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
+  SUBSCRIPTION_COCOA_DISPENSER: {
+    USE_GROUPING: /visiting your spinmaster.*(\r\n|\n){2,}trading.*/gmi,
+  },
   VAMPYRIC_CLOAK: {
     SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat).*/gi,
   },
@@ -547,6 +550,7 @@ export const REGEX = {
 
     RAFFLE_TEXT: /.*You acquire raffle ticket.*/gi,
     USELESS_LEAFLET_LINE: /(?!.*(plover|open chest|look in hole|take ring))^(leaflet|\(you see a).*(\r\n|\n)/gim,
+    UNKNOWN_ITEM_GROUPING: /--------------------(.*(\r\n|\n))+?--------------------/gm,
 
     LOSE_EFFECT_LINE: /^you lose.*effect.*(\r\n|\n)/gim,
     FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,
