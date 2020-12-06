@@ -73,6 +73,9 @@ export const REGEX = {
     CHECK_DESK_TEXT: /Collecting.*(continental juice bar|fancy stationery set|Swiss piggy bank)/gi,
     PAINTING_ENCOUNTER: /(?<=\[\d+\] Chateau Painting.*?(Encounter: )).*?$/gmis,
   },
+  COMPREHENSIVE_CARTOGRAPHY: {
+    MAP_TO_THE_MONSTER_COMBAT: /(?<=\[\d+\] ).*(\r\n|\n)Took choice 1435.*/gi,
+  },
   CONSPIRACY_ISLAND: {
     TEXT: /.*Conspiracy Island.*/gi,
     CONTROL_PANEL_LINE: /Took choice 986.*/gi,

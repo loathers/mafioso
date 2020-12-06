@@ -164,6 +164,12 @@ export const ENTRY_DATA_MAP = {
     locationName: 'Chateau Mantegna',
     encounterName_alt: ['Painting of a {1}', REGEX.CHATEAU_MANTEGNA.PAINTING_ENCOUNTER],
   },
+  [ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.COMBAT],
+    matcher: REGEX.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER_COMBAT,
+    icon: CombatSVG,
+    locationName_alt: ['{1} (Map the Monster)', REGEX.VALUE.LOCATION_NAME],
+  },
   [ENTRY_TYPE.IOTM.CONSPIRACY_ISLAND]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.CONSPIRACY_ISLAND.TEXT,
