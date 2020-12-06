@@ -56,7 +56,7 @@ function StatDayBlock(props) {
     dayNum,
   } = data;
 
-  console.log('StatDayBlock', data);
+  // console.log('StatDayBlock', data);
 
   return (
     <div
@@ -68,6 +68,7 @@ function StatDayBlock(props) {
       <StatRow label='Voter Monster' content={data.voterMonster} />
       <StatRow label='Painting Monster' content={data.paintingMonster} />
       <StatRow label='Cargo Pocket' content={data.cargoPocket} />
+      <StatRow label='Lathe Item' content={data.latheChoice} />
     </div>
   )
 }

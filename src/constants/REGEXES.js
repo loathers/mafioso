@@ -241,8 +241,8 @@ export const REGEX = {
     ACQUIRED_STENCH_JELLIED_EFFECT: /you acquire an effect: stench jellied/gi,
   },
   SPINMASTER_LATHE: {
-    LATHE_MAKE_GROUPING: /visiting your spinmaster.*(\r\n|\n){2,}trading.*/gmi,
-    LATHE_MAKE_RESULT: /(?<=visiting your spinmaster.*(\r\n|\n)trading.*for.*(\r\n|\n)you acquire an item: ).*/gmi,
+    LATHE_MAKE_GROUPING: /visiting your spinmaster.*((\r\n|\n)You acquire an item: flimsy hardwood scraps)?(\r\n|\n){2,}trading.*(\r\n|\n)you acquire an item: .*/gmi,
+    BASIC_LATHE_MAKE_RESULT: /(?<=visiting your spinmaster.*((\r\n|\n)You acquire an item: flimsy hardwood scraps)?(\r\n|\n)+trading.*(\r\n|\n)you acquire an item: ).*/gmi,
   },
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,

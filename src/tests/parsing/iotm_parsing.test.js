@@ -15,8 +15,24 @@ test('iotm_parsing: handles Cargo Cultist Shorts opening an item pocket', async 
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.CARGO_CULTIST_SHORTS.ITEM_POCKET);
 });
 
-test('iotm_parsing: handles parsing SpinMaster lathe', async () => {
-  const sampleText = "Visiting Your SpinMaster&trade; lathe\n\ntrading 1 flimsy hardwood scraps for 1 weeping willow wand\nYou acquire an item: weeping willow wand\n";
+test('iotm_parsing: handles grouping SpinMaster lathe using it the first time', async () => {
+  const sampleText = "Visiting Your SpinMaster&trade; lathe\n"
+    + "You acquire an item: flimsy hardwood scraps\n\n"
+    + "trading 1 flimsy hardwood scraps for 1 weeping willow wand\n"
+    + "You acquire an item: weeping willow wand";
+
+  const testStore = new LogStore();
+  await testStore.prepareLog(sampleText);
+  await testStore.parse();
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM);
+});
+
+test('iotm_parsing: handles grouping SpinMaster lathe without flimsy hardwood scraps', async () => {
+  const sampleText = "Visiting Your SpinMaster&trade; lathe\n\n"
+    + "trading 1 flimsy hardwood scraps for 1 weeping willow wand\n"
+    + "You acquire an item: weeping willow wand";
 
   const testStore = new LogStore();
   await testStore.prepareLog(sampleText);

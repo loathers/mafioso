@@ -303,6 +303,11 @@ export function createStats() {
       currentData['paintingMonster'] = paintingMonsterEntry.attributes.encounterName;
     }
 
+    const lathMakeEntry = logStore.findNextEntry(0, {dayNum: dayNum, entryType: ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM});
+    if (lathMakeEntry) {
+      currentData['latheChoice'] = lathMakeEntry.encounterDisplay;
+    }
+
     statsData.push(currentData);
   }
 
