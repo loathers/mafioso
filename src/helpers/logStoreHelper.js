@@ -178,7 +178,7 @@ function handleForcedAdventure(currEntry, idx) {
   if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
     const surpriseEntry = logStore.findNextEntry(idx, {isSemirare: true});
     if (surpriseEntry) {
-      currEntry.additionalDisplay = `"${surpriseEntry.Display}"`;
+      currEntry.additionalDisplay = `"${surpriseEntry.encounterDisplay}"`;
       surpriseEntry.isForcedAdventure = true;
     }
   }
