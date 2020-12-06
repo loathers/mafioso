@@ -4,7 +4,7 @@ import ENTITY_TYPE from 'constants/ENTITY_TYPE';
  * https://kol.coldfront.net/thekolwiki/index.php/Yellow_ray_strategy
  *
  * todo: support Nanorhino, He-Boulder
- * 
+ *
  * @typedef {Entity} Disintegraters
  */
 export const DISINTEGRATERS_MAP = {
@@ -68,7 +68,11 @@ export const DISINTEGRATERS_MAP = {
     matcher: /(uses|casts).*Fireball Barrage/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  // -- needs verification 
+  'Unleash the Devils Kiss': {
+    matcher: /(uses|casts).*UNLEASH THE DEVIL'S KISS/i,
+    entityType: ENTITY_TYPE.COMBAT_SKILL,
+  },
+  // -- needs verification
   'pulled yellow taffy': {
     matcher: /(uses|casts).*pulled yellow taffy/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
