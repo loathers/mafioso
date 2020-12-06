@@ -579,7 +579,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isCartography() {
-    return this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER
+    return this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER
       || this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT;
   }
   /** @type {Boolean} */

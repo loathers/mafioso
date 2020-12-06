@@ -41,7 +41,7 @@ test('iotm_parsing: Comprehensive Cartography: handles parsing an encounter from
   await testStore.parse();
 
   const firstEntry = testStore.allEntries[0];
-  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER);
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER);
 });
 
 test('iotm_parsing: Comprehensive Cartography: handles parsing a special noncombat', async () => {

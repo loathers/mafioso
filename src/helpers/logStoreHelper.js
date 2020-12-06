@@ -242,6 +242,10 @@ function handleForcedAdventure(currEntry, idx) {
     }
   }
 
+  if (currEntry.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER) {
+    currEntry.isForcedAdventure = true;
+  }
+
   return currEntry;
 }
 /**
@@ -285,7 +289,7 @@ function findMapTheMonstersOnDay(dayNum) {
   while (searchIdx >= 0) {
     const foundEntry = logStore.findNextEntry(searchIdx, {
       dayNum: dayNum,
-      entryType: ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER,
+      entryType: ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER,
     });
 
     if (foundEntry === undefined) {

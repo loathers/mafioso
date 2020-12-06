@@ -74,7 +74,7 @@ export const REGEX = {
     PAINTING_ENCOUNTER: /(?<=\[\d+\] Chateau Painting.*?(Encounter: )).*?$/gmis,
   },
   COMPREHENSIVE_CARTOGRAPHY: {
-    MAP_TO_THE_MONSTER_COMBAT: /(?<=\[\d+\] ).*(\r\n|\n)Took choice 1435.*/gi,
+    MAP_THE_MONSTER_COMBAT: /(?<=\[\d+\] ).*(\r\n|\n)Took choice 1435.*/gi,
   },
   CONSPIRACY_ISLAND: {
     TEXT: /.*Conspiracy Island.*/gi,
