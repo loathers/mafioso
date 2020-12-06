@@ -44,6 +44,21 @@ test('iotm_parsing: Comprehensive Cartography: handles parsing an encounter from
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER);
 });
 
+test('iotm_parsing: Comprehensive Cartography: handles parsing a special noncombat', async () => {
+  const sampleText = "[78] The Haunted Billiards Room"
+    + "Encounter: Billiards Room Options"
+    + "Took choice 1436/1: aquire pool cue"
+    + "choice.php?pwd&whichchoice=1436&option=1"
+    + "You acquire an item: pool cue";
+
+  const testStore = new LogStore();
+  await testStore.prepareLog(sampleText);
+  await testStore.parse();
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT);
+});
+
 test('iotm_parsing: handles grouping SpinMaster lathe using it the first time', async () => {
   const sampleText = "Visiting Your SpinMaster&trade; lathe\n"
     + "You acquire an item: flimsy hardwood scraps\n\n"

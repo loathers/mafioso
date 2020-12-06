@@ -174,7 +174,7 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
  * @returns {Entry}
  */
 function handleForcedAdventure(currEntry, idx) {
-  // Pill Keeper - Sunday surprise semiare activated
+  // Pill Keeper - Sunday surprise semirare activated
   if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
     const surpriseEntry = logStore.findNextEntry(idx, {isSemirare: true});
     if (surpriseEntry) {

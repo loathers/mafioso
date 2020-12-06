@@ -250,3 +250,18 @@ export const MISC_QUEST_ENCOUNTERS = [
   "Fitting In",
   "Keep On Turnin' the Wheel in the Sky",
 ];
+/**
+ * special Comprehensive Cartography non-combats
+ * https://kol.coldfront.net/thekolwiki/index.php/Comprehensive_Cartography
+ */
+export const CARTOGRAPHIC_NONCOMBAT_ENCOUNTERS = [
+  "Billiards Room Options",
+  "The Hidden Junction",
+  "Your Neck of the Woods",
+  "No Nook Unknown",
+  "Ghostly Memories",
+  "Here There Be Giants",
+  "Mob Maptality",
+  "Oh Yeah!",
+  "Sneaky, Sneaky",
+];
