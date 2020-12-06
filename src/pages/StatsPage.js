@@ -33,7 +33,8 @@ function StatsPage(props) {
     <div
       elementname='app-page-charts'
       className={combineClassnames('flex-col', className)}>
-      Stats Page
+      <div className='fontsize-7 f-bold talign-center'>Stats</div>
+      <div className='fontsize-3 talign-center'>(wip)</div>
 
       { statsData.map((data) => (
         <StatDayBlock
@@ -86,7 +87,7 @@ function StatRow(props) {
   }
 
   return (
-    <div className={combineClassnames('flex-row', className)}>
+    <div className={combineClassnames('flex-row adjacent-mar-t-2', className)}>
       <span className='adjacent-mar-l-3'>{`${label}:`}</span>
       <span className='f-bold adjacent-mar-l-3'>{content}</span>
     </div>
