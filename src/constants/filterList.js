@@ -216,6 +216,13 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
       },
       {
+        label: 'Comprehensive Cartographing',
+        attributeName: 'isCartography',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Iunion Crown',
         attributeName: 'hasIunionCrown',
         attributeValue: true,

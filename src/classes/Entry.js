@@ -578,6 +578,11 @@ export default class Entry {
     return this.hasText(REGEX.POCKET_PROFESSOR.LECTURE_USE_LINE);
   }
   /** @type {Boolean} */
+  get isCartography() {
+    return this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER
+      || this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT;
+  }
+  /** @type {Boolean} */
   get isDiabolicPizza() {
     return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE
       || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
