@@ -22,7 +22,6 @@
 
 @media (max-width: (map.get($BREAKPOINT_WIDTH_MAP, 'xl') + $MENU_WIDTH)) {
   [elementname='app-content'],
-  [elementname='app-page-charts'],
   [elementname='navigation-menu'] {
     margin-left: $MENU_WIDTH + $APP_MARGIN;
   }

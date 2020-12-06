@@ -1,9 +1,20 @@
 [elementname='app-page-visualizer'],
-[elementname='app-page-charts'],
 [elementname='app-page-database'],
 [elementname='app-page-stats'],
 [elementname='app-page-home'] {
   margin-top: $NAVBAR_HEIGHT + $APP_MARGIN;
   padding-left: $APP_MARGIN;
   padding-right: $APP_MARGIN;
+}
+
+[elementname='app-page-charts'] {
+  width: 800px;
+  max-width: 1200px;
+
+  margin-top: $NAVBAR_HEIGHT + $APP_MARGIN;
+  padding-left: $APP_MARGIN;
+  padding-right: $APP_MARGIN;
+
+  margin-left: auto;
+  margin-right: auto;
 }
