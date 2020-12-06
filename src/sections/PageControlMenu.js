@@ -58,7 +58,6 @@ function PageControlMenu(props) {
               style={{height: 30}}
               className='boxshadow-black flex-none borradius-3 adjacent-mar-l-2' />
 
-
             <DarkButton
               disabled={!logStore.isReady}
               onClick={() => onClickChangeDay('all')}

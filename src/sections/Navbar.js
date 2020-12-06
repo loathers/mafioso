@@ -77,6 +77,16 @@ function _UpperNavbar(props) {
           children='Visualizer'
           className='adjacent-mar-l-3' />
 
+        { (appStore.isDevEnv || enableStats) &&
+          <NavbarButton
+            to={STATS_URL}
+            componentType={Link}
+            isActive={pageName === 'stats'}
+            disabled={!appStore.isReady}
+            children='Stats'
+            className='adjacent-mar-l-3' />
+        }
+
         { (appStore.isDevEnv || enableCharts) &&
           <NavbarButton
             to={CHARTS_URL}
@@ -93,16 +103,6 @@ function _UpperNavbar(props) {
             componentType={Link}
             isActive={pageName === 'database'}
             children='Database'
-            className='adjacent-mar-l-3' />
-        }
-
-        { (appStore.isDevEnv || enableStats) &&
-          <NavbarButton
-            to={STATS_URL}
-            componentType={Link}
-            isActive={pageName === 'stats'}
-            disabled={!appStore.isReady}
-            children='Stats'
             className='adjacent-mar-l-3' />
         }
 
