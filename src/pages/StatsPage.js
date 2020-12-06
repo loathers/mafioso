@@ -69,6 +69,7 @@ function StatDayBlock(props) {
       <StatRow label='Painting Monster' content={data.paintingMonster} />
       <StatRow label='Cargo Pocket' content={data.cargoPocket} />
       <StatRow label='Lathe Item' content={data.latheChoice} />
+      <StatRow label='Map the Monsters' content={data.mapTheMonsterList} />
     </div>
   )
 }

@@ -275,6 +275,30 @@ export function downloadFullLog() {
   download(logStore.export(), logStore.fileName, 'text/plain');
 }
 /**
+ * @param {Number} dayNum
+ * @returns {Array}
+ */
+function findMapTheMonstersOnDay(dayNum) {
+  const list = [];
+
+  let searchIdx = 0;
+  while (searchIdx >= 0) {
+    const foundEntry = logStore.findNextEntry(searchIdx, {
+      dayNum: dayNum,
+      entryType: ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_TO_THE_MONSTER,
+    });
+
+    if (foundEntry === undefined) {
+      break;
+    }
+
+    searchIdx = foundEntry.entryIdx;
+    list.push(foundEntry);
+  }
+
+  return list;
+}
+/**
  * creates data for StatsPage
  * @returns {Array}
  */
@@ -306,6 +330,13 @@ export function createStats() {
     const lathMakeEntry = logStore.findNextEntry(0, {dayNum: dayNum, entryType: ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM});
     if (lathMakeEntry) {
       currentData['latheChoice'] = lathMakeEntry.encounterDisplay;
+    }
+
+    const cartographyList = findMapTheMonstersOnDay(dayNum);
+    if (cartographyList.length > 0) {
+      currentData['mapTheMonsterList'] = cartographyList
+        .map((cartographyEntry) => cartographyEntry.encounterDisplay)
+        .join(', ');
     }
 
     statsData.push(currentData);
