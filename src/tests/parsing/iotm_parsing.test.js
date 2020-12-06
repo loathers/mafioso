@@ -25,3 +25,14 @@ test('iotm_parsing: handles parsing SpinMaster lathe', async () => {
   const firstEntry = testStore.allEntries[0];
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM);
 });
+
+test('iotm_parsing: handles parsing Subscription Cocoa Dispenser', async () => {
+  const sampleText = "use 1 subscription cocoa dispenser\nYou acquire an item: cool hot cocoa\nYou acquire an item: boiling hot cocoa\nYou acquire an item: hot cocoa with rainbow marshmallows";
+
+  const testStore = new LogStore();
+  await testStore.prepareLog(sampleText);
+  await testStore.parse();
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SUBSCRIPTION_COCOA_DISPENSER);
+});

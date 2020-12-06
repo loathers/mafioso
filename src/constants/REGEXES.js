@@ -248,7 +248,7 @@ export const REGEX = {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
   SUBSCRIPTION_COCOA_DISPENSER: {
-    USE_GROUPING: /visiting your spinmaster.*(\r\n|\n){2,}trading.*/gmi,
+    USE_GROUPING: /use 1 subscription cocoa dispenser(?:\r\n|\n)(?:you acquire an item: (.*)(?:\r\n|\n))+/gmi,
   },
   VAMPYRIC_CLOAK: {
     SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat).*/gi,

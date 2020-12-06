@@ -377,6 +377,14 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.SPINMASTER_LATHE.LATHE_MAKE_RESULT,
     content_alt: null,
   },
+  [ENTRY_TYPE.IOTM.SUBSCRIPTION_COCOA_DISPENSER]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
+    icon: OptionsSVG,
+    locationName: 'Subscription Cocoa Dispenser',
+    encounterName_alt: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
+    content_alt: null,
+  },
   [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT,
