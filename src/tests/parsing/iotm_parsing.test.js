@@ -9,7 +9,18 @@ async function createTestStore(text) {
   await testStore.prepareLog(text);
   await testStore.parse();
   return testStore;
-}
+};
+
+test('iotm_parsing: April Shower: parses and shows effect gotten', async () => {
+  const sampleText = "shower cool\n"
+    + "You acquire an effect: So Fresh and So Clean (50)\n";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.APRIL_SHOWER);
+  expect(firstEntry.locationDisplay).toBe('April Shower');
+  expect(firstEntry.encounterDisplay).toBe('So Fresh and So Clean');
+});
 
 test('iotm_parsing: Cargo Cultist Shorts: handles opening an item pocket', async () => {
   const sampleText = "Inspecting Cargo Cultist Shorts\npicking pocket 177\nYou acquire an item: Yeg's Motel hand soap";

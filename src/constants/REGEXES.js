@@ -34,6 +34,9 @@ export const REGEX = {
     NAUGHTY_SORCERESS: /.*The Naughty Sorceress.*/i,
   },
   // -- iotm
+  APRIL_SHOWER: {
+    GET_EFFECT_LINE: /^(?<=shower .*(\r\n|\n)).*/gim,
+  },
   ASDON_MARTIN: {
     CONVERTING_LINE: /^converting.*/gim,
   },

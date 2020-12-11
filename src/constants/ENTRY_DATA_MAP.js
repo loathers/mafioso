@@ -90,6 +90,13 @@ export const ENTRY_DATA_MAP = {
     icon: InfoSVG,
   },
   // -- iotm
+  [ENTRY_TYPE.IOTM.APRIL_SHOWER]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS, CATEGORY_ID.EFFECTS],
+    matcher: REGEX.APRIL_SHOWER.GET_EFFECT_LINE,
+    icon: OptionsSVG,
+    locationName: 'April Shower',
+    encounterName_alt: REGEX.EFFECTS.EFFECT_NAME,
+  },
   [ENTRY_TYPE.IOTM.BASTILLE_BATTALION]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.BASTILLE_BATTALION.TEXT,
