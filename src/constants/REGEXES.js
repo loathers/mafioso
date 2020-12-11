@@ -290,6 +290,9 @@ export const REGEX = {
   SUBSCRIPTION_COCOA_DISPENSER: {
     USE_GROUPING: /use 1 subscription cocoa dispenser(?:\r\n|\n)(?:you acquire an item: (.*)(?:\r\n|\n))+/gmi,
   },
+  SWEET_SYNTHESIS: {
+    CAST_PREGROUP: /(?<=^cast \d+ sweet synthesis.*(\r\n|\n)Encounter: Sweet Synthesis)(\r\n|\n)+synthesize.*/gmi,
+  },
   // -- paths
   COMMUNITY_SERVICE: {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
