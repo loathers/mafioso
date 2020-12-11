@@ -570,6 +570,13 @@ export default class Entry {
     return this.hasText(REGEX.MELODRAMEDARY.SPIT_ON_SOMETHING_LINE);
   }
   /** @type {Boolean} */
+  get hasMeteorLore() {
+    return this.hasText(REGEX.METEOR_LORE.CAST_MICROMETEORITE)
+      || this.hasText(REGEX.METEOR_LORE.CAST_MACROMETEORITE)
+      || this.hasText(REGEX.METEOR_LORE.CAST_METEORSHOWER)
+      || this.hasText(REGEX.METEOR_LORE.ACQUIRE_METEOR_ITEM);
+  }
+  /** @type {Boolean} */
   get isPillKeeper() {
     return this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER;
   }

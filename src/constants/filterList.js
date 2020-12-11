@@ -328,6 +328,13 @@ export const ATTRIBUTE_FILTERS = [
         isHidden: false,
         checked: false,
       },
+      {
+        label: 'Meteor Lore',
+        attributeName: 'hasMeteorLore',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
     ]
   },
   {

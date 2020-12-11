@@ -4,7 +4,14 @@ import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 
 import {LogStore} from 'store/LogStore';
 
-test('iotm_parsing: handles Cargo Cultist Shorts opening an item pocket', async () => {
+async function createTestStore(text) {
+  const testStore = new LogStore();
+  await testStore.prepareLog(text);
+  await testStore.parse();
+  return testStore;
+}
+
+test('iotm_parsing: Cargo Cultist Shorts: handles opening an item pocket', async () => {
   const sampleText = "Inspecting Cargo Cultist Shorts\npicking pocket 177\nYou acquire an item: Yeg's Motel hand soap";
 
   const testStore = new LogStore();
@@ -84,4 +91,21 @@ test('iotm_parsing: SpinMaster lathe: no extra types from subsequent uses', asyn
 
   const firstEntry = testStore.allEntries[0];
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM);
+});
+
+test('iotm_parsing: Meteore Lore: determines `hasMeteorLore` if skills are present', async () => {
+  const sampleText = "[2] The Overgrown Lot\n"
+    + "Encounter: the ghost of Oily McBindle wearing a monkey mask\n"
+    + "Round 0: dextrial loses initiative!\n"
+    + "Round 1: dextrial attacks!\n"
+    + "Round 2: the ghost of Oily McBindle takes 78 damage.\n"
+    + "Round 2: dextrial casts SHOOT GHOST!\n"
+    + "You acquire an item: shysterweed\n"
+    + "After Battle: You rush to the location of an imminent meteor strike just in time to see the meteorite collide with an energy drink, knocking out all of the calories. A marketing rep from the beverage company quickly rebrands the bottle and gives it to you as a promotional free sample.\n"
+    + "You acquire an item: Meteorite-Ade\n";
+
+  const testStore = await createTestStore(sampleText);
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.hasMeteorLore).toBe(true);
 });

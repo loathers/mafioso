@@ -179,6 +179,12 @@ export const REGEX = {
     SPIT_ON_THEM_LINE: /(?<=^Round ).*spit on them.*/gim,
     SPIT_ON_ME_LINE: /(?<=^Round ).*spit on me.*/gim,
   },
+  METEOR_LORE: {
+    CAST_MICROMETEORITE: /casts.*Micrometeorite/i,
+    CAST_MACROMETEORITE: /casts.*Macrometeorite/i,
+    CAST_METEORSHOWER: /casts.*Meteor Shower/i,
+    ACQUIRE_METEOR_ITEM: /(?<=after battle: .*(\r\n|\n)You acquire an item: )(meteoreo|meadeorite|Meteorite-Ade|metal meteoroid|cute meteoroid)/gi,
+  },
   NEVERENDING_PARTY: {
     INTRO_CHOICE_GROUP: /.*neverending party.*(\r\n|\n).*took choice 1322.*(\r\n|\n).*(whichchoice=1322.*)?(\r\n|\n)/gim,
   },
