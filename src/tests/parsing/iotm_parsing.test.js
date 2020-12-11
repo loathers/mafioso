@@ -94,5 +94,5 @@ test('iotm_parsing: handles parsing Subscription Cocoa Dispenser', async () => {
   await testStore.parse();
 
   const firstEntry = testStore.allEntries[0];
-  expect(firstEntry.entryType).toBe(ENTRY_TYPE.UNIQUE_ITEMS.SUBSCRIPTION_COCOA_DISPENSER);
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.UNIQUE.SUBSCRIPTION_COCOA_DISPENSER);
 });

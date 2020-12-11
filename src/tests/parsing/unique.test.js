@@ -4,7 +4,7 @@ import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 
 import {LogStore} from 'store/LogStore';
 
-test('unique_items: Horsery: handles parsing the type of horse chosen', async () => {
+test('unique: Horsery: handles parsing the type of horse chosen', async () => {
   const sampleText = "Visiting The Horsery\n"
     +"Took choice 1266/2: Rent This Horse\n"
     +"choice.php?option=2&whichchoice=1266&pwd\n"

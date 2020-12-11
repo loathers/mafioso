@@ -420,7 +420,7 @@ export const ENTRY_DATA_MAP = {
     locationName: 'Your Garden',
     encounterName_alt: ['Harvested {1}', REGEX.GENERIC_GARDEN.GARDEN_HARVEST_RESULT],
   },
-  [ENTRY_TYPE.UNIQUE_ITEMS.HORSERY]: {
+  [ENTRY_TYPE.UNIQUE.HORSERY]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.HORSERY.HORSE_CHOICE,
     icon: OptionsSVG,
@@ -428,7 +428,7 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.HORSERY.HORSE_CHOICE,
     content_alt: null,
   },
-  [ENTRY_TYPE.UNIQUE_ITEMS.POTTED_TEA_TREE]: {
+  [ENTRY_TYPE.UNIQUE.POTTED_TEA_TREE]: {
     categories: [CATEGORY_ID.OPTIONS],
     matcher: REGEX.POTTED_TEA_TREE.SHAKE_ACTION,
     icon: OptionsSVG,
@@ -436,7 +436,7 @@ export const ENTRY_DATA_MAP = {
     locationName: 'A Tea Tree',
     encounterName: 'Shake the tree',
   },
-  [ENTRY_TYPE.UNIQUE_ITEMS.SUBSCRIPTION_COCOA_DISPENSER]: {
+  [ENTRY_TYPE.UNIQUE.SUBSCRIPTION_COCOA_DISPENSER]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
     matcher: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
     icon: OptionsSVG,
