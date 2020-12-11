@@ -308,6 +308,10 @@ export const REGEX = {
   DISGUISES_DELIMIT: {
     SWAP_MASK: /(?<=^Round.*casts ).*SWAP MASK.*(?=!)/mi,
   },
+  GREY_GOO: {
+    SPECIAL_GOO_MONSTER: /(?<=Encounter:\s).*(goo clown|grey gooblin|goo bat|foot of stalk|go+g|goo bone|good grid|a massive prism of grey goo).*/mi,
+    PLAINS_GOO_MONSTER: /(?<=Encounter:\s).*grey goo (orb|torus|triangle|hexagon|square|cross|heart|hourglass|octagon|squiggle|star).*/mi,
+  },
   LOW_KEY_SUMMER: {
   },
   THE_SOURCE: {
