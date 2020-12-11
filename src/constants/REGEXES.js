@@ -292,6 +292,9 @@ export const REGEX = {
   },
   SWEET_SYNTHESIS: {
     CAST_PREGROUP: /(?<=^cast \d+ sweet synthesis.*(\r\n|\n)Encounter: Sweet Synthesis)(\r\n|\n)+synthesize.*/gmi,
+    SYNTHESIZE_CANDY: /(?<=synthesize \d )(.*)(?:, )(.*)/gmi,
+    SYNTHESIZE_CANDY_A: /(?<=synthesize \d )(.*)(?=, .*)/gmi,
+    SYNTHESIZE_CANDY_B: /(?<=synthesize \d .*, )(.*)/gmi,
   },
   // -- paths
   COMMUNITY_SERVICE: {

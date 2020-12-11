@@ -430,7 +430,7 @@ export const ENTRY_DATA_MAP = {
     content_alt: null,
   },
   [ENTRY_TYPE.UNIQUE.NUMBEROLOGY]: {
-    categories: [CATEGORY_ID.OPTIONS],
+    categories: [CATEGORY_ID.EFFECTS, CATEGORY_ID.OPTIONS],
     matcher: REGEX.NUMBEROLOGY.CAST_RESULT,
     icon: SpellsSVG,
     locationName: 'Calculate the Universe',
@@ -452,6 +452,14 @@ export const ENTRY_DATA_MAP = {
     locationName: 'Subscription Cocoa Dispenser',
     encounterName_alt: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
     content_alt: null,
+  },
+  [ENTRY_TYPE.UNIQUE.SWEET_SYNTHESIS]: {
+    categories: [CATEGORY_ID.EFFECTS, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.SWEET_SYNTHESIS.SYNTHESIZE_CANDY,
+    icon: SpellsSVG,
+    locationName: 'Sweet Synthesis',
+    locationName_alt: '✧ Sweet Synthesis ✧',
+    encounterName_alt: ['{1} + {2}', REGEX.SWEET_SYNTHESIS.SYNTHESIZE_CANDY_A, REGEX.SWEET_SYNTHESIS.SYNTHESIZE_CANDY_B],
   },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE]: {
