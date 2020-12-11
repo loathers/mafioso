@@ -721,6 +721,13 @@ export const ENTRY_DATA_MAP = {
     icon: SpellsSVG,
     locationName_alt: ['✧ {1} ✧', REGEX.EFFECTS.CAST_NAME],
   },
+  [ENTRY_TYPE.EFFECTS.LOOK_TELESCOPE]: {
+    categories: [CATEGORY_ID.OPTIONS, CATEGORY_ID.EFFECTS],
+    matcher: REGEX.EFFECTS.TELESCOPE,
+    icon: OptionsSVG,
+    locationName: 'Telescope',
+    encounterName_alt: REGEX.EFFECTS.EFFECT_NAME,
+  },
   // --
   [ENTRY_TYPE.ITEMS.CLOSET]: {
     categories: [CATEGORY_ID.OTHER],

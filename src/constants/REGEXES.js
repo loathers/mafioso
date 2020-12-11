@@ -537,6 +537,8 @@ export const REGEX = {
     CAST_AMOUNT: /(?<=^cast )\d+(?=.*)/mi,
 
     UNMATCHED_EFFECT: /(?<=^(\r\n|\n)).*acquire an (effect|intrinsic).*$(?!(\r\n|\n).)/gim,
+
+    TELESCOPE: /^(?<=telescope .*(\r\n|\n)).*/gim,
   },
   // --
   // note: these only work in raw
@@ -569,7 +571,7 @@ export const REGEX = {
   // -- misc
   PREREMOVE: {
     ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximizer|museum|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
-    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|shower|swimming pool|talking|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
+    SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|shower|swimming pool|talking|telescope|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
@@ -582,7 +584,6 @@ export const REGEX = {
     FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,
     UNEQUIP: /^unequip.*(\r\n|\n)/gim,
     MCD_CHANGE: /^mcd.*(\r\n|\n)/gim,
-    TELESCOPE: /^telescope.*(\r\n|\n)/gim,
 
     UNKNOWN_SERVICE_LINE: /^Took choice 1089\/\d+: unknown.*(\r\n|\n)/gim,
   },
