@@ -59,7 +59,7 @@ test('iotm_parsing: Comprehensive Cartography: handles parsing a special noncomb
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT);
 });
 
-test('iotm_parsing: handles grouping SpinMaster lathe using it the first time', async () => {
+test('iotm_parsing: SpinMaster lathe: groups text if it has flimy hardwood scraps from using it the first time', async () => {
   const sampleText = "Visiting Your SpinMaster&trade; lathe\n"
     + "You acquire an item: flimsy hardwood scraps\n\n"
     + "trading 1 flimsy hardwood scraps for 1 weeping willow wand\n"
@@ -73,7 +73,7 @@ test('iotm_parsing: handles grouping SpinMaster lathe using it the first time', 
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM);
 });
 
-test('iotm_parsing: handles grouping SpinMaster lathe without flimsy hardwood scraps', async () => {
+test('iotm_parsing: SpinMaster lathe: no extra types from subsequent uses', async () => {
   const sampleText = "Visiting Your SpinMaster&trade; lathe\n\n"
     + "trading 1 flimsy hardwood scraps for 1 weeping willow wand\n"
     + "You acquire an item: weeping willow wand";
@@ -84,15 +84,4 @@ test('iotm_parsing: handles grouping SpinMaster lathe without flimsy hardwood sc
 
   const firstEntry = testStore.allEntries[0];
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM);
-});
-
-test('iotm_parsing: handles parsing Subscription Cocoa Dispenser', async () => {
-  const sampleText = "use 1 subscription cocoa dispenser\nYou acquire an item: cool hot cocoa\nYou acquire an item: boiling hot cocoa\nYou acquire an item: hot cocoa with rainbow marshmallows";
-
-  const testStore = new LogStore();
-  await testStore.prepareLog(sampleText);
-  await testStore.parse();
-
-  const firstEntry = testStore.allEntries[0];
-  expect(firstEntry.entryType).toBe(ENTRY_TYPE.UNIQUE.SUBSCRIPTION_COCOA_DISPENSER);
 });
