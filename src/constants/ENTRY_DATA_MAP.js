@@ -389,14 +389,6 @@ export const ENTRY_DATA_MAP = {
     encounterName_alt: REGEX.SPINMASTER_LATHE.BASIC_LATHE_MAKE_RESULT,
     content_alt: null,
   },
-  [ENTRY_TYPE.UNIQUE_ITEMS.SUBSCRIPTION_COCOA_DISPENSER]: {
-    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
-    matcher: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
-    icon: OptionsSVG,
-    locationName: 'Subscription Cocoa Dispenser',
-    encounterName_alt: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
-    content_alt: null,
-  },
   [ENTRY_TYPE.IOTM.VOTING_BOOTH]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.NONCOMBAT],
     matcher: REGEX.VOTING_BOOTH.DAILY_VOTE_TEXT,
@@ -428,6 +420,14 @@ export const ENTRY_DATA_MAP = {
     locationName: 'Your Garden',
     encounterName_alt: ['Harvested {1}', REGEX.GENERIC_GARDEN.GARDEN_HARVEST_RESULT],
   },
+  [ENTRY_TYPE.UNIQUE_ITEMS.HORSERY]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.HORSERY.HORSE_CHOICE,
+    icon: OptionsSVG,
+    locationName: 'Horsery',
+    encounterName_alt: REGEX.HORSERY.HORSE_CHOICE,
+    content_alt: null,
+  },
   [ENTRY_TYPE.UNIQUE_ITEMS.POTTED_TEA_TREE]: {
     categories: [CATEGORY_ID.OPTIONS],
     matcher: REGEX.POTTED_TEA_TREE.SHAKE_ACTION,
@@ -435,6 +435,14 @@ export const ENTRY_DATA_MAP = {
     showAdditionalDisplay: false,
     locationName: 'A Tea Tree',
     encounterName: 'Shake the tree',
+  },
+  [ENTRY_TYPE.UNIQUE_ITEMS.SUBSCRIPTION_COCOA_DISPENSER]: {
+    categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],
+    matcher: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
+    icon: OptionsSVG,
+    locationName: 'Subscription Cocoa Dispenser',
+    encounterName_alt: REGEX.SUBSCRIPTION_COCOA_DISPENSER.USE_GROUPING,
+    content_alt: null,
   },
   // --
   [ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE]: {

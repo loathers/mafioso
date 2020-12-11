@@ -133,6 +133,9 @@ export const REGEX = {
     TUNE_MOON_LINE: /^tuning moon.*/i,
     TUNE_MOON_RESULT: /(?<=^tuning moon to ).*/mi,
   },
+  HORSERY: {
+    HORSE_CHOICE: /(?<=^Visiting the horsery(?:\r\n|\n)took choice 1266.*(?:\r\n|\n)choice.php.*(?:\r\n|\n)chose the )(.*)/gmi,
+  },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
