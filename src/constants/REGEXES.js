@@ -133,9 +133,6 @@ export const REGEX = {
     TUNE_MOON_LINE: /^tuning moon.*/i,
     TUNE_MOON_RESULT: /(?<=^tuning moon to ).*/mi,
   },
-  HORSERY: {
-    HORSE_CHOICE: /(?<=^Visiting the horsery(?:\r\n|\n)took choice 1266.*(?:\r\n|\n)choice.php.*(?:\r\n|\n)chose the )(.*)/gmi,
-  },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,
     STONES_TEXT: /(?<=^After battle: ).*iunion stones.*(\r\n|\n)the crown.*/gmi,
@@ -253,9 +250,6 @@ export const REGEX = {
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
-  SUBSCRIPTION_COCOA_DISPENSER: {
-    USE_GROUPING: /use 1 subscription cocoa dispenser(?:\r\n|\n)(?:you acquire an item: (.*)(?:\r\n|\n))+/gmi,
-  },
   VAMPYRIC_CLOAK: {
     SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat).*/gi,
   },
@@ -280,12 +274,21 @@ export const REGEX = {
   GENERIC_GARDEN: {
     GARDEN_HARVEST_RESULT: /(?<=^harvesting your garden.*(\r\n|\n)you acquire an item: ).*/gmi,
   },
-  // -- merch table
+  // -- unique
+  HORSERY: {
+    HORSE_CHOICE: /(?<=^Visiting the horsery(?:\r\n|\n)took choice 1266.*(?:\r\n|\n)choice.php.*(?:\r\n|\n)chose the )(.*)/gmi,
+  },
+  NUMBEROLOGY: {
+    CAST_RESULT: /(?<=^cast \d+ .*(\r\n|\n).*?numberology )\d+/gmi,
+  },
   POTTED_TEA_TREE: {
     ACTION_LINE: /^teatree.*/gmi,
     ACTION_NAME: /(?<=^teatree ).*/gmi,
     SHAKE_ACTION: /^teatree shake.*/gmi,
     SHAKE_RESULTS: /(?<=^teatree.*you acquire an item: ).*?$/gmis,
+  },
+  SUBSCRIPTION_COCOA_DISPENSER: {
+    USE_GROUPING: /use 1 subscription cocoa dispenser(?:\r\n|\n)(?:you acquire an item: (.*)(?:\r\n|\n))+/gmi,
   },
   // -- paths
   COMMUNITY_SERVICE: {
