@@ -557,6 +557,7 @@ export const REGEX = {
     RAFFLE_TEXT: /.*You acquire raffle ticket.*/gi,
     USELESS_LEAFLET_LINE: /(?!.*(plover|open chest|look in hole|take ring))^(leaflet|\(you see a).*(\r\n|\n)/gim,
     UNKNOWN_ITEM_GROUPING: /--------------------(.*(\r\n|\n))+?--------------------/gm,
+    UNKNOWN_USE_LINE: /.*but kolmafia thought it was.*(\r\n|\n)/gmi,
 
     LOSE_EFFECT_LINE: /^you lose.*effect.*(\r\n|\n)/gim,
     FAMILIAR_WEIGHT_GAIN: /.*(familiar gains a pound).*(\r\n|\n)/gi,
