@@ -425,16 +425,12 @@ export default class Entry {
       }
     }
 
-    // show what choice was made for God Lobster Boon
-    if (this.entryType === ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON) {
-      return this.findMatcher(REGEX.GOD_LOBSTER.BOON_CHOICE_RESULT);
-    }
-
     // some entryTypes have precedence over the regular choice progression display
-    if (this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
-      return this.attributes.additionalDisplay;
+    if (this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER || this.entryType === ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON) {
+      return this.parseDisplayMatcher(this.entryData.additionalDisplay, this.attributes.additionalDisplay);
     }
 
+    // show special display for choices
     if (this.hasChoiceProgression && this.showAdditionalDisplay && !this.attributes.isEndedByUseTheForce) {
       return '⇾ ' + this.attributes.choiceProgression.join(' ⇾ ');
     }
