@@ -593,8 +593,8 @@ export const REGEX = {
     UNKNOWN_SERVICE_LINE: /^Took choice 1089\/\d+: unknown.*(\r\n|\n)/gim,
   },
   PRESPLIT: {
-    UNRELATED_AFTER_COMBAT: /(?<=Encounter:(.*(\r\n|\n))+(round \d+.*|Your familiar.*|You gain.*|After Battle:.*|you acquire.*|the crown gains.*|unlocked.*for latte.*)(?:\r\n|\n))(?!(round \d+.*|This combat.*|Your familiar.*|You gain.*|After Battle:.*|you acquire.*|the crown gains.*|unlocked.*for latte.*|encounter: using the force.*))/gmi,
-    UNRELATED_AFTER_FREECOMBAT: /(?<=This combat did not cost a turn.*(\r\n|\n))(?=.)/gmi,
+    UNRELATED_AFTER_COMBAT: /(?<=Encounter:(.*(\r\n|\n))+(round \d+.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies defeated.*|.*frats defeated.*|the crown gains.*|unlocked.*for latte.*)(?:\r\n|\n))(?!(round \d+.*|This combat.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies defeated.*|.*frats defeated.*|the crown gains.*|unlocked.*for latte.*|encounter: using the force.*))/gmi,
+    UNRELATED_AFTER_FREECOMBAT: /(?<=This combat did not cost a turn.*(\r\n|\n))(?!(\r\n|\n|.*hippies defeated.*|.*frats defeated.*))/gmi,
   },
 };
 

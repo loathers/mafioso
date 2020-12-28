@@ -75,6 +75,54 @@ test('rawtext_parsing: presplit: splits the text when something unrelated is aft
   expect(testStore.allEntries.length).toBe(2);
 });
 
+test('rawtext_parsing: presplit: does not split when nuns take meat', async () => {
+  const sampleText = "[104] The Themthar Hills\n"
+    + "Encounter: dirty thieving brigand\n"
+    + "Round 0: worthawholebean loses initiative!\n"
+    + "Round 1: worthawholebean casts BECOME A WOLF!\n"
+    + "You acquire an effect: Wolfish Form (1)\n"
+    + "Round 2: worthawholebean executes a macro!\n"
+    + "Round 2: worthawholebean casts CURSE OF WEAKSAUCE!\n"
+    + "Round 5: worthawholebean wins the fight!\n"
+    + "The nuns take 11,619 Meat; 11,619 recovered, 88,381 left to recover.\n"
+    + "After Battle: Dark River gives you some meat under the table.\n"
+    + "You gain 13 Meat.\n"
+    + "After Battle: Busta_Rhymes whistles innocently while doing a soft-shoe and gives you a wink.\n"
+    + "After Battle: You gain 46 Fortitude\n"
+    + "After Battle: You gain 21 Mysteriousness\n"
+    + "After Battle: You gain 18 Chutzpah\n"
+    + "After Battle: Busta_Rhymes stands around casually, definitely just loitering and not casing the joint at all.";
+
+  const testStore = await createTestStore(sampleText);
+  expect(testStore.allEntries.length).toBe(1);
+});
+
+test('rawtext_parsing: presplit: does not split when hippies are defeated', async () => {
+  const sampleText = "[157] The Battlefield (Frat Uniform)\n"
+    + "Encounter: War Hippy Fire Spinner\n"
+    + "Round 0: worthawholebean wins initiative!\n"
+    + "Round 1: You lose 10 hit points\n"
+    + "Round 1: worthawholebean uses the powdered madness!\n"
+    + "Round 2: worthawholebean wins the fight!\n"
+    + "After Battle: Stabert kicks you in the neck, in just the right place to be very effective chiropracty. If that's a word.\n"
+    + "After Battle: You gain 36 hit points\n"
+    + "After Battle: You gain 29 Muscularity Points\n"
+    + "After Battle: Dark River stealths up to you, crawling on her elbows. She gives you some meat that she found down there.\n"
+    + "You gain 15 Meat.\n"
+    + "After Battle: You hear a loud schlurrrrrk! noise, and turn to see Stabert sucking the liquid out of a bottle of malt liquor he found somewhere. (13% full)\n"
+    + "After Battle: You gain 46 Strengthliness\n"
+    + "You gain a Muscle point!\n"
+    + "After Battle: You gain 26 Wizardliness\n"
+    + "After Battle: You gain 22 Sarcasm\n"
+    + "After Battle: After the battle, you settle down on a spot in a hippy's filthy dread sack and let the leylines restore you.\n"
+    + "You acquire an effect: Cartographically Charged (10)\n"
+    + "This combat did not cost a turn\n"
+    + "32 hippies defeated; 544 down, 456 left.";
+
+  const testStore = await createTestStore(sampleText);
+  expect(testStore.allEntries.length).toBe(1);
+});
+
 test('rawtext_parsing: presplit: does not split when "Using the Force"', async () => {
   const sampleText = "[267] The Hidden Bowling Alley\n"
     + "Encounter: pygmy orderlies\n"
