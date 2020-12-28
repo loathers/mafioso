@@ -726,6 +726,14 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Traded',
     encounterName_alt: REGEX.ITEMS.ACQUIRED_AN_ITEM_NAME,
   },
+  [ENTRY_TYPE.ITEMS.ZAP]: {
+    categories: [CATEGORY_ID.OPTIONS],
+    matcher: REGEX.ITEMS.ZAP_LINE,
+    icon: OptionsSVG,
+    locationName_alt: 'Zap',
+    encounterName_alt: REGEX.ITEMS.ZAP_RESULT,
+    additionalDisplay: ['({1})', REGEX.ITEMS.ZAP_TARGET],
+  },
   [ENTRY_TYPE.EFFECTS.SPELL_CAST]: {
     categories: [CATEGORY_ID.EFFECTS],
     matcher: REGEX.VALUE.SPELL_CAST_NAMES,

@@ -470,6 +470,7 @@ export const REGEX = {
 
     ZAP_LINE: /^zap .*/gmi,
     ZAP_TARGET: /(?<=^zap ).*/gmi,
+    ZAP_RESULT: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
 
     MAKE_SOMETHING_LINE: /(create|combine|craft|cook|mix|smith) .*\d+.*/gmi,
     COMBINE_LINE: /combine.*\d.*/gmi,
