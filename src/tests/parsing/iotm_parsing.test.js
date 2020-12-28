@@ -77,6 +77,20 @@ test('iotm_parsing: Comprehensive Cartography: handles parsing a special noncomb
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT);
 });
 
+test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza', async () => {
+  const sampleText = "eat 1 diabolic pizza\n"
+    + "You acquire an item: Pocket Professor memory chip\n"
+    + "You acquire an effect: HGH-charged (25)\n"
+    + "You gain 3 Fullness";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT);
+  expect(firstEntry.additionalDisplay).toBe('(HGH-charged)');
+});
+
+
 test('iotm_parsing: God Lobster: supports getting a boon choice adventure', async () => {
   const sampleText = "[16] God Lobster\n"
     + "Encounter: Granted a Boon\n"
