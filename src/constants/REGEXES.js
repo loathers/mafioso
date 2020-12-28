@@ -29,7 +29,7 @@ export const REGEX = {
     ASCENSION_BAD_MOON: /(?<=Ascension #(.+(\r\n|\n))+)Bad Moon/,
 
     // VALHALLA: /welcome to valhalla/is,
-    KING_FREED: /freeing king ralph.*?(?=(\s|))/i,
+    KING_FREED: /(freeing king ralph|freeing the ding dang king).*?(?=(\s|))/i,
     THWAITGOLD: /You acquire an item: Thwaitgold.*/i,
     NAUGHTY_SORCERESS: /.*The Naughty Sorceress.*/i,
   },
