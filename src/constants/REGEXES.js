@@ -371,6 +371,8 @@ export const REGEX = {
     DOC_GALATIK_SHOP_OR_USE: /(^buy.*doc Galaktik's|^use.*doc Galaktik's)/i,
 
     MAFIA_THUMB_RING_ACTIVATION: /your weighty thumb ring walloped/i,
+
+    NIGHTSTAND_CHOICE_ENCOUNTER: /(?<=Encounter: )One.*Nightstand/i,
   },
   VALUE: {
     TURN_NUM: /(?!\[)\d+(?=\])/, // look for `[1]`, ignore url hashes with `[]blah[]`

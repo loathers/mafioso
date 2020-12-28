@@ -756,6 +756,12 @@ export const ENTRY_DATA_MAP = {
     matcher: REGEX.VALUE.NONCOMBAT_NAME,
     icon: NoncombatSVG,
   },
+  [ENTRY_TYPE.ENCOUNTER.NIGHTSTAND_CHOICE]: {
+    categories: [CATEGORY_ID.NONCOMBAT],
+    matcher: REGEX.LINE.NIGHTSTAND_CHOICE_ENCOUNTER,
+    icon: NoncombatSVG,
+    locationName: 'The Haunted Bedroom',
+  },
   [ENTRY_TYPE.FAMILIAR]: {
     categories: [CATEGORY_ID.FAMILIARS],
     matcher: REGEX.FAMILIAR.SWITCH_TO_LINE,
@@ -814,11 +820,6 @@ export const ENTRY_DATA_MAP = {
     locationName_alt: 'Learned a new skill!',
     encounterName_alt: REGEX.GUILD.LEARN_SKILL_TARGET,
     content_alt: null,
-  },
-  [ENTRY_TYPE.VISITING]: {
-    categories: [CATEGORY_ID.VISIT],
-    matcher: [REGEX.LINE.TALKING, REGEX.LINE.VISITING],
-    icon: ShopSVG,
   },
   [ENTRY_TYPE.AUTOSELL]: {
     categories: [CATEGORY_ID.TRANSACTIONS],
