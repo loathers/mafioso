@@ -576,7 +576,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximizer|museum|upeffect|uneffect|outfit|custom outfit).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximize|maximizer|museum|upeffect|uneffect|outfit|custom outfit|unexpected error|keep your eyes open for|adjusted combat|.*is now accessible).*(\r\n|\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|shower|swimming pool|talking|telescope|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
@@ -594,7 +594,7 @@ export const REGEX = {
     UNKNOWN_SERVICE_LINE: /^Took choice 1089\/\d+: unknown.*(\r\n|\n)/gim,
   },
   PRESPLIT: {
-    UNRELATED_AFTER_COMBAT: /(?<=Encounter:(.*(\r\n|\n))+(round \d+.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies defeated.*|.*frats defeated.*|the crown gains.*|unlocked.*for latte.*)(?:\r\n|\n))(?!(round \d+.*|This combat.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies defeated.*|.*frats defeated.*|the crown gains.*|unlocked.*for latte.*|encounter: using the force.*))/gmi,
+    UNRELATED_AFTER_COMBAT: /(?<=Encounter:(.+(\r\n|\n))+(round \d+.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies.*defeated.*|.*frat.*defeated.*|the crown gains.*|unlocked.*for latte.*)(?:\r\n|\n))(?!(round \d+.*|This combat.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies defeated.*|.*frats defeated.*|the crown gains.*|unlocked.*for latte.*|encounter: using the force.*))/gmi,
     UNRELATED_AFTER_FREECOMBAT: /(?<=This combat did not cost a turn.*(\r\n|\n))(?!(\r\n|\n|.*hippies defeated.*|.*frats defeated.*))/gmi,
   },
 };
