@@ -80,6 +80,7 @@ export const PREGROUP_REGEX_LIST = [
 // strings we want to split apart (so they can be separate entries)
 export const SPLIT_REGEX_LIST = [
   REGEX.COMMUNITY_SERVICE.SPLITTABLE_CHOICE_LINES,
+  REGEX.PRESPLIT.FREE_COMBAT_AND_MORE,
 ];
 // -- individual entry level
 // text we will remove from the display text,

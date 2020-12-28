@@ -435,6 +435,7 @@ export const ENTRY_DATA_MAP = {
     categories: [CATEGORY_ID.OPTIONS],
     matcher: REGEX.HORSERY.HORSE_CHOICE,
     icon: OptionsSVG,
+    showAdditionalDisplay: false,
     locationName: 'Horsery',
     encounterName_alt: REGEX.HORSERY.HORSE_CHOICE,
     content_alt: null,

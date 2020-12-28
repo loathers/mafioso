@@ -90,7 +90,6 @@ test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza', asyn
   expect(firstEntry.additionalDisplay).toBe('(HGH-charged)');
 });
 
-
 test('iotm_parsing: God Lobster: supports getting a boon choice adventure', async () => {
   const sampleText = "[16] God Lobster\n"
     + "Encounter: Granted a Boon\n"

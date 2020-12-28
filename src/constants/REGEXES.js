@@ -590,6 +590,9 @@ export const REGEX = {
 
     UNKNOWN_SERVICE_LINE: /^Took choice 1089\/\d+: unknown.*(\r\n|\n)/gim,
   },
+  PRESPLIT: {
+    FREE_COMBAT_AND_MORE: /(?<=This combat did not cost a turn(\r\n|\n))(?=.)/gmi,
+  },
 };
 
 export default REGEX;
