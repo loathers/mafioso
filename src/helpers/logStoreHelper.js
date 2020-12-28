@@ -19,7 +19,7 @@ export function combineEntries(entriesList) {
   let combinedEntriesList = [];
 
   const searchEntries = entriesList.slice();
-  const originalLength = entriesList.length;
+  // const originalLength = entriesList.length;
 
   // going to look at all the entries,
   while (searchEntries.length > 0) {
@@ -51,7 +51,7 @@ export function combineEntries(entriesList) {
     combinedEntriesList.push(currEntry);
   }
 
-  console.log(`%cCombined entries from ${originalLength} to ${combinedEntriesList.length}`, 'color: #6464ff');
+  // console.log(`%cCombined entries from ${originalLength} to ${combinedEntriesList.length}`, 'color: #6464ff');
   return combinedEntriesList;
 }
 /**

@@ -30,7 +30,7 @@ export async function parseLogTxt(rawText) {
     if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
       throw new Error(`Unable to parse this log of size ${rawSize}.`);
     }
-    console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
+    // console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
 
     // first combine some text ahead of time
     // then split some text

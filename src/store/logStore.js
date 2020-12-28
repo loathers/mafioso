@@ -349,7 +349,7 @@ export class LogStore {
         throw new Error('That is too many files.');
       }
 
-      console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
+      // console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
       this.isParsing.set(true);
 
       this.reset();
@@ -461,7 +461,7 @@ export class LogStore {
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
     this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
 
-    console.log(`✔️ Finished! Created ${this.allEntries.length} entries.`);
+    // console.log(`✔️ Finished! Created ${this.allEntries.length} entries.`);
     this.displayOptions.pageNum = 0;
     this.isParsing.set(false);
 
