@@ -579,7 +579,7 @@ export const REGEX = {
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
 
     RAFFLE_TEXT: /.*You acquire raffle ticket.*/gi,
-    USELESS_LEAFLET_LINE: /(?!.*(plover|open chest|look in hole|take ring))^(leaflet|\(you see a).*(\r\n|\n)/gim,
+    USELESS_LEAFLET_LINE: /(?!.*(plugh|plover|open chest|look in hole|take ring))^(leaflet|\(you see a).*(\r\n|\n)/gim,
     UNKNOWN_ITEM_GROUPING: /--------------------(.*(\r\n|\n))+?--------------------/gm,
     UNKNOWN_USE_LINE: /.*but kolmafia thought it was.*(\r\n|\n)/gmi,
 
@@ -591,7 +591,8 @@ export const REGEX = {
     UNKNOWN_SERVICE_LINE: /^Took choice 1089\/\d+: unknown.*(\r\n|\n)/gim,
   },
   PRESPLIT: {
-    FREE_COMBAT_AND_MORE: /(?<=This combat did not cost a turn(\r\n|\n))(?=.)/gmi,
+    UNRELATED_AFTER_COMBAT: /(?<=(round \d+.*|Your familiar.*|You gain.*|After Battle:.*|you acquire.*|the crown gains.*|unlocked.*for latte.*)(?:\r\n|\n))(?!(round \d+.*|This combat.*|Your familiar.*|You gain.*|After Battle:.*|you acquire.*|the crown gains.*|unlocked.*for latte.*|encounter: using the force.*))/gmi,
+    UNRELATED_AFTER_FREECOMBAT: /(?<=This combat did not cost a turn.*(\r\n|\n))(?=.)/gmi,
   },
 };
 
