@@ -666,6 +666,13 @@ export class LogStore {
     return this.allEntries.map((entry) => entry.export()).join('\n\n');
   }
   /**
+   * @param {Number} entryNum
+   * @returns {Entry | undefined}
+   */
+  getEntryAt(entryNum) {
+    return this.allEntries[entryNum];
+  }
+  /**
    * @param {Matcher} matcher
    * @return {String|null}
    */

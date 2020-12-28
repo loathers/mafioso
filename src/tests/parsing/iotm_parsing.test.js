@@ -77,6 +77,20 @@ test('iotm_parsing: Comprehensive Cartography: handles parsing a special noncomb
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT);
 });
 
+test('iotm_parsing: God Lobster: supports getting a boon choice adventure', async () => {
+  const sampleText = "[16] God Lobster\n"
+    + "Encounter: Granted a Boon\n"
+    + "Took choice 1310/1: &quot;I'd like part of your regalia.&quot;\n"
+    + "choice.php?pwd&whichchoice=1310&option=1\n"
+    + "You acquire an item: God Lobster's Scepter";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON);
+  expect(firstEntry.additionalDisplay).toBe('"I\'d like part of your regalia."');
+});
+
 test('iotm_parsing: SpinMaster lathe: groups text if it has flimy hardwood scraps from using it the first time', async () => {
   const sampleText = "Visiting Your SpinMaster&trade; lathe\n"
     + "You acquire an item: flimsy hardwood scraps\n\n"
