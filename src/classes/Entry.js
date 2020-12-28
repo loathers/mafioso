@@ -430,7 +430,7 @@ export default class Entry {
       return this.findMatcher(REGEX.GOD_LOBSTER.BOON_CHOICE_RESULT);
     }
 
-    // let custom additionaDisplay have precedence
+    // some entryTypes have precedence over the regular choice progression display
     if (this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER) {
       return this.attributes.additionalDisplay;
     }
@@ -439,7 +439,8 @@ export default class Entry {
       return '⇾ ' + this.attributes.choiceProgression.join(' ⇾ ');
     }
 
-    return this.attributes.additionalDisplay;
+    // note `entryData` vs `attributes`
+    return this.parseDisplayMatcher(this.entryData.additionalDisplay, this.attributes.additionalDisplay);
   }
   /** @param {String} */
   set familiarUsed(newValue) {
