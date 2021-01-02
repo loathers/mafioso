@@ -11,6 +11,7 @@ import logStore from 'store/logStore';
 import LogoComponent from 'components/LogoComponent';
 
 import LogUploader from 'sections/LogUploader';
+import PopupController from 'sections/PopupController';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -107,6 +108,12 @@ function _UpperNavbar(props) {
         }
 
         <NavbarDivider />
+
+        <NavbarButton
+          onClick={() => PopupController.show({children: 'Hey'})}
+          children='Test'
+          componentType='button'
+          className='adjacent-mar-l-3' />
 
         <NavbarButton
           onClick={() => appStore.downloadFullLog()}

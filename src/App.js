@@ -13,6 +13,7 @@ import logStore from 'store/logStore';
 
 import LoaderComponent from 'components/LoaderComponent';
 import {ToasterComponent} from 'sections/ToastController';
+import {PopupComponent} from 'sections/PopupController';
 
 import Footer from 'sections/Footer';
 import Navbar from 'sections/Navbar';
@@ -39,6 +40,9 @@ function App() {
 
         <ToasterComponent
           className='zindex-6'/>
+
+        <PopupComponent
+          className='zindex-7'/>
 
         {/* Top */}
         <Navbar

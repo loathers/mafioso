@@ -1,3 +1,33 @@
+[elementname='app-popup'] {
+  transition: opacity 300ms;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &.active {
+    opacity: 1;
+  }
+  &:not(.active) {
+    opacity: 0;
+  }
+
+  [elementname='app-popup-inner'] {
+    z-index: 2;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 300px;
+    height: auto;
+  }
+
+  [elementname='app-popup-darkness'] {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
 [elementname='app-toaster'] {
   position: fixed;
   top: $NAVBAR_HEIGHT;
