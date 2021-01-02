@@ -65,26 +65,26 @@ export async function parseLogTxt(rawText) {
  * @returns {String | null}
  */
 export function findAscensionLog(rawText) {
-  const logStartText = handleLogStart(rawText);
+  const mafiosoBlock = generateMafiosoBlock(rawText);
 
   const scotchLogAscension = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
   if (scotchLogAscension) {
-    return logStartText + scotchLogAscension[0];
+    return mafiosoBlock + scotchLogAscension[0];
   }
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
-    return logStartText + fromValhallaToFreeKing[0];
+    return mafiosoBlock + fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
-    return logStartText + fromValhallaToThwaitgold[0];
+    return mafiosoBlock + fromValhallaToThwaitgold[0];
   }
 
   const newAscensionToKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (newAscensionToKing) {
-    return logStartText + newAscensionToKing[0];
+    return mafiosoBlock + newAscensionToKing[0];
   }
 
   throw new Error('Could not find an Ascension Log.');
@@ -96,7 +96,7 @@ export function findAscensionLog(rawText) {
  * @string {String} rawText
  * @returns {String | null}
  */
-export function handleLogStart(rawText) {
+export function generateMafiosoBlock(rawText) {
   // -- start with finding out what the start date was
   const firstDate = logDateUtils.findRealDates(rawText);
   const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
@@ -105,12 +105,21 @@ export function handleLogStart(rawText) {
   const standardBlock = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
 
   // -- generate the block
-  const formattedStart = `<mafioso>
+  const mafiosoBlock = `<mafioso>
     Start Date: ${startDateText}
     Standard: ${standardBlock || 'Not Standard'}
   </mafioso>\n\n`;
 
-  return formattedStart;
+  return mafiosoBlock;
+}
+/**
+ * @string {String} rawText
+ * @returns {String}
+ */
+export function updateStandardBlock(rawText, updatedText) {
+  const newText = `Standard: ${updatedText}` || 'Not Standard';
+  rawText.replace(REGEX.MAFIOSO.STANDARD_BLOCK, newText);
+  return rawText;
 }
 /**
  * @param {String} rawText
