@@ -35,6 +35,12 @@ class PopupController {
     };
     this.toggleActive(true);
   }
+  /**
+   *
+   */
+  hide() {
+    this.toggleActive(false);
+  }
 }
 const popupController = new PopupController();
 export default popupController;
@@ -49,7 +55,6 @@ function _PopupComponent(props) {
   const {
     children,
     onClose = () => {},
-
   } = popupController.popupData;
 
   function onClickClose(evt) {
@@ -71,7 +76,7 @@ function _PopupComponent(props) {
 
       <div
         elementname='app-popup-inner'
-        className={combineClassnames('color-white pad-2 whitespace-pre-wrap borradius-t-1 borradius-b-2 boxshadow-dark flex-col bg-fifth')}>
+        className={combineClassnames('color-white pad-2 whitespace-pre-wrap borradius-t-1 borradius-b-2 boxshadow-dark flex-col bg-second-darkest')}>
 
         <div className='adjacent-mar-t-3'>
           { children }

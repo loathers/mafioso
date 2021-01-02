@@ -12,6 +12,7 @@ import LogoComponent from 'components/LogoComponent';
 
 import LogUploader from 'sections/LogUploader';
 import PopupController from 'sections/PopupController';
+import ShareConfirmationPopup from 'sections/ShareConfirmationPopup';
 
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -110,7 +111,11 @@ function _UpperNavbar(props) {
         <NavbarDivider />
 
         <NavbarButton
-          onClick={() => PopupController.show({children: 'Hey'})}
+          onClick={() => PopupController.show({
+            children: <ShareConfirmationPopup
+              onClickDone={() => PopupController.hide()}
+            />
+          })}
           children='Test'
           componentType='button'
           className='adjacent-mar-l-3' />

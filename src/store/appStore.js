@@ -123,7 +123,10 @@ class AppStore {
    * uploads the current log to server
    */
   async onShareLog() {
-    if (this.isShareDisabled) return;
+    if (this.isShareDisabled) {
+      ToastController.error({title: 'Error', content: 'Unable to Share log'});
+      return;
+    }
 
     this.hasAttemptedShare = true;
     this.isPretendLoading.set(true);
