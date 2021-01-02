@@ -21,7 +21,7 @@ export const REGEX = {
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,
     ASTRAL_SHOPPING_NAME: /(?<=buy.*)astral .*(?= for)/gmi,
-    KARMA_TEXT: /(\d+(?= karma| banked karma)|(?<=balance = )\d+|(?<=balance is )\d+)/gmi,
+    KARMA_TEXT: /((?<= )\d+(?= karma| banked karma)|(?<=balance = )\d+|(?<=balance is )\d+)/gmi,
     MOON_SIGN_NAME: /(?<=.*under the ).*(?= sign)/i,
 
     ASCENSION_DETAIL_GROUP: /(?<=Ascension #\d+:(?:\r\n|\n))(hardcore|softcore|normal|casual) (.*) (pastamancer|sauceror|accordion thief|disco bandit|seal clubber|turtle tamer|zombie Master|plumber|avatar of boris|avatar of jarlsberg|avatar of sneaky pete|ed the undying|gelatinous noob|plumber|vampyre|cow puncher|beanslinger|snake oiler)/i,
