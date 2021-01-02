@@ -11,6 +11,7 @@ export const REGEX = {
     LOG_COMMENTS_ONLY: /(^\/\/.*$)+(?!(\r\n|\n).)/gm,
 
     GENERATED_BLOCK: /<mafioso>.*<\/mafioso>/gs,
+    STANDARD_BLOCK: /(?<=Standard: )(Spring|Fall|Winter|Summer) \d+/gm,
   },
   ASCENSION: {
     VALHALLA_COMPLETE: /(Beginning New Ascension|welcome to valhalla).*?(freeing king ralph|freeing the king).*?/is,

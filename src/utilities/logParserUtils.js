@@ -104,9 +104,13 @@ export function handleLogStart(rawText) {
   const firstDate = logDateUtils.findRealDates(rawText);
   const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
 
+  //
+  const standardBlock = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
+
   // -- generate the block
   const formattedStart = `<mafioso>
     Start Date: ${startDateText}
+    Standard: ${standardBlock || 'Not Standard'}
   </mafioso>\n\n`;
 
   return formattedStart;
