@@ -335,7 +335,7 @@ export class LogStore {
     if (this.hasAscensionNum) {
       toastMessage = `Ascension #${this.ascensionNum}!\nAnother one for the books.`;
     } else {
-      toastMessage = 'Ey capo, your logs are ready.';
+      toastMessage = 'Ey capo, we didn\'t find an Ascension Log but managed a regular session log.';
     }
 
     ToastController.success({title: 'Success!', content: toastMessage});
@@ -416,22 +416,22 @@ export class LogStore {
   async prepareLog(logText) {
     const groupedLogText = logParserUtils.pregroupRawLog(logText);
 
-    // try to find out if there is a full ascension log,
-    //  otherwise just use the first text we have
-    const fullAscensionText = logParserUtils.findAscensionLog(groupedLogText);
-    if (fullAscensionText !== null) {
+    try {
+      // try to find out if there is a full ascension log,
+      //  otherwise just use the first text we have
+      const fullAscensionText = logParserUtils.findAscensionLog(groupedLogText);
       this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
       this.setAscensionAttributes();
-      console.log(`✨ %cFound Ascension #${this.ascensionNum}!`, 'font-size: 14px');
+      ToastController.success({content: 'Preparing to parse Ascension log...'});
 
-    } else {
+    } catch (err) {
       this.rawText = await logParserUtils.cleanRawLog(groupedLogText);
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...logParserUtils.parseDailyAttributes(this.rawText),
       };
 
-      console.warn('No Ascension specific log was found.');
+      ToastController.warn({content: `Parsing as a regular session log.\n(${err.message})`});
     }
 
     // clean up once more...

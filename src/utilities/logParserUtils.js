@@ -66,9 +66,6 @@ export async function parseLogTxt(rawText) {
  */
 export function findAscensionLog(rawText) {
   const logStartText = handleLogStart(rawText);
-  if (logStartText === null) {
-    return null;
-  }
 
   const scotchLogAscension = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
   if (scotchLogAscension) {
@@ -90,7 +87,7 @@ export function findAscensionLog(rawText) {
     return logStartText + newAscensionToKing[0];
   }
 
-  return null;
+  throw new Error('Could not find an Ascension Log.');
 }
 /**
  * create a <mafioso> block because the snapshot date
