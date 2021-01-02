@@ -124,7 +124,7 @@ class AppStore {
    */
   async onShareLog() {
     if (this.isShareDisabled) {
-      ToastController.error({title: 'Error', content: 'Unable to Share log'});
+      this.showShareFailReason();
       return;
     }
 
@@ -172,6 +172,30 @@ class AppStore {
     }
 
     this.isPretendLoading.set(false);
+  }
+  /**
+   * just a hacky little handler to show a toast with the reason
+   * based on `isShareDisabled`
+   */
+  showShareFailReason() {
+    let failReason = '';
+    if (!this.isReady) {
+      // failReason += 'App is not ready.\n';
+    }
+
+    if (this.hasAttemptedShare) {
+      failReason += 'You already tried sharing this.\n';
+    }
+
+    if (logStore.isImportedLog) {
+      failReason += 'This log is from the Database.\n';
+    }
+
+    if (!logStore.isAscensionLog) {
+      failReason += 'This is not an Ascension log.\n';
+    }
+
+    ToastController.error({title: 'Share Error', content: failReason});
   }
 }
 /** export singleton */
