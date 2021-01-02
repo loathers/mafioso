@@ -1,4 +1,5 @@
 [elementname='app-popup'] {
+  position: static;
   transition: opacity 300ms;
   top: 0;
   left: 0;
@@ -20,11 +21,16 @@
 
     width: 300px;
     height: auto;
+    position: absolute;
   }
 
   [elementname='app-popup-darkness'] {
     z-index: 1;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
 }
 

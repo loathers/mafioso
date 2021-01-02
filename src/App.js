@@ -38,11 +38,11 @@ function App() {
           <LoaderComponent />
         }
 
+        <PopupComponent
+          className='zindex-8'/>
+
         <ToasterComponent
           className='zindex-6'/>
-
-        <PopupComponent
-          className='zindex-7'/>
 
         {/* Top */}
         <Navbar

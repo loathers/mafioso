@@ -57,19 +57,21 @@ function _PopupComponent(props) {
     onClose(evt);
   }
 
-  const activeClassname = popupController.isActive.get() && 'active';
+  const isActive = popupController.isActive.get();
 
   return (
     <div
       {...otherProps}
       elementname='app-popup'
-      className={combineClassnames('position-static', activeClassname)}
+      className={combineClassnames('', isActive && 'active', className)}
     >
-      <div elementname='app-popup-darkness'/>
+      { isActive &&
+        <div elementname='app-popup-darkness'/>
+      }
 
       <div
         elementname='app-popup-inner'
-        className={combineClassnames('color-white pad-2 whitespace-pre-wrap borradius-t-1 borradius-b-2 boxshadow-dark flex-col bg-fifth position-absolute', className)}>
+        className={combineClassnames('color-white pad-2 whitespace-pre-wrap borradius-t-1 borradius-b-2 boxshadow-dark flex-col bg-fifth')}>
 
         <div className='adjacent-mar-t-3'>
           { children }
