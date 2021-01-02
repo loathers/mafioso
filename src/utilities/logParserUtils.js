@@ -13,6 +13,7 @@ import {
 import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
 import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
 
+import * as logDateUtils from 'utilities/logDateUtils';
 import * as regexUtils from 'utilities/regexUtils';
 
 const MAX_CHAR_COUNT = 6000000;
@@ -66,8 +67,8 @@ export async function parseLogTxt(rawText) {
 export function findAscensionLog(rawText) {
   // because the snapshot date might be cut off from the rest of the ascension,
   //  capture it here ahead of time to be certain that we have it
-  const firstDate = findFirstDate(rawText);
-  const formattedDate = firstDate ? `<mafioso>\nLog Start: ${firstDate}\n<mafioso/>\n\n` : '';
+  const firstDate = logDateUtils.findFirstDate(rawText);
+  const formattedDate = firstDate ? `<mafioso>\nLog Start: ${firstDate}\n</mafioso>\n\n` : '';
 
   const scotchLogStart = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
   if (scotchLogStart) {
@@ -192,33 +193,6 @@ export async function postParseCleanup(rawText) {
   });
 }
 // -- parsing specific data
-/**
- * @param {String} rawText
- * @returns {Array<KolDate>}
- */
-export function findFirstDate(rawText) {
-  const snapshotDate = rawText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
-  if (snapshotDate) {
-    return snapshotDate[0];
-  }
-
-  const scotchDate = rawText.match(REGEX.SNAPSHOT.SCOTCH_LOG_DATE);
-  if (scotchDate) {
-    return scotchDate[0];
-  }
-
-  const kolDate = rawText.match(REGEX.SNAPSHOT.KOL_DATE);
-  if (kolDate) {
-    return kolDate[0];
-  }
-
-  const realDate = rawText.match(REGEX.SNAPSHOT.REAL_DATE);
-  if (realDate) {
-    return realDate[0];
-  }
-
-  return undefined;
-}
 /**
  * @param {Text} rawText
  * @returns {String}
