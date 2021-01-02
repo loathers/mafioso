@@ -112,6 +112,7 @@ function _UpperNavbar(props) {
 
         <NavbarButton
           onClick={() => PopupController.show({
+            title: 'Log Sharing',
             children: <ShareConfirmationPopup
               onClickDone={() => PopupController.hide()}
             />

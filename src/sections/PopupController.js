@@ -2,8 +2,6 @@ import React from 'react';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 
-import Button from 'components/DarkButton';
-
 import combineClassnames from 'utilities/combineClassnames';
 
 class PopupController {
@@ -14,6 +12,8 @@ class PopupController {
     this.popupData = {
       /** @type {*} */
       children: null,
+      /** @type {String | null} */
+      title: null,
       /** @type {Function} */
       onClose: () => {},
     };
@@ -54,6 +54,7 @@ function _PopupComponent(props) {
 
   const {
     children,
+    title,
     onClose = () => {},
   } = popupController.popupData;
 
@@ -71,25 +72,20 @@ function _PopupComponent(props) {
       className={combineClassnames('', isActive && 'active', className)}
     >
       { isActive &&
-        <div elementname='app-popup-darkness'/>
+        <div elementname='app-popup-darkness' onClick={onClickClose}/>
       }
 
       <div
         elementname='app-popup-inner'
-        className={combineClassnames('color-white pad-2 whitespace-pre-wrap borradius-t-1 borradius-b-2 boxshadow-dark flex-col bg-second-darkest')}>
+        className={combineClassnames('color-white whitespace-pre-wrap borradius-2 boxshadow-dark flex-col bg-second-darkest')}>
 
-        <div className='adjacent-mar-t-3'>
+        { title &&
+          <div className='pad-h-4 pad-v-3 borradius-t-1 f-bold bg-second'>{title}</div>
+        }
+
+        <div className='pad-4'>
           { children }
         </div>
-
-        <div className='flex-row adjacent-mar-t-3'>
-          <Button
-            onClick={onClickClose}
-            className='pad-2 adjacent-mar-l-2'>
-            Close
-          </Button>
-        </div>
-
       </div>
     </div>
   )
