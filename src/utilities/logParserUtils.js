@@ -65,32 +65,51 @@ export async function parseLogTxt(rawText) {
  * @returns {String | null}
  */
 export function findAscensionLog(rawText) {
-  // because the snapshot date might be cut off from the rest of the ascension,
-  //  capture it here ahead of time to be certain that we have it
-  const firstDate = logDateUtils.findFirstDate(rawText);
-  const formattedDate = firstDate ? `<mafioso>\nLog Start: ${firstDate}\n</mafioso>\n\n` : '';
+  const logStartText = handleLogStart(rawText);
+  if (logStartText === null) {
+    return null;
+  }
 
-  const scotchLogStart = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
-  if (scotchLogStart) {
-    return scotchLogStart[0];
+  const scotchLogAscension = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
+  if (scotchLogAscension) {
+    return logStartText + scotchLogAscension[0];
   }
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
-    return formattedDate + fromValhallaToFreeKing[0];
+    return logStartText + fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
-    return formattedDate + fromValhallaToThwaitgold[0];
+    return logStartText + fromValhallaToThwaitgold[0];
   }
 
   const newAscensionToKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (newAscensionToKing) {
-    return formattedDate + newAscensionToKing[0];
+    return logStartText + newAscensionToKing[0];
   }
 
   return null;
+}
+/**
+ * create a <mafioso> block because the snapshot date
+ *  might be cut off from the rest of the ascension
+ *
+ * @string {String} rawText
+ * @returns {String | null}
+ */
+export function handleLogStart(rawText) {
+  // -- start with finding out what the start date was
+  const firstDate = logDateUtils.findRealDates(rawText);
+  const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
+
+  // -- generate the block
+  const formattedStart = `<mafioso>
+    Start Date: ${startDateText}
+  </mafioso>\n\n`;
+
+  return formattedStart;
 }
 /**
  * @param {String} rawText

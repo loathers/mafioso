@@ -28,9 +28,9 @@ export function findFirstDate(rawText) {
     return kolDate[0];
   }
 
-  const realDate = findRealDates(rawText);
-  if (realDate) {
-    return realDate[0];
+  const realDates = findRealDates(rawText);
+  if (realDates) {
+    return realDates[0];
   }
 
   return undefined;
