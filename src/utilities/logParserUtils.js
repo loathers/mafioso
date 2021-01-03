@@ -13,7 +13,7 @@ import {
 import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
 import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
 
-import * as logDateUtils from 'utilities/logDateUtils';
+// import * as logDateUtils from 'utilities/logDateUtils';
 import * as regexUtils from 'utilities/regexUtils';
 
 const MAX_CHAR_COUNT = 6000000;
@@ -65,61 +65,27 @@ export async function parseLogTxt(rawText) {
  * @returns {String | null}
  */
 export function findAscensionLog(rawText) {
-  const mafiosoBlock = generateMafiosoBlock(rawText);
-
   const scotchLogAscension = rawText.match(REGEX.ASCENSION.SCOTCH_LOG_ASCENSION);
   if (scotchLogAscension) {
-    return mafiosoBlock + scotchLogAscension[0];
+    return scotchLogAscension[0];
   }
 
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
-    return mafiosoBlock + fromValhallaToFreeKing[0];
+    return fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
-    return mafiosoBlock + fromValhallaToThwaitgold[0];
+    return fromValhallaToThwaitgold[0];
   }
 
   const newAscensionToKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (newAscensionToKing) {
-    return mafiosoBlock + newAscensionToKing[0];
+    return newAscensionToKing[0];
   }
 
   throw new Error('Could not find an Ascension Log.');
-}
-/**
- * create a <mafioso> block because the snapshot date
- *  might be cut off from the rest of the ascension
- *
- * @string {String} rawText
- * @returns {String | null}
- */
-export function generateMafiosoBlock(rawText) {
-  // -- start with finding out what the start date was
-  const firstDate = logDateUtils.findRealDates(rawText);
-  const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
-
-  //
-  const standardSeason = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
-
-  // -- generate the block
-  const mafiosoBlock = `<mafioso>
-    Start Date: ${startDateText}
-    Standard: ${standardSeason || 'Unrestricted'}
-  </mafioso>\n\n`;
-
-  return mafiosoBlock;
-}
-/**
- * @string {String} rawText
- * @returns {String}
- */
-export function updateStandardBlock(rawText, updatedText) {
-  const newText = `Standard: ${updatedText}`;
-  rawText.replace(REGEX.MAFIOSO.STANDARD_BLOCK, newText);
-  return rawText;
 }
 /**
  * @param {String} rawText
@@ -130,6 +96,7 @@ export function parseAscensionAttributes(rawText) {
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
   const isBadMoon = rawText.match(REGEX.ASCENSION.ASCENSION_BAD_MOON) !== null;
+  const standardSeasonMatch = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK) || [];
 
   return {
     characterName: characterNameMatch[0],
@@ -137,7 +104,7 @@ export function parseAscensionAttributes(rawText) {
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
     pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
-    standardSeason: rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK)[0],
+    standardSeason: standardSeasonMatch[0] || 'Unrestricted',
   }
 }
 /**
@@ -215,12 +182,18 @@ export async function cleanRawLog(rawText) {
  * @return {String}
  */
 export async function postParseCleanup(rawText) {
+  // hide karma numbers
   rawText = rawText.replace(REGEX.ASCENSION.KARMA_TEXT, '<3');
 
+  // remove the starting generated block
+  rawText = rawText.replace(REGEX.MAFIOSO.GENERATED_BLOCK, '');
+
   // replace all the stuff under "Player Snapshot"
-  return rawText.replace(REGEX.SNAPSHOT.WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP, (match, p1, p2) => {
+  rawText = rawText.replace(REGEX.SNAPSHOT.WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP, (match, p1, p2) => {
     return `<mafioso>\n${p1}\n${p2}\n</mafioso>\n`;
   });
+
+  return rawText;
 }
 // -- parsing specific data
 /**

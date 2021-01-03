@@ -13,6 +13,7 @@ import chartStore from 'store/chartStore';
 import ToastController from 'sections/ToastController';
 
 import * as fileParserUtils from 'utilities/fileParserUtils';
+import * as logDateUtils from 'utilities/logDateUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import * as regexUtils from 'utilities/regexUtils';
 
@@ -457,6 +458,7 @@ export class LogStore {
       };
 
       ToastController.warn({content: `Parsing as a regular session log.\n(${err.message})`});
+      console.error(err.message);
     }
 
     // clean up once more...
@@ -497,7 +499,6 @@ export class LogStore {
    */
   updateStandardSeason(newSeason) {
     this.ascensionAttributes.standardSeason = newSeason;
-    logParserUtils.updateStandardBlock(newSeason);
   }
   // -- fetch functions
   /**
@@ -695,7 +696,17 @@ export class LogStore {
    * @returns {String}
    */
   export() {
-    return this.allEntries.map((entry) => entry.export()).join('\n\n');
+    // rebuild mafioso block
+    const firstDate = logDateUtils.findRealDates(this.rawText);
+    const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
+
+    const mafiosoBlock = `<mafioso>
+      Start Date: ${startDateText}
+      Standard: ${this.standardSeason || 'Unrestricted'}
+    </mafioso>\n\n`;
+
+    const entriesText = this.allEntries.map((entry) => entry.export()).join('\n\n');
+    return mafiosoBlock + entriesText;
   }
   /**
    * @param {Number} entryNum
