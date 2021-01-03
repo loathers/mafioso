@@ -96,7 +96,6 @@ export function parseAscensionAttributes(rawText) {
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
   const isBadMoon = rawText.match(REGEX.ASCENSION.ASCENSION_BAD_MOON) !== null;
-  const standardSeasonMatch = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK) || [];
 
   return {
     characterName: characterNameMatch[0],
@@ -104,7 +103,7 @@ export function parseAscensionAttributes(rawText) {
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
     pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
-    standardSeason: standardSeasonMatch[0] || 'Unrestricted',
+    standardSeason: parseStandardSeason(rawText),
   }
 }
 /**
@@ -214,6 +213,18 @@ export function createPathLabel(rawText) {
 export function parseDifficultyName(rawText) {
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
   return ascensionDetails[1];
+}
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function parseStandardSeason(rawText) {
+  const standardSeasonMatch = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
+  if (standardSeasonMatch) {
+    return standardSeasonMatch[0];
+  }
+
+  return 'Unrestricted';
 }
 /**
  * @param {Text} rawText

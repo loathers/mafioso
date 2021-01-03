@@ -136,6 +136,12 @@ export class LogStore {
         ...logParserUtils.parseDailyAttributes(this.rawText),
       };
 
+      // try to extrapolate season date if not available
+      if (!this.hasStandardSeason && this.srcFiles.length > 0) {
+        const sessionToDate = fileParserUtils.getDateFromSessionFile(this.srcFiles[0]);
+        this.ascensionAttributes.standardSeason = `${sessionToDate.getMonth()}-${sessionToDate.getFullYear()}`
+      }
+
     } else {
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
