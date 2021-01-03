@@ -52,6 +52,20 @@ function _UpperNavbar(props) {
 
   const showDescription = logStore.hasParsedEntries && logStore.isAscensionLog;
 
+  function onClickShare() {
+    if (appStore.isShareDisabled) {
+      appStore.showShareFailReason();
+      return;
+    }
+
+    PopupController.show({
+      title: 'Log Sharing',
+      children: <ShareConfirmationPopup
+        onClickDone={() => PopupController.hide()}
+      />
+    });
+  }
+
   return (
     <div className={combineClassnames('flex-row aitems-center', className)}>
       <LogoComponent className='flex-none adjacent-mar-l-6' />
@@ -119,13 +133,8 @@ function _UpperNavbar(props) {
 
         { (appStore.isDevEnv || enableDatabase) &&
           <NavbarButton
-            onClick={() => PopupController.show({
-              title: 'Log Sharing',
-              children: <ShareConfirmationPopup
-                onClickDone={() => PopupController.hide()}
-              />
-            })}
-            disabled={appStore.isShareDisabled}
+            onClick={onClickShare}
+            disabled={!appStore.isReady}
             children='Share'
             componentType='button'
             className='adjacent-mar-l-3' />

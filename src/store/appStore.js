@@ -189,7 +189,7 @@ class AppStore {
       failReason += 'You already tried sharing this.\n';
     }
 
-    if (logStore.isImportedLog) {
+    if (logStore.isImportedLog && !this.hasAttemptedShare) {
       failReason += 'This log is from the Database.\n';
     }
 
