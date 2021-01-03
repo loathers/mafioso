@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
 
 import {ReactComponent as ActiveSVG} from 'images/eye.svg';
+import {ReactComponent as StandardSVG} from 'images/calendar.svg';
 import {ReactComponent as InactiveSVG} from 'images/eye-off.svg';
 import {ReactComponent as DeleteSVG} from 'images/trash-can.svg';
 
@@ -125,8 +126,11 @@ function RowDisplay(props) {
       difficultyName,
       dayCount,
       turnCount,
+      standardSeason,
     },
   } = props;
+
+  const hasStandardSeason = standardSeason && standardSeason !== 'Unrestricted';
 
   return (
     <RowButton
@@ -140,6 +144,12 @@ function RowDisplay(props) {
       <span className='f-bold adjacent-mar-l-2'>{characterName}</span>
       <span className='adjacent-mar-l-2'>in</span>
       <span className='f-bold adjacent-mar-l-2'>{`${difficultyName} ${pathName}`}</span>
+
+      { hasStandardSeason &&
+        <StandardSVG
+          className='talign-right adjacent-mar-l-2'
+          style={{width: 14, height: 14}} />
+      }
 
       <span className='color-gray flex-auto talign-right adjacent-mar-l-2'>{`(${dayCount} days / ${turnCount} turns)`}</span>
     </RowButton>
