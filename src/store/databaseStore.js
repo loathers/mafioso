@@ -161,7 +161,7 @@ class AppStore {
     });
 
     fetchRequest
-      .then(() => ToastController.success({title: 'Successfuly shared!', content: 'Grazie, famiglia.\nIt might take a bit before it becomes visible.'}))
+      .then(() => ToastController.success({title: 'Successfuly shared!', content: 'Grazie, famiglia.'}))
       .finally(() => this.isFetching.set(false));
 
     return fetchRequest;

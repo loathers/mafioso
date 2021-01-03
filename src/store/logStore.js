@@ -45,6 +45,8 @@ export class LogStore {
       pathName: undefined,
       /** @type {Array<String>} */
       dateList: [],
+      /** @type {String} */
+      standardSeason: undefined,
       /** @type {Array<String>} */
       voterMonsters: [],
       /** @type {Array<String>} */
@@ -205,11 +207,11 @@ export class LogStore {
       return `${characterLabel}_${this.pathLabel}_mafioso.txt`;
     }
 
-    if (!this.hasSessionDate) {
-      return `${characterLabel}_parsed_mafioso.txt`
+    if (this.hasSessionDate) {
+      return `${characterLabel}_${this.sessionDate}_mafioso.txt`
     }
 
-    return `${characterLabel}_${this.sessionDate}_mafioso.txt`
+    return `${characterLabel}_mafioso.txt`
   }
   /** @type {String} */
   get sessionDate() {
@@ -293,6 +295,18 @@ export class LogStore {
   get standardSeason() {
     return this.ascensionAttributes.standardSeason;
   }
+  /** @type {String} */
+  get seasonMonth() {
+    if (!this.hasStandardSeason) return undefined;
+
+    return this.standardSeason.split('-')[0];
+  }
+  /** @type {String} */
+  get seasonYear() {
+    if (!this.hasStandardSeason) return undefined;
+
+    return this.standardSeason.split('-')[1];
+  }
   /** @type {Boolean} */
   get hasAscensionNum() {
     return this.ascensionNum !== undefined;
@@ -303,7 +317,9 @@ export class LogStore {
   }
   /** @type {String} */
   get hasStandardSeason() {
-    return this.standardSeason !== null && this.standardSeason !== undefined;
+    return this.standardSeason !== null
+      && this.standardSeason !== undefined
+      && this.standardSeason !== 'Unrestricted';
   }
   // -- display options
   /** @type {Number} */
@@ -475,6 +491,13 @@ export class LogStore {
     this.isParsing.set(false);
 
     await this.fetchEntries();
+  }
+  /**
+   * @params {String} newSeason
+   */
+  updateStandardSeason(newSeason) {
+    this.ascensionAttributes.standardSeason = newSeason;
+    logParserUtils.updateStandardBlock(newSeason);
   }
   // -- fetch functions
   /**

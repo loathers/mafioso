@@ -107,7 +107,7 @@ export function generateMafiosoBlock(rawText) {
   // -- generate the block
   const mafiosoBlock = `<mafioso>
     Start Date: ${startDateText}
-    Standard: ${standardSeason || 'Not Standard'}
+    Standard: ${standardSeason || 'Unrestricted'}
   </mafioso>\n\n`;
 
   return mafiosoBlock;
@@ -117,7 +117,7 @@ export function generateMafiosoBlock(rawText) {
  * @returns {String}
  */
 export function updateStandardBlock(rawText, updatedText) {
-  const newText = `Standard: ${updatedText}` || 'Not Standard';
+  const newText = `Standard: ${updatedText}`;
   rawText.replace(REGEX.MAFIOSO.STANDARD_BLOCK, newText);
   return rawText;
 }
@@ -137,7 +137,7 @@ export function parseAscensionAttributes(rawText) {
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
     pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
-    standardSeason: rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK),
+    standardSeason: rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK)[0],
   }
 }
 /**

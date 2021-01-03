@@ -15,20 +15,9 @@ export default function ShareConfirmationPopup(props) {
     onClickDone = () => {},
   } = props;
 
-  function onClickStandardYes() {
-    appStore.onShareLog();
-    onClickDone();
-  }
-
-  function onClickStandardNo() {
-    appStore.onShareLog();
-    onClickDone();
-  }
-
-  const currentDate = logStore.hasStandardSeason ? new Date(logStore.standardSession) : new Date();
   const [selectedDate, updateSelectedDate] = React.useState({
-    year: currentDate.getFullYear(),
-    month: currentDate.getMonth(),
+    month: logStore.seasonMonth || new Date().getMonth(),
+    year: logStore.seasonYear || new Date().getFullYear(),
   });
 
   function modifySelectedDate(changes) {
@@ -36,6 +25,18 @@ export default function ShareConfirmationPopup(props) {
       ...selectedDate,
       ...changes,
     })
+  }
+
+  function onClickStandardConfirm() {
+    logStore.updateStandardSeason(`${selectedDate.month}-${selectedDate.year}`);
+    appStore.onShareLog();
+    onClickDone();
+  }
+
+  function onClickUnrestricted() {
+    logStore.updateStandardSeason('Unrestricted');
+    appStore.onShareLog();
+    onClickDone();
   }
 
   return (
@@ -57,13 +58,13 @@ export default function ShareConfirmationPopup(props) {
 
       <div className='flex-row-center mar-t-9'>
         <Button
-          onClick={onClickStandardYes}
+          onClick={onClickStandardConfirm}
           className='pad-4 adjacent-mar-l-2'>
           Confirm
         </Button>
 
         <Button
-          onClick={onClickStandardNo}
+          onClick={onClickUnrestricted}
           className='pad-4 adjacent-mar-l-2'>
           Unrestricted
         </Button>

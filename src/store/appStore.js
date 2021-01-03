@@ -139,6 +139,7 @@ class AppStore {
         pathName: logStore.pathName,
         dayCount: logStore.dayCount,
         turnCount: logStore.turnCount,
+        standardSeason: logStore.standardSeason,
         logText: logStore.export(),
       }
 
@@ -149,6 +150,7 @@ class AppStore {
 
     } catch (err) {
       this.isPretendLoading.set(false);
+      ToastController.error({title: 'Share Error', content: err.message});
     }
 
     await new Promise((resolve) => setTimeout(resolve, 300));
