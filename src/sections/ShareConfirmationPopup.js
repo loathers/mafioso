@@ -29,16 +29,26 @@ export default function ShareConfirmationPopup(props) {
     onClickDone = () => {},
   } = props;
 
+  const [canConfirm, changeCanConfirm] = React.useState(true);
+
   const [selectedDate, updateSelectedDate] = React.useState({
     month: logStore.seasonMonth || new Date().getMonth(),
     year: logStore.seasonYear || new Date().getFullYear(),
   });
 
   function modifySelectedDate(changes) {
-    updateSelectedDate({
+    const changeResult = {
       ...selectedDate,
       ...changes,
-    })
+    };
+
+    updateSelectedDate(changeResult);
+
+    if (changeResult.year === '' || changeResult.month === '') {
+      changeCanConfirm(false);
+    } else {
+      changeCanConfirm(true);
+    }
   }
 
   function onClickStandardConfirm() {
@@ -73,6 +83,7 @@ export default function ShareConfirmationPopup(props) {
       <div className='flex-row-center mar-t-9'>
         <Button
           onClick={onClickStandardConfirm}
+          disabled={!canConfirm}
           className='pad-4 adjacent-mar-l-2'>
           Confirm
         </Button>
