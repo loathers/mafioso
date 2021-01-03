@@ -32,7 +32,7 @@ export default function ShareConfirmationPopup(props) {
   const [canConfirm, changeCanConfirm] = React.useState(true);
 
   const [selectedDate, updateSelectedDate] = React.useState({
-    month: logStore.seasonMonth || new Date().getMonth(),
+    month: (logStore.seasonMonth - 1) || new Date().getMonth(),
     year: logStore.seasonYear || new Date().getFullYear(),
   });
 
