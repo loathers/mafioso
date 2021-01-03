@@ -9,6 +9,20 @@ import logStore from 'store/logStore';
 
 // import combineClassnames from 'utilities/combineClassnames';
 
+const localizedMonths = {
+  0: 'January',
+  1: 'February',
+  2: 'March',
+  3: 'April',
+  4: 'May',
+  5: 'June',
+  6: 'July',
+  7: 'August',
+  8: 'September',
+  9: 'October',
+  10: 'November',
+  11: 'December'
+}
 /** @returns {React.Component} */
 export default function ShareConfirmationPopup(props) {
   const {
@@ -28,7 +42,7 @@ export default function ShareConfirmationPopup(props) {
   }
 
   function onClickStandardConfirm() {
-    logStore.updateStandardSeason(`${selectedDate.month}-${selectedDate.year}`);
+    logStore.updateStandardSeason(`${localizedMonths[selectedDate.month]}-${selectedDate.year}`);
     appStore.onShareLog();
     onClickDone();
   }

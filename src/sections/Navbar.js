@@ -111,17 +111,6 @@ function _UpperNavbar(props) {
         <NavbarDivider />
 
         <NavbarButton
-          onClick={() => PopupController.show({
-            title: 'Log Sharing',
-            children: <ShareConfirmationPopup
-              onClickDone={() => PopupController.hide()}
-            />
-          })}
-          children='Test'
-          componentType='button'
-          className='adjacent-mar-l-3' />
-
-        <NavbarButton
           onClick={() => appStore.downloadFullLog()}
           disabled={!appStore.isReady}
           children='Download'
@@ -130,7 +119,12 @@ function _UpperNavbar(props) {
 
         { (appStore.isDevEnv || enableDatabase) &&
           <NavbarButton
-            onClick={() => appStore.onShareLog()}
+            onClick={() => PopupController.show({
+              title: 'Log Sharing',
+              children: <ShareConfirmationPopup
+                onClickDone={() => PopupController.hide()}
+              />
+            })}
             disabled={appStore.isShareDisabled}
             children='Share'
             componentType='button'
