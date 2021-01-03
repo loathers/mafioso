@@ -18,6 +18,7 @@ Unfortunately KoL doesn't generate their own logs, so if you want to look at you
 You can then directly download the ascension only file and share it. In fact, a shared database of logs is a feature coming soon.
 
 ## Changelog
+v4.0.0: Now tracking if a log is Standard or not!
 v3.0.0: Database feature beta!
 v2.8.0: Now tracking Summoned combats. Update navbar UI.
 v2.7.0: Start tracking Forced combats. Modified filters and visibility options.
