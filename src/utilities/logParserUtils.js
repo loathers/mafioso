@@ -13,7 +13,7 @@ import {
 import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
 import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
 
-// import * as logDateUtils from 'utilities/logDateUtils';
+import * as logDateUtils from 'utilities/logDateUtils';
 import * as regexUtils from 'utilities/regexUtils';
 
 const MAX_CHAR_COUNT = 6000000;
@@ -70,19 +70,24 @@ export function findAscensionLog(rawText) {
     return scotchLogAscension[0];
   }
 
+  // because the snapshot date might be cut off from the rest of the ascension,
+  //  capture it here ahead of time to be certain that we have it
+  const firstDate = logDateUtils.findFirstDate(rawText);
+  const firstDateText = firstDate ? `Start Date: ${firstDate}\n\n` : '';
+
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
-    return fromValhallaToFreeKing[0];
+    return firstDateText + fromValhallaToFreeKing[0];
   }
 
   const fromValhallaToThwaitgold = rawText.match(REGEX.ASCENSION.THWAITGOLD_COMPLETE);
   if (fromValhallaToThwaitgold) {
-    return fromValhallaToThwaitgold[0];
+    return firstDateText + fromValhallaToThwaitgold[0];
   }
 
   const newAscensionToKing = rawText.match(REGEX.ASCENSION.REGULAR_COMPLETE);
   if (newAscensionToKing) {
-    return newAscensionToKing[0];
+    return firstDateText + newAscensionToKing[0];
   }
 
   throw new Error('Could not find an Ascension Log.');

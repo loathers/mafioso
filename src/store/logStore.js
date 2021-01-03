@@ -13,7 +13,7 @@ import chartStore from 'store/chartStore';
 import ToastController from 'sections/ToastController';
 
 import * as fileParserUtils from 'utilities/fileParserUtils';
-import * as logDateUtils from 'utilities/logDateUtils';
+// import * as logDateUtils from 'utilities/logDateUtils';
 import * as logParserUtils from 'utilities/logParserUtils';
 import * as regexUtils from 'utilities/regexUtils';
 
@@ -705,11 +705,9 @@ export class LogStore {
    */
   export() {
     // rebuild mafioso block
-    const firstDate = logDateUtils.findRealDates(this.rawText);
-    const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
-
+    // const firstDateMatch = logDateUtils.findFirstDate(this.rawText);
+    // const startDateText = firstDateMatch || 'Missing!';
     const mafiosoBlock = `<mafioso>
-      Start Date: ${startDateText}
       Standard: ${this.standardSeason || 'Unrestricted'}
     </mafioso>\n\n`;
 
