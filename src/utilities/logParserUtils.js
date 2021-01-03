@@ -189,9 +189,6 @@ export async function postParseCleanup(rawText) {
   // hide karma numbers
   rawText = rawText.replace(REGEX.ASCENSION.KARMA_TEXT, '<3');
 
-  // remove the starting generated block
-  rawText = rawText.replace(REGEX.MAFIOSO.GENERATED_BLOCK, '');
-
   // replace all the stuff under "Player Snapshot"
   rawText = rawText.replace(REGEX.SNAPSHOT.WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP, (match, p1, p2) => {
     return `<mafioso>\n${p1}\n${p2}\n</mafioso>\n`;
