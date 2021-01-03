@@ -107,6 +107,7 @@ export class LogStore {
       difficultyName: undefined,
       pathName: undefined,
       dateList: [],
+      standardSeason: undefined,
     };
 
     this.displayOptions = observable({
@@ -288,6 +289,10 @@ export class LogStore {
   get pathName() {
     return this.ascensionAttributes.pathName;
   }
+  /** @type {String} */
+  get standardSeason() {
+    return this.ascensionAttributes.standardSeason;
+  }
   /** @type {Boolean} */
   get hasAscensionNum() {
     return this.ascensionNum !== undefined;
@@ -295,6 +300,10 @@ export class LogStore {
   /** @type {Boolean} */
   get hasCharacterName() {
     return this.characterName !== undefined;
+  }
+  /** @type {String} */
+  get hasStandardSeason() {
+    return this.standardSeason !== null && this.standardSeason !== undefined;
   }
   // -- display options
   /** @type {Number} */

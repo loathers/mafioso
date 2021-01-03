@@ -3,6 +3,7 @@ import React from 'react';
 import Button from 'components/Button';
 
 import appStore from 'store/appStore';
+import logStore from 'store/logStore';
 
 // import combineClassnames from 'utilities/combineClassnames';
 
@@ -24,7 +25,13 @@ export default function ShareConfirmationPopup(props) {
 
   return (
     <div className='flex-col'>
-      <div className='adjacent-mar-t-3'>Is this a Standard run?</div>
+      { logStore.hasStandardSeason &&
+        <div className='adjacent-mar-t-3'>Is this a Standard ({logStore.standardSeason}) run?</div>
+      }
+
+      { !logStore.hasStandardSeason &&
+        <div className='adjacent-mar-t-3'>Is this a Standard run?</div>
+      }
 
       <div className='flex-row-center adjacent-mar-t-3'>
         <Button

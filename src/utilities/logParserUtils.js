@@ -102,12 +102,12 @@ export function generateMafiosoBlock(rawText) {
   const startDateText = firstDate.length > 0 ? firstDate[0] : 'Missing!';
 
   //
-  const standardBlock = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
+  const standardSeason = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
 
   // -- generate the block
   const mafiosoBlock = `<mafioso>
     Start Date: ${startDateText}
-    Standard: ${standardBlock || 'Not Standard'}
+    Standard: ${standardSeason || 'Not Standard'}
   </mafioso>\n\n`;
 
   return mafiosoBlock;
@@ -137,6 +137,7 @@ export function parseAscensionAttributes(rawText) {
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: ascensionDetails[1],
     pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
+    standardSeason: rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK),
   }
 }
 /**
