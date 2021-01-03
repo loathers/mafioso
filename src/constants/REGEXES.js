@@ -11,6 +11,7 @@ export const REGEX = {
     LOG_COMMENTS_ONLY: /(^\/\/.*$)+(?!(\r\n|\n).)/gm,
 
     GENERATED_BLOCK: /<mafioso>.*<\/mafioso>/gs,
+    GENERATED_BLOCK_START: /<mafioso-start>.*<\/mafioso-start>/gs,
     STANDARD_BLOCK: /(?<=Standard: ).*/gm,
   },
   ASCENSION: {

@@ -707,9 +707,9 @@ export class LogStore {
     // rebuild mafioso block
     // const firstDateMatch = logDateUtils.findFirstDate(this.rawText);
     // const startDateText = firstDateMatch || 'Missing!';
-    const mafiosoBlock = `<mafioso>
+    const mafiosoBlock = `<mafioso-start>
       Standard: ${this.standardSeason || 'Unrestricted'}
-    </mafioso>\n\n`;
+    </mafioso-start>\n\n`;
 
     const entriesText = this.allEntries.map((entry) => entry.export()).join('\n\n');
     return mafiosoBlock + entriesText;
