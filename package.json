@@ -34,6 +34,7 @@
     "mobx-react": "^6.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-dropdown-date": "^2.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "tinygradient": "^1.1.2",
