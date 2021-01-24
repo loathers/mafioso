@@ -124,8 +124,13 @@ export function createEstimatedEntries(allEntries) {
     return entry;
   });
 
-  // done
+  // set dateList
   logStore.ascensionAttributes.dateList = (estimates.dateList.length > estimates.scotchDayList.length) ? estimates.dateList : estimates.scotchDayList;
+  if (logStore.ascensionAttributes.dateList.length <= 0) {
+    handleDateListFallback();
+  }
+
+  // done
   return conjecturedEntries;
 }
 /**
@@ -269,6 +274,17 @@ export function getSessionDateString() {
   }
 
   return undefined;
+}
+/**
+ * use dates from uploaded logs if we didn't find in any the rawText itself
+ */
+function handleDateListFallback() {
+  const fileDates = logStore.srcFiles.map((srcFile) => fileParserUtils.getDateFromSessionFile(srcFile));
+  if (fileDates.length <= logStore.ascensionAttributes.dateList.length) {
+    return;
+  }
+
+  logStore.ascensionAttributes.dateList = fileDates;
 }
 // -- utility
 /**
