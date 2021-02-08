@@ -31,6 +31,10 @@ export default function Footer(props) {
       <FooterLink href='https://github.com/aahvocado/KoL-Mafioso/issues'>
         <div className='adjacent-mar-l-2'>Support</div>
       </FooterLink>
+
+      <div className='color-grayest hover:color-grayer pad-2 flex-row-center adjacent-mar-l-5'>
+        {`v${process.env.REACT_APP_VERSION || '?'}`}
+      </div>
     </div>
   )
 }
