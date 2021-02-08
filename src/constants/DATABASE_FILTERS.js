@@ -51,6 +51,11 @@ export const PATH_FILTERS = [
     label: 'Challenge Paths',
     optionGroup: [
       {
+        label: 'Emotional Spring 2021',
+        isHidden: false,
+        checked: false,
+      },
+      {
         label: 'Grey Goo',
         isHidden: false,
         checked: false,
@@ -92,6 +97,131 @@ export const PATH_FILTERS = [
       },
       {
         label: 'Pocket Familiars',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Live. Ascend. Repeat.',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'License to Adventure',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Gelatinous Noob',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Nuclear Autumn',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'The Source',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Avatar of West of Loathing',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Community Service',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'One Crazy Random Summer',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'The Source',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Actually Ed the Undying',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Picky',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Heavy Rains',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Slow and Steady',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Avatar of Sneaky Pete',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Class Act II: A Class For Pigs',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'KOLHS',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'BIG!',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Avatar of Jarlsberg',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Class Act',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Zombie Slayer',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Bugbear Invasion',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Avatar of Boris',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Trendy',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Way of the Surprising Fist',
+        isHidden: false,
+        checked: false,
+      },
+      {
+        label: 'Bees Hate You',
         isHidden: false,
         checked: false,
       },
