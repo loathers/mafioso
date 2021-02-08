@@ -43,7 +43,7 @@ export const PATH_FILTERS = [
     checked: false,
   },
   {
-    label: 'No Path',
+    label: 'No-Path',
     isHidden: false,
     checked: false,
   },

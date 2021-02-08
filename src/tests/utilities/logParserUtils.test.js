@@ -26,6 +26,9 @@ test('logParserUtils.parsePathName(): parses a couple different paths', () => {
 
   const OXYMockText = 'Ascension #111:\nHardcore Oxygenarian Turtle Tamer\Mongoose';
   expect(logParserUtils.parsePathName(OXYMockText)).toBe('Oxygenarian');
+
+  const NoPathMockText = 'Ascension #162:\nHardcore No-Path Accordion Thief\nVole';
+  expect(logParserUtils.parsePathName(NoPathMockText)).toBe('No-Path');
 });
 
 test('logParserUtils.createPathLabel(): creates the label as expected', () => {

@@ -13,6 +13,7 @@ export const DIFFICULTY_MAP = {
  * @typedef {String} PathAbbr
  */
 export const PATH_MAP = {
+  'No-Path': 'NP',
   'Standard': 'STD',
   'Grey Goo': 'GOO',
   'Low Key Summer': 'LKS',
