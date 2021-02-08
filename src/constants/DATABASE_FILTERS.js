@@ -1,24 +1,35 @@
+export const DIFFICULTY_FILTER_ID = {
+  ANY: 'DIFFICULTY_FILTER_ID.ANY',
+  HARDCORE: 'DIFFICULTY_FILTER_ID.HARDCORE',
+  SOFTCORE: 'DIFFICULTY_FILTER_ID.SOFTCORE',
+  CASUAL: 'DIFFICULTY_FILTER_ID.CASUAL',
+};
+
 export const DIFFICULTY_FILTERS = [
   {
     label: 'Any',
+    id: 'DIFFICULTY_FILTER_ID.ANY',
     isHidden: false,
     isDisabled: false,
     checked: true,
   },
   {
     label: 'Hardcore',
+    id: 'DIFFICULTY_FILTER_ID.HARDCORE',
     isHidden: false,
     isDisabled: false,
     checked: false,
   },
   {
     label: 'Softcore',
+    id: 'DIFFICULTY_FILTER_ID.SOFTCORE',
     isHidden: false,
     isDisabled: false,
     checked: false,
   },
   {
     label: 'Casual',
+    id: 'DIFFICULTY_FILTER_ID.CASUAL',
     isHidden: false,
     isDisabled: false,
     checked: false,

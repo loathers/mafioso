@@ -3,8 +3,8 @@ import {observer} from 'mobx-react';
 
 import {DIFFICULTY_FILTERS, PATH_FILTERS} from 'constants/DATABASE_FILTERS';
 
-// import appStore from 'store/appStore';
 import databaseStore from 'store/databaseStore';
+import sessionStore from 'store/sessionStore';
 
 import Button from 'components/Button';
 import FiltersMenu from 'sections/FiltersMenu';
@@ -24,20 +24,29 @@ function LogVisualizerMenu(props) {
   } = props;
 
   const [menuOptions, updateMenuOptions] = useState({
-    difficultyName: 'Any',
+    difficultyName: sessionStore.get('difficultyNameFilter'),
     pathName: 'Any',
+    // pathName: sessionStore.get('pathNameFilter'),
+  });
+
+  // update checked state now that difficulty is cached in localStorage
+  const formattedDifficultyList = DIFFICULTY_FILTERS.map((item) => {
+    item.checked = item.label === menuOptions.difficultyName;
+    return item;
   });
 
   const onChangeDifficultyList = (newList) => {
     const selectedOption = newList.find((option) => option.checked);
     const newDifficulty = (selectedOption && selectedOption.label) || 'Any';
     const newOptions = {...menuOptions, difficultyName: newDifficulty};
+    sessionStore.set('difficultyNameFilter', newDifficulty);
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
   }
 
   const updateSelectedPath = (newPath) => {
     const newOptions = {...menuOptions, pathName: newPath};
+    sessionStore.set('pathNameFilter', newPath);
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
   };
@@ -52,7 +61,7 @@ function LogVisualizerMenu(props) {
       <FiltersMenu
         label='Difficulty'
         disabled={!databaseStore.isReady}
-        defaultList={DIFFICULTY_FILTERS}
+        defaultList={formattedDifficultyList}
         onChange={onChangeDifficultyList}
         inputType='radio'
         className='adjacent-mar-t-5'/>
