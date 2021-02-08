@@ -21,14 +21,24 @@ function DatabaseListDisplay(props) {
     onClickStatusToggle,
     onClickDelete,
     className,
+    searchTerm,
   } = props;
+
+  const searchFilteredList = currentList.filter((item) => {
+    if (searchTerm === '') return true;
+
+    const charString = item.characterName.toLowerCase();
+    const pathString = item.pathName.toLowerCase();
+    return charString.includes(searchTerm) ||
+      pathString.includes(searchTerm);
+  });
 
   return (
     <div
       elementname='app-section-database-list'
       className={combineClassnames('fontsize-4 flex-col', className)}>
 
-      { currentList.map((rowData, idx) => (
+      { searchFilteredList.map((rowData, idx) => (
         <DatabaseRow
           hasEditOptions={hasEditOptions}
           onClickView={onClickView}
@@ -38,7 +48,7 @@ function DatabaseListDisplay(props) {
           data={rowData} />
       ))}
 
-      { currentList.length <= 0 &&
+      { searchFilteredList.length <= 0 &&
         <div className='flex-row-center fontsize-6 color-white flex-auto adjacent-mar-t-5'>
           Couldn't find anything with these filters.
         </div>

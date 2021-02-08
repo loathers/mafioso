@@ -24,6 +24,7 @@ function LogVisualizerMenu(props) {
   } = props;
 
   const [menuOptions, updateMenuOptions] = useState({
+    searchTerm: '',
     isShowStandardOnly: databaseStore.filterOptions.isShowStandardOnly,
     difficultyName: databaseStore.filterOptions.difficultyName,
     pathName: databaseStore.filterOptions.pathName,
@@ -59,6 +60,12 @@ function LogVisualizerMenu(props) {
     sessionStore.set('pathNameFilter', newPath);
   };
 
+  const updateSearchTerm = (newValue) => {
+    const newOptions = {...menuOptions, searchTerm: newValue};
+    databaseStore.searchTermFilter.set(newValue);
+    updateMenuOptions(newOptions);
+  }
+
   return (
     <div
       elementname='app-side-menu'
@@ -67,6 +74,12 @@ function LogVisualizerMenu(props) {
 
       <div className={combineClassnames('flex-col flex-none adjacent-mar-t-5')}>
         <div className='flex-none fontsize-3 adjacent-mar-t-3'>Filters</div>
+
+        <input
+          value={menuOptions.searchTerm}
+          onChange={(evt) => updateSearchTerm(evt.target.value)}
+          placeholder='Filter by text...'
+          className='bg-white color-first borradius-1 pad-2 adjacent-mar-t-3'/>
 
         <FilterInput
           appDisabled={!databaseStore.isReady}

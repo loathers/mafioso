@@ -42,6 +42,8 @@ class AppStore {
       /** @type {String} */
       turnSort: 'ASC',
     }
+    /** @type {String} */
+    this.searchTermFilter = observable.box('');
   }
   // -- state
   /** @type {Boolean} */

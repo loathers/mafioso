@@ -59,6 +59,7 @@ function DatabasePage(props) {
           onClickStatusToggle={(databaseEntry) => onClickStatusToggle(databaseEntry)}
           onClickDelete={(databaseEntry) => onClickDelete(databaseEntry)}
           currentList={databaseStore.currentList}
+          searchTerm={databaseStore.searchTermFilter.get()}
           className='' />
       }
 
