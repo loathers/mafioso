@@ -1,5 +1,7 @@
 import {observable} from 'mobx';
 
+import sessionStore from 'store/sessionStore';
+
 import ToastController from 'sections/ToastController';
 
 // import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
@@ -24,12 +26,12 @@ class AppStore {
     this.databaseList = observable([]);
     /** @type {Observable<Array<Text>>} */
     this.currentList = observable([]);
-    /** @type {Observable<Boolean>} */
-    this.isShowStandardOnly = observable.box(false);
     /** @type {Object} */
     this.filterOptions = {
+      /** @type {Observable<Boolean>} */
+      isShowStandardOnly: observable.box(sessionStore.get('isShowStandardOnly') === 'true' || false),
       /** @type {String} */
-      difficultyName: 'Any',
+      difficultyName: sessionStore.get('difficultyNameFilter') || 'Any',
       /** @type {String} */
       pathName: 'Any',
     }
@@ -215,6 +217,10 @@ class AppStore {
     const optionKeys = Object.keys(fullOptions);
     const filteredList = this.databaseList.filter((databaseEntry) => {
       return !optionKeys.some((optionName) => {
+        if (optionName === 'isShowStandardOnly') {
+          return false; // todo
+        }
+
         if (fullOptions[optionName] === 'Any') {
           return false;
         };

@@ -24,9 +24,8 @@ function LogVisualizerMenu(props) {
   } = props;
 
   const [menuOptions, updateMenuOptions] = useState({
-    difficultyName: sessionStore.get('difficultyNameFilter'),
-    pathName: 'Any',
-    // pathName: sessionStore.get('pathNameFilter'),
+    difficultyName: databaseStore.filterOptions.difficultyName,
+    pathName: databaseStore.filterOptions.pathName,
   });
 
   // update checked state now that difficulty is cached in localStorage
@@ -37,7 +36,7 @@ function LogVisualizerMenu(props) {
 
   const onChangeIsShowStandardOnly = (newValue) => {
     sessionStore.set('isShowStandardOnly', newValue);
-    databaseStore.isShowStandardOnly.set(newValue);
+    databaseStore.filterOptions.isShowStandardOnly.set(newValue);
   }
 
   const onChangeDifficultyList = (newList) => {
@@ -66,10 +65,11 @@ function LogVisualizerMenu(props) {
         <div className='flex-none fontsize-3 adjacent-mar-t-3'>Filters</div>
 
         <FilterInput
+          appDisabled={!databaseStore.isReady}
           onChange={(evt) => onChangeIsShowStandardOnly(evt.target.checked)}
           optionData={{
             label: 'Standard Only',
-            checked: databaseStore.isShowStandardOnly.get(),
+            checked: databaseStore.filterOptions.isShowStandardOnly.get(),
           }}
           type='checkbox'
           className='adjacent-mar-t-3'/>
