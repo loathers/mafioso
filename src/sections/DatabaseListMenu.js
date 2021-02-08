@@ -39,9 +39,9 @@ function LogVisualizerMenu(props) {
   const onChangeIsShowStandardOnly = (newValue) => {
     const newOptions = {...menuOptions, isShowStandardOnly: newValue};
     updateMenuOptions(newOptions);
+    databaseStore.isShowStandardOnly = newValue;
     databaseStore.filterList(newOptions);
     sessionStore.set('isShowStandardOnly', newValue);
-    databaseStore.isShowStandardOnly = newValue;
   }
 
   const onChangeDifficultyList = (newList) => {

@@ -209,19 +209,19 @@ class AppStore {
    * @returns {Array<DatabaseEntry>}
    */
   async filterList(filterOptions = {}) {
+    const {difficultyName, pathName} = filterOptions;
     this.isFetching.set(true);
 
     const fullOptions = {
-      ...this.filterOptions,
-      ...filterOptions,
+      difficultyName: this.filterOptions.difficultyName || difficultyName,
+      pathName: this.filterOptions.pathName || pathName,
     };
 
     const optionKeys = Object.keys(fullOptions);
     const filteredList = this.databaseList.filter((databaseEntry) => {
       return !optionKeys.some((optionName) => {
-        // filter by standard only if it is on
         if (this.isShowStandardOnly && databaseEntry.standardSeason === undefined) {
-          return false;
+          return true;
         }
 
         if (fullOptions[optionName] === 'Any') {
@@ -258,6 +258,10 @@ class AppStore {
 
     const sortedList = list.sort((entryA, entryB) => {
       if (entryA.dayCount !== '?' && entryB.dayCount === '?') {
+        return -1;
+      }
+
+      if (entryA.turnCount !== '?' && entryB.turnCount === '?') {
         return -1;
       }
 
