@@ -24,6 +24,8 @@ class AppStore {
     this.databaseList = observable([]);
     /** @type {Observable<Array<Text>>} */
     this.currentList = observable([]);
+    /** @type {Observable<Boolean>} */
+    this.isShowStandardOnly = observable.box(false);
     /** @type {Object} */
     this.filterOptions = {
       /** @type {String} */

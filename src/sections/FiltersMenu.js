@@ -95,7 +95,7 @@ function FiltersMenu(props) {
   )
 })
 
-function FilterInput(props) {
+export function FilterInput(props) {
   const {
     className,
     optionData,

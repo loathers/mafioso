@@ -7,7 +7,7 @@ import databaseStore from 'store/databaseStore';
 import sessionStore from 'store/sessionStore';
 
 import Button from 'components/Button';
-import FiltersMenu from 'sections/FiltersMenu';
+import FiltersMenu, {FilterInput} from 'sections/FiltersMenu';
 import SelectOptionsComponent from 'components/SelectOptionsComponent';
 
 import combineClassnames from 'utilities/combineClassnames';
@@ -35,6 +35,11 @@ function LogVisualizerMenu(props) {
     return item;
   });
 
+  const onChangeIsShowStandardOnly = (newValue) => {
+    sessionStore.set('isShowStandardOnly', newValue);
+    databaseStore.isShowStandardOnly.set(newValue);
+  }
+
   const onChangeDifficultyList = (newList) => {
     const selectedOption = newList.find((option) => option.checked);
     const newDifficulty = (selectedOption && selectedOption.label) || 'Any';
@@ -56,6 +61,19 @@ function LogVisualizerMenu(props) {
       elementname='app-side-menu'
       style={style}
       className={combineClassnames('flex-col', className)}>
+
+      <div className={combineClassnames('flex-col flex-none adjacent-mar-t-5')}>
+        <div className='flex-none fontsize-3 adjacent-mar-t-3'>Filters</div>
+
+        <FilterInput
+          onChange={(evt) => onChangeIsShowStandardOnly(evt.target.checked)}
+          optionData={{
+            label: 'Standard Only',
+            checked: databaseStore.isShowStandardOnly.get(),
+          }}
+          type='checkbox'
+          className='adjacent-mar-t-3'/>
+      </div>
 
       {/* filter by Difficulty */}
       <FiltersMenu
