@@ -24,6 +24,7 @@ function LogVisualizerMenu(props) {
   } = props;
 
   const [menuOptions, updateMenuOptions] = useState({
+    isShowStandardOnly: databaseStore.filterOptions.isShowStandardOnly,
     difficultyName: databaseStore.filterOptions.difficultyName,
     pathName: databaseStore.filterOptions.pathName,
   });
@@ -35,24 +36,27 @@ function LogVisualizerMenu(props) {
   });
 
   const onChangeIsShowStandardOnly = (newValue) => {
+    // databaseStore.filterOptions.isShowStandardOnly.set(newValue);
+    const newOptions = {...menuOptions, isShowStandardOnly: newValue};
+    updateMenuOptions(newOptions);
+    databaseStore.filterList(newOptions);
     sessionStore.set('isShowStandardOnly', newValue);
-    databaseStore.filterOptions.isShowStandardOnly.set(newValue);
   }
 
   const onChangeDifficultyList = (newList) => {
     const selectedOption = newList.find((option) => option.checked);
     const newDifficulty = (selectedOption && selectedOption.label) || 'Any';
     const newOptions = {...menuOptions, difficultyName: newDifficulty};
-    sessionStore.set('difficultyNameFilter', newDifficulty);
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
+    sessionStore.set('difficultyNameFilter', newDifficulty);
   }
 
   const updateSelectedPath = (newPath) => {
     const newOptions = {...menuOptions, pathName: newPath};
-    sessionStore.set('pathNameFilter', newPath);
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
+    sessionStore.set('pathNameFilter', newPath);
   };
 
   return (
@@ -69,7 +73,7 @@ function LogVisualizerMenu(props) {
           onChange={(evt) => onChangeIsShowStandardOnly(evt.target.checked)}
           optionData={{
             label: 'Standard Only',
-            checked: databaseStore.filterOptions.isShowStandardOnly.get(),
+            checked: menuOptions.isShowStandardOnly,
           }}
           type='checkbox'
           className='adjacent-mar-t-3'/>

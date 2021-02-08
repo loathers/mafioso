@@ -29,7 +29,7 @@ class AppStore {
     /** @type {Object} */
     this.filterOptions = {
       /** @type {Observable<Boolean>} */
-      isShowStandardOnly: observable.box(sessionStore.get('isShowStandardOnly') === 'true' || false),
+      isShowStandardOnly: sessionStore.get('isShowStandardOnly') === 'true' || false,
       /** @type {String} */
       difficultyName: sessionStore.get('difficultyNameFilter') || 'Any',
       /** @type {String} */
@@ -217,8 +217,12 @@ class AppStore {
     const optionKeys = Object.keys(fullOptions);
     const filteredList = this.databaseList.filter((databaseEntry) => {
       return !optionKeys.some((optionName) => {
+        // filter by standard only if it is on
         if (optionName === 'isShowStandardOnly') {
-          return false; // todo
+          if (fullOptions[optionName] === true) {
+            return databaseEntry.standardSeason === undefined;
+          }
+          return false;
         }
 
         if (fullOptions[optionName] === 'Any') {
