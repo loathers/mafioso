@@ -257,12 +257,12 @@ class AppStore {
     } = options;
 
     const sortedList = list.sort((entryA, entryB) => {
-      if (entryA.dayCount !== '?' && entryB.dayCount === '?') {
-        return -1;
+      if (entryA.dayCount === '?' && entryB.dayCount !== '?') {
+        return 1;
       }
 
-      if (entryA.turnCount !== '?' && entryB.turnCount === '?') {
-        return -1;
+      if (entryA.turnCount === '?' && entryB.turnCount !== '?') {
+        return 1;
       }
 
       if (entryA.dayCount === '?' || entryA.turnCount === '?') {
