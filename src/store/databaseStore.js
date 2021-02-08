@@ -260,8 +260,16 @@ class AppStore {
     } = options;
 
     const sortedList = list.sort((entryA, entryB) => {
+      if (entryA.dayCount !== '?' && entryB.dayCount === '?') {
+        return -1;
+      }
+
       if (entryA.dayCount === '?' || entryA.turnCount === '?') {
         return 1;
+      }
+
+      if (entryB.dayCount === '?' || entryB.turnCount === '?') {
+        return -1;
       }
 
       const isSameDay = entryA.dayCount === entryB.dayCount;
