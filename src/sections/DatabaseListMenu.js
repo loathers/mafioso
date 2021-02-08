@@ -25,7 +25,7 @@ function LogVisualizerMenu(props) {
 
   const [menuOptions, updateMenuOptions] = useState({
     searchTerm: '',
-    isShowStandardOnly: databaseStore.filterOptions.isShowStandardOnly,
+    isShowStandardOnly: databaseStore.isShowStandardOnly,
     difficultyName: databaseStore.filterOptions.difficultyName,
     pathName: databaseStore.filterOptions.pathName,
   });
@@ -37,11 +37,11 @@ function LogVisualizerMenu(props) {
   });
 
   const onChangeIsShowStandardOnly = (newValue) => {
-    // databaseStore.filterOptions.isShowStandardOnly.set(newValue);
     const newOptions = {...menuOptions, isShowStandardOnly: newValue};
     updateMenuOptions(newOptions);
     databaseStore.filterList(newOptions);
     sessionStore.set('isShowStandardOnly', newValue);
+    databaseStore.isShowStandardOnly = newValue;
   }
 
   const onChangeDifficultyList = (newList) => {

@@ -28,8 +28,6 @@ class AppStore {
     this.currentList = observable([]);
     /** @type {Object} */
     this.filterOptions = {
-      /** @type {Observable<Boolean>} */
-      isShowStandardOnly: sessionStore.get('isShowStandardOnly') === 'true' || false,
       /** @type {String} */
       difficultyName: sessionStore.get('difficultyNameFilter') || 'Any',
       /** @type {String} */
@@ -42,6 +40,8 @@ class AppStore {
       /** @type {String} */
       turnSort: 'ASC',
     }
+    /** @type {Observable<Boolean>} */
+    this.isShowStandardOnly = sessionStore.get('isShowStandardOnly');
     /** @type {String} */
     this.searchTermFilter = observable.box('');
   }
@@ -220,10 +220,7 @@ class AppStore {
     const filteredList = this.databaseList.filter((databaseEntry) => {
       return !optionKeys.some((optionName) => {
         // filter by standard only if it is on
-        if (optionName === 'isShowStandardOnly') {
-          if (fullOptions[optionName] === true) {
-            return databaseEntry.standardSeason === undefined;
-          }
+        if (this.isShowStandardOnly && databaseEntry.standardSeason === undefined) {
           return false;
         }
 
