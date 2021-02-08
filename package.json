@@ -9,6 +9,7 @@
     "sass.compile": "sass src/styles/main.scss src/styles/compiled/main.css",
     "sass.watch": "sass --watch src/styles/main.scss src/styles/compiled/main.css",
     "test": "react-scripts test",
+    "build": "npm run sass.compile && REACT_APP_VERSION=$npm_package_version react-scripts build",
     "start": "npm run sass.compile && REACT_APP_VERSION=$npm_package_version react-scripts start"
   },
   "eslintConfig": {
