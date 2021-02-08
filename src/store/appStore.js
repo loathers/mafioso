@@ -28,6 +28,9 @@ class AppStore {
     this.canToggleCompact = observable.box(true);
 
     /** @type {Observable<Boolean>} */
+    this.shouldRedirectToVisualizer = observable.box(false);
+
+    /** @type {Observable<Boolean>} */
     this.isDevMode = observable.box(false);
 
     this.initializeListeners();
@@ -167,6 +170,7 @@ class AppStore {
       const {logText, databaseEntry} = fetchedLogData;
       await logStore.importLog(logText, databaseEntry);
       ToastController.success({title: 'Log successfully imported!', content: 'Spying on the competition? Ottimo.'});
+      this.shouldRedirectToVisualizer.set(true);
 
     } catch (err) {
       // ToastController.show({title: 'Import Failed', content: err.message});

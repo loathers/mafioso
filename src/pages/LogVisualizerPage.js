@@ -72,6 +72,8 @@ function LogVisualizerPage(props) {
   } = props;
 
   useEffect(() => {
+    appStore.shouldRedirectToVisualizer.set(false);
+
     // if user uploaded a log while viewing an imported log, update the url to /uploaded
     if (!isLoading && !logStore.isImportedLog && pathname !== `${LOG_VIS_URL}/uploaded`) {
       history.push(`${LOG_VIS_URL}/uploaded`);

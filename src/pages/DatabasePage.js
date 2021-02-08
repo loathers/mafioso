@@ -1,7 +1,9 @@
 import React from 'react';
+import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
 
 import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
+import {LOG_VIS_URL} from 'constants/PAGE_URLS';
 
 import appStore from 'store/appStore';
 import databaseStore from 'store/databaseStore';
@@ -36,6 +38,10 @@ function DatabasePage(props) {
   const onClickDelete = (databaseEntry) => {
     databaseEntry.status = DATABASE_ENTRY_STATUS.DISABLED;
     databaseStore.onUpdateLog(databaseEntry);
+  }
+
+  if (appStore.shouldRedirectToVisualizer.get() && !appStore.isLoading) {
+    return <Redirect to={LOG_VIS_URL} />
   }
 
   return (
