@@ -49,15 +49,15 @@ function LogVisualizerMenu(props) {
     const newDifficulty = (selectedOption && selectedOption.label) || 'Any';
     const newOptions = {...menuOptions, difficultyName: newDifficulty};
     updateMenuOptions(newOptions);
-    databaseStore.filterList(newOptions);
     sessionStore.set('difficultyNameFilter', newDifficulty);
+    databaseStore.filterList(newOptions);
   }
 
   const updateSelectedPath = (newPath) => {
     const newOptions = {...menuOptions, pathName: newPath};
     updateMenuOptions(newOptions);
-    databaseStore.filterList(newOptions);
     sessionStore.set('pathNameFilter', newPath);
+    databaseStore.filterList(newOptions);
   };
 
   const updateSearchTerm = (newValue) => {

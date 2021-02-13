@@ -213,8 +213,8 @@ class AppStore {
     this.isFetching.set(true);
 
     const fullOptions = {
-      difficultyName: this.filterOptions.difficultyName || difficultyName,
-      pathName: this.filterOptions.pathName || pathName,
+      difficultyName: difficultyName || this.filterOptions.difficultyName,
+      pathName: pathName || this.filterOptions.pathName,
     };
 
     const optionKeys = Object.keys(fullOptions);
