@@ -37,6 +37,28 @@ test('iotm_parsing: Box O Ghosts: Ghost of Crimbo Carols: hasBoxOfGhosts: detect
   expect(firstEntry.hasBoxOfGhosts).toBe(true);
 });
 
+test('iotm_parsing: Box O Ghosts: Ghost of Crimbo Commerce: hasBoxOfGhosts: detects that player bought the item', async () => {
+  const sampleText = "[41] The Defiled Niche\n"
+    + "Encounter: dirty old lihc\n"
+    + "Round 0: dextrial wins initiative!\n"
+    + "Round 1: You lose 3 hit points\n"
+    + "Round 1: dextrial attacks!\n"
+    + "Round 2: dirty old lihc takes 186 damage.\n"
+    + "Round 2: dextrial wins the fight!\n"
+    + "After Battle: Either way, your Evilometer beeps three times.\n"
+    + "After Battle: \"Aroma of Juniper,\" was the label in this region. You look inside a hollowed-out tome of arcane knowledge and find the source.\n"
+    + "You acquire an item: bottle of gin\n"
+    + "After Battle: \"Hey, you bought a murky potion!\" Glutton O'Ghostly says. \"That's the Crimbo spirit!\"\n"
+    + "After Battle: You gain 323 Muscleboundness\n"
+    + "After Battle: You gain 201 Mysteriousness\n"
+    + "After Battle: You gain 219 Roguishness";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.hasBoxOfGhosts).toBe(true);
+});
+
 test('iotm_parsing: Cargo Cultist Shorts: handles opening an item pocket', async () => {
   const sampleText = "Inspecting Cargo Cultist Shorts\npicking pocket 177\nYou acquire an item: Yeg's Motel hand soap";
 

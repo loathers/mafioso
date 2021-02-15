@@ -63,7 +63,8 @@ export const REGEX = {
     NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
   },
   BOX_OF_GHOSTS: {
-    CAROLS_EFFECT_GROUP: /(?<=Round.*(\r\n|\n)you acquire an effect: )(Do You Crush What I Crush?|Holiday Yoked|Let It Snow\/Boil\/Stink\/Frighten\/Grease|All I Want For Crimbo Is Stuff|Crimbo Wrapping)/gi,
+    CAROLS_EFFECT_TEXT: /(?<=Round.*(\r\n|\n)you acquire an effect: )(Do You Crush What I Crush?|Holiday Yoked|Let It Snow\/Boil\/Stink\/Frighten\/Grease|All I Want For Crimbo Is Stuff|Crimbo Wrapping)/gi,
+    COMMERCE_BUY_TEXT: /(?<=After Battle. "(Great job buying that|Hey, you bought a|Nice, you bought a|Oh, good, you got a) ).*?(?=!)/gi,
   },
   CARGO_CULTIST_SHORTS: {
     INSPECTING_POCKETS_LINE: /^Inspecting Cargo Cultist Shorts.*/gmi,
