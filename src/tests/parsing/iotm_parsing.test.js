@@ -22,6 +22,21 @@ test('iotm_parsing: April Shower: parses and shows effect gotten', async () => {
   expect(firstEntry.encounterDisplay).toBe('So Fresh and So Clean');
 });
 
+test('iotm_parsing: Box O Ghosts: Ghost of Crimbo Carols: hasBoxOfGhosts: detects that an effect was granted', async () => {
+  const sampleText = "[365] The Oasis\n"
+    + "Encounter: rolling stone\n"
+    + "Round 0: dextrial wins initiative!\n"
+    + "Round 1: Ghost of Wants considers the stuff your opponent is made of, then sings you a carol about stuff.\n"
+    + "You acquire an effect: All I Want For Crimbo Is Stuff (15)\n"
+    + "Round 1: dextrial uses the human musk!\n"
+    + "This combat did not cost a turn";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.hasBoxOfGhosts).toBe(true);
+});
+
 test('iotm_parsing: Cargo Cultist Shorts: handles opening an item pocket', async () => {
   const sampleText = "Inspecting Cargo Cultist Shorts\npicking pocket 177\nYou acquire an item: Yeg's Motel hand soap";
 
@@ -146,7 +161,6 @@ test('iotm_parsing: Emotion Chip: Feel Hatred is a banisher', async () => {
 
   expect(firstEntry.isBanished).toBe(true);
 });
-
 
 test('iotm_parsing: God Lobster: supports getting a boon choice adventure', async () => {
   const sampleText = "[16] God Lobster\n"

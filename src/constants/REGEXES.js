@@ -62,6 +62,9 @@ export const REGEX = {
     VISIT_TEXT: /visiting the boxing daycare.*/gi,
     NONCOMBAT: /^encounter:.*(enter the boxing daycare|Boxing Daydream|Boxing Day Spa).*/gim,
   },
+  BOX_OF_GHOSTS: {
+    CAROLS_EFFECT_GROUP: /(?<=Round.*(\r\n|\n)you acquire an effect: )(Do You Crush What I Crush?|Holiday Yoked|Let It Snow\/Boil\/Stink\/Frighten\/Grease|All I Want For Crimbo Is Stuff|Crimbo Wrapping)/gi,
+  },
   CARGO_CULTIST_SHORTS: {
     INSPECTING_POCKETS_LINE: /^Inspecting Cargo Cultist Shorts.*/gmi,
     PICK_POCKET_LINE: /^picking pocket \d+/gmi,

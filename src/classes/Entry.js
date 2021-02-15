@@ -611,6 +611,10 @@ export default class Entry {
     return this.hasText(REGEX.VAMPYRIC_CLOAK.SKILL_RESULT);
   }
   /** @type {Boolean} */
+  get hasBoxOfGhosts() {
+    return this.hasText(REGEX.BOX_OF_GHOSTS.CAROLS_EFFECT_GROUP);
+  }
+  /** @type {Boolean} */
   get hasDoctorsBag() {
     return this.hasText(REGEX.LIL_DOCTORS_BAG.USED_SKILL_LINE);
   }
