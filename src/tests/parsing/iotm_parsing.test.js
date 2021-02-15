@@ -114,6 +114,17 @@ test('iotm_parsing: Comprehensive Cartography: handles parsing a special noncomb
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT);
 });
 
+test('iotm_parsing: Diabolic Pizza Cube: detects making and building the correct additionalDisplay', async () => {
+  const sampleText = "pizza porquoise, old bronzer, leftovers of indeterminate origin, old eyebrow pencil\n"
+    + "You acquire an item: diabolic pizza";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE);
+  expect(firstEntry.additionalDisplay).toBe('(POLO)');
+});
+
 test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza', async () => {
   const sampleText = "eat 1 diabolic pizza\n"
     + "You acquire an item: Pocket Professor memory chip\n"

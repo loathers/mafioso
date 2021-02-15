@@ -430,6 +430,15 @@ export default class Entry {
       return this.parseDisplayMatcher(this.entryData.additionalDisplay, this.attributes.additionalDisplay);
     }
 
+    // show the first letters of the diabolic pizza
+    if (this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE && this.hasDiabolicPizzaIngredients) {
+      const firstLetters = this.attributes.diabolicPizzaIngredients.reduce((acc, ingredient) => {
+        return acc + ingredient.charAt(0).toUpperCase();
+      }, '');
+
+      return `(${firstLetters})`;
+    }
+
     // show special display for choices
     if (this.hasChoiceProgression && this.showAdditionalDisplay && !this.attributes.isEndedByUseTheForce) {
       return '⇾ ' + this.attributes.choiceProgression.join(' ⇾ ');
