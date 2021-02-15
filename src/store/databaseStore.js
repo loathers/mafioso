@@ -228,6 +228,11 @@ class AppStore {
           return false;
         };
 
+        // no-path is also standard for now
+        if (optionName === 'pathName' && fullOptions['pathName'] === 'No-Path') {
+          return databaseEntry['pathName'] !== 'Standard';
+        }
+
         return databaseEntry[optionName] !== fullOptions[optionName];
       })
     });
