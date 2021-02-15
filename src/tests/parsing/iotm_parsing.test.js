@@ -90,6 +90,64 @@ test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza', asyn
   expect(firstEntry.additionalDisplay).toBe('(HGH-charged)');
 });
 
+test('iotm_parsing: Emotion Chip: isEmotionChip: detects if a combat adventure has emotion chip skill used', async () => {
+  const sampleText = "[262] Lair of the Ninja Snowmen\n"
+    + "Encounter: Ninja Snowman\n"
+    + "Round 0: dextrial loses initiative!\n"
+    + "Round 14: dextrial casts FEEL SUPERIOR!\n"
+    + "Round 15: Ninja Snowman (Hilt) takes 22 damage.\n"
+    + "Round 15: You gain 1 PvP Fight\n"
+    + "Round 15: dextrial wins the fight!\n"
+    + "After Battle: Ghost of Wants does that one dance, the ones that visions of sugarplums do in your head.\n"
+    + "You acquire an item: plain snowcone\n"
+    + "After Battle: You gain 40 Beefiness\n"
+    + "After Battle: You gain 12 Wizardliness\n"
+    + "After Battle: You gain 14 Cheek";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.isEmotionChip).toBe(true);
+});
+
+test('iotm_parsing: Emotion Chip: Feel Envy is a disentigrater', async () => {
+  const sampleText = "[230] Hippy Camp\n"
+    + "Encounter: filthy hippy Vegan chef\n"
+    + "Round 0: dextrial wins initiative!\n"
+    + "Round 1: dextrial casts FEEL ENVY!\n"
+    + "Round 2: dextrial attacks!\n"
+    + "Round 3: filthy hippy Vegan chef takes 358 damage.\n"
+    + "Round 3: dextrial wins the fight!\n"
+    + "You acquire an item: tambourine bells\n"
+    + "You acquire an item: filthy corduroys\n"
+    + "You acquire an item: filthy knitted dread sack\n"
+    + "You acquire an item: wad of tofu\n"
+    + "You acquire an item: reodorant\n"
+    + "You acquire an item: patchouli incense stick\n"
+    + "You acquire an item: filthy pestle\n"
+    + "You acquire an item: double-barreled sling\n"
+    + "After Battle: You gain 32 Fortitude";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.isDisintegrated).toBe(true);
+});
+
+test('iotm_parsing: Emotion Chip: Feel Hatred is a banisher', async () => {
+  const sampleText = "[314] The Red Zeppelin\n"
+    + "Encounter: Red Herring\n"
+    + "Round 0: dextrial wins initiative!\n"
+    + "Round 1: dextrial casts FEEL HATRED!\n"
+    + "This combat did not cost a turn";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.isBanished).toBe(true);
+});
+
+
 test('iotm_parsing: God Lobster: supports getting a boon choice adventure', async () => {
   const sampleText = "[16] God Lobster\n"
     + "Encounter: Granted a Boon\n"
