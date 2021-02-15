@@ -253,7 +253,7 @@ function EntryHeaderContainer(props) {
       {/* left side of header */}
       <div className='flex-col flex-auto adjacent-mar-l-3'>
         { entry.locationDisplay &&
-          <div className='fontsize-2 color-gray flex-auto adjacent-mar-t-1'>{entry.locationDisplay}</div>
+          <div className='fontsize-2 color-gray flex-none adjacent-mar-t-1'>{entry.locationDisplay}</div>
         }
 
         <div className='fontsize-5 overflow-hidden flex-row flex-none adjacent-mar-t-1'>
