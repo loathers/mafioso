@@ -247,6 +247,16 @@ function handleForcedAdventure(currEntry, idx) {
     }
   }
 
+  // set the Diabolic Pizza Eat entry's additional display to be the ingredients
+  if (currEntry.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE) {
+    const pizzaEatEntry = logStore.findNextEntry(idx, {
+      entryType: ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT,
+    });
+    if (pizzaEatEntry) {
+      pizzaEatEntry.additionalDisplay = currEntry.additionalDisplay;
+    }
+  }
+
   if (currEntry.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER) {
     currEntry.isForcedAdventure = true;
   }

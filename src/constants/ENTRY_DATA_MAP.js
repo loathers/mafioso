@@ -230,7 +230,7 @@ export const ENTRY_DATA_MAP = {
     icon: EatSVG,
     locationName_alt: 'Eat - 3 fullness',
     encounterName_alt: 'Diabolic Pizza',
-    additionalDisplay: ['({1})', REGEX.EFFECTS.EFFECT_NAME],
+    // additionalDisplay: ['({1})', REGEX.EFFECTS.EFFECT_NAME],
   },
   [ENTRY_TYPE.IOTM.DISTANT_WOODS_GETAWAY.GAZE]: {
     categories: [CATEGORY_ID.IOTM, CATEGORY_ID.OPTIONS],

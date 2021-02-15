@@ -125,7 +125,7 @@ test('iotm_parsing: Diabolic Pizza Cube: detects making and building the correct
   expect(firstEntry.additionalDisplay).toBe('(POLO)');
 });
 
-test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza', async () => {
+test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza and displaying the initials used', async () => {
   const sampleText = "eat 1 diabolic pizza\n"
     + "You acquire an item: Pocket Professor memory chip\n"
     + "You acquire an effect: HGH-charged (25)\n"
@@ -135,7 +135,6 @@ test('iotm_parsing: Diabolic Pizza Cube: supports eating a Diabolic Pizza', asyn
   const firstEntry = testStore.getEntryAt(0);
 
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT);
-  expect(firstEntry.additionalDisplay).toBe('(HGH-charged)');
 });
 
 test('iotm_parsing: Emotion Chip: isEmotionChip: detects if a combat adventure has emotion chip skill used', async () => {
