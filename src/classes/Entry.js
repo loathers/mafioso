@@ -613,7 +613,7 @@ export default class Entry {
   /** @type {Boolean} */
   get hasBoxOfGhosts() {
     return this.hasText(REGEX.BOX_OF_GHOSTS.CAROLS_EFFECT_TEXT)
-      || this.hasText(REGEX.BOX_OF_GHOSTS.COMMERCE_BOOST_TEXT);
+      || this.hasText(REGEX.BOX_OF_GHOSTS.COMMERCE_BUY_TEXT);
   }
   /** @type {Boolean} */
   get hasDoctorsBag() {

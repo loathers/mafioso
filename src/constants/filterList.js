@@ -248,6 +248,14 @@ export const ATTRIBUTE_FILTERS = [
     label: '2020 Items of the Month',
     optionGroup: [
       {
+        label: 'Box of Ghosts',
+        attributeName: 'hasBoxOfGhosts',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+        title: 'Entries where Ghost of Carols gave an effect or Commerce saw you bought an item.',
+      },
+      {
         label: 'Melodramedary Spat',
         attributeName: 'hasMelodramedary',
         attributeValue: true,
