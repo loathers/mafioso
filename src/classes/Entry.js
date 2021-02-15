@@ -272,7 +272,7 @@ export default class Entry {
   /** @type {Boolean} */
   get isForcedAdventure() {
     return this.attributes.isForcedAdventure
-      || this.entryType === ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING;
+      || this.isSummoned;
   }
   /** @param {Boolean} */
   set isInBetweenTurns(newValue) {
@@ -501,7 +501,8 @@ export default class Entry {
   /** @type {Boolean} */
   get isSummoned() {
     return this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE
-      || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT;
+      || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT
+      || this.entryType === ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING;
   }
   /** @type {Boolean} */
   get hasReplacedEnemies() {
