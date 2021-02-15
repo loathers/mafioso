@@ -39,6 +39,7 @@ export default function SelectOptionsComponent(props) {
                     className='fontsize-2 pad-v-1 adjacent-mar-t-1'
                     key={`option-${idx}-${subidx}-key`}
                     hidden={suboption.isHidden}
+                    title={suboption.title}
                     value={suboption.attributeName}>
                     {suboption.label}
                   </option>
@@ -51,6 +52,7 @@ export default function SelectOptionsComponent(props) {
             <option
               className='fontsize-2 pad-v-1 pad-h-3 adjacent-mar-t-1'
               key={`option-${idx}-key`}
+              title={filterData.title}
               hidden={filterData.isHidden}
               value={filterData.attributeName}>
               {filterData.label}

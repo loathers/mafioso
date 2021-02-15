@@ -141,6 +141,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Anything that was made to guarantee happen.',
       },
     ]
   },
@@ -151,8 +152,9 @@ export const ATTRIBUTE_FILTERS = [
         label: 'Summoned',
         attributeName: 'isSummoned',
         attributeValue: true,
-        isHidden: false,
+        isHidden: true,
         checked: false,
+        title: 'A monster that was summoned ie. Genie Wish, Fax, or Chateau Painting.',
       },
       {
         label: 'Banished',

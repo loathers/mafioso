@@ -110,6 +110,7 @@ export function FilterInput(props) {
     checked,
     isDisabled,
     isHidden,
+    title,
   } = optionData;
 
   const hiddenClassName = (!forceEnabled && isHidden)  ? 'display-none' : '';
@@ -121,6 +122,7 @@ export function FilterInput(props) {
           checked={checked}
           disabled={!forceEnabled && (appDisabled || isDisabled)}
           onChange={onChange}
+          title={title}
           className='adjacent-mar-l-2'
           type={type} />
 
