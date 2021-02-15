@@ -206,6 +206,18 @@ export const ATTRIBUTE_FILTERS = [
     ]
   },
   {
+    label: '2021 Items of the Month',
+    optionGroup: [
+      {
+        label: 'Emotion Chip',
+        attributeName: 'isEmotionChip',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+      },
+    ]
+  },
+  {
     label: '2020 Items of the Month',
     optionGroup: [
       {

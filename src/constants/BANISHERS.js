@@ -152,6 +152,10 @@ export const BANISHERS_MAP = {
     matcher: /(uses|casts|).*spooky music box mechanism/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
+  'Feel Hatred': {
+    matcher: /casts.*Feel Hatred/i,
+    entityType: ENTITY_TYPE.COMBAT_SKILL,
+  },
 }
 
 export const BANISHERS = Object.keys(BANISHERS_MAP);

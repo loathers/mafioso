@@ -592,6 +592,11 @@ export default class Entry {
       || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
   }
   /** @type {Boolean} */
+  get isEmotionChip() {
+    return this.hasText(REGEX.EMOTION_CHIP.NONCOMBAT_SKILL)
+      || this.hasText(REGEX.EMOTION_CHIP.COMBAT_SKILL);
+  }
+  /** @type {Boolean} */
   get hasDiabolicPizzaIngredients() {
     return this.attributes.diabolicPizzaIngredients.length > 0;
   }

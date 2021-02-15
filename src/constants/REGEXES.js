@@ -105,6 +105,10 @@ export const REGEX = {
     USELESS_GAZING_LINE: /gazing at the stars.*/gmi,
     REST_TEXT: /Rest in your campaway tent/gmi,
   },
+  EMOTION_CHIP: {
+    NONCOMBAT_SKILL: /casts.*Feel (Lonely|Disappointed|Excitement|Nervous|Peaceful).*/gi,
+    COMBAT_SKILL: /casts.*Feel (Envy|Hatred|Nostalgic|Pride|Superior).*/gi,
+  },
   FAX_MACHINE: {
     PHOTOCOPY_ENCOUNTER_TEXT: /(?<=\[\d+\] )photocopied monster/gi,
   },
