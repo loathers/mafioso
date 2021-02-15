@@ -190,7 +190,10 @@ function handleForcedAdventure(currEntry, idx) {
 
   // Pill Keeper - Sneakisol activated
   if (currEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)) {
-    const sneakisolEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
+    const sneakisolEntry = logStore.findNextEntry(idx, {
+      isNonCombatEncounter: true,
+      isForcedAdventure: false,
+    });
     if (sneakisolEntry) {
       currEntry.additionalDisplay = `"${sneakisolEntry.encounterDisplay}"`;
       sneakisolEntry.isForcedAdventure = true;

@@ -251,6 +251,16 @@ export default class Entry {
       return this.hasText(REGEX.VALUE.NONCOMBAT_NAME) && !this.isInBetweenTurns;
     }
 
+    // crafting is not an encounter, even if it might take an adventure
+    if (this.hasText(REGEX.ITEMS.MAKE_SOMETHING_LINE)) {
+      return false;
+    }
+
+    // treat as a spell cast and not a noncombat Calculating the Universe for a non-monster
+    if (this.entryType === (ENTRY_TYPE.UNIQUE.NUMBEROLOGY) && !this.isCombatEncounter) {
+      return false;
+    }
+
     return !this.isCombatEncounter && this.hasText(REGEX.VALUE.NONCOMBAT_NAME) && !this.isInBetweenTurns;
   }
   /** @type {Boolean} */
