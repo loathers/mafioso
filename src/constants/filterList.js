@@ -12,6 +12,7 @@ export const ENTRY_TYPE_FILTERS = [
     isHidden: true,
     isDisabled: false,
     checked: false,
+    title: 'Entries Mafioso generated.',
   },
   {
     label: 'Uncategorized',
@@ -19,54 +20,63 @@ export const ENTRY_TYPE_FILTERS = [
     isHidden: true,
     isDisabled: false,
     checked: false,
+    title: 'Entries Mafioso does not recognize.',
   },
   {
     label: 'Ascension/Quest Info',
     categories: [CATEGORY_ID.ASCENSION_INFO, CATEGORY_ID.QUEST],
     isHidden: false,
     checked: true,
+    title: 'Show Ascension or Quest non-combats.',
   },
   {
     label: 'Combats',
     categories: [CATEGORY_ID.COMBAT],
     isHidden: false,
     checked: true,
+    title: 'Show Combat Entries',
   },
   {
     label: 'NonCombats',
     categories: [CATEGORY_ID.NONCOMBAT],
     isHidden: false,
     checked: true,
+    title: 'Show NonCombats Entries',
   },
   {
     label: 'Options',
     categories: [CATEGORY_ID.OPTIONS],
     isHidden: false,
     checked: true,
+    title: 'Show Entries where a choice that is limited daily is made.',
   },
   {
     label: 'Pulls/Diet',
     categories: [CATEGORY_ID.PULLS, CATEGORY_ID.DIET],
     isHidden: false,
     checked: true,
+    title: 'Show eating, drinking, or chewing.',
   },
   {
     label: 'Effects/Items',
     categories: [CATEGORY_ID.EFFECTS, CATEGORY_ID.USE_ITEM],
     isHidden: false,
     checked: false,
+    title: 'Show spell casts, buffs, potion usage, and more.',
   },
   {
     label: 'Crafting/Shopping',
     categories: [CATEGORY_ID.CRAFTING, CATEGORY_ID.TRANSACTIONS],
     isHidden: false,
     checked: false,
+    title: 'Show cooking, mixing, etc and buying from NPC shops.',
   },
   {
     label: 'Other',
     categories: [CATEGORY_ID.FAMILIARS, CATEGORY_ID.EQUIPMENT, CATEGORY_ID.VISIT, CATEGORY_ID.OTHER],
     isHidden: false,
     checked: false,
+    title: 'Show familiar switching, equipment equipping, item acquiring, and other hard to categorize entries.',
   },
 ];
 /**
@@ -89,6 +99,7 @@ export const ATTRIBUTE_FILTERS = [
     attributeName: 'none',
     isHidden: true,
     checked: false,
+    title: 'Do not filter any attributes.',
   },
   {
     label: 'Evergreen Info',
@@ -99,6 +110,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where a comment or note was made.',
       },
       {
         label: 'Path-specific',
@@ -106,6 +118,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Something unique to the ascension path.',
       },
       {
         label: 'Took a Choice',
@@ -113,6 +126,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Any adventure that has a choice.',
       },
       {
         label: 'Semirares',
@@ -120,6 +134,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Adventure is considered Semirare.',
       },
       {
         label: 'Clovers',
@@ -127,6 +142,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Adventure that is a triggered by a Ten-Leaf Clover.',
       },
       {
         label: 'Free Fights',
@@ -134,6 +150,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combat that did not take a turn.',
       },
       {
         label: 'Forced Adventure',
@@ -162,6 +179,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats where a banishing effect was used.',
       },
       {
         label: 'Copied',
@@ -169,6 +187,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats where a copy, duplicate, lecture, etc effect was used.',
       },
       {
         label: 'Disintegrated',
@@ -176,6 +195,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats either a Yellow Ray or Envy effect was used. (Does not guarantee monster was insta-killed)',
       },
       {
         label: 'Replaced',
@@ -183,6 +203,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats where a monster was swapped or transformed into another such as Macrometeorite, Cleesh, or tangle of rat tails.',
       },
       {
         label: 'Instakilled',
@@ -190,6 +211,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats where an instant kill effect was used. Does not necessarily mean it worked.',
       },
       {
         label: 'Sniffed',
@@ -197,6 +219,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats where a monster was Olfacted or an effect where more of em was put in the queue was used.',
       },
       {
         label: 'Run Away (attempts)',
@@ -204,6 +227,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Combats where there was an attempt to run away.',
       },
     ]
   },
@@ -216,6 +240,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where there were some Emotionally Chipped feelings going on.',
       },
     ]
   },
@@ -228,6 +253,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where you were Spat on or asked to Spit.',
       },
       {
         label: 'Comprehensive Cartographing',
@@ -235,6 +261,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where there was a special Cartographic adventure or Map the Monsters was used.',
       },
       {
         label: 'Iunion Crown',
@@ -242,6 +269,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where the Iunion Crown gained a stone.',
       },
       {
         label: 'Retrospection',
@@ -249,6 +277,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where the Retrospecs triggered!',
       },
     ]
   },
@@ -261,6 +290,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where a Diabolic Pizza was made or eaten.',
       },
       {
         label: 'Pill Keeper Uses',
@@ -268,6 +298,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries that was probably the result of a Pill Keeper use.',
       },
       {
         label: 'Professor Lectures',
@@ -275,6 +306,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where Pocket Professor used one of his skills.',
       },
       {
         label: 'Used the Force',
@@ -282,6 +314,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where the Saber was used.',
       },
       {
         label: 'Vampyric Cloake',
@@ -289,6 +322,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where a Cloak skill was used.',
       },
       {
         label: 'Lil\' Doctor Skills',
@@ -296,6 +330,7 @@ export const ATTRIBUTE_FILTERS = [
         attributeValue: true,
         isHidden: false,
         checked: false,
+        title: 'Entries where a Doctor Bag skill was used.',
       },
     ],
   },
