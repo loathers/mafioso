@@ -15,6 +15,7 @@ export const DIFFICULTY_MAP = {
 export const PATH_MAP = {
   'No-Path': 'NP',
   'Standard': 'STD',
+  'You, Robot': 'UROBOT',
   'Grey Goo': 'GOO',
   'Low Key Summer': 'LKS',
   'Path of the Plumber': 'PLUMB',

@@ -51,7 +51,7 @@ export const PATH_FILTERS = [
     label: 'Challenge Paths',
     optionGroup: [
       {
-        label: 'Emotional Spring 2021',
+        label: 'You, Robot',
         isHidden: false,
         checked: false,
       },
