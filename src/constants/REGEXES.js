@@ -143,8 +143,8 @@ export const REGEX = {
     BOON_CHOICE_RESULT: /(?<=^took choice 1310.*: ).*/gmi,
   },
   HEWN_MOON_RUNE_SPOON: {
-    TUNE_MOON_LINE: /^tuning moon.*/i,
-    TUNE_MOON_RESULT: /(?<=^tuning moon to ).*/mi,
+    TUNE_MOON_LINE: /tuning moon.*/i,
+    TUNE_MOON_RESULT: /(?<=tuning moon to ).*/mi,
   },
   IUNION_CROWN: {
     GAINED_EFFECT: /(?<=^The crown gains ).*/gmi,

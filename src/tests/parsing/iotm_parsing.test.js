@@ -208,6 +208,16 @@ test('iotm_parsing: God Lobster: supports getting a boon choice adventure', asyn
   expect(firstEntry.additionalDisplay).toBe('"I\'d like part of your regalia."');
 });
 
+test('iotm_parsing: Hewn moon-rune spoon: parses and recognizes it is tuning', async () => {
+  const sampleText = "//this is a test comment\n"
+   + "tuning moon to The Packrat";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON);
+  expect(firstEntry.locationDisplay).toBe('Hewn Moon Rune Spoon Tune');
+});
+
 test('iotm_parsing: SpinMaster lathe: groups text if it has flimy hardwood scraps from using it the first time', async () => {
   const sampleText = "Visiting Your SpinMaster&trade; lathe\n"
     + "You acquire an item: flimsy hardwood scraps\n\n"
