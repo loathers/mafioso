@@ -3,6 +3,7 @@ import React from 'react';
 import {ReactComponent as ArchiveSVG} from 'images/archive.svg';
 import {ReactComponent as GreyGooIcon} from 'images/GreyGoo-icon.svg';
 import {ReactComponent as LKSicon} from 'images/LKS-icon.svg';
+import {ReactComponent as UROBOTicon} from 'images/UROBOT-icon.svg';
 
 // import combineClassnames from 'utilities/combineClassnames';
 
@@ -10,6 +11,8 @@ function getIconComponent(pathName) {
   switch (pathName) {
     case 'Standard':
       return ArchiveSVG;
+    case 'You, Robot':
+      return UROBOTicon;
     case 'Grey Goo':
       return GreyGooIcon;
     case 'Low Key Summer':
