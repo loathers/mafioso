@@ -47,7 +47,7 @@ function DatabasePage(props) {
   return (
     <div
       elementname='app-page-database'
-      className='fontsize-4 flex-col aitems-center'>
+      className='fontsize-4 flex-row jcontent-center'>
 
       <DatabaseListMenu
         className='flex-auto' />
