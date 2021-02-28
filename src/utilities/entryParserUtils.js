@@ -7,8 +7,10 @@ import {DISINTEGRATERS, DISINTEGRATERS_MAP} from 'constants/DISINTEGRATERS'
 import {REPLACERS, REPLACERS_MAP} from 'constants/REPLACERS'
 import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
 import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
-// import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 import REGEX from 'constants/REGEXES';
+
+import * as dataParser from 'helpers/dataParser';
 import * as regexUtils from 'utilities/regexUtils';
 
 /**
@@ -16,6 +18,13 @@ import * as regexUtils from 'utilities/regexUtils';
  * @return {EntryData}
  */
 export function getEntryData(entryString) {
+  // json implementation
+  const createdData = dataParser.matchEntryData(entryString);
+  if (createdData.type !== ENTRY_TYPE.UNKNOWN) {
+    return createdData;
+  }
+
+  // original implementation
   const foundEntryType = ENTRY_MAP_KEYS.find((entryTypeKey) => {
     const entryTypeData = ENTRY_DATA_MAP[entryTypeKey];
     const {matcher} = entryTypeData;
