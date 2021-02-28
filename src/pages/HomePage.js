@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
+import MetaTags from 'react-meta-tags';
 
 import appStore from 'store/appStore';
 // import logStore from 'store/logStore';
@@ -15,6 +16,14 @@ function HomePage(props) {
     <div
       elementname='app-page-home'
       className='borradius-3 bor-1-white mar-7 pad-7 fontsize-6 flex-col-center'>
+
+      <MetaTags>
+        <title>kolmafioso</title>
+        <meta
+          name="description"
+          content="Kingdom of Loathing session log visualizer!"
+        />
+      </MetaTags>
 
       <div style={{maxWidth: 500}} className='flex-col whitespace-pre-wrap height-full'>
         <div className='fontsize-9 talign-center adjacent-mar-t-9'>Buongiorno!</div>
