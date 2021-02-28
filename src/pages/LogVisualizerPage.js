@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {Redirect, useParams} from 'react-router-dom';
 import {observer} from 'mobx-react';
+import MetaTags from 'react-meta-tags';
 
 import {HOME_URL, LOG_VIS_URL} from 'constants/PAGE_URLS';
 
@@ -95,6 +96,15 @@ function LogVisualizerPage(props) {
     <div
       elementname='app-page-visualizer'
       className='flex-row jcontent-center'>
+
+      <MetaTags>
+        <title>kolmafioso - visualizer</title>
+        <meta
+          name="description"
+          content={`Mafioso Log for ${logStore.characterName} the ${logStore.className} in ${logStore.difficultyName} ${logStore.pathName}`}
+        />
+      </MetaTags>
+
       <LogVisualizerMenu
         className='flex-auto adjacent-mar-t-5' />
 

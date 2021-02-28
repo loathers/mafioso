@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
+import MetaTags from 'react-meta-tags';
 
 import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
 import {LOG_VIS_URL} from 'constants/PAGE_URLS';
@@ -48,6 +49,14 @@ function DatabasePage(props) {
     <div
       elementname='app-page-database'
       className='fontsize-4 flex-row jcontent-center'>
+
+      <MetaTags>
+        <title>kolmafioso</title>
+        <meta
+          name="description"
+          content='Mafioso database page of shared logs for Kingdom of Loathing'
+        />
+      </MetaTags>
 
       <DatabaseListMenu
         className='flex-auto' />

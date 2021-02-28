@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
+import MetaTags from 'react-meta-tags';
 
 import {CHART_TYPES} from 'constants/CHART_TYPES';
 import {HOME_URL} from 'constants/PAGE_URLS';
@@ -31,6 +32,14 @@ function ChartsPage(props) {
     <div
       elementname='app-page-charts'
       className={combineClassnames('flex-row', className)}>
+
+      <MetaTags>
+        <title>kolmafioso</title>
+        <meta
+          name="description"
+          content='Mafioso charts page'
+        />
+      </MetaTags>
 
       <ChartsMenu className='mar-r-2 flex-none' />
 

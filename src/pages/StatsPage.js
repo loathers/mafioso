@@ -1,6 +1,7 @@
 import React from 'react';
 import {Redirect} from "react-router-dom";
 import {observer} from 'mobx-react';
+import MetaTags from 'react-meta-tags';
 
 import {HOME_URL} from 'constants/PAGE_URLS';
 
@@ -33,6 +34,15 @@ function StatsPage(props) {
     <div
       elementname='app-page-charts'
       className={combineClassnames('flex-col', className)}>
+
+      <MetaTags>
+        <title>kolmafioso</title>
+        <meta
+          name="description"
+          content='Mafioso stats page'
+        />
+      </MetaTags>
+
       <div className='fontsize-7 f-bold talign-center'>Stats</div>
       <div className='fontsize-3 talign-center'>(wip)</div>
 
