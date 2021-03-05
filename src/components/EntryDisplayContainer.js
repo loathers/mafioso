@@ -213,7 +213,8 @@ function EntryIconColumn(props) {
   const {attributes} = entry;
   const {isLevelUp} = attributes;
 
-  const EntryIconComponent = typeof entry.entryIcon === 'string' ? UnknownSVG : entry.entryIcon;
+  const isUnknownIcon = entry.entryIcon === undefined || typeof entry.entryIcon === 'string';
+  const EntryIconComponent = isUnknownIcon ? UnknownSVG : entry.entryIcon;
 
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>
