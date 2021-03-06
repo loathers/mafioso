@@ -58,9 +58,9 @@ class AppStore {
       return !this.isReady || logStore.isImportedLog;
     }
 
-    if (logStore.turnCount / logStore.dayCount >= 400) {
-      return true;
-    }
+    // if (logStore.turnCount / logStore.dayCount >= 400) {
+    //   return true;
+    // }
 
     return !this.isReady || this.hasAttemptedShare || logStore.isImportedLog || !logStore.isAscensionLog;
   }
@@ -205,9 +205,9 @@ class AppStore {
       failReason += 'This is not an Ascension log.\n';
     }
 
-    if (logStore.turnCount / logStore.dayCount >= 400) {
-      failReason += 'Your turns/day ratio is very lopsided. Contact me.';
-    }
+    // if (logStore.turnCount / logStore.dayCount >= 400) {
+    //   failReason += 'Your turns/day ratio is very lopsided. Contact me.';
+    // }
 
     ToastController.error({title: 'Share Error', content: failReason});
   }
