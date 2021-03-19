@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 
 import { ReactComponent as AdventureSVG } from 'images/sands-of-time.svg';
-import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
+import { ReactComponent as FamiliarSVG } from 'images/cat.svg';
 import { ReactComponent as HealthSVG } from 'images/glass-heart.svg';
 import { ReactComponent as ManaSVG } from 'images/potion-ball.svg';
 import { ReactComponent as SpellbookSVG } from 'images/spell-book.svg';
-import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
-import {ReactComponent as EditSVG} from 'images/scroll-quill.svg';
+import { ReactComponent as LevelUpSVG } from 'images/star-formation.svg';
+import { ReactComponent as EditSVG } from 'images/scroll-quill.svg';
 import { ReactComponent as SteakSVG } from 'images/steak.svg';
 import { ReactComponent as SwapBagSVG } from 'images/swap-bag.svg';
 import { ReactComponent as TalkSVG } from 'images/talk.svg';
-import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
 
 import Button from 'components/Button';
 import CombatSequenceDisplay, {CombatResultDisplayHandler} from 'components/CombatSequenceDisplay';
+import EntryTypeIcon from 'components/EntryTypeIcon';
 import MakeDiabolicPizzaDisplay from 'components/MakeDiabolicPizzaDisplay';
 import StatChangesDisplay from 'components/StatChangesDisplay';
 import SingleDisplay from 'components/SingleDisplay';
@@ -213,17 +213,9 @@ function EntryIconColumn(props) {
   const {attributes} = entry;
   const {isLevelUp} = attributes;
 
-  const isUnknownIcon = entry.entryIcon === undefined || typeof entry.entryIcon === 'string';
-  const EntryIconComponent = isUnknownIcon ? UnknownSVG : entry.entryIcon;
-
   return (
     <div className={combineClassnames('aitems-center flex-col', className)}>
-      <EntryIconComponent
-        entry={entry}
-        className='flex-none adjacent-mar-t-2'
-        style={{width: 25, height: 25,
-          opacity: 0.7,
-        }} />
+      <EntryTypeIcon entry={entry} />
 
       { isLevelUp &&
         <LevelUpSVG
