@@ -337,7 +337,7 @@ export const REGEX = {
     SOURCE_AGENT_ENCOUNTER: /A sunglasses-clad man in a flawless black suit stands before you/gi,
   },
   QUEST: {
-    VISIT_TOOT: /tutorial.*action=toot/i,
+    VISIT_TOOT: /tutorial.*action=toot.*/i,
     OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
     TALK_CRACKPOT_MYSTIC_LINE: /^talking.*crackpot mystic.*(\r\n|\n)/i,
     DAILY_DUNGEON_LOCATION: /The Daily Dungeon/i,
