@@ -14,5 +14,20 @@
       "/(?<=tuning moon to ).*/mi"
     ],
     "content_alt": null
+  },
+  "ENTRY_TYPE.SNAPSHOT.MOON_SIGN": {
+    "type": "ENTRY_TYPE.SNAPSHOT.MOON_SIGN",
+    "categories": [
+      "SNAPSHOT_INFO",
+      "ASCENSION_INFO"
+    ],
+    "matcher": "/(?<=Ascension #(.*(\r\n|\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i",
+    "icon": "PathSVG",
+    "locationName_alt": "Moon Sign",
+    "encounterName_alt": [
+      "☪ {1}",
+      "/(?<=Ascension #(.*(\r\n|\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i"
+    ],
+    "content_alt": null
   }
 }
