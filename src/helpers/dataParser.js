@@ -1,5 +1,6 @@
 import {CATEGORY_ID} from 'constants/CATEGORIES';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+import REGEX from 'constants/REGEXES';
 
 import ENTRY_DATA from 'data/ENTRY_DATA.json';
 import IOTM_ENTRY_DATA from 'data/IOTM_ENTRY_DATA.json';
@@ -88,6 +89,26 @@ function convertStringToRegex(input) {
     return new RegExp(inputParts[1], inputParts[2]);
   }
 
+  const pathParts = input.split('.');
+  if (pathParts[0] === 'REGEX') {
+    return convertPathToRegex(input);
+  }
+
   // otherwise leaving string alone
   return input;
+}
+
+/**
+ * @param {String} input
+ * @returns {RegExp|Array<RegExp>}
+ */
+function convertPathToRegex(input) {
+  const pathParts = input.split('.');
+  if (pathParts.shift() === 'REGEX') {
+    const result = pathParts.reduce((regexData, pathPart) => {
+      return regexData[pathPart];
+    }, REGEX);
+
+    return result;
+  }
 }
