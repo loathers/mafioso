@@ -277,7 +277,7 @@ export function parseAcquiredItems(entryString) {
 
     return new ListItem({
       name: itemName[0].replace(/an item: /im, ''),
-      amount: itemAmount[0] || 1,
+      amount: Number(itemAmount[0]) || 1,
     });
   });
 }
