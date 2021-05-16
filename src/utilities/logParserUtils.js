@@ -99,11 +99,10 @@ export function findAscensionLog(rawText) {
 export function parseAscensionAttributes(rawText) {
   const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || rawText.match(REGEX.CHARACTER.CHARACTER_NAME_FROM_COMBAT) || [];
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
-  const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
 
   return {
     characterName: characterNameMatch[0],
-    className: ascensionDetails[3],
+    className: parseClassName(rawText),
     ascensionNum: ascensionNumMatch[0] || undefined,
     difficultyName: parseDifficultyName(rawText),
     pathName: parsePathName(rawText),
@@ -250,6 +249,19 @@ export function parsePathName(rawText) {
 
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
   return ascensionDetails[2];
+}
+/**
+ * @param {Text} rawText
+ * @returns {String}
+ */
+export function parseClassName(rawText) {
+  const edTheUndyingDetails = rawText.match(REGEX.ASCENSION.ED_THE_UNDYING_DETAILS);
+  if (edTheUndyingDetails) {
+    return 'Ed the Undying';
+  }
+
+  const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
+  return ascensionDetails[3];
 }
 /**
  * @param {Text} rawText
