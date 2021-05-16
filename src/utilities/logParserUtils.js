@@ -100,14 +100,13 @@ export function parseAscensionAttributes(rawText) {
   const characterNameMatch = rawText.match(REGEX.CHARACTER.CHARACTER_NAME) || rawText.match(REGEX.CHARACTER.CHARACTER_NAME_FROM_COMBAT) || [];
   const ascensionNumMatch = rawText.match(REGEX.ASCENSION.ASCENSION_NUMBER) || [];
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
-  const isBadMoon = rawText.match(REGEX.ASCENSION.ASCENSION_BAD_MOON) !== null;
 
   return {
     characterName: characterNameMatch[0],
     className: ascensionDetails[3],
     ascensionNum: ascensionNumMatch[0] || undefined,
-    difficultyName: ascensionDetails[1],
-    pathName: isBadMoon ? 'Bad Moon' : ascensionDetails[2],
+    difficultyName: parseDifficultyName(rawText),
+    pathName: parsePathName(rawText),
     standardSeason: parseStandardSeason(rawText),
   }
 }
@@ -239,6 +238,16 @@ export function parseStandardSeason(rawText) {
  * @returns {String}
  */
 export function parsePathName(rawText) {
+  const badMoonDetails = rawText.match(REGEX.ASCENSION.BAD_MOON_DETAILS);
+  if (badMoonDetails) {
+    return 'Bad Moon';
+  }
+
+  const edTheUndyingDetails = rawText.match(REGEX.ASCENSION.ED_THE_UNDYING_DETAILS);
+  if (edTheUndyingDetails) {
+    return 'Actually Ed the Undying';
+  }
+
   const ascensionDetails = rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
   return ascensionDetails[2];
 }

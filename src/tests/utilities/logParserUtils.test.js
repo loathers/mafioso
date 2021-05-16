@@ -31,6 +31,11 @@ test('logParserUtils.parsePathName(): parses a couple different paths', () => {
   expect(logParserUtils.parsePathName(NoPathMockText)).toBe('No-Path');
 });
 
+test('logParserUtils.parsePathName(): recognizes Ed the Undying path', () => {
+  const ETUMockText = 'Ascension #152:\nHardcore Actually Ed the Undying Ed\nBlender';
+  expect(logParserUtils.parsePathName(ETUMockText)).toBe('Actually Ed the Undying');
+});
+
 test('logParserUtils.createPathLabel(): creates the label as expected', () => {
   const LKSMockText = 'Ascension #111:\nNormal Low Key Summer Pastamancer\nWallaby';
   expect(logParserUtils.createPathLabel(LKSMockText)).toBe('SC_LKS');
