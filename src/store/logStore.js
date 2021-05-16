@@ -452,18 +452,18 @@ export class LogStore {
       ToastController.warn({content: 'That\'s a big log so this might take a while.'});
     }
 
-    const cleanedLog = await logParserUtils.cleanRawLog(logText);
-    const groupedLogText = logParserUtils.pregroupRawLog(cleanedLog);
+    const groupedLogText = logParserUtils.pregroupRawLog(logText);
+    const cleanedLog = await logParserUtils.cleanRawLog(groupedLogText);
 
     // try to find out if there is a full ascension log,
     //  otherwise just use the first text we have
     try {
-      this.rawText = logParserUtils.findAscensionLog(groupedLogText);
+      this.rawText = logParserUtils.findAscensionLog(cleanedLog);
       this.setAscensionAttributes();
       ToastController.success({content: 'Preparing to parse Ascension log...'});
 
     } catch (err) {
-      this.rawText = groupedLogText;
+      this.rawText = cleanedLog;
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...logParserUtils.parseDailyAttributes(this.rawText),
