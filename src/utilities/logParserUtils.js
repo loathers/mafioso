@@ -16,7 +16,7 @@ import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
 import * as logDateUtils from 'utilities/logDateUtils';
 import * as regexUtils from 'utilities/regexUtils';
 
-const MAX_CHAR_COUNT = 6000000;
+const MAX_CHAR_COUNT = 5000000;
 const MIN_CHAR_COUNT = 5;
 
 /**

@@ -3,7 +3,7 @@ import {encode} from 'base-64';
 
 import Batcher from 'classes/Batcher';
 
-import {FILTER_DELAY, PAGINATE_DELAY} from 'constants/DEFAULTS';
+import {FILTER_DELAY, PAGINATE_DELAY, LARGE_TEXT_COUNT} from 'constants/DEFAULTS';
 import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/filterList';
 
 import * as logStoreHelper from 'helpers/logStoreHelper';
@@ -448,18 +448,22 @@ export class LogStore {
    * @param {String} logText
    */
   async prepareLog(logText) {
-    const groupedLogText = logParserUtils.pregroupRawLog(logText);
+    if (logText.length > LARGE_TEXT_COUNT) {
+      ToastController.warn({content: 'That\'s a big log so this might take a while.'});
+    }
 
+    const cleanedLog = await logParserUtils.cleanRawLog(logText);
+    const groupedLogText = logParserUtils.pregroupRawLog(cleanedLog);
+
+    // try to find out if there is a full ascension log,
+    //  otherwise just use the first text we have
     try {
-      // try to find out if there is a full ascension log,
-      //  otherwise just use the first text we have
-      const fullAscensionText = logParserUtils.findAscensionLog(groupedLogText);
-      this.rawText = await logParserUtils.cleanRawLog(fullAscensionText);
+      this.rawText = logParserUtils.findAscensionLog(groupedLogText);
       this.setAscensionAttributes();
       ToastController.success({content: 'Preparing to parse Ascension log...'});
 
     } catch (err) {
-      this.rawText = await logParserUtils.cleanRawLog(groupedLogText);
+      this.rawText = groupedLogText;
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...logParserUtils.parseDailyAttributes(this.rawText),

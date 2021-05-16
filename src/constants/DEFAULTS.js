@@ -5,7 +5,8 @@ import REGEX, {
   EXCESSIVE_NEW_LINES,
 } from 'constants/REGEXES';
 
-export const CLEAN_RAW_DELAY = 5;
+export const LARGE_TEXT_COUNT = 5000000;
+export const CLEAN_RAW_DELAY = 2;
 export const FULL_PARSE_DELAY = 5;
 
 export const DISPLAY_SCRUB_DELAY = 5;
