@@ -44,3 +44,18 @@ test('combat_parsing: detects "UNLEASH THE DEVILS KISS" skill as a disintegrater
   const firstEntry = testStore.allEntries[0];
   expect(firstEntry.isDisintegrated).toBe(true);
 });
+
+test('combat_parsing: detects "SHOCKING LICK" skill as a disintegrater', async () => {
+  const sampleText = "[151] The Haunted Laundry Room\n"
+    + "Encounter: the cabinet of Dr. Limpieza\n"
+    + "Round 0: Volc wins initiative!\n"
+    + "Round 1: Volc casts SHOCKING LICK!\n"
+    + "Round 2: Volc wins the fight!";
+
+  const testStore = new LogStore();
+  await testStore.prepareLog(sampleText);
+  await testStore.parse();
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.isDisintegrated).toBe(true);
+});

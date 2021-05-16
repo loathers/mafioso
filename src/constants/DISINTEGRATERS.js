@@ -85,6 +85,10 @@ export const DISINTEGRATERS_MAP = {
     matcher: /Spooky Jellied/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
+  'Shocking Lick': {
+    matcher: /Shocking Lick/i,
+    entityType: ENTITY_TYPE.COMBAT_SKILL,
+  },
   // -- its a new category
   'Feel Envy': {
     matcher: /casts.*Feel Envy/i,
