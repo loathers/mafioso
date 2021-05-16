@@ -5,7 +5,7 @@ import REGEX, {
   EXCESSIVE_NEW_LINES,
 } from 'constants/REGEXES';
 
-export const LARGE_TEXT_COUNT = 5000000;
+export const LARGE_TEXT_COUNT = 2000000;
 export const CLEAN_RAW_DELAY = 2;
 export const FULL_PARSE_DELAY = 5;
 
@@ -14,7 +14,7 @@ export const FILTER_DELAY = 5;
 export const PAGINATE_DELAY = 80;
 
 // -- log level
-// strings we are going to remove from the ahead of time
+// strings we are going to remove completely before any parsing
 export const PREREMOVE_REGEX_LIST = [
   // -- always first
   REGEX.KOLMAFIA.STACK_TRACE,

@@ -586,7 +586,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximize|maximizer|museum|upeffect|uneffect|outfit|custom outfit|unexpected error|keep your eyes open for|adjusted combat|.*is now accessible).*(\r\n|\n)/gmi,
+    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximize|maximizer|museum|upeffect|uneffect|outfit|custom outfit|unexpected error|keep your eyes open for|adjusted combat|.*is now accessible).*(\r?\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|shower|swimming pool|talking|telescope|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,

@@ -172,9 +172,12 @@ export function presplitRawLog(rawText) {
 export async function cleanRawLog(rawText) {
   let cleanedText = rawText.slice();
 
-  const cleaningBatcher = new Batcher(PREREMOVE_REGEX_LIST, {batchSize: 1, batchDelay: CLEAN_RAW_DELAY});
+  const cleaningBatcher = new Batcher(PREREMOVE_REGEX_LIST, {batchSize: 5, batchDelay: CLEAN_RAW_DELAY});
   await cleaningBatcher.run((removalRegexGroup) => {
-    cleanedText = cleanedText.replace(removalRegexGroup[0], '');
+    cleanedText = removalRegexGroup.reduce((accumulatedText, removalRegex) => {
+      return accumulatedText.replace(removalRegex, '');
+    }, cleanedText);
+
     return cleanedText; // this return is superficial, just for Batcher's logging
   });
 
