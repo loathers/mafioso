@@ -21,12 +21,12 @@
       "SNAPSHOT_INFO",
       "ASCENSION_INFO"
     ],
-    "matcher": "/(?<=Ascension #(.*(\r\n|\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i",
+    "matcher": "/(?<=Ascension #(.*(\\r?\\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i",
     "icon": "PathSVG",
     "locationName_alt": "Moon Sign",
     "encounterName_alt": [
       "☪ {1}",
-      "/(?<=Ascension #(.*(\r\n|\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i"
+      "/(?<=Ascension #(.*(\\r?\\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i"
     ],
     "content_alt": null
   }

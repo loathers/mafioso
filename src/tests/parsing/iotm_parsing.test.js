@@ -245,7 +245,7 @@ test('iotm_parsing: SpinMaster lathe: no extra types from subsequent uses', asyn
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM);
 });
 
-test('iotm_parsing: Meteore Lore: determines `hasMeteorLore` if skills are present', async () => {
+test('iotm_parsing: Meteor Lore: determines `hasMeteorLore` if skills are present', async () => {
   const sampleText = "[2] The Overgrown Lot\n"
     + "Encounter: the ghost of Oily McBindle wearing a monkey mask\n"
     + "Round 0: dextrial loses initiative!\n"
@@ -260,4 +260,15 @@ test('iotm_parsing: Meteore Lore: determines `hasMeteorLore` if skills are prese
 
   const firstEntry = testStore.allEntries[0];
   expect(firstEntry.hasMeteorLore).toBe(true);
+});
+
+test('iotm_parsing: Potted Power Plant: parses acquiring a battery', async () => {
+  const sampleText = "Took choice 1448/1: (secret choice)\n"
+    + "choice.php?pwd&whichchoice=1448&option=1&pp=3\n"
+    + "You acquire an item: battery (D)";
+
+  const testStore = await createTestStore(sampleText);
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY);
 });

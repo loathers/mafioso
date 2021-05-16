@@ -2,15 +2,19 @@ import {CATEGORY_ID} from 'constants/CATEGORIES';
 import ENTRY_TYPE from 'constants/ENTRY_TYPE';
 
 import ENTRY_DATA from 'data/ENTRY_DATA.json';
+import IOTM_ENTRY_DATA from 'data/IOTM_ENTRY_DATA.json';
 
 import * as regexUtils from 'utilities/regexUtils';
 
 /** @type {Object<RawEntryData>} */
-const rawEntryData = ENTRY_DATA;
+const rawEntryData = {
+  ...ENTRY_DATA,
+  ...IOTM_ENTRY_DATA,
+};
 /** @type {Object<EntryData>} */
 const dataCache = {};
 /** @type {Array<String>} */
-const dataCacheKeys = Object.keys(ENTRY_DATA);
+const dataCacheKeys = Object.keys(rawEntryData);
 // start with building cache
 buildCache();
 

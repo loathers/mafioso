@@ -1,0 +1,14 @@
+{
+  "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY": {
+    "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY",
+    "categories": [
+      "IOTM",
+      "USE_ITEM",
+      "OPTIONS"
+    ],
+    "matcher": "/(?<=took choice 1448.*(\\r?\\n)+you acquire an item: ).*?$/gmis",
+    "icon": "OptionsSVG",
+    "locationName_alt": "Potted Power Plant",
+    "encounterName_alt": "/(?<=took choice 1448.*(\\r?\\n)+you acquire an item: ).*?$/gmis"
+  }
+}
