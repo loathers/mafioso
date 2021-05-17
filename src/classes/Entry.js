@@ -17,7 +17,7 @@ import * as regexUtils from 'utilities/regexUtils';
  */
 export default class Entry {
   /** @default */
-  constructor({entryId, entryIdx, rawText}) {
+  constructor({entryId, entryIdx, rawText, config}) {
     /** @type {Number} */
     this.id = entryId;
     /** @type {Number} */
@@ -34,6 +34,7 @@ export default class Entry {
     this.config = {
       /** @type {Boolean} */
       isYouRobot: false,
+      ...config
     };
 
     /** @type {Object} */

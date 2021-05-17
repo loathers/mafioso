@@ -489,7 +489,11 @@ export class LogStore {
 
     this.isParsing.set(true);
 
-    const parsedData = await logParserUtils.parseLogTxt(this.rawText);
+    const config = {
+      isYouRobot: this.pathName === 'You, Robot',
+    };
+
+    const parsedData = await logParserUtils.parseLogTxt(this.rawText, config);
     const newData = this.combineEntries(parsedData);
     this.allEntries.replace(newData);
 

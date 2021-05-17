@@ -23,9 +23,10 @@ const MIN_CHAR_COUNT = 5;
  * core parsing handler - start here
  *
  * @param {String} rawText
+ * @param {Object} [config]
  * @return {Array<Entry>}
  */
-export async function parseLogTxt(rawText) {
+export async function parseLogTxt(rawText, config) {
   try {
     const rawSize = rawText.length;
     if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
@@ -51,7 +52,7 @@ export async function parseLogTxt(rawText) {
     const entryBatcher = new Batcher(rawEntries, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
 
     // create the Entry class for each entry text, which will then further parse their data
-    const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx));
+    const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx, config));
     return allEntries;
 
   } catch (e) {
@@ -126,13 +127,15 @@ export function parseDailyAttributes(rawText) {
  * @async
  * @param {Array<String>} logArray
  * @param {Number} startIdx
+ * @param {Object} [config]
  * @returns {Array<Entry>}
  */
-export function parseLogArray(logArray, startIdx) {
+export function parseLogArray(logArray, startIdx, config) {
   return logArray.map((rawText, idx) => new Entry({
     entryIdx: startIdx + idx,
     entryId: `${startIdx + idx}_${uuidv4()}`,
     rawText: rawText,
+    config: config,
   }));
 }
 /**
