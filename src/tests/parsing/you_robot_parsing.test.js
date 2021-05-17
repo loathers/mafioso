@@ -34,6 +34,16 @@ test('parsing: you, robot: parses scavenge scrap', async () => {
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.PATH.YOU_ROBOT.SCAVENGE_SCRAP);
 });
 
+test('parsing: you, robot: parses collecting energy', async () => {
+  const sampleText = "[2] Collecting energy\n"
+    + "You gain 37 Energy";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.allEntries[0];
+
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.PATH.YOU_ROBOT.COLLECT_ENERGY);
+});
+
 test('entryParserUtils.parseYouRobotAttributes(): parses changes in gaining and losing scrap', () => {
   const sampleText = "After Battle: You gain 1 scrap\n"
     + "After Battle: You gain 1 scrap\n"

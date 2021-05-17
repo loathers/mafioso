@@ -45,5 +45,18 @@
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": ["{1} reassembly", "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET"],
     "showAdditionalDisplay": false
+  },
+  "ENTRY_TYPE.PATH.YOU_ROBOT.COLLECT_ENERGY": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.COLLECT_ENERGY",
+    "categories": [
+      "OPTIONS",
+      "NONCOMBAT",
+      "PATH"
+    ],
+    "matcher": "REGEX.YOU_ROBOT.COLLECT_ENERGY",
+    "icon": "UROBOTicon",
+    "locationName_alt": "The Scrapheap",
+    "encounterName_alt": "Collecting Energy",
+    "showAdditionalDisplay": false
   }
 }
