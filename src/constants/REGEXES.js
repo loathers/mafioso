@@ -460,7 +460,7 @@ export const REGEX = {
     MOX_EXP_LOSSES: /(?<=lose\s)\d+(?=\s(Cheek|Chutzpah|Roguishness|Sarcasm|Smarm))/gi,
     MOX_GAINS: /.*you gain.*\d*moxie.*point.*/gi,
 
-    LEVEL_GAIN: /^You gain .* level.*\s+/gmi,
+    LEVEL_GAIN: /^You gain .* level.*/gmi,
     SUBSTAT_GAINS: /.*gain.*\d*(muscle|mysticality|moxie).*point.*/gi,
   },
   FAMILIAR: {
