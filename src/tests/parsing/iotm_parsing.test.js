@@ -274,3 +274,14 @@ test('iotm_parsing: Potted Power Plant: parses acquiring a battery', async () =>
   expect(firstEntry.attributes.acquiredItems[0].attributes.name).toBe("battery (D)");
   expect(firstEntry.attributes.acquiredItems[0].attributes.amount).toBe(1);
 });
+
+test('iotm_parsing: Potted Power Plant: parses combining two batteries', async () => {
+  const sampleText = "Combine 1 battery (D) + 1 battery (AA)\n"
+    + "You acquire an item: battery (lantern)\n"
+    + "Crafting used 1 each of battery (AA) and battery (D)";
+
+  const testStore = await createTestStore(sampleText);
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES);
+});

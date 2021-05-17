@@ -9,7 +9,7 @@
     "matcher": "REGEX.POTTED_POWER_PLANT.GET_BATTERY",
     "icon": "OptionsSVG",
     "locationName_alt": "Potted Power Plant",
-    "encounterName_alt": ["harvesting: {1}", "REGEX.POTTED_POWER_PLANT.GET_BATTERY"]
+    "encounterName_alt": "REGEX.POTTED_POWER_PLANT.GET_BATTERY"
   },
   "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES": {
     "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES",
