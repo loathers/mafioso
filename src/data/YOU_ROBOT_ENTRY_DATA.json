@@ -1,4 +1,15 @@
 {
+  "ENTRY_TYPE.PATH.YOU_ROBOT.YOU_ARE_A_ROBOT": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.YOU_ARE_A_ROBOT",
+    "categories": [
+      "ASCENSION_INFO",
+      "PATH"
+    ],
+    "matcher": "/^encounter: you, robot/i",
+    "icon": "AscendSVG",
+    "locationName_alt": "Welcome to the Kingdom",
+    "showAdditionalDisplay": false
+  },
   "ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH",
     "categories": [

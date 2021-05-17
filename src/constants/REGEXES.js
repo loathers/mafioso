@@ -634,6 +634,7 @@ export const REGEX = {
   PRESPLIT: {
     UNRELATED_AFTER_COMBAT: /(?<=Encounter:(.+(\r\n|\n))+(round \d+.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies.*defeated.*|.*frat.*defeated.*|the crown gains.*|unlocked.*for latte.*)(?:\r\n|\n))(?!(round \d+.*|This combat.*|Your familiar.*|You gain.*|You lose.*|After Battle:.*|you acquire.*|the nuns.*|.*hippies defeated.*|.*frats defeated.*|the crown gains.*|unlocked.*for latte.*|encounter: using the force.*))/gmi,
     UNRELATED_AFTER_FREECOMBAT: /(?<=This combat did not cost a turn.*(\r\n|\n))(?!(\r\n|\n|.*hippies defeated.*|.*frats defeated.*))/gmi,
+    POST_NEW_ASCENSION_ENCOUNTER: /(?<=Ascend as a .*)(\r?\n)(?=Encounter)/gmi
   },
 };
 
