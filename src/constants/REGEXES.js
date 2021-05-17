@@ -501,6 +501,7 @@ export const REGEX = {
     COMBINE_LINE: /combine.*\d.*/gmi,
     COMBINE_FIRST_ITEM: /(?<=combine \d+ ).*?(?= \+.*)/gmi,
     COMBINE_SECOND_ITEM: /(?<=combine \d+ .*? \+ \d+ ).*?(?= \+.*)/gmi,
+    USELESS_COMBINE: /^combine .*(\r?\n){2,}/gmi,
 
     UNTINKER_LINE: /^untinker .*/gmi,
     UNTINKER_TARGET: /^untinker \d+ .*/gmi,
