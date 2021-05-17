@@ -36,6 +36,12 @@ class ChartStore {
       case 'replaced':
         return chartParserUtils.createAttributeTimeline(this.allEntries.slice(), 'isReplaced');
 
+      case CHART_TYPES.SCRAP_CHANGES:
+        return chartParserUtils.createMinChangeTimeline(this.allEntries.slice(), 'scrapChange', {isUsingTotals: true});
+
+      case CHART_TYPES.ENERGY_CHANGES:
+        return chartParserUtils.createMinChangeTimeline(this.allEntries.slice(), 'energyChange', {isUsingTotals: true});
+
       default:
         return null;
     }

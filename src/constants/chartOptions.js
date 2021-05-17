@@ -105,3 +105,32 @@ export const lineOptions = {
     }]
   }
 }
+export const lineTotalMinOptions = {
+  type: 'line',
+  responsive: true,
+  maintainAspectRatio: false,
+  legend: {
+    display: false,
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        fontColor: COLOR_WHITE,
+        stepSize: 10,
+        suggestedMax: 500,
+        suggestedMin: 0,
+      },
+      gridLines: {
+        color: COLOR_DARK_GRAY,
+      },
+    }],
+    xAxes: [{
+      ticks: {
+        fontColor: COLOR_WHITE,
+      },
+      gridLines: {
+        color: COLOR_DARK_GRAY,
+      },
+    }]
+  }
+}

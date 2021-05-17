@@ -83,10 +83,22 @@ function ChartsMenu(props) {
       </Button>
 
       <Button
-        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.MEAT_TOTAL)}
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.ENERGY_CHANGES)}
         className='pad-2 adjacent-mar-t-1'>
         Total Meat
       </Button>
+
+      {/*<Button
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.ENERGY_CHANGES)}
+        className='pad-2 adjacent-mar-t-1'>
+        Energy Over Time
+      </Button>
+
+      <Button
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.SCRAP_CHANGES)}
+        className='pad-2 adjacent-mar-t-1'>
+        Scrap Over Time
+      </Button>*/}
     </div>
   )
 }

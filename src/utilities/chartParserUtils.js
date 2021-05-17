@@ -180,3 +180,52 @@ export function createAttributeTimeline(entriesList, attribute, options = {}) {
     }]
   }
 }
+/**
+ * @param {Array<Entries>} entriesList
+ * @param {String} attribute
+ * @param {Object} [options]
+ * @return {Object}
+ */
+export function createMinChangeTimeline(entriesList, attribute, options = {}) {
+  const {isUsingTotals = false} = options;
+  const timelineList = [];
+
+  entriesList.forEach((entry) => {
+    const attributeValue = entry.attributes.you_robot[attribute];
+    const currentIdx = timelineList.length;
+
+    // the current is equal to previous + whatever change in current entry
+    const prevIdx = currentIdx - 1;
+    const prevValue = prevIdx > 0 ? timelineList[prevIdx] : 0;
+
+    // combine to track totals or individually?
+    const currValue = isUsingTotals ? (prevValue + attributeValue) : attributeValue;
+    console.log('currValue', currValue, attributeValue)
+
+    // a new (non free combat) adventure is a new item in the list
+    if (entry.isAdventure && !entry.isFreeCombat) {
+      timelineList.push(currValue);
+      return;
+    }
+
+  });
+
+  return {
+    _type: 'lineTotalMin',
+    _size: timelineList.length,
+    labels: timelineList.map((change, idx) => `${idx}`),
+    scales: {
+      min: 0,
+      max: 100,
+    },
+    datasets: [{
+      label: 'Total',
+      borderColor: '#b15c5c',
+      borderWidth: 0.8,
+      // borderColor: colorList,
+      pointBackgroundColor: '#b15c5c',
+      pointRadius: 0.5,
+      data: timelineList,
+    }]
+  }
+}

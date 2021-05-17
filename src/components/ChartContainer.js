@@ -6,6 +6,7 @@ import {
   verticalBarOptions,
   lineTotalOptions,
   lineOptions,
+  lineTotalMinOptions,
 } from 'constants/chartOptions';
 import combineClassnames from 'utilities/combineClassnames';
 
@@ -87,6 +88,9 @@ function getChartSettings(type) {
 
     case 'lineTotal':
       return lineTotalOptions;
+
+    case 'lineTotalMin':
+      return lineTotalMinOptions;
 
     case 'line':
       return lineOptions;
