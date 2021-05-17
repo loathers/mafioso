@@ -454,7 +454,10 @@ export class LogStore {
       ToastController.warn({content: 'That\'s a big log so this might take a while.'});
     }
 
-    const groupedLogText = logParserUtils.pregroupRawLog(logText);
+    // couldn't find a good way to make sure my regex always captured both \r\n when they existed
+    const sanityLog = logText.replace(/\r\n/g, '\n');
+
+    const groupedLogText = logParserUtils.pregroupRawLog(sanityLog);
     const cleanedLog = await logParserUtils.cleanRawLog(groupedLogText);
 
     // try to find out if there is a full ascension log,

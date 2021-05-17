@@ -58,5 +58,17 @@
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": "Collecting Energy",
     "showAdditionalDisplay": false
+  },
+  "ENTRY_TYPE.PATH.YOU_ROBOT.STATBOT_UPGRADE": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.STATBOT_UPGRADE",
+    "categories": [
+      "OPTIONS",
+      "PATH"
+    ],
+    "matcher": "REGEX.YOU_ROBOT.STATBOT_UPGRADE_TARGET",
+    "icon": "UROBOTicon",
+    "locationName_alt": "The Scrapheap",
+    "encounterName_alt": ["{1} upgrade with Statbot 5000", "REGEX.YOU_ROBOT.STATBOT_UPGRADE_TARGET"],
+    "showAdditionalDisplay": false
   }
 }

@@ -362,6 +362,9 @@ export const REGEX = {
     PRESPLIT_REASSMBLE: /(?<!(\r?\n))(?<!\S+.+1445.*)(\r?\n)(?=.*whichchoice=1445)/g,
     PRESPLIT_REASSMBLE_AFTER: /(?<=\S+.+1445.*)(\r?\n)(?!.*(1445|you acquire an item))(?=.)/g,
     REASSEMBLE_PART_TARGET: /((?<=^choice.*whichchoice=1445&show=).*(?=(\r?\n)took choice 1445)|(?<=^choice.*pwd.*show=)\w+(?=.*option))/gi,
+
+    PRESPLIT_STATBOT: /(?<!(\r?\n))(?<!\.*choice.+1447.*)(\r?\n)(?=.*(1447))/gm,
+    STATBOT_UPGRADE_TARGET: /(?<=took choice 1447.* upgrade ).*(?= by)/gmi,
   },
   QUEST: {
     VISIT_TOOT: /tutorial.*action=toot.*/i,
