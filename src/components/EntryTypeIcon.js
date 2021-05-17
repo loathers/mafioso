@@ -18,6 +18,7 @@ import {ReactComponent as ShopSVG} from 'images/shop.svg';
 import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
 import {ReactComponent as SpleenSVG} from 'images/pill.svg';
 import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
+import {ReactComponent as UROBOTicon} from 'images/UROBOT-icon.svg';
 
 /**
  * @param {String} str
@@ -59,6 +60,8 @@ function getComponentFromString(str) {
       return SpellsSVG;
     case 'SpleenSVG':
       return SpleenSVG;
+    case 'UROBOTicon':
+      return UROBOTicon;
     case 'UnknownSVG':
     default:
       return UnknownSVG;

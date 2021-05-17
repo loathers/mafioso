@@ -17,7 +17,7 @@
       "PATH"
     ],
     "matcher": "REGEX.YOU_ROBOT.CHRONOLITH",
-    "icon": "NoncombatSVG",
+    "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": "Activate the Chronolith"
   },
@@ -29,7 +29,7 @@
       "PATH"
     ],
     "matcher": "REGEX.YOU_ROBOT.SCAVENGE_SCRAP",
-    "icon": "NoncombatSVG",
+    "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": "Scavenge Scrap",
     "showAdditionalDisplay": false
@@ -41,7 +41,7 @@
       "PATH"
     ],
     "matcher": "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET",
-    "icon": "OptionsSVG",
+    "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": ["{1} reassembly", "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET"],
     "showAdditionalDisplay": false
