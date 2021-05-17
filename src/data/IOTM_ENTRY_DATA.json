@@ -45,5 +45,21 @@
     "matcher": "REGEX.POTTED_POWER_PLANT.USE_BATTERY",
     "icon": "ItemBagSVG",
     "locationName_alt": ["Use {1}", "REGEX.ITEMS.USE_ITEM_TARGET"]
+  },
+  "ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON": {
+    "type": "ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON",
+    "categories": [
+      "IOTM",
+      "USE_ITEM",
+      "OPTIONS"
+    ],
+    "matcher": "/tuning moon.*/i",
+    "icon": "OptionsSVG",
+    "locationName_alt": "Hewn Moon Rune Spoon Tune",
+    "encounterName_alt": [
+      "☪ {1}",
+      "/(?<=tuning moon to ).*/mi"
+    ],
+    "content_alt": null
   }
 }

@@ -4,12 +4,14 @@ import REGEX from 'constants/REGEXES';
 
 import ENTRY_DATA from 'data/ENTRY_DATA.json';
 import IOTM_ENTRY_DATA from 'data/IOTM_ENTRY_DATA.json';
+import LOCATION_ENTRY_DATA from 'data/LOCATION_ENTRY_DATA.json';
 
 import * as regexUtils from 'utilities/regexUtils';
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {
   ...IOTM_ENTRY_DATA,
+  ...LOCATION_ENTRY_DATA,
   ...ENTRY_DATA,
 };
 /** @type {Object<EntryData>} */

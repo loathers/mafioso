@@ -536,6 +536,11 @@ export const REGEX = {
   GUILD: {
     LEARN_SKILL_TARGET: /(?<=guild.php.*buyskill.*(\r\n|\n)you learned a new skill: ).*/gmi,
   },
+  LOCATION: {
+    CAKE_SHAPED_ARENA_LINE: /\[\d+\] cake-shaped arena(\r?\n)/gmi,
+    CAKE_SHAPED_ARENA_FAMILIAR: /(?<=\[\d+\] cake-shaped arena(\r?\n)familiar: .* the \d+ lb\. ).*/gmi,
+    CAKE_SHAPED_ARENA_CONTEST: /(?<=\[\d+\] cake-shaped arena(.*(\r?\n))+?contest: ).*/gmi,
+  },
   TRANSACTIONS: {
     ACQUIRED_SOMETHING: /.*acquire.*/gi, // this affects items and effects
     MEAT_CHANGED_LINE: /.*(gain|lose|spent).*meat.*/gmi,
@@ -600,7 +605,7 @@ export const REGEX = {
   },
   // -- misc
   PREREMOVE: {
-    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximize|maximizer|museum|upeffect|uneffect|outfit|custom outfit|unexpected error|keep your eyes open for|adjusted combat|.*is now accessible).*(\r?\n)/gmi,
+    ALWAYS_CATCHALL: /^(\*\*\*|awesomemenu|backoffice|diary|familiar lock|friars blessing|main|mall|peevpee|play|preference|put in display case|raffle|maximize|maximizer|museum|upeffect|uneffect|outfit|custom outfit|unexpected error|keep your eyes open for|adjusted combat|.*is now accessible|Unknown last adventure).*(\r?\n)/gmi,
     SINGLELINE_CATCHALL: /(?<=^(\r\n|\n))^(main|use|visiting|visit|Cast|choice|cobbsknob|concert|inspecting|eat|drink|chew|shop|shower|swimming pool|talking|telescope|tutorial).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     NO_FOLLOWUP_CATCHALL: /^(use|visit|maximizer|Cast|choice).*(?!(\r\n|\n).)(\r\n|\n)/gim,
     SINGLELINE_ADVENTURE: /(?<=^(\r\n|\n))^(\[\d+\]).*(?!(\r\n|\n).)(\r\n|\n)/gim,
