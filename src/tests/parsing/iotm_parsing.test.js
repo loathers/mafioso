@@ -285,3 +285,15 @@ test('iotm_parsing: Potted Power Plant: parses combining two batteries', async (
   const firstEntry = testStore.allEntries[0];
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES);
 });
+
+test('iotm_parsing: Potted Power Plant: parses untinkering two batteries', async () => {
+  const sampleText = "Visiting the Untinker\n"
+    + "untinker 1 battery (car)\n"
+    + "You acquire an item: battery (AAA)\n"
+    + "You acquire an item: battery (lantern)";
+
+  const testStore = await createTestStore(sampleText);
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER);
+});

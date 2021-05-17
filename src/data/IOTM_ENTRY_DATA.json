@@ -22,5 +22,17 @@
     "icon": "CraftSVG",
     "locationName_alt": "Combined Batteries",
     "encounterName_alt": "ENTRY.ACQUIRED_ITEM_NAME"
+  },
+  "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER": {
+    "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER",
+    "categories": [
+      "IOTM",
+      "CRAFTING",
+      "OPTIONS"
+    ],
+    "matcher": "REGEX.POTTED_POWER_PLANT.UNTINKER_BATTERIES",
+    "icon": "CraftSVG",
+    "locationName_alt": "Untinker Batteries",
+    "encounterName_alt": "REGEX.ITEMS.UNTINKER_TARGET"
   }
 }

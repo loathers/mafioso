@@ -9,8 +9,8 @@ import * as regexUtils from 'utilities/regexUtils';
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {
-  ...ENTRY_DATA,
   ...IOTM_ENTRY_DATA,
+  ...ENTRY_DATA,
 };
 /** @type {Object<EntryData>} */
 const dataCache = {};

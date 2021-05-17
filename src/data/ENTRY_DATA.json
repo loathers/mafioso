@@ -36,7 +36,7 @@
       "CRAFTING"
     ],
     "matcher": "REGEX.ITEMS.UNTINKER_LINE",
-    "icon": "CraftingSVG",
+    "icon": "CraftSVG",
     "locationName_alt": "Untinker",
     "encounterName_alt": "REGEX.ITEMS.UNTINKER_TARGET"
   }

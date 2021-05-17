@@ -235,6 +235,7 @@ export const REGEX = {
   POTTED_POWER_PLANT: {
     GET_BATTERY: /(?<=(?:use 1 potted power plant(\r?\n))?(took choice 1448.*(\r?\n))?(.*whichchoice=1448.*(\r?\n))you acquire an item: )battery .*/gmi,
     COMBINE_BATTERIES: /(?:combine \d+ )(battery .*)(?: \+ \d+ )(battery .*)(?=(?:\r?\n)you acquire .*)/gmi,
+    UNTINKER_BATTERIES: /^untinker \d+ battery \(.*/gmi,
   },
   REAGNIMATED_GNOME: {
     ADV_TRIGGERED_TEXT: /.*(scrubs the mildew out|bundles your recycling for you|teaches you how to power-nap|sharpens all your pencils|folds all your clean laundry|shows you how to shave a full minute|organizes your sock drawer|hauls all of your scrap lumber|does all that tedious campsite cleaning).*/gmi,
