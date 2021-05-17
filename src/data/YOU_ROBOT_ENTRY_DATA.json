@@ -81,5 +81,16 @@
     "matcher": "REGEX.YOU_ROBOT.ROBOT_BOSS",
     "icon": "CombatSVG",
     "showAdditionalDisplay": false
+  },
+  "ENTRY_TYPE.PATH.YOU_ROBOT.NAUTOMATIC_SORCERESS": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.NAUTOMATIC_SORCERESS",
+    "categories": [
+      "QUEST",
+      "COMBAT",
+      "PATH"
+    ],
+    "matcher": "REGEX.YOU_ROBOT.NAUTOMATIC_SORCERESS",
+    "icon": "CombatSVG",
+    "showAdditionalDisplay": false
   }
 }
