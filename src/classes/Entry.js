@@ -643,6 +643,13 @@ export default class Entry {
     return this.hasText(REGEX.RETROSPECS.FOUND_ITEM);
   }
   /** @type {Boolean} */
+  get isPottedPowerPlant() {
+    return this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY
+      || this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY
+      || this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES
+      || this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER;
+  }
+  /** @type {Boolean} */
   get isVoting() {
     return this.hasText(REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT)
       || this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH;

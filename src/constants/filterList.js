@@ -242,6 +242,14 @@ export const ATTRIBUTE_FILTERS = [
         checked: false,
         title: 'Entries where there were some Emotionally Chipped feelings going on.',
       },
+      {
+        label: 'Potted Power Plant',
+        attributeName: 'isPottedPowerPlant',
+        attributeValue: true,
+        isHidden: false,
+        checked: false,
+        title: 'Entries using the Potted Power Plant and it\'s batteries.',
+      },
     ]
   },
   {
