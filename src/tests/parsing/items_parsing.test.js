@@ -38,3 +38,14 @@ test('entry_parsing: items: parses "you acquire {name} ({amount})"', async () =>
   expect(firstEntry.attributes.acquiredItems[0].attributes.name).toBe("Doc Galaktik's Homeopathic Elixir");
   expect(firstEntry.attributes.acquiredItems[0].attributes.amount).toBe(10);
 });
+
+test('entry_parsing: untinker: detects that something is a untinker action', async () => {
+  const sampleText = "untinker 1 oyster basket\n"
+    + "You acquire an item: tisket\n"
+    + "You acquire an item: tasket";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.getEntryAt(0);
+
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.ITEMS.UNTINKER);
+});

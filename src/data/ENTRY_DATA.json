@@ -29,5 +29,15 @@
       "/(?<=Ascension #(.*(\\r?\\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i"
     ],
     "content_alt": null
+  },
+  "ENTRY_TYPE.ITEMS.UNTINKER": {
+    "type": "ENTRY_TYPE.ITEMS.UNTINKER",
+    "categories": [
+      "CRAFTING"
+    ],
+    "matcher": "REGEX.ITEMS.UNTINKER_LINE",
+    "icon": "CraftingSVG",
+    "locationName_alt": "Untinker",
+    "encounterName_alt": "REGEX.ITEMS.UNTINKER_TARGET"
   }
 }

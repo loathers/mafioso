@@ -488,7 +488,6 @@ export const REGEX = {
     ZAP_RESULT: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(|$))/mi,
 
     MAKE_SOMETHING_LINE: /(create|combine|craft|cook|mix|smith) .*\d+.*/gmi,
-    COMBINE_LINE: /combine.*\d.*/gmi,
     COOK_LINE: /cook.*\d.*/gmi,
     CRAFT_LINE: /craft.*\d.*/gmi,
     CREATE_LINE: /create.*\d.*/gmi,
@@ -497,8 +496,12 @@ export const REGEX = {
     TRADE_LINE: /(trade|trading).*\d.*/gmi,
     CRAFTING_USED_LINE: /crafting used .*(\r\n|\n)/gmi,
 
+    COMBINE_LINE: /combine.*\d.*/gmi,
     COMBINE_FIRST_ITEM: /(?<=combine \d+ ).*?(?= \+.*)/gmi,
     COMBINE_SECOND_ITEM: /(?<=combine \d+ .*? \+ \d+ ).*?(?= \+.*)/gmi,
+
+    UNTINKER_LINE: /^untinker .*/gmi,
+    UNTINKER_TARGET: /^untinker \d+ .*/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,
