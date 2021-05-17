@@ -159,7 +159,9 @@ export class LogStore {
       return this.sharedHashcode;
     }
 
-    if (this.sessionDate === undefined) return undefined;
+    if (this.sessionDate === undefined) {
+      return encode(this.allEntriesCount + this.dayCount + this.turnCount + '--' + this.fileName);
+    };
 
     return encode(this.fileName);
   }
@@ -197,7 +199,7 @@ export class LogStore {
   }
   /** @type {Boolean} */
   get isShareableLog() {
-    return this.sharedHashcode !== undefined;
+    return this.sharedHashcode !== undefined && this.hashcode !== undefined;
   }
   // -- log data
   /** @type {String} */
