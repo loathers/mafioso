@@ -31,6 +31,12 @@ export default class Entry {
     this.entryString = regexUtils.fixSpecialEntities(rawText);
 
     /** @type {Object} */
+    this.config = {
+      /** @type {Boolean} */
+      isYouRobot: false,
+    };
+
+    /** @type {Object} */
     this.attributes = {
       /** @type {String} */
       annotations: null,
@@ -110,6 +116,15 @@ export default class Entry {
       isEndedByUseTheForce: false,
       /** @type {Array<String>} */
       diabolicPizzaIngredients: [],
+
+      // -- special, path related
+      /** @type {Object} */
+      you_robot: {
+        /** @type {Number} */
+        energyChange: 0,
+        /** @type {Number} */
+        scrapChange: 0,
+      },
     }
 
     /** @type {Boolean} */
@@ -131,6 +146,11 @@ export default class Entry {
       locationName: this.entryData.locationName || parsedAttributes.locationName,
       encounterName: this.entryData.encounterName || parsedAttributes.encounterName,
     };
+
+    // parse for you robot data if necessary
+    if (this.config.isYouRobot) {
+      this.attributes.you_robot = entryParserUtils.parseYouRobotAttributes(this.entryString);
+    }
   }
   /** @type {EntryType} */
   get entryType() {

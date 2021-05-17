@@ -143,6 +143,24 @@ export function parseSpecialAttributes(entryString) {
   }
 }
 /**
+ * parsing You, Robot path attributes
+ *
+ * @param {String} entryString
+ * @return {Array<Entry>}
+ */
+export function parseYouRobotAttributes(entryString) {
+  const scrapGain = (entryString.match(REGEX.YOU_ROBOT.SCRAP_GAIN) || []).reduce((total, gain) => total + Number(gain), 0);
+  const scrapLose = (entryString.match(REGEX.YOU_ROBOT.SCRAP_LOSE) || []).reduce((total, loss) => total + Number(loss), 0);
+
+  const energyGain = (entryString.match(REGEX.YOU_ROBOT.ENERGY_GAIN) || []).reduce((total, gain) => total + Number(gain), 0);
+  const energyLose = (entryString.match(REGEX.YOU_ROBOT.ENERGY_LOSE) || []).reduce((total, loss) => total + Number(loss), 0);
+
+  return {
+    scrapChange: scrapGain - scrapLose,
+    energyChange: energyGain - energyLose,
+  }
+}
+/**
  * scrub the main text of data that will be
  *  displayed for things I haven't implemented
  *

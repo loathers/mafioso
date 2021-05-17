@@ -367,6 +367,11 @@ export const REGEX = {
     ED_THE_UNDYING_BOSS: /^Encounter: Ed the Undying/mi,
   },
   YOU_ROBOT: {
+    SCRAP_GAIN: /(?<=.*gain )\d+(?= scrap$)/gmi,
+    SCRAP_LOSE: /(?<=.*lose )\d+(?= scrap$)/gmi,
+
+    ENERGY_GAIN: /(?<=.*gain )\d+(?= energy$)/gmi,
+    ENERGY_LOSE: /(?<=.*lose )\d+(?= energy$)/gmi,
     CHRONOLITH: /(?<=^activating the chronolith(\r?\n)You gain )\d+/gmi,
   },
   // -- common
