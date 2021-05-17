@@ -275,6 +275,17 @@ test('iotm_parsing: Potted Power Plant: parses acquiring a battery', async () =>
   expect(firstEntry.attributes.acquiredItems[0].attributes.amount).toBe(1);
 });
 
+test('iotm_parsing: Potted Power Plant: parses using a battery', async () => {
+  const sampleText = "use 1 battery (lantern)\n"
+    + "You acquire an effect: Lantern-Charged (30)\n"
+    + "You gain 70 Mana Points";
+
+  const testStore = await createTestStore(sampleText);
+
+  const firstEntry = testStore.allEntries[0];
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY);
+});
+
 test('iotm_parsing: Potted Power Plant: parses combining two batteries', async () => {
   const sampleText = "Combine 1 battery (D) + 1 battery (AA)\n"
     + "You acquire an item: battery (lantern)\n"

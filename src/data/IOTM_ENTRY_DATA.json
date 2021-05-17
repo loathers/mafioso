@@ -34,5 +34,16 @@
     "icon": "CraftSVG",
     "locationName_alt": "Untinker Batteries",
     "encounterName_alt": "REGEX.ITEMS.UNTINKER_TARGET"
+  },
+  "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY": {
+    "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY",
+    "categories": [
+      "IOTM",
+      "USE_ITEM",
+      "OPTIONS"
+    ],
+    "matcher": "REGEX.POTTED_POWER_PLANT.USE_BATTERY",
+    "icon": "ItemBagSVG",
+    "locationName_alt": ["Use {1}", "REGEX.ITEMS.USE_ITEM_TARGET"]
   }
 }
