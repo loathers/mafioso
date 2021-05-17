@@ -79,8 +79,7 @@
       "PATH"
     ],
     "matcher": "REGEX.YOU_ROBOT.ROBOT_BOSS",
-    "icon": "CombatSVG",
-    "showAdditionalDisplay": false
+    "icon": "CombatSVG"
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.NAUTOMATIC_SORCERESS": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.NAUTOMATIC_SORCERESS",
@@ -90,7 +89,16 @@
       "PATH"
     ],
     "matcher": "REGEX.YOU_ROBOT.NAUTOMATIC_SORCERESS",
-    "icon": "CombatSVG",
-    "showAdditionalDisplay": false
+    "icon": "CombatSVG"
+  },
+  "ENTRY_TYPE.PATH.YOU_ROBOT.ROBO_BATTERY": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.ROBO_BATTERY",
+    "categories": [
+      "USE_ITEM",
+      "PATH"
+    ],
+    "matcher": "/use \\d+ robo-battery/gmi",
+    "icon": "ItemBagSVG",
+    "locationName_alt": "Use robo-battery"
   }
 }
