@@ -33,5 +33,17 @@
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": "Scavenge Scrap",
     "showAdditionalDisplay": false
+  },
+  "ENTRY_TYPE.PATH.YOU_ROBOT.REASSEMBLE": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.REASSEMBLE",
+    "categories": [
+      "OPTIONS",
+      "PATH"
+    ],
+    "matcher": "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET",
+    "icon": "OptionsSVG",
+    "locationName_alt": "The Scrapheap",
+    "encounterName_alt": ["{1} reassembly", "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET"],
+    "showAdditionalDisplay": false
   }
 }

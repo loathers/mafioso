@@ -276,6 +276,9 @@ export const REGEX = {
   SQUAMOUS_GIBBERED: {
     ADV_TRIGGERED_TEXT: /.*mutters dark secrets under his breath, and you feel time slow down.*/gmi,
   },
+  UNWRAPPED_SUPERHERO_CAPE: {
+    PRESPLIT_CHANGE_FIDDLING: /(?<!\S+.+143\d.*)(\r?\n)(?=.*143\d)/gm,
+  },
   VAMPYRIC_CLOAK: {
     SKILL_RESULT: /casts.*become a (wolf|cloud of mist|bat).*/gi,
   },
@@ -343,6 +346,22 @@ export const REGEX = {
   THE_SOURCE: {
     SOURCE_AGENT_ENCOUNTER: /A sunglasses-clad man in a flawless black suit stands before you/gi,
   },
+  YOU_ROBOT: {
+    SCRAP_GAIN: /(?<=.*gain )\d+(?= scrap$)/gmi,
+    SCRAP_LOSE: /(?<=.*lose )\d+(?= scrap$)/gmi,
+
+    ENERGY_GAIN: /(?<=.*gain )\d+(?= energy$)/gmi,
+    ENERGY_LOSE: /(?<=.*lose )\d+(?= energy$)/gmi,
+
+    SCAVENGE_SCRAP: /\[\d+\] scavenging scrap/gmi,
+
+    CHRONOLITH: /(?<=^activating the chronolith(\r?\n)You gain )\d+/gmi,
+
+    PREREMOVE_REASSMBLE: /^choice\.php.*1445(&part=\S+)*(&show=\w+)+$(?!(\r?\n)took choice 1445)/gmi,
+    PRESPLIT_REASSMBLE: /(?<!(\r?\n))(?<!\S+.+1445.*)(\r?\n)(?=.*whichchoice=1445)/g,
+    PRESPLIT_REASSMBLE_AFTER: /(?<=\S+.+1445.*)(\r?\n)(?!.*(1445|you acquire an item))(?=.)/g,
+    REASSEMBLE_PART_TARGET: /((?<=^choice.*whichchoice=1445&show=).*(?=(\r?\n)took choice 1445)|(?<=^choice.*pwd.*show=)\w+(?=.*option))/gi,
+  },
   QUEST: {
     VISIT_TOOT: /tutorial.*action=toot.*/i,
     OPEN_TOOT_LETTER: /use \d+ letter from king ralph.*/i,
@@ -365,17 +384,6 @@ export const REGEX = {
     MAKE_MCCLUSKY_FILE: /^use.*boring binder clip.*(\r\n|\n).*McClusky file \(complete\)/mi,
 
     ED_THE_UNDYING_BOSS: /^Encounter: Ed the Undying/mi,
-  },
-  YOU_ROBOT: {
-    SCRAP_GAIN: /(?<=.*gain )\d+(?= scrap$)/gmi,
-    SCRAP_LOSE: /(?<=.*lose )\d+(?= scrap$)/gmi,
-
-    ENERGY_GAIN: /(?<=.*gain )\d+(?= energy$)/gmi,
-    ENERGY_LOSE: /(?<=.*lose )\d+(?= energy$)/gmi,
-
-    SCAVENGE_SCRAP: /\[\d+\] scavenging scrap/gmi,
-
-    CHRONOLITH: /(?<=^activating the chronolith(\r?\n)You gain )\d+/gmi,
   },
   // -- common
   LINE: {
