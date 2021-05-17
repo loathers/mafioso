@@ -99,10 +99,14 @@ function LogVisualizerPage(props) {
 
       <MetaTags>
         <title>kolmafioso - visualizer</title>
+        <meta property="og:title" content="kolmafioso - visualizer" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content={`Mafioso Log for ${logStore.characterName} the ${logStore.className} in ${logStore.difficultyName} ${logStore.pathName}`} />
         <meta
           name="description"
           content={`Mafioso Log for ${logStore.characterName} the ${logStore.className} in ${logStore.difficultyName} ${logStore.pathName}`}
         />
+        <meta name='theme-color' content='#14181c'/>
       </MetaTags>
 
       <LogVisualizerMenu
