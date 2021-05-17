@@ -234,6 +234,7 @@ export const REGEX = {
   },
   POTTED_POWER_PLANT: {
     GET_BATTERY: /(?<=(?:use 1 potted power plant(\r?\n))?(took choice 1448.*(\r?\n))?(.*whichchoice=1448.*(\r?\n))you acquire an item: )battery .*/gmi,
+    COMBINE_BATTERIES: /(?:combine \d+ )(battery .*)(?: \+ \d+ )(battery .*)(?=(?:\r?\n)you acquire .*)/gmi,
   },
   REAGNIMATED_GNOME: {
     ADV_TRIGGERED_TEXT: /.*(scrubs the mildew out|bundles your recycling for you|teaches you how to power-nap|sharpens all your pencils|folds all your clean laundry|shows you how to shave a full minute|organizes your sock drawer|hauls all of your scrap lumber|does all that tedious campsite cleaning).*/gmi,
@@ -470,8 +471,8 @@ export const REGEX = {
   },
   ITEMS: {
     ACQUIRED_ITEM_LINE: /(?!.*(effect|intrinsic).*)You acquire (\d+|an item:|).*( \(\d+\)|)/gmi,
-    ACQUIRED_AN_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(\d+|$))/mi,
-    ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire ).*?(?=( \(\d+|$))/mi,
+    ACQUIRED_AN_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire (\d+ |an item: )).*?(?=( \(\d+\)|$))/mi,
+    ACQUIRED_ITEM_NAME: /(?!.*(effect|intrinsic).*)(?<=You acquire ).*?(?=( \(\d+\)|$))/mi,
     ACQUIRED_N_ITEM: /(?!.*(effect|intrinsic).*)(?<=(You acquire ))\d+(?= \w*)/mi,
     ACQUIRED_ITEM_N: /(?!.*(effect|intrinsic).*)(?<=(You acquire.*\())\d+(?=\))/mi,
 
@@ -495,6 +496,9 @@ export const REGEX = {
     SMITH_LINE: /smith.*\d.*/gmi,
     TRADE_LINE: /(trade|trading).*\d.*/gmi,
     CRAFTING_USED_LINE: /crafting used .*(\r\n|\n)/gmi,
+
+    COMBINE_FIRST_ITEM: /(?<=combine \d+ ).*?(?= \+.*)/gmi,
+    COMBINE_SECOND_ITEM: /(?<=combine \d+ .*? \+ \d+ ).*?(?= \+.*)/gmi,
 
     CONSUMPTION_LINE: /^(eat|drink|chew) \d+ .*/gi,
     CONSUMPTION_AMOUNT: /(?<=^(eat|drink|chew)\s)\d+(?=\s)/gi,

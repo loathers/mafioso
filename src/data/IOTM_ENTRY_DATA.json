@@ -6,9 +6,21 @@
       "USE_ITEM",
       "OPTIONS"
     ],
-    "matcher": "/(?<=(?:use 1 potted power plant(\r?\n))?(took choice 1448.*(\r?\n))?(.*whichchoice=1448.*(\r?\n))you acquire an item: )battery .*/gmi",
+    "matcher": "REGEX.POTTED_POWER_PLANT.GET_BATTERY",
     "icon": "OptionsSVG",
     "locationName_alt": "Potted Power Plant",
-    "encounterName_alt": ["harvesting: {1}", "/(?<=(?:use 1 potted power plant(\r?\n))?(took choice 1448.*(\r?\n))?(.*whichchoice=1448.*(\r?\n))you acquire an item: )battery .*/gmi"]
+    "encounterName_alt": ["harvesting: {1}", "REGEX.POTTED_POWER_PLANT.GET_BATTERY"]
+  },
+  "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES": {
+    "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES",
+    "categories": [
+      "IOTM",
+      "CRAFTING",
+      "OPTIONS"
+    ],
+    "matcher": "REGEX.POTTED_POWER_PLANT.COMBINE_BATTERIES",
+    "icon": "CraftSVG",
+    "locationName_alt": "Combined Batteries",
+    "encounterName_alt": "ENTRY.ACQUIRED_ITEM_NAME"
   }
 }
