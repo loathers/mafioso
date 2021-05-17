@@ -1,33 +1,13 @@
 {
-  "ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON": {
-    "type": "ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON",
+  "ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH",
     "categories": [
-      "IOTM",
-      "USE_ITEM",
-      "OPTIONS"
+      "OPTIONS",
+      "PATH"
     ],
-    "matcher": "/tuning moon.*/i",
-    "icon": "OptionsSVG",
-    "locationName_alt": "Hewn Moon Rune Spoon Tune",
-    "encounterName_alt": [
-      "☪ {1}",
-      "/(?<=tuning moon to ).*/mi"
-    ],
-    "content_alt": null
-  },
-  "ENTRY_TYPE.SNAPSHOT.MOON_SIGN": {
-    "type": "ENTRY_TYPE.SNAPSHOT.MOON_SIGN",
-    "categories": [
-      "SNAPSHOT_INFO",
-      "ASCENSION_INFO"
-    ],
-    "matcher": "/(?<=Ascension #(.*(\r\n|\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i",
-    "icon": "AscendSVG",
-    "locationName_alt": "Moon Sign",
-    "encounterName_alt": [
-      "☪ {1}",
-      "/(?<=Ascension #(.*(\r\n|\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i"
-    ],
-    "content_alt": null
+    "matcher": "REGEX.YOU_ROBOT.CHRONOLITH",
+    "icon": "NoncombatSVG",
+    "locationName_alt": "The Scrapheap",
+    "encounterName_alt": "Chronolith"
   }
 }

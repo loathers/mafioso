@@ -6,10 +6,13 @@ import ENTRY_DATA from 'data/ENTRY_DATA.json';
 import IOTM_ENTRY_DATA from 'data/IOTM_ENTRY_DATA.json';
 import LOCATION_ENTRY_DATA from 'data/LOCATION_ENTRY_DATA.json';
 
+import YOU_ROBOT_ENTRY_DATA from 'data/YOU_ROBOT_ENTRY_DATA.json';
+
 import * as regexUtils from 'utilities/regexUtils';
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {
+  ...YOU_ROBOT_ENTRY_DATA,
   ...IOTM_ENTRY_DATA,
   ...LOCATION_ENTRY_DATA,
   ...ENTRY_DATA,
@@ -21,6 +24,10 @@ const dataCacheKeys = Object.keys(rawEntryData);
 // start with building cache
 buildCache();
 
+/**
+ * @param {String} entryString
+ * @returns {Entry}
+ */
 export function matchEntryData(entryString) {
   const foundEntryType = dataCacheKeys.find((entryTypeKey) => {
     const data = dataCache[entryTypeKey];

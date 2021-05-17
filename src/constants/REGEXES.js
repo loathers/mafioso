@@ -366,6 +366,9 @@ export const REGEX = {
 
     ED_THE_UNDYING_BOSS: /^Encounter: Ed the Undying/mi,
   },
+  YOU_ROBOT: {
+    CHRONOLITH: /(?<=^activating the chronolith(\r?\n)You gain )\d+/gmi,
+  },
   // -- common
   LINE: {
     FIRST_LINE: /^.*(\r\n|\n)/,
