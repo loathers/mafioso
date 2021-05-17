@@ -749,6 +749,10 @@ export default class Entry {
       return fallback;
     }
 
+    if (matcher === 'ENTRY.ACQUIRED_ITEM_NAME') {
+      return this.attributes.acquiredItems[0].attributes.name;
+    }
+
     // just use the string
     if (typeof matcher === 'string') {
       return matcher;

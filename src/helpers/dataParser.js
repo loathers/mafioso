@@ -25,8 +25,10 @@ export function matchEntryData(entryString) {
     const {matcher} = data;
     if (matcher instanceof RegExp) {
       return regexUtils.hasString(entryString, matcher);
+
     } else if (Array.isArray(matcher)) {
       return matcher.some((matchRegex) => regexUtils.hasString(entryString, matchRegex))
+
     } else {
       return undefined;
     }
@@ -89,6 +91,7 @@ function convertStringToRegex(input) {
     return new RegExp(inputParts[1], inputParts[2]);
   }
 
+  // check if we're using a REGEX path
   const pathParts = input.split('.');
   if (pathParts[0] === 'REGEX') {
     return convertPathToRegex(input);
@@ -97,7 +100,6 @@ function convertStringToRegex(input) {
   // otherwise leaving string alone
   return input;
 }
-
 /**
  * @param {String} input
  * @returns {RegExp|Array<RegExp>}
