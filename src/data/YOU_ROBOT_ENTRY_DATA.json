@@ -70,5 +70,16 @@
     "locationName_alt": "The Scrapheap",
     "encounterName_alt": ["{1} upgrade with Statbot 5000", "REGEX.YOU_ROBOT.STATBOT_UPGRADE_TARGET"],
     "showAdditionalDisplay": false
+  },
+  "ENTRY_TYPE.PATH.YOU_ROBOT.ROBOT_BOSS": {
+    "type": "ENTRY_TYPE.PATH.YOU_ROBOT.ROBOT_BOSS",
+    "categories": [
+      "QUEST",
+      "COMBAT",
+      "PATH"
+    ],
+    "matcher": "REGEX.YOU_ROBOT.ROBOT_BOSS",
+    "icon": "CombatSVG",
+    "showAdditionalDisplay": false
   }
 }

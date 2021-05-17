@@ -365,6 +365,8 @@ export const REGEX = {
 
     PRESPLIT_STATBOT: /(?<!(\r?\n))(?<!\.*choice.+1447.*)(\r?\n)(?=.*(1447))/gm,
     STATBOT_UPGRADE_TARGET: /(?<=took choice 1447.* upgrade ).*(?= by)/gmi,
+
+    ROBOT_BOSS: /Encounter: (the)? (boss bot|Gobot King|Robonerdagon|Groarbot|Tobias J. Saibot|Lord Cyberraven|Protector S. P. E. C. T. R. E|The Android|The Artificial Wisniewski)/gmi,
   },
   QUEST: {
     VISIT_TOOT: /tutorial.*action=toot.*/i,
