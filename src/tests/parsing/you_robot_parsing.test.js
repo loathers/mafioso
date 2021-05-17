@@ -23,6 +23,17 @@ test('parsing: you, robot: parses activating the chronolith', async () => {
   expect(firstEntry.entryType).toBe(ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH);
 });
 
+test('parsing: you, robot: parses scavenge scrap', async () => {
+  const sampleText = "[1] Scavenging scrap\n"
+    + "You gain 38 scrap\n"
+    + "You gain 50 hit points";
+
+  const testStore = await createTestStore(sampleText);
+  const firstEntry = testStore.allEntries[0];
+
+  expect(firstEntry.entryType).toBe(ENTRY_TYPE.PATH.YOU_ROBOT.SCAVENGE_SCRAP);
+});
+
 test('entryParserUtils.parseYouRobotAttributes(): parses changes in gaining and losing scrap', () => {
   const sampleText = "After Battle: You gain 1 scrap\n"
     + "After Battle: You gain 1 scrap\n"

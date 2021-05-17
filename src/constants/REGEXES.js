@@ -372,6 +372,9 @@ export const REGEX = {
 
     ENERGY_GAIN: /(?<=.*gain )\d+(?= energy$)/gmi,
     ENERGY_LOSE: /(?<=.*lose )\d+(?= energy$)/gmi,
+
+    SCAVENGE_SCRAP: /\[\d+\] scavenging scrap/gmi,
+
     CHRONOLITH: /(?<=^activating the chronolith(\r?\n)You gain )\d+/gmi,
   },
   // -- common
