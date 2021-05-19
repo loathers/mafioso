@@ -83,7 +83,7 @@ function ChartsMenu(props) {
       </Button>
 
       <Button
-        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.ENERGY_CHANGES)}
+        onClick={() => chartStore.onSwitchCurrentChart(CHART_TYPES.MEAT_TOTAL)}
         className='pad-2 adjacent-mar-t-1'>
         Total Meat
       </Button>
