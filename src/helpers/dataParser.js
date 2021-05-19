@@ -6,12 +6,14 @@ import ENTRY_DATA from 'data/ENTRY_DATA.json';
 import IOTM_ENTRY_DATA from 'data/IOTM_ENTRY_DATA.json';
 import LOCATION_ENTRY_DATA from 'data/LOCATION_ENTRY_DATA.json';
 
+import ACTUALLY_ED_THE_UNDYING_ENTRY_DATA from 'data/ACTUALLY_ED_THE_UNDYING_ENTRY_DATA.json';
 import YOU_ROBOT_ENTRY_DATA from 'data/YOU_ROBOT_ENTRY_DATA.json';
 
 import * as regexUtils from 'utilities/regexUtils';
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {
+  ...ACTUALLY_ED_THE_UNDYING_ENTRY_DATA,
   ...YOU_ROBOT_ENTRY_DATA,
   ...IOTM_ENTRY_DATA,
   ...LOCATION_ENTRY_DATA,

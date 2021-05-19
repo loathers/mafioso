@@ -327,6 +327,9 @@ export const REGEX = {
     SYNTHESIZE_CANDY_B: /(?<=synthesize \d .*, )(.*)/gmi,
   },
   // -- paths
+  ACTUALLY_ED_THE_UNDYING: {
+    FOUND_MACGUFFIN: /^encounter: you found it.*(\r?\n)(you acquire an item: Holy MacGuffin)/mi,
+  },
   COMMUNITY_SERVICE: {
     CHOICE_LINE: /^Took choice 1089.*/gmi,
     CHOICE_RESULT: /(?<=^took choice 1089\/\d+: ).*(?= \(\d+ adventures.*)/gmi,
