@@ -19,6 +19,7 @@ export const REGEX = {
     REGULAR_COMPLETE: /Beginning New Ascension.*?(freeing king ralph|freeing the king).*?/is,
     THWAITGOLD_COMPLETE: /(Beginning New Ascension|welcome to valhalla).*?You acquire an item: Thwaitgold.*?/is,
     SCOTCH_LOG_ASCENSION: /(%%%%%%%%% START OF DAY #1).*?(freeing king ralph|freeing the king|FREEING THE DING DANG KING).*?/is,
+    FOUND_MACGUFFIN_ASCENSION: /(Beginning New Ascension|welcome to valhalla|%%%%%%%%% START OF DAY #1).*?(you acquire an item: Holy MacGuffin)/is,
 
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,

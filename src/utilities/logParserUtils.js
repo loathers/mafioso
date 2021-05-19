@@ -76,6 +76,11 @@ export function findAscensionLog(rawText) {
   const firstDate = logDateUtils.findFirstDate(rawText);
   const firstDateText = firstDate ? `Start Date: ${firstDate}\n\n` : '';
 
+  const macguffinAscension = rawText.match(REGEX.ASCENSION.FOUND_MACGUFFIN_ASCENSION);
+  if (macguffinAscension) {
+    return firstDateText + macguffinAscension[0];
+  }
+
   const fromValhallaToFreeKing = rawText.match(REGEX.ASCENSION.VALHALLA_COMPLETE);
   if (fromValhallaToFreeKing) {
     return firstDateText + fromValhallaToFreeKing[0];
