@@ -19,7 +19,7 @@ export const REGEX = {
     REGULAR_COMPLETE: /Beginning New Ascension.*?(freeing king ralph|freeing the king).*?/is,
     THWAITGOLD_COMPLETE: /(Beginning New Ascension|welcome to valhalla).*?You acquire an item: Thwaitgold.*?/is,
     SCOTCH_LOG_ASCENSION: /(%%%%%%%%% START OF DAY #1).*?(freeing king ralph|freeing the king|FREEING THE DING DANG KING).*?/is,
-    FOUND_MACGUFFIN_ASCENSION: /(Beginning New Ascension|welcome to valhalla|%%%%%%%%% START OF DAY #1).*?(you acquire an item: Holy MacGuffin)/is,
+    FOUND_MACGUFFIN_ASCENSION: /(Beginning New Ascension|welcome to valhalla|%%%%%%%%% START OF DAY #1).*?(Encounter: Returning the MacGuffin).*?now walking on the.*?road/is,
 
     VALHALLA_TEXT: /welcome to valhalla/im,
     VALHALLA_GROUP: /^welcome to valhalla.*?ascend as.*?(\r\n|\n)/gmis,
@@ -329,6 +329,7 @@ export const REGEX = {
   // -- paths
   ACTUALLY_ED_THE_UNDYING: {
     FOUND_MACGUFFIN: /^encounter: you found it.*(\r?\n)(you acquire an item: Holy MacGuffin)/mi,
+    RETURN_MACGUFFIN: /^Encounter: Returning the MacGuffin.*(\r?\n)took choice 1054\/1/mi,
   },
   COMMUNITY_SERVICE: {
     CHOICE_LINE: /^Took choice 1089.*/gmi,

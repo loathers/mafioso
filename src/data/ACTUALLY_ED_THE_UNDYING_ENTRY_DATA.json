@@ -7,5 +7,15 @@
     ],
     "matcher": "REGEX.ACTUALLY_ED_THE_UNDYING.FOUND_MACGUFFIN",
     "icon": "AscendSVG"
+  },
+  "ENTRY_TYPE.PATH.ACTUALLY_ED_THE_UNDYING.RETURN_MACGUFFIN": {
+    "type": "ENTRY_TYPE.PATH.ACTUALLY_ED_THE_UNDYING.RETURN_MACGUFFIN",
+    "categories": [
+      "ASCENSION_INFO",
+      "PATH"
+    ],
+    "locationName_alt": "Your Tomb",
+    "matcher": "REGEX.ACTUALLY_ED_THE_UNDYING.RETURN_MACGUFFIN",
+    "icon": "AscendSVG"
   }
 }
