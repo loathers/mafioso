@@ -1,21 +1,25 @@
-import {observable} from 'mobx';
-import {encode} from 'base-64';
+import { observable } from "mobx";
+import { encode } from "base-64";
 
-import Batcher from '../classes/Batcher';
+import Batcher from "../classes/Batcher";
 
-import {FILTER_DELAY, PAGINATE_DELAY, LARGE_TEXT_COUNT} from '../constants/DEFAULTS';
-import {DEFAULT_CATEGORIES_VISIBLE} from '../constants/filterList';
+import {
+  FILTER_DELAY,
+  PAGINATE_DELAY,
+  LARGE_TEXT_COUNT,
+} from "../constants/DEFAULTS";
+import { DEFAULT_CATEGORIES_VISIBLE } from "../constants/filterList";
 
-import * as logStoreHelper from '../helpers/logStoreHelper';
+import * as logStoreHelper from "../helpers/logStoreHelper";
 
-import chartStore from '../store/chartStore';
+import chartStore from "../store/chartStore";
 
-import ToastController from '../sections/ToastController';
+import ToastController from "../sections/ToastController";
 
-import * as fileParserUtils from '../utilities/fileParserUtils';
+import * as fileParserUtils from "../utilities/fileParserUtils";
 // import * as logDateUtils from '../utilities/logDateUtils';
-import * as logParserUtils from '../utilities/logParserUtils';
-import * as regexUtils from '../utilities/regexUtils';
+import * as logParserUtils from "../utilities/logParserUtils";
+import * as regexUtils from "../utilities/regexUtils";
 
 /**
  * state and handler of the log data
@@ -52,7 +56,7 @@ export class LogStore {
       voterMonsters: [],
       /** @type {Array<String>} */
       cargoPockets: [],
-    }
+    };
 
     /**
      * literally all the entries
@@ -72,7 +76,7 @@ export class LogStore {
     /** @type {Object} */
     this.displayOptions = observable({
       /** @type {Number|'all'} */
-      dayNumFilter: 'all',
+      dayNumFilter: "all",
       /** @type {Number} */
       pageNum: 0,
       /** @type {Number} */
@@ -114,7 +118,7 @@ export class LogStore {
     };
 
     this.displayOptions = observable({
-      dayNumFilter: 'all',
+      dayNumFilter: "all",
       pageNum: 0,
       entriesPerPage: 110,
       categoriesVisible: this.displayOptions.categoriesVisible.slice(),
@@ -138,17 +142,18 @@ export class LogStore {
 
       // try to extrapolate season date if not available
       if (!this.hasStandardSeason && this.srcFiles.length > 0) {
-        const sessionToDate = fileParserUtils.getDateFromSessionFile(this.srcFiles[0]);
+        const sessionToDate = fileParserUtils.getDateFromSessionFile(
+          this.srcFiles[0],
+        );
         if (sessionToDate) {
-          this.ascensionAttributes.standardSeason = `${sessionToDate.getMonth()}-${sessionToDate.getFullYear()}`
+          this.ascensionAttributes.standardSeason = `${sessionToDate.getMonth()}-${sessionToDate.getFullYear()}`;
         }
       }
-
     } else {
       this.ascensionAttributes = {
         ...this.ascensionAttributes,
         ...logParserUtils.parseDailyAttributes(this.rawText),
-      }
+      };
     }
 
     return this.ascensionAttributes;
@@ -160,7 +165,13 @@ export class LogStore {
     }
 
     if (this.sessionDate === undefined) {
-      return encode(this.allEntriesCount + this.dayCount + this.turnCount + '--' + this.fileName);
+      return encode(
+        this.allEntriesCount +
+          this.dayCount +
+          this.turnCount +
+          "--" +
+          this.fileName,
+      );
     }
 
     return encode(this.fileName);
@@ -179,7 +190,9 @@ export class LogStore {
   }
   /** @type {Boolean} */
   get isLoading() {
-    return this.isParsing.get() || this.isFetching.get() || this.isLazyLoading.get();
+    return (
+      this.isParsing.get() || this.isFetching.get() || this.isLazyLoading.get()
+    );
   }
   /** @type {Boolean} */
   get canFetch() {
@@ -205,10 +218,10 @@ export class LogStore {
   /** @type {String} */
   get fileName() {
     if (!this.hasCharacterName) {
-      return 'unknown_mafioso_file.txt';
+      return "unknown_mafioso_file.txt";
     }
 
-    const characterLabel = this.characterName.replace(' ', '_');
+    const characterLabel = this.characterName.replace(" ", "_");
 
     if (this.isAscensionLog && this.hasSessionDate) {
       return `${characterLabel}_${this.pathLabel}_${this.sessionDate}_mafioso.txt`;
@@ -219,10 +232,10 @@ export class LogStore {
     }
 
     if (this.hasSessionDate) {
-      return `${characterLabel}_${this.sessionDate}_mafioso.txt`
+      return `${characterLabel}_${this.sessionDate}_mafioso.txt`;
     }
 
-    return `${characterLabel}_mafioso.txt`
+    return `${characterLabel}_mafioso.txt`;
   }
   /** @type {String} */
   get sessionDate() {
@@ -238,9 +251,11 @@ export class LogStore {
   }
   /** @type {Boolean} */
   get isAscensionLog() {
-    return this.difficultyName !== undefined
-      && this.pathName !== undefined
-      && this.dayCount >= 1;
+    return (
+      this.difficultyName !== undefined &&
+      this.pathName !== undefined &&
+      this.dayCount >= 1
+    );
   }
   /** @type {Boolean} */
   get hasRawText() {
@@ -269,7 +284,9 @@ export class LogStore {
   // -- ascension attributes
   /** @type {String} */
   get characterName() {
-    const nameFromFile = fileParserUtils.getNameFromSessionFile(logStore.srcFiles[0]);
+    const nameFromFile = fileParserUtils.getNameFromSessionFile(
+      logStore.srcFiles[0],
+    );
     return this.ascensionAttributes.characterName || nameFromFile;
   }
   /** @type {String} */
@@ -284,7 +301,7 @@ export class LogStore {
   get turnCount() {
     const checkEntries = this.allEntries.slice();
     let poppedEntry = checkEntries.pop();
-    while (typeof poppedEntry.turnNum !== 'number' && checkEntries.length > 0) {
+    while (typeof poppedEntry.turnNum !== "number" && checkEntries.length > 0) {
       poppedEntry = checkEntries.pop();
     }
 
@@ -310,13 +327,13 @@ export class LogStore {
   get seasonMonth() {
     if (!this.hasStandardSeason) return undefined;
 
-    return this.standardSeason.split('-')[0];
+    return this.standardSeason.split("-")[0];
   }
   /** @type {String} */
   get seasonYear() {
     if (!this.hasStandardSeason) return undefined;
 
-    return this.standardSeason.split('-')[1];
+    return this.standardSeason.split("-")[1];
   }
   /** @type {Boolean} */
   get hasAscensionNum() {
@@ -328,14 +345,16 @@ export class LogStore {
   }
   /** @type {String} */
   get hasStandardSeason() {
-    return this.standardSeason !== null
-      && this.standardSeason !== undefined
-      && this.standardSeason !== 'Unrestricted';
+    return (
+      this.standardSeason !== null &&
+      this.standardSeason !== undefined &&
+      this.standardSeason !== "Unrestricted"
+    );
   }
   // -- display options
   /** @type {Number} */
   get isUsingDayFilter() {
-    return this.displayOptions.dayNumFilter !== 'all';
+    return this.displayOptions.dayNumFilter !== "all";
   }
   /** @type {Number} */
   get currentDayNum() {
@@ -366,15 +385,16 @@ export class LogStore {
    *
    */
   onUploadDone() {
-    let toastMessage = '';
+    let toastMessage = "";
 
     if (this.hasAscensionNum) {
       toastMessage = `Ascension #${this.ascensionNum}!\nAnother one for the books.`;
     } else {
-      toastMessage = 'Ey capo, we didn\'t find an Ascension Log but managed a regular session log.';
+      toastMessage =
+        "Ey capo, we didn't find an Ascension Log but managed a regular session log.";
     }
 
-    ToastController.success({title: 'Success!', content: toastMessage});
+    ToastController.success({ title: "Success!", content: toastMessage });
   }
   /**
    * @param {FileList} files
@@ -382,7 +402,7 @@ export class LogStore {
   async handleUpload(files) {
     try {
       if (files.length > 10) {
-        throw new Error('That is too many files.');
+        throw new Error("That is too many files.");
       }
 
       // console.log(`%c☌ Checking ${files.length} files...`, 'color: #6464ff');
@@ -395,24 +415,25 @@ export class LogStore {
       this.srcFiles = sortedFiles;
 
       // get text from all files
-      this.srcRawTexts = await Promise.all(sortedFiles.map(fileParserUtils.readFile));
+      this.srcRawTexts = await Promise.all(
+        sortedFiles.map(fileParserUtils.readFile),
+      );
       if (this.srcRawTexts.length <= 0) {
         this.isParsing.set(false);
-        throw new Error('Some of those files may not be valid.');
+        throw new Error("Some of those files may not be valid.");
       }
 
       // combine all the text from the files and clean it up
-      const allText = this.srcRawTexts.join('\n\n');
+      const allText = this.srcRawTexts.join("\n\n");
       await this.prepareLog(allText);
 
       // raw data gotten, now parse it to create individual entries
       await this.parse();
 
       this.onUploadDone();
-
     } catch (err) {
       console.error(err);
-      ToastController.error({title: 'Upload Failed', content: err.message});
+      ToastController.error({ title: "Upload Failed", content: err.message });
       this.isParsing.set(false);
     }
   }
@@ -438,9 +459,8 @@ export class LogStore {
       await this.parse();
 
       this.isParsing.set(false);
-
     } catch (err) {
-      ToastController.error({title: 'Import Failed', content: err.message});
+      ToastController.error({ title: "Import Failed", content: err.message });
       this.isParsing.set(false);
     }
   }
@@ -451,11 +471,13 @@ export class LogStore {
    */
   async prepareLog(logText) {
     if (logText.length > LARGE_TEXT_COUNT) {
-      ToastController.warn({content: 'That\'s a big log so this might take a while.'});
+      ToastController.warn({
+        content: "That's a big log so this might take a while.",
+      });
     }
 
     // couldn't find a good way to make sure my regex always captured both \r\n when they existed
-    const sanityLog = logText.replace(/\r\n/g, '\n');
+    const sanityLog = logText.replace(/\r\n/g, "\n");
 
     const groupedLogText = logParserUtils.pregroupRawLog(sanityLog);
     const cleanedLog = await logParserUtils.cleanRawLog(groupedLogText);
@@ -465,8 +487,9 @@ export class LogStore {
     try {
       this.rawText = logParserUtils.findAscensionLog(cleanedLog);
       this.setAscensionAttributes();
-      ToastController.success({content: 'Preparing to parse Ascension log...'});
-
+      ToastController.success({
+        content: "Preparing to parse Ascension log...",
+      });
     } catch (err) {
       this.rawText = cleanedLog;
       this.ascensionAttributes = {
@@ -474,7 +497,9 @@ export class LogStore {
         ...logParserUtils.parseDailyAttributes(this.rawText),
       };
 
-      ToastController.warn({content: `Parsing as a regular session log.\n(${err.message})`});
+      ToastController.warn({
+        content: `Parsing as a regular session log.\n(${err.message})`,
+      });
       console.error(err.message);
     }
 
@@ -487,13 +512,13 @@ export class LogStore {
    */
   async parse() {
     if (!this.hasRawText) {
-      throw new Error('There is no log to parse.');
+      throw new Error("There is no log to parse.");
     }
 
     this.isParsing.set(true);
 
     const config = {
-      isYouRobot: this.pathName === 'You, Robot',
+      isYouRobot: this.pathName === "You, Robot",
     };
 
     const parsedData = await logParserUtils.parseLogTxt(this.rawText, config);
@@ -507,7 +532,7 @@ export class LogStore {
     this.validEntries.replace([]);
 
     const estimatedBatchSize = Math.round(Math.sqrt(newData.length));
-    this.logBatcher = new Batcher(newData, {batchSize: estimatedBatchSize});
+    this.logBatcher = new Batcher(newData, { batchSize: estimatedBatchSize });
 
     // console.log(`✔️ Finished! Created ${this.allEntries.length} entries.`);
     this.displayOptions.pageNum = 0;
@@ -536,17 +561,15 @@ export class LogStore {
       ...options,
     };
 
-    const {
-      pageNum,
-      entriesPerPage,
-    } = fullOptions;
+    const { pageNum, entriesPerPage } = fullOptions;
 
     this.isFetching.set(true);
 
     const validEntries = await this.fetchByFilter(fullOptions, false);
     this.validEntries.replace(validEntries);
 
-    const isFilteredBeyondRange = pageNum < 0 || pageNum > this.calculateLastPageIdx(entriesPerPage);
+    const isFilteredBeyondRange =
+      pageNum < 0 || pageNum > this.calculateLastPageIdx(entriesPerPage);
     if (isFilteredBeyondRange) {
       fullOptions.pageNum = 0;
     }
@@ -584,47 +607,55 @@ export class LogStore {
     } = options;
 
     // batch find entries that are in range and not hidden
-    const validEntries = await this.logBatcher.run((entriesGroup) => {
-      return entriesGroup.filter((entry) => {
-        // check day
-        if (dayNumFilter !== 'all') {
-          if (entry.dayNum !== (dayNumFilter + 1)) {
+    const validEntries = await this.logBatcher.run(
+      (entriesGroup) => {
+        return entriesGroup.filter((entry) => {
+          // check day
+          if (dayNumFilter !== "all") {
+            if (entry.dayNum !== dayNumFilter + 1) {
+              return false;
+            }
+          }
+
+          // check visibleEntries list
+          const isVisibleEntry = categoriesVisible.some((category) =>
+            entry.categories.includes(category),
+          );
+          if (!isVisibleEntry) {
             return false;
           }
-        }
 
-        // check visibleEntries list
-        const isVisibleEntry = categoriesVisible.some((category) => entry.categories.includes(category));
-        if (!isVisibleEntry) {
-          return false;
-        }
+          // check chosen attributes
+          const hasAllFilteredAttributes = !filteredAttributes.some(
+            ({ attributeName, attributeValue }) => {
+              const entryAttributeValue =
+                entry.attributes[attributeName] || entry[attributeName];
+              return entryAttributeValue !== attributeValue;
+            },
+          );
 
-        // check chosen attributes
-        const hasAllFilteredAttributes = !filteredAttributes.some(({attributeName, attributeValue}) => {
-          const entryAttributeValue = entry.attributes[attributeName] || entry[attributeName];
-          return entryAttributeValue !== attributeValue;
+          if (!hasAllFilteredAttributes) {
+            return false;
+          }
+
+          return true;
         });
-
-        if (!hasAllFilteredAttributes) {
-          return false;
-        }
-
-        return true;
-      });
-    }, {batchDelay: FILTER_DELAY});
+      },
+      { batchDelay: FILTER_DELAY },
+    );
 
     // filtering resulted in nothing
     if (validEntries.length <= 0) {
       console.log(`⌛ No results for filter.`);
       if (isFinal) {
-        console.warn('fetchByFilter.final is not handled.');
+        console.warn("fetchByFilter.final is not handled.");
       }
       return [];
     }
 
     // if marked as final, then go ahead and only filter to first page
     if (isFinal) {
-      await this.fetchByPage({pageNum: 0});
+      await this.fetchByPage({ pageNum: 0 });
     }
 
     // otherwise, here are all entries that are valid
@@ -650,8 +681,14 @@ export class LogStore {
     // delay for a bit so the loader can show up
     await new Promise((resolve) => setTimeout(resolve, PAGINATE_DELAY));
 
-    const startIdx = entriesPerPage === 'all' ? 0 : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
-    const endIdx = entriesPerPage === 'all' ? this.allEntriesCount : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
+    const startIdx =
+      entriesPerPage === "all"
+        ? 0
+        : Math.min(entriesPerPage * pageNum, this.allEntriesCount);
+    const endIdx =
+      entriesPerPage === "all"
+        ? this.allEntriesCount
+        : Math.min(startIdx + entriesPerPage, this.allEntriesCount);
     const pagedEntries = this.validEntries.slice(startIdx, endIdx);
 
     // done
@@ -721,10 +758,12 @@ export class LogStore {
     // const firstDateMatch = logDateUtils.findFirstDate(this.rawText);
     // const startDateText = firstDateMatch || 'Missing!';
     const mafiosoBlock = `<mafioso-start>
-      Standard: ${this.standardSeason || 'Unrestricted'}
+      Standard: ${this.standardSeason || "Unrestricted"}
     </mafioso-start>\n\n`;
 
-    const entriesText = this.allEntries.map((entry) => entry.export()).join('\n\n');
+    const entriesText = this.allEntries
+      .map((entry) => entry.export())
+      .join("\n\n");
     return mafiosoBlock + entriesText;
   }
   /**
@@ -769,14 +808,17 @@ export class LogStore {
       return this.allEntries[startIdx + 1];
     }
 
-    const checkEntries = this.allEntries.slice(startIdx + 1, this.allEntries.length);
+    const checkEntries = this.allEntries.slice(
+      startIdx + 1,
+      this.allEntries.length,
+    );
     return checkEntries.find((entry) => {
       const checkAttributeNames = Object.keys(attributesFilter);
       return !checkAttributeNames.some((attributeName) => {
         const entryAttributeValue = entry.findAttribute(attributeName);
         return entryAttributeValue !== attributesFilter[attributeName];
-      })
-    })
+      });
+    });
   }
   /**
    * @param {Number} dayNum

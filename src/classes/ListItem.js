@@ -2,16 +2,16 @@ export default class ListItem {
   /**
    * @param {Object} defaultAttributes
    */
-  constructor({name, amount}) {
+  constructor({ name, amount }) {
     /** @type {Number} */
     // this.listIdx = -1;
     /** @type {Object} */
     this.attributes = {
       /** @type {String} */
-      name: name || 'UNKNOWN',
+      name: name || "UNKNOWN",
       /** @type {Number} */
       amount: amount || 0,
-    }
+    };
   }
   /** @type {String} */
   get displayName() {

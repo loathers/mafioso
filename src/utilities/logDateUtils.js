@@ -1,4 +1,4 @@
-import REGEX from '../constants/REGEXES';
+import REGEX from "../constants/REGEXES";
 
 /**
  * @param {String} rawText

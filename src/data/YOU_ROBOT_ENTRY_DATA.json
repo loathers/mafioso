@@ -1,10 +1,7 @@
 {
   "ENTRY_TYPE.PATH.YOU_ROBOT.YOU_ARE_A_ROBOT": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.YOU_ARE_A_ROBOT",
-    "categories": [
-      "ASCENSION_INFO",
-      "PATH"
-    ],
+    "categories": ["ASCENSION_INFO", "PATH"],
     "matcher": "/^encounter: you, robot/i",
     "icon": "AscendSVG",
     "locationName_alt": "Welcome to the Kingdom",
@@ -12,10 +9,7 @@
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.CHRONOLITH",
-    "categories": [
-      "OPTIONS",
-      "PATH"
-    ],
+    "categories": ["OPTIONS", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.CHRONOLITH",
     "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
@@ -23,11 +17,7 @@
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.SCAVENGE_SCRAP": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.SCAVENGE_SCRAP",
-    "categories": [
-      "OPTIONS",
-      "NONCOMBAT",
-      "PATH"
-    ],
+    "categories": ["OPTIONS", "NONCOMBAT", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.SCAVENGE_SCRAP",
     "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
@@ -36,23 +26,19 @@
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.REASSEMBLE": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.REASSEMBLE",
-    "categories": [
-      "OPTIONS",
-      "PATH"
-    ],
+    "categories": ["OPTIONS", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET",
     "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
-    "encounterName_alt": ["{1} reassembly", "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET"],
+    "encounterName_alt": [
+      "{1} reassembly",
+      "REGEX.YOU_ROBOT.REASSEMBLE_PART_TARGET"
+    ],
     "showAdditionalDisplay": false
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.COLLECT_ENERGY": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.COLLECT_ENERGY",
-    "categories": [
-      "OPTIONS",
-      "NONCOMBAT",
-      "PATH"
-    ],
+    "categories": ["OPTIONS", "NONCOMBAT", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.COLLECT_ENERGY",
     "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
@@ -61,42 +47,31 @@
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.STATBOT_UPGRADE": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.STATBOT_UPGRADE",
-    "categories": [
-      "OPTIONS",
-      "PATH"
-    ],
+    "categories": ["OPTIONS", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.STATBOT_UPGRADE_TARGET",
     "icon": "UROBOTicon",
     "locationName_alt": "The Scrapheap",
-    "encounterName_alt": ["{1} upgrade with Statbot 5000", "REGEX.YOU_ROBOT.STATBOT_UPGRADE_TARGET"],
+    "encounterName_alt": [
+      "{1} upgrade with Statbot 5000",
+      "REGEX.YOU_ROBOT.STATBOT_UPGRADE_TARGET"
+    ],
     "showAdditionalDisplay": false
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.ROBOT_BOSS": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.ROBOT_BOSS",
-    "categories": [
-      "QUEST",
-      "COMBAT",
-      "PATH"
-    ],
+    "categories": ["QUEST", "COMBAT", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.ROBOT_BOSS",
     "icon": "CombatSVG"
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.NAUTOMATIC_SORCERESS": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.NAUTOMATIC_SORCERESS",
-    "categories": [
-      "QUEST",
-      "COMBAT",
-      "PATH"
-    ],
+    "categories": ["QUEST", "COMBAT", "PATH"],
     "matcher": "REGEX.YOU_ROBOT.NAUTOMATIC_SORCERESS",
     "icon": "CombatSVG"
   },
   "ENTRY_TYPE.PATH.YOU_ROBOT.ROBO_BATTERY": {
     "type": "ENTRY_TYPE.PATH.YOU_ROBOT.ROBO_BATTERY",
-    "categories": [
-      "USE_ITEM",
-      "PATH"
-    ],
+    "categories": ["USE_ITEM", "PATH"],
     "matcher": "/use \\d+ robo-battery/gmi",
     "icon": "ItemBagSVG",
     "locationName_alt": "Use robo-battery"

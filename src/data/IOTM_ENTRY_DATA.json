@@ -1,11 +1,7 @@
 {
   "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY": {
     "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY",
-    "categories": [
-      "IOTM",
-      "USE_ITEM",
-      "OPTIONS"
-    ],
+    "categories": ["IOTM", "USE_ITEM", "OPTIONS"],
     "matcher": "REGEX.POTTED_POWER_PLANT.GET_BATTERY",
     "icon": "OptionsSVG",
     "locationName_alt": "Potted Power Plant",
@@ -13,11 +9,7 @@
   },
   "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES": {
     "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES",
-    "categories": [
-      "IOTM",
-      "CRAFTING",
-      "OPTIONS"
-    ],
+    "categories": ["IOTM", "CRAFTING", "OPTIONS"],
     "matcher": "REGEX.POTTED_POWER_PLANT.COMBINE_BATTERIES",
     "icon": "CraftSVG",
     "locationName_alt": "Combined Batteries",
@@ -25,11 +17,7 @@
   },
   "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER": {
     "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER",
-    "categories": [
-      "IOTM",
-      "CRAFTING",
-      "OPTIONS"
-    ],
+    "categories": ["IOTM", "CRAFTING", "OPTIONS"],
     "matcher": "REGEX.POTTED_POWER_PLANT.UNTINKER_BATTERIES",
     "icon": "CraftSVG",
     "locationName_alt": "Untinker Batteries",
@@ -37,29 +25,18 @@
   },
   "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY": {
     "type": "ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY",
-    "categories": [
-      "IOTM",
-      "USE_ITEM",
-      "OPTIONS"
-    ],
+    "categories": ["IOTM", "USE_ITEM", "OPTIONS"],
     "matcher": "REGEX.POTTED_POWER_PLANT.USE_BATTERY",
     "icon": "ItemBagSVG",
     "locationName_alt": ["Use {1}", "REGEX.ITEMS.USE_ITEM_TARGET"]
   },
   "ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON": {
     "type": "ENTRY_TYPE.IOTM.HEWN_MOON_RUNE_SPOON",
-    "categories": [
-      "IOTM",
-      "USE_ITEM",
-      "OPTIONS"
-    ],
+    "categories": ["IOTM", "USE_ITEM", "OPTIONS"],
     "matcher": "/tuning moon.*/i",
     "icon": "OptionsSVG",
     "locationName_alt": "Hewn Moon Rune Spoon Tune",
-    "encounterName_alt": [
-      "☪ {1}",
-      "/(?<=tuning moon to ).*/mi"
-    ],
+    "encounterName_alt": ["☪ {1}", "/(?<=tuning moon to ).*/mi"],
     "content_alt": null
   }
 }

@@ -1,10 +1,7 @@
 {
   "ENTRY_TYPE.SNAPSHOT.MOON_SIGN": {
     "type": "ENTRY_TYPE.SNAPSHOT.MOON_SIGN",
-    "categories": [
-      "SNAPSHOT_INFO",
-      "ASCENSION_INFO"
-    ],
+    "categories": ["SNAPSHOT_INFO", "ASCENSION_INFO"],
     "matcher": "/(?<=Ascension #(.*(\\r?\\n)){2})(Mongoose|Wallaby|Vole|Platypus|Opossum|Marmot|Wombat|Blender|Packrat|Bad Moon)/i",
     "icon": "PathSVG",
     "locationName_alt": "Moon Sign",
@@ -16,9 +13,7 @@
   },
   "ENTRY_TYPE.ITEMS.UNTINKER": {
     "type": "ENTRY_TYPE.ITEMS.UNTINKER",
-    "categories": [
-      "CRAFTING"
-    ],
+    "categories": ["CRAFTING"],
     "matcher": "REGEX.ITEMS.UNTINKER_LINE",
     "icon": "CraftSVG",
     "locationName_alt": "Untinker",

@@ -1,11 +1,11 @@
 @use "sass:map";
-@import 'constants.scss';
-@import 'definitions.scss';
-@import '../../node_modules/aah-util-css/sass_src/all-util-styles.scss';
-@import 'css-util-extension.scss';
-@import 'component-styles.scss';
-@import 'section-styles.scss';
-@import 'page-styles.scss';
+@import "constants.scss";
+@import "definitions.scss";
+@import "../../node_modules/aah-util-css/sass_src/all-util-styles.scss";
+@import "css-util-extension.scss";
+@import "component-styles.scss";
+@import "section-styles.scss";
+@import "page-styles.scss";
 
 body {
   background-color: map.get($COLOR_MAP, "third");

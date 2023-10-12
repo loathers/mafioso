@@ -1,9 +1,9 @@
-import {observable} from 'mobx';
+import { observable } from "mobx";
 
-import {CHART_TYPES} from '../constants/CHART_TYPES';
+import { CHART_TYPES } from "../constants/CHART_TYPES";
 
-import * as chartParserUtils from '../utilities/chartParserUtils';
-import {createColorList_purplePastel} from '../utilities/colorUtils';
+import * as chartParserUtils from "../utilities/chartParserUtils";
+import { createColorList_purplePastel } from "../utilities/colorUtils";
 
 /**
  * state and handler of the chart data
@@ -20,7 +20,7 @@ class ChartStore {
   }
   /** @type {ChartjsConfig | null} */
   get currentChartData() {
-    switch(this.currentChartType.get()) {
+    switch (this.currentChartType.get()) {
       case CHART_TYPES.LOCATION:
         return this.locationChartData;
 
@@ -30,17 +30,31 @@ class ChartStore {
       case CHART_TYPES.MEAT_TOTAL:
         return this.meatTotalGainedChartData;
 
-      case 'banished':
-        return chartParserUtils.createAttributeTimeline(this.allEntries.slice(), 'isBanished');
+      case "banished":
+        return chartParserUtils.createAttributeTimeline(
+          this.allEntries.slice(),
+          "isBanished",
+        );
 
-      case 'replaced':
-        return chartParserUtils.createAttributeTimeline(this.allEntries.slice(), 'isReplaced');
+      case "replaced":
+        return chartParserUtils.createAttributeTimeline(
+          this.allEntries.slice(),
+          "isReplaced",
+        );
 
       case CHART_TYPES.SCRAP_CHANGES:
-        return chartParserUtils.createMinChangeTimeline(this.allEntries.slice(), 'scrapChange', {isUsingTotals: true});
+        return chartParserUtils.createMinChangeTimeline(
+          this.allEntries.slice(),
+          "scrapChange",
+          { isUsingTotals: true },
+        );
 
       case CHART_TYPES.ENERGY_CHANGES:
-        return chartParserUtils.createMinChangeTimeline(this.allEntries.slice(), 'energyChange', {isUsingTotals: true});
+        return chartParserUtils.createMinChangeTimeline(
+          this.allEntries.slice(),
+          "energyChange",
+          { isUsingTotals: true },
+        );
 
       default:
         return null;
@@ -52,7 +66,10 @@ class ChartStore {
       return null;
     }
 
-    return chartParserUtils.createLocationData(this.allEntries.slice(), createColorList_purplePastel);
+    return chartParserUtils.createLocationData(
+      this.allEntries.slice(),
+      createColorList_purplePastel,
+    );
   }
   /** @type {ChartjsConfig} */
   get familiarChartData() {
@@ -60,7 +77,10 @@ class ChartStore {
       return null;
     }
 
-    return chartParserUtils.createFamiliarData(this.allEntries.slice(), createColorList_purplePastel);
+    return chartParserUtils.createFamiliarData(
+      this.allEntries.slice(),
+      createColorList_purplePastel,
+    );
   }
   /** @type {ChartjsConfig} */
   get meatTotalGainedChartData() {
@@ -68,7 +88,10 @@ class ChartStore {
       return null;
     }
 
-    return chartParserUtils.createMeatTotalGainedData(this.allEntries.slice(), createColorList_purplePastel);
+    return chartParserUtils.createMeatTotalGainedData(
+      this.allEntries.slice(),
+      createColorList_purplePastel,
+    );
   }
   // --
   /** @type {Boolean} */
@@ -81,9 +104,12 @@ class ChartStore {
   }
   /** @type {Number} */
   get canDisplayCurrentChart() {
-    return this.isReady
-      && this.currentChartType.get() !== null
-      && this.currentChartData && this.currentChartData._size > 0;
+    return (
+      this.isReady &&
+      this.currentChartType.get() !== null &&
+      this.currentChartData &&
+      this.currentChartData._size > 0
+    );
   }
   // --
   /**

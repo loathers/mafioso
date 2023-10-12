@@ -1,8 +1,8 @@
-import React from 'react';
-import {observable} from 'mobx';
-import {observer} from 'mobx-react';
+import React from "react";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
 
-import combineClassnames from '../utilities/combineClassnames';
+import combineClassnames from "../utilities/combineClassnames";
 
 class PopupController {
   constructor() {
@@ -45,18 +45,10 @@ class PopupController {
 const popupController = new PopupController();
 export default popupController;
 /** @returns {React.Component} */
-export const PopupComponent = observer(
-function _PopupComponent(props) {
-  const {
-    className,
-    ...otherProps
-  } = props;
+export const PopupComponent = observer(function _PopupComponent(props) {
+  const { className, ...otherProps } = props;
 
-  const {
-    children,
-    title,
-    onClose = () => {},
-  } = popupController.popupData;
+  const { children, title, onClose = () => {} } = popupController.popupData;
 
   function onClickClose(evt) {
     popupController.toggleActive(false);
@@ -68,26 +60,27 @@ function _PopupComponent(props) {
   return (
     <div
       {...otherProps}
-      elementname='app-popup'
-      className={combineClassnames('', isActive && 'active', className)}
+      elementname="app-popup"
+      className={combineClassnames("", isActive && "active", className)}
     >
-      { isActive &&
-        <div elementname='app-popup-darkness' onClick={onClickClose}/>
-      }
+      {isActive && (
+        <div elementname="app-popup-darkness" onClick={onClickClose} />
+      )}
 
       <div
-        elementname='app-popup-inner'
-        className={combineClassnames('color-white whitespace-pre-wrap borradius-2 boxshadow-dark flex-col bg-second-darkest')}>
+        elementname="app-popup-inner"
+        className={combineClassnames(
+          "color-white whitespace-pre-wrap borradius-2 boxshadow-dark flex-col bg-second-darkest",
+        )}
+      >
+        {title && (
+          <div className="pad-h-4 pad-v-3 borradius-t-1 f-bold bg-second">
+            {title}
+          </div>
+        )}
 
-        { title &&
-          <div className='pad-h-4 pad-v-3 borradius-t-1 f-bold bg-second'>{title}</div>
-        }
-
-        <div className='pad-4'>
-          { children }
-        </div>
+        <div className="pad-4">{children}</div>
       </div>
     </div>
-  )
+  );
 });
-

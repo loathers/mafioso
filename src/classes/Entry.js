@@ -1,15 +1,21 @@
-import {CATEGORY_ID} from '../constants/CATEGORIES';
-import {COMMUNITY_SERVICES_LIST} from '../constants/COMMUNITY_SERVICES_MAP';
-import {COMBINABLE_ENTRIES_LIST} from '../constants/DEFAULTS';
-import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from '../constants/ENCOUNTERS';
-import {INSTAKILLS, INSTAKILLS_MAP} from '../constants/INSTAKILLS'
-import {RUNAWAYS, RUNAWAYS_MAP} from '../constants/RUNAWAYS'
-import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from '../constants/LATTE_EFFECTS_MAP';
-import ENTRY_TYPE from '../constants/ENTRY_TYPE';
-import REGEX, {NEW_LINE_REGEX} from '../constants/REGEXES';
+import { CATEGORY_ID } from "../constants/CATEGORIES";
+import { COMMUNITY_SERVICES_LIST } from "../constants/COMMUNITY_SERVICES_MAP";
+import { COMBINABLE_ENTRIES_LIST } from "../constants/DEFAULTS";
+import {
+  CLOVER_ENCOUNTERS,
+  SEMIRARE_ENCOUNTERS,
+} from "../constants/ENCOUNTERS";
+import { INSTAKILLS, INSTAKILLS_MAP } from "../constants/INSTAKILLS";
+import { RUNAWAYS, RUNAWAYS_MAP } from "../constants/RUNAWAYS";
+import {
+  LATTE_EFFECTS_MAP,
+  LATTE_EFFECTS_LIST,
+} from "../constants/LATTE_EFFECTS_MAP";
+import ENTRY_TYPE from "../constants/ENTRY_TYPE";
+import REGEX, { NEW_LINE_REGEX } from "../constants/REGEXES";
 
-import * as entryParserUtils from '../utilities/entryParserUtils';
-import * as regexUtils from '../utilities/regexUtils';
+import * as entryParserUtils from "../utilities/entryParserUtils";
+import * as regexUtils from "../utilities/regexUtils";
 
 /**
  * @typedef {String} RawText - text extracted from the log
@@ -17,7 +23,7 @@ import * as regexUtils from '../utilities/regexUtils';
  */
 export default class Entry {
   /** @default */
-  constructor({entryId, entryIdx, rawText, config}) {
+  constructor({ entryId, entryIdx, rawText, config }) {
     /** @type {Number} */
     this.id = entryId;
     /** @type {Number} */
@@ -34,7 +40,7 @@ export default class Entry {
     this.config = {
       /** @type {Boolean} */
       isYouRobot: false,
-      ...config
+      ...config,
     };
 
     /** @type {Object} */
@@ -126,13 +132,13 @@ export default class Entry {
         /** @type {Number} */
         scrapChange: 0,
       },
-    }
+    };
 
     /** @type {Boolean} */
     this.willRemoveAnnotation = false;
 
     // start parsing we have the raw text
-    if (rawText !== '' && Boolean(rawText)) {
+    if (rawText !== "" && Boolean(rawText)) {
       this.initialize();
     }
   }
@@ -144,13 +150,17 @@ export default class Entry {
     this.attributes = {
       ...this.attributes,
       ...parsedAttributes,
-      locationName: this.entryData.locationName || parsedAttributes.locationName,
-      encounterName: this.entryData.encounterName || parsedAttributes.encounterName,
+      locationName:
+        this.entryData.locationName || parsedAttributes.locationName,
+      encounterName:
+        this.entryData.encounterName || parsedAttributes.encounterName,
     };
 
     // parse for you robot data if necessary
     if (this.config.isYouRobot) {
-      this.attributes.you_robot = entryParserUtils.parseYouRobotAttributes(this.entryString);
+      this.attributes.you_robot = entryParserUtils.parseYouRobotAttributes(
+        this.entryString,
+      );
     }
   }
   /** @type {EntryType} */
@@ -175,15 +185,17 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasEntryBodyData() {
-    return this.hasContentDisplay
-      || this.hasDiabolicPizzaIngredients
-      || this.hasStatChanges
-      || this.hasAcquiredEffects
-      || this.hasAcquiredItems
-      || this.hasAdventureChanges
-      || this.hasMeatChanges
-      || this.hasHealthChanges
-      || this.hasManaChanges;
+    return (
+      this.hasContentDisplay ||
+      this.hasDiabolicPizzaIngredients ||
+      this.hasStatChanges ||
+      this.hasAcquiredEffects ||
+      this.hasAcquiredItems ||
+      this.hasAdventureChanges ||
+      this.hasMeatChanges ||
+      this.hasHealthChanges ||
+      this.hasManaChanges
+    );
   }
   /** @type {Boolean} */
   get hasChoiceProgression() {
@@ -278,11 +290,18 @@ export default class Entry {
     }
 
     // treat as a spell cast and not a noncombat Calculating the Universe for a non-monster
-    if (this.entryType === (ENTRY_TYPE.UNIQUE.NUMBEROLOGY) && !this.isCombatEncounter) {
+    if (
+      this.entryType === ENTRY_TYPE.UNIQUE.NUMBEROLOGY &&
+      !this.isCombatEncounter
+    ) {
       return false;
     }
 
-    return !this.isCombatEncounter && this.hasText(REGEX.VALUE.NONCOMBAT_NAME) && !this.isInBetweenTurns;
+    return (
+      !this.isCombatEncounter &&
+      this.hasText(REGEX.VALUE.NONCOMBAT_NAME) &&
+      !this.isInBetweenTurns
+    );
   }
   /** @type {Boolean} */
   get isFreeCombat() {
@@ -302,8 +321,7 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isForcedAdventure() {
-    return this.attributes.isForcedAdventure
-      || this.isSummoned;
+    return this.attributes.isForcedAdventure || this.isSummoned;
   }
   /** @param {Boolean} */
   set isInBetweenTurns(newValue) {
@@ -315,7 +333,9 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isAdventure() {
-    return (this.isCombatEncounter || this.isNonCombatEncounter || this.isFreeCombat);
+    return (
+      this.isCombatEncounter || this.isNonCombatEncounter || this.isFreeCombat
+    );
   }
   // -- stats
   /** @type {Boolean} */
@@ -324,12 +344,14 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasStatChanges() {
-    return this.attributes.isMusUp
-      || this.attributes.isMystUp
-      || this.attributes.isMoxUp
-      || this.musSubstats !== 0
-      || this.mystSubstats !== 0
-      || this.moxSubstats !== 0;
+    return (
+      this.attributes.isMusUp ||
+      this.attributes.isMystUp ||
+      this.attributes.isMoxUp ||
+      this.musSubstats !== 0 ||
+      this.mystSubstats !== 0 ||
+      this.moxSubstats !== 0
+    );
   }
   /** @type {Boolean} */
   get hasMeatChanges() {
@@ -357,11 +379,17 @@ export default class Entry {
   }
   /** @type {Number} */
   get adventureChangeValue() {
-    return this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0);
+    return this.attributes.adventureChanges.reduce(
+      (total, amt) => total + amt,
+      0,
+    );
   }
   /** @type {Number} */
   get adventureDisplay() {
-    const advChanged = this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0);
+    const advChanged = this.attributes.adventureChanges.reduce(
+      (total, amt) => total + amt,
+      0,
+    );
     if (advChanged > 0) {
       return `+${advChanged}`;
     }
@@ -370,7 +398,10 @@ export default class Entry {
   }
   /** @type {Number} */
   get hasAdventureGains() {
-    return this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0) > 0;
+    return (
+      this.attributes.adventureChanges.reduce((total, amt) => total + amt, 0) >
+      0
+    );
   }
   /** @type {Number} */
   get hasAdventureGainsNotFromDiet() {
@@ -378,28 +409,42 @@ export default class Entry {
       return false;
     }
 
-    return this.hasAdventureGains
-      || this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION)
-      || this.hasText(REGEX.REAGNIMATED_GNOME.ADV_TRIGGERED_TEXT)
-      || this.hasText(REGEX.RIFTLET.ADV_TRIGGERED_TEXT)
-      || this.hasText(REGEX.SQUAMOUS_GIBBERED.ADV_TRIGGERED_TEXT)
-      || this.hasText(REGEX.WILD_HARE.ADV_TRIGGERED_TEXT);
+    return (
+      this.hasAdventureGains ||
+      this.hasText(REGEX.LINE.MAFIA_THUMB_RING_ACTIVATION) ||
+      this.hasText(REGEX.REAGNIMATED_GNOME.ADV_TRIGGERED_TEXT) ||
+      this.hasText(REGEX.RIFTLET.ADV_TRIGGERED_TEXT) ||
+      this.hasText(REGEX.SQUAMOUS_GIBBERED.ADV_TRIGGERED_TEXT) ||
+      this.hasText(REGEX.WILD_HARE.ADV_TRIGGERED_TEXT)
+    );
   }
   /** @type {Number} */
   get musSubstats() {
-    return this.attributes.musExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+    return this.attributes.musExpChanges.reduce(
+      (expTotal, expNum) => expTotal + expNum,
+      0,
+    );
   }
   /** @type {Number} */
   get mystSubstats() {
-    return this.attributes.mystExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+    return this.attributes.mystExpChanges.reduce(
+      (expTotal, expNum) => expTotal + expNum,
+      0,
+    );
   }
   /** @type {Number} */
   get moxSubstats() {
-    return this.attributes.moxExpChanges.reduce((expTotal, expNum) => expTotal + expNum, 0);
+    return this.attributes.moxExpChanges.reduce(
+      (expTotal, expNum) => expTotal + expNum,
+      0,
+    );
   }
   /** @type {Number} */
   get healthDisplay() {
-    const hpChanged = this.attributes.healthChanges.reduce((total, amt) => total + amt, 0);
+    const hpChanged = this.attributes.healthChanges.reduce(
+      (total, amt) => total + amt,
+      0,
+    );
     if (hpChanged > 0) {
       return `+${hpChanged}`;
     }
@@ -408,7 +453,10 @@ export default class Entry {
   }
   /** @type {Number} */
   get manaDisplay() {
-    const mpChanged =  this.attributes.manaChanges.reduce((total, amt) => total + amt, 0);
+    const mpChanged = this.attributes.manaChanges.reduce(
+      (total, amt) => total + amt,
+      0,
+    );
     if (mpChanged > 0) {
       return `+${mpChanged}`;
     }
@@ -419,23 +467,34 @@ export default class Entry {
   get contentDisplay() {
     const entryBody = entryParserUtils.createEntryBody(this.entryString);
     const entryBodyDisplay = entryBody.length <= 0 ? null : entryBody;
-    return this.parseDisplayMatcher(this.entryData.content_alt, entryBodyDisplay);
+    return this.parseDisplayMatcher(
+      this.entryData.content_alt,
+      entryBodyDisplay,
+    );
   }
   /** @type {String} */
   get locationDisplay() {
-    return this.parseDisplayMatcher(this.entryData.locationName_alt, this.attributes.locationName);
+    return this.parseDisplayMatcher(
+      this.entryData.locationName_alt,
+      this.attributes.locationName,
+    );
   }
   /** @type {String} */
   get encounterDisplay() {
     // show the actual service name for CS
     if (this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.SERVICE) {
-      const serviceTask = COMMUNITY_SERVICES_LIST.find((taskData) => this.hasText(taskData.matcher));
+      const serviceTask = COMMUNITY_SERVICES_LIST.find((taskData) =>
+        this.hasText(taskData.matcher),
+      );
       if (serviceTask) {
         return serviceTask.label;
       }
     }
 
-    return this.parseDisplayMatcher(this.entryData.encounterName_alt, this.attributes.encounterName);
+    return this.parseDisplayMatcher(
+      this.entryData.encounterName_alt,
+      this.attributes.encounterName,
+    );
   }
   /** @param {String} */
   set additionalDisplay(newValue) {
@@ -452,31 +511,50 @@ export default class Entry {
       });
 
       if (latteEffectsResult.length > 0) {
-        return `(${latteEffectsResult.join(', ')})`
+        return `(${latteEffectsResult.join(", ")})`;
       }
     }
 
     // some entryTypes have precedence over the regular choice progression display
-    if (this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER || this.entryType === ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON) {
-      return this.parseDisplayMatcher(this.entryData.additionalDisplay, this.attributes.additionalDisplay);
+    if (
+      this.entryType === ENTRY_TYPE.IOTM.PILL_KEEPER ||
+      this.entryType === ENTRY_TYPE.IOTM.GOD_LOBSTER.BOON
+    ) {
+      return this.parseDisplayMatcher(
+        this.entryData.additionalDisplay,
+        this.attributes.additionalDisplay,
+      );
     }
 
     // show the first letters of the diabolic pizza
-    if (this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE && this.hasDiabolicPizzaIngredients) {
-      const firstLetters = this.attributes.diabolicPizzaIngredients.reduce((acc, ingredient) => {
-        return acc + ingredient.charAt(0).toUpperCase();
-      }, '');
+    if (
+      this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE &&
+      this.hasDiabolicPizzaIngredients
+    ) {
+      const firstLetters = this.attributes.diabolicPizzaIngredients.reduce(
+        (acc, ingredient) => {
+          return acc + ingredient.charAt(0).toUpperCase();
+        },
+        "",
+      );
 
       return `(${firstLetters})`;
     }
 
     // show special display for choices
-    if (this.hasChoiceProgression && this.showAdditionalDisplay && !this.attributes.isEndedByUseTheForce) {
-      return '⇾ ' + this.attributes.choiceProgression.join(' ⇾ ');
+    if (
+      this.hasChoiceProgression &&
+      this.showAdditionalDisplay &&
+      !this.attributes.isEndedByUseTheForce
+    ) {
+      return "⇾ " + this.attributes.choiceProgression.join(" ⇾ ");
     }
 
     // note `entryData` vs `attributes`
-    return this.parseDisplayMatcher(this.entryData.additionalDisplay, this.attributes.additionalDisplay);
+    return this.parseDisplayMatcher(
+      this.entryData.additionalDisplay,
+      this.attributes.additionalDisplay,
+    );
   }
   /** @param {String} */
   set familiarUsed(newValue) {
@@ -493,7 +571,7 @@ export default class Entry {
     }
 
     const replacedEnemies = this.attributes.replacedEnemies;
-    return replacedEnemies.slice(0, replacedEnemies.length - 1).join('/');
+    return replacedEnemies.slice(0, replacedEnemies.length - 1).join("/");
   }
   // -- combat
   /** @type {Boolean} */
@@ -502,10 +580,12 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isVictory() {
-    return this.isDisintegrated
-      || this.hasInstakill
-      || this.isFreeCombat
-      || this.hasText(REGEX.COMBAT.VICTORY_LINE);
+    return (
+      this.isDisintegrated ||
+      this.hasInstakill ||
+      this.isFreeCombat ||
+      this.hasText(REGEX.COMBAT.VICTORY_LINE)
+    );
   }
   /** @type {Boolean} */
   get isDeath() {
@@ -513,7 +593,10 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isAttracted() {
-    return Boolean(this.attributes.attractors) && this.attributes.attractors.length > 0;
+    return (
+      Boolean(this.attributes.attractors) &&
+      this.attributes.attractors.length > 0
+    );
   }
   /** @type {Boolean} */
   get isBanished() {
@@ -521,7 +604,9 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isCopied() {
-    return Boolean(this.attributes.copiers) && this.attributes.copiers.length > 0;
+    return (
+      Boolean(this.attributes.copiers) && this.attributes.copiers.length > 0
+    );
   }
   /** @type {Boolean} */
   get isDisintegrated() {
@@ -536,17 +621,24 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isReplaced() {
-    return Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0;
+    return (
+      Boolean(this.attributes.replacers) && this.attributes.replacers.length > 0
+    );
   }
   /** @type {Boolean} */
   get isSummoned() {
-    return this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE
-      || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT
-      || this.entryType === ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING;
+    return (
+      this.entryType === ENTRY_TYPE.IOTM.FAX_MACHINE ||
+      this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT ||
+      this.entryType === ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING
+    );
   }
   /** @type {Boolean} */
   get hasReplacedEnemies() {
-    return Boolean(this.attributes.replacedEnemies) && this.attributes.replacedEnemies.length > 0;
+    return (
+      Boolean(this.attributes.replacedEnemies) &&
+      this.attributes.replacedEnemies.length > 0
+    );
   }
   /** @type {Boolean} */
   get hasRunaway() {
@@ -557,14 +649,17 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasSuccessfulSteal() {
-    return this.hasText(REGEX.COMBAT.SUCCESSFUL_STEAL_ITEM)
-      || this.hasText(REGEX.XO_SKELETON.SUCCESSFUL_XO_STEAL_ITEM);
+    return (
+      this.hasText(REGEX.COMBAT.SUCCESSFUL_STEAL_ITEM) ||
+      this.hasText(REGEX.XO_SKELETON.SUCCESSFUL_XO_STEAL_ITEM)
+    );
   }
   // -- attribute getters
   /** @type {Boolean} */
   get isPathSpecific() {
-    return this.categories.includes(CATEGORY_ID.PATH)
-      || this.isPathDisguisesDelimit;
+    return (
+      this.categories.includes(CATEGORY_ID.PATH) || this.isPathDisguisesDelimit
+    );
   }
   /** @type {Boolean} */
   get isPathDisguisesDelimit() {
@@ -580,8 +675,10 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isIOTM() {
-    return this.categories.includes(CATEGORY_ID.IOTM)
-      || this.attributes.isEndedByUseTheForce;
+    return (
+      this.categories.includes(CATEGORY_ID.IOTM) ||
+      this.attributes.isEndedByUseTheForce
+    );
   }
   /** @type {Boolean} */
   get isHeist() {
@@ -593,15 +690,19 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasLatteLoversMug() {
-    return this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE)
-      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME)
-      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.THROW_LATTE_LINE)
-      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.OFFER_LATTE_LINE)
-      || this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.GULP_LATTE_LINE);
+    return (
+      this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.FILLED_MUG_LINE) ||
+      this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME) ||
+      this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.THROW_LATTE_LINE) ||
+      this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.OFFER_LATTE_LINE) ||
+      this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.GULP_LATTE_LINE)
+    );
   }
   /** @type {Boolean} */
   get hasLatteIngredientUnlock() {
-    return this.hasText(REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME);
+    return this.hasText(
+      REGEX.LATTE_LOVERS_MEMBERS_MUG.UNLOCKED_INGREDIENT_NAME,
+    );
   }
   /** @type {Boolean} */
   get hasMelodramedary() {
@@ -609,10 +710,12 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasMeteorLore() {
-    return this.hasText(REGEX.METEOR_LORE.CAST_MICROMETEORITE)
-      || this.hasText(REGEX.METEOR_LORE.CAST_MACROMETEORITE)
-      || this.hasText(REGEX.METEOR_LORE.CAST_METEORSHOWER)
-      || this.hasText(REGEX.METEOR_LORE.ACQUIRE_METEOR_ITEM);
+    return (
+      this.hasText(REGEX.METEOR_LORE.CAST_MICROMETEORITE) ||
+      this.hasText(REGEX.METEOR_LORE.CAST_MACROMETEORITE) ||
+      this.hasText(REGEX.METEOR_LORE.CAST_METEORSHOWER) ||
+      this.hasText(REGEX.METEOR_LORE.ACQUIRE_METEOR_ITEM)
+    );
   }
   /** @type {Boolean} */
   get isPillKeeper() {
@@ -624,18 +727,26 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isCartography() {
-    return this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER
-      || this.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT;
+    return (
+      this.entryType ===
+        ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER ||
+      this.entryType ===
+        ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT
+    );
   }
   /** @type {Boolean} */
   get isDiabolicPizza() {
-    return this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE
-      || this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT;
+    return (
+      this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.MAKE ||
+      this.entryType === ENTRY_TYPE.IOTM.DIABOLIC_PIZZA.EAT
+    );
   }
   /** @type {Boolean} */
   get isEmotionChip() {
-    return this.hasText(REGEX.EMOTION_CHIP.NONCOMBAT_SKILL)
-      || this.hasText(REGEX.EMOTION_CHIP.COMBAT_SKILL);
+    return (
+      this.hasText(REGEX.EMOTION_CHIP.NONCOMBAT_SKILL) ||
+      this.hasText(REGEX.EMOTION_CHIP.COMBAT_SKILL)
+    );
   }
   /** @type {Boolean} */
   get hasDiabolicPizzaIngredients() {
@@ -643,8 +754,10 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isGenieWish() {
-    return this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.EFFECT
-      || this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT;
+    return (
+      this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.EFFECT ||
+      this.entryType === ENTRY_TYPE.IOTM.GENIE_BOTTLE.FIGHT
+    );
   }
   /** @type {Boolean} */
   get hasVampyricCloake() {
@@ -652,8 +765,10 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get hasBoxOfGhosts() {
-    return this.hasText(REGEX.BOX_OF_GHOSTS.CAROLS_EFFECT_TEXT)
-      || this.hasText(REGEX.BOX_OF_GHOSTS.COMMERCE_BUY_TEXT);
+    return (
+      this.hasText(REGEX.BOX_OF_GHOSTS.CAROLS_EFFECT_TEXT) ||
+      this.hasText(REGEX.BOX_OF_GHOSTS.COMMERCE_BUY_TEXT)
+    );
   }
   /** @type {Boolean} */
   get hasDoctorsBag() {
@@ -665,25 +780,33 @@ export default class Entry {
   }
   /** @type {Boolean} */
   get isPottedPowerPlant() {
-    return this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY
-      || this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY
-      || this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES
-      || this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER;
+    return (
+      this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY ||
+      this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.USE_BATTERY ||
+      this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.COMBINE_BATTERIES ||
+      this.entryType === ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.UNTINKER
+    );
   }
   /** @type {Boolean} */
   get isVoting() {
-    return this.hasText(REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT)
-      || this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH;
+    return (
+      this.hasText(REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT) ||
+      this.entryType === ENTRY_TYPE.IOTM.VOTING_BOOTH
+    );
   }
   /** @type {Boolean} */
   get hasPortscanEncounter() {
-    return this.hasText(REGEX.SOURCE_TERMINAL.GOVERNMENT_AGENT_ENCOUNTER)
-      || this.entryType === ENTRY_TYPE.PATH.THE_SOURCE.SOURCE_AGENT_ENCOUNTER;
+    return (
+      this.hasText(REGEX.SOURCE_TERMINAL.GOVERNMENT_AGENT_ENCOUNTER) ||
+      this.entryType === ENTRY_TYPE.PATH.THE_SOURCE.SOURCE_AGENT_ENCOUNTER
+    );
   }
   /** @type {Boolean} */
   get isCommunityService() {
-    return this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.SERVICE
-      || this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE;
+    return (
+      this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.SERVICE ||
+      this.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE
+    );
   }
   // -- utility
   /**
@@ -716,7 +839,7 @@ export default class Entry {
       isForcedAdventure: this.isForcedAdventure,
       familiarUsed: this.familiarUsed,
       ...this.attributes,
-    }
+    };
   }
   /**
    * @return {Object}
@@ -727,14 +850,20 @@ export default class Entry {
     }
 
     // clear out existing comments
-    const clearedText = this.rawText.replace(REGEX.MAFIOSO.LOG_COMMENTS_NEWLINE, '');
+    const clearedText = this.rawText.replace(
+      REGEX.MAFIOSO.LOG_COMMENTS_NEWLINE,
+      "",
+    );
     // if annotations are to be removed, return just the text
     if (this.willRemoveAnnotation) {
       return clearedText;
     }
 
     // format comments to have two slashes
-    const formattedAnnotations = `//${this.attributes.annotations.replace(NEW_LINE_REGEX, '\n//')}`;
+    const formattedAnnotations = `//${this.attributes.annotations.replace(
+      NEW_LINE_REGEX,
+      "\n//",
+    )}`;
     // append to front of text
     return `${formattedAnnotations}\n${clearedText}`;
   }
@@ -777,12 +906,12 @@ export default class Entry {
       return fallback;
     }
 
-    if (matcher === 'ENTRY.ACQUIRED_ITEM_NAME') {
+    if (matcher === "ENTRY.ACQUIRED_ITEM_NAME") {
       return this.attributes.acquiredItems[0].attributes.name;
     }
 
     // just use the string
-    if (typeof matcher === 'string') {
+    if (typeof matcher === "string") {
       return matcher;
     }
 
@@ -791,12 +920,14 @@ export default class Entry {
   }
   /** @returns {String} */
   createItemsDisplay() {
-    return this.attributes.acquiredItems.join(', ');
+    return this.attributes.acquiredItems.join(", ");
   }
   /** @returns {String} */
   createMeatDisplay() {
     const meatChange = this.attributes.meatChange;
-    const meatDisplay = meatChange.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const meatDisplay = meatChange
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     if (meatChange > 0) {
       return `+${meatDisplay}`;
@@ -836,22 +967,32 @@ export default class Entry {
    * @return {Boolean}
    */
   doesShareLocation(comparedEntry) {
-    if (this.attributes.locationName === null || comparedEntry.attributes.locationName === null) {
+    if (
+      this.attributes.locationName === null ||
+      comparedEntry.attributes.locationName === null
+    ) {
       return false;
     }
 
-    return this.attributes.locationName === comparedEntry.attributes.locationName;
+    return (
+      this.attributes.locationName === comparedEntry.attributes.locationName
+    );
   }
   /**
    * @param {Entry} comparedEntry
    * @return {Boolean}
    */
   doesShareEncounter(comparedEntry) {
-    if (this.attributes.encounterName === null || comparedEntry.attributes.encounterName === null) {
+    if (
+      this.attributes.encounterName === null ||
+      comparedEntry.attributes.encounterName === null
+    ) {
       return false;
     }
 
-    return this.attributes.encounterName === comparedEntry.attributes.encounterName;
+    return (
+      this.attributes.encounterName === comparedEntry.attributes.encounterName
+    );
   }
   /**
    * @param {Entry} comparedEntry
@@ -859,19 +1000,27 @@ export default class Entry {
    */
   canCombineWith(comparedEntry) {
     // combine kolmafia commonly purchasing and using
-    if (this.hasText('chewing gum on a string') && comparedEntry.hasText('chewing gum on a string')) {
+    if (
+      this.hasText("chewing gum on a string") &&
+      comparedEntry.hasText("chewing gum on a string")
+    ) {
       return true;
     }
 
     // Garbage Tote
-    if (this.entryType === ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE
-      && this.hasText(REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE)
-      && comparedEntry.hasText(REGEX.JANUARYS_GARBAGE_TOTE.EQUIP_RESULT)) {
+    if (
+      this.entryType === ENTRY_TYPE.IOTM.JANUARYS_GARBAGE_TOTE &&
+      this.hasText(REGEX.JANUARYS_GARBAGE_TOTE.USE_FOLDABLE) &&
+      comparedEntry.hasText(REGEX.JANUARYS_GARBAGE_TOTE.EQUIP_RESULT)
+    ) {
       return true;
     }
 
     // Eatin' sausages
-    if (this.hasText(REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE) && comparedEntry.hasText(REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE)) {
+    if (
+      this.hasText(REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE) &&
+      comparedEntry.hasText(REGEX.KRAMCO_SAUSAGEOMATIC.EAT_MAGICAL_SAUSAGE)
+    ) {
       return true;
     }
 
@@ -881,11 +1030,17 @@ export default class Entry {
     }
 
     // autoscend loves to buy and use these individually
-    if (this.hasText(REGEX.LINE.DOC_GALATIK_SHOP_OR_USE) && comparedEntry.hasText(REGEX.LINE.DOC_GALATIK_SHOP_OR_USE)) {
+    if (
+      this.hasText(REGEX.LINE.DOC_GALATIK_SHOP_OR_USE) &&
+      comparedEntry.hasText(REGEX.LINE.DOC_GALATIK_SHOP_OR_USE)
+    ) {
       return true;
     }
 
-    if (COMBINABLE_ENTRIES_LIST.includes(this.entryType) && this.doesShareEntryType(comparedEntry)) {
+    if (
+      COMBINABLE_ENTRIES_LIST.includes(this.entryType) &&
+      this.doesShareEntryType(comparedEntry)
+    ) {
       return true;
     }
 

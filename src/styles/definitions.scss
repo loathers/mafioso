@@ -38,7 +38,7 @@ $FONT_MAPPING: (
   "primary": "Roboto",
   "secondary": "Open Sans",
   "tertiary": "Ubuntu",
-  "logo": "Roboto"
+  "logo": "Roboto",
 );
 
 // -- Breakpoints
@@ -47,7 +47,7 @@ $MEDIA_QUERY_KEY_MAP: (
   "small": "s",
   "medium": "m",
   "large": "l",
-  "extra-large": "xl"
+  "extra-large": "xl",
 );
 
 $BREAKPOINT_WIDTH_MAP: (
@@ -55,7 +55,7 @@ $BREAKPOINT_WIDTH_MAP: (
   "s": 480px,
   "m": 768px,
   "l": 1024px,
-  "xl": 1440px
+  "xl": 1440px,
 );
 
 // -- Base Sizing per iteration
@@ -65,5 +65,5 @@ $BASE_SIZE_MAP: (
   "padding": 2px,
   "margin": 2px,
   "border-radius": 3px,
-  "box-shadow": 2px
+  "box-shadow": 2px,
 );

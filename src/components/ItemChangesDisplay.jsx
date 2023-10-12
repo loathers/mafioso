@@ -1,41 +1,43 @@
-import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
-import SteakSVG from '../images/steak.svg';
-import SwapBagSVG from '../images/swap-bag.svg';
+import SteakSVG from "../images/steak.svg";
+import SwapBagSVG from "../images/swap-bag.svg";
 
-import ItemDisplay from './ItemDisplay';
+import ItemDisplay from "./ItemDisplay";
 
-import combineClassnames from '../utilities/combineClassnames';
+import combineClassnames from "../utilities/combineClassnames";
 
 /** @returns {React.Component} */
 export default function ItemChangesDisplay(props) {
-  const {
-    className,
-    entry,
-  } = props;
+  const { className, entry } = props;
 
-  const {attributes} = entry;
-  const {
-    acquiredItems,
-  } = attributes;
+  const { attributes } = entry;
+  const { acquiredItems } = attributes;
 
   return (
-    <div className={combineClassnames('flex-row flexwrap-yes adjacent-mar-t-3', className)}>
-      { entry.hasMeatChanges &&
-        <ItemDisplay 
+    <div
+      className={combineClassnames(
+        "flex-row flexwrap-yes adjacent-mar-t-3",
+        className,
+      )}
+    >
+      {entry.hasMeatChanges && (
+        <ItemDisplay
           icon={SteakSVG}
-          className='mar-2'
-          content={`${entry.createMeatDisplay()} meat`} />
-      }
+          className="mar-2"
+          content={`${entry.createMeatDisplay()} meat`}
+        />
+      )}
 
-      { acquiredItems.map((itemName, idx) => (
-        <ItemDisplay 
+      {acquiredItems.map((itemName, idx) => (
+        <ItemDisplay
           icon={SwapBagSVG}
-          className='mar-2'
+          className="mar-2"
           content={`${itemName}`}
-          key={`acquired-item-${uuidv4()}-${idx}-key`} />
+          key={`acquired-item-${uuidv4()}-${idx}-key`}
+        />
       ))}
     </div>
-  )
+  );
 }

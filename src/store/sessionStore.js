@@ -6,11 +6,12 @@
 class SessionStore {
   constructor() {
     /** @type {Boolean} */
-    this.isShowStandardOnly = this.getItem('isShowStandardOnly') === 'true' || false;
+    this.isShowStandardOnly =
+      this.getItem("isShowStandardOnly") === "true" || false;
     /** @type {DifficultyName} */
-    this.difficultyNameFilter = this.getItem('difficultyNameFilter') || 'Any';
+    this.difficultyNameFilter = this.getItem("difficultyNameFilter") || "Any";
     /** @type {PathName} */
-    this.pathNameFilter = this.getItem('pathNameFilter') || 'Any';
+    this.pathNameFilter = this.getItem("pathNameFilter") || "Any";
   }
   /**
    * @param {String} key

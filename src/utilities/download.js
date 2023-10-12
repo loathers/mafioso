@@ -18,5 +18,5 @@ export default function download(content, fileName, contentType) {
  * @returns {Blob}
  */
 export function createBlob(content, contentType) {
-  return new Blob([content], {type: contentType});
+  return new Blob([content], { type: contentType });
 }

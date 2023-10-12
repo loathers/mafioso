@@ -1,8 +1,8 @@
-import {observable} from 'mobx';
+import { observable } from "mobx";
 
-import sessionStore from '../store/sessionStore';
+import sessionStore from "../store/sessionStore";
 
-import ToastController from '../sections/ToastController';
+import ToastController from "../sections/ToastController";
 
 // import DATABASE_ENTRY_STATUS from '../constants/DATABASE_ENTRY_STATUSES';
 
@@ -21,7 +21,9 @@ class AppStore {
     /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
     /** @type {String} */
-    this.role = import.meta.env.MAFIOSO_ROLE || window.sessionStorage.getItem('mafioso-role');
+    this.role =
+      import.meta.env.MAFIOSO_ROLE ||
+      window.sessionStorage.getItem("mafioso-role");
 
     /** @type {Observable<Array<Text>>} */
     this.databaseList = observable([]);
@@ -30,21 +32,21 @@ class AppStore {
     /** @type {Object} */
     this.filterOptions = {
       /** @type {String} */
-      difficultyName: sessionStore.get('difficultyNameFilter') || 'Any',
+      difficultyName: sessionStore.get("difficultyNameFilter") || "Any",
       /** @type {String} */
-      pathName: 'Any',
-    }
+      pathName: "Any",
+    };
     /** @type {Object} */
     this.sortOptions = {
       /** @type {String} */
-      daySort: 'ASC',
+      daySort: "ASC",
       /** @type {String} */
-      turnSort: 'ASC',
-    }
+      turnSort: "ASC",
+    };
     /** @type {Observable<Boolean>} */
-    this.isShowStandardOnly = sessionStore.get('isShowStandardOnly');
+    this.isShowStandardOnly = sessionStore.get("isShowStandardOnly");
     /** @type {String} */
-    this.searchTermFilter = observable.box('');
+    this.searchTermFilter = observable.box("");
   }
   // -- state
   /** @type {Boolean} */
@@ -79,7 +81,7 @@ class AppStore {
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.addEventListener('loadend', () => {
+      xhr.addEventListener("loadend", () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             if (xhr.responseText) {
@@ -88,15 +90,15 @@ class AppStore {
               resolve();
             }
           } else {
-            const error = 'Unable to reach server.';
-            ToastController.error({title: 'Server Error', content: error});
+            const error = "Unable to reach server.";
+            ToastController.error({ title: "Server Error", content: error });
             reject(error);
           }
         }
       });
 
       const paramString = formatUrlParams(params);
-      xhr.open('GET', `${FETCH_LOGS_ENDPOINT}/${paramString}`);
+      xhr.open("GET", `${FETCH_LOGS_ENDPOINT}/${paramString}`);
       xhr.send();
     });
 
@@ -121,19 +123,19 @@ class AppStore {
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.addEventListener('loadend', () => {
+      xhr.addEventListener("loadend", () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             resolve(JSON.parse(xhr.responseText));
           } else {
-            const error = xhr.responseText || 'Server did not send any data.';
-            ToastController.error({title: 'Server Error', content: error});
+            const error = xhr.responseText || "Server did not send any data.";
+            ToastController.error({ title: "Server Error", content: error });
             reject(error);
           }
         }
       });
 
-      xhr.open('GET', `${GET_LOG_ENDPOINT}/${hashcode}`);
+      xhr.open("GET", `${GET_LOG_ENDPOINT}/${hashcode}`);
       xhr.send();
     });
 
@@ -152,23 +154,31 @@ class AppStore {
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       // xhr.onreadystatechange = () => this.onRequestEnd(xhr, resolve, reject);
-      xhr.addEventListener('loadend', () => {
+      xhr.addEventListener("loadend", () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             resolve();
           } else {
-            ToastController.error({title: 'Share Error', content: xhr.responseText});
+            ToastController.error({
+              title: "Share Error",
+              content: xhr.responseText,
+            });
             reject(xhr.responseText);
           }
         }
       });
 
-      xhr.open('POST', SHARE_ENDPOINT);
+      xhr.open("POST", SHARE_ENDPOINT);
       xhr.send(JSON.stringify(payload));
     });
 
     fetchRequest
-      .then(() => ToastController.success({title: 'Successfuly shared!', content: 'Grazie, famiglia.'}))
+      .then(() =>
+        ToastController.success({
+          title: "Successfuly shared!",
+          content: "Grazie, famiglia.",
+        }),
+      )
       .finally(() => this.isFetching.set(false));
 
     return fetchRequest;
@@ -182,21 +192,29 @@ class AppStore {
 
     const request = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.addEventListener('loadend', () => {
+      xhr.addEventListener("loadend", () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
-            ToastController.show({content: 'Successfully Updated'});
+            ToastController.show({ content: "Successfully Updated" });
             resolve();
-
           } else {
-            ToastController.error({title: 'Update Error', content: xhr.responseText});
+            ToastController.error({
+              title: "Update Error",
+              content: xhr.responseText,
+            });
             reject(xhr.responseText);
           }
         }
       });
 
-      const paramString = formatUrlParams({status: logData.status, role: this.role});
-      xhr.open('POST', `${UPDATE_LOG_ENDPOINT}/${logData.hashcode}/${paramString}`);
+      const paramString = formatUrlParams({
+        status: logData.status,
+        role: this.role,
+      });
+      xhr.open(
+        "POST",
+        `${UPDATE_LOG_ENDPOINT}/${logData.hashcode}/${paramString}`,
+      );
       xhr.send();
     });
 
@@ -210,7 +228,7 @@ class AppStore {
    * @returns {Array<DatabaseEntry>}
    */
   async filterList(filterOptions = {}) {
-    const {difficultyName, pathName} = filterOptions;
+    const { difficultyName, pathName } = filterOptions;
     this.isFetching.set(true);
 
     const fullOptions = {
@@ -221,21 +239,27 @@ class AppStore {
     const optionKeys = Object.keys(fullOptions);
     const filteredList = this.databaseList.filter((databaseEntry) => {
       return !optionKeys.some((optionName) => {
-        if (this.isShowStandardOnly && databaseEntry.standardSeason === undefined) {
+        if (
+          this.isShowStandardOnly &&
+          databaseEntry.standardSeason === undefined
+        ) {
           return true;
         }
 
-        if (fullOptions[optionName] === 'Any') {
+        if (fullOptions[optionName] === "Any") {
           return false;
         }
 
         // no-path is also standard for now
-        if (optionName === 'pathName' && fullOptions['pathName'] === 'No-Path') {
-          return databaseEntry['pathName'] !== 'Standard';
+        if (
+          optionName === "pathName" &&
+          fullOptions["pathName"] === "No-Path"
+        ) {
+          return databaseEntry["pathName"] !== "Standard";
         }
 
         return databaseEntry[optionName] !== fullOptions[optionName];
-      })
+      });
     });
 
     // after filtering, sort
@@ -263,33 +287,33 @@ class AppStore {
     } = options;
 
     const sortedList = list.sort((entryA, entryB) => {
-      if (entryA.dayCount === '?' && entryB.dayCount !== '?') {
+      if (entryA.dayCount === "?" && entryB.dayCount !== "?") {
         return 1;
       }
 
-      if (entryA.turnCount === '?' && entryB.turnCount !== '?') {
+      if (entryA.turnCount === "?" && entryB.turnCount !== "?") {
         return 1;
       }
 
-      if (entryA.dayCount === '?' || entryA.turnCount === '?') {
+      if (entryA.dayCount === "?" || entryA.turnCount === "?") {
         return 1;
       }
 
-      if (entryB.dayCount === '?' || entryB.turnCount === '?') {
+      if (entryB.dayCount === "?" || entryB.turnCount === "?") {
         return -1;
       }
 
       const isSameDay = entryA.dayCount === entryB.dayCount;
       if (!isSameDay) {
-        if (daySort === 'DESC') {
+        if (daySort === "DESC") {
           return entryA.dayCount < entryB.dayCount ? 1 : -1;
-        } else if (daySort === 'ASC') {
+        } else if (daySort === "ASC") {
           return entryA.dayCount > entryB.dayCount ? 1 : -1;
         }
       } else {
-        if (turnSort === 'DESC') {
+        if (turnSort === "DESC") {
           return entryA.turnCount < entryB.turnCount ? 1 : -1;
-        } else if (turnSort === 'ASC') {
+        } else if (turnSort === "ASC") {
           return entryA.turnCount > entryB.turnCount ? 1 : -1;
         }
       }
@@ -298,7 +322,7 @@ class AppStore {
     });
 
     // done, update options
-    this.sortOptions = {daySort, turnSort};
+    this.sortOptions = { daySort, turnSort };
     return sortedList;
   }
 }
@@ -306,12 +330,15 @@ class AppStore {
  * @param {Object} params
  * @returns {String}
  */
-function formatUrlParams(params){
-  return "?" + Object.keys(params)
-                .map(function(key){
-                  return key+"="+encodeURIComponent(params[key])
-                })
-                .join("&");
+function formatUrlParams(params) {
+  return (
+    "?" +
+    Object.keys(params)
+      .map(function (key) {
+        return key + "=" + encodeURIComponent(params[key]);
+      })
+      .join("&")
+  );
 }
 /** export singleton */
 export default new AppStore();

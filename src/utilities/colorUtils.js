@@ -1,4 +1,4 @@
-import tinygradient from 'tinygradient';
+import tinygradient from "tinygradient";
 
 /**
  * @param {Number} steps
@@ -11,7 +11,9 @@ export function createColorList(steps, colors) {
   }
 
   const gradient = tinygradient(colors);
-  const colorList = gradient.rgb(steps).map(tinycolor => tinycolor.toHexString());
+  const colorList = gradient
+    .rgb(steps)
+    .map((tinycolor) => tinycolor.toHexString());
   return colorList;
 }
 /**
@@ -19,5 +21,9 @@ export function createColorList(steps, colors) {
  * @returns {Array<Color>}
  */
 export function createColorList_purplePastel(steps) {
-  return createColorList(steps, ['rgb(237, 144, 238)', 'rgb(124, 158, 255)', 'rgb(139, 124, 255)']);
+  return createColorList(steps, [
+    "rgb(237, 144, 238)",
+    "rgb(124, 158, 255)",
+    "rgb(139, 124, 255)",
+  ]);
 }

@@ -1,12 +1,13 @@
 {
   "ENTRY_TYPE.LOCATION.CAKE_SHAPED_ARENA": {
     "type": "ENTRY_TYPE.LOCATION.CAKE_SHAPED_ARENA",
-    "categories": [
-      "NONCOMBAT",
-      "FAMILIARS"
-    ],
+    "categories": ["NONCOMBAT", "FAMILIARS"],
     "matcher": "REGEX.LOCATION.CAKE_SHAPED_ARENA_CONTEST",
     "icon": "NoncombatSVG",
-    "encounterName_alt": ["{1} competing in {2}", "REGEX.LOCATION.CAKE_SHAPED_ARENA_FAMILIAR", "REGEX.LOCATION.CAKE_SHAPED_ARENA_CONTEST"]
+    "encounterName_alt": [
+      "{1} competing in {2}",
+      "REGEX.LOCATION.CAKE_SHAPED_ARENA_FAMILIAR",
+      "REGEX.LOCATION.CAKE_SHAPED_ARENA_CONTEST"
+    ]
   }
 }

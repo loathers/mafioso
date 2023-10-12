@@ -1,17 +1,24 @@
-import ListItem from '../classes/ListItem';
+import ListItem from "../classes/ListItem";
 
-import {ATTRACTORS, ATTRACTORS_MAP} from '../constants/ATTRACTORS'
-import {BANISHERS, BANISHERS_MAP} from '../constants/BANISHERS'
-import {COPIERS, COPIERS_MAP} from '../constants/COPIERS'
-import {DISINTEGRATERS, DISINTEGRATERS_MAP} from '../constants/DISINTEGRATERS'
-import {REPLACERS, REPLACERS_MAP} from '../constants/REPLACERS'
-import {DISPLAY_SCRUB_LIST} from '../constants/DEFAULTS';
-import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from '../constants/ENTRY_DATA_MAP';
-import ENTRY_TYPE from '../constants/ENTRY_TYPE';
-import REGEX from '../constants/REGEXES';
+import { ATTRACTORS, ATTRACTORS_MAP } from "../constants/ATTRACTORS";
+import { BANISHERS, BANISHERS_MAP } from "../constants/BANISHERS";
+import { COPIERS, COPIERS_MAP } from "../constants/COPIERS";
+import {
+  DISINTEGRATERS,
+  DISINTEGRATERS_MAP,
+} from "../constants/DISINTEGRATERS";
+import { REPLACERS, REPLACERS_MAP } from "../constants/REPLACERS";
+import { DISPLAY_SCRUB_LIST } from "../constants/DEFAULTS";
+import {
+  ENTRY_DATA_MAP,
+  ENTRY_MAP_KEYS,
+  UNKNOWN_ENTRY_DATA,
+} from "../constants/ENTRY_DATA_MAP";
+import ENTRY_TYPE from "../constants/ENTRY_TYPE";
+import REGEX from "../constants/REGEXES";
 
-import * as dataParser from '../helpers/dataParser';
-import * as regexUtils from './regexUtils';
+import * as dataParser from "../helpers/dataParser";
+import * as regexUtils from "./regexUtils";
 
 /**
  * @param {String} entryString
@@ -27,11 +34,13 @@ export function getEntryData(entryString) {
   // original implementation
   const foundEntryType = ENTRY_MAP_KEYS.find((entryTypeKey) => {
     const entryTypeData = ENTRY_DATA_MAP[entryTypeKey];
-    const {matcher} = entryTypeData;
+    const { matcher } = entryTypeData;
     if (matcher instanceof RegExp) {
       return regexUtils.hasString(entryString, matcher);
     } else if (Array.isArray(matcher)) {
-      return matcher.some((matchRegex) => regexUtils.hasString(entryString, matchRegex))
+      return matcher.some((matchRegex) =>
+        regexUtils.hasString(entryString, matchRegex),
+      );
     } else {
       return undefined;
     }
@@ -61,7 +70,7 @@ export function parseAttributes(entryString) {
     ...parseStatAttributes(entryString),
     ...parseCombatAttributes(entryString),
     ...parseSpecialAttributes(entryString),
-  }
+  };
 }
 /**
  * parse some of the common entry attributes
@@ -91,7 +100,7 @@ export function parseCommonAttributes(entryString) {
     acquiredItems: astralItems.concat(pulledItems.concat(acquiredItems)),
     acquiredEffects,
     meatChange,
-  }
+  };
 }
 /**
  * parsing for stat related data
@@ -110,7 +119,7 @@ export function parseStatAttributes(entryString) {
     moxExpChanges: parseMoxSubstats(entryString),
     healthChanges: parseHealthChanges(entryString),
     manaChanges: parseManaChanges(entryString),
-  }
+  };
 }
 /**
  * parsing for combat related data
@@ -128,7 +137,7 @@ export function parseCombatAttributes(entryString) {
     disintigrater: parseDisintigraters(entryString),
     replacers: parseReplacers(entryString),
     replacedEnemies: parseReplacedResults(entryString),
-  }
+  };
 }
 /**
  * parsing special data
@@ -140,7 +149,7 @@ export function parseSpecialAttributes(entryString) {
   return {
     isEndedByUseTheForce: isUseTheForce(entryString),
     diabolicPizzaIngredients: parseMakeDiabolicPizza(entryString),
-  }
+  };
 }
 /**
  * parsing You, Robot path attributes
@@ -149,16 +158,24 @@ export function parseSpecialAttributes(entryString) {
  * @return {Array<Entry>}
  */
 export function parseYouRobotAttributes(entryString) {
-  const scrapGain = (entryString.match(REGEX.YOU_ROBOT.SCRAP_GAIN) || []).reduce((total, gain) => total + Number(gain), 0);
-  const scrapLose = (entryString.match(REGEX.YOU_ROBOT.SCRAP_LOSE) || []).reduce((total, loss) => total + Number(loss), 0);
+  const scrapGain = (
+    entryString.match(REGEX.YOU_ROBOT.SCRAP_GAIN) || []
+  ).reduce((total, gain) => total + Number(gain), 0);
+  const scrapLose = (
+    entryString.match(REGEX.YOU_ROBOT.SCRAP_LOSE) || []
+  ).reduce((total, loss) => total + Number(loss), 0);
 
-  const energyGain = (entryString.match(REGEX.YOU_ROBOT.ENERGY_GAIN) || []).reduce((total, gain) => total + Number(gain), 0);
-  const energyLose = (entryString.match(REGEX.YOU_ROBOT.ENERGY_LOSE) || []).reduce((total, loss) => total + Number(loss), 0);
+  const energyGain = (
+    entryString.match(REGEX.YOU_ROBOT.ENERGY_GAIN) || []
+  ).reduce((total, gain) => total + Number(gain), 0);
+  const energyLose = (
+    entryString.match(REGEX.YOU_ROBOT.ENERGY_LOSE) || []
+  ).reduce((total, loss) => total + Number(loss), 0);
 
   return {
     scrapChange: scrapGain - scrapLose,
     energyChange: energyGain - energyLose,
-  }
+  };
 }
 /**
  * scrub the main text of data that will be
@@ -168,10 +185,13 @@ export function parseYouRobotAttributes(entryString) {
  * @return {String}
  */
 export function createEntryBody(entryString) {
-  const scrubbedBody = DISPLAY_SCRUB_LIST.reduce((currentString, replacementRegex) => {
-    return currentString.replace(replacementRegex, '');
-  }, entryString);
-  return scrubbedBody.replace(/(\r\n|\n)+/g, '\n');
+  const scrubbedBody = DISPLAY_SCRUB_LIST.reduce(
+    (currentString, replacementRegex) => {
+      return currentString.replace(replacementRegex, "");
+    },
+    entryString,
+  );
+  return scrubbedBody.replace(/(\r\n|\n)+/g, "\n");
 }
 /**
  * @param {String} entryString
@@ -183,8 +203,8 @@ export function parseMafiosoAnnotations(entryString) {
     return null;
   }
 
-  const annotations = annotationMatches.join('\n');
-  return annotations.replace(/\/\//g, '');
+  const annotations = annotationMatches.join("\n");
+  return annotations.replace(/\/\//g, "");
 }
 // -- common parsers
 /**
@@ -196,7 +216,10 @@ export function parseMafiosoAnnotations(entryString) {
  * @return {Number | undefined}
  */
 export function parseRawTurnNum(entryString) {
-  const turnNumMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.TURN_NUM);
+  const turnNumMatches = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.VALUE.TURN_NUM,
+  );
   if (turnNumMatches === null) {
     return undefined;
   }
@@ -219,26 +242,45 @@ export function isCombatEncounter(entryString) {
  */
 export function parseLocationName(entryString) {
   // for the typical tavern, I want to ignore all the individual squares
-  if (regexUtils.getRegexMatch(entryString, REGEX.QUEST.TAVERN_CELLAR_LOCATION) !== null) {
-    return 'The Typical Tavern Cellar';
+  if (
+    regexUtils.getRegexMatch(
+      entryString,
+      REGEX.QUEST.TAVERN_CELLAR_LOCATION,
+    ) !== null
+  ) {
+    return "The Typical Tavern Cellar";
   }
 
   // combine Daily Dungeon adventures as well
-  if (regexUtils.getRegexMatch(entryString, REGEX.QUEST.DAILY_DUNGEON_LOCATION) !== null) {
-    return 'The Daily Dungeon';
+  if (
+    regexUtils.getRegexMatch(
+      entryString,
+      REGEX.QUEST.DAILY_DUNGEON_LOCATION,
+    ) !== null
+  ) {
+    return "The Daily Dungeon";
   }
 
-  const locationNameMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.LOCATION_NAME);
+  const locationNameMatches = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.VALUE.LOCATION_NAME,
+  );
   if (locationNameMatches !== null) {
     return locationNameMatches[0];
   }
 
-  const shopLocationMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.SHOP_LOCATION_NAME);
+  const shopLocationMatches = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.VALUE.SHOP_LOCATION_NAME,
+  );
   if (shopLocationMatches !== null) {
     return shopLocationMatches[0];
   }
 
-  const visitLocationMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.VISIT_LOCATION_NAME);
+  const visitLocationMatches = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.VALUE.VISIT_LOCATION_NAME,
+  );
   if (visitLocationMatches !== null) {
     return visitLocationMatches[0];
   }
@@ -259,7 +301,10 @@ export function parseEncounterName(entryString) {
     return replacedResults.pop();
   }
 
-  const encounterNameMatches = regexUtils.getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME);
+  const encounterNameMatches = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.VALUE.ENCOUNTER_NAME,
+  );
   if (encounterNameMatches !== null) {
     return encounterNameMatches[0];
   }
@@ -271,7 +316,10 @@ export function parseEncounterName(entryString) {
  * @return {String | null}
  */
 export function parseChoiceProgression(entryString) {
-  const choiceMatches = regexUtils.getRegexMatch(entryString, REGEX.LINE.GENERIC_TOOK_CHOICE);
+  const choiceMatches = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.LINE.GENERIC_TOOK_CHOICE,
+  );
   if (choiceMatches === null) {
     return [];
   }
@@ -285,16 +333,25 @@ export function parseChoiceProgression(entryString) {
  * @return {Array<String>}
  */
 export function parseAcquiredItems(entryString) {
-  const acquiredItemLines = regexUtils.getRegexMatch(entryString, REGEX.ITEMS.ACQUIRED_ITEM_LINE) || [];
+  const acquiredItemLines =
+    regexUtils.getRegexMatch(entryString, REGEX.ITEMS.ACQUIRED_ITEM_LINE) || [];
   return acquiredItemLines.map((acquiredItemString) => {
-    const itemName = regexUtils.getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_NAME) || [];
-    const itemAmount = regexUtils.getRegexMatch(acquiredItemString, REGEX.ITEMS.ACQUIRED_ITEM_N) || [];
+    const itemName =
+      regexUtils.getRegexMatch(
+        acquiredItemString,
+        REGEX.ITEMS.ACQUIRED_ITEM_NAME,
+      ) || [];
+    const itemAmount =
+      regexUtils.getRegexMatch(
+        acquiredItemString,
+        REGEX.ITEMS.ACQUIRED_ITEM_N,
+      ) || [];
     if (!itemName[0]) {
       console.warn(`Unable to parse item name in: ${acquiredItemString}`);
     }
 
     return new ListItem({
-      name: itemName[0].replace(/an item: /im, ''),
+      name: itemName[0].replace(/an item: /im, ""),
       amount: Number(itemAmount[0]) || 1,
     });
   });
@@ -304,23 +361,34 @@ export function parseAcquiredItems(entryString) {
  * @return {Array<String>}
  */
 export function parseAstralShopping(entryString) {
-  const acquiredItemLines = regexUtils.getRegexMatch(entryString, REGEX.ASCENSION.ASTRAL_SHOPPING_NAME) || [];
+  const acquiredItemLines =
+    regexUtils.getRegexMatch(
+      entryString,
+      REGEX.ASCENSION.ASTRAL_SHOPPING_NAME,
+    ) || [];
   return acquiredItemLines.map((astralItemName) => {
     return new ListItem({
       name: astralItemName,
       amount: 1,
     });
-  })
+  });
 }
 /**
  * @param {String} entryString
  * @return {Array<String>}
  */
 export function parsePulledItems(entryString) {
-  const pulledItemLines = regexUtils.getRegexMatch(entryString, REGEX.ITEMS.HAGNK_PULL_LINE) || [];
+  const pulledItemLines =
+    regexUtils.getRegexMatch(entryString, REGEX.ITEMS.HAGNK_PULL_LINE) || [];
   return pulledItemLines.map((acquiredItemString) => {
-    const itemName = regexUtils.getRegexMatch(acquiredItemString, REGEX.ITEMS.HAGNK_PULL_NAME);
-    const itemAmount = regexUtils.getRegexMatch(acquiredItemString, REGEX.ITEMS.HAGNK_PULL_AMOUNTS);
+    const itemName = regexUtils.getRegexMatch(
+      acquiredItemString,
+      REGEX.ITEMS.HAGNK_PULL_NAME,
+    );
+    const itemAmount = regexUtils.getRegexMatch(
+      acquiredItemString,
+      REGEX.ITEMS.HAGNK_PULL_AMOUNTS,
+    );
     if (!itemName[0]) {
       console.warn(`Unable to parse item name in: ${acquiredItemString}`);
     }
@@ -329,7 +397,7 @@ export function parsePulledItems(entryString) {
       name: itemName[0],
       amount: itemAmount[0] || 1,
     });
-  })
+  });
 }
 /**
  * builds an array of all the effects that were gained
@@ -338,10 +406,20 @@ export function parsePulledItems(entryString) {
  * @return {Array<String>}
  */
 export function parseAcquiredEffects(entryString) {
-  const acquiredEffectLines = regexUtils.getRegexMatch(entryString, REGEX.EFFECTS.ACQUIRED_EFFECT_LINE) || [];
+  const acquiredEffectLines =
+    regexUtils.getRegexMatch(entryString, REGEX.EFFECTS.ACQUIRED_EFFECT_LINE) ||
+    [];
   return acquiredEffectLines.map((acquiredEffectString) => {
-    const name = regexUtils.getRegexMatch(acquiredEffectString, REGEX.EFFECTS.EFFECT_NAME) || [];
-    const duration = regexUtils.getRegexMatch(acquiredEffectString, REGEX.EFFECTS.EFFECT_DURATION) || [];
+    const name =
+      regexUtils.getRegexMatch(
+        acquiredEffectString,
+        REGEX.EFFECTS.EFFECT_NAME,
+      ) || [];
+    const duration =
+      regexUtils.getRegexMatch(
+        acquiredEffectString,
+        REGEX.EFFECTS.EFFECT_DURATION,
+      ) || [];
     if (!name[0]) {
       console.warn(`Unable to parse effect name in: ${acquiredEffectString}`);
     }
@@ -350,7 +428,7 @@ export function parseAcquiredEffects(entryString) {
       name: name[0],
       amount: duration[0] || 1,
     });
-  })
+  });
 }
 /**
  * parses the amount of meat that was gained/lost
@@ -362,10 +440,16 @@ export function parseMeatChange(entryString) {
   const meatSpentAmount = parseMeatSpent(entryString);
 
   const meatGainsArray = parseMeatGains(entryString);
-  const meatGainedAmount = meatGainsArray.reduce((gainTotal, gainAmount) => (gainTotal + gainAmount), 0);
+  const meatGainedAmount = meatGainsArray.reduce(
+    (gainTotal, gainAmount) => gainTotal + gainAmount,
+    0,
+  );
 
   const meatLossArray = parseMeatLoss(entryString);
-  const meatLossAmount = meatLossArray.reduce((lossTotal, lossAmount) => (lossTotal + lossAmount), 0);
+  const meatLossAmount = meatLossArray.reduce(
+    (lossTotal, lossAmount) => lossTotal + lossAmount,
+    0,
+  );
 
   return meatSpentAmount + meatGainedAmount + meatLossAmount;
 }
@@ -374,32 +458,54 @@ export function parseMeatChange(entryString) {
  * @return {Array<Number>}
  */
 export function parseMeatGains(entryString) {
-  const meatGainMatches = regexUtils.getRegexMatch(entryString, REGEX.TRANSACTIONS.MEAT_GAIN_AMOUNT) || [];
-  return meatGainMatches.map((amountString) => Number(amountString.replace(',', '')));
+  const meatGainMatches =
+    regexUtils.getRegexMatch(
+      entryString,
+      REGEX.TRANSACTIONS.MEAT_GAIN_AMOUNT,
+    ) || [];
+  return meatGainMatches.map((amountString) =>
+    Number(amountString.replace(",", "")),
+  );
 }
 /**
  * @param {String} entryString
  * @return {Array<Number>}
  */
 export function parseMeatLoss(entryString) {
-  const meatLossMatches = regexUtils.getRegexMatch(entryString, REGEX.TRANSACTIONS.MEAT_LOSS_AMOUNT) || [];
-  return meatLossMatches.map((amountString) => Number(amountString.replace(',', '') * -1));
+  const meatLossMatches =
+    regexUtils.getRegexMatch(
+      entryString,
+      REGEX.TRANSACTIONS.MEAT_LOSS_AMOUNT,
+    ) || [];
+  return meatLossMatches.map((amountString) =>
+    Number(amountString.replace(",", "") * -1),
+  );
 }
 /**
  * @param {String} entryString
  * @return {Number}
  */
 export function parseMeatSpent(entryString) {
-  const buyAmountMatches = regexUtils.getRegexMatch(entryString, REGEX.TRANSACTIONS.BUY_ITEM_AMOUNT) || [];
-  const buyCostMatches = regexUtils.getRegexMatch(entryString, REGEX.TRANSACTIONS.BUY_ITEM_COST) || [];
+  const buyAmountMatches =
+    regexUtils.getRegexMatch(entryString, REGEX.TRANSACTIONS.BUY_ITEM_AMOUNT) ||
+    [];
+  const buyCostMatches =
+    regexUtils.getRegexMatch(entryString, REGEX.TRANSACTIONS.BUY_ITEM_COST) ||
+    [];
   if (buyAmountMatches.length !== buyCostMatches.length) {
-    console.warn('There may be some data missing from parsing how much meat was spent.', entryString);
+    console.warn(
+      "There may be some data missing from parsing how much meat was spent.",
+      entryString,
+    );
   }
 
-  const spentTotal = buyAmountMatches.reduce((meatTotal, buyAmountString, idx) => {
-    const buyCostString = buyCostMatches[idx] || 0;
-    return meatTotal + Number(buyAmountString) * -Number(buyCostString);
-  }, 0)
+  const spentTotal = buyAmountMatches.reduce(
+    (meatTotal, buyAmountString, idx) => {
+      const buyCostString = buyCostMatches[idx] || 0;
+      return meatTotal + Number(buyAmountString) * -Number(buyCostString);
+    },
+    0,
+  );
 
   return spentTotal;
 }
@@ -409,10 +515,14 @@ export function parseMeatSpent(entryString) {
  * @return {Boolean}
  */
 export function parseAdventureChanges(entryString) {
-  const advGains = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.ADV_GAINS) || [];
-  const advLosses = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.ADV_LOSSES) || [];
-  const negativeLosses = advLosses.map((advLoss) => (Number(advLoss) * -1));
-  return advGains.concat(negativeLosses).map((changeString) => Number(changeString));
+  const advGains =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.ADV_GAINS) || [];
+  const advLosses =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.ADV_LOSSES) || [];
+  const negativeLosses = advLosses.map((advLoss) => Number(advLoss) * -1);
+  return advGains
+    .concat(negativeLosses)
+    .map((changeString) => Number(changeString));
 }
 /**
  * did we gain a level somewhere
@@ -448,8 +558,10 @@ export function isMoxUp(entryString) {
  * @return {Array<Number>}
  */
 export function parseMusSubstats(entryString) {
-  const expGains = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MUS_EXP_GAINS) || [];
-  const expLosses = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MUS_EXP_LOSSES) || [];
+  const expGains =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MUS_EXP_GAINS) || [];
+  const expLosses =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MUS_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -457,8 +569,11 @@ export function parseMusSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseMystSubstats(entryString) {
-  const expGains = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MYST_EXP_GAINS) || [];
-  const expLosses = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MYST_EXP_LOSSES) || [];
+  const expGains =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MYST_EXP_GAINS) || [];
+  const expLosses =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MYST_EXP_LOSSES) ||
+    [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -466,8 +581,10 @@ export function parseMystSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseMoxSubstats(entryString) {
-  const expGains = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_GAINS) || [];
-  const expLosses = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_LOSSES) || [];
+  const expGains =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_GAINS) || [];
+  const expLosses =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MOX_EXP_LOSSES) || [];
   return expGains.concat(expLosses).map((changeString) => Number(changeString));
 }
 /**
@@ -475,20 +592,28 @@ export function parseMoxSubstats(entryString) {
  * @return {Array<Number>}
  */
 export function parseHealthChanges(entryString) {
-  const hpGains = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.HP_GAINS) || [];
-  const hpLosses = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.HP_LOSSES) || [];
-  const negativeLosses = hpLosses.map((hpLoss) => (Number(hpLoss) * -1));
-  return hpGains.concat(negativeLosses).map((changeString) => Number(changeString));
+  const hpGains =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.HP_GAINS) || [];
+  const hpLosses =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.HP_LOSSES) || [];
+  const negativeLosses = hpLosses.map((hpLoss) => Number(hpLoss) * -1);
+  return hpGains
+    .concat(negativeLosses)
+    .map((changeString) => Number(changeString));
 }
 /**
  * @param {String} entryString
  * @return {Array<Number>}
  */
 export function parseManaChanges(entryString) {
-  const mpGains = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MP_GAINS) || [];
-  const mpLosses = regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MP_LOSSES) || [];
-  const negativeLosses = mpLosses.map((mpLoss) => (Number(mpLoss) * -1));
-  return mpGains.concat(negativeLosses).map((changeString) => Number(changeString));
+  const mpGains =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MP_GAINS) || [];
+  const mpLosses =
+    regexUtils.getRegexMatch(entryString, REGEX.CHARACTER.MP_LOSSES) || [];
+  const negativeLosses = mpLosses.map((mpLoss) => Number(mpLoss) * -1);
+  return mpGains
+    .concat(negativeLosses)
+    .map((changeString) => Number(changeString));
 }
 // -- combat parsers
 /**
@@ -503,9 +628,13 @@ export function parseCombatActions(entryString) {
     return [];
   }
 
-  const combatRoundsString = regexUtils.getRegexMatch(entryString, REGEX.COMBAT.ACTION_ROUND) || [];
+  const combatRoundsString =
+    regexUtils.getRegexMatch(entryString, REGEX.COMBAT.ACTION_ROUND) || [];
   const combatActionsList = combatRoundsString.map((roundString) => {
-    const roundNum = regexUtils.getRegexMatch(roundString, REGEX.COMBAT.COMBAT_ROUND_NUM);
+    const roundNum = regexUtils.getRegexMatch(
+      roundString,
+      REGEX.COMBAT.COMBAT_ROUND_NUM,
+    );
     const attackActionName = parseAttackName(roundString);
     return {
       actionName: attackActionName,
@@ -540,32 +669,47 @@ export function hasInitiative(entryString) {
  * @return {Array<String>}
  */
 export function parseAttackName(entryString) {
-  const songboomSingAlong = regexUtils.getRegexMatch(entryString, REGEX.SONGBOOM_BOOMBOX.SING_ALONG);
+  const songboomSingAlong = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.SONGBOOM_BOOMBOX.SING_ALONG,
+  );
   if (songboomSingAlong) {
     return `♫ ${songboomSingAlong[0]} ♫`;
   }
 
-  const combatSkillNames = regexUtils.getRegexMatch(entryString, REGEX.COMBAT.SKILL_NAME);
+  const combatSkillNames = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.COMBAT.SKILL_NAME,
+  );
   if (combatSkillNames) {
     return combatSkillNames[0];
   }
 
-  const combatAttacks = regexUtils.getRegexMatch(entryString, REGEX.COMBAT.ATTACK);
+  const combatAttacks = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.COMBAT.ATTACK,
+  );
   if (combatAttacks) {
-    return 'ATTACK';
+    return "ATTACK";
   }
 
-  const useItemName = regexUtils.getRegexMatch(entryString, REGEX.COMBAT.USE_COMBAT_ITEM_NAME);
+  const useItemName = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.COMBAT.USE_COMBAT_ITEM_NAME,
+  );
   if (useItemName) {
     return useItemName[0].toUpperCase();
   }
 
-  const tryToStealText = regexUtils.getRegexMatch(entryString, REGEX.COMBAT.TRY_TO_STEAL);
+  const tryToStealText = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.COMBAT.TRY_TO_STEAL,
+  );
   if (tryToStealText) {
     return tryToStealText[0].toUpperCase();
   }
 
-  return 'unknown attack';
+  return "unknown attack";
 }
 /**
  * @param {String} entryString
@@ -646,12 +790,14 @@ export function parseReplacedResults(entryString) {
     return null;
   }
 
-  const originalEncounter = regexUtils.getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME) || [];
-  const replacedMatches = regexUtils.getRegexMatch(entryString, REGEX.COMBAT.REPLACED_NAME) || [];
+  const originalEncounter =
+    regexUtils.getRegexMatch(entryString, REGEX.VALUE.ENCOUNTER_NAME) || [];
+  const replacedMatches =
+    regexUtils.getRegexMatch(entryString, REGEX.COMBAT.REPLACED_NAME) || [];
   if (replacedMatches.length > 0) {
     // hard to regex "becomes a" and "becomes the" when I need to include The in the name,
     //  so this is the workaround
-    const removeA = replacedMatches.map((match) => match.replace('a ', ''));
+    const removeA = replacedMatches.map((match) => match.replace("a ", ""));
     return originalEncounter.concat(removeA);
   }
 
@@ -663,18 +809,24 @@ export function parseReplacedResults(entryString) {
  * @return {String}
  */
 export function isUseTheForce(entryString) {
-  return regexUtils.hasString(entryString, REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_TEXT);
+  return regexUtils.hasString(
+    entryString,
+    REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_TEXT,
+  );
 }
 /**
  * @param {String} entryString
  * @return {Array<String>}
  */
 export function parseMakeDiabolicPizza(entryString) {
-  const ingredientsLine = regexUtils.getRegexMatch(entryString, REGEX.DIABOLIC_PIZZA.INGREDIENTS_ONLY);
+  const ingredientsLine = regexUtils.getRegexMatch(
+    entryString,
+    REGEX.DIABOLIC_PIZZA.INGREDIENTS_ONLY,
+  );
   if (ingredientsLine === null) {
     return [];
   }
 
-  const ingredientsArray = ingredientsLine[0].split(', ');
+  const ingredientsArray = ingredientsLine[0].split(", ");
   return ingredientsArray;
 }

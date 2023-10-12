@@ -1,4 +1,4 @@
-import ENTITY_TYPE from './ENTITY_TYPE';
+import ENTITY_TYPE from "./ENTITY_TYPE";
 
 /**
  * https://kol.coldfront.net/thekolwiki/index.php/Insta-kill
@@ -9,43 +9,43 @@ import ENTITY_TYPE from './ENTITY_TYPE';
  * @typedef {Entity} RunAways
  */
 export const RUNAWAYS_MAP = {
-  'Run Away': {
+  "Run Away": {
     matcher: /you.*run away.*like a little coward.*/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Stomping Boots Runaway': {
+  "Stomping Boots Runaway": {
     matcher: /.*kicks you in the butt to speed your escape.*/i,
     entityType: ENTITY_TYPE.FAMILIAR,
   },
-  'Return': {
+  Return: {
     matcher: /(uses|casts).*Return!/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'green smoke bomb': {
+  "green smoke bomb": {
     matcher: /(uses|casts).*green smoke bomb/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'T.U.R.D.S. Key': {
+  "T.U.R.D.S. Key": {
     matcher: /(uses|casts).*T.U.R.D.S. Key/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'Baleful Howl': {
+  "Baleful Howl": {
     matcher: /(uses|casts).*Baleful Howl/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'wumpus-hair bolo': {
+  "wumpus-hair bolo": {
     matcher: /(uses|casts).*wumpus-hair bolo/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'bargain flash powder': {
+  "bargain flash powder": {
     matcher: /(uses|casts).*bargain flash powder/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'buckyball': {
+  buckyball: {
     matcher: /(uses|casts).*buckyball/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'fish-oil smoke bomb': {
+  "fish-oil smoke bomb": {
     matcher: /(uses|casts).*fish-oil smoke bomb/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
@@ -123,7 +123,7 @@ export const RUNAWAYS_MAP = {
   //   entityType: ENTITY_TYPE.COMBAT_ITEM,
   // },
   // -- specific banishers
-  'short writ of habeas corpus': {
+  "short writ of habeas corpus": {
     matcher: /(uses|casts).*short writ of habeas corpus/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
@@ -131,7 +131,7 @@ export const RUNAWAYS_MAP = {
   //   matcher: /(uses|casts).*cocktail napkin/i,
   //   entityType: ENTITY_TYPE.COMBAT_ITEM,
   // },
-  'windicle': {
+  windicle: {
     matcher: /(uses|casts).*windicle/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
@@ -140,6 +140,6 @@ export const RUNAWAYS_MAP = {
   //   matcher: /(uses|casts).*ball/i,
   //   entityType: ENTITY_TYPE.COMBAT_ITEM,
   // },
-}
+};
 
 export const RUNAWAYS = Object.keys(RUNAWAYS_MAP);

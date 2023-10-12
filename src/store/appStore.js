@@ -1,12 +1,12 @@
-import {observable} from 'mobx';
-import { v4 as uuidv4 } from 'uuid';
+import { observable } from "mobx";
+import { v4 as uuidv4 } from "uuid";
 
-import keycodes from '../constants/keycodes';
-import {LOG_VIS_URL} from '../constants/PAGE_URLS';
+import keycodes from "../constants/keycodes";
+import { LOG_VIS_URL } from "../constants/PAGE_URLS";
 
-import ToastController from '../sections/ToastController';
-import databaseStore from '../store/databaseStore';
-import logStore from '../store/logStore';
+import ToastController from "../sections/ToastController";
+import databaseStore from "../store/databaseStore";
+import logStore from "../store/logStore";
 
 /**
  * state and handler of the log data
@@ -42,7 +42,11 @@ class AppStore {
   }
   /** @type {Boolean} */
   get isLoading() {
-    return this.isPretendLoading.get() || logStore.isLoading || databaseStore.isLoading;
+    return (
+      this.isPretendLoading.get() ||
+      logStore.isLoading ||
+      databaseStore.isLoading
+    );
   }
   /** @type {Boolean} */
   get isReady() {
@@ -62,12 +66,19 @@ class AppStore {
     //   return true;
     // }
 
-    return !this.isReady || this.hasAttemptedShare || logStore.isImportedLog || !logStore.isAscensionLog;
+    return (
+      !this.isReady ||
+      this.hasAttemptedShare ||
+      logStore.isImportedLog ||
+      !logStore.isAscensionLog
+    );
   }
   // -- data
   /** @type {String} */
   get visualizerUrl() {
-    return logStore.isImportedLog ? `${LOG_VIS_URL}/${logStore.hashcode}` : `${LOG_VIS_URL}/uploaded`;
+    return logStore.isImportedLog
+      ? `${LOG_VIS_URL}/${logStore.hashcode}`
+      : `${LOG_VIS_URL}/uploaded`;
   }
   /** @type {Array<Entry>} */
   get currentEntries() {
@@ -78,9 +89,13 @@ class AppStore {
    *
    */
   initializeListeners() {
-    window.addEventListener('keydown', (evt) => {
+    window.addEventListener("keydown", (evt) => {
       // don't use the hotkeys if trying to type
-      if (evt.srcElement.type === 'text' || evt.srcElement.type === 'textarea' || evt.srcElement.type === 'number') {
+      if (
+        evt.srcElement.type === "text" ||
+        evt.srcElement.type === "textarea" ||
+        evt.srcElement.type === "number"
+      ) {
         return;
       }
 
@@ -91,7 +106,7 @@ class AppStore {
       if (evt.keyCode === keycodes.backquote) {
         this.isDevMode.set(!this.isDevMode.get());
       }
-    })
+    });
   }
   // -- state changers
   /**
@@ -118,9 +133,8 @@ class AppStore {
 
     try {
       logStore.downloadFullLog();
-
     } catch (err) {
-      ToastController.error({title: 'Download Failed', content: err.message});
+      ToastController.error({ title: "Download Failed", content: err.message });
       this.isPretendLoading.set(false);
     }
 
@@ -148,16 +162,15 @@ class AppStore {
         turnCount: logStore.turnCount,
         standardSeason: logStore.standardSeason,
         logText: logStore.export(),
-      }
+      };
 
       await databaseStore.shareLog(payload);
 
       // this marks the log as shared & shareable
       logStore.sharedHashcode = logStore.hashcode;
-
     } catch (err) {
       this.isPretendLoading.set(false);
-      ToastController.error({title: 'Share Error', content: err.message});
+      ToastController.error({ title: "Share Error", content: err.message });
     }
 
     await new Promise((resolve) => setTimeout(resolve, 300));
@@ -171,11 +184,13 @@ class AppStore {
 
     try {
       const fetchedLogData = await databaseStore.fetchLog(hashcode);
-      const {logText, databaseEntry} = fetchedLogData;
+      const { logText, databaseEntry } = fetchedLogData;
       await logStore.importLog(logText, databaseEntry);
-      ToastController.success({title: 'Log successfully imported!', content: 'Spying on the competition? Ottimo.'});
+      ToastController.success({
+        title: "Log successfully imported!",
+        content: "Spying on the competition? Ottimo.",
+      });
       this.shouldRedirectToVisualizer.set(true);
-
     } catch (err) {
       // ToastController.show({title: 'Import Failed', content: err.message});
       this.isPretendLoading.set(false);
@@ -188,28 +203,28 @@ class AppStore {
    * based on `isShareDisabled`
    */
   showShareFailReason() {
-    let failReason = '';
+    let failReason = "";
     if (!this.isReady) {
       // failReason += 'App is not ready.\n';
     }
 
     if (this.hasAttemptedShare) {
-      failReason += 'You already tried sharing this.\n';
+      failReason += "You already tried sharing this.\n";
     }
 
     if (logStore.isImportedLog && !this.hasAttemptedShare) {
-      failReason += 'This log is from the Database.\n';
+      failReason += "This log is from the Database.\n";
     }
 
     if (!logStore.isAscensionLog) {
-      failReason += 'This is not an Ascension log.\n';
+      failReason += "This is not an Ascension log.\n";
     }
 
     // if (logStore.turnCount / logStore.dayCount >= 400) {
     //   failReason += 'Your turns/day ratio is very lopsided. Contact me.';
     // }
 
-    ToastController.error({title: 'Share Error', content: failReason});
+    ToastController.error({ title: "Share Error", content: failReason });
   }
 }
 /** export singleton */

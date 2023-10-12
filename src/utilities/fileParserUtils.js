@@ -1,4 +1,5 @@
-const SESSION_DATE_REGEX = /(\d{4})(0?[1-9]|1[012])(0?[1-9]|[12][0-9]|3[01])(?!\d)/;
+const SESSION_DATE_REGEX =
+  /(\d{4})(0?[1-9]|1[012])(0?[1-9]|[12][0-9]|3[01])(?!\d)/;
 const SESSION_NAME_REGEX = /^.*?(?=_\d)/;
 
 /**
@@ -8,17 +9,17 @@ const SESSION_NAME_REGEX = /^.*?(?=_\d)/;
  */
 export function readFile(file) {
   return new Promise((resolve, reject) => {
-    if (file.type !== 'text/plain') {
-      reject('Uploaded a non-text file.');
+    if (file.type !== "text/plain") {
+      reject("Uploaded a non-text file.");
       return;
     }
 
     const fileReader = new FileReader();
     fileReader.onload = (readerEvt) => {
       const readResult = readerEvt.target.result;
-      console.log(`%c☌ ...file "${file.name}" read.`, 'color: #6464ff');
+      console.log(`%c☌ ...file "${file.name}" read.`, "color: #6464ff");
       resolve(readResult);
-    }
+    };
 
     fileReader.readAsText(file);
   });
@@ -64,6 +65,8 @@ export function getNameFromSessionFile(file) {
  * @returns {String}
  */
 export function convertDateToString(date) {
-  const fix2 = (n) => ((n < 10) ? '0' + n : n);
-  return `${date.getFullYear()}${fix2(date.getMonth() + 1)}${fix2(date.getDate())}`;
+  const fix2 = (n) => (n < 10 ? "0" + n : n);
+  return `${date.getFullYear()}${fix2(date.getMonth() + 1)}${fix2(
+    date.getDate(),
+  )}`;
 }

@@ -1,12 +1,12 @@
-import ENTRY_TYPE from '../constants/ENTRY_TYPE';
-import REGEX from '../constants/REGEXES';
+import ENTRY_TYPE from "../constants/ENTRY_TYPE";
+import REGEX from "../constants/REGEXES";
 
-import Entry from '../classes/Entry';
+import Entry from "../classes/Entry";
 
-import logStore from '../store/logStore';
+import logStore from "../store/logStore";
 
-import * as fileParserUtils from '../utilities/fileParserUtils';
-import download from '../utilities/download';
+import * as fileParserUtils from "../utilities/fileParserUtils";
+import download from "../utilities/download";
 
 /**
  * look at each entry and their neighbor in front and see if
@@ -37,7 +37,7 @@ export function combineEntries(entriesList) {
       const combinedEntry = new Entry({
         entryId: currEntry.id,
         entryIdx: currEntry.entryIdx,
-        rawText: currEntry.rawText.concat('\n\n').concat(nextEntry.rawText),
+        rawText: currEntry.rawText.concat("\n\n").concat(nextEntry.rawText),
       });
 
       // put the newly created entry back to the front of the search
@@ -71,21 +71,28 @@ export function createEstimatedEntries(allEntries) {
     prevEntry: null,
     prevTurnNum: -1,
     trackedFamiliar: null, // familiar that user last swapped to
-  }
+  };
 
   // start
   const conjecturedEntries = allEntries.map((entry, idx) => {
     // find the next entry that is not a free adventure
-    const nextEntry = logStore.findNextEntry(idx, {isAdventure: true});
+    const nextEntry = logStore.findNextEntry(idx, { isAdventure: true });
 
     // update turnNum
     entry = handleEstimateTurnNum(entry, nextEntry);
 
     // sometimes the last few entries don't have any turns tracked by mafia
     // so we'll just set it equal to our last known turnNum
-    if (nextEntry === undefined && estimates.prevTurnNum > 0 && entry.turnNum <= estimates.prevTurnNum) {
+    if (
+      nextEntry === undefined &&
+      estimates.prevTurnNum > 0 &&
+      entry.turnNum <= estimates.prevTurnNum
+    ) {
       // just in case it also costs adventures, add it in
-      const extraAdventureChanges = entry.adventureChangeValue < 0 ? Math.abs(entry.adventureChangeValue) : 0;
+      const extraAdventureChanges =
+        entry.adventureChangeValue < 0
+          ? Math.abs(entry.adventureChangeValue)
+          : 0;
       entry.turnNum = estimates.prevTurnNum + extraAdventureChanges;
     }
 
@@ -101,11 +108,16 @@ export function createEstimatedEntries(allEntries) {
     }
 
     // set dayNum of entry
-    entry.dayNum = (estimates.dateList.length > estimates.scotchDayList.length) ? estimates.dateList.length : estimates.scotchDayList.length;
+    entry.dayNum =
+      estimates.dateList.length > estimates.scotchDayList.length
+        ? estimates.dateList.length
+        : estimates.scotchDayList.length;
 
     // + update estimate if familar was swapped to
     if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
-      const switchedToFamiliar = entry.findMatcher(REGEX.FAMILIAR.SWITCH_TO_RESULT);
+      const switchedToFamiliar = entry.findMatcher(
+        REGEX.FAMILIAR.SWITCH_TO_RESULT,
+      );
       estimates.trackedFamiliar = switchedToFamiliar || null;
     }
 
@@ -125,7 +137,10 @@ export function createEstimatedEntries(allEntries) {
   });
 
   // set dateList
-  logStore.ascensionAttributes.dateList = (estimates.dateList.length > estimates.scotchDayList.length) ? estimates.dateList : estimates.scotchDayList;
+  logStore.ascensionAttributes.dateList =
+    estimates.dateList.length > estimates.scotchDayList.length
+      ? estimates.dateList
+      : estimates.scotchDayList;
   if (logStore.ascensionAttributes.dateList.length <= 0) {
     handleDateListFallback();
   }
@@ -153,12 +168,15 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
     }
 
     // freeing the king doesn't actually take a turn
-    if (currEntry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END || currEntry.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE) {
+    if (
+      currEntry.entryType === ENTRY_TYPE.QUEST.ASCENSION_END ||
+      currEntry.entryType === ENTRY_TYPE.PATH.COMMUNITY_SERVICE.FINAL_SERVICE
+    ) {
       currEntry.isInBetweenTurns = true;
       currEntry.turnNum = myTurnNum - 1;
     }
 
-  // I don't have a number, so we'll assume this is before the next adventure
+    // I don't have a number, so we'll assume this is before the next adventure
   } else {
     if (nextTurnNum) {
       currEntry.turnNum = nextTurnNum - 1;
@@ -181,7 +199,7 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
 function handleForcedAdventure(currEntry, idx) {
   // Pill Keeper - Sunday surprise semirare activated
   if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
-    const surpriseEntry = logStore.findNextEntry(idx, {isSemirare: true});
+    const surpriseEntry = logStore.findNextEntry(idx, { isSemirare: true });
     if (surpriseEntry) {
       currEntry.additionalDisplay = `"${surpriseEntry.encounterDisplay}"`;
       surpriseEntry.isForcedAdventure = true;
@@ -204,21 +222,30 @@ function handleForcedAdventure(currEntry, idx) {
   if (currEntry.hasText(REGEX.SPACE_JELLYFISH.ACQUIRED_STENCH_JELLIED_EFFECT)) {
     const stenchedNoncombatEntry = []; // since there can be more than one, keep track until the end
 
-    const acquiredList = currEntry.findMatchers(REGEX.SPACE_JELLYFISH.ACQUIRED_STENCH_JELLIED_EFFECT) || ['once'];
-    for (let sj=0; sj<acquiredList.length; sj++) {
-      const stenchEntry = logStore.findNextEntry(idx, {isNonCombatEncounter: true, isForcedAdventure: false});
+    const acquiredList = currEntry.findMatchers(
+      REGEX.SPACE_JELLYFISH.ACQUIRED_STENCH_JELLIED_EFFECT,
+    ) || ["once"];
+    for (let sj = 0; sj < acquiredList.length; sj++) {
+      const stenchEntry = logStore.findNextEntry(idx, {
+        isNonCombatEncounter: true,
+        isForcedAdventure: false,
+      });
       if (stenchEntry) {
         stenchedNoncombatEntry.push(`"${stenchEntry.encounterDisplay}"`);
         stenchEntry.isForcedAdventure = true;
       }
     }
 
-    currEntry.additionalDisplay = `${stenchedNoncombatEntry.join('  &  ')}`;
+    currEntry.additionalDisplay = `${stenchedNoncombatEntry.join("  &  ")}`;
   }
 
   // forced friends
-  if (currEntry.hasText(REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_FRIENDS)) {
-    for (let sj=0; sj<3; sj++) {
+  if (
+    currEntry.hasText(
+      REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_FRIENDS,
+    )
+  ) {
+    for (let sj = 0; sj < 3; sj++) {
       const friendEntry = logStore.findNextEntry(idx, {
         locationDisplay: currEntry.locationDisplay,
         isCombatEncounter: true,
@@ -232,7 +259,11 @@ function handleForcedAdventure(currEntry, idx) {
       friendEntry.isForcedAdventure = true;
 
       // if you used force again here, stop looking for any more
-      if (friendEntry.hasText(REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_FRIENDS)) {
+      if (
+        friendEntry.hasText(
+          REGEX.FOURTH_OF_MAY_COSPLAY_SABER.USE_THE_FORCE_CHOICE_FRIENDS,
+        )
+      ) {
         break;
       }
     }
@@ -260,7 +291,10 @@ function handleForcedAdventure(currEntry, idx) {
     }
   }
 
-  if (currEntry.entryType === ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER) {
+  if (
+    currEntry.entryType ===
+    ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.MAP_THE_MONSTER
+  ) {
     currEntry.isForcedAdventure = true;
   }
 
@@ -292,7 +326,9 @@ export function getSessionDateString() {
  * use dates from uploaded logs if we didn't find in any the rawText itself
  */
 function handleDateListFallback() {
-  const fileDates = logStore.srcFiles.map((srcFile) => fileParserUtils.getDateFromSessionFile(srcFile));
+  const fileDates = logStore.srcFiles.map((srcFile) =>
+    fileParserUtils.getDateFromSessionFile(srcFile),
+  );
   if (fileDates.length <= logStore.ascensionAttributes.dateList.length) {
     return;
   }
@@ -304,8 +340,8 @@ function handleDateListFallback() {
  * downloads the current ascension log to user
  */
 export function downloadFullLog() {
-  if (!logStore.isReady) throw new Error('Log is not ready to be downloaded.');
-  download(logStore.export(), logStore.fileName, 'text/plain');
+  if (!logStore.isReady) throw new Error("Log is not ready to be downloaded.");
+  download(logStore.export(), logStore.fileName, "text/plain");
 }
 /**
  * @param {Number} dayNum
@@ -339,7 +375,7 @@ export function createStats() {
   const statsData = []; // final collation of data
 
   const statDayCount = Math.max(logStore.dayCount, 1);
-  for (let i=0; i<statDayCount; i++) {
+  for (let i = 0; i < statDayCount; i++) {
     const dayNum = i + 1;
 
     // this is what will be returned
@@ -348,28 +384,35 @@ export function createStats() {
     };
 
     if (logStore.ascensionAttributes.voterMonsters.length > 0) {
-      currentData['voterMonster'] = logStore.getVoterMonsterOnDay(dayNum);
+      currentData["voterMonster"] = logStore.getVoterMonsterOnDay(dayNum);
     }
 
     if (logStore.ascensionAttributes.cargoPockets.length > 0) {
-      currentData['cargoPocket'] = logStore.getCargoPocketOnDay(dayNum);
+      currentData["cargoPocket"] = logStore.getCargoPocketOnDay(dayNum);
     }
 
-    const paintingMonsterEntry = logStore.findNextEntry(0, {dayNum: dayNum, entryType: ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING});
+    const paintingMonsterEntry = logStore.findNextEntry(0, {
+      dayNum: dayNum,
+      entryType: ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING,
+    });
     if (paintingMonsterEntry) {
-      currentData['paintingMonster'] = paintingMonsterEntry.attributes.encounterName;
+      currentData["paintingMonster"] =
+        paintingMonsterEntry.attributes.encounterName;
     }
 
-    const lathMakeEntry = logStore.findNextEntry(0, {dayNum: dayNum, entryType: ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM});
+    const lathMakeEntry = logStore.findNextEntry(0, {
+      dayNum: dayNum,
+      entryType: ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM,
+    });
     if (lathMakeEntry) {
-      currentData['latheChoice'] = lathMakeEntry.encounterDisplay;
+      currentData["latheChoice"] = lathMakeEntry.encounterDisplay;
     }
 
     const cartographyList = findMapTheMonstersOnDay(dayNum);
     if (cartographyList.length > 0) {
-      currentData['mapTheMonsterList'] = cartographyList
+      currentData["mapTheMonsterList"] = cartographyList
         .map((cartographyEntry) => cartographyEntry.encounterDisplay)
-        .join(', ');
+        .join(", ");
     }
 
     statsData.push(currentData);

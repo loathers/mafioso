@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import AscendSVG from '../images/holy-grail.svg';
-import CraftSVG from '../images/anvil.svg';
-import CombatSVG from '../images/crossed-swords.svg';
-import DrinkSVG from '../images/martini.svg';
-import EatSVG from '../images/meal.svg';
-import EquipmentSVG from '../images/battle-gear.svg';
-import FamiliarSVG from '../images/cat.svg';
-import InfoSVG from '../images/info.svg';
-import ItemBagSVG from '../images/swap-bag.svg';
-import LevelUpSVG from '../images/star-formation.svg';
-import MafiosoSVG from '../images/gun-rose.svg';
-import NoncombatSVG from '../images/dig-dug.svg';
-import OptionsSVG from '../images/freemasonry.svg';
-import PathSVG from '../images/flag-objective.svg';
-import ShopSVG from '../images/shop.svg';
-import SpellsSVG from '../images/spell-book.svg';
-import SpleenSVG from '../images/pill.svg';
-import UnknownSVG from '../images/uncertainty.svg';
-import UROBOTicon from '../images/UROBOT-icon.svg';
+import AscendSVG from "../images/holy-grail.svg";
+import CraftSVG from "../images/anvil.svg";
+import CombatSVG from "../images/crossed-swords.svg";
+import DrinkSVG from "../images/martini.svg";
+import EatSVG from "../images/meal.svg";
+import EquipmentSVG from "../images/battle-gear.svg";
+import FamiliarSVG from "../images/cat.svg";
+import InfoSVG from "../images/info.svg";
+import ItemBagSVG from "../images/swap-bag.svg";
+import LevelUpSVG from "../images/star-formation.svg";
+import MafiosoSVG from "../images/gun-rose.svg";
+import NoncombatSVG from "../images/dig-dug.svg";
+import OptionsSVG from "../images/freemasonry.svg";
+import PathSVG from "../images/flag-objective.svg";
+import ShopSVG from "../images/shop.svg";
+import SpellsSVG from "../images/spell-book.svg";
+import SpleenSVG from "../images/pill.svg";
+import UnknownSVG from "../images/uncertainty.svg";
+import UROBOTicon from "../images/UROBOT-icon.svg";
 
 /**
  * @param {String} str
@@ -26,43 +26,43 @@ import UROBOTicon from '../images/UROBOT-icon.svg';
  */
 function getIconFromString(str) {
   switch (str) {
-    case 'AscendSVG':
+    case "AscendSVG":
       return AscendSVG;
-    case 'CraftSVG':
+    case "CraftSVG":
       return CraftSVG;
-    case 'CombatSVG':
+    case "CombatSVG":
       return CombatSVG;
-    case 'DrinkSVG':
+    case "DrinkSVG":
       return DrinkSVG;
-    case 'EatSVG':
+    case "EatSVG":
       return EatSVG;
-    case 'EquipmentSVG':
+    case "EquipmentSVG":
       return EquipmentSVG;
-    case 'FamiliarSVG':
+    case "FamiliarSVG":
       return FamiliarSVG;
-    case 'InfoSVG':
+    case "InfoSVG":
       return InfoSVG;
-    case 'ItemBagSVG':
+    case "ItemBagSVG":
       return ItemBagSVG;
-    case 'LevelUpSVG':
+    case "LevelUpSVG":
       return LevelUpSVG;
-    case 'MafiosoSVG':
+    case "MafiosoSVG":
       return MafiosoSVG;
-    case 'NoncombatSVG':
+    case "NoncombatSVG":
       return NoncombatSVG;
-    case 'OptionsSVG':
+    case "OptionsSVG":
       return OptionsSVG;
-    case 'PathSVG':
+    case "PathSVG":
       return PathSVG;
-    case 'ShopSVG':
+    case "ShopSVG":
       return ShopSVG;
-    case 'SpellsSVG':
+    case "SpellsSVG":
       return SpellsSVG;
-    case 'SpleenSVG':
+    case "SpleenSVG":
       return SpleenSVG;
-    case 'UROBOTicon':
+    case "UROBOTicon":
       return UROBOTicon;
-    case 'UnknownSVG':
+    case "UnknownSVG":
     default:
       return UnknownSVG;
   }
@@ -72,23 +72,23 @@ function getIconFromString(str) {
  * @returns {React.Component}
  */
 export default function EntryTypeIcon(props) {
-  const {
-    entry,
-  } = props;
+  const { entry } = props;
 
   let entryIcon = entry.entryIcon;
-  if (typeof entry.entryIcon === 'string') {
+  if (typeof entry.entryIcon === "string") {
     entryIcon = getIconFromString(entry.entryIcon);
   }
 
   return (
-    <img src={entryIcon}
+    <img
+      src={entryIcon}
       entry={entry}
-      className='flex-none adjacent-mar-t-2'
+      className="flex-none adjacent-mar-t-2"
       style={{
         width: 25,
         height: 25,
         opacity: 0.7,
-      }} />
-  )
+      }}
+    />
+  );
 }

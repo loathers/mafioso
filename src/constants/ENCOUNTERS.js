@@ -86,7 +86,7 @@ export const CLOVER_ENCOUNTERS = [
   "Either Ore",
   "Encino Penguin",
   "S&M 4-EVER",
-  "The \"Journalist\"",
+  'The "Journalist"',
   "What Kind of Party Is This?",
   "Up From the Ground...",
   "Methinks the Protesters Doth Protest Too Little",
@@ -237,7 +237,7 @@ export const HOLY_MACGUFFIN_QUEST_ENCOUNTERS = [
   "ancient protector spirit",
   "Protector Spectre",
   "Encounter: Lord Spookyraven",
-  "Encounter: Ron \"The Weasel\" Copperhead",
+  'Encounter: Ron "The Weasel" Copperhead',
   "Encounter: Dr. Awkward",
 ];
 /**

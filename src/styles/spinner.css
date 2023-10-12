@@ -4,8 +4,12 @@
   border-radius: 50%;
   border: 10px solid #333;
   box-sizing: border-box;
-  -webkit-animation: sweep 1s linear alternate infinite, rota 0.8s linear infinite;
-          animation: sweep 1s linear alternate infinite, rota 0.8s linear infinite;
+  -webkit-animation:
+    sweep 1s linear alternate infinite,
+    rota 0.8s linear infinite;
+  animation:
+    sweep 1s linear alternate infinite,
+    rota 0.8s linear infinite;
 }
 @keyframes rota {
   from {
@@ -25,26 +29,90 @@
 }
 @keyframes sweep {
   0% {
-    -webkit-clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 0%);
+    -webkit-clip-path: polygon(
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      50% 50%,
+      0% 0%,
+      0% 0%,
+      0% 0%
+    );
     clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 0%);
   }
   50% {
-    -webkit-clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 50% 50%, 100% 0%, 100% 0%, 0% 0%);
-    clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 50% 50%, 100% 0%, 100% 0%, 0% 0%);
+    -webkit-clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      0% 100%,
+      50% 50%,
+      100% 0%,
+      100% 0%,
+      0% 0%
+    );
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      0% 100%,
+      50% 50%,
+      100% 0%,
+      100% 0%,
+      0% 0%
+    );
   }
   100% {
-    -webkit-clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 50% 50%, 100% 100%, 100% 0%, 0% 0%);
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 50% 50%, 100% 100%, 100% 0%, 0% 0%);
+    -webkit-clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      50% 50%,
+      100% 100%,
+      100% 0%,
+      0% 0%
+    );
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      50% 50%,
+      100% 100%,
+      100% 0%,
+      0% 0%
+    );
   }
 }
 @-webkit-keyframes sweep {
   0% {
-    -webkit-clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 50% 50%, 0% 0%, 0% 0%, 0% 0%);
+    -webkit-clip-path: polygon(
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      50% 50%,
+      0% 0%,
+      0% 0%,
+      0% 0%
+    );
   }
   50% {
-    -webkit-clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 50% 50%, 100% 0%, 100% 0%, 0% 0%);
+    -webkit-clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      0% 100%,
+      50% 50%,
+      100% 0%,
+      100% 0%,
+      0% 0%
+    );
   }
   100% {
-    -webkit-clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 50% 50%, 100% 100%, 100% 0%, 0% 0%);
+    -webkit-clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      50% 50%,
+      100% 100%,
+      100% 0%,
+      0% 0%
+    );
   }
 }

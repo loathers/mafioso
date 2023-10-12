@@ -1,75 +1,75 @@
-import ENTITY_TYPE from './ENTITY_TYPE';
+import ENTITY_TYPE from "./ENTITY_TYPE";
 
 /**
  * https://kol.coldfront.net/thekolwiki/index.php/Insta-kill
- * 
+ *
  * @typedef {Entity} Instakills
  */
 export const INSTAKILLS_MAP = {
-  'Chest X-Ray': {
+  "Chest X-Ray": {
     matcher: /casts.*Chest X-Ray/i,
     entityType: ENTITY_TYPE.EQUIPMENT,
   },
-  'Implode Universe': {
+  "Implode Universe": {
     matcher: /casts.*Implode Universe/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'powdered madness': {
+  "powdered madness": {
     matcher: /uses.*powdered madness/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'Batter Up!': {
+  "Batter Up!": {
     matcher: /(uses|casts).*Batter Up!/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Carbohydrate Cudgel': {
+  "Carbohydrate Cudgel": {
     matcher: /(uses|casts).*Carbohydrate Cudgel/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Fire the Jokester\'s Gun': {
+  "Fire the Jokester's Gun": {
     matcher: /(uses|casts).*Fire the Jokester's Gun/i,
     entityType: ENTITY_TYPE.COMBAT_ITEM,
   },
-  'deliver your thesis': {
+  "deliver your thesis": {
     matcher: /(uses|casts).*deliver your thesis/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Gingerbread Mob Hit': {
+  "Gingerbread Mob Hit": {
     matcher: /(uses|casts).*Gingerbread Mob Hit/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Release the Boots': {
+  "Release the Boots": {
     matcher: /(uses|casts).*Release the Boots/i,
     entityType: ENTITY_TYPE.FAMILIAR,
   },
-  'Science! Fight with Rational Thought': {
+  "Science! Fight with Rational Thought": {
     matcher: /(uses|casts).*Science! Fight with Rational Thought/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Shattering Punch': {
+  "Shattering Punch": {
     matcher: /(uses|casts).*Shattering Punch/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Trap Ghost': {
+  "Trap Ghost": {
     matcher: /(uses|casts).*Trap Ghost/i,
     entityType: ENTITY_TYPE.EQUIPMENT,
   },
-  'Bifurcating Blow': {
+  "Bifurcating Blow": {
     matcher: /(uses|casts).*Bifurcating Blow/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Bear Hug': {
+  "Bear Hug": {
     matcher: /(uses|casts).*Bear Hug/i,
     entityType: ENTITY_TYPE.EQUIPMENT,
   },
-  'Walk Away From Explosion': {
+  "Walk Away From Explosion": {
     matcher: /(uses|casts).*Walk Away From Explosion/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-  'Lightning Strike': {
+  "Lightning Strike": {
     matcher: /(uses|casts).*Lightning Strike/i,
     entityType: ENTITY_TYPE.COMBAT_SKILL,
   },
-}
+};
 
 export const INSTAKILLS = Object.keys(INSTAKILLS_MAP);

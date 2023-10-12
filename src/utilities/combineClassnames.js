@@ -9,5 +9,5 @@
  * @returns {String}
  */
 export default function combineClassnames(...args) {
-  return args.filter(Boolean).join(' ');
+  return args.filter(Boolean).join(" ");
 }

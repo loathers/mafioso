@@ -1,14 +1,13 @@
-
 /**
  * @param {Array<Entries>} entriesList
  * @param {Function|String} [colorGenerator]
  * @return {[type]}
  */
-export function createLocationData(entriesList, colorGenerator = 'lightblue') {
+export function createLocationData(entriesList, colorGenerator = "lightblue") {
   const locationMap = {};
 
   entriesList.forEach((entry) => {
-    const {locationName} = entry.attributes;
+    const { locationName } = entry.attributes;
     if (locationName === null || locationName === undefined) {
       return;
     }
@@ -26,24 +25,29 @@ export function createLocationData(entriesList, colorGenerator = 'lightblue') {
 
   const keys = Object.keys(locationMap);
   const values = keys.map((locationName) => locationMap[locationName]);
-  const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
+  const colorList =
+    typeof colorGenerator === "string"
+      ? colorGenerator
+      : colorGenerator(keys.length);
 
   return {
-    _type: 'horizontalBar',
+    _type: "horizontalBar",
     _size: keys.length,
     labels: keys,
-    datasets: [{
-      backgroundColor: colorList,
-      data: values,
-    }]
-  }
+    datasets: [
+      {
+        backgroundColor: colorList,
+        data: values,
+      },
+    ],
+  };
 }
 /**
  * @param {Array<Entries>} entriesList
  * @param {Function|String} [colorGenerator]
  * @return {[type]}
  */
-export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
+export function createFamiliarData(entriesList, colorGenerator = "lightblue") {
   const familiarMap = {};
 
   entriesList.forEach((entry) => {
@@ -51,7 +55,7 @@ export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
       return;
     }
 
-    const {familiarUsed} = entry.attributes;
+    const { familiarUsed } = entry.attributes;
     if (familiarUsed === null || familiarUsed === undefined) {
       return;
     }
@@ -65,17 +69,22 @@ export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
 
   const keys = Object.keys(familiarMap);
   const values = keys.map((familiarUsed) => familiarMap[familiarUsed]);
-  const colorList = typeof colorGenerator === 'string' ? colorGenerator : colorGenerator(keys.length);
+  const colorList =
+    typeof colorGenerator === "string"
+      ? colorGenerator
+      : colorGenerator(keys.length);
 
   return {
-    _type: 'bar',
+    _type: "bar",
     _size: keys.length,
     labels: keys,
-    datasets: [{
-      backgroundColor: colorList,
-      data: values,
-    }]
-  }
+    datasets: [
+      {
+        backgroundColor: colorList,
+        data: values,
+      },
+    ],
+  };
 }
 /**
  * @param {Array<Entries>} entriesList
@@ -117,19 +126,21 @@ export function createMeatTotalGainedData(entriesList) {
   // const colorList = allChanges.map((change) => change >= 0 ? 'rgb(177, 92, 92, 0.4)' : 'rgb(84, 204, 126, 0.4)');
 
   return {
-    _type: 'lineTotal',
+    _type: "lineTotal",
     _size: allChanges.length,
     labels: allChanges.map((change, idx) => `${idx}`),
-    datasets: [{
-      label: 'Total Meat Gained',
-      borderColor: '#b15c5c',
-      borderWidth: 0.8,
-      // borderColor: colorList,
-      pointBackgroundColor: '#b15c5c',
-      pointRadius: 0.5,
-      data: allChanges,
-    }]
-  }
+    datasets: [
+      {
+        label: "Total Meat Gained",
+        borderColor: "#b15c5c",
+        borderWidth: 0.8,
+        // borderColor: colorList,
+        pointBackgroundColor: "#b15c5c",
+        pointRadius: 0.5,
+        data: allChanges,
+      },
+    ],
+  };
 }
 /**
  * @param {Array<Entries>} entriesList
@@ -138,7 +149,7 @@ export function createMeatTotalGainedData(entriesList) {
  * @return {Object}
  */
 export function createAttributeTimeline(entriesList, attribute, options = {}) {
-  const {isUsingTotals = false} = options;
+  const { isUsingTotals = false } = options;
   const timelineList = [];
 
   entriesList.forEach((entry) => {
@@ -151,7 +162,9 @@ export function createAttributeTimeline(entriesList, attribute, options = {}) {
     const prevValue = prevIdx > 0 ? timelineList[prevIdx] : 0;
 
     // combine to track totals or individually?
-    const currValue = isUsingTotals ? (prevValue + attributeValue) : attributeValue;
+    const currValue = isUsingTotals
+      ? prevValue + attributeValue
+      : attributeValue;
 
     // a new (non free combat) adventure is a new item in the list
     if (entry.isAdventure && !entry.isFreeCombat) {
@@ -167,18 +180,20 @@ export function createAttributeTimeline(entriesList, attribute, options = {}) {
   });
 
   return {
-    _type: 'bar',
+    _type: "bar",
     _size: timelineList.length,
     labels: timelineList.map((change, idx) => `${idx}`),
-    datasets: [{
-      label: attribute,
-      // borderColor: 'lightblue',
-      // borderWidth: 0.8,
-      backgroundColor: 'lightblue',
-      pointRadius: 0.5,
-      data: timelineList,
-    }]
-  }
+    datasets: [
+      {
+        label: attribute,
+        // borderColor: 'lightblue',
+        // borderWidth: 0.8,
+        backgroundColor: "lightblue",
+        pointRadius: 0.5,
+        data: timelineList,
+      },
+    ],
+  };
 }
 /**
  * @param {Array<Entries>} entriesList
@@ -187,7 +202,7 @@ export function createAttributeTimeline(entriesList, attribute, options = {}) {
  * @return {Object}
  */
 export function createMinChangeTimeline(entriesList, attribute, options = {}) {
-  const {isUsingTotals = false} = options;
+  const { isUsingTotals = false } = options;
   const timelineList = [];
 
   entriesList.forEach((entry) => {
@@ -199,33 +214,36 @@ export function createMinChangeTimeline(entriesList, attribute, options = {}) {
     const prevValue = prevIdx > 0 ? timelineList[prevIdx] : 0;
 
     // combine to track totals or individually?
-    const currValue = isUsingTotals ? (prevValue + attributeValue) : attributeValue;
-    console.log('currValue', currValue, attributeValue)
+    const currValue = isUsingTotals
+      ? prevValue + attributeValue
+      : attributeValue;
+    console.log("currValue", currValue, attributeValue);
 
     // a new (non free combat) adventure is a new item in the list
     if (entry.isAdventure && !entry.isFreeCombat) {
       timelineList.push(currValue);
       return;
     }
-
   });
 
   return {
-    _type: 'lineTotalMin',
+    _type: "lineTotalMin",
     _size: timelineList.length,
     labels: timelineList.map((change, idx) => `${idx}`),
     scales: {
       min: 0,
       max: 100,
     },
-    datasets: [{
-      label: 'Total',
-      borderColor: '#b15c5c',
-      borderWidth: 0.8,
-      // borderColor: colorList,
-      pointBackgroundColor: '#b15c5c',
-      pointRadius: 0.5,
-      data: timelineList,
-    }]
-  }
+    datasets: [
+      {
+        label: "Total",
+        borderColor: "#b15c5c",
+        borderWidth: 0.8,
+        // borderColor: colorList,
+        pointBackgroundColor: "#b15c5c",
+        pointRadius: 0.5,
+        data: timelineList,
+      },
+    ],
+  };
 }

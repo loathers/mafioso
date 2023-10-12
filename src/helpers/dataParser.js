@@ -1,15 +1,15 @@
-import {CATEGORY_ID} from '../constants/CATEGORIES';
-import ENTRY_TYPE from '../constants/ENTRY_TYPE';
-import REGEX from '../constants/REGEXES';
+import { CATEGORY_ID } from "../constants/CATEGORIES";
+import ENTRY_TYPE from "../constants/ENTRY_TYPE";
+import REGEX from "../constants/REGEXES";
 
-import ENTRY_DATA from '../data/ENTRY_DATA.json';
-import IOTM_ENTRY_DATA from '../data/IOTM_ENTRY_DATA.json';
-import LOCATION_ENTRY_DATA from '../data/LOCATION_ENTRY_DATA.json';
+import ENTRY_DATA from "../data/ENTRY_DATA.json";
+import IOTM_ENTRY_DATA from "../data/IOTM_ENTRY_DATA.json";
+import LOCATION_ENTRY_DATA from "../data/LOCATION_ENTRY_DATA.json";
 
-import ACTUALLY_ED_THE_UNDYING_ENTRY_DATA from '../data/ACTUALLY_ED_THE_UNDYING_ENTRY_DATA.json';
-import YOU_ROBOT_ENTRY_DATA from '../data/YOU_ROBOT_ENTRY_DATA.json';
+import ACTUALLY_ED_THE_UNDYING_ENTRY_DATA from "../data/ACTUALLY_ED_THE_UNDYING_ENTRY_DATA.json";
+import YOU_ROBOT_ENTRY_DATA from "../data/YOU_ROBOT_ENTRY_DATA.json";
 
-import * as regexUtils from '../utilities/regexUtils';
+import * as regexUtils from "../utilities/regexUtils";
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {
@@ -33,13 +33,13 @@ buildCache();
 export function matchEntryData(entryString) {
   const foundEntryType = dataCacheKeys.find((entryTypeKey) => {
     const data = dataCache[entryTypeKey];
-    const {matcher} = data;
+    const { matcher } = data;
     if (matcher instanceof RegExp) {
       return regexUtils.hasString(entryString, matcher);
-
     } else if (Array.isArray(matcher)) {
-      return matcher.some((matchRegex) => regexUtils.hasString(entryString, matchRegex))
-
+      return matcher.some((matchRegex) =>
+        regexUtils.hasString(entryString, matchRegex),
+      );
     } else {
       return undefined;
     }
@@ -56,7 +56,7 @@ export function matchEntryData(entryString) {
   return {
     type: ENTRY_TYPE.UNKNOWN,
     categories: [CATEGORY_ID.UNCATEGORIZED],
-    icon: 'UnknownSVG',
+    icon: "UnknownSVG",
   };
 }
 /**
@@ -66,7 +66,9 @@ function buildCache() {
   dataCacheKeys.forEach((entryTypeKey) => {
     const rawData = rawEntryData[entryTypeKey];
 
-    const formattedCategories = rawData.categories.map((categoryString) => CATEGORY_ID[categoryString]);
+    const formattedCategories = rawData.categories.map(
+      (categoryString) => CATEGORY_ID[categoryString],
+    );
     const formattedMatcher = convertStringToRegex(rawData.matcher);
 
     // cache
@@ -78,7 +80,7 @@ function buildCache() {
       encounterName_alt: convertStringToRegex(rawData.encounterName_alt),
       content_alt: convertStringToRegex(rawData.content_alt),
       additionalDisplay: convertStringToRegex(rawData.additionalDisplay),
-    }
+    };
   });
 }
 /**
@@ -91,20 +93,20 @@ function convertStringToRegex(input) {
   }
 
   // do nothing
-  if (typeof input !== 'string') {
+  if (typeof input !== "string") {
     return input;
   }
 
   // regex needs to start with slash
   // eg: /(?<=tuning moon to ).*/mi
-  if (input.charAt(0) === '/') {
-    const inputParts = input.split('/');
+  if (input.charAt(0) === "/") {
+    const inputParts = input.split("/");
     return new RegExp(inputParts[1], inputParts[2]);
   }
 
   // check if we're using a REGEX path
-  const pathParts = input.split('.');
-  if (pathParts[0] === 'REGEX') {
+  const pathParts = input.split(".");
+  if (pathParts[0] === "REGEX") {
     return convertPathToRegex(input);
   }
 
@@ -116,8 +118,8 @@ function convertStringToRegex(input) {
  * @returns {RegExp|Array<RegExp>}
  */
 function convertPathToRegex(input) {
-  const pathParts = input.split('.');
-  if (pathParts.shift() === 'REGEX') {
+  const pathParts = input.split(".");
+  if (pathParts.shift() === "REGEX") {
     const result = pathParts.reduce((regexData, pathPart) => {
       return regexData[pathPart];
     }, REGEX);
