@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import * as fileParserUtils from 'utilities/fileParserUtils';
+import * as fileParserUtils from '../utilities/fileParserUtils';
 
 const mockFileA = new File([], 'dextrial_20200801.txt');
 const mockFileB = new File([], 'dextrial_20200731.txt');

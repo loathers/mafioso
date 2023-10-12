@@ -1,8 +1,8 @@
 import assert from 'assert';
 
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+import ENTRY_TYPE from '../constants/ENTRY_TYPE';
 
-import {LogStore} from 'store/LogStore';
+import {LogStore} from '../store/LogStore';
 
 test('combat_parsing: detects "UNLEASH THE DEVILS KISS" skill as a disintegrater', async () => {
   const sampleText = "[235] Twin Peak\n"

@@ -1,5 +1,5 @@
-// import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import {CATEGORY_ID} from 'constants/CATEGORIES';
+// import ENTRY_TYPE from './ENTRY_TYPE';
+import {CATEGORY_ID} from './CATEGORIES';
 
 /**
  * visible

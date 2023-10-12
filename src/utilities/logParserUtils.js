@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import Batcher from 'classes/Batcher';
-import Entry from 'classes/Entry';
+import Batcher from '../classes/Batcher';
+import Entry from '../classes/Entry';
 
 import {
   PREREMOVE_REGEX_LIST,
@@ -9,12 +9,12 @@ import {
   SPLIT_REGEX_LIST,
   FULL_PARSE_DELAY,
   CLEAN_RAW_DELAY,
-} from 'constants/DEFAULTS';
-import REGEX, {DIVIDING_NEWLINE_REGEX} from 'constants/REGEXES';
-import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
+} from '../constants/DEFAULTS';
+import REGEX, {DIVIDING_NEWLINE_REGEX} from '../constants/REGEXES';
+import {DIFFICULTY_MAP, PATH_MAP} from '../constants/ABBREVIATION_MAP';
 
-import * as logDateUtils from 'utilities/logDateUtils';
-import * as regexUtils from 'utilities/regexUtils';
+import * as logDateUtils from './logDateUtils';
+import * as regexUtils from './regexUtils';
 
 const MAX_CHAR_COUNT = 5000000;
 const MIN_CHAR_COUNT = 5;
@@ -27,37 +27,32 @@ const MIN_CHAR_COUNT = 5;
  * @return {Array<Entry>}
  */
 export async function parseLogTxt(rawText, config) {
-  try {
-    const rawSize = rawText.length;
-    if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
-      throw new Error(`Unable to parse this log of size ${rawSize}.`);
-    }
-    // console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
-
-    // first combine some text ahead of time
-    // then split some text
-    const preparsedLog = presplitRawLog(rawText);
-
-    // split up each entry by wherever there are two new lines
-    //  for some reason it doesn't properly split with two new lines
-    //  so we're using this weird hack
-    const rawEntries = preparsedLog
-      .replace(DIVIDING_NEWLINE_REGEX, '}{')
-      .split('}{');
-
-    // prepare Batcher
-    const rawVal = Math.sqrt(rawSize);
-    const newBatchSize = Math.round(1000 - rawVal);
-    const BATCH_SIZE = Math.max(100, newBatchSize);
-    const entryBatcher = new Batcher(rawEntries, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
-
-    // create the Entry class for each entry text, which will then further parse their data
-    const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx, config));
-    return allEntries;
-
-  } catch (e) {
-    throw e;
+  const rawSize = rawText.length;
+  if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
+    throw new Error(`Unable to parse this log of size ${rawSize}.`);
   }
+  // console.log(`%c(log has ${rawSize} characters)`, 'color: #6464ff');
+
+  // first combine some text ahead of time
+  // then split some text
+  const preparsedLog = presplitRawLog(rawText);
+
+  // split up each entry by wherever there are two new lines
+  //  for some reason it doesn't properly split with two new lines
+  //  so we're using this weird hack
+  const rawEntries = preparsedLog
+    .replace(DIVIDING_NEWLINE_REGEX, '}{')
+    .split('}{');
+
+  // prepare Batcher
+  const rawVal = Math.sqrt(rawSize);
+  const newBatchSize = Math.round(1000 - rawVal);
+  const BATCH_SIZE = Math.max(100, newBatchSize);
+  const entryBatcher = new Batcher(rawEntries, {batchSize: BATCH_SIZE, batchDelay: FULL_PARSE_DELAY});
+
+  // create the Entry class for each entry text, which will then further parse their data
+  const allEntries = await entryBatcher.run((logGroup, startIdx) => parseLogArray(logGroup, startIdx, config));
+  return allEntries;
 }
 /**
  * finds the specific ascension session from given string

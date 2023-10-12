@@ -82,7 +82,7 @@ export function createFamiliarData(entriesList, colorGenerator = 'lightblue') {
  * @param {Function|String} [colorGenerator]
  * @return {[type]}
  */
-export function createMeatTotalGainedData(entriesList, colorGenerator = 'lightblue') {
+export function createMeatTotalGainedData(entriesList) {
   const allChanges = [];
 
   entriesList.forEach((entry) => {

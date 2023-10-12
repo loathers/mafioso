@@ -1,12 +1,12 @@
 import {observable} from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
-import keycodes from 'constants/keycodes';
-import {LOG_VIS_URL} from 'constants/PAGE_URLS';
+import keycodes from '../constants/keycodes';
+import {LOG_VIS_URL} from '../constants/PAGE_URLS';
 
-import ToastController from 'sections/ToastController';
-import databaseStore from 'store/databaseStore';
-import logStore from 'store/logStore';
+import ToastController from '../sections/ToastController';
+import databaseStore from '../store/databaseStore';
+import logStore from '../store/logStore';
 
 /**
  * state and handler of the log data
@@ -38,7 +38,7 @@ class AppStore {
   // -- state
   /** @type {Boolean} */
   get isDevEnv() {
-    return process.env['NODE_ENV'] === 'development' || this.isDevMode.get();
+    return import.meta.env.DEV || this.isDevMode.get();
   }
   /** @type {Boolean} */
   get isLoading() {

@@ -1,12 +1,13 @@
 import {observable} from 'mobx';
 
-import sessionStore from 'store/sessionStore';
+import sessionStore from '../store/sessionStore';
 
-import ToastController from 'sections/ToastController';
+import ToastController from '../sections/ToastController';
 
-// import DATABASE_ENTRY_STATUS from 'constants/DATABASE_ENTRY_STATUSES';
+// import DATABASE_ENTRY_STATUS from '../constants/DATABASE_ENTRY_STATUSES';
 
-const SERVER_HOST = process.env['REACT_APP_SERVER_HOST'];
+const SERVER_HOST = import.meta.env.MAFIOSO_SERVER_HOST;
+console.log(import.meta.env);
 const SHARE_ENDPOINT = `${SERVER_HOST}/api/share`;
 const FETCH_LOGS_ENDPOINT = `${SERVER_HOST}/api/logs`;
 const GET_LOG_ENDPOINT = `${SERVER_HOST}/api/log`;
@@ -20,7 +21,7 @@ class AppStore {
     /** @type {Observable<Boolean>} */
     this.isFetching = observable.box(false);
     /** @type {String} */
-    this.role = process.env['REACT_APP_ROLE'] || window.sessionStorage.getItem('mafioso-role');
+    this.role = import.meta.env.MAFIOSO_ROLE || window.sessionStorage.getItem('mafioso-role');
 
     /** @type {Observable<Array<Text>>} */
     this.databaseList = observable([]);
@@ -120,7 +121,7 @@ class AppStore {
 
     const fetchRequest = new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.addEventListener('loadend', (evt) => {
+      xhr.addEventListener('loadend', () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             resolve(JSON.parse(xhr.responseText));
@@ -226,7 +227,7 @@ class AppStore {
 
         if (fullOptions[optionName] === 'Any') {
           return false;
-        };
+        }
 
         // no-path is also standard for now
         if (optionName === 'pathName' && fullOptions['pathName'] === 'No-Path') {

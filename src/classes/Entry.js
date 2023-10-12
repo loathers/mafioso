@@ -1,15 +1,15 @@
-import {CATEGORY_ID} from 'constants/CATEGORIES';
-import {COMMUNITY_SERVICES_LIST} from 'constants/COMMUNITY_SERVICES_MAP';
-import {COMBINABLE_ENTRIES_LIST} from 'constants/DEFAULTS';
-import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from 'constants/ENCOUNTERS';
-import {INSTAKILLS, INSTAKILLS_MAP} from 'constants/INSTAKILLS'
-import {RUNAWAYS, RUNAWAYS_MAP} from 'constants/RUNAWAYS'
-import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from 'constants/LATTE_EFFECTS_MAP';
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import REGEX, {NEW_LINE_REGEX} from 'constants/REGEXES';
+import {CATEGORY_ID} from '../constants/CATEGORIES';
+import {COMMUNITY_SERVICES_LIST} from '../constants/COMMUNITY_SERVICES_MAP';
+import {COMBINABLE_ENTRIES_LIST} from '../constants/DEFAULTS';
+import {CLOVER_ENCOUNTERS, SEMIRARE_ENCOUNTERS} from '../constants/ENCOUNTERS';
+import {INSTAKILLS, INSTAKILLS_MAP} from '../constants/INSTAKILLS'
+import {RUNAWAYS, RUNAWAYS_MAP} from '../constants/RUNAWAYS'
+import {LATTE_EFFECTS_MAP, LATTE_EFFECTS_LIST} from '../constants/LATTE_EFFECTS_MAP';
+import ENTRY_TYPE from '../constants/ENTRY_TYPE';
+import REGEX, {NEW_LINE_REGEX} from '../constants/REGEXES';
 
-import * as entryParserUtils from 'utilities/entryParserUtils';
-import * as regexUtils from 'utilities/regexUtils';
+import * as entryParserUtils from '../utilities/entryParserUtils';
+import * as regexUtils from '../utilities/regexUtils';
 
 /**
  * @typedef {String} RawText - text extracted from the log
@@ -298,7 +298,7 @@ export default class Entry {
   }
   /** @param {Boolean} */
   set isForcedAdventure(newValue) {
-    return this.attributes.isForcedAdventure = newValue;
+    this.attributes.isForcedAdventure = newValue;
   }
   /** @type {Boolean} */
   get isForcedAdventure() {

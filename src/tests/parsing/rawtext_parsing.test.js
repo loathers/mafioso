@@ -1,8 +1,8 @@
 import assert from 'assert';
 
-// import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+// import ENTRY_TYPE from '../constants/ENTRY_TYPE';
 
-import {LogStore} from 'store/LogStore';
+import {LogStore} from '../store/LogStore';
 
 async function createTestStore(text) {
   const testStore = new LogStore();

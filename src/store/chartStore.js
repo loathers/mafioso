@@ -1,9 +1,9 @@
 import {observable} from 'mobx';
 
-import {CHART_TYPES} from 'constants/CHART_TYPES';
+import {CHART_TYPES} from '../constants/CHART_TYPES';
 
-import * as chartParserUtils from 'utilities/chartParserUtils';
-import {createColorList_purplePastel} from 'utilities/colorUtils';
+import * as chartParserUtils from '../utilities/chartParserUtils';
+import {createColorList_purplePastel} from '../utilities/colorUtils';
 
 /**
  * state and handler of the chart data

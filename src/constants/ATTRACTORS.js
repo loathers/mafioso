@@ -1,4 +1,4 @@
-import ENTITY_TYPE from 'constants/ENTITY_TYPE';
+import ENTITY_TYPE from './ENTITY_TYPE';
 
 /**
  * @typedef {Entity} ATTRACTORS

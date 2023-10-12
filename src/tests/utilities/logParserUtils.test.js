@@ -1,7 +1,7 @@
 import assert from 'assert';
 
-import {DIFFICULTY_MAP, PATH_MAP} from 'constants/ABBREVIATION_MAP';
-import * as logParserUtils from 'utilities/logParserUtils';
+import {DIFFICULTY_MAP, PATH_MAP} from '../constants/ABBREVIATION_MAP';
+import * as logParserUtils from '../utilities/logParserUtils';
 
 test('logParserUtils.parseDifficultyName(): parses the three different difficulty names', () => {
   const HCMockText = 'Ascension #111:\nHardcore Low Key Summer Pastamancer\nWallaby';

@@ -1,49 +1,44 @@
 {
-  "name": "KoL-Mafioso",
+  "name": "mafioso",
   "version": "4.5.1",
+  "type": "module",
   "description": "A visualizer for kolmafia logs for the game Kingdom of Loathing.",
-  "url": "https://github.com/aahvocado/KoL-Mafioso",
-  "email": "dan.dan.makes.stuff@gmail.com",
   "license": "MIT",
   "scripts": {
-    "sass.compile": "sass src/styles/main.scss src/styles/compiled/main.css",
-    "sass.watch": "sass --watch src/styles/main.scss src/styles/compiled/main.css",
-    "test": "react-scripts test",
-    "build": "npm run sass.compile && REACT_APP_VERSION=$npm_package_version react-scripts build",
-    "start": "npm run sass.compile && REACT_APP_VERSION=$npm_package_version react-scripts start"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.2",
     "base-64": "^0.1.0",
     "chart.js": "^2.9.3",
-    "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "mobx": "^5.15.4",
+    "react-dom": "^18.2.0",
     "react-dropdown-date": "^2.2.4",
     "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react": "^18.2.0",
     "tinygradient": "^1.1.2",
     "uuid": "^8.2.0"
   },
   "devDependencies": {
+    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.0.3",
     "aah-util-css": "^0.5.3",
-    "sass": "^1.26.10"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "eslint": "^8.45.0",
+    "sass": "^1.26.10",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }

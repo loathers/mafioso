@@ -1,9 +1,9 @@
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
+import ENTRY_TYPE from './ENTRY_TYPE';
 import REGEX, {
   USELESS_PRE_NEWLINE,
   PRELINE_SPACES,
   EXCESSIVE_NEW_LINES,
-} from 'constants/REGEXES';
+} from './REGEXES';
 
 export const LARGE_TEXT_COUNT = 2000000;
 export const CLEAN_RAW_DELAY = 2;

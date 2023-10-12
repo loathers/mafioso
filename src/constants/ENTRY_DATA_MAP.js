@@ -9,29 +9,29 @@ import {
   HIGHLAND_LORD_ENCOUNTERS,
   MISC_QUEST_ENCOUNTERS,
   CARTOGRAPHIC_NONCOMBAT_ENCOUNTERS,
-} from 'constants/ENCOUNTERS';
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import {CATEGORY_ID} from 'constants/CATEGORIES';
-import {REGEX} from 'constants/REGEXES';
+} from './ENCOUNTERS';
+import ENTRY_TYPE from './ENTRY_TYPE';
+import {CATEGORY_ID} from './CATEGORIES';
+import {REGEX} from './REGEXES';
 
-import {ReactComponent as AscendSVG} from 'images/holy-grail.svg';
-import {ReactComponent as CraftSVG} from 'images/anvil.svg';
-import {ReactComponent as CombatSVG} from 'images/crossed-swords.svg';
-import {ReactComponent as DrinkSVG} from 'images/martini.svg';
-import {ReactComponent as EatSVG} from 'images/meal.svg';
-import {ReactComponent as EquipmentSVG} from 'images/battle-gear.svg';
-import {ReactComponent as FamiliarSVG} from 'images/cat.svg';
-import {ReactComponent as InfoSVG} from 'images/info.svg';
-import {ReactComponent as ItemBagSVG} from 'images/swap-bag.svg';
-import {ReactComponent as LevelUpSVG} from 'images/star-formation.svg';
-import {ReactComponent as MafiosoSVG} from 'images/gun-rose.svg';
-import {ReactComponent as NoncombatSVG} from 'images/dig-dug.svg';
-import {ReactComponent as PathSVG} from 'images/flag-objective.svg';
-import {ReactComponent as OptionsSVG} from 'images/freemasonry.svg';
-import {ReactComponent as ShopSVG} from 'images/shop.svg';
-import {ReactComponent as SpellsSVG} from 'images/spell-book.svg';
-import {ReactComponent as SpleenSVG} from 'images/pill.svg';
-import {ReactComponent as UnknownSVG} from 'images/uncertainty.svg';
+import AscendSVG from '../images/holy-grail.svg';
+import CraftSVG from '../images/anvil.svg';
+import CombatSVG from '../images/crossed-swords.svg';
+import DrinkSVG from '../images/martini.svg';
+import EatSVG from '../images/meal.svg';
+import EquipmentSVG from '../images/battle-gear.svg';
+import FamiliarSVG from '../images/cat.svg';
+import InfoSVG from '../images/info.svg';
+import ItemBagSVG from '../images/swap-bag.svg';
+import LevelUpSVG from '../images/star-formation.svg';
+import MafiosoSVG from '../images/gun-rose.svg';
+import NoncombatSVG from '../images/dig-dug.svg';
+import PathSVG from '../images/flag-objective.svg';
+import OptionsSVG from '../images/freemasonry.svg';
+import ShopSVG from '../images/shop.svg';
+import SpellsSVG from '../images/spell-book.svg';
+import SpleenSVG from '../images/pill.svg';
+import UnknownSVG from '../images/uncertainty.svg';
 
 /*
   [ENTRY_TYPE.template]: {

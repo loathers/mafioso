@@ -1,12 +1,12 @@
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import REGEX from 'constants/REGEXES';
+import ENTRY_TYPE from '../constants/ENTRY_TYPE';
+import REGEX from '../constants/REGEXES';
 
-import Entry from 'classes/Entry';
+import Entry from '../classes/Entry';
 
-import logStore from 'store/logStore';
+import logStore from '../store/logStore';
 
-import * as fileParserUtils from 'utilities/fileParserUtils';
-import download from 'utilities/download';
+import * as fileParserUtils from '../utilities/fileParserUtils';
+import download from '../utilities/download';
 
 /**
  * look at each entry and their neighbor in front and see if

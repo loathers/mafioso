@@ -1,17 +1,17 @@
-import ListItem from 'classes/ListItem';
+import ListItem from '../classes/ListItem';
 
-import {ATTRACTORS, ATTRACTORS_MAP} from 'constants/ATTRACTORS'
-import {BANISHERS, BANISHERS_MAP} from 'constants/BANISHERS'
-import {COPIERS, COPIERS_MAP} from 'constants/COPIERS'
-import {DISINTEGRATERS, DISINTEGRATERS_MAP} from 'constants/DISINTEGRATERS'
-import {REPLACERS, REPLACERS_MAP} from 'constants/REPLACERS'
-import {DISPLAY_SCRUB_LIST} from 'constants/DEFAULTS';
-import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from 'constants/ENTRY_DATA_MAP';
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import REGEX from 'constants/REGEXES';
+import {ATTRACTORS, ATTRACTORS_MAP} from '../constants/ATTRACTORS'
+import {BANISHERS, BANISHERS_MAP} from '../constants/BANISHERS'
+import {COPIERS, COPIERS_MAP} from '../constants/COPIERS'
+import {DISINTEGRATERS, DISINTEGRATERS_MAP} from '../constants/DISINTEGRATERS'
+import {REPLACERS, REPLACERS_MAP} from '../constants/REPLACERS'
+import {DISPLAY_SCRUB_LIST} from '../constants/DEFAULTS';
+import {ENTRY_DATA_MAP, ENTRY_MAP_KEYS, UNKNOWN_ENTRY_DATA} from '../constants/ENTRY_DATA_MAP';
+import ENTRY_TYPE from '../constants/ENTRY_TYPE';
+import REGEX from '../constants/REGEXES';
 
-import * as dataParser from 'helpers/dataParser';
-import * as regexUtils from 'utilities/regexUtils';
+import * as dataParser from '../helpers/dataParser';
+import * as regexUtils from './regexUtils';
 
 /**
  * @param {String} entryString

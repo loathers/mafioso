@@ -1,15 +1,15 @@
-import {CATEGORY_ID} from 'constants/CATEGORIES';
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import REGEX from 'constants/REGEXES';
+import {CATEGORY_ID} from '../constants/CATEGORIES';
+import ENTRY_TYPE from '../constants/ENTRY_TYPE';
+import REGEX from '../constants/REGEXES';
 
-import ENTRY_DATA from 'data/ENTRY_DATA.json';
-import IOTM_ENTRY_DATA from 'data/IOTM_ENTRY_DATA.json';
-import LOCATION_ENTRY_DATA from 'data/LOCATION_ENTRY_DATA.json';
+import ENTRY_DATA from '../data/ENTRY_DATA.json';
+import IOTM_ENTRY_DATA from '../data/IOTM_ENTRY_DATA.json';
+import LOCATION_ENTRY_DATA from '../data/LOCATION_ENTRY_DATA.json';
 
-import ACTUALLY_ED_THE_UNDYING_ENTRY_DATA from 'data/ACTUALLY_ED_THE_UNDYING_ENTRY_DATA.json';
-import YOU_ROBOT_ENTRY_DATA from 'data/YOU_ROBOT_ENTRY_DATA.json';
+import ACTUALLY_ED_THE_UNDYING_ENTRY_DATA from '../data/ACTUALLY_ED_THE_UNDYING_ENTRY_DATA.json';
+import YOU_ROBOT_ENTRY_DATA from '../data/YOU_ROBOT_ENTRY_DATA.json';
 
-import * as regexUtils from 'utilities/regexUtils';
+import * as regexUtils from '../utilities/regexUtils';
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {

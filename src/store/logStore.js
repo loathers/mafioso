@@ -1,21 +1,21 @@
 import {observable} from 'mobx';
 import {encode} from 'base-64';
 
-import Batcher from 'classes/Batcher';
+import Batcher from '../classes/Batcher';
 
-import {FILTER_DELAY, PAGINATE_DELAY, LARGE_TEXT_COUNT} from 'constants/DEFAULTS';
-import {DEFAULT_CATEGORIES_VISIBLE} from 'constants/filterList';
+import {FILTER_DELAY, PAGINATE_DELAY, LARGE_TEXT_COUNT} from '../constants/DEFAULTS';
+import {DEFAULT_CATEGORIES_VISIBLE} from '../constants/filterList';
 
-import * as logStoreHelper from 'helpers/logStoreHelper';
+import * as logStoreHelper from '../helpers/logStoreHelper';
 
-import chartStore from 'store/chartStore';
+import chartStore from '../store/chartStore';
 
-import ToastController from 'sections/ToastController';
+import ToastController from '../sections/ToastController';
 
-import * as fileParserUtils from 'utilities/fileParserUtils';
-// import * as logDateUtils from 'utilities/logDateUtils';
-import * as logParserUtils from 'utilities/logParserUtils';
-import * as regexUtils from 'utilities/regexUtils';
+import * as fileParserUtils from '../utilities/fileParserUtils';
+// import * as logDateUtils from '../utilities/logDateUtils';
+import * as logParserUtils from '../utilities/logParserUtils';
+import * as regexUtils from '../utilities/regexUtils';
 
 /**
  * state and handler of the log data
@@ -161,7 +161,7 @@ export class LogStore {
 
     if (this.sessionDate === undefined) {
       return encode(this.allEntriesCount + this.dayCount + this.turnCount + '--' + this.fileName);
-    };
+    }
 
     return encode(this.fileName);
   }

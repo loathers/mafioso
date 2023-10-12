@@ -1,9 +1,9 @@
 import assert from 'assert';
 
-import ENTRY_TYPE from 'constants/ENTRY_TYPE';
-import {REGEX} from 'constants/REGEXES';
+import ENTRY_TYPE from '../constants/ENTRY_TYPE';
+import {REGEX} from '../constants/REGEXES';
 
-import logStore from 'store/LogStore';
+import logStore from '../store/LogStore';
 
 async function createTestStore(text) {
   logStore.reset();
