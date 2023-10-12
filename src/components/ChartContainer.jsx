@@ -1,5 +1,5 @@
 import React from "react";
-import Chart from "chart.js";
+import { Chart } from "chart.js";
 
 import {
   horizontalBarOptions,
@@ -10,7 +10,6 @@ import {
 } from "../constants/chartOptions";
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function ChartContainer(props) {
   const { className, style, chartData } = props;
 
@@ -51,6 +50,7 @@ export default function ChartContainer(props) {
     </div>
   );
 }
+
 function getContainerStyles(data, type) {
   switch (type) {
     case "horizontalBar":
@@ -75,6 +75,7 @@ function getContainerStyles(data, type) {
       };
   }
 }
+
 /**
  * @param {String} type
  * @return {Object}

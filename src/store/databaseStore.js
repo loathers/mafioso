@@ -7,7 +7,6 @@ import ToastController from "../sections/ToastController";
 // import DATABASE_ENTRY_STATUS from '../constants/DATABASE_ENTRY_STATUSES';
 
 const SERVER_HOST = import.meta.env.MAFIOSO_SERVER_HOST;
-console.log(import.meta.env);
 const SHARE_ENDPOINT = `${SERVER_HOST}/api/share`;
 const FETCH_LOGS_ENDPOINT = `${SERVER_HOST}/api/logs`;
 const GET_LOG_ENDPOINT = `${SERVER_HOST}/api/log`;

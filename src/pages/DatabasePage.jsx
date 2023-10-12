@@ -1,7 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 
 import DATABASE_ENTRY_STATUS from "../constants/DATABASE_ENTRY_STATUSES";
 import { LOG_VIS_URL } from "../constants/PAGE_URLS";
@@ -42,7 +42,7 @@ export default observer(function DatabasePage() {
   };
 
   if (appStore.shouldRedirectToVisualizer.get() && !appStore.isLoading) {
-    return <Redirect to={LOG_VIS_URL} />;
+    return redirect(LOG_VIS_URL);
   }
 
   return (
@@ -50,13 +50,13 @@ export default observer(function DatabasePage() {
       elementname="app-page-database"
       className="fontsize-4 flex-row jcontent-center"
     >
-      <MetaTags>
+      <Helmet>
         <title>kolmafioso</title>
         <meta
           name="description"
           content="Mafioso database page of shared logs for Kingdom of Loathing"
         />
-      </MetaTags>
+      </Helmet>
 
       <DatabaseListMenu className="flex-auto" />
 

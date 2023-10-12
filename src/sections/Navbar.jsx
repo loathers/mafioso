@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
-import { withRouter } from "react-router";
+import { useLocation } from "react-router";
 
 import { CHARTS_URL, DATABASE_URL, STATS_URL } from "../constants/PAGE_URLS";
 
@@ -21,8 +21,10 @@ const enableDatabase = import.meta.env.MAFIOSO_ENABLE_SHARE === "true";
 const enableStats = import.meta.env.MAFIOSO_ENABLE_STATS === "true";
 
 /** @returns {ReactComponent} */
-export default withRouter(function Navbar(props) {
-  const { className, location } = props;
+export default function Navbar(props) {
+  const { className } = props;
+
+  const location = useLocation();
 
   const pageName = location.pathname.split("/")[1];
 
@@ -37,7 +39,8 @@ export default withRouter(function Navbar(props) {
       <UpperNavbar pageName={pageName} className="flex-none adjacent-mar-t-1" />
     </div>
   );
-});
+}
+
 /** @returns {ReactComponent} */
 const UpperNavbar = observer(function _UpperNavbar(props) {
   const { className, pageName } = props;

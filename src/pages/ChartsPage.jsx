@@ -1,7 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 
 import { CHART_TYPES } from "../constants/CHART_TYPES";
 import { HOME_URL } from "../constants/PAGE_URLS";
@@ -22,7 +22,7 @@ export default observer(function ChartsPage(props) {
   const { className } = props;
 
   if (!appStore.isReady) {
-    return <Redirect to={HOME_URL} />;
+    return redirect(HOME_URL);
   }
 
   return (
@@ -30,10 +30,10 @@ export default observer(function ChartsPage(props) {
       elementname="app-page-charts"
       className={combineClassnames("flex-row", className)}
     >
-      <MetaTags>
+      <Helmet>
         <title>kolmafioso</title>
         <meta name="description" content="Mafioso charts page" />
-      </MetaTags>
+      </Helmet>
 
       <ChartsMenu className="mar-r-2 flex-none" />
 

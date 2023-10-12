@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import { observer } from "mobx-react";
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 
 import { HOME_URL, LOG_VIS_URL } from "../constants/PAGE_URLS";
 
@@ -101,12 +101,12 @@ export default observer(function LogVisualizerPage(props) {
   // done loading but got nothing
   const isFinishedLoading = !isLoading && !appStore.isLoading;
   if (isFinishedLoading && !logStore.hasParsedEntries) {
-    return <Redirect to={HOME_URL} />;
+    return redirect(HOME_URL);
   }
 
   return (
     <div elementname="app-page-visualizer" className="flex-row jcontent-center">
-      <MetaTags>
+      <Helmet>
         <title>kolmafioso - visualizer</title>
         <meta property="og:title" content="kolmafioso - visualizer" />
         <meta property="og:type" content="website" />
@@ -119,7 +119,7 @@ export default observer(function LogVisualizerPage(props) {
           content={`Mafioso Log for ${logStore.characterName} the ${logStore.className} in ${logStore.difficultyName} ${logStore.pathName}`}
         />
         <meta name="theme-color" content="#14181c" />
-      </MetaTags>
+      </Helmet>
 
       <LogVisualizerMenu className="flex-auto adjacent-mar-t-5" />
 

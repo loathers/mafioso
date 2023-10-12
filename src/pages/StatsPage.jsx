@@ -1,16 +1,14 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 
 import { HOME_URL } from "../constants/PAGE_URLS";
 
 import appStore from "../store/appStore";
-// import logStore from '../store/logStore';
+
 import * as logStoreHelper from "../helpers/logStoreHelper";
 
-// import ChartContainer from '../components/ChartContainer';
-// import Button from '../components/Button';
 import EntryHeaderDisplay from "../components/EntryHeaderDisplay";
 
 import combineClassnames from "../utilities/combineClassnames";
@@ -23,7 +21,7 @@ export default observer(function StatsPage(props) {
   const { className } = props;
 
   if (!appStore.isReady) {
-    return <Redirect to={HOME_URL} />;
+    return redirect(HOME_URL);
   }
 
   const statsData = logStoreHelper.createStats();
@@ -32,10 +30,10 @@ export default observer(function StatsPage(props) {
       elementname="app-page-charts"
       className={combineClassnames("flex-col", className)}
     >
-      <MetaTags>
+      <Helmet>
         <title>kolmafioso</title>
         <meta name="description" content="Mafioso stats page" />
-      </MetaTags>
+      </Helmet>
 
       <div className="fontsize-7 f-bold talign-center">Stats</div>
       <div className="fontsize-3 talign-center">(wip)</div>

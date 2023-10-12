@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { observer } from "mobx-react";
+import { HelmetProvider } from "react-helmet-async";
 
 import {
   LOG_VIS_URL,
@@ -28,42 +29,44 @@ import LogVisualizerPage from "./pages/LogVisualizerPage";
 export default observer(function App() {
   return (
     <Router>
-      <div
-        id="app-main"
-        appmode={appStore.isShowingFullUpload ? "splash" : "ready"}
-        className="color-white fontfamily-primary fontsize-5"
-      >
-        {/* loader */}
-        {appStore.isLoading && !logStore.isLazyLoading.get() && (
-          <LoaderComponent />
-        )}
+      <HelmetProvider>
+        <div
+          id="app-main"
+          appmode={appStore.isShowingFullUpload ? "splash" : "ready"}
+          className="color-white fontfamily-primary fontsize-5"
+        >
+          {/* loader */}
+          {appStore.isLoading && !logStore.isLazyLoading.get() && (
+            <LoaderComponent />
+          )}
 
-        <PopupComponent className="zindex-8" />
+          <PopupComponent className="zindex-8" />
 
-        <ToasterComponent className="zindex-6" />
+          <ToasterComponent className="zindex-6" />
 
-        {/* Top */}
-        <Navbar className="adjacent-mar-t-5" />
+          {/* Top */}
+          <Navbar className="adjacent-mar-t-5" />
 
-        {/* Body */}
-        <Switch>
-          <Route
-            component={LogVisualizerPage}
-            path={`${LOG_VIS_URL}/:hashcode`}
-          />
+          {/* Body */}
+          <Routes>
+            <Route
+              component={LogVisualizerPage}
+              path={`${LOG_VIS_URL}/:hashcode`}
+            />
 
-          <Route component={ChartsPage} path={CHARTS_URL} />
+            <Route element={<ChartsPage />} path={CHARTS_URL} />
 
-          <Route component={DatabasePage} path={DATABASE_URL} />
+            <Route element={<DatabasePage />} path={DATABASE_URL} />
 
-          <Route component={StatsPage} path={STATS_URL} />
+            <Route element={<StatsPage />} path={STATS_URL} />
 
-          <Route component={HomePage} />
-        </Switch>
+            <Route element={<HomePage />} path="/" />
+          </Routes>
 
-        {/* Bottom */}
-        <Footer className="position-fixed" />
-      </div>
+          {/* Bottom */}
+          <Footer className="position-fixed" />
+        </div>
+      </HelmetProvider>
     </Router>
   );
 });

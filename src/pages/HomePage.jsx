@@ -1,14 +1,13 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { observer } from "mobx-react";
-import MetaTags from "react-meta-tags";
+import { Helmet } from "react-helmet-async";
 
 import appStore from "../store/appStore";
-// import logStore from '../store/logStore';
 
 export default observer(function HomePage() {
   if (appStore.isReady) {
-    return <Redirect to={appStore.visualizerUrl} />;
+    return redirect(appStore.visualizerUrl);
   }
 
   return (
@@ -16,13 +15,13 @@ export default observer(function HomePage() {
       elementname="app-page-home"
       className="borradius-3 bor-1-white mar-7 pad-7 fontsize-6 flex-col-center"
     >
-      <MetaTags>
+      <Helmet>
         <title>kolmafioso</title>
         <meta
           name="description"
           content="Kingdom of Loathing session log visualizer!"
         />
-      </MetaTags>
+      </Helmet>
 
       <div
         style={{ maxWidth: 500 }}
