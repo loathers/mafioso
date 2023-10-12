@@ -9,7 +9,7 @@
 
 # misc
 .DS_Store
-.env*
+.env.local
 *.sublime-*
 npm-debug.log*
 yarn-debug.log*
