@@ -141,7 +141,7 @@ class AppStore {
     try {
       const payload = {
         hashcode: logStore.hashcode,
-        characterName: logStore.characterName,
+        characterName: logStore.characterName!,
         difficultyName: logStore.difficultyName!,
         pathName: logStore.pathName!,
         dayCount: logStore.dayCount,

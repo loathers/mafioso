@@ -1,10 +1,10 @@
-import assert from "assert";
+import { test, expect } from "vitest";
 
 // import ENTRY_TYPE from '../constants/ENTRY_TYPE';
 
-import { LogStore } from "../store/LogStore";
+import { LogStore } from "../../store/logStore";
 
-async function createTestStore(text) {
+async function createTestStore(text: string) {
   const testStore = new LogStore();
   await testStore.prepareLog(text);
   await testStore.parse();
@@ -22,7 +22,7 @@ test("rawtext_parsing: handles Subscription Cocoa Dispenser", async () => {
   await testStore.prepareLog(sampleText);
   await testStore.parse();
 
-  const comparatorResult = testStore.rawText.match("--------------------");
+  const comparatorResult = testStore.rawText?.match("--------------------");
   expect(comparatorResult).toBe(null);
 });
 

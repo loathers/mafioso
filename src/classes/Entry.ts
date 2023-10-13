@@ -23,7 +23,7 @@ import * as regexUtils from "../utilities/regexUtils";
 import { Matcher } from "../utilities/regexUtils";
 
 type EntryConstructor = {
-  entryId: number;
+  entryId: string;
   entryIdx: number;
   rawText: string;
   config?: Record<string, any>;
@@ -38,14 +38,15 @@ export type EntryAttributes =
   | "isSemirare"
   | "isNonCombatEncounter"
   | "hasPortscanEncounter"
-  | "locationDisplay";
+  | "locationDisplay"
+  | "isPillKeeper";
 
 /**
  * @typedef {String} RawText - text extracted from the log
  * @typedef {String} EntryString - text after it has some formatting and clean up
  */
 export default class Entry {
-  id: number;
+  id: string;
   entryIdx: number;
   entryData: EntryData;
   rawText: string;

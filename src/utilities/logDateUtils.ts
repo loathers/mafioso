@@ -4,15 +4,15 @@ import REGEX from "../constants/REGEXES";
  * @param {String} rawText
  * @returns {Array<Date>}
  */
-export function findRealDates(rawText) {
-  const allDates = rawText.match(REGEX.SNAPSHOT.REAL_DATE) || [];
+export function findRealDates(rawText: string) {
+  const allDates: string[] = rawText.match(REGEX.SNAPSHOT.REAL_DATE) || [];
   return allDates.filter((date, idx) => allDates.indexOf(date) === idx);
 }
 /**
  * @param {String} rawText
  * @returns {Array<KolDate>}
  */
-export function findFirstDate(rawText) {
+export function findFirstDate(rawText: string) {
   const snapshotDate = rawText.match(REGEX.SNAPSHOT.SNAPSHOT_DATE);
   if (snapshotDate) {
     return snapshotDate[0];

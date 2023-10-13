@@ -15,18 +15,18 @@ import { DIFFICULTY_MAP, PATH_MAP } from "../constants/ABBREVIATION_MAP";
 
 import * as logDateUtils from "./logDateUtils";
 import * as regexUtils from "./regexUtils";
+import { isNotNull } from "./lib";
 
 const MAX_CHAR_COUNT = 5000000;
 const MIN_CHAR_COUNT = 5;
 
 /**
  * core parsing handler - start here
- *
- * @param {String} rawText
- * @param {Object} [config]
- * @return {Array<Entry>}
  */
-export async function parseLogTxt(rawText, config) {
+export async function parseLogTxt(
+  rawText: string,
+  config: Record<string, any>,
+) {
   const rawSize = rawText.length;
   if (rawSize > MAX_CHAR_COUNT || rawSize < MIN_CHAR_COUNT) {
     throw new Error(`Unable to parse this log of size ${rawSize}.`);
@@ -61,11 +61,8 @@ export async function parseLogTxt(rawText, config) {
 }
 /**
  * finds the specific ascension session from given string
- *
- * @string {String} rawText
- * @returns {String | null}
  */
-export function findAscensionLog(rawText) {
+export function findAscensionLog(rawText: string) {
   const scotchLogAscension = rawText.match(
     REGEX.ASCENSION.SCOTCH_LOG_ASCENSION,
   );
@@ -106,11 +103,8 @@ export function findAscensionLog(rawText) {
 
   throw new Error("Could not find an Ascension Log.");
 }
-/**
- * @param {String} rawText
- * @returns {AscensionAttributes}
- */
-export function parseAscensionAttributes(rawText) {
+
+export function parseAscensionAttributes(rawText: string) {
   const characterNameMatch =
     rawText.match(REGEX.CHARACTER.CHARACTER_NAME) ||
     rawText.match(REGEX.CHARACTER.CHARACTER_NAME_FROM_COMBAT) ||
@@ -128,7 +122,7 @@ export function parseAscensionAttributes(rawText) {
   };
 }
 
-export function parseDailyAttributes(rawText) {
+export function parseDailyAttributes(rawText: string) {
   return {
     voterMonsters: parseVoteMonster(rawText),
     cargoPockets: parseCargoPockets(rawText),
@@ -137,14 +131,12 @@ export function parseDailyAttributes(rawText) {
 /**
  * creates a list of Entry class,
  *  which will have parsed an entry's data
- *
- * @async
- * @param {Array<String>} logArray
- * @param {Number} startIdx
- * @param {Object} [config]
- * @returns {Array<Entry>}
  */
-export function parseLogArray(logArray, startIdx, config) {
+export async function parseLogArray(
+  logArray: string[],
+  startIdx: number,
+  config: Record<string, any>,
+) {
   return logArray.map(
     (rawText, idx) =>
       new Entry({
@@ -157,14 +149,12 @@ export function parseLogArray(logArray, startIdx, config) {
 }
 /**
  * group some entries ahead of time
- * @param {String} rawText
- * @return {String}
  */
-export function pregroupRawLog(rawText) {
+export function pregroupRawLog(rawText: string) {
   return PREGROUP_REGEX_LIST.reduce((accumulatedText, preparseRegex) => {
     const pregroupMatches = accumulatedText.match(preparseRegex) || [];
     while (pregroupMatches.length > 0) {
-      const nextText = pregroupMatches.shift();
+      const nextText = pregroupMatches.shift()!;
       const groupedText = nextText.replace(DIVIDING_NEWLINE_REGEX, "\n");
       accumulatedText = accumulatedText.replace(nextText, groupedText);
     }
@@ -177,7 +167,7 @@ export function pregroupRawLog(rawText) {
  * @param {String} rawText
  * @return {String}
  */
-export function presplitRawLog(rawText) {
+export function presplitRawLog(rawText: string) {
   return SPLIT_REGEX_LIST.reduce((accumulatedText, regex) => {
     return accumulatedText.replace(regex, "\n\n");
   }, rawText);
@@ -187,29 +177,29 @@ export function presplitRawLog(rawText) {
  * @param {String} rawText
  * @return {String}
  */
-export async function cleanRawLog(rawText) {
+export async function cleanRawLog(rawText: string) {
   let cleanedText = rawText.slice();
 
   const cleaningBatcher = new Batcher(PREREMOVE_REGEX_LIST, {
     batchSize: 5,
     batchDelay: CLEAN_RAW_DELAY,
   });
-  await cleaningBatcher.run((removalRegexGroup) => {
-    cleanedText = removalRegexGroup.reduce((accumulatedText, removalRegex) => {
-      return accumulatedText.replace(removalRegex, "");
-    }, cleanedText);
+  await cleaningBatcher.run<string>(async (removalRegexGroup) => {
+    cleanedText = removalRegexGroup
+      .filter(isNotNull)
+      .reduce((accumulatedText, removalRegex) => {
+        return accumulatedText.replace(removalRegex, "");
+      }, cleanedText);
 
-    return cleanedText; // this return is superficial, just for Batcher's logging
+    return [cleanedText]; // this return is superficial, just for Batcher's logging
   });
 
   return cleanedText;
 }
 /**
  * remove some text from the log after the log has been parsed for data
- * @param {string | null | undefined} rawText
- * @return {string}
  */
-export async function postParseCleanup(rawText) {
+export async function postParseCleanup(rawText: string) {
   // hide karma numbers
   rawText = rawText.replace(REGEX.ASCENSION.KARMA_TEXT, "<3");
 
@@ -219,57 +209,44 @@ export async function postParseCleanup(rawText) {
   // replace all the stuff under "Player Snapshot"
   rawText = rawText.replace(
     REGEX.SNAPSHOT.WTF_SNAPSHOT_REPLACER_CAPTURE_GROUP,
-    (match, p1, p2) => {
+    (_match, p1, p2) => {
       return `<mafioso>\n${p1}\n${p2}\n</mafioso>\n`;
     },
   );
 
   return rawText;
 }
-// -- parsing specific data
-/**
- * @param {string | undefined | null} rawText
- * @returns {String}
- */
-export function createPathLabel(rawText) {
+
+export function createPathLabel(rawText?: string | null) {
   const difficultyName = parseDifficultyName(rawText);
   const pathName = parsePathName(rawText);
   const difficultyAbbr = DIFFICULTY_MAP[difficultyName];
   const pathAbbr = PATH_MAP[pathName];
   return `${difficultyAbbr}_${pathAbbr}`.toUpperCase();
 }
-/**
- * @param {Text} rawText
- * @returns {String}
- */
-export function parseDifficultyName(rawText) {
+
+export function parseDifficultyName(rawText?: string | null) {
   const ascensionDetails =
-    rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
-  return ascensionDetails[1];
+    rawText?.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
+  return (ascensionDetails?.[1] ?? "Casual") as keyof typeof DIFFICULTY_MAP;
 }
-/**
- * @param {Text} rawText
- * @returns {String}
- */
-export function parseStandardSeason(rawText) {
-  const standardSeasonMatch = rawText.match(REGEX.MAFIOSO.STANDARD_BLOCK);
+
+export function parseStandardSeason(rawText?: string | null) {
+  const standardSeasonMatch = rawText?.match(REGEX.MAFIOSO.STANDARD_BLOCK);
   if (standardSeasonMatch) {
     return standardSeasonMatch[0];
   }
 
   return "Unrestricted";
 }
-/**
- * @param {Text} rawText
- * @returns {String}
- */
-export function parsePathName(rawText) {
-  const badMoonDetails = rawText.match(REGEX.ASCENSION.BAD_MOON_DETAILS);
+
+export function parsePathName(rawText?: string | null): keyof typeof PATH_MAP {
+  const badMoonDetails = rawText?.match(REGEX.ASCENSION.BAD_MOON_DETAILS);
   if (badMoonDetails) {
     return "Bad Moon";
   }
 
-  const edTheUndyingDetails = rawText.match(
+  const edTheUndyingDetails = rawText?.match(
     REGEX.ASCENSION.ED_THE_UNDYING_DETAILS,
   );
   if (edTheUndyingDetails) {
@@ -277,14 +254,11 @@ export function parsePathName(rawText) {
   }
 
   const ascensionDetails =
-    rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
-  return ascensionDetails[2];
+    rawText?.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
+  return (ascensionDetails?.[2] ?? "No-Path") as keyof typeof PATH_MAP;
 }
-/**
- * @param {Text} rawText
- * @returns {String}
- */
-export function parseClassName(rawText) {
+
+export function parseClassName(rawText: string) {
   const edTheUndyingDetails = rawText.match(
     REGEX.ASCENSION.ED_THE_UNDYING_DETAILS,
   );
@@ -296,27 +270,25 @@ export function parseClassName(rawText) {
     rawText.match(REGEX.ASCENSION.ASCENSION_DETAIL_GROUP) || [];
   return ascensionDetails[3];
 }
-/**
- * @param {string} rawText
- * @returns {string[]}
- */
-export function parseVoteMonster(rawText) {
+
+export function parseVoteMonster(rawText: string) {
   const allMonsters =
     regexUtils.getRegexMatch(rawText, REGEX.VOTING_BOOTH.VOTE_MONSTER_UNIQUE) ||
     [];
-  return allMonsters.map((votingText) =>
-    regexUtils.findMatcher(votingText, REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT),
-  );
+  return allMonsters
+    .map((votingText) =>
+      regexUtils.findMatcher(
+        votingText,
+        REGEX.VOTING_BOOTH.VOTE_MONSTER_COMBAT,
+      ),
+    )
+    .filter(isNotNull);
 }
-/**
- * @param {string} rawText
- * @returns {string[]}
- */
-export function parseCargoPockets(rawText) {
-  const allResults =
-    regexUtils.getRegexMatch(
-      rawText,
-      REGEX.CARGO_CULTIST_SHORTS.PICK_POCKET_RESULT,
-    ) || [];
-  return allResults;
+
+export function parseCargoPockets(rawText: string) {
+  return (
+    regexUtils
+      .getRegexMatch(rawText, REGEX.CARGO_CULTIST_SHORTS.PICK_POCKET_RESULT)
+      ?.filter(isNotNull) || []
+  );
 }

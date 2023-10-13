@@ -1,7 +1,6 @@
-import assert from "assert";
+import { test, expect } from "vitest";
 
-import { DIFFICULTY_MAP, PATH_MAP } from "../constants/ABBREVIATION_MAP";
-import * as logParserUtils from "../utilities/logParserUtils";
+import * as logParserUtils from "../../utilities/logParserUtils";
 
 test("logParserUtils.parseDifficultyName(): parses the three different difficulty names", () => {
   const HCMockText =

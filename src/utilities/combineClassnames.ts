@@ -4,10 +4,9 @@
  * @example
  * combineClassnames((isFocused ? 'bg-aqua-base' : null), (isHidden ? 'hide' : null), 'mar-2')
  * // returns 'bg-aqua-base hide mar-2' if all variables are true or just 'mar-2'
- *
- * @param {...String | undefined | null} args - any number of arguments
- * @returns {String}
  */
-export default function combineClassnames(...args) {
-  return args.filter(Boolean).join(" ");
+export default function combineClassnames(
+  ...args: (string | undefined | null)[]
+) {
+  return args.filter((i) => !!i).join(" ");
 }

@@ -1,11 +1,12 @@
-import assert from "assert";
+import { test, expect } from "vitest";
 
-import ENTRY_TYPE from "../constants/ENTRY_TYPE";
-import { REGEX } from "../constants/REGEXES";
+import ENTRY_TYPE from "../../constants/ENTRY_TYPE";
+import { REGEX } from "../../constants/REGEXES";
 
-import logStore from "../store/LogStore";
+import logStore from "../../store/logStore";
+import { expectDefined } from "../lib";
 
-async function createTestStore(text) {
+async function createTestStore(text: string) {
   logStore.reset();
   await logStore.prepareLog(text);
   await logStore.parse();
@@ -83,7 +84,6 @@ test.skip("forced_parsing: Sneakisol: should properly look for a non-combat enco
     "";
 
   await createTestStore(sampleText);
-  const firstEntry = logStore.getEntryAt(0);
   const pillKeeperEntry = logStore.findNextEntry(0, {
     isPillKeeper: true,
   });
@@ -91,9 +91,13 @@ test.skip("forced_parsing: Sneakisol: should properly look for a non-combat enco
     isNonCombatEncounter: true,
   });
 
+  expectDefined(pillKeeperEntry);
+
   expect(pillKeeperEntry.entryType).toBe(ENTRY_TYPE.IOTM.PILL_KEEPER);
   expect(pillKeeperEntry.hasText(REGEX.PILL_KEEPER.SNEAKISOL)).toBe(true);
   expect(pillKeeperEntry.additionalDisplay).toBe("The Dark Neck of the Woods");
+
+  expectDefined(sneakisolEntry);
 
   expect(sneakisolEntry.entryType).toBe(
     ENTRY_TYPE.IOTM.COMPREHENSIVE_CARTOGRAPHY.SPECIAL_NONCOMBAT,

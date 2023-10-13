@@ -10,7 +10,7 @@ export default class ListItem {
     }
 
     if (typeof amount === "undefined") {
-      this.#amount = 0;
+      this.#amount = 1;
     } else if (typeof amount === "string") {
       this.#amount = Number(amount) || 1;
     } else {
@@ -20,6 +20,10 @@ export default class ListItem {
 
   get displayName() {
     return this.#name;
+  }
+
+  get amount() {
+    return this.#amount;
   }
 
   get displayAmount() {

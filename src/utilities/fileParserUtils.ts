@@ -7,8 +7,8 @@ const SESSION_NAME_REGEX = /^.*?(?=_\d)/;
  * @param {File} file
  * @returns {String}
  */
-export function readFile(file) {
-  return new Promise((resolve, reject) => {
+export function readFile(file: File) {
+  return new Promise<string | undefined | null>((resolve, reject) => {
     if (file.type !== "text/plain") {
       reject("Uploaded a non-text file.");
       return;
@@ -16,7 +16,8 @@ export function readFile(file) {
 
     const fileReader = new FileReader();
     fileReader.onload = (readerEvt) => {
-      const readResult = readerEvt.target.result;
+      // Because we use readAsText, this is not ArrayBuffer
+      const readResult = readerEvt.target?.result as string | null;
       console.log(`%c☌ ...file "${file.name}" read.`, "color: #6464ff");
       resolve(readResult);
     };
@@ -24,35 +25,26 @@ export function readFile(file) {
     fileReader.readAsText(file);
   });
 }
-// -- session date
-/**
- * @params {Files|Array<File>}
- */
-export function sortBySessionDate(files) {
+
+export function sortBySessionDate(files: File[] | FileList) {
   return Array.from(files).sort((fileA, fileB) => {
-    const sessionDateA = getDateFromSessionFile(fileA);
-    const sessionDateB = getDateFromSessionFile(fileB);
+    const sessionDateA = getDateFromSessionFile(fileA) ?? 0;
+    const sessionDateB = getDateFromSessionFile(fileB) ?? 0;
     return sessionDateA < sessionDateB ? -1 : 1;
   });
 }
-/**
- * @param {File} file
- * @returns {Date}
- */
-export function getDateFromSessionFile(file) {
+
+export function getDateFromSessionFile(file: File) {
   const foundDate = file.name.match(SESSION_DATE_REGEX);
   if (!foundDate) return;
 
-  const year = foundDate[1];
-  const month = foundDate[2];
-  const day = foundDate[3];
+  const year = Number(foundDate[1]);
+  const month = Number(foundDate[2]);
+  const day = Number(foundDate[3]);
   return new Date(year, month, day);
 }
-/**
- * @param {File} file
- * @returns {String}
- */
-export function getNameFromSessionFile(file) {
+
+export function getNameFromSessionFile(file: File) {
   if (!file) return undefined;
 
   const fileName = file.name;
@@ -61,11 +53,10 @@ export function getNameFromSessionFile(file) {
 }
 /**
  * vaguely copied from https://stackoverflow.com/a/6979777
- * @param {Date} date
- * @returns {String}
+
  */
-export function convertDateToString(date) {
-  const fix2 = (n) => (n < 10 ? "0" + n : n);
+export function convertDateToString(date: Date) {
+  const fix2 = (n: number) => (n < 10 ? "0" + n : n);
   return `${date.getFullYear()}${fix2(date.getMonth() + 1)}${fix2(
     date.getDate(),
   )}`;

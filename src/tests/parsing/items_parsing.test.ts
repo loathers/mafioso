@@ -1,10 +1,10 @@
-import assert from "assert";
+import { test, expect } from "vitest";
 
-import ENTRY_TYPE from "../constants/ENTRY_TYPE";
+import ENTRY_TYPE from "../../constants/ENTRY_TYPE";
 
-import { LogStore } from "../store/LogStore";
+import { LogStore } from "../../store/logStore";
 
-async function createTestStore(text) {
+async function createTestStore(text: string) {
   const testStore = new LogStore();
   await testStore.prepareLog(text);
   await testStore.parse();
@@ -24,7 +24,7 @@ test('entry_parsing: items: parses "you acquire an item: {name}"', async () => {
   const firstEntry = testStore.getEntryAt(0);
 
   expect(firstEntry.attributes.acquiredItems.length).toBe(5);
-  expect(firstEntry.attributes.acquiredItems[0].attributes.amount).toBe(1);
+  expect(firstEntry.attributes.acquiredItems[0].amount).toBe(1);
 });
 
 test('entry_parsing: items: parses "you acquire {name} ({amount})"', async () => {
@@ -37,10 +37,10 @@ test('entry_parsing: items: parses "you acquire {name} ({amount})"', async () =>
   const firstEntry = testStore.getEntryAt(0);
 
   expect(firstEntry.attributes.acquiredItems.length).toBe(1);
-  expect(firstEntry.attributes.acquiredItems[0].attributes.name).toBe(
+  expect(firstEntry.attributes.acquiredItems[0].displayName).toBe(
     "Doc Galaktik's Homeopathic Elixir",
   );
-  expect(firstEntry.attributes.acquiredItems[0].attributes.amount).toBe(10);
+  expect(firstEntry.attributes.acquiredItems[0].amount).toBe(10);
 });
 
 test("entry_parsing: untinker: detects that something is a untinker action", async () => {

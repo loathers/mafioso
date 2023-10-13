@@ -1,10 +1,10 @@
-import assert from "assert";
+import { test, expect } from "vitest";
 
-import ENTRY_TYPE from "../constants/ENTRY_TYPE";
+import ENTRY_TYPE from "../../constants/ENTRY_TYPE";
 
-import { LogStore } from "../store/LogStore";
+import { LogStore } from "../../store/logStore";
 
-async function createTestStore(text) {
+async function createTestStore(text: string) {
   const testStore = new LogStore();
   await testStore.prepareLog(text);
   await testStore.parse();
@@ -296,10 +296,10 @@ test("iotm_parsing: Potted Power Plant: parses acquiring a battery", async () =>
   expect(firstEntry.entryType).toBe(
     ENTRY_TYPE.IOTM.POTTED_POWER_PLANT.GET_BATTERY,
   );
-  expect(firstEntry.attributes.acquiredItems[0].attributes.name).toBe(
+  expect(firstEntry.attributes.acquiredItems[0].displayName).toBe(
     "battery (D)",
   );
-  expect(firstEntry.attributes.acquiredItems[0].attributes.amount).toBe(1);
+  expect(firstEntry.attributes.acquiredItems[0].amount).toBe(1);
 });
 
 test("iotm_parsing: Potted Power Plant: parses using a battery", async () => {

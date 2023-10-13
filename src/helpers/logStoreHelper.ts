@@ -7,6 +7,7 @@ import logStore from "../store/logStore";
 
 import * as fileParserUtils from "../utilities/fileParserUtils";
 import download from "../utilities/download";
+import { isNotNull } from "../utilities/lib";
 
 /**
  * look at each entry and their neighbor in front and see if
@@ -307,9 +308,9 @@ export function getSessionDateString() {
  * use dates from uploaded logs if we didn't find in any the rawText itself
  */
 function handleDateListFallback() {
-  const fileDates = logStore.srcFiles.map((srcFile) =>
-    fileParserUtils.getDateFromSessionFile(srcFile),
-  );
+  const fileDates = logStore.srcFiles
+    .map((srcFile) => fileParserUtils.getDateFromSessionFile(srcFile))
+    .filter(isNotNull);
   if (fileDates.length <= logStore.ascensionAttributes.dateList.length) {
     return;
   }

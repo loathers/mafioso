@@ -22,11 +22,12 @@ import * as regexUtils from "../utilities/regexUtils";
 import Entry, { EntryAttributes } from "../classes/Entry";
 import { RunLog } from "./databaseStore";
 import { Attributes } from "../utilities/entryParserUtils";
+import { isNotNull } from "../utilities/lib";
 
 type AscensionAttributes = {
   characterName?: string;
   className?: string;
-  ascensionNum?: number;
+  ascensionNum?: string;
   difficultyName?: string;
   pathName?: string;
   dateList: (Date | string)[];
@@ -124,7 +125,6 @@ export class LogStore {
   }
   /**
    * find attributes that are specifically related to a full ascension log
-   * @returns {AscensionAttributes}
    */
   setAscensionAttributes() {
     if (this.rawText) {
@@ -146,11 +146,6 @@ export class LogStore {
           this.ascensionAttributes.standardSeason = `${sessionToDate.getMonth()}-${sessionToDate.getFullYear()}`;
         }
       }
-    } else {
-      this.ascensionAttributes = {
-        ...this.ascensionAttributes,
-        ...logParserUtils.parseDailyAttributes(this.rawText),
-      };
     }
 
     return this.ascensionAttributes;
@@ -207,7 +202,7 @@ export class LogStore {
   }
 
   get fileName() {
-    if (!this.hasCharacterName) {
+    if (!this.characterName) {
       return "unknown_mafioso_file.txt";
     }
 
@@ -327,14 +322,6 @@ export class LogStore {
     return this.standardSeason.split("-")[1];
   }
 
-  get hasAscensionNum() {
-    return this.ascensionNum !== undefined;
-  }
-
-  get hasCharacterName() {
-    return this.characterName !== undefined;
-  }
-
   get isUsingDayFilter() {
     return this.displayOptions.dayNumFilter !== "all";
   }
@@ -369,7 +356,7 @@ export class LogStore {
   onUploadDone() {
     let toastMessage = "";
 
-    if (this.hasAscensionNum) {
+    if (this.ascensionNum) {
       toastMessage = `Ascension #${this.ascensionNum}!\nAnother one for the books.`;
     } else {
       toastMessage =
@@ -379,7 +366,7 @@ export class LogStore {
     ToastController.success({ title: "Success!", content: toastMessage });
   }
 
-  async handleUpload(files: File[]) {
+  async handleUpload(files: FileList) {
     try {
       if (files.length > 10) {
         throw new Error("That is too many files.");
@@ -395,9 +382,9 @@ export class LogStore {
       this.srcFiles = sortedFiles;
 
       // get text from all files
-      this.srcRawTexts = await Promise.all(
-        sortedFiles.map(fileParserUtils.readFile),
-      );
+      this.srcRawTexts = (
+        await Promise.all(sortedFiles.map(fileParserUtils.readFile))
+      ).filter(isNotNull);
       if (this.srcRawTexts.length <= 0) {
         this.isParsing.set(false);
         throw new Error("Some of those files may not be valid.");

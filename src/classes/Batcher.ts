@@ -17,20 +17,20 @@ export default class Batcher<T> {
     return this.batchArray.length;
   }
 
-  async run(
+  async run<R>(
     callback: (
       group: T[],
       startIndex: number,
       endIndex: number,
-    ) => Promise<T[]>,
-    config: Partial<BatcherConfig>,
+    ) => Promise<R[]>,
+    config: Partial<BatcherConfig> = {},
   ) {
     const { batchSize, batchDelay } = {
       ...this.defaultConfig,
       ...config,
     };
 
-    let batchResult: T[] = [];
+    let batchResult: R[] = [];
     const numBatches = this.calculateBatchCount(batchSize);
     // console.log(`%c☌ Batcher running [batchCount=${numBatches}] with [delay=${batchDelay}ms]`, 'color: #6464ff');
 
@@ -42,7 +42,7 @@ export default class Batcher<T> {
       const groupResult = await callback(batchGroup, startIdx, endIdx);
       await new Promise((resolve) => setTimeout(resolve, batchDelay)); // delay between batches
 
-      batchResult = batchResult.concat(groupResult);
+      batchResult.push(...groupResult);
       // console.log(`%c☌ batch #${i+1} complete (${groupResult.length} items)`, 'color: #6464ff');
     }
 

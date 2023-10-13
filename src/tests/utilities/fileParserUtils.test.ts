@@ -1,6 +1,7 @@
-import assert from "assert";
+import { test, expect } from "vitest";
 
-import * as fileParserUtils from "../utilities/fileParserUtils";
+import * as fileParserUtils from "../../utilities/fileParserUtils";
+import { expectDefined } from "../lib";
 
 const mockFileA = new File([], "dextrial_20200801.txt");
 const mockFileB = new File([], "dextrial_20200731.txt");
@@ -9,6 +10,7 @@ const mockFileD = new File([], "c00lest_one_20200730.txt");
 
 test("fileParserUtils.getDateFromSessionFile(): returns correct date from filename", () => {
   const sessionDate = fileParserUtils.getDateFromSessionFile(mockFileA);
+  expectDefined(sessionDate);
   expect(sessionDate.getFullYear()).toBe(2020);
   expect(sessionDate.getMonth()).toBe(8);
   expect(sessionDate.getDate()).toBe(1);
@@ -16,6 +18,7 @@ test("fileParserUtils.getDateFromSessionFile(): returns correct date from filena
 
 test("fileParserUtils.getDateFromSessionFile(): handles filename with a number", () => {
   const sessionDate = fileParserUtils.getDateFromSessionFile(mockFileD);
+  expectDefined(sessionDate);
   expect(sessionDate.getFullYear()).toBe(2020);
   expect(sessionDate.getMonth()).toBe(7);
   expect(sessionDate.getDate()).toBe(30);
