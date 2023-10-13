@@ -13,13 +13,11 @@ import EntryHeaderDisplay from "../components/EntryHeaderDisplay";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-export default observer(function StatsPage(props) {
-  const { className } = props;
+type Props = {
+  className?: string;
+};
 
+export default observer(function StatsPage({ className }: Props) {
   if (!appStore.isReady) {
     return <Navigate to={HOME_URL} replace />;
   }
@@ -48,13 +46,14 @@ export default observer(function StatsPage(props) {
     </div>
   );
 });
-/** @returns {React.Component} */
-function StatDayBlock(props) {
-  const { className, data } = props;
 
+type StatDayBlockProps = {
+  className: string;
+  data: logStoreHelper.Stats;
+};
+
+function StatDayBlock({ className, data }: StatDayBlockProps) {
   const { dayNum } = data;
-
-  // console.log('StatDayBlock', data);
 
   return (
     <div className={combineClassnames("flex-col", className)}>
@@ -71,10 +70,14 @@ function StatDayBlock(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
-function StatRow(props) {
-  const { className, label, content } = props;
 
+type StatRowProps = {
+  className?: string;
+  label: string;
+  content?: React.ReactNode;
+};
+
+function StatRow({ className, label, content }: StatRowProps) {
   if (content === undefined || content === null) {
     return null;
   }

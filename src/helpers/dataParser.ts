@@ -10,6 +10,9 @@ import ACTUALLY_ED_THE_UNDYING_ENTRY_DATA from "../data/ACTUALLY_ED_THE_UNDYING_
 import YOU_ROBOT_ENTRY_DATA from "../data/YOU_ROBOT_ENTRY_DATA.json";
 
 import * as regexUtils from "../utilities/regexUtils";
+import { EntryData } from "../constants/ENTRY_DATA";
+
+type EntryDataByKey = { [type: string]: EntryData };
 
 /** @type {Object<RawEntryData>} */
 const rawEntryData = {
@@ -18,22 +21,14 @@ const rawEntryData = {
   ...IOTM_ENTRY_DATA,
   ...LOCATION_ENTRY_DATA,
   ...ENTRY_DATA,
-};
-/** @type {Object<EntryData>} */
-const dataCache = {};
-/** @type {Array<String>} */
-const dataCacheKeys = Object.keys(rawEntryData);
-// start with building cache
+} as EntryDataByKey;
+
+const dataCache: EntryDataByKey = {};
+
 buildCache();
 
-/**
- * @param {String} entryString
- * @returns {Entry}
- */
-export function matchEntryData(entryString) {
-  const foundEntryType = dataCacheKeys.find((entryTypeKey) => {
-    const data = dataCache[entryTypeKey];
-    const { matcher } = data;
+export function matchEntryData(entryString: string) {
+  const foundEntryType = Object.entries(dataCache).find(([, { matcher }]) => {
     if (matcher instanceof RegExp) {
       return regexUtils.hasString(entryString, matcher);
     } else if (Array.isArray(matcher)) {
@@ -43,7 +38,7 @@ export function matchEntryData(entryString) {
     } else {
       return undefined;
     }
-  });
+  })?.[0];
 
   if (foundEntryType) {
     return {
@@ -63,11 +58,10 @@ export function matchEntryData(entryString) {
  *
  */
 function buildCache() {
-  dataCacheKeys.forEach((entryTypeKey) => {
-    const rawData = rawEntryData[entryTypeKey];
-
+  Object.entries(rawEntryData).forEach(([entryTypeKey, rawData]) => {
     const formattedCategories = rawData.categories.map(
-      (categoryString) => CATEGORY_ID[categoryString],
+      (categoryString) =>
+        CATEGORY_ID[categoryString as keyof typeof CATEGORY_ID],
     );
     const formattedMatcher = convertStringToRegex(rawData.matcher);
 
@@ -83,13 +77,16 @@ function buildCache() {
     };
   });
 }
-/**
- * @param {String|Array} input
- * @returns {RegExp|Array<RegExp>}
- */
-function convertStringToRegex(input) {
+
+function convertStringToRegex(
+  input: regexUtils.Matcher | undefined | null,
+): regexUtils.Matcher {
+  if (!input) {
+    return [];
+  }
+
   if (Array.isArray(input)) {
-    return input.map((inputString) => convertStringToRegex(inputString));
+    return input.flatMap((inputString) => convertStringToRegex(inputString));
   }
 
   // do nothing
@@ -113,17 +110,16 @@ function convertStringToRegex(input) {
   // otherwise leaving string alone
   return input;
 }
-/**
- * @param {String} input
- * @returns {RegExp|Array<RegExp>}
- */
-function convertPathToRegex(input) {
+
+function convertPathToRegex(input: string) {
   const pathParts = input.split(".");
   if (pathParts.shift() === "REGEX") {
-    const result = pathParts.reduce((regexData, pathPart) => {
-      return regexData[pathPart];
-    }, REGEX);
-
-    return result;
+    let result = REGEX;
+    while (typeof result === "object" && pathParts.length > 0) {
+      // @ts-ignore
+      result = result[pathParts.shift()!];
+    }
+    if (result) return result as unknown as RegExp | string;
   }
+  return input;
 }

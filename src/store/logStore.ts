@@ -29,7 +29,7 @@ type AscensionAttributes = {
   ascensionNum?: number;
   difficultyName?: string;
   pathName?: string;
-  dateList: string[];
+  dateList: (Date | string)[];
   standardSeason?: string | null;
   voterMonsters: string[];
   cargoPockets: string[];
@@ -762,7 +762,7 @@ export class LogStore {
 
   findNextEntry(
     startIdx: number,
-    attributesFilter: Record<EntryAttributes, any>,
+    attributesFilter: Partial<Record<EntryAttributes, any>>,
   ) {
     if (this.allEntries.length <= 0) {
       return undefined;

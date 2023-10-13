@@ -26,10 +26,19 @@ type EntryConstructor = {
   entryId: number;
   entryIdx: number;
   rawText: string;
-  config: Record<string, any>;
+  config?: Record<string, any>;
 };
 
-export type EntryAttributes = keyof Attributes | "isBanished" | "isReplaced";
+export type EntryAttributes =
+  | keyof Attributes
+  | "entryType"
+  | "isBanished"
+  | "isReplaced"
+  | "isAdventure"
+  | "isSemirare"
+  | "isNonCombatEncounter"
+  | "hasPortscanEncounter"
+  | "locationDisplay";
 
 /**
  * @typedef {String} RawText - text extracted from the log
@@ -47,7 +56,7 @@ export default class Entry {
   attributes: Attributes;
   willRemoveAnnotation: boolean;
 
-  constructor({ entryId, entryIdx, rawText, config }: EntryConstructor) {
+  constructor({ entryId, entryIdx, rawText, config = {} }: EntryConstructor) {
     this.id = entryId;
     this.entryIdx = entryIdx;
     this.entryData = getEntryData(rawText);
@@ -917,7 +926,11 @@ export default class Entry {
     );
   }
 
-  canCombineWith(comparedEntry: Entry) {
+  canCombineWith(comparedEntry: Entry | undefined) {
+    if (!comparedEntry) {
+      return false;
+    }
+
     // combine kolmafia commonly purchasing and using
     if (
       this.hasText("chewing gum on a string") &&

@@ -11,11 +11,8 @@ import download from "../utilities/download";
 /**
  * look at each entry and their neighbor in front and see if
  *  they are valid to combine together
- *
- * @param {Array<Entry>} entriesList
- * @returns {Array<Entry>}
  */
-export function combineEntries(entriesList) {
+export function combineEntries(entriesList: Entry[]) {
   let combinedEntriesList = [];
 
   const searchEntries = entriesList.slice();
@@ -25,14 +22,18 @@ export function combineEntries(entriesList) {
   while (searchEntries.length > 0) {
     const currEntry = searchEntries.shift();
 
+    if (!currEntry) break;
+
+    const nextEntry = searchEntries.shift();
+
     // if this is the last entry, we are done
-    if (searchEntries.length <= 0) {
+    if (!nextEntry) {
       combinedEntriesList.push(currEntry);
       continue;
     }
 
     // get the next entry and see if it can combine
-    const nextEntry = searchEntries.shift();
+
     if (currEntry.canCombineWith(nextEntry)) {
       const combinedEntry = new Entry({
         entryId: currEntry.id,
@@ -63,15 +64,12 @@ export function combineEntries(entriesList) {
  * @param {Array<Entry>} allEntries
  * @returns {Array<Entry>}
  */
-export function createEstimatedEntries(allEntries) {
+export function createEstimatedEntries(allEntries: Entry[]) {
   // all data that is being tracked
-  const estimates = {
-    dateList: [], // kol dates
-    scotchDayList: [], // scotchlog day nums
-    prevEntry: null,
-    prevTurnNum: -1,
-    trackedFamiliar: null, // familiar that user last swapped to
-  };
+  const dateList: string[] = []; // kol dates
+  const scotchDayList: string[] = []; // scotchlog day nums
+  let prevTurnNum = -1;
+  let trackedFamiliar: string | null = null;
 
   // start
   const conjecturedEntries = allEntries.map((entry, idx) => {
@@ -85,62 +83,57 @@ export function createEstimatedEntries(allEntries) {
     // so we'll just set it equal to our last known turnNum
     if (
       nextEntry === undefined &&
-      estimates.prevTurnNum > 0 &&
-      entry.turnNum <= estimates.prevTurnNum
+      prevTurnNum > 0 &&
+      entry.turnNum &&
+      entry.turnNum <= prevTurnNum
     ) {
       // just in case it also costs adventures, add it in
       const extraAdventureChanges =
         entry.adventureChangeValue < 0
           ? Math.abs(entry.adventureChangeValue)
           : 0;
-      entry.turnNum = estimates.prevTurnNum + extraAdventureChanges;
+      entry.turnNum = prevTurnNum + extraAdventureChanges;
     }
 
     // + use entries with the date in them as a point of reference
     const dateMatch = entry.findMatcher(REGEX.SNAPSHOT.KOL_DATE);
-    if (dateMatch !== undefined && !estimates.dateList.includes(dateMatch)) {
-      estimates.dateList.push(dateMatch);
+    if (dateMatch !== undefined && !dateList.includes(dateMatch)) {
+      dateList.push(dateMatch);
     }
     // separately track scotch's DAY START #
     const dayMatch = entry.findMatcher(REGEX.SNAPSHOT.SCOTCH_LOG_DATE);
-    if (dayMatch !== undefined && !estimates.scotchDayList.includes(dayMatch)) {
-      estimates.scotchDayList.push(dayMatch);
+    if (dayMatch !== undefined && !scotchDayList.includes(dayMatch)) {
+      scotchDayList.push(dayMatch);
     }
 
     // set dayNum of entry
-    entry.dayNum =
-      estimates.dateList.length > estimates.scotchDayList.length
-        ? estimates.dateList.length
-        : estimates.scotchDayList.length;
+    entry.dayNum = Math.max(dateList.length, scotchDayList.length);
 
     // + update estimate if familar was swapped to
     if (entry.entryType === ENTRY_TYPE.FAMILIAR) {
       const switchedToFamiliar = entry.findMatcher(
         REGEX.FAMILIAR.SWITCH_TO_RESULT,
       );
-      estimates.trackedFamiliar = switchedToFamiliar || null;
+      trackedFamiliar = switchedToFamiliar || null;
     }
 
     // apply trackedFamiliar only if it is a combat
     if (entry.isAdventure) {
-      entry.familiarUsed = estimates.trackedFamiliar;
+      entry.familiarUsed = trackedFamiliar;
     }
 
     // forced adventures mean they were guaranteed
     entry = handleForcedAdventure(entry, idx);
 
     // update estimates
-    estimates.prevEntry = entry;
-    estimates.prevTurnNum = entry.turnNum;
+    prevTurnNum = entry.turnNum || -1;
 
     return entry;
   });
 
   // set dateList
   logStore.ascensionAttributes.dateList =
-    estimates.dateList.length > estimates.scotchDayList.length
-      ? estimates.dateList
-      : estimates.scotchDayList;
+    dateList.length > scotchDayList.length ? dateList : scotchDayList;
   if (logStore.ascensionAttributes.dateList.length <= 0) {
     handleDateListFallback();
   }
@@ -150,17 +143,13 @@ export function createEstimatedEntries(allEntries) {
 }
 /**
  * double check what mafia thinks this turn number is
- *
- * @param {Entry} currEntry
- * @param {Entry} nextEntry
- * @returns {Entry}
  */
-function handleEstimateTurnNum(currEntry, nextEntry) {
-  const nextTurnNum = nextEntry && nextEntry.rawTurnNum;
-  const myTurnNum = currEntry.turnNum;
+function handleEstimateTurnNum(currEntry: Entry, nextEntry?: Entry) {
+  const nextTurnNum = nextEntry?.rawTurnNum;
+  const myTurnNum = currEntry.turnNum || 0;
 
   // rawTurnNum means that mafia marked it as an adventure
-  if (currEntry.hasRawTurnNum) {
+  if (nextTurnNum) {
     // if the next number is the same as current number, most likely this is a free adv (thanks CaptainScotch!)
     if (nextTurnNum === myTurnNum) {
       currEntry.isInBetweenTurns = true;
@@ -178,11 +167,7 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
 
     // I don't have a number, so we'll assume this is before the next adventure
   } else {
-    if (nextTurnNum) {
-      currEntry.turnNum = nextTurnNum - 1;
-    } else {
-      currEntry.turnNum = 0;
-    }
+    currEntry.turnNum = 0;
   }
 
   return currEntry;
@@ -191,12 +176,8 @@ function handleEstimateTurnNum(currEntry, nextEntry) {
  * find and update data for any adventures that were forced to happen
  * - pill keeper
  * - stench jelly
- *
- * @param {Entry} currEntry
- * @param {Number} idx
- * @returns {Entry}
  */
-function handleForcedAdventure(currEntry, idx) {
+function handleForcedAdventure(currEntry: Entry, idx: number) {
   // Pill Keeper - Sunday surprise semirare activated
   if (currEntry.hasText(REGEX.PILL_KEEPER.SURPRISE)) {
     const surpriseEntry = logStore.findNextEntry(idx, { isSemirare: true });
@@ -343,11 +324,8 @@ export function downloadFullLog() {
   if (!logStore.isReady) throw new Error("Log is not ready to be downloaded.");
   download(logStore.export(), logStore.fileName, "text/plain");
 }
-/**
- * @param {Number} dayNum
- * @returns {Array}
- */
-function findMapTheMonstersOnDay(dayNum) {
+
+function findMapTheMonstersOnDay(dayNum: number) {
   const list = [];
 
   let searchIdx = 0;
@@ -367,6 +345,16 @@ function findMapTheMonstersOnDay(dayNum) {
 
   return list;
 }
+
+export type Stats = {
+  dayNum: number;
+  voterMonster?: string;
+  paintingMonster?: string;
+  cargoPocket?: string;
+  latheChoice?: string;
+  mapTheMonsterList?: string;
+};
+
 /**
  * creates data for StatsPage
  * @returns {Array}
@@ -379,7 +367,7 @@ export function createStats() {
     const dayNum = i + 1;
 
     // this is what will be returned
-    const currentData = {
+    const currentData: Stats = {
       dayNum: dayNum,
     };
 
@@ -395,7 +383,7 @@ export function createStats() {
       dayNum: dayNum,
       entryType: ENTRY_TYPE.IOTM.CHATEAU_MANTEGNA.PAINTING,
     });
-    if (paintingMonsterEntry) {
+    if (paintingMonsterEntry?.attributes.encounterName) {
       currentData["paintingMonster"] =
         paintingMonsterEntry.attributes.encounterName;
     }
@@ -404,7 +392,7 @@ export function createStats() {
       dayNum: dayNum,
       entryType: ENTRY_TYPE.IOTM.SPINMASTER_LATHE.MAKE_ITEM,
     });
-    if (lathMakeEntry) {
+    if (lathMakeEntry?.encounterDisplay) {
       currentData["latheChoice"] = lathMakeEntry.encounterDisplay;
     }
 
