@@ -127,10 +127,7 @@ export function parseAscensionAttributes(rawText) {
     standardSeason: parseStandardSeason(rawText),
   };
 }
-/**
- * @param {String} rawText
- * @returns {AscensionAttributes}
- */
+
 export function parseDailyAttributes(rawText) {
   return {
     voterMonsters: parseVoteMonster(rawText),
@@ -209,8 +206,8 @@ export async function cleanRawLog(rawText) {
 }
 /**
  * remove some text from the log after the log has been parsed for data
- * @param {String} rawText
- * @return {String}
+ * @param {string | null | undefined} rawText
+ * @return {string}
  */
 export async function postParseCleanup(rawText) {
   // hide karma numbers
@@ -231,7 +228,7 @@ export async function postParseCleanup(rawText) {
 }
 // -- parsing specific data
 /**
- * @param {Text} rawText
+ * @param {string | undefined | null} rawText
  * @returns {String}
  */
 export function createPathLabel(rawText) {
@@ -300,8 +297,8 @@ export function parseClassName(rawText) {
   return ascensionDetails[3];
 }
 /**
- * @param {Text} rawText
- * @returns {String}
+ * @param {string} rawText
+ * @returns {string[]}
  */
 export function parseVoteMonster(rawText) {
   const allMonsters =
@@ -312,8 +309,8 @@ export function parseVoteMonster(rawText) {
   );
 }
 /**
- * @param {Text} rawText
- * @returns {String}
+ * @param {string} rawText
+ * @returns {string[]}
  */
 export function parseCargoPockets(rawText) {
   const allResults =

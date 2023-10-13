@@ -1,5 +1,5 @@
 import React from "react";
-import { redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import { Helmet } from "react-helmet-async";
 
@@ -42,14 +42,11 @@ export default observer(function DatabasePage() {
   };
 
   if (appStore.shouldRedirectToVisualizer.get() && !appStore.isLoading) {
-    return redirect(LOG_VIS_URL);
+    return <Navigate to={LOG_VIS_URL} replace />;
   }
 
   return (
-    <div
-      elementname="app-page-database"
-      className="fontsize-4 flex-row jcontent-center"
-    >
+    <div id="app-page-database" className="fontsize-4 flex-row jcontent-center">
       <Helmet>
         <title>kolmafioso</title>
         <meta

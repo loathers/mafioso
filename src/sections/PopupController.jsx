@@ -60,15 +60,13 @@ export const PopupComponent = observer(function _PopupComponent(props) {
   return (
     <div
       {...otherProps}
-      elementname="app-popup"
+      id="app-popup"
       className={combineClassnames("", isActive && "active", className)}
     >
-      {isActive && (
-        <div elementname="app-popup-darkness" onClick={onClickClose} />
-      )}
+      {isActive && <div id="app-popup-darkness" onClick={onClickClose} />}
 
       <div
-        elementname="app-popup-inner"
+        id="app-popup-inner"
         className={combineClassnames(
           "color-white whitespace-pre-wrap borradius-2 boxshadow-dark flex-col bg-second-darkest",
         )}

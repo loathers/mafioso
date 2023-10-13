@@ -19,7 +19,7 @@ export default function SimplePaginator(props) {
   return (
     <div
       style={style}
-      elementname="pagination-menu"
+      id="pagination-menu"
       className={combineClassnames(
         "boxshadow-dark fontfamily-primary fontsize-6 pad-2 flex-row-center",
         className,

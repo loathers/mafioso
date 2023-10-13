@@ -9,7 +9,7 @@ export default function DarkButton(props) {
   return (
     <button
       {...otherProps}
-      elementname="dark-button"
+      id="dark-button"
       className={combineClassnames(
         "talign-center borradius-2 pad-3",
         className,

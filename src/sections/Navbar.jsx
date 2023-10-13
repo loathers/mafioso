@@ -30,7 +30,7 @@ export default function Navbar(props) {
 
   return (
     <div
-      elementname="app-navbar"
+      id="app-navbar"
       className={combineClassnames(
         "zindex-7 pad-v-3 flex-col jcontent-center",
         className,

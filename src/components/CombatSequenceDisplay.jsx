@@ -82,7 +82,7 @@ function CombatActionDisplay(props) {
     >
       <div
         className="fontsize-1 color-white flex-none adjacent-mar-t-2 position-absolute"
-        elementname="block-inner-icon"
+        id="block-inner-icon"
       >
         {roundNum}
       </div>

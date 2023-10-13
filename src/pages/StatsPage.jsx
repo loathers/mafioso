@@ -1,5 +1,5 @@
 import React from "react";
-import { redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import { Helmet } from "react-helmet-async";
 
@@ -21,13 +21,13 @@ export default observer(function StatsPage(props) {
   const { className } = props;
 
   if (!appStore.isReady) {
-    return redirect(HOME_URL);
+    return <Navigate to={HOME_URL} replace />;
   }
 
   const statsData = logStoreHelper.createStats();
   return (
     <div
-      elementname="app-page-charts"
+      id="app-page-charts"
       className={combineClassnames("flex-col", className)}
     >
       <Helmet>

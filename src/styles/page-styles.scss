@@ -1,13 +1,13 @@
-[elementname="app-page-visualizer"],
-[elementname="app-page-database"],
-[elementname="app-page-stats"],
-[elementname="app-page-home"] {
+#app-page-visualizer,
+#app-page-database,
+#app-page-stats,
+#app-page-home {
   margin-top: $NAVBAR_HEIGHT + $APP_MARGIN;
   padding-left: $APP_MARGIN;
   padding-right: $APP_MARGIN;
 }
 
-[elementname="app-page-charts"] {
+#app-page-charts {
   width: 800px;
   max-width: 1200px;
 

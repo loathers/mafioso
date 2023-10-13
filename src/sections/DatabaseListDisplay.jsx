@@ -33,7 +33,7 @@ export default observer(function DatabaseListDisplay(props) {
 
   return (
     <div
-      elementname="app-section-database-list"
+      id="app-section-database-list"
       className={combineClassnames("fontsize-4 flex-col", className)}
     >
       {searchFilteredList.map((rowData, idx) => (

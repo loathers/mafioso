@@ -1,4 +1,4 @@
-[elementname="app-popup"] {
+#app-popup {
   position: static;
   transition: opacity 300ms;
   top: 0;
@@ -13,7 +13,7 @@
     opacity: 0;
   }
 
-  [elementname="app-popup-inner"] {
+  #app-popup-inner {
     z-index: 2;
     top: 40%;
     left: 50%;
@@ -24,7 +24,7 @@
     position: absolute;
   }
 
-  [elementname="app-popup-darkness"] {
+  #app-popup-darkness {
     z-index: 1;
     background: rgba(0, 0, 0, 0.5);
 
@@ -34,7 +34,7 @@
   }
 }
 
-[elementname="app-toaster"] {
+#app-toaster {
   position: fixed;
   top: $NAVBAR_HEIGHT;
   // right: $APP_MARGIN;
@@ -51,7 +51,7 @@
     transform: translateX(110%);
   }
 }
-[elementname="upload-component"] {
+#upload-component {
   label {
     border-width: 1px;
     border-style: solid;
@@ -86,7 +86,7 @@
   }
 }
 
-[elementname="dark-button"] {
+#dark-button {
   background: map.get($COLOR_MAP, "first");
   color: map.get($COLOR_MAP, "white");
 
@@ -105,17 +105,17 @@
   }
 }
 
-[elementname="block-inner-icon"] {
+#block-inner-icon {
   top: 5px;
   left: 5px;
   opacity: 0.5;
 }
-[elementname="annotation-box"] {
+#annotation-box {
   position: relative;
   background: #312e3a;
 }
 
-[elementname="arrow-box-down"] {
+#arrow-box-down {
   position: relative;
   background: #312e3a;
 

@@ -18,7 +18,7 @@ export default function SingleDisplay(props) {
     >
       <img
         src={icon}
-        elementname="block-inner-icon"
+        id="block-inner-icon"
         style={{ width: 20, height: 20, opacity: 0.7 }}
         className="flex-none adjacent-mar-l-2"
       />

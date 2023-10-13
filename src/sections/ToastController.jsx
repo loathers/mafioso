@@ -83,7 +83,7 @@ export const ToasterComponent = observer(function _ToasterComponent(props) {
   return (
     <div
       {...otherProps}
-      elementname="app-toaster"
+      id="app-toaster"
       className={combineClassnames(
         "bg-fifth whitespace-pre-wrap boxshadow-dark flex-row",
         activeClassname,

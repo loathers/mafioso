@@ -473,7 +473,7 @@ function AnnotationContainer(props) {
   return (
     <button
       onClick={onToggleEditing}
-      elementname={isAnnotationOnly ? "annotation-box" : "arrow-box-down"}
+      id={isAnnotationOnly ? "annotation-box" : "arrow-box-down"}
       className={combineClassnames(
         "borradius-3 mar-h-2 mar-t-3 mar-b-2 whitespace-pre-wrap flex-row aitems-center jcontent-start flex-none",
         className,

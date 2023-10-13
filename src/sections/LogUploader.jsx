@@ -40,7 +40,7 @@ export default function LogUploader(props) {
       onDragOver={(e) => {
         ignoreEvent(e);
       }}
-      elementname="upload-component"
+      id="upload-component"
       componentstate={disabled ? "disabled" : "enabled"}
       style={style}
       className={combineClassnames("flex-col boxsizing-border", className)}

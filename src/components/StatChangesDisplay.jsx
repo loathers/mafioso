@@ -19,7 +19,7 @@ function StatBlockDisplay(props) {
     >
       <div
         className="flex-none adjacent-mar-t-2 position-absolute"
-        elementname="block-inner-icon"
+        id="block-inner-icon"
       >
         <img src={StarsStackSVG} style={{ width: 20, height: 20 }} />
       </div>

@@ -31,7 +31,7 @@ export default observer(function PageControlMenu(props) {
 
   return (
     <div
-      elementname="navigation-menu"
+      id="navigation-menu"
       className={combineClassnames(
         "zindex-7 position-fixed flex-row aitems-center",
         className,

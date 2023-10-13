@@ -58,7 +58,7 @@ export default observer(function LogVisualizerMenu(props) {
 
   return (
     <div
-      elementname="app-side-menu"
+      id="app-side-menu"
       style={style}
       className={combineClassnames("flex-col", className)}
     >
