@@ -9,7 +9,8 @@
     "build": "tsc && vite build",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^6.1.4",
@@ -41,6 +42,7 @@
     "prettier": "^3.0.3",
     "sass": "^1.26.10",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vitest": "^0.34.6"
   }
 }
