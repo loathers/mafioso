@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 function IngredientBlockDisplay(props) {
   const { className, content } = props;
 
@@ -43,7 +42,6 @@ function IngredientBlockDisplay(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 export default function MakeDiabolicPizzaDisplay(props) {
   const { className, entry } = props;
 

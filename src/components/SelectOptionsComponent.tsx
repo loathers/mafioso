@@ -1,20 +1,27 @@
-import React from "react";
-
+import { Filter } from "../sections/DatabaseListMenu";
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
-export default function SelectOptionsComponent(props) {
-  const {
-    className,
-    id,
-    label,
-    selected,
-    onChange,
-    disabled,
-    list,
-    size = 10,
-  } = props;
+type Props = {
+  className?: string;
+  id: string;
+  label: string;
+  selected: string;
+  disabled?: boolean;
+  onChange: (event: React.FormEvent<HTMLSelectElement>) => void;
+  list: Filter[];
+  size?: number;
+};
 
+export default function SelectOptionsComponent({
+  className,
+  id,
+  label,
+  selected,
+  onChange,
+  disabled,
+  list,
+  size = 10,
+}: Props) {
   return (
     <label htmlFor={id} className={combineClassnames("", className)}>
       <div className="fontsize-3 adjacent-mar-t-2">{label}</div>

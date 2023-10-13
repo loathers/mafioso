@@ -88,7 +88,6 @@ function getIcon(pathName) {
   }
 }
 
-/**  @returns {React.Component} */
 export default function ChallengePathIcon(props) {
   const { pathName, ...otherProps } = props;
 

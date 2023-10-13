@@ -44,7 +44,6 @@ class PopupController {
 }
 const popupController = new PopupController();
 export default popupController;
-/** @returns {React.Component} */
 export const PopupComponent = observer(function _PopupComponent(props) {
   const { className, ...otherProps } = props;
 

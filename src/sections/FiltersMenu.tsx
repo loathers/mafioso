@@ -4,24 +4,28 @@ import { observer } from "mobx-react";
 import appStore from "../store/appStore";
 
 import combineClassnames from "../utilities/combineClassnames";
+import { Filter } from "./DatabaseListMenu";
 
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-export default observer(function FiltersMenu(props) {
-  const {
-    label,
-    inputType = "checkbox",
-    defaultList,
-    disabled,
-    onChange = () => {},
-    className,
-  } = props;
+type Props = {
+  label: string;
+  inputType: string;
+  defaultList: Filter[];
+  disabled: boolean;
+  onChange: (list: Filter[]) => void;
+  className?: string;
+};
 
+export default observer(function FiltersMenu({
+  label,
+  inputType = "checkbox",
+  defaultList,
+  disabled,
+  onChange = () => {},
+  className,
+}: Props) {
   const [filterList, updateList] = React.useState(defaultList);
 
-  const toggledChecked = (changedIdx) => {
+  const toggledChecked = (changedIdx: number) => {
     const newList = filterList.slice().map((item, idx) => {
       if (inputType === "radio") {
         item.checked = false;
@@ -101,10 +105,23 @@ export default observer(function FiltersMenu(props) {
   );
 });
 
-export function FilterInput(props) {
-  const { className, optionData, onChange, type, appDisabled, forceEnabled } =
-    props;
+type FilterInputProps = {
+  className?: string;
+  optionData: Partial<Filter>;
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  type: string;
+  appDisabled: boolean;
+  forceEnabled?: boolean;
+};
 
+export function FilterInput({
+  className,
+  optionData,
+  onChange,
+  type,
+  appDisabled,
+  forceEnabled,
+}: FilterInputProps) {
   const { label, checked, isDisabled, isHidden, title } = optionData;
 
   const hiddenClassName = !forceEnabled && isHidden ? "display-none" : "";

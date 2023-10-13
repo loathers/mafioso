@@ -8,7 +8,6 @@ import ItemDisplay from "./ItemDisplay";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function ItemChangesDisplay(props) {
   const { className, entry } = props;
 

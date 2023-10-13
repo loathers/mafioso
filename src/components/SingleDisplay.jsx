@@ -4,7 +4,6 @@ import UncertaintySVG from "../images/uncertainty.svg";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function SingleDisplay(props) {
   const { className, style, content, icon = UncertaintySVG } = props;
 

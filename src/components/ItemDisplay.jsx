@@ -4,7 +4,6 @@ import SwapBagSVG from "../images/swap-bag.svg";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function ItemDisplay(props) {
   const { className, content, icon = SwapBagSVG } = props;
 

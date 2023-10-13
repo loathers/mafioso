@@ -2,7 +2,6 @@ import React from "react";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function Button(props) {
   const { className, disabled, ...otherProps } = props;
 

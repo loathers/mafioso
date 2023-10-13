@@ -5,7 +5,6 @@ import StarsStackSVG from "../images/stars-stack.svg";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 function StatBlockDisplay(props) {
   const { className, content, label } = props;
 
@@ -34,7 +33,6 @@ function StatBlockDisplay(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 export default function StatChangesDisplay(props) {
   const { className, entry } = props;
 

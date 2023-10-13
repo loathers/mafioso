@@ -23,7 +23,6 @@ const localizedMonths = {
   10: "November",
   11: "December",
 };
-/** @returns {React.Component} */
 export default function ShareConfirmationPopup(props) {
   const { onClickDone = () => {} } = props;
 

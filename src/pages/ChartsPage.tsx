@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import { Helmet } from "react-helmet-async";
@@ -14,13 +13,9 @@ import Button from "../components/Button";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-export default observer(function ChartsPage(props) {
-  const { className } = props;
+type Props = { className?: string };
 
+export default observer(function ChartsPage({ className }: Props) {
   if (!appStore.isReady) {
     return <Navigate to={HOME_URL} replace />;
   }
@@ -44,7 +39,7 @@ export default observer(function ChartsPage(props) {
 
         {chartStore.canDisplayCurrentChart && (
           <ChartContainer
-            chartData={chartStore.currentChartData}
+            chartData={chartStore.currentChartData!}
             style={{ maxWidth: "70vw" }}
             className="width-full"
           />
@@ -59,10 +54,12 @@ export default observer(function ChartsPage(props) {
     </div>
   );
 });
-/** @returns {React.Component} */
-function ChartsMenu(props) {
-  const { className } = props;
 
+type ChartsMenuProps = {
+  className?: string;
+};
+
+function ChartsMenu({ className }: ChartsMenuProps) {
   return (
     <div
       id="app-side-menu"

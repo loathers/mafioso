@@ -1,4 +1,3 @@
-import React from "react";
 import { observer } from "mobx-react";
 
 import DATABASE_ENTRY_STATUS from "../constants/DATABASE_ENTRY_STATUSES";
@@ -11,18 +10,27 @@ import DeleteSVG from "../images/trash-can.svg";
 import ChallengePathIcon from "../components/ChallengePathIcon";
 
 import combineClassnames from "../utilities/combineClassnames";
+import { RunLog } from "../store/databaseStore";
 
-export default observer(function DatabaseListDisplay(props) {
-  const {
-    currentList,
-    hasEditOptions,
-    onClickView,
-    onClickStatusToggle,
-    onClickDelete,
-    className,
-    searchTerm,
-  } = props;
+type Props = {
+  currentList: RunLog[];
+  hasEditOptions: boolean;
+  onClickView: (entry: RunLog) => void;
+  onClickStatusToggle: (entry: RunLog) => void;
+  onClickDelete: (entry: RunLog) => void;
+  className?: string;
+  searchTerm: string;
+};
 
+export default observer(function DatabaseListDisplay({
+  currentList,
+  hasEditOptions,
+  onClickView,
+  onClickStatusToggle,
+  onClickDelete,
+  className,
+  searchTerm,
+}: Props) {
   const searchFilteredList = currentList.filter((item) => {
     if (searchTerm === "") return true;
 
@@ -55,16 +63,22 @@ export default observer(function DatabaseListDisplay(props) {
     </div>
   );
 });
-/** @returns {ReactComponent} */
-function DatabaseRow(props) {
-  const {
-    data,
-    onClickView,
-    onClickStatusToggle,
-    onClickDelete,
-    hasEditOptions,
-  } = props;
 
+type DatabaseRowProps = {
+  data: RunLog;
+  hasEditOptions: boolean;
+  onClickView: (entry: RunLog) => void;
+  onClickStatusToggle: (entry: RunLog) => void;
+  onClickDelete: (entry: RunLog) => void;
+};
+
+function DatabaseRow({
+  data,
+  onClickView,
+  onClickStatusToggle,
+  onClickDelete,
+  hasEditOptions,
+}: DatabaseRowProps) {
   const isActive = data.status === DATABASE_ENTRY_STATUS.ACTIVE;
 
   return (
@@ -113,10 +127,13 @@ function DatabaseRow(props) {
     </div>
   );
 }
-/** @returns {ReactComponent} */
-function RowButton(props) {
-  const { className, disabled, ...otherProps } = props;
 
+type RowButtonProps = {
+  className?: string;
+  disabled?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+function RowButton({ className, disabled, ...otherProps }: RowButtonProps) {
   const borderClassName = disabled
     ? "bor-2-second-darkest"
     : "bor-2-second-darker";
@@ -137,21 +154,25 @@ function RowButton(props) {
     />
   );
 }
-/** @returns {ReactComponent} */
-function RowDisplay(props) {
-  const {
-    onClick,
-    className,
-    data: {
-      characterName,
-      pathName,
-      difficultyName,
-      dayCount,
-      turnCount,
-      standardSeason,
-    },
-  } = props;
 
+type RowDisplayProps = {
+  onClick: () => void;
+  className?: string;
+  data: RunLog;
+};
+
+function RowDisplay({
+  onClick,
+  className,
+  data: {
+    characterName,
+    pathName,
+    difficultyName,
+    dayCount,
+    turnCount,
+    standardSeason,
+  },
+}: RowDisplayProps) {
   const hasStandardSeason = standardSeason && standardSeason !== "Unrestricted";
 
   return (

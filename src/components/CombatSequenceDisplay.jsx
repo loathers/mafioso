@@ -8,7 +8,6 @@ import RunawaySVG from "../images/run.svg";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function CombatSequenceDisplay(props) {
   const { className, entry } = props;
 
@@ -47,7 +46,6 @@ export default function CombatSequenceDisplay(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 function CombatResultDisplay(props) {
   const { className, content, shouldShowIcon = true, icon } = props;
 
@@ -69,7 +67,6 @@ function CombatResultDisplay(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 function CombatActionDisplay(props) {
   const { className, roundNum, content } = props;
 
@@ -93,7 +90,6 @@ function CombatActionDisplay(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 export function CombatResultDisplayHandler(props) {
   const { className, entry, isShowCompact = false } = props;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { observer } from "mobx-react";
 
 import {
@@ -15,13 +15,29 @@ import SelectOptionsComponent from "../components/SelectOptionsComponent";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-export default observer(function LogVisualizerMenu(props) {
-  const { className, style } = props;
+export type Option = {
+  label: string;
+  isHidden?: boolean;
+  isDisabled?: boolean;
+  checked?: boolean;
+  title?: string;
+  attributeName?: string;
+};
 
+export type Filter = {
+  id?: string;
+  optionGroup?: Option[];
+} & Option;
+
+type Props = {
+  className?: string;
+  style?: React.CSSProperties;
+};
+
+export default observer(function LogVisualizerMenu({
+  className,
+  style,
+}: Props) {
   const [menuOptions, updateMenuOptions] = useState({
     searchTerm: "",
     isShowStandardOnly: databaseStore.isShowStandardOnly,
@@ -35,7 +51,7 @@ export default observer(function LogVisualizerMenu(props) {
     return item;
   });
 
-  const onChangeIsShowStandardOnly = (newValue) => {
+  const onChangeIsShowStandardOnly = (newValue: boolean) => {
     const newOptions = { ...menuOptions, isShowStandardOnly: newValue };
     updateMenuOptions(newOptions);
     databaseStore.isShowStandardOnly = newValue;
@@ -43,7 +59,7 @@ export default observer(function LogVisualizerMenu(props) {
     sessionStore.set("isShowStandardOnly", newValue);
   };
 
-  const onChangeDifficultyList = (newList) => {
+  const onChangeDifficultyList = (newList: Filter[]) => {
     const selectedOption = newList.find((option) => option.checked);
     const newDifficulty = (selectedOption && selectedOption.label) || "Any";
     const newOptions = { ...menuOptions, difficultyName: newDifficulty };
@@ -52,14 +68,14 @@ export default observer(function LogVisualizerMenu(props) {
     databaseStore.filterList(newOptions);
   };
 
-  const updateSelectedPath = (newPath) => {
+  const updateSelectedPath = (newPath: string) => {
     const newOptions = { ...menuOptions, pathName: newPath };
     updateMenuOptions(newOptions);
     sessionStore.set("pathNameFilter", newPath);
     databaseStore.filterList(newOptions);
   };
 
-  const updateSearchTerm = (newValue) => {
+  const updateSearchTerm = (newValue: string) => {
     const newOptions = { ...menuOptions, searchTerm: newValue };
     databaseStore.searchTermFilter.set(newValue);
     updateMenuOptions(newOptions);
@@ -83,7 +99,9 @@ export default observer(function LogVisualizerMenu(props) {
 
         <FilterInput
           appDisabled={!databaseStore.isReady}
-          onChange={(evt) => onChangeIsShowStandardOnly(evt.target.checked)}
+          onChange={(evt) =>
+            onChangeIsShowStandardOnly(evt.currentTarget.checked)
+          }
           optionData={{
             label: "Standard Only",
             checked: menuOptions.isShowStandardOnly,
@@ -107,7 +125,7 @@ export default observer(function LogVisualizerMenu(props) {
       <div className="flex-col flex-none adjacent-mar-t-5">
         <SelectOptionsComponent
           label="Path"
-          onChange={(evt) => updateSelectedPath(evt.target.value)}
+          onChange={(evt) => updateSelectedPath(evt.currentTarget.value)}
           selected={menuOptions.pathName}
           list={PATH_FILTERS}
           size={10}

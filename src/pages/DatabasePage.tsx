@@ -7,7 +7,7 @@ import DATABASE_ENTRY_STATUS from "../constants/DATABASE_ENTRY_STATUSES";
 import { LOG_VIS_URL } from "../constants/PAGE_URLS";
 
 import appStore from "../store/appStore";
-import databaseStore from "../store/databaseStore";
+import databaseStore, { RunLog } from "../store/databaseStore";
 
 import DatabaseListDisplay from "../sections/DatabaseListDisplay";
 import DatabaseListMenu from "../sections/DatabaseListMenu";
@@ -28,7 +28,7 @@ export default observer(function DatabasePage() {
     }
   }, [hasFetched]);
 
-  const onClickStatusToggle = (databaseEntry) => {
+  const onClickStatusToggle = (databaseEntry: RunLog) => {
     const isActive = databaseEntry.status === DATABASE_ENTRY_STATUS.ACTIVE;
     databaseEntry.status = isActive
       ? DATABASE_ENTRY_STATUS.INACTIVE
@@ -36,7 +36,7 @@ export default observer(function DatabasePage() {
     databaseStore.onUpdateLog(databaseEntry);
   };
 
-  const onClickDelete = (databaseEntry) => {
+  const onClickDelete = (databaseEntry: RunLog) => {
     databaseEntry.status = DATABASE_ENTRY_STATUS.DISABLED;
     databaseStore.onUpdateLog(databaseEntry);
   };

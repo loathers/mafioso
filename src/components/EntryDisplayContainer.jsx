@@ -419,7 +419,6 @@ function EntryBodyContainer(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 function AnnotationContainer(props) {
   const {
     className,

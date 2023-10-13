@@ -5,7 +5,6 @@ import UncertaintySVG from "../images/uncertainty.svg";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {React.Component} */
 export default function ListDisplay(props) {
   const { className, style, list, icon = UncertaintySVG } = props;
 
@@ -37,7 +36,6 @@ export default function ListDisplay(props) {
     </div>
   );
 }
-/** @returns {React.Component} */
 export function PairedDisplay(props) {
   const { className, leftContent, rightContent } = props;
 

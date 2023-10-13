@@ -66,7 +66,6 @@ class ToastController {
 }
 const toastController = new ToastController();
 export default toastController;
-/** @returns {React.Component} */
 export const ToasterComponent = observer(function _ToasterComponent(props) {
   const { className, ...otherProps } = props;
 

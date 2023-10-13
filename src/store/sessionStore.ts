@@ -6,7 +6,7 @@ class SessionStore {
     return this.getItem("isShowStandardOnly") === "true" || false;
   }
 
-  set(key: string, value: string) {
+  set(key: string, value: any) {
     window.localStorage.setItem(key, value);
   }
 
