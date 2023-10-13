@@ -1,4 +1,3 @@
-import React from "react";
 import { observer } from "mobx-react";
 
 import appStore from "../store/appStore";
@@ -11,18 +10,17 @@ import PaginationComponent from "../components/PaginationComponent";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/** @returns {ReactComponent} */
-export default observer(function PageControlMenu(props) {
-  const { className } = props;
+type Props = { className?: string };
 
-  const onClickChangeDay = (nextDayNum) => {
+export default observer(function PageControlMenu({ className }: Props) {
+  const onClickChangeDay = (nextDayNum: number | "all") => {
     if (nextDayNum !== logStore.currentDayNum) {
       logStore.fetchEntries({ dayNumFilter: nextDayNum, pageNum: 0 });
       appStore.shouldScrollUp.set(true);
     }
   };
 
-  const onClickChangePage = (nextPageNum) => {
+  const onClickChangePage = (nextPageNum: number) => {
     if (nextPageNum !== logStore.currentPageNum) {
       logStore.fetchByPage({ pageNum: nextPageNum }, true);
       appStore.shouldScrollUp.set(true);

@@ -1,11 +1,23 @@
 // import ENTRY_TYPE from './ENTRY_TYPE';
 import { CATEGORY_ID } from "./CATEGORIES";
 
-/**
- * visible
- * @type {Array}
- */
-export const ENTRY_TYPE_FILTERS = [
+export type Option = {
+  label: string;
+  categories?: string[];
+  isHidden?: boolean;
+  isDisabled?: boolean;
+  checked?: boolean;
+  title?: string;
+  attributeName?: string;
+  attributeValue?: any;
+};
+
+export type Filter = {
+  id?: string;
+  optionGroup?: Option[];
+} & Option;
+
+export const ENTRY_TYPE_FILTERS: Filter[] = [
   {
     label: "Mafioso Data",
     categories: [CATEGORY_ID.MAFIOSO],
@@ -89,18 +101,15 @@ export const ENTRY_TYPE_FILTERS = [
 export const DEFAULT_CATEGORIES_VISIBLE = ENTRY_TYPE_FILTERS.reduce(
   (visibleCategories, filterData) => {
     if (filterData.checked) {
-      return visibleCategories.concat(filterData.categories);
+      return visibleCategories.concat(filterData.categories ?? []);
     }
 
     return visibleCategories;
   },
   [] as string[],
 );
-/**
- * [ATTRIBUTE_FILTERS description]
- * @type {Array}
- */
-export const ATTRIBUTE_FILTERS = [
+
+export const ATTRIBUTE_FILTERS: Filter[] = [
   {
     label: "None",
     attributeName: "none",

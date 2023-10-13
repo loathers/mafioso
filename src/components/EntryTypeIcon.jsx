@@ -68,9 +68,6 @@ function getIconFromString(str) {
   }
 }
 
-/**
- * @returns {React.Component}
- */
 export default function EntryTypeIcon(props) {
   const { entry } = props;
 

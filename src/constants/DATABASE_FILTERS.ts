@@ -1,3 +1,5 @@
+import { Filter } from "./filterList";
+
 export const DIFFICULTY_FILTER_ID = {
   ANY: "DIFFICULTY_FILTER_ID.ANY",
   HARDCORE: "DIFFICULTY_FILTER_ID.HARDCORE",
@@ -5,7 +7,7 @@ export const DIFFICULTY_FILTER_ID = {
   CASUAL: "DIFFICULTY_FILTER_ID.CASUAL",
 };
 
-export const DIFFICULTY_FILTERS = [
+export const DIFFICULTY_FILTERS: Filter[] = [
   {
     label: "Any",
     id: "DIFFICULTY_FILTER_ID.ANY",

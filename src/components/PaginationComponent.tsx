@@ -6,15 +6,26 @@ import combineClassnames from "../utilities/combineClassnames";
 
 const MAX_PAGINATION_SIZE = 7;
 
-/** @returns {ReactComponent} */
-export default function SimplePaginator(props) {
-  const { className, style, label, disabled, currNum, lastNum, onChangePage } =
-    props;
+type Props = {
+  className?: string;
+  style?: React.CSSProperties;
+  label: string;
+  disabled?: boolean;
+  currNum: number | "all";
+  lastNum: number;
+  onChangePage: (page: number) => void;
+};
 
-  const pageNumAvailable = calculateAvailablePages({
-    curr: currNum,
-    last: lastNum,
-  });
+export default function SimplePaginator({
+  className,
+  style,
+  label,
+  disabled,
+  currNum,
+  lastNum,
+  onChangePage,
+}: Props) {
+  const pageNumAvailable = calculateAvailablePages(currNum, lastNum);
 
   return (
     <div
@@ -38,7 +49,7 @@ export default function SimplePaginator(props) {
         return (
           <DarkButton
             key={`page-num-${idx}-key`}
-            onClick={() => onChangePage(num)}
+            onClick={isDivider ? undefined : () => onChangePage(num)}
             disabled={isDivider || disabled}
             children={displayNum}
             style={{ width: 40 }}
@@ -59,14 +70,10 @@ export default function SimplePaginator(props) {
 /**
  * there's gotta be a smarter way to have done this
  * pretty sure I have no idea wtf I wrote
- *
- * @param {Number} options.curr
- * @param {Number} options.last
- * @return {Array<Number>}
  */
-function calculateAvailablePages({ curr, last }) {
-  let pageNumList = [0]; // always include first
-  if (curr === 0 && last === 0) {
+function calculateAvailablePages(curr: number | "all", last: number) {
+  let pageNumList: ("..." | number)[] = [0]; // always include first
+  if (curr === "all" || (curr === 0 && last === 0)) {
     return pageNumList;
   }
 

@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import appStore from "../store/appStore";
 
 import combineClassnames from "../utilities/combineClassnames";
-import { Filter } from "./DatabaseListMenu";
+import { Filter } from "../constants/filterList";
 
 type Props = {
   label: string;

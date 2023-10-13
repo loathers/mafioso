@@ -23,9 +23,6 @@ import ListDisplay from "./ListDisplay";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/**
- * @returns {React.Component}
- */
 export default function EntryDisplayContainer(props) {
   const {
     className,
@@ -202,9 +199,7 @@ export default function EntryDisplayContainer(props) {
     </div>
   );
 }
-/**
- * @returns {React.Component}
- */
+
 function EntryAdventureColumn(props) {
   const { className, style, entry } = props;
 
@@ -239,9 +234,7 @@ function EntryAdventureColumn(props) {
     </div>
   );
 }
-/**
- * @returns {React.Component}
- */
+
 function EntryIconColumn(props) {
   const { className, entry } = props;
 
@@ -262,9 +255,7 @@ function EntryIconColumn(props) {
     </div>
   );
 }
-/**
- * @returns {React.Component}
- */
+
 function EntryHeaderContainer(props) {
   const { className, entry, isCombatDetailVisible } = props;
 
@@ -334,9 +325,7 @@ function EntryHeaderContainer(props) {
     </div>
   );
 }
-/**
- * @returns {React.Component}
- */
+
 function EntryBodyContainer(props) {
   const { className, entry } = props;
 

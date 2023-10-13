@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Link } from "react-router-dom";
+import { Link, LinkProps } from "react-router-dom";
 import { useLocation } from "react-router";
 
 import { CHARTS_URL, DATABASE_URL, STATS_URL } from "../constants/PAGE_URLS";
@@ -10,9 +10,9 @@ import logStore from "../store/logStore";
 
 import LogoComponent from "../components/LogoComponent";
 
-import LogUploader from "../sections/LogUploader";
-import PopupController from "../sections/PopupController";
-import ShareConfirmationPopup from "../sections/ShareConfirmationPopup";
+import LogUploader from "./LogUploader";
+import PopupController from "./PopupController";
+import ShareConfirmationPopup from "./ShareConfirmationPopup";
 
 import combineClassnames from "../utilities/combineClassnames";
 
@@ -20,10 +20,9 @@ const enableCharts = import.meta.env.MAFIOSO_ENABLE_CHARTS === "true";
 const enableDatabase = import.meta.env.MAFIOSO_ENABLE_SHARE === "true";
 const enableStats = import.meta.env.MAFIOSO_ENABLE_STATS === "true";
 
-/** @returns {ReactComponent} */
-export default function Navbar(props) {
-  const { className } = props;
+type Props = { className?: string };
 
+export default function Navbar({ className }: Props) {
   const location = useLocation();
 
   const pageName = location.pathname.split("/")[1];
@@ -41,10 +40,12 @@ export default function Navbar(props) {
   );
 }
 
-/** @returns {ReactComponent} */
-const UpperNavbar = observer(function _UpperNavbar(props) {
-  const { className, pageName } = props;
+type UpperNavbarProps = { className?: string; pageName: string };
 
+const UpperNavbar = observer(function _UpperNavbar({
+  className,
+  pageName,
+}: UpperNavbarProps) {
   const showDescription = logStore.hasParsedEntries && logStore.isAscensionLog;
 
   function onClickShare() {
@@ -72,16 +73,14 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
       {!showDescription && <div className="flex-auto adjacent-mar-l-6" />}
 
       <div className="jcontent-end aself-end flex-none flex-row adjacent-mar-l-6">
-        <LogUploader
-          children={"Upload Log"}
-          className="fontsize-4 adjacent-mar-l-3"
-        />
+        <LogUploader className="fontsize-4 adjacent-mar-l-3">
+          Upload Log
+        </LogUploader>
 
         <NavbarDivider className="pad-l-4" />
 
         <NavbarButton
           to={appStore.visualizerUrl}
-          componentType={Link}
           isActive={pageName === "view"}
           disabled={!appStore.isReady}
           children="Visualizer"
@@ -91,7 +90,6 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
         {(appStore.isDevEnv || enableStats) && (
           <NavbarButton
             to={STATS_URL}
-            componentType={Link}
             isActive={pageName === "stats"}
             disabled={!appStore.isReady}
             children="Stats"
@@ -102,7 +100,6 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
         {(appStore.isDevEnv || enableCharts) && (
           <NavbarButton
             to={CHARTS_URL}
-            componentType={Link}
             isActive={pageName === "charts"}
             disabled={!appStore.isReady}
             children="Charts"
@@ -113,7 +110,6 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
         {(appStore.isDevEnv || enableDatabase) && (
           <NavbarButton
             to={DATABASE_URL}
-            componentType={Link}
             isActive={pageName === "database"}
             children="Database"
             className="adjacent-mar-l-3"
@@ -126,7 +122,6 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
           onClick={() => appStore.downloadFullLog()}
           disabled={!appStore.isReady}
           children="Download"
-          componentType="button"
           className="adjacent-mar-l-3"
         />
 
@@ -135,7 +130,6 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
             onClick={onClickShare}
             disabled={!appStore.isReady}
             children="Share"
-            componentType="button"
             className="adjacent-mar-l-3"
           />
         )}
@@ -143,10 +137,14 @@ const UpperNavbar = observer(function _UpperNavbar(props) {
     </div>
   );
 });
-/** @returns {ReactComponent} */
-const LogOwnerDescription = observer(function _LogOwnerDescription(props) {
-  const { className } = props;
 
+type LogOwnerDescriptionProps = {
+  className?: string;
+};
+
+const LogOwnerDescription = observer(function _LogOwnerDescription({
+  className,
+}: LogOwnerDescriptionProps) {
   return (
     <div
       className={combineClassnames(
@@ -182,50 +180,74 @@ const taglines = [
   "I think Ezandora made this happen.",
   "Did a great job by wearing a mask the entire run.",
 ];
-/**
- * @returns {String}
- */
+
 function generateTagline() {
   const randomNumba = Math.floor(Math.random() * taglines.length);
   return taglines[randomNumba];
 }
-/** @returns {ReactComponent} */
-function NavbarButton(props) {
-  const {
-    componentType = "div",
-    className,
-    disabled,
-    isActive,
-    onClick,
-    ...otherProps
-  } = props;
+type NavbarButtonProps = {
+  children?: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  isActive?: boolean;
+  onClick?: () => void;
+  to?: LinkProps["to"];
+};
 
+function NavbarButton({
+  className,
+  disabled,
+  isActive,
+  onClick,
+  to,
+  ...otherProps
+}: NavbarButtonProps) {
   const activeClassname = isActive
     ? "color-green-lighter"
     : disabled
     ? "color-grayer"
     : "color-white";
+
+  const nonClickable = disabled || isActive;
+
   const componentClassName = combineClassnames(
     "pad-5 borradius-2",
     activeClassname,
     className,
+    nonClickable ? "disabled-link" : undefined,
   );
 
-  const finalComponentType = disabled || isActive ? "div" : componentType;
-  return React.createElement(finalComponentType, {
-    ...otherProps,
-    onClick: disabled || isActive ? undefined : onClick,
-    disabled: disabled,
-    className: componentClassName,
-  });
+  if (!to) {
+    return (
+      <button
+        {...otherProps}
+        onClick={disabled || isActive ? undefined : onClick}
+        className={componentClassName}
+        disabled={nonClickable}
+      />
+    );
+  }
+
+  return (
+    <Link
+      to={to}
+      {...otherProps}
+      onClick={disabled || isActive ? undefined : onClick}
+      className={componentClassName}
+    ></Link>
+  );
 }
-/** @returns {ReactComponent} */
-function NavbarDivider(props) {
+
+type NavbarDividerProps = {
+  className?: string;
+};
+
+function NavbarDivider({ className }: NavbarDividerProps) {
   return (
     <div
       className={combineClassnames(
         "pevents-none flex-row-center color-grayer adjacent-mar-l-3",
-        props.className,
+        className,
       )}
     >
       ·

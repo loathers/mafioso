@@ -1,37 +1,43 @@
-import React from "react";
-
 import logStore from "../store/logStore";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/**
- * @param {SyntheticEvent} evt
- */
-function onUpload(evt) {
+function onUpload(evt: React.SyntheticEvent<HTMLElement>) {
   ignoreEvent(evt);
-  const uploadedFiles =
-    (evt.dataTransfer && evt.dataTransfer.files) ||
-    (evt.currentTarget && evt.currentTarget.files);
-  if (uploadedFiles.length <= 0) {
+  let uploadedFiles: FileList | null = null;
+
+  if (evt instanceof DragEvent) {
+    uploadedFiles = evt.dataTransfer?.files ?? null;
+  } else if (evt.currentTarget instanceof HTMLInputElement) {
+    uploadedFiles = evt.currentTarget.files;
+  }
+
+  if (!uploadedFiles || uploadedFiles.length <= 0) {
     console.warn("No file uploaded.");
     return;
   }
 
   logStore.handleUpload(uploadedFiles);
 }
-/**
- * @param {SyntheticEvent} evt
- */
-function ignoreEvent(evt) {
+
+function ignoreEvent(evt: React.SyntheticEvent<HTMLElement>) {
   evt.preventDefault();
   evt.stopPropagation();
 }
-/**
- * @returns {React.Component}
- */
-export default function LogUploader(props) {
-  const { className, disabled, style, children } = props;
 
+type Props = {
+  className?: string;
+  disabled?: boolean;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+};
+
+export default function LogUploader({
+  className,
+  disabled,
+  style,
+  children,
+}: Props) {
   return (
     <form
       onDrop={(evt) => {
@@ -41,7 +47,7 @@ export default function LogUploader(props) {
         ignoreEvent(e);
       }}
       id="upload-component"
-      componentstate={disabled ? "disabled" : "enabled"}
+      data-componentstate={disabled ? "disabled" : "enabled"}
       style={style}
       className={combineClassnames("flex-col boxsizing-border", className)}
     >
@@ -62,7 +68,7 @@ export default function LogUploader(props) {
           opacity: 0,
           overflow: "hidden",
           position: "absolute",
-          zindex: -1,
+          zIndex: -1,
         }}
         multiple
         onChange={onUpload}

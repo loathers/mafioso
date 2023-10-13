@@ -14,20 +14,7 @@ import FiltersMenu, { FilterInput } from "./FiltersMenu";
 import SelectOptionsComponent from "../components/SelectOptionsComponent";
 
 import combineClassnames from "../utilities/combineClassnames";
-
-export type Option = {
-  label: string;
-  isHidden?: boolean;
-  isDisabled?: boolean;
-  checked?: boolean;
-  title?: string;
-  attributeName?: string;
-};
-
-export type Filter = {
-  id?: string;
-  optionGroup?: Option[];
-} & Option;
+import { Filter } from "../constants/filterList";
 
 type Props = {
   className?: string;

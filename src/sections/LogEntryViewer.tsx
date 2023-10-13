@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { observer } from "mobx-react";
 
 import appStore from "../store/appStore";
@@ -7,13 +7,19 @@ import EntryDisplayContainer from "../components/EntryDisplayContainer";
 import EntryHeaderDisplay from "../components/EntryHeaderDisplay";
 
 import combineClassnames from "../utilities/combineClassnames";
+import Entry from "../classes/Entry";
 
-/**
- * @returns {React.Component}
- */
-export default observer(function LogEntryViewer(props) {
-  const { className, entriesList = [], voterMonsters = [] } = props;
+type Props = {
+  className?: string;
+  entriesList?: Entry[];
+  voterMonsters?: string[];
+};
 
+export default observer(function LogEntryViewer({
+  className,
+  entriesList = [],
+  voterMonsters = [],
+}: Props) {
   return (
     <div
       className={combineClassnames(
@@ -23,8 +29,7 @@ export default observer(function LogEntryViewer(props) {
     >
       {entriesList.map((entry, idx) => {
         const currentDay = entry.attributes.dayNum;
-        const previousEntry = idx >= 1 && entriesList[idx - 1];
-        const previousDay = previousEntry && previousEntry.attributes.dayNum;
+        const previousDay = entriesList[idx - 1]?.attributes.dayNum;
         const shouldShowDayDisplay =
           previousDay !== undefined ? previousDay < currentDay : false;
 

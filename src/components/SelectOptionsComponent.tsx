@@ -1,4 +1,4 @@
-import { Filter } from "../sections/DatabaseListMenu";
+import { Filter } from "../constants/filterList";
 import combineClassnames from "../utilities/combineClassnames";
 
 type Props = {

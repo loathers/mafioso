@@ -1,7 +1,11 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import { ENTRY_TYPE_FILTERS, ATTRIBUTE_FILTERS } from "../constants/filterList";
+import {
+  ENTRY_TYPE_FILTERS,
+  ATTRIBUTE_FILTERS,
+  Filter,
+} from "../constants/filterList";
 
 import appStore from "../store/appStore";
 import logStore from "../store/logStore";
@@ -13,26 +17,28 @@ import FiltersMenu from "./FiltersMenu";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-/**
- * @param {Object} props
- * @returns {React.Component}
- */
-export default observer(function LogVisualizerMenu(props) {
-  const { className, style } = props;
+type Props = {
+  className?: string;
+  style: React.CSSProperties;
+};
 
+export default observer(function LogVisualizerMenu({
+  className,
+  style,
+}: Props) {
   // visible entries
   const [categoriesVisibleList, updateVisibleList] =
     React.useState(ENTRY_TYPE_FILTERS);
 
-  const onChangeVisibleEntries = (list) => {
+  const onChangeVisibleEntries = (list: Filter[]) => {
     updateVisibleList(list);
   };
 
-  const onApplyEntries = (list) => {
-    const checkedItems = list.reduce((checkedCategories, item) => {
+  const onApplyEntries = (list: Filter[]) => {
+    const checkedItems = list.reduce<string[]>((checkedCategories, item) => {
       if (!item.checked) return checkedCategories;
 
-      return checkedCategories.concat(item.categories);
+      return checkedCategories.concat(item.categories ?? []);
     }, []);
 
     logStore.fetchEntries({ categoriesVisible: checkedItems });
@@ -40,9 +46,9 @@ export default observer(function LogVisualizerMenu(props) {
   };
 
   // attribute filters
-  const [selectedAttribute, updateSelectedAttribute] = React.useState();
+  const [selectedAttribute, updateSelectedAttribute] = React.useState("");
 
-  const onSelectAttributeFilter = (attributeName) => {
+  const onSelectAttributeFilter = (attributeName: string) => {
     if (attributeName === "none") {
       updateSelectedAttribute("");
       logStore.fetchEntries({ filteredAttributes: [] });
@@ -86,7 +92,7 @@ export default observer(function LogVisualizerMenu(props) {
       <div className="flex-col flex-none adjacent-mar-t-5">
         <SelectOptionsComponent
           label="Filter by Attributes"
-          onChange={(evt) => onSelectAttributeFilter(evt.target.value)}
+          onChange={(evt) => onSelectAttributeFilter(evt.currentTarget.value)}
           selected={selectedAttribute}
           list={ATTRIBUTE_FILTERS}
           size={18}

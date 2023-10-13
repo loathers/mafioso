@@ -2,9 +2,12 @@ import React from "react";
 
 import combineClassnames from "../utilities/combineClassnames";
 
-export default function Button(props) {
-  const { className, disabled, ...otherProps } = props;
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  className?: string;
+  disabled?: boolean;
+};
 
+export default function Button({ className, disabled, ...otherProps }: Props) {
   const borderClassName = disabled
     ? "bor-1-second-darkest"
     : "bor-1-second-darker";
