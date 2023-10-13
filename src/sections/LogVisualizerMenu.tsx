@@ -19,7 +19,7 @@ import combineClassnames from "../utilities/combineClassnames";
 
 type Props = {
   className?: string;
-  style: React.CSSProperties;
+  style?: React.CSSProperties;
 };
 
 export default observer(function LogVisualizerMenu({
