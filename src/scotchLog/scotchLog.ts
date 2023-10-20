@@ -1,0 +1,1235 @@
+const VERSION = "1.3";
+
+// Flag that turns on CLI print statements if I'm testing stuff
+const DEBUG = true;
+
+// // Instantiate the new log
+// buffer rLog;
+
+// // Instantiate the "fake turn" buffer
+// buffer fLog;
+
+// // Instantiate the "resources" buffer
+// buffer runReport;
+
+// // Set up name as a variable so you don't constantly call "my_name()",
+// //   and so that I can later implement parsing the logs of others in
+// //   your session log directory like I had in the python parser.
+// string myName = my_name();
+
+// boolean testing = true;
+
+static string [string] kingFreedList ={
+    "Took choice 1089/30: Perform Service": "CS",
+    "Took choice 1054/1: Yep"             : "ED",
+    "Freeing King Ralph"                  : "default"
+};
+
+
+static string [string] runStartList ={
+    "Beginning New Ascension"             : "default",
+    "Ascend as a"                         : "backup",
+    "tutorial.php"                        : "firstRun",
+    "use 1 nest egg"                      : "firstRun"
+};
+
+// New record types for this parser's run report
+
+record pulls {
+    int day;
+    int turn;
+    int num;
+    string pull;
+};
+
+record pizza {
+    int day;
+    int turn;
+    int advs;
+    int mus;
+    int mys;
+    int mox;
+    string ingredients;
+    string effectGiven;
+    string itemsDropped;
+};
+
+record pills {
+    int day;
+    int turn;
+    string pillType;
+};
+
+record locket {
+    int day;
+    int turn;
+    string locketMonster;
+};
+
+record monkeyWish {
+    int day;
+    int turn;
+    string pawType;
+    string pawAction;
+};
+
+record saber {
+    int day;
+    int turn;
+    string saberMonster;
+    string saberType;
+};
+
+// Record for locLog
+record locationLog {
+    int advs;
+    int freeTurns;
+    int noncoms;
+    int banishes;
+    int freekills;
+    int spits;
+    int copiers;
+    int runs;
+};
+
+// Record for famLog
+record familiarLog {
+    int turns;
+    int actions;
+    string actionType;
+};
+
+// ===============================================================
+// ---------------------- HELPER FUNCTIONS! ----------------------
+// ===============================================================
+
+
+// ===============================================================
+// ----------------------- CORE FUNCTIONS! -----------------------
+// ===============================================================
+
+void parseLog(string runLog, string fName) {
+
+    // =========================================================
+    // -- NOTE: This function deviates a *lot* from RunLogSum!
+    // =========================================================
+
+    // This is the collected string for submitting to the runLog.
+    //   I like using the int index for this so that I know exactly
+    //   what column everything -should- be.
+    string[int] eventLog;
+
+    // Also, let's make a similar log for "fake" stuff. Basically 
+    //   everything where I have made synthetic turns, like 
+    //   pillkeeper & consumption stuff. 
+    string[int] fakeLog;
+
+    // Start the log with the overall header
+    eventLog[1]  = 'day';
+    eventLog[2]  = 'turnSpent';
+    eventLog[3]  = 'free?';
+    eventLog[4]  = 'location';
+    eventLog[5]  = 'encounterName';
+    eventLog[6]  = 'familiar';
+    eventLog[7]  = 'items';
+    eventLog[8]  = 'meat';
+    eventLog[9]  = 'rounds';
+    eventLog[10] = 'mus';
+    eventLog[11] = 'mys';
+    eventLog[12] = 'mox';
+    eventLog[13] = 'advsGained';
+    eventLog[14] = 'effectsGained';
+    eventLog[15] = 'itemsUsed';
+    eventLog[16] = 'skillsUsed';
+    eventLog[17] = 'freeRun?';
+    eventLog[18] = 'banish';
+    eventLog[19] = 'freeKill';
+    eventLog[20] = 'sniff';
+    eventLog[21] = 'spit';
+    eventLog[22] = 'copy';
+    eventLog[23] = 'macroFrom';
+
+    // Submit the header to the log
+    submitToLog(eventLog, rLog);
+
+    // Like my python parser, I am making bunch of referential 
+    //   variables for the script to update as it parses through
+    //   a user's log. These are the "current status" variables.
+    familiar currFam = $familiar[ None ];
+    int currDay   = 0;
+
+    // Mafia logs always start at turn 1.
+    int currTurn  = 1;
+    int prevTurn  = 1;
+
+    // These are the static "information collection" variables
+    pulls [int] runPulls;
+    int numPulls = 0;
+    pills [int] pillsUsed; // pillkeeper tracking
+    pizza [int] pizzaUsed; // pizza tracking; may expand to better record?
+    saber [int] saberUsed; // saber tracking
+    monkeyWish [int] pawsUsed; // paw wish tracking
+    locket [int] locketsUsed; // combat lover's locket tracking
+    
+    // Separate location/familiar parsers
+    familiarLog [familiar] famLog;
+    locationLog [string] locLog;
+
+    // These are the combat-specific current status variables
+    string s = ""; 
+    boolean freeTurn = false;
+    int combatRound = -1;
+    int mus = 0;
+    int mys = 0;
+    int mox = 0;
+    int meat = 0;
+    int advGain = 0;
+    string itemsUsed = "";
+    string skills = "";
+    string effectsGained = "";
+    string itemsGained = "";
+    string origMonster = "";
+    string currLoc = "N/A";
+    string newLoc = "N/A";  // used for the zone replacement
+    string encounterTitle = "N/A";
+    int freeRun = 0;
+    string roundStmt = "";
+    string pizzaIngredients = "";
+
+    // Combat counters for special events
+    int banished = 0;
+    int freekill = 0;
+    int sniff    = 0;
+    int spit     = 0;
+    int copier   = 0;
+
+    // Combat counters for other special events
+    int bowlingBanishes = 0;
+    int smokeBombs = 0;
+    int shadowBricks = 0;
+
+    // The parser uses this so that it knows if it's currently 
+    //   parsing a turn or not for certain information capture.
+    boolean inTurn = false;
+
+    string[int] splitLog = split_string(runLog,"\n");    // Splitting your runlog by newlines
+
+    // This is the for-loop iterator that travels through the 
+    //   log, line by line. Isn't perfect, but it works.
+
+    foreach l in splitLog {
+        // Stripping out whitespace characters w/ bean's function.
+        string currLine = splitLog[l].trim();
+        //print(currLine,"gray");
+
+        if (length(currLine) > 3){
+            // In order to handle consumption, I am transforming lines where
+            //   the user has consumed items into "turn-like" lines that (in
+            //   turn) start the parser.
+
+            // Just making this variable so the line is more readable.
+            string cString = substring(currLine, 0, 3);
+
+            // Conversion into a turn-like
+            if (cString == "eat" || cString == "dri" || cString == "che"){
+                currLine = "["+currTurn.to_string()+"] CONSUME: "+currLine;
+            }
+
+            // I am also transforming a few choice adventures.
+            if (length(currLine) > 16){
+
+                // Pillkeeper is choice 1395!
+                if (contains_text(currLine,'Took choice 1395')){
+                    // Adding a row for pillkeeper turns!
+                    string pillLine = "PILLKEEPER: "+substring(currLine,20);
+
+                    // Populate the pillkeeper map
+                    pillsUsed[count(pillsUsed)] = new pills (currDay, currTurn, substring(currLine,20));
+                    
+                    // Change the line string
+                    currLine = "["+currTurn.to_string()+"] "+pillLine;
+                }
+
+                // Monkey's Paw is choice 1501!
+                if (contains_text(currLine,'Took choice 1501')){
+
+                    // Adding a row for monkey's paw turns!
+                    string pawLine = "THE SIMIAN PAW CURLS!";
+                    
+                    // In logs, the item 2 rows down from the choice is the effect/item.
+                    string pawAction = splitLog[l+2].trim();
+
+                    // Sometimes, you visit the page but don't wish; therefore, we 
+                    //   have to test whether or not "effect:" or "item:" appear in
+                    //   the line to ensure the paw was actually used.
+                    if (contains_text(pawAction,"effect:")) {
+                        // Populate the paw directory
+                        pawsUsed[count(pawsUsed)] = new monkeyWish (currDay, currTurn, "effect", split_string(pawAction,"effect: ")[1]);
+
+                        // Change the line string
+                        currLine = "["+currTurn.to_string()+"] "+pawLine;                        
+                    }
+                    else if (contains_text(pawAction,"item:")) {
+                        // Populate the paw directory
+                        pawsUsed[count(pawsUsed)] = new monkeyWish (currDay, currTurn, "item", split_string(pawAction,"item: ")[1]);
+
+                        // Change the line string
+                        currLine = "["+currTurn.to_string()+"] "+pawLine;                        
+                    }
+
+                }
+
+                // CMC is choice 1455; testing to see how annoying this makes logs...
+                if (contains_text(currLine,'Took choice 1455')){
+                    // Change the line string in order to ensure the parser parses.
+                    currLine = "["+currTurn.to_string()+"] Visited your Cold Medicine Cabinet...";   
+                }
+
+                // Saber is choice 1387!
+                if (contains_text(currLine,'Took choice 1387')){
+
+                    // I am turning these into zero round events, to reflect
+                    //   the weirdness of the new encounter string.
+                    string[string] saberReplace;
+                    
+                    // Figure out what I'm remapping the saber choice to
+                    saberReplace['You will go find two friends'] = 'SABER FRIENDS';
+                    saberReplace['You will drop your things'] = 'SABER YELLOW RAY';
+                    saberReplace['I am not the adventurer'] = 'SABER BANISH';
+                    
+                    foreach str, finStr in saberReplace {
+                        if (contains_text(currLine,str)){
+                            // Change the line string to a proper combat format
+                            currLine = "Round 0: "+myName+" casts "+finStr;
+
+                            // Populate the saber map
+                            saberUsed[count(saberUsed)] = new saber (currDay, currTurn, encounterTitle, finStr);
+                        }
+                    }
+                }
+
+                // Heist is choice 1320!
+                if (contains_text(currLine,'Took choice 1320')){
+
+                    // Change the line string & increment your heist counter
+                    currLine = "["+currTurn.to_string()+"] HEIST: Stealing an item!";
+                    famLog[$familiar[ Cat Burglar ]].actions += 1;
+
+                }
+
+                // Also, this -isn't- fake -- I'm transforming Doc Awk's office.
+                if (contains_text(currLine, 'Visiting Dr. Awkward')){
+                    currLine = "["+currTurn.to_string()+"] Dr. Awkward's Office";
+                }
+            }
+        }
+
+        // Now that we have remapped our lines, let's parse those lines!
+
+         if (length(currLine) < 9){
+             // No line should be < 8, but any line w/ <8 messes 
+             //   up fam parsing, so bypassing them
+             if (length(currLine) == 0 && inTurn){
+                // Letting Mafia know not to capture between-turn info, for now
+                inTurn = false;
+                
+                if (isFake(currLoc)){
+                    // This is a little kludgy. But, if it's a synthetic turn (ie,
+                    //   one that I manually generated) I want it to generate & submit
+                    //   that action into the synthetic action log, which is to be
+                    //   cleared every time it gets placed into the actual log. This
+                    //   ensures that my freeturn capture works correctly on "pure" 
+                    //   logged objects. 
+
+                    // First, though, add pizza ingredients to pizzas!
+                    if (currLoc == "CONSUME: eat 1 diabolic pizza"){
+                        encounterTitle = pizzaIngredients;
+
+                        // Also, populate the pizza map! Using Katarn's neat
+                        //   commenting trick to comment out the newline and
+                        //   ensure I can have line breaks in the assignment.
+
+                        pizzaUsed[count(pizzaUsed)] = new pizza (currDay,      /*
+                        */ currTurn, advGain, mus, mys, mox, pizzaIngredients, /*
+                        */ effectsGained, itemsGained);     
+                    }
+
+                    fakeLog[1]  = currDay.to_string();
+                    fakeLog[2]  = currTurn.to_string();
+                    fakeLog[3]  = 'TRUE';
+                    fakeLog[4]  = currLoc;
+                    fakeLog[5]  = encounterTitle;
+                    fakeLog[6]  = currFam.to_string();
+                    fakeLog[7]  = itemsGained;
+                    fakeLog[8]  = meat.to_string();
+                    fakeLog[9]  = combatRound.to_string();
+                    fakeLog[10] = mus.to_string();
+                    fakeLog[11] = mys.to_string();
+                    fakeLog[12] = mox.to_string();
+                    fakeLog[13] = advGain.to_string();
+                    fakeLog[14] = effectsGained;
+                    fakeLog[15] = itemsUsed;
+                    fakeLog[16] = skills;
+                    fakeLog[17] = freeRun.to_string();
+                    fakeLog[18] = banished.to_string();
+                    fakeLog[19] = freekill.to_string();
+                    fakeLog[20] = sniff.to_string();
+                    fakeLog[21] = spit.to_string();
+                    fakeLog[22] = copier.to_string();
+                    fakeLog[23] = origMonster;
+
+                    submitToLog(fakeLog, fLog);
+
+                } else {
+                    // Export prior turn information into what will eventually 
+                    //   be the log; order is specific! eventLog is for non-fake
+                    //   stuff, fakeLog is for fake turns I made up to ensure 
+                    //   the log captures consumption info
+                    eventLog[1]  = currDay.to_string();
+                    eventLog[2]  = currTurn.to_string();
+                    eventLog[3]  = freeTurn.to_string();
+                    eventLog[4]  = currLoc;
+                    eventLog[5]  = encounterTitle;
+                    eventLog[6]  = currFam.to_string();
+                    eventLog[7]  = itemsGained;
+                    eventLog[8]  = meat.to_string();
+                    eventLog[9]  = combatRound.to_string();
+                    eventLog[10] = mus.to_string();
+                    eventLog[11] = mys.to_string();
+                    eventLog[12] = mox.to_string();
+                    eventLog[13] = advGain.to_string();
+                    eventLog[14] = effectsGained;
+                    eventLog[15] = itemsUsed;
+                    eventLog[16] = skills;
+                    eventLog[17] = freeRun.to_string();
+                    eventLog[18] = banished.to_string();
+                    eventLog[19] = freekill.to_string();
+                    eventLog[20] = sniff.to_string();
+                    eventLog[21] = spit.to_string();
+                    eventLog[22] = copier.to_string();
+                    eventLog[23] = origMonster;
+                }
+             }
+         }
+         else if (substring(currLine,0,1) == "["){
+            // This initializes an encounter; passes up turn/loc info, etc
+            inTurn = true;
+
+            // Catch to determine if the last turn was free. Have
+            //   to also make sure it isn't using the info from 
+            //   fake events, present in this exact line!
+            if (currLine == "[0] FREEING THE DING DANG KING"){
+                // Trying to fix the error where Goo runs show a 0 turn ending.
+                print("Parsing a goo run, it looks like?", "blue");
+            } else {
+                if (currTurn == grabNumber(currLine) && !isFake(split_string(currLine,"] ")[1])){
+                    freeTurn = true;
+                } else {
+                    currTurn = grabNumber(currLine);
+                }
+            }
+
+            // Unlike... basically everything else, I am using
+            //   the next turn to ascertain if the prior turn 
+            //   was free before submitting it. This is a way
+            //   to make *absolutely* sure the log's "free 
+            //   turn" column is correct.
+            eventLog[3]  = freeTurn.to_string();
+
+            // Only submit if a turn has actually been captured. It
+            //   should only equal "day" if we are still on the log
+            //   log header. Also, make sure you aren't in a fake.
+            if (eventLog[1] != "day" && !isFake(split_string(currLine,"] ")[1])){
+                // Append the "fake turns" log.
+                rLog.append(fLog);
+
+                // Flush the fLog buffer, because we're submitting it.
+                delete(fLog, 0, length(fLog));
+
+                // Finally, submit the event to rLog.
+                submitToLog(eventLog, rLog);
+
+                // Now that we are submitting a turn, we can now 
+                //   adjust for whether running with a bander or 
+                //   boots as your active familiar was -actually- 
+                //   a free run. 17 is the free run flag, 6 is the
+                //   used familiar, 3 is the "freeTurn" t/f.
+                if (eventLog[17].to_int() > 0 && isRunner(eventLog[6].to_familiar()) ){
+                    if (!eventLog[3].to_boolean()){
+                        // Only do anything if it -wasn't- a free 
+                        //   turn. Otherwise we're all good. 
+                        eventLog[17] = (eventLog[17].to_int() - 1).to_string();
+                        famLog[eventLog[6].to_familiar()].actions -= 1;
+                    }
+                }
+
+                // Hey! Since we're submitting stuff, let's take this
+                //   golden opportunity to populate our famLog & our
+                //   locLog. This doesn't add a turn for saber turns,
+                //   because we reset those to rounds = 0.
+                int roundInt = eventLog[9].to_int();
+
+                // Populating the famLog
+                if (roundInt > 0){
+                    // Only capture when rounds > 0
+                    famLog[eventLog[6].to_familiar()].turns += 1;
+                }
+
+                // Populating the locLog 
+                if (roundInt == -1 && !freeTurn){
+                    // Increment NC/advss when they aren't free
+                    locLog[eventLog[4]].noncoms   +=1;
+                    locLog[eventLog[4]].advs      +=1;
+
+                } else if (roundInt > 0 && freeTurn){
+                    // Increment freeTurns that aren't NCs 
+                    locLog[eventLog[4]].freeTurns  +=1;
+
+                } else if (!freeTurn){
+                    // Increment combat advs 
+                    locLog[eventLog[4]].advs      +=1;
+
+                }
+                
+                // Update the rest of the data
+                locLog[eventLog[4]].banishes   += eventLog[18].to_int();
+                locLog[eventLog[4]].freekills  += eventLog[19].to_int();
+                locLog[eventLog[4]].spits      += eventLog[21].to_int();
+                locLog[eventLog[4]].copiers    += eventLog[22].to_int();
+                locLog[eventLog[4]].runs       += eventLog[17].to_int();
+            }
+            
+
+            // Reset state-based variables for a new turn
+            combatRound = -1;
+            mus = 0;
+            mys = 0;
+            mox = 0;
+            meat = 0;
+            advGain = 0;
+            itemsUsed = "";
+            skills = "";
+            effectsGained = "";
+            itemsGained = "";
+            origMonster = "";
+            encounterTitle = "N/A";
+            freeTurn = false;
+            banished = 0;
+            freekill = 0;
+            sniff = 0;
+            spit = 0;
+            copier = 0;
+            freeRun = 0;
+
+            newLoc = split_string(currLine,"] ")[1];
+            
+            // A few manual clean-ups here. Naturally, mafia logs the
+            //   exact square in the tavern that you adventured in. I
+            //   generally do not want those in a log, so I rename. 
+            //   The same behavior occurs in the daily dungeon.
+
+            string[string] substituteLocs;
+
+            substituteLocs["The Daily Dungeon"] = "The Daily Dungeon";
+            substituteLocs["The Typical Tavern"] = "The Tavern Cellar";
+            substituteLocs["Combing"] = "Combing the Beach";
+            substituteLocs["Tower Level"] = "The Naughty Sorceress' Tower";
+            substituteLocs["The Lower Chambers"] = "The Lower Chambers";
+            substituteLocs["The Hedge Maze"] = "The Hedge Maze";
+            substituteLocs["Eldritch Attunement"] = currLoc; // replace attunement w/ prior loc
+            substituteLocs["null"] = currLoc; // replace nulls w/ prior loc
+
+            foreach loc, replacement in substituteLocs{
+                if (contains_text(newLoc, loc)){
+                    newLoc = replacement;
+                }
+            }
+
+            // Finally, set the cleaned location.
+            currLoc = newLoc;
+
+
+         }
+         else if (currLine == "Encounter: Using the Force"){
+            // Do *not* revise the encounter title with this.
+         }
+         else if (inTurn && substring(currLine,0,5) == "Encou") {
+            // Generate encounter title; is either monster name, or NC title
+            //   Including a count here to account for empty encounter titles
+            if (count(split_string(currLine,"ounter: ")) > 1){
+                encounterTitle = split_string(currLine,"ounter: ")[1];
+            } else {
+                encounterTitle = "N/A";
+            }
+            
+            // Tracking the combat lover locket monsters the user summons
+            if (newLoc == "Combat Lover's Locket") {
+                locketsUsed [count(locketsUsed)] = new locket (currDay, currTurn, encounterTitle);
+            }
+
+         }
+         else if (substring(currLine,0,5) == "Round"){
+            // All "round" statements are filled with useful crap!
+            combatRound = grabNumber(currLine);
+
+            // Some "round" statements are for monsters; others are for you! I'm
+            //   currently ignoring damage dealt, a main usage of monster stmts.
+            //   Before doing this, you have to make sure the line is long enough
+            //   to possibly contain the player's name, tho. (Thanks, 3BH, for 
+            //   helping track this weird error down.)
+			if (count(split_string(currLine,": ")) == 1){
+                continue;
+            }
+            if (length(split_string(currLine,": ")[1]) > length(myName)){
+                if (substring(split_string(currLine,": ")[1],0,length(myName)) == myName){
+                    // This detects if it's a statement about you! And this cuts out
+                    //   the specific statement after "round" & your name
+                    roundStmt = split_string(currLine,myName+" ")[1];
+
+                    // Now to split out useful pieces; these can be:
+                    //   - casts [SKILL]!
+                    //   - uses the [ITEM]!
+                    //   - uses the [ITEM] and uses the [ITEM]!
+
+                    // Firstly, remove the !, so the parser works properly. Replace
+                    //   string generates a buffer, so have to make it a string again.
+                    roundStmt = replace_string(roundStmt, "!", "").to_string();
+
+                    // For item logic, want to remove the 2nd "and".
+                    roundStmt = replace_string(roundStmt, " and ", "").to_string();
+
+                    // Here, we're just feeding it into our banish/freekill/sniff 
+                    //   functions. I included the "length>0" catch to ignore the
+                    //   first element of the iteration. You need to have the 
+                    //   foreach for items due to funkslinging; technically you
+                    //   don't NEED it for skills, but I want syntax to align.
+
+                    if (substring(roundStmt,0,4) == "cast"){
+                        foreach idx, ss in split_string(roundStmt,"casts "){
+                            if (length(ss) > 0){
+                                banished += isSpecial(ss,"skill",banisherList);
+                                freekill += isSpecial(ss,"skill",freeKillList);
+                                sniff    += isSpecial(ss,"skill",sniffList);
+                                copier   += isSpecial(ss,"skill",copyList);
+                                spit     += ("%FN, SPIT ON THEM" == ss).to_int();
+                                freeRun  += isSpecial(ss,"skill",runList);
+                                skills   = skills+" | "+ss;
+                                bowlingBanishes += ("BOWL A CURVEBALL" == ss).to_int();
+
+                                // Increment spits for melodramedary
+                                if (ss == "%FN, SPIT ON THEM"){
+                                    famLog[$familiar[ Melodramedary ]].actions += 1;
+                                }
+
+                                // Increment lectures for prof
+                                if (contains_text(ss, "LECTURE ON")){
+                                    famLog[$familiar[ Pocket Professor ]].actions += 1;
+                                }
+
+                                // Increment stat gooso for gooso
+                                if (contains_text(ss, "CONVERT MATTER TO")){
+                                    famLog[$familiar[ Grey Goose ]].actions += 1;
+                                }
+
+                                // Increment runs for boots & banders. Note that 
+                                //   we also have to adjust to ensure they were 
+                                //   actually -free- runs, which we do up top.
+                                if (ss == "RETURN"){
+                                    if (isRunner(currFam)){
+                                        famLog[currFam].actions += 1;
+                                        // Also, increment the run counter.
+                                        freeRun  += 1;
+                                    }
+                                }
+                            }
+                        }
+                    } else if (substring(roundStmt,0,4) == "uses"){
+                        foreach idx, ss in split_string(roundStmt,"uses the "){
+                            if (length(ss) > 0){
+                                banished += isSpecial(ss,"item",banisherList);
+                                freekill += isSpecial(ss,"item",freeKillList);
+                                sniff    += isSpecial(ss,"item",sniffList);
+                                freeRun  += isSpecial(ss,"item",runList);
+                                itemsUsed = itemsUsed+"|"+ss;
+                                smokeBombs += ("green smoke bomb" == ss).to_int();
+                                shadowBricks += ("shadow brick" == ss).to_int();
+                            }
+                        }
+                    }
+                } 
+            }
+
+            if (contains_text(currLine, "your opponent becomes ")){
+                // Handling macrometeor-type skills here
+                origMonster = origMonster+" | "+encounterTitle;
+                encounterTitle = split_string(currLine,"your opponent becomes ")[1];
+            }
+         }
+         else if (substring(currLine,0,5) == "After"){
+             // Capturing after-battle stat changes. 
+             mus += statChange(currLine,"mus");
+             mys += statChange(currLine,"mys");
+             mox += statChange(currLine,"mox");
+         }
+         else if (substring(currLine,0,5) == "%%%%%"){
+             // This captures which day of the run it is, to pass that up to my static vars
+             currDay = split_string(currLine,"DAY #")[1].to_int();
+         }
+         else if (substring(currLine,0,9) == "familiar "){
+            // Convert "familiar [FAMNAME] (WEIGHT)" lines into $fam var
+            if (index_of(currLine," (") == -1){
+                // If it DOESN'T have the ( for weight, it's a "familiar none" cmd
+                currFam = $familiar[ none ];
+            } else {
+                currFam = substring(currLine,8,index_of(currLine," (")).to_familiar();
+            }
+            // print("Switched to "+currFam,"purple"); // Print to make sure it's working. 
+         }
+         else if (substring(currLine,0,5) == "pull:"){
+             // Convert "pull: # [ITEMPULLED]" into additions to pull list
+            int numPull = grabNumber(currLine);
+            string pullName = substring(currLine,5+length(numPull.to_string())+1);
+            for n from numPull downto 1{
+                numPulls += 1;
+                runPulls[count(runPulls)] = new pulls (currDay, currTurn, numPulls, pullName);
+            }
+         }
+         else if (inTurn && substring(currLine,0,6) == "You ac"){
+             // This captures if you have gained an item or an effect
+            if (contains_text(currLine,"acquire an item: ")){
+                itemsGained = itemsGained+" | "+split_string(currLine,"acquire an item: ")[1];
+                
+                // Track when you get human musks for snapper tracking
+                if (contains_text(currLine,"human musk")){
+                    famLog[$familiar[ Red-Nosed Snapper ]].actions += 1;
+                }
+                
+                // Track when you get vampire vintner wines for tracking
+                if (contains_text(currLine,"1950 Vampire Vintner w")){
+                    famLog[$familiar[ Vampire Vintner ]].actions += 1;
+                }
+
+                // Track when you get yeast, whey, or veg from cookbookbat; have to
+                //   add (3) because autumn-aton has 3x per gain while autobot has 1
+                boolean hasBoris = contains_text(currLine,"Yeast of Boris (3)");
+                boolean hasPetes = contains_text(currLine,"St. Sneaky Pete's Whey (3)");
+                boolean hasJarls = contains_text(currLine,"Vegetable of Jarlsberg (3)");
+
+                // Adding 3 instead of 1 since I'm counting total ingredients
+                if (hasBoris || hasPetes || hasJarls){
+                    famLog[$familiar[ Cookbookbat ]].actions += 3;
+                }
+
+            } else if (contains_text(currLine,"acquire an effect: ")){
+                effectsGained = effectsGained+" | "+split_string(currLine,"acquire an effect: ")[1];
+            }
+                
+         }
+         else if (inTurn && contains_text(currLine,"You gain ")){
+             // This captures if you have gained meat within a turn
+            if (contains_text(currLine, "Meat")){
+                meat = meat + grabNumber(currLine);
+            }
+            if (contains_text(currLine, "Adventures")){
+                advGain = advGain + grabNumber(currLine);
+            }
+            
+         }
+         else if (substring(currLine,0,5) == "pizza"){
+             // Capturing pizza ingredients! The format mafia appears to use is:
+             //   pizza [ingred1], [ingred2], [ingred3], [ingred4]
+             // So I am converting this into an ingredients string.
+
+             pizzaIngredients = ": " + substring(currLine,5).trim();
+             string[int] ingredList = split_string(substring(currLine,5).trim(),",");
+
+             // Also, add a pre-pend string showing the first 4 letters.
+             for i from 3 downto 0 {
+                string firstLetter = substring(ingredList[i].trim(),0,1).to_string();
+                pizzaIngredients =  to_upper_case(firstLetter) + pizzaIngredients;
+             }
+         }
+         else {
+             //print(currLine,"red");
+         }
+    }
+
+    // Populate the famLog's action types for familiars with tracked actions.
+    static string[familiar] famActions = {
+        $familiar[ Melodramedary ]          : "spits",
+        $familiar[ Pocket Professor ]       : "lectures",
+        $familiar[ Pair of Stomping Boots ] : "runs",
+        $familiar[ Red-Nosed Snapper ]      : "human musks",
+        $familiar[ Cat Burglar ]            : "heists",
+        $familiar[ Vampire Vintner ]        : "wines",
+        $familiar[ Cookbookbat ]            : "ingredients",
+        $familiar[ Grey Goose ]             : "gooso stats",
+    };
+
+    // NOTE FOR LATER: There are a lot of fams in unrestricted that should 
+    //   probably also be tracked. These include...
+    //     - YELLOW PUCK (freekills)
+    //     - SPACE JELLYFISH (jellies)
+    //     - HIPSTER/GOTH KID (free fights; annoying to do...)
+    //     - XO-SKELETON (hugpockets)
+
+    // Populate action types for tracked familiars
+    foreach fam, action in famActions {
+        famLog[fam].actionType = action;
+    }
+
+    // Now that you've finished populating the log, time to generate
+    //   a resource report for the end user. First, locations.
+
+    // Append a header, first.
+    runReport.append("LOCATION\tADVS\tFREETURNS\tNCs\tBANISHES\tFREEKILLS\tSPITS\tCOPIERS\tRUNS\n");
+    
+    foreach loc, thisLoc in locLog {
+        // I am using the "submitToLog" function so that it's easy to
+        //   convert all output into CSV/TSV. Might make that a user
+        //   defined option at some point. 
+        string[int] submitString;
+
+        submitString[1] = loc.to_string();
+        submitString[2] = thisLoc.advs;
+        submitString[3] = thisLoc.freeTurns;
+        submitString[4] = thisLoc.noncoms;
+        submitString[5] = thisLoc.banishes;
+        submitString[6] = thisLoc.freekills;
+        submitString[7] = thisLoc.spits;
+        submitString[8] = thisLoc.copiers;
+        submitString[9] = thisLoc.runs;
+
+        int locSum = thisLoc.advs + thisLoc.freeTurns + thisLoc.noncoms + thisLoc.banishes + thisLoc.freekills + thisLoc.spits + thisLoc.copiers + thisLoc.runs;
+
+        // If the location data shows that nothing important happened,
+        //   skip it in the location log.
+        if (locSum > 0){
+            submitToLog(submitString,runReport);
+        }
+
+    }
+    
+    // Adding a break between each resource saved
+    runReport.append("\n====================\n");
+
+    // Append a header, first.
+    runReport.append("FAMILIAR\tTURNS\tACTIONS\tACTIONTYPE\n");
+    
+    foreach fam, thisFam in famLog {
+        // I am using the "submitToLog" function so that it's easy to
+        //   convert all output into CSV/TSV. Might make that a user
+        //   defined option at some point. 
+        string[int] submitString;
+
+        submitString[1] = fam.to_string();
+        submitString[2] = thisFam.turns;
+        submitString[3] = thisFam.actions;
+        submitString[4] = thisFam.actionType;
+        
+        // Only send the fam line if the fam was actually used.
+        if (thisFam.turns > 0) {
+            submitToLog(submitString,runReport);
+        }
+    }
+    
+    // Adding a break between each resource saved
+    runReport.append("\n====================\n");
+
+    // Ensure a pill was used before doing this.
+    if (count(pillsUsed)>1){
+        // Append a header, too.
+        runReport.append("PILLTYPE\tDAY\tTURN\n");
+
+        foreach i,currPill in pillsUsed {
+            // I am using the "submitToLog" function so that it's easy to
+            //   convert all output into CSV/TSV. Might make that a user
+            //   defined option at some point. 
+            string[int] submitString;
+
+            submitString[1] = currPill.pillType;
+            submitString[2] = currPill.day;
+            submitString[3] = currPill.turn;
+
+            submitToLog(submitString,runReport);
+        }
+        
+        // Adding a break between each resource saved
+        runReport.append("\n====================\n");
+    }
+
+    // Ensure a paw was used before doing this.
+    if (count(pawsUsed)>1){
+        // Append a header, too.
+        runReport.append("DAY\tTURN\tPAWTYPE\tWISH\n");
+
+        foreach i,currPaw in pawsUsed {
+            // I am using the "submitToLog" function so that it's easy to
+            //   convert all output into CSV/TSV. Might make that a user
+            //   defined option at some point. 
+            string[int] submitString;
+
+            submitString[1] = currPaw.day;
+            submitString[2] = currPaw.turn;
+            submitString[3] = currPaw.pawType;
+            submitString[4] = currPaw.pawAction;
+
+            submitToLog(submitString,runReport);
+        }
+        
+        // Adding a break between each resource saved
+        runReport.append("\n====================\n");
+    }
+
+   
+    // Ensure a locket was used before doing this.
+    if (count(locketsUsed)>1){
+        // Append a header, too.
+        runReport.append("DAY\tTURN\tLOCKET MONSTER\n");
+
+        foreach i,currLocket in locketsUsed {
+            // I am using the "submitToLog" function so that it's easy to
+            //   convert all output into CSV/TSV. Might make that a user
+            //   defined option at some point. 
+            string[int] submitString;
+
+            submitString[1] = currLocket.day;
+            submitString[2] = currLocket.turn;
+            submitString[3] = currLocket.locketMonster;
+
+            submitToLog(submitString,runReport);
+        }
+        
+        // Adding a break between each resource saved
+        runReport.append("\n====================\n");
+    }
+ 
+    // Now, pizzas!
+    if (count(pizzaUsed)>1){
+        // Append a header, too.
+        runReport.append("INGREDIENTS\tDAY\tTURN\tADVS\tEFFECT\tITEMS\tMUS\tMYS\tMOX\n");
+            
+        foreach i, currZa in pizzaUsed {
+            // I am using the "submitToLog" function so that it's easy to
+            //   convert all output into CSV/TSV. Might make that a user
+            //   defined option at some point. 
+            string[int] submitString;
+
+            submitString[1] = currZa.ingredients;
+            submitString[2] = currZa.day;
+            submitString[3] = currZa.turn;
+            submitString[4] = currZa.advs;
+            submitString[5] = currZa.effectGiven;
+            submitString[6] = currZa.itemsDropped;
+            submitString[7] = currZa.mus;
+            submitString[8] = currZa.mys;
+            submitString[9] = currZa.mox;
+
+            submitToLog(submitString,runReport);
+        }
+        
+        // Adding a break between each resource saved
+        runReport.append("\n====================\n");
+    }
+    
+    // Now, sabers!
+    if (count(saberUsed)>1){
+        // Append a header, too.
+        runReport.append("SABERTYPE\tDAY\tTURN\tSABERMONSTER\n");
+        
+        foreach i, currSaber in saberUsed {
+            // I am using the "submitToLog" function so that it's easy to
+            //   convert all output into CSV/TSV. Might make that a user
+            //   defined option at some point. 
+            string[int] submitString;
+
+            submitString[1] = currSaber.saberType;
+            submitString[2] = currSaber.day;
+            submitString[3] = currSaber.turn;
+            submitString[4] = currSaber.saberMonster;
+
+            submitToLog(submitString,runReport);
+        }
+        
+        // Adding a break between each resource saved
+        runReport.append("\n====================\n");
+    }
+
+    // Now, miscellany!
+    if (bowlingBanishes+smokeBombs > 0) {
+        runReport.append("MISC. COUNTERS\tCOUNT\n");
+
+        // I am using the "submitToLog" function so that it's easy to
+        //   convert all output into CSV/TSV. Might make that a user
+        //   defined option at some point. 
+        string[int] submitString;
+
+        if (bowlingBanishes > 0){
+            submitString[1] = "Cosmic Bowling Ball banishes";
+            submitString[2] = bowlingBanishes;
+
+            submitToLog(submitString, runReport);
+        }
+
+        if (smokeBombs > 0){
+            submitString[1] = "Green Smoke Bombs used";
+            submitString[2] = smokeBombs;
+
+            submitToLog(submitString, runReport);
+        }
+
+        if (shadowBricks > 0){
+            submitString[1] = "Shadow Bricks used";
+            submitString[2] = shadowBricks;
+
+            submitToLog(submitString, runReport);
+        }
+    }
+
+    // Finally, pulls.
+    if (count(runPulls)>1){
+        // Append a header, too.
+        runReport.append("PULL\tDAY\tTURN\tNUMBER\n");
+        
+        foreach i, currPull in runPulls {
+            // I am using the "submitToLog" function so that it's easy to
+            //   convert all output into CSV/TSV. Might make that a user
+            //   defined option at some point. 
+            string[int] submitString;
+
+            submitString[1] = currPull.pull;
+            submitString[2] = currPull.day;
+            submitString[3] = currPull.turn;
+            submitString[4] = currPull.num;
+
+            submitToLog(submitString,runReport);
+        }
+        
+        // Adding a break between each resource saved
+        runReport.append("\n====================\n");
+    }
+
+    buffer_to_file(rlog,fName+currTurn+"turns.tsv");
+    if (get_property("scotchLogResourceTracker")=="save"){
+        buffer_to_file(runReport,fName+currTurn+"turns_runReport.tsv");
+    }
+
+}
+
+void generateRawLog(string runEndDate, int numDays){
+
+    // =========================================================
+    // -- NOTE: This function deviates minimally from RunLogSum
+    // =========================================================
+
+    // Use the janky "days since" function to figure out # of days
+    int dSince = daysFromToday(runEndDate);
+
+    if (dSince == 0 && runEndDate != now_to_string("yyyyMMdd")){
+        abort("ERROR: You are trying to parse zero days of logs.");
+    }
+
+    // Initialize logs of days & total runLog. Using a buffer 
+    //   because it appears to play nicer with regex?
+    string dayLog = "";
+    buffer rawLog;
+    append(rawLog,"[0] Start \n");
+    int dayNum = 0;
+    int upperBound = dSince+numDays;
+
+    // This appears to store in a strange order; on the 7th day, 
+    //   D1 is 6, D7 is 0. It works, tho, and that's what matters!
+    string[int] slogs = session_logs(upperBound);
+
+    // Because session_logs() stores in reverse, iterate downwards
+    for i from upperBound downto dSince{
+
+        // Grab one day's log, append to rawLog
+        if (i-1 > -1){ dayLog = slogs[i-1];}
+        else { dayLog = "???";}
+
+        // I used to use this as an error. Instead, just printing a warning.
+        if (dayLog == ""){
+            print("ERROR: Mafia generated an empty runlog for one of your sessions. Skipping that day. (It occurred @ index ="+i+")");
+        } else {
+            dayNum += 1;
+            append(rawLog,"%%%%%%%%% START OF DAY #"+dayNum+"\n");
+            append(rawLog, dayLog);
+        }
+
+    }
+
+    // Use "index_of()" to locate ascension start
+    int iSTART = -1;
+	
+    // Use runStartList to reference starting strings 
+    foreach x, typ in runStartList {
+	    int startRun = index_of(rawLog, x);
+	    if (startRun > 0){
+	        iSTART = index_of(rawLog, x);
+	    }
+    }
+	
+    // Error catching for users not including run starts.
+    if(iSTART == -1){abort("ERROR: This didn't include the beginning of a new run. Try again?");}
+
+    // Use a replace function to remove all front-matter
+    replace(rawLog, 0, iSTART, "%%%%%%%%% START OF DAY #"+1+"\n");
+
+    // Use "index_of()" to locate ascension end
+    int iPRISM = -1;
+
+    // Use 3BH's kingFreedList to reference end string for CS
+    foreach x, typ in kingFreedList {
+        int endRun = index_of(rawLog, x);
+        if (endRun > 0){
+            iPRISM = index_of(rawLog, x);
+        }
+    }
+
+    // Error catching for users not including run ends.
+    if(iPRISM == -1){ 
+        // Add a catch for goo, where there is no explicit run-end in the log syntax. 
+        //   Helpfully, since this is astral, it should (?) help catch future paths 
+        //   where you don't free a king. We'll see!
+        int endRun = index_of(rawLog, "Welcome to Valhalla!");
+        if (endRun > 0){
+            iPRISM = endRun;
+        } else {
+            abort("ERROR: This didn't include the end of a run. Try again?");
+        }
+    }
+
+    // Use a replace function to remove all end-matter.
+    replace(rawLog, iPRISM, length(rawLog), "[0] FREEING THE DING DANG KING");
+
+    // Use a replace function to add a newline before CMC checks
+    replace_string(rawLog, "Took choice 1455/5", "\nTook choice 1455/5");
+
+    string newLog = rawLog.to_string();
+
+    // Using [GROAN] regex to find the actual daycount.
+    matcher dayMatcher = create_matcher("%%% START OF DAY #[\\d+]*", newLog);
+
+    int finalDay;
+
+    while (dayMatcher.find()){
+        finalDay = grabNumber(dayMatcher.group(group_count(dayMatcher)));
+    } 
+
+    string fileName = replace_string(myName," ","_")+"_"+runEndDate+"_"+finalDay+"day";
+
+    if (get_property("scotchLogMafioso")=="save"){
+        buffer_to_file(rawLog,fileName+"_mafioso.txt");
+    }
+
+    // At this point, the raw log is ready to be parsed.
+    parseLog(newLog,fileName);
+}
+
+void setLoggerDefaults(){
+    // Helper function that sets mafia preferences to defaults if
+    //   they are not yet set. 
+
+    // Sets whether or not to save the mafioso concat file
+    if (get_property("scotchLogMafioso")==""){
+        set_property("scotchLogMafioso","nosave");
+    }
+    // Sets whether or not to save the resource log file
+    if (get_property("scotchLogResourceTracker")==""){
+        set_property("scotchLogResourceTracker","save");
+    }
+}
+
+void executeCommand(string cmd){
+    // Using Ezan's code structure here; will help me build different 
+    //   options going forward. Start by setting defaults if they
+    //   aren't already set.
+
+    setLoggerDefaults();
+
+	if (cmd == "help" || cmd == "" || cmd.replace_string(" ", "").to_string() == ""){
+        // If they're asking for help, output the docstring.
+        outputHelp();
+
+    } else if (cmd == "links"){
+        // If they're asking for links, output that. This is 
+        //   extremely obvious. Why am I commenting this?
+        outputLinks();
+
+    } else if (substring(cmd,0,5) == "parse"){
+        // If the user is sending a "parse" command, look for
+        //   the date string & the # of days in the command.
+        //   Start by setting date/days defaults; default to 
+        //   CKB's parser behavior, ie most recent log
+
+        string ascDate = now_to_string("yyyyMMdd");
+        int ascDays = my_daycount();
+
+        foreach idx,str in split_string(cmd," "){
+            // Some basic "is the cmd what we're expecting?" logic
+            if (idx==1 && length(str) == 8 && str.to_int() > 20010911){ascDate = str;}
+            if (idx==2 && str.to_int() > 0){ascDays = str.to_int();}
+        }
+
+        print_html("<strong>========= SCOTCH-LOG-PARSER v" + __scotchLog_version+" =========</strong>");
+        print("Examining logs starting at "+ascDate+" and going back "+ascDays+" days.");
+        generateRawLog(ascDate, ascDays);
+    }
+    else if (substring(cmd,0,5) == "mafio"){
+        // If the user is sending a "mafioso" command, set the
+        //   property to what they've submitted, if it's "save" 
+        //   or "nosave", the only two valid values
+
+        string newPropVal = "n/a";
+
+        foreach idx,str in split_string(cmd," "){
+            // Some basic "is the cmd what we're expecting?" logic
+            if (idx==1 && str=="save"){   newPropVal = "save";}
+            if (idx==1 && str=="nosave"){ newPropVal = "nosave";}
+        }
+
+        if (newPropVal == "n/a"){
+            print("WARNING: Not a valid command! Try using \"mafioso save\" or \"mafioso nosave\".","red");
+        } else {
+            print("Setting the Mafioso setting for ScotchLogParser to '"+newPropVal+"'.","purple");
+            set_property("scotchLogMafioso",newPropVal);
+        }
+
+    }
+    else if (substring(cmd,0,5) == "resou"){
+        // If the user is sending a "resource" command, set the
+        //   property to what they've submitted, if it's "save" 
+        //   or "nosave", the only two valid values
+
+        string newPropVal = "n/a";
+
+        foreach idx,str in split_string(cmd," "){
+            // Some basic "is the cmd what we're expecting?" logic
+            if (idx==1 && str=="save"){   newPropVal = "save";}
+            if (idx==1 && str=="nosave"){ newPropVal = "nosave";}
+        }
+
+        if (newPropVal == "n/a"){
+            print("WARNING: Not a valid command! Try using \"resource save\" or \"resource nosave\".","red");
+        } else {
+            print("Setting the Resource Log setting for ScotchLogParser to '"+newPropVal+"'.","purple");
+            set_property("scotchLogResourceTracker",newPropVal);
+        }
+
+    }
+    else if (substring(cmd,0,5) == "daybt"){
+        // Substring to test the daybt function
+        print(daysFromToday(split_string(cmd," ")[1]));
+    }
+    else {
+        print("Invalid command. Try submitting 'scotchlog help' for more info.", "red");
+    }
+    
+}
+
+void main(string command){
+
+    executeCommand(command);
+
+}
