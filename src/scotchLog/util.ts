@@ -92,19 +92,27 @@ const MAFIA_EPOCH = new Date("20050128");
  */
 function daysFromToday(userDateString: string) {
   const today = new Date();
-  const userDate = new Date(userDateString);
 
-  // Some simple error checking
-  if (!userDate) {
+  if (!/^(\d){8}$/.test(userDateString)) {
     print(`ERROR: input date (${usersDate}) is not valid.`, "red");
     return 0;
-  } else if (userDate > today) {
+  }
+
+  const userDate = new Date(
+    Number(userDateString.substring(0, 4)),
+    Number(userDateString.substring(4, 2)) - 1,
+    Number(userDateString.substring(6, 2)),
+  );
+
+  if (userDate > today) {
     print(
       `ERROR: input date (${usersDate}) is in the future, not the past.`,
       "red",
     );
     return 0;
-  } else if (userDate < MAFIA_EPOCH) {
+  }
+
+  if (userDate < MAFIA_EPOCH) {
     print(
       `ERROR: you're trying to grab a log from before KOLMafia existed (${usersDate}). Calm down, fam.`,
       "red",
